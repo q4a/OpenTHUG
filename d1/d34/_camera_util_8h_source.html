@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/CameraUtil.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d34/_camera_util_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CameraUtil.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d34/_camera_util_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       CameraUtil.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Dan</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  4/10/3</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __COMPONENTS_CAMERAUTIL_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __COMPONENTS_CAMERAUTIL_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define SKATERCAMERACOMPONENT_PERFECT_ABOVE         (3.0f)</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;            </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">// Ignore faces that are NOT flagged as camera collidable</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_1     (0)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_0     (mFD_CAMERA_COLLIDABLE)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// ignore faces that ARE flagged as camera collidable</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_1     (0)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_0     (mFD_CAMERA_COLLIDABLE)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#if 1</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// ignore faces that are non-collidable or invisible</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//#define IGNORE_FACE_FLAGS_1   (mFD_NON_COLLIDABLE | mFD_INVISIBLE)</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_1     (mFD_NON_COLLIDABLE | mFD_CAMERA_COLLIDABLE)</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define IGNORE_FACE_FLAGS_0     (0)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#   define CAMERA_SLERP_STOP 0.9999f</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;       </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../d2/d10/namespace_obj.html#a25104fb2105a70d19e7433b726225de1">GetTimeAdjustedSlerp</a> ( <span class="keywordtype">float</span> slerp, <span class="keywordtype">float</span> <a class="code" href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp.html#a1ee4a05b54419bfadd66ee351d05812e">delta</a> );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d2/d10/namespace_obj.html#afff5d76f34536c53ab70189befb1da70">ApplyCameraCollisionDetection</a> ( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; camera_pos,  <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; camera_matrix, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; target_pos, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; forcus_pos, <span class="keywordtype">bool</span> side_feelers = <span class="keyword">true</span>, <span class="keywordtype">bool</span> refocus = <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html">   43</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html">SCameraState</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#a3f5f25ec025c7d618525c0817a2a4554">   45</a></span>&#160;        <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> <a class="code" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#a3f5f25ec025c7d618525c0817a2a4554">lastActualMatrix</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#aee231634d9e6d186b716a93290099a6f">   46</a></span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#aee231634d9e6d186b716a93290099a6f">lastTripodPos</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#af68454b7334292aa473912799f3f2257">   47</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#af68454b7334292aa473912799f3f2257">lastDot</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#afd6c6bd0bd6f804ea8ee4793ee9cbeb9">   48</a></span>&#160;        <span class="keywordtype">float</span> <a class="code" href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#afd6c6bd0bd6f804ea8ee4793ee9cbeb9">lastZoom</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_obj_1_1_s_camera_state_html_aee231634d9e6d186b716a93290099a6f"><div class="ttname"><a href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#aee231634d9e6d186b716a93290099a6f">Obj::SCameraState::lastTripodPos</a></div><div class="ttdeci">Mth::Vector lastTripodPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d34/_camera_util_8h_source.html#l00046">CameraUtil.h:46</a></div></div>
+<div class="ttc" id="anamespace_obj_html_afff5d76f34536c53ab70189befb1da70"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#afff5d76f34536c53ab70189befb1da70">Obj::ApplyCameraCollisionDetection</a></div><div class="ttdeci">void ApplyCameraCollisionDetection(Mth::Vector &amp;camera_pos, Mth::Matrix &amp;camera_matrix, const Mth::Vector &amp;target_pos, const Mth::Vector &amp;focus_pos, bool side_feelers, bool refocus)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d0b/_camera_util_8cpp_source.html#l00077">CameraUtil.cpp:77</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a25104fb2105a70d19e7433b726225de1"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a25104fb2105a70d19e7433b726225de1">Obj::GetTimeAdjustedSlerp</a></div><div class="ttdeci">float GetTimeAdjustedSlerp(float slerp, float delta)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d0b/_camera_util_8cpp_source.html#l00060">CameraUtil.cpp:60</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_s_camera_state_html_af68454b7334292aa473912799f3f2257"><div class="ttname"><a href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#af68454b7334292aa473912799f3f2257">Obj::SCameraState::lastDot</a></div><div class="ttdeci">float lastDot</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d34/_camera_util_8h_source.html#l00047">CameraUtil.h:47</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_s_camera_state_html_afd6c6bd0bd6f804ea8ee4793ee9cbeb9"><div class="ttname"><a href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#afd6c6bd0bd6f804ea8ee4793ee9cbeb9">Obj::SCameraState::lastZoom</a></div><div class="ttdeci">float lastZoom</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d34/_camera_util_8h_source.html#l00048">CameraUtil.h:48</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_s_camera_state_html"><div class="ttname"><a href="../../d2/dc2/struct_obj_1_1_s_camera_state.html">Obj::SCameraState</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d34/_camera_util_8h_source.html#l00043">CameraUtil.h:43</a></div></div>
+<div class="ttc" id="a_n_g_p_s_2p__gfxman_8cpp_html_a1ee4a05b54419bfadd66ee351d05812e"><div class="ttname"><a href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp.html#a1ee4a05b54419bfadd66ee351d05812e">delta</a></div><div class="ttdeci">float delta</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp_source.html#l00221">p_gfxman.cpp:221</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_s_camera_state_html_a3f5f25ec025c7d618525c0817a2a4554"><div class="ttname"><a href="../../d2/dc2/struct_obj_1_1_s_camera_state.html#a3f5f25ec025c7d618525c0817a2a4554">Obj::SCameraState::lastActualMatrix</a></div><div class="ttdeci">Mth::Matrix lastActualMatrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d34/_camera_util_8h_source.html#l00045">CameraUtil.h:45</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../d1/d34/_camera_util_8h.html">CameraUtil.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

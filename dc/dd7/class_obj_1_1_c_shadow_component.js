@@ -1,0 +1,26 @@
+var class_obj_1_1_c_shadow_component =
+[
+    [ "CShadowComponent", "dc/dd7/class_obj_1_1_c_shadow_component.html#ab9d235f738609cf8078af6500b8a2729", null ],
+    [ "~CShadowComponent", "dc/dd7/class_obj_1_1_c_shadow_component.html#a7aab0b205aead4a4d169060db7d13c8c", null ],
+    [ "Finalize", "dc/dd7/class_obj_1_1_c_shadow_component.html#a88a673458add9e809076b819e3c702de", null ],
+    [ "Update", "dc/dd7/class_obj_1_1_c_shadow_component.html#a08e771885d84bfb22a0085a98ece53bd", null ],
+    [ "InitFromStructure", "dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a", null ],
+    [ "Hide", "dc/dd7/class_obj_1_1_c_shadow_component.html#ac7ffe8fe199b77db46c9d5c2b3f4d7aa", null ],
+    [ "Teleport", "dc/dd7/class_obj_1_1_c_shadow_component.html#a898366272c675c9ec4afa6d801a26874", null ],
+    [ "CallMemberFunction", "dc/dd7/class_obj_1_1_c_shadow_component.html#a8c73d257a169e76b2423b4476d824078", null ],
+    [ "s_create", "dc/dd7/class_obj_1_1_c_shadow_component.html#af8444994600eac4ee2d600b6596ea5e2", null ],
+    [ "update_shadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#a7141ff760218137cf0fb6198b7738488", null ],
+    [ "SwitchOnShadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9", null ],
+    [ "SwitchOffShadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6", null ],
+    [ "HideShadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#a9a2047f29ea5664a5938c6f78a51b383", null ],
+    [ "SetShadowPos", "dc/dd7/class_obj_1_1_c_shadow_component.html#a7b1502556bdf7b10ee1096b166636592", null ],
+    [ "SetShadowNormal", "dc/dd7/class_obj_1_1_c_shadow_component.html#a27b19bccaaf3c6106c2a1d63cde2e977", null ],
+    [ "SetShadowScale", "dc/dd7/class_obj_1_1_c_shadow_component.html#a4635d6aeb3ec1bedfab68e6c1a4d381e", null ],
+    [ "SetShadowDirection", "dc/dd7/class_obj_1_1_c_shadow_component.html#abbe8aff1e5a5627c64ac3d314e844e28", null ],
+    [ "SwitchOnSkaterShadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#a93837a5bc2c5c01cf25e41569c52dac0", null ],
+    [ "mp_shadow", "dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2", null ],
+    [ "m_shadowPos", "dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188", null ],
+    [ "m_shadowNormal", "dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13", null ],
+    [ "m_shadowType", "dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c", null ],
+    [ "mp_model_component", "dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe", null ]
+];

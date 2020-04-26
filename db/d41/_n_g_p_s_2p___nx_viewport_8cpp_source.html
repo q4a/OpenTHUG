@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_NxViewport.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('db/d41/_n_g_p_s_2p___nx_viewport_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxViewport.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxViewport.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d2/de9/_nx_view_man_8h.html">Gfx/NxViewMan.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxViewport.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/NX/render.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/NX/sprite.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../de/db2/switches_8h.html">Gfx/NGPS/NX/switches.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of CViewport</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a5e9be12e0e25b78faf6ecb342afc7c6a">   22</a></span>&#160;<a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a5e9be12e0e25b78faf6ecb342afc7c6a">CPs2Viewport::CPs2Viewport</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;}</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a3a577a13d2910a8153de181f2ca1d909">   31</a></span>&#160;<a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a5e9be12e0e25b78faf6ecb342afc7c6a">CPs2Viewport::CPs2Viewport</a>( <span class="keyword">const</span> <a class="code" href="../../d5/db9/namespace_mth.html#a8344f7fc32b8fa850073caaa7f75fbc1">Mth::Rect</a>* rect, <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a>* cam) :</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html">CViewport</a>(rect, cam)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9f159caa113eb2a10994564788dad5fc">   41</a></span>&#160;<a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9f159caa113eb2a10994564788dad5fc">CPs2Viewport::~CPs2Viewport</a>()</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a62915cc4f7f7fcf5dd457dff2899bea0">   50</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a62915cc4f7f7fcf5dd457dff2899bea0">CPs2Viewport::update_render_vars</a>()</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> view_idx = <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#a74c2d809e9e00e6c63784d41929d695c">CViewportManager::sGetActiveViewportNumber</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    Dbg_MsgAssert(view_idx &gt;= 0, (<span class="stringliteral">&quot;Can&#39;t find viewport in active viewport list&quot;</span>));</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a8841d9a0fb60dde5eecfa24eb85991f1">NxPs2::render::VarsUpToDate</a>(view_idx) &amp;&amp; <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> cam_matrix(<a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ac553ec618b57421feff839fcaf36bdb3">GetMatrix</a>());</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        cam_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">GetPos</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a7a4f23173096db2297466d44b3ae1658">NxPs2::render::SetupVars</a>(view_idx, cam_matrix, <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a5357de74a2003074b675d4370942f0f5">GetRect</a>(), <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7fb2c2c237f8f2f3a5e59c5028c154f9">GetAdjustedHFOV</a>(), <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a7986e6a87b395ee8b7ffee3758e9312e">GetAspectRatio</a>(),</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                              <span class="comment">/*-mp_camera-&gt;GetNearClipPlane(), -mp_camera-&gt;GetFarClipPlane()*/</span> -1.0f, -100000.0f);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9d7786579214b1b97b0a30401f41f249">   70</a></span>&#160;<span class="keywordtype">float</span>           <a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9d7786579214b1b97b0a30401f41f249">CPs2Viewport::plat_transform_to_screen_coord</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; world_pos, <span class="keywordtype">float</span> &amp; screen_pos_x, <span class="keywordtype">float</span> &amp; screen_pos_y, <a class="code" href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">ZBufferValue</a> &amp; screen_pos_z)</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">float</span> zdistance;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">float</span> scale;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a62915cc4f7f7fcf5dd457dff2899bea0">update_render_vars</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// First check frustum</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> screen_pos(<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a3099a935cd81fad1967b751fd7326779">NxPs2::render::WorldToFrustum</a>.<a class="code" href="../../dd/df4/matrix_8h.html#a9f141add272941be449440591ea0acfd">Transform</a>(world_pos));</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">//if ((Tmr::GetVblanks() % 200) == 0)</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">//{</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">//  Dbg_Message(&quot;Homogenious (%g, %g, %g, %g)&quot;, screen_pos[X], screen_pos[Y], screen_pos[Z], screen_pos[W]);</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">//}</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> ((screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] &gt; screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]) || (screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] &lt; -screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]) ||</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        (screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] &gt; screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]) || (screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] &lt; -screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]) ||</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        (screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] &gt; screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]) || (screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] &lt; -screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]))</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> -1.0f;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        zdistance = -screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]; <span class="comment">//(screen_pos[Z] - screen_pos[W]) / (2.0f * screen_pos[W]);</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">// Now find screen coordinates</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    screen_pos = <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a01f66d5a2d03f1c23305ad9ccd2215fe">NxPs2::render::WorldToIntViewport</a>.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>(world_pos);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">//if ((Tmr::GetVblanks() % 200) == 0)</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">//{</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//  Dbg_Message(&quot;Converted (%f, %f, %f, %f) to (%g, %g, %g, %g)&quot;, world_pos[X], world_pos[Y], world_pos[Z], world_pos[W],</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">//                                                                screen_pos[X], screen_pos[Y], screen_pos[Z], screen_pos[W]);</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">//}</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Get into homogenious space</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">float</span> oow = 1.0f / screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>];</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    screen_pos *= oow;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Convert the int back to float</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    screen_pos_x = (((float) ( *((<span class="keywordtype">int</span> *) &amp;(screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>])) &amp; 0xFFFF )) - XOFFSET) / 16.0f;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    screen_pos_y = (((float) ( *((<span class="keywordtype">int</span> *) &amp;(screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>])) &amp; 0xFFFF )) - YOFFSET) / 16.0f;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    screen_pos_z = (<a class="code" href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">ZBufferValue</a>) ( *((<span class="keywordtype">int</span> *) &amp;(screen_pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>])) &amp; 0xFFFFFF );</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Convert back to NTSC, if necessary</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    screen_pos_x /= <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a26cb6c940fffca651cc1d6e1b681541c">NxPs2::SDraw2D::GetScreenScaleX</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    screen_pos_y /= <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#aaad82dd77a2c06ebe114727685e02499">NxPs2::SDraw2D::GetScreenScaleY</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">//if ((Tmr::GetVblanks() % 200) == 0)</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">//{</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">//  Dbg_Message(&quot;Divide by W (%g, %g, %x, %g) Z distance: %g&quot;, screen_pos_x, screen_pos_y, screen_pos_z, screen_pos[W], zdistance);</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">//}</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// Calculate scale</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    scale = <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ad662c57790ffc96694c8b81f5fa62f78">CViewportManager::sGet2DIn3DSpaceNoscaleDistance</a>() / zdistance;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    scale = <a class="code" href="../../d5/db9/namespace_mth.html#ab8f7791305c26c5bd278c0d38bb7cbeb">Mth::Min</a>(scale, <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#af56525c6e021c527b61596b0e183cab3">CViewportManager::sGet2DIn3DSpaceMaxScale</a>());</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    scale = <a class="code" href="../../d5/db9/namespace_mth.html#ae729e489f6c4e17060888db3cb5b2a8c">Mth::Max</a>(scale, <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#aa5fb6e41b1838c5b5dc20e98f311cbca">CViewportManager::sGet2DIn3DSpaceMinScale</a>());</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#if 0       // This scales 1 sprite or text pixel to an inch!</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordtype">float</span> hfov;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>)</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        hfov = <a class="code" href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">mp_camera</a>-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7fb2c2c237f8f2f3a5e59c5028c154f9">GetAdjustedHFOV</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        hfov = <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ac4f96786c54e037794e39c08066e2373">CViewportManager::sGetScreenAngle</a>();</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// Calculate scale</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">float</span> h = ((float) HRES) / (tanf(<a class="code" href="../../d5/db9/namespace_mth.html#a5a88e8aff5b7bdd63a88cd62c1485814">Mth::DegToRad</a>(hfov / 2.0f)));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    scale = h / zdistance;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> ((<a class="code" href="../../d1/d0d/namespace_tmr.html#a02647926685a8cce77c5cfe39793676c">Tmr::GetVblanks</a>() % 300) == 0)</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>(<span class="stringliteral">&quot;H %f, ZDistance %f, Scale %f, HFOC %f&quot;</span>, h, zdistance, scale, hfov);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> scale;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_viewport_html_a5357de74a2003074b675d4370942f0f5"><div class="ttname"><a href="../../d2/dc1/class_nx_1_1_c_viewport.html#a5357de74a2003074b675d4370942f0f5">Nx::CViewport::GetRect</a></div><div class="ttdeci">const Mth::Rect &amp; GetRect() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d4e/_nx_viewport_8h_source.html#l00123">NxViewport.h:123</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_aaad82dd77a2c06ebe114727685e02499"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#aaad82dd77a2c06ebe114727685e02499">NxPs2::SDraw2D::GetScreenScaleY</a></div><div class="ttdeci">static float GetScreenScaleY()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00239">sprite.h:239</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a7a4f23173096db2297466d44b3ae1658"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a7a4f23173096db2297466d44b3ae1658">NxPs2::render::SetupVars</a></div><div class="ttdeci">void SetupVars(uint viewport_num, const Mth::Matrix &amp;camera_transform, const Mth::Rect &amp;viewport_rec, float view_angle, float viewport_aspect, float near_z, float far_z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01976">render.cpp:1976</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_ac4f96786c54e037794e39c08066e2373"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ac4f96786c54e037794e39c08066e2373">Nx::CViewportManager::sGetScreenAngle</a></div><div class="ttdeci">static float sGetScreenAngle()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de7/_nx_view_man_8cpp_source.html#l00529">NxViewMan.cpp:529</a></div></div>
+<div class="ttc" id="amatrix_8h_html_a9f141add272941be449440591ea0acfd"><div class="ttname"><a href="../../dd/df4/matrix_8h.html#a9f141add272941be449440591ea0acfd">Transform</a></div><div class="ttdeci">Vector Transform(const Vector &amp;src) const</div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_a74c2d809e9e00e6c63784d41929d695c"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#a74c2d809e9e00e6c63784d41929d695c">Nx::CViewportManager::sGetActiveViewportNumber</a></div><div class="ttdeci">static int sGetActiveViewportNumber(CViewport *p_viewport)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de7/_nx_view_man_8cpp_source.html#l00176">NxViewMan.cpp:176</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aswitches_8h_html"><div class="ttname"><a href="../../de/db2/switches_8h.html">switches.h</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a02647926685a8cce77c5cfe39793676c"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a02647926685a8cce77c5cfe39793676c">Tmr::GetVblanks</a></div><div class="ttdeci">uint64 GetVblanks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00393">p_timer.cpp:393</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_viewport_html_a62915cc4f7f7fcf5dd457dff2899bea0"><div class="ttname"><a href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a62915cc4f7f7fcf5dd457dff2899bea0">Nx::CPs2Viewport::update_render_vars</a></div><div class="ttdeci">void update_render_vars()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp_source.html#l00050">p_NxViewport.cpp:50</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_viewport_html_a9d7786579214b1b97b0a30401f41f249"><div class="ttname"><a href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9d7786579214b1b97b0a30401f41f249">Nx::CPs2Viewport::plat_transform_to_screen_coord</a></div><div class="ttdeci">virtual float plat_transform_to_screen_coord(const Mth::Vector &amp;world_pos, float &amp;screen_pos_x, float &amp;screen_pos_y, ZBufferValue &amp;screen_pos_z)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp_source.html#l00070">p_NxViewport.cpp:70</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_ad662c57790ffc96694c8b81f5fa62f78"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ad662c57790ffc96694c8b81f5fa62f78">Nx::CViewportManager::sGet2DIn3DSpaceNoscaleDistance</a></div><div class="ttdeci">static float sGet2DIn3DSpaceNoscaleDistance()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de9/_nx_view_man_8h_source.html#l00134">NxViewMan.h:134</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ab8f7791305c26c5bd278c0d38bb7cbeb"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ab8f7791305c26c5bd278c0d38bb7cbeb">Mth::Min</a></div><div class="ttdeci">float Min(float a, float b)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00275">math.h:275</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a></div><div class="ttdeci">@ W</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_html_a7986e6a87b395ee8b7ffee3758e9312e"><div class="ttname"><a href="../../d2/dc1/class_nx_1_1_c_viewport.html#a7986e6a87b395ee8b7ffee3758e9312e">Nx::CViewport::GetAspectRatio</a></div><div class="ttdeci">const float GetAspectRatio() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dd7/_nx_viewport_8cpp_source.html#l00148">NxViewport.cpp:148</a></div></div>
+<div class="ttc" id="a_nx_view_man_8h_html"><div class="ttname"><a href="../../d2/de9/_nx_view_man_8h.html">NxViewMan.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ae729e489f6c4e17060888db3cb5b2a8c"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ae729e489f6c4e17060888db3cb5b2a8c">Mth::Max</a></div><div class="ttdeci">float Max(float a, float b)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00265">math.h:265</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_aa5fb6e41b1838c5b5dc20e98f311cbca"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#aa5fb6e41b1838c5b5dc20e98f311cbca">Nx::CViewportManager::sGet2DIn3DSpaceMinScale</a></div><div class="ttdeci">static float sGet2DIn3DSpaceMinScale()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de9/_nx_view_man_8h_source.html#l00154">NxViewMan.h:154</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00043">camera.h:43</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a01f66d5a2d03f1c23305ad9ccd2215fe"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a01f66d5a2d03f1c23305ad9ccd2215fe">NxPs2::render::WorldToIntViewport</a></div><div class="ttdeci">Mth::Matrix WorldToIntViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01907">render.cpp:1907</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a26cb6c940fffca651cc1d6e1b681541c"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a26cb6c940fffca651cc1d6e1b681541c">NxPs2::SDraw2D::GetScreenScaleX</a></div><div class="ttdeci">static float GetScreenScaleX()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00234">sprite.h:234</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_viewport_html_a9f159caa113eb2a10994564788dad5fc"><div class="ttname"><a href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a9f159caa113eb2a10994564788dad5fc">Nx::CPs2Viewport::~CPs2Viewport</a></div><div class="ttdeci">virtual ~CPs2Viewport()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp_source.html#l00041">p_NxViewport.cpp:41</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_viewport_html_a5e9be12e0e25b78faf6ecb342afc7c6a"><div class="ttname"><a href="../../d3/d4f/class_nx_1_1_c_ps2_viewport.html#a5e9be12e0e25b78faf6ecb342afc7c6a">Nx::CPs2Viewport::CPs2Viewport</a></div><div class="ttdeci">CPs2Viewport()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp_source.html#l00022">p_NxViewport.cpp:22</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a3099a935cd81fad1967b751fd7326779"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a3099a935cd81fad1967b751fd7326779">NxPs2::render::WorldToFrustum</a></div><div class="ttdeci">Mth::Matrix WorldToFrustum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01905">render.cpp:1905</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae2af213dc0845ab5e04de4a7f6afa138"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">Gfx::Camera::GetPos</a></div><div class="ttdeci">Mth::Vector &amp; GetPos()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00280">camera.cpp:280</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ac553ec618b57421feff839fcaf36bdb3"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ac553ec618b57421feff839fcaf36bdb3">Gfx::Camera::GetMatrix</a></div><div class="ttdeci">Mth::Matrix &amp; GetMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00300">camera.cpp:300</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a248e271bcaa0ed2cf8771600c429dff6"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">Nx::ZBufferValue</a></div><div class="ttdeci">uint32 ZBufferValue</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d4e/_nx_viewport_8h_source.html#l00048">NxViewport.h:48</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a8841d9a0fb60dde5eecfa24eb85991f1"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a8841d9a0fb60dde5eecfa24eb85991f1">NxPs2::render::VarsUpToDate</a></div><div class="ttdeci">bool VarsUpToDate(uint viewport_num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l02314">render.cpp:2314</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a7fb2c2c237f8f2f3a5e59c5028c154f9"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a7fb2c2c237f8f2f3a5e59c5028c154f9">Gfx::Camera::GetAdjustedHFOV</a></div><div class="ttdeci">float GetAdjustedHFOV()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00125">camera.cpp:125</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a71fb23705a61063b9866647a420a80a6"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Mth::Matrix::Transform</a></div><div class="ttdeci">Vector Transform(const Vector &amp;src) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00693">matrix.inl:693</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a8344f7fc32b8fa850073caaa7f75fbc1"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a8344f7fc32b8fa850073caaa7f75fbc1">Mth::Rect</a></div><div class="ttdeci">_Rect&lt; float &gt; Rect</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/rect_8h_source.html#l00068">rect.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_html_a26ee423bc39bf6120756f40158df66b1"><div class="ttname"><a href="../../d2/dc1/class_nx_1_1_c_viewport.html#a26ee423bc39bf6120756f40158df66b1">Nx::CViewport::mp_camera</a></div><div class="ttdeci">Obj::CSmtPtr&lt; Gfx::Camera &gt; mp_camera</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d4e/_nx_viewport_8h_source.html#l00093">NxViewport.h:93</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_html"><div class="ttname"><a href="../../d2/dc1/class_nx_1_1_c_viewport.html">Nx::CViewport</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d4e/_nx_viewport_8h_source.html#l00054">NxViewport.h:54</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_af56525c6e021c527b61596b0e183cab3"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#af56525c6e021c527b61596b0e183cab3">Nx::CViewportManager::sGet2DIn3DSpaceMaxScale</a></div><div class="ttdeci">static float sGet2DIn3DSpaceMaxScale()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de9/_nx_view_man_8h_source.html#l00144">NxViewMan.h:144</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a5a88e8aff5b7bdd63a88cd62c1485814"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a5a88e8aff5b7bdd63a88cd62c1485814">Mth::DegToRad</a></div><div class="ttdeci">float DegToRad(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00447">math.h:447</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../db/d41/_n_g_p_s_2p___nx_viewport_8cpp.html">p_NxViewport.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

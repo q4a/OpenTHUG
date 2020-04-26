@@ -1,0 +1,27 @@
+var class_obj_1_1_c_vehicle_camera_component =
+[
+    [ "CVehicleCameraComponent", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a049f1ff286863ef8cfd976692acad593", null ],
+    [ "~CVehicleCameraComponent", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ab4e0e224acb0221669800a9e7e61e200", null ],
+    [ "Update", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ad3db6a1bde7a9543d43dde2c3149791b", null ],
+    [ "InitFromStructure", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ae2ea7176f03f3e39fc2d876571b7fe38", null ],
+    [ "RefreshFromStructure", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a9b6a548c30514f44a63962062c656dac", null ],
+    [ "Finalize", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a08ae7c020f3701a632ad418ca7f0b582", null ],
+    [ "CallMemberFunction", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a02dcb120f7d86d6f171d84f62921fe45", null ],
+    [ "GetDebugInfo", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a1feebdb18300da0e75d287a4e7f8ca4e", null ],
+    [ "s_create", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a5290ab5cc48e832b4479df569e2e13f7", null ],
+    [ "reset_camera", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#af592bc9b6f89f2ad0abf452d0d2e70ab", null ],
+    [ "calculate_attractor_direction", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a6f230cd5be8b768a6f0bb17396fc4cfe", null ],
+    [ "calculate_dependent_variables", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a8b9ecf5f58dd60515a267ccb99268323", null ],
+    [ "apply_state", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#abac78d16176348ad30405038f0fb3e56", null ],
+    [ "mp_subject", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a463f78d4fdfeb0ac46464681a4a6780f", null ],
+    [ "mp_subject_vehicle_component", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a63bb0e4ba44980e3ecacaddafe75c956", null ],
+    [ "m_direction", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#aaf464dcfb4b92c5dd183ca242bd8f0a8", null ],
+    [ "m_attractor_direction", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#a8069ee8b9763c25503c02070fd1ee401", null ],
+    [ "m_pos", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#af7981de47a0f4f3fd4c75803599ef578", null ],
+    [ "m_orientation_matrix", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#afac044c9028282abf916a537ef292539", null ],
+    [ "m_offset_height", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ac4bae04bd4932887e84b283c0787057f", null ],
+    [ "m_offset_distance", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ae34f844bcc229fd44032d4c4f73b5b77", null ],
+    [ "m_angle", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ace677119b0eb24a8f516355771a3fc65", null ],
+    [ "m_alignment_rate", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#ae1428d94d36fc75de0a3e66cbda739b1", null ],
+    [ "mp_camera_lookaround_component", "d2/d81/class_obj_1_1_c_vehicle_camera_component.html#af17febf5d0c4a11b54e39dc3cef28be1", null ]
+];

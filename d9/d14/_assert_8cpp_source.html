@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/core/Debug/Assert.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d14/_assert_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Assert.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d14/_assert_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        Core Library                                            **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Debug (DBG)                                             **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      assert.cpp                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     05/27/99    -   mjb                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Assert support code                                     **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d4b/_debug_8h.html">core/debug.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d16/config_8h.html">sys/config/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifndef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/de1/gfxman_8h.html">gfx/gfxman.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif // __PLAT_WN32__</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d9/d14/_assert_8cpp.html#a18ebf7e6715eb575816ea9ab6f6f7e46">DumpUnwindStack</a>( <span class="keywordtype">int</span> iMaxDepth, <span class="keywordtype">int</span> *pDest );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;libdev.h&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;dolphin.h&gt;</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define _output OSReport</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define _output printf</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html">   56</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d37/namespace_dbg.html">Dbg</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> <a class="code" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">vASSERT_BUFFER_SIZE</a> = 512;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">   72</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span>  <a class="code" href="../../da/d37/namespace_dbg.html#a41698d11b4019507d27ecd7305f0549c">AssertTrap</a>*     <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a> = NULL;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">static</span>  <span class="keywordtype">bool</span>            <a class="code" href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">screen_assert_active</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">   88</a></span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">   89</a></span>&#160;<span class="comment">// made public for Dbg_ Macros</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keywordtype">char</span>*           <a class="code" href="../../da/d37/namespace_dbg.html#a18eeec929c8309d3337b26e526969132">msg_null_pointer</a>        = <span class="stringliteral">&quot;Null Pointer&quot;</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keywordtype">char</span>*           <a class="code" href="../../da/d37/namespace_dbg.html#ad998f4136cd10c22d30254a63facf5f5">msg_misaligned_pointer</a>  = <span class="stringliteral">&quot;Pointer not aligned&quot;</span>;             </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a18eeec929c8309d3337b26e526969132">   92</a></span>&#160;<span class="keywordtype">char</span>*           <a class="code" href="../../da/d37/namespace_dbg.html#a18c42c9aa12938a6037be6960aea77b8">msg_pointer_to_free_mem</a> = <span class="stringliteral">&quot;Pointer to free mem&quot;</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#ad998f4136cd10c22d30254a63facf5f5">   93</a></span>&#160;<span class="keywordtype">char</span>*           <a class="code" href="../../da/d37/namespace_dbg.html#a41d48d8683113c17e81ab0aba8be9fcc">msg_unknown_reason</a>      = <span class="stringliteral">&quot;No reason supplied&quot;</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a18c42c9aa12938a6037be6960aea77b8">   94</a></span>&#160;<span class="keywordtype">char</span>*           <a class="code" href="../../da/d37/namespace_dbg.html#af9ac470dee509cfbed16c84cca7cfa6f">msg_type_mismatch</a>       = <span class="stringliteral">&quot;Type Mismatch: \&quot;%s\&quot; is of type \&quot;%s\&quot; - not a valid \&quot;%s\&quot;&quot;</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a41d48d8683113c17e81ab0aba8be9fcc">   95</a></span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#af9ac470dee509cfbed16c84cca7cfa6f">   96</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../da/d37/namespace_dbg.html#a97f04e71076f2a61554c50b575fc7c46">set_trap</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a41698d11b4019507d27ecd7305f0549c">AssertTrap</a>* trap ) </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a97f04e71076f2a61554c50b575fc7c46">  107</a></span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a> = trap;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../da/d37/namespace_dbg.html#a6662b7344138379c4a6bdfef8cbf9dc7">screen_assert</a>( <span class="keywordtype">bool</span> on ) </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a6662b7344138379c4a6bdfef8cbf9dc7">  117</a></span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">screen_assert_active</a> = on;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor">#ifdef  __NOPT_DEBUG__</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../da/d37/namespace_dbg.html#aa920c93078da333aa29f69520460e690">Assert</a>( <span class="keywordtype">char</span>* file, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, Signature&amp; sig, <span class="keywordtype">char</span>* <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> )</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../da/d37/namespace_dbg.html#aa920c93078da333aa29f69520460e690">Assert</a>( <span class="keywordtype">char</span>* file, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <span class="keywordtype">char</span>* <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> )</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">  130</a></span>&#160;{</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>        assert_buffer1[<a class="code" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">vASSERT_BUFFER_SIZE</a>];</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">  132</a></span>&#160;<span class="preprocessor">#ifdef  __NOPT_DEBUG</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>        <a class="code" href="../../da/d37/namespace_dbg.html#ae0c1b9bbe7251a037ccc8f84cfa17ff4">assert_buffer2</a>[<a class="code" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">vASSERT_BUFFER_SIZE</a>];</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#ae0c1b9bbe7251a037ccc8f84cfa17ff4">  135</a></span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>        <a class="code" href="../../da/d37/namespace_dbg.html#a711cc55034253da816d7dab248c64be3">assert_buffer3</a>[<a class="code" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">vASSERT_BUFFER_SIZE</a>];</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>*       <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a> = assert_buffer1; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a711cc55034253da816d7dab248c64be3">  137</a></span>&#160;<span class="preprocessor">#ifdef  __NOPT_DEBUG</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">  138</a></span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>*       <a class="code" href="../../da/d37/namespace_dbg.html#a198fb5af74325149f05fd34cd894f786">tmp2</a> = <a class="code" href="../../da/d37/namespace_dbg.html#ae0c1b9bbe7251a037ccc8f84cfa17ff4">assert_buffer2</a>; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a198fb5af74325149f05fd34cd894f786">  140</a></span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>*       <a class="code" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">tmp3</a> = <a class="code" href="../../da/d37/namespace_dbg.html#a711cc55034253da816d7dab248c64be3">assert_buffer3</a>; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">  142</a></span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor">#if !( defined ( __PLAT_XBOX__ ) || defined ( __PLAT_WN32__ ))</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../da/d37/namespace_dbg.html#a5e5c39291ad0fa648b9c9d8942f3ee27">again</a> = 0;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d37/namespace_dbg.html#a5e5c39291ad0fa648b9c9d8942f3ee27">again</a>) </div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a5e5c39291ad0fa648b9c9d8942f3ee27">  147</a></span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">  148</a></span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a> (<span class="stringliteral">&quot;MEM CONTEXT: %s\n&quot;</span>,<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().GetContextName());</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <span class="stringliteral">&quot;LOOPED ASSERTION: %s(%d)\n%s\n\n&quot;</span>, </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> );</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a> (<span class="stringliteral">&quot;Real Assertion: %s\n%s\n&quot;</span>,<a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>,<a class="code" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">tmp3</a>);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">while</span> (1);          <span class="comment">// and hang... </span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a5e5c39291ad0fa648b9c9d8942f3ee27">again</a> = 1;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a> (<span class="stringliteral">&quot;\n--------------------------------------------------\nPLEASE COPY FROM A FEW LINES ABOVE HERE\n\nCURRENT MEM CONTEXT: %s\n\n&quot;</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            ,<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().GetContextName());</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html">Mem::Manager</a>&amp; <a class="code" href="../../da/d37/namespace_dbg.html#a8701ae1d33d329885cd7056dcbe67cff">mem_man</a> = <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">//  Mem::Heap* heap = mem_man.TopDownHeap();</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a8701ae1d33d329885cd7056dcbe67cff">  161</a></span>&#160;<span class="comment">//  Mem::Region* region = heap-&gt;ParentRegion();</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">//  _output (&quot;TopDown  Fragmentation %7dK, in %5d Blocks\n&quot;,heap-&gt;mFreeMem.m_count / 1024, heap-&gt;mFreeBlocks.m_count);</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">//  _output (&quot;         used          %7dK, in %5d Blocks\n&quot;,heap-&gt;mUsedMem.m_count / 1024, heap-&gt;mUsedBlocks.m_count);</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">//  heap = mem_man.BottomUpHeap();</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">//  _output (&quot;BottomUp Fragmentation %7dK, in %5d Blocks\n&quot;,heap-&gt;mFreeMem.m_count / 1024, heap-&gt;mFreeBlocks.m_count);</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">//  _output (&quot;         used          %7dK, in %5d Blocks\n&quot;,heap-&gt;mUsedMem.m_count / 1024, heap-&gt;mUsedBlocks.m_count);</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">//  _output (&quot;Shared Region %dK free out of %d K available\n&quot;, region-&gt;MemAvailable() / 1024, region-&gt;TotalSize() / 1024 );</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>(<span class="stringliteral">&quot;Name            Used  Frag  Free   Min  Blocks\n&quot;</span>);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>(<span class="stringliteral">&quot;--------------- ----- ----- ---- ------ ------\n&quot;</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="../../d8/d98/class_mem_1_1_heap.html">Mem::Heap</a>* <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">for</span> (<a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a> = <a class="code" href="../../da/d37/namespace_dbg.html#a8701ae1d33d329885cd7056dcbe67cff">mem_man</a>.<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a147a141bd2b0619dde3add34a8279c23">FirstHeap</a>(); <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a> != NULL; <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a> = <a class="code" href="../../da/d37/namespace_dbg.html#a8701ae1d33d329885cd7056dcbe67cff">mem_man</a>.<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#ae32144304172056086339dac9f94aa75">NextHeap</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>))</div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">  173</a></span>&#160;    {       </div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a3c3c5b63d794ccd4b83658648fffcaf5">  174</a></span>&#160;            <a class="code" href="../../d1/d75/class_mem_1_1_region.html">Mem::Region</a>* region = <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#ae3ed226c044d685bb1400c55451129e0">ParentRegion</a>();         </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <span class="stringliteral">&quot;%12s: %5dK %4dK %4dK %4dK  %5d \n&quot;</span>,</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                    <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#a961948d15a6eb5815ea86816791ae91b">GetName</a>(),</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                    <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#af4a3d30ca92bc288fe298a80ac2a42f0">mUsedMem</a>.<a class="code" href="../../da/d46/class_mem_1_1_record.html#a0068199789ef30933ffc04f874ff92c4">m_count</a> / 1024,</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                    <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#aa721ad549ab87a19cea1f1301c5bd422">mFreeMem</a>.<a class="code" href="../../da/d46/class_mem_1_1_record.html#a0068199789ef30933ffc04f874ff92c4">m_count</a> / 1024,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    region-&gt;<a class="code" href="../../d1/d75/class_mem_1_1_region.html#abc46b799bdf5dd647d2ef63ac9feb720">MemAvailable</a>() / 1024,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    region-&gt;<a class="code" href="../../d1/d75/class_mem_1_1_region.html#a07d383867e15d3b6421e1578763b0f18">MinMemAvailable</a>() / 1024,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                    <a class="code" href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">heap</a>-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#a19b557aad8134b1c6bdf998df0283b12">mUsedBlocks</a>.<a class="code" href="../../da/d46/class_mem_1_1_record.html#a0068199789ef30933ffc04f874ff92c4">m_count</a></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    );                                      </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <span class="stringliteral">&quot;FILE:      %s(%d)\nASSERTION: %s\n\n&quot;</span>, </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>, <span class="stringliteral">&quot;FILE:      %s(%d) &quot;</span>, file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a> ); </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <a class="code" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">tmp3</a>, <span class="stringliteral">&quot;ASSERTION: %s&quot;</span>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// attempt to dump the call stack</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="comment">// requires that you have the correct .map file, along with the executable</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">    #ifndef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a2d315a9809b8f204e997d519551dcd04">MemView_FindLeaks</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a>( <span class="stringliteral">&quot;\nCALL STACK ..........................\n\n&quot;</span>);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">    #ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a56b2d1f01c301a717c636e21425b7372">DumpUnwindStack</a>( 40, NULL );</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>, <span class="stringliteral">&quot;FILE:      %s(%d) &quot;</span>, file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a> ); </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( <a class="code" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">tmp3</a>, <span class="stringliteral">&quot;ASSERTION: %s&quot;</span>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">#ifndef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">// Mick: Attempt to save a screenshot</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">//  Dbg_Printf(&quot;Attempting to save screenshot &#39;screens\\Assert???.bmp&#39;\n&quot;);</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a417f0cda0d89952b0a8d74e3ad505781">Config::CD</a>())</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    {</div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a82f6df401593d028ddc3d63d57b9af4e">  213</a></span>&#160;        <a class="code" href="../../d7/d87/class_gfx_1_1_manager.html">Gfx::Manager</a> * gfx_manager = Gfx::Manager::Instance();</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        gfx_manager-&gt;<a class="code" href="../../d7/d87/class_gfx_1_1_manager.html#a83389fdc281ff674dd4c00db1e0d7ad5">ScreenShot</a>( <span class="stringliteral">&quot;Assert&quot;</span> );</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">screen_assert_active</a> )</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    {</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#af76c4bb7e1124af4ed55f242bf1222ca">  220</a></span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">screen_assert_active</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">#ifndef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <a class="code" href="../../d7/d87/class_gfx_1_1_manager.html">Gfx::Manager</a>* gfx_man = Gfx::Manager::Instance();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        gfx_man-&gt;<a class="code" href="../../d7/d87/class_gfx_1_1_manager.html#aaf3c0b9155128af329eb09e66fcc491a">AssertText</a> ( 0, <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a> );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="preprocessor">#ifdef  __NOPT_DEBUG</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a198fb5af74325149f05fd34cd894f786">tmp2</a>, <span class="stringliteral">&quot;%s&quot;</span>, &amp;sig.GetName() ); </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        gfx_man-&gt;<a class="code" href="../../d7/d87/class_gfx_1_1_manager.html#aaf3c0b9155128af329eb09e66fcc491a">AssertText</a> ( 1, <a class="code" href="../../da/d37/namespace_dbg.html#a198fb5af74325149f05fd34cd894f786">tmp2</a> );</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        gfx_man-&gt;<a class="code" href="../../d7/d87/class_gfx_1_1_manager.html#aaf3c0b9155128af329eb09e66fcc491a">AssertText</a> ( 2, <a class="code" href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">tmp3</a> );</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        gfx_man-&gt;<a class="code" href="../../d7/d87/class_gfx_1_1_manager.html#a15b3921b5d94dfe6dd114ddcb76dbdd3">AssertFlush</a>();</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#endif  // __PLAT_WN32__</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160; </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">#ifdef  __NOPT_DEBUG</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>, <span class="stringliteral">&quot;ASSERTION: %s(%d) %s\n%s\n\n&quot;</span>, </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, &amp;sig.GetName(), <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>, <span class="stringliteral">&quot;FILE:      %s(%d)\nASSERTION: %s\n\n&quot;</span>, </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#if 0   // does not seem to output anything...</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a7c7fc4c6e49a2b6ccceb9206f0f3e42c">sceDevConsInit</a>(); <span class="comment">// Initialise screen console output</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a> = sceDevConsOpen(</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    (2048 - 640/2 + 20) &lt;&lt; 4, <span class="comment">// top left GS X primitive coord</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">  252</a></span>&#160;    (2048 - 448/2 + 20) &lt;&lt; 4, <span class="comment">// top left GS Y primitive coord</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    80, <span class="comment">// Number of chars (X)</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    5); <span class="comment">// Number of chars (Y)</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a25cb903c2eef26d6eb79b16c89493458">sceDevConsAttribute</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>, 7); <span class="comment">// Output in white (default colours can be</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                                    <span class="comment">// redefined by sceDevConsSetColor)</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ae2d84c4b8a2d3e964b33090a62226d0c">sceDevConsClear</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>);</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a0e3d7a0951a69238db88429e5cd72e9a">sceDevConsPrintf</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>,   <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a0e3d7a0951a69238db88429e5cd72e9a">sceDevConsPrintf</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>,   <span class="stringliteral">&quot;blah \n&quot;</span>);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a0e3d7a0951a69238db88429e5cd72e9a">sceDevConsPrintf</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>,   <span class="stringliteral">&quot;blah2 \n&quot;</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a0e3d7a0951a69238db88429e5cd72e9a">sceDevConsPrintf</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>,   <span class="stringliteral">&quot;blah3 \n&quot;</span>);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ac88844725ef4901751276bcf6e080e3b">sceDevConsDraw</a>(<a class="code" href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">console</a>);    </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a> != NULL )</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    {</div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a9dabdd7b922cbfba27e537eb0cd02027">  269</a></span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">_output</a> (<span class="stringliteral">&quot;MEM CONTEXT: %s\n&quot;</span>,<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().GetContextName());</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;%s\n&quot;</span>, <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a> );</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a>( <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a> );</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    {                          </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;%s\n&quot;</span>, <a class="code" href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">tmp1</a> );</div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#a325c863a4315173c86fe429394128c45">  277</a></span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;!!NO TRAP HANDLER SET!!\n&quot;</span> );</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#if ( defined ( __PLAT_XBOX__ ) || defined ( __PLAT_WN32__ ))</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../da/d37/namespace_dbg.html#ad7b402c34a357dca8848140c6ceb67c1">assert_vcc</a>( <span class="keywordtype">char</span>* file, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <span class="keywordtype">char</span>* <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> )</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;{</div>
+<div class="line"><a name="l00289"></a><span class="lineno"><a class="line" href="../../da/d37/namespace_dbg.html#ad7b402c34a357dca8848140c6ceb67c1">  289</a></span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>        assert_buffer[<a class="code" href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">vASSERT_BUFFER_SIZE</a>];</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keyword">static</span>  <span class="keywordtype">char</span>*       tmp = assert_buffer; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( tmp, <span class="stringliteral">&quot;ASSERTION: %s(%d)\n%s\n\n&quot;</span>, </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        file, <a class="code" href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">line</a>, <a class="code" href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">reason</a> ); </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a> != NULL )</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;%s\n&quot;</span>, tmp );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">assert_trap_handler</a>( tmp );</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    {</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;%s\n&quot;</span>, tmp );</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg_Printf</a>( <span class="stringliteral">&quot;!!NO TRAP HANDLER SET!!\n&quot;</span> );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor">#endif // #ifdef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;} <span class="comment">// namespace Dbg</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#endif  //__NOPT_DEBUG__</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_mem_1_1_allocator_html_ae3ed226c044d685bb1400c55451129e0"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#ae3ed226c044d685bb1400c55451129e0">Mem::Allocator::ParentRegion</a></div><div class="ttdeci">Region * ParentRegion(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00366">alloc.h:366</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a5e5c39291ad0fa648b9c9d8942f3ee27"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a5e5c39291ad0fa648b9c9d8942f3ee27">Dbg::again</a></div><div class="ttdeci">static int again</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00147">Assert.cpp:147</a></div></div>
+<div class="ttc" id="agfxman_8h_html"><div class="ttname"><a href="../../d0/de1/gfxman_8h.html">gfxman.h</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a18eeec929c8309d3337b26e526969132"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a18eeec929c8309d3337b26e526969132">Dbg::msg_null_pointer</a></div><div class="ttdeci">char * msg_null_pointer</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00092">Assert.cpp:92</a></div></div>
+<div class="ttc" id="a_assert_8cpp_html_a18ebf7e6715eb575816ea9ab6f6f7e46"><div class="ttname"><a href="../../d9/d14/_assert_8cpp.html#a18ebf7e6715eb575816ea9ab6f6f7e46">DumpUnwindStack</a></div><div class="ttdeci">int DumpUnwindStack(int iMaxDepth, int *pDest)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d38/_n_g_c_2p__memview_8cpp_source.html#l00277">p_memview.cpp:277</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a8701ae1d33d329885cd7056dcbe67cff"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a8701ae1d33d329885cd7056dcbe67cff">Dbg::mem_man</a></div><div class="ttdeci">Mem::Manager &amp; mem_man</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00161">Assert.cpp:161</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a56b2d1f01c301a717c636e21425b7372"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a56b2d1f01c301a717c636e21425b7372">Dbg::DumpUnwindStack</a></div><div class="ttdeci">DumpUnwindStack(40, NULL)</div></div>
+<div class="ttc" id="anamespace_dbg_html_aa920c93078da333aa29f69520460e690"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#aa920c93078da333aa29f69520460e690">Dbg::Assert</a></div><div class="ttdeci">void Assert(char *file, uint line, Signature &amp;sig, char *reason) void Assert(char *file</div></div>
+<div class="ttc" id="aclass_mem_1_1_region_html_abc46b799bdf5dd647d2ef63ac9feb720"><div class="ttname"><a href="../../d1/d75/class_mem_1_1_region.html#abc46b799bdf5dd647d2ef63ac9feb720">Mem::Region::MemAvailable</a></div><div class="ttdeci">int MemAvailable(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d15/region_8cpp_source.html#l00316">region.cpp:316</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_aa721ad549ab87a19cea1f1301c5bd422"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#aa721ad549ab87a19cea1f1301c5bd422">Mem::Allocator::mFreeMem</a></div><div class="ttdeci">Record mFreeMem</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00120">alloc.h:120</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a147a141bd2b0619dde3add34a8279c23"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a147a141bd2b0619dde3add34a8279c23">Mem::Manager::FirstHeap</a></div><div class="ttdeci">Heap * FirstHeap()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00084">win32functions.cpp:84</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a711cc55034253da816d7dab248c64be3"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a711cc55034253da816d7dab248c64be3">Dbg::assert_buffer3</a></div><div class="ttdeci">static char assert_buffer3[vASSERT_BUFFER_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00137">Assert.cpp:137</a></div></div>
+<div class="ttc" id="anamespace_dbg_html"><div class="ttname"><a href="../../da/d37/namespace_dbg.html">Dbg</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00056">Assert.cpp:56</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_manager_html_a15b3921b5d94dfe6dd114ddcb76dbdd3"><div class="ttname"><a href="../../d7/d87/class_gfx_1_1_manager.html#a15b3921b5d94dfe6dd114ddcb76dbdd3">Gfx::Manager::AssertFlush</a></div><div class="ttdeci">void AssertFlush(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de6/gfxman_8cpp_source.html#l00251">gfxman.cpp:251</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_a961948d15a6eb5815ea86816791ae91b"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#a961948d15a6eb5815ea86816791ae91b">Mem::Allocator::GetName</a></div><div class="ttdeci">char * GetName()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00137">alloc.h:137</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a0ae7f1de660f01a9f026f1000fd0f919"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a0ae7f1de660f01a9f026f1000fd0f919">Dbg::tmp1</a></div><div class="ttdeci">static char * tmp1</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00138">Assert.cpp:138</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ae0e7e61000402af3240867e96acf75a6"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ae0e7e61000402af3240867e96acf75a6">Dbg::Dbg_Printf</a></div><div class="ttdeci">Dbg_Printf(&quot;!!NO TRAP HANDLER SET!!\n&quot;)</div></div>
+<div class="ttc" id="anamespace_dbg_html_a7c7fc4c6e49a2b6ccceb9206f0f3e42c"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a7c7fc4c6e49a2b6ccceb9206f0f3e42c">Dbg::sceDevConsInit</a></div><div class="ttdeci">sceDevConsInit()</div></div>
+<div class="ttc" id="aclass_gfx_1_1_manager_html_a83389fdc281ff674dd4c00db1e0d7ad5"><div class="ttname"><a href="../../d7/d87/class_gfx_1_1_manager.html#a83389fdc281ff674dd4c00db1e0d7ad5">Gfx::Manager::ScreenShot</a></div><div class="ttdeci">void ScreenShot(const char *fileroot)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d04/_n_g_c_2p__gfxman_8cpp_source.html#l00191">p_gfxman.cpp:191</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_record_html_a0068199789ef30933ffc04f874ff92c4"><div class="ttname"><a href="../../da/d46/class_mem_1_1_record.html#a0068199789ef30933ffc04f874ff92c4">Mem::Record::m_count</a></div><div class="ttdeci">int m_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00080">alloc.h:80</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_ae32144304172056086339dac9f94aa75"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#ae32144304172056086339dac9f94aa75">Mem::Manager::NextHeap</a></div><div class="ttdeci">Heap * NextHeap(Heap *pHeap)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00094">win32functions.cpp:94</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_aefa348549093ee0913c6efcd8f144f75"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#aefa348549093ee0913c6efcd8f144f75">Dbg::vASSERT_BUFFER_SIZE</a></div><div class="ttdeci">static const int vASSERT_BUFFER_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00072">Assert.cpp:72</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_region_html_a07d383867e15d3b6421e1578763b0f18"><div class="ttname"><a href="../../d1/d75/class_mem_1_1_region.html#a07d383867e15d3b6421e1578763b0f18">Mem::Region::MinMemAvailable</a></div><div class="ttdeci">int MinMemAvailable(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d07/region_8h_source.html#l00064">region.h:64</a></div></div>
+<div class="ttc" id="a_debug_8h_html"><div class="ttname"><a href="../../d0/d4b/_debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a41d48d8683113c17e81ab0aba8be9fcc"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a41d48d8683113c17e81ab0aba8be9fcc">Dbg::msg_unknown_reason</a></div><div class="ttdeci">char * msg_unknown_reason</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00095">Assert.cpp:95</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a6662b7344138379c4a6bdfef8cbf9dc7"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a6662b7344138379c4a6bdfef8cbf9dc7">Dbg::screen_assert</a></div><div class="ttdeci">void screen_assert(bool on)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00117">Assert.cpp:117</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ae2d84c4b8a2d3e964b33090a62226d0c"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ae2d84c4b8a2d3e964b33090a62226d0c">Dbg::sceDevConsClear</a></div><div class="ttdeci">sceDevConsClear(console)</div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a1547fab0204b027097022173b697ee4f"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a1547fab0204b027097022173b697ee4f">Dbg::console</a></div><div class="ttdeci">int console</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00252">Assert.cpp:252</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ad7b402c34a357dca8848140c6ceb67c1"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ad7b402c34a357dca8848140c6ceb67c1">Dbg::assert_vcc</a></div><div class="ttdeci">void assert_vcc(char *file, uint line, char *reason)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00289">Assert.cpp:289</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_region_html"><div class="ttname"><a href="../../d1/d75/class_mem_1_1_region.html">Mem::Region</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d07/region_8h_source.html#l00049">region.h:49</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a18c42c9aa12938a6037be6960aea77b8"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a18c42c9aa12938a6037be6960aea77b8">Dbg::msg_pointer_to_free_mem</a></div><div class="ttdeci">char * msg_pointer_to_free_mem</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00094">Assert.cpp:94</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ae696dca4f0af569c63cb8cb66601813c"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ae696dca4f0af569c63cb8cb66601813c">Dbg::line</a></div><div class="ttdeci">void uint line</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00130">Assert.cpp:130</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a7168ed0a9743531e1d64312375ed0146"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a7168ed0a9743531e1d64312375ed0146">Dbg::heap</a></div><div class="ttdeci">Mem::Heap * heap</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00173">Assert.cpp:173</a></div></div>
+<div class="ttc" id="anamespace_config_html_a417f0cda0d89952b0a8d74e3ad505781"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a417f0cda0d89952b0a8d74e3ad505781">Config::CD</a></div><div class="ttdeci">bool CD()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00087">config.h:87</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ad998f4136cd10c22d30254a63facf5f5"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ad998f4136cd10c22d30254a63facf5f5">Dbg::msg_misaligned_pointer</a></div><div class="ttdeci">char * msg_misaligned_pointer</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00093">Assert.cpp:93</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_heap_html"><div class="ttname"><a href="../../d8/d98/class_mem_1_1_heap.html">Mem::Heap</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/ddb/heap_8h_source.html#l00055">heap.h:55</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_manager_html_aaf3c0b9155128af329eb09e66fcc491a"><div class="ttname"><a href="../../d7/d87/class_gfx_1_1_manager.html#aaf3c0b9155128af329eb09e66fcc491a">Gfx::Manager::AssertText</a></div><div class="ttdeci">void AssertText(int line, const char *text)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de6/gfxman_8cpp_source.html#l00242">gfxman.cpp:242</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a0e3d7a0951a69238db88429e5cd72e9a"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a0e3d7a0951a69238db88429e5cd72e9a">Dbg::sceDevConsPrintf</a></div><div class="ttdeci">sceDevConsPrintf(console, tmp1)</div></div>
+<div class="ttc" id="anamespace_dbg_html_a41698d11b4019507d27ecd7305f0549c"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a41698d11b4019507d27ecd7305f0549c">Dbg::AssertTrap</a></div><div class="ttdeci">void() AssertTrap(char *message)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dea/_checks_8h_source.html#l00051">Checks.h:51</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ae0c1b9bbe7251a037ccc8f84cfa17ff4"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ae0c1b9bbe7251a037ccc8f84cfa17ff4">Dbg::assert_buffer2</a></div><div class="ttdeci">static char assert_buffer2[vASSERT_BUFFER_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00135">Assert.cpp:135</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_af4a3d30ca92bc288fe298a80ac2a42f0"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#af4a3d30ca92bc288fe298a80ac2a42f0">Mem::Allocator::mUsedMem</a></div><div class="ttdeci">Record mUsedMem</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00119">alloc.h:119</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a25cb903c2eef26d6eb79b16c89493458"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a25cb903c2eef26d6eb79b16c89493458">Dbg::sceDevConsAttribute</a></div><div class="ttdeci">sceDevConsAttribute(console, 7)</div></div>
+<div class="ttc" id="anamespace_dbg_html_a198fb5af74325149f05fd34cd894f786"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a198fb5af74325149f05fd34cd894f786">Dbg::tmp2</a></div><div class="ttdeci">static char * tmp2</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00140">Assert.cpp:140</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a2d315a9809b8f204e997d519551dcd04"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a2d315a9809b8f204e997d519551dcd04">Dbg::MemView_FindLeaks</a></div><div class="ttdeci">MemView_FindLeaks()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d38/_n_g_c_2p__memview_8cpp_source.html#l00828">p_memview.cpp:828</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_af9ac470dee509cfbed16c84cca7cfa6f"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#af9ac470dee509cfbed16c84cca7cfa6f">Dbg::msg_type_mismatch</a></div><div class="ttdeci">char * msg_type_mismatch</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00096">Assert.cpp:96</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a3b48afd9cee336f8381539b2e394b59d"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a3b48afd9cee336f8381539b2e394b59d">Dbg::_output</a></div><div class="ttdeci">_output(&quot;\n--------------------------------------------------\nPLEASE COPY FROM A FEW LINES ABOVE HERE\n\nCURRENT MEM CONTEXT: %s\n\n&quot;, Mem::Manager::sHandle().GetContextName())</div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_a19b557aad8134b1c6bdf998df0283b12"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#a19b557aad8134b1c6bdf998df0283b12">Mem::Allocator::mUsedBlocks</a></div><div class="ttdeci">Record mUsedBlocks</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00117">alloc.h:117</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="../../db/d16/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a0d0e36e28a62090463a7c81226a1d362"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a0d0e36e28a62090463a7c81226a1d362">Dbg::reason</a></div><div class="ttdeci">void uint char * reason</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00132">Assert.cpp:132</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab8008bac9497b041c8635258035c65d4"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab8008bac9497b041c8635258035c65d4">Dbg::tmp3</a></div><div class="ttdeci">static char * tmp3</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00142">Assert.cpp:142</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a97f04e71076f2a61554c50b575fc7c46"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a97f04e71076f2a61554c50b575fc7c46">Dbg::set_trap</a></div><div class="ttdeci">void set_trap(AssertTrap *trap)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00107">Assert.cpp:107</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a32e44fdac2a5f49d995d2b99c07077b6"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a32e44fdac2a5f49d995d2b99c07077b6">Dbg::screen_assert_active</a></div><div class="ttdeci">static bool screen_assert_active</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00089">Assert.cpp:89</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab406a8cc16de5046c7d9fd09c9de5e22"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">Dbg::sprintf</a></div><div class="ttdeci">sprintf(tmp1, &quot;FILE:      %s(%d) &quot;, file, line)</div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html">Mem::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00108">memman.h:108</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_manager_html"><div class="ttname"><a href="../../d7/d87/class_gfx_1_1_manager.html">Gfx::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de1/gfxman_8h_source.html#l00059">gfxman.h:59</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a2e1d11cf4d7ddb916258f21e12815f41"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a2e1d11cf4d7ddb916258f21e12815f41">Dbg::assert_trap_handler</a></div><div class="ttdeci">static AssertTrap * assert_trap_handler</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00088">Assert.cpp:88</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ac88844725ef4901751276bcf6e080e3b"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ac88844725ef4901751276bcf6e080e3b">Dbg::sceDevConsDraw</a></div><div class="ttdeci">sceDevConsDraw(console)</div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="../../dir_0de49b7b8a92aa1e710ba049a1d6894c.html">Debug</a></li><li class="navelem"><a class="el" href="../../d9/d14/_assert_8cpp.html">Assert.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:18. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

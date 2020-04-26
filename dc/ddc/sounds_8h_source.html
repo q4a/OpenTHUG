@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Engine/sounds.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dc/ddc/sounds_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sounds.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dc/ddc/sounds_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment.                          **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        PS2                                                     **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Skate Module (SKATE)                                    **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      sk/engine/sounds.h                                      **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     Matt Jan. 2001                                          **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Lists of soundFX for terrains, etc...                   **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __GEL_SK_SOUNDS_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define __GEL_SK_SOUNDS_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d1f/_list_8h.html">core/list.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d3c/macros_8h.html">core/macros.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d6/da8/namespace_sk3_sfx.html">Sk3Sfx</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">struct </span>SkaterSoundInfo</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">   39</a></span>&#160;    <span class="keywordtype">int</span>     <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a9cb17f824b46fb274891360b6af85995">surfaceFlag</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">soundChecksum</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a45c1911a9aab4225351e5a294b9d2a58">maxPitch</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a2c597e6b0b11dee7f8583f58f7cbde51">minPitch</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a9cb17f824b46fb274891360b6af85995">   43</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">maxVol</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">   44</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">minVol</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a45c1911a9aab4225351e5a294b9d2a58">   45</a></span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a2c597e6b0b11dee7f8583f58f7cbde51">   46</a></span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">   47</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">   48</a></span>&#160;<span class="comment">**                               Type Defines                               **</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">class  </span><a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">CSk3SfxManager</a>  : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">   53</a></span>&#160;    </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf0a9d5530762738cec38a26eeaa8da6">DeclareSingletonClass</a>( <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">CSk3SfxManager</a> );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">// these sound trigger values are also used to</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// communicate with the sounds.cpp module and scripted</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// soundfx for jumping/landing... if changed please</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// change skater_sfx.q also:</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaf30358af810f4efb3e25e5c792ca437b">vTABLE_WHEELROLL</a>,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6cd64037c4c119d731a99c99d62c0444">vTABLE_GRIND</a>, <span class="comment">// on a rail...</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaabf69f20ed8befc2f6b90f8ba30fbf3e">vTABLE_JUMP</a>,</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea35b7ab40ee9537fec654007bb739271b">vTABLE_LAND</a>,</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaf30358af810f4efb3e25e5c792ca437b">   67</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea1a1b5a1085dad6adc37a5d1e61f76bcc">vTABLE_BONK</a>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6cd64037c4c119d731a99c99d62c0444">   68</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea45566890e1cc11590762e8e8c2d74331">vTABLE_GRINDJUMP</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaabf69f20ed8befc2f6b90f8ba30fbf3e">   69</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6a0c12a2bc488c55509b7f6b7526dc68">vTABLE_GRINDLAND</a>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea35b7ab40ee9537fec654007bb739271b">   70</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaa467d5f8264150163dcc73c287fd9fb5">vTABLE_SLIDE</a>, <span class="comment">// on a rail</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea1a1b5a1085dad6adc37a5d1e61f76bcc">   71</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaae00beef3a1a7b5b08e9956266731f97">vTABLE_SLIDEJUMP</a>,</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea45566890e1cc11590762e8e8c2d74331">   72</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea7abe3f0f4e96ca1b6f33300aef3b4514">vTABLE_SLIDELAND</a>,</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6a0c12a2bc488c55509b7f6b7526dc68">   73</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea392c7e913db5c7e0c05dc5c8b8d9fa9e">vTABLE_CESS</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaa467d5f8264150163dcc73c287fd9fb5">   74</a></span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">vNUM_SOUND_TYPES</a>,</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaae00beef3a1a7b5b08e9956266731f97">   75</a></span>&#160;    };</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea7abe3f0f4e96ca1b6f33300aef3b4514">   76</a></span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea392c7e913db5c7e0c05dc5c8b8d9fa9e">   77</a></span>&#160;    <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#af6305c48c756af197c7f2b7af51d039b">CSk3SfxManager::CSk3SfxManager</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">   78</a></span>&#160;    <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0557bfa56883dab4a68417e8d964d926">CSk3SfxManager::~CSk3SfxManager</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">Reset</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#afaff40a13dc89c3d1525921d9f9a6375">SetSkaterSoundInfo</a>( <span class="keywordtype">int</span> surfaceFlag, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> whichSound,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                    <span class="keywordtype">int</span> whichArray, <span class="keywordtype">float</span> maxPitch, <span class="keywordtype">float</span> minPitch, <span class="keywordtype">float</span> maxVol, <span class="keywordtype">float</span> minVol );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *<a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">GetSkaterSoundInfo</a>( <span class="keywordtype">int</span> surfaceFlag, <span class="keywordtype">int</span> whichArray );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">GetVolPercent</a>( <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *pInfo, <span class="keywordtype">float</span> volPercent, <span class="keywordtype">bool</span> clipToMaxVol = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8">PlaySound</a>( <span class="keywordtype">int</span> whichArray, <span class="keywordtype">int</span> surfaceFlag, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;pos, <span class="keywordtype">float</span> volPercent,</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                               <span class="keywordtype">bool</span> propogate = <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">vMAX_NUM_ENTRIES</a>  = 64,</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    };</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">vNUM_SOUND_TYPES</a> ];</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">   98</a></span>&#160;    <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">mSoundArray</a>[ <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">vNUM_SOUND_TYPES</a> ][ <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">vMAX_NUM_ENTRIES</a> ];</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">  101</a></span>&#160;}  <span class="comment">// namespace Sfx</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">  102</a></span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea35b7ab40ee9537fec654007bb739271b"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea35b7ab40ee9537fec654007bb739271b">Sk3Sfx::CSk3SfxManager::vTABLE_LAND</a></div><div class="ttdeci">@ vTABLE_LAND</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00070">sounds.h:70</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a45c1911a9aab4225351e5a294b9d2a58"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a45c1911a9aab4225351e5a294b9d2a58">Sk3Sfx::SkaterSoundInfo::maxPitch</a></div><div class="ttdeci">float maxPitch</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00045">sounds.h:45</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a2c597e6b0b11dee7f8583f58f7cbde51"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a2c597e6b0b11dee7f8583f58f7cbde51">Sk3Sfx::SkaterSoundInfo::minPitch</a></div><div class="ttdeci">float minPitch</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00046">sounds.h:46</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_acf0a9d5530762738cec38a26eeaa8da6"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf0a9d5530762738cec38a26eeaa8da6">Sk3Sfx::CSk3SfxManager::DeclareSingletonClass</a></div><div class="ttdeci">DeclareSingletonClass(CSk3SfxManager)</div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">Sk3Sfx::CSk3SfxManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00053">sounds.h:53</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a6fdd5fd1f47f24f4dd1d3d0a5bffc58b"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">Sk3Sfx::CSk3SfxManager::GetSkaterSoundInfo</a></div><div class="ttdeci">SkaterSoundInfo * GetSkaterSoundInfo(int surfaceFlag, int whichArray)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00112">sounds.cpp:112</a></div></div>
+<div class="ttc" id="anamespace_sk3_sfx_html"><div class="ttname"><a href="../../d6/da8/namespace_sk3_sfx.html">Sk3Sfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00028">sounds.cpp:28</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea45566890e1cc11590762e8e8c2d74331"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea45566890e1cc11590762e8e8c2d74331">Sk3Sfx::CSk3SfxManager::vTABLE_GRINDJUMP</a></div><div class="ttdeci">@ vTABLE_GRINDJUMP</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00072">sounds.h:72</a></div></div>
+<div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="../../de/d3c/macros_8h.html">macros.h</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea7abe3f0f4e96ca1b6f33300aef3b4514"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea7abe3f0f4e96ca1b6f33300aef3b4514">Sk3Sfx::CSk3SfxManager::vTABLE_SLIDELAND</a></div><div class="ttdeci">@ vTABLE_SLIDELAND</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00076">sounds.h:76</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea392c7e913db5c7e0c05dc5c8b8d9fa9e"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea392c7e913db5c7e0c05dc5c8b8d9fa9e">Sk3Sfx::CSk3SfxManager::vTABLE_CESS</a></div><div class="ttdeci">@ vTABLE_CESS</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00077">sounds.h:77</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea1a1b5a1085dad6adc37a5d1e61f76bcc"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea1a1b5a1085dad6adc37a5d1e61f76bcc">Sk3Sfx::CSk3SfxManager::vTABLE_BONK</a></div><div class="ttdeci">@ vTABLE_BONK</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00071">sounds.h:71</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_af6305c48c756af197c7f2b7af51d039b"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#af6305c48c756af197c7f2b7af51d039b">Sk3Sfx::CSk3SfxManager::CSk3SfxManager</a></div><div class="ttdeci">CSk3SfxManager::CSk3SfxManager(void)</div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827eaabf69f20ed8befc2f6b90f8ba30fbf3e"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaabf69f20ed8befc2f6b90f8ba30fbf3e">Sk3Sfx::CSk3SfxManager::vTABLE_JUMP</a></div><div class="ttdeci">@ vTABLE_JUMP</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00069">sounds.h:69</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a1c9d086113704a4aac5f75a6c825bda6"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">Sk3Sfx::SkaterSoundInfo::maxVol</a></div><div class="ttdeci">float maxVol</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00047">sounds.h:47</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_adfe4c3b89f56542e63cb2959f217c290"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">Sk3Sfx::CSk3SfxManager::Reset</a></div><div class="ttdeci">void Reset(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00046">sounds.cpp:46</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_afaff40a13dc89c3d1525921d9f9a6375"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#afaff40a13dc89c3d1525921d9f9a6375">Sk3Sfx::CSk3SfxManager::SetSkaterSoundInfo</a></div><div class="ttdeci">void SetSkaterSoundInfo(int surfaceFlag, uint32 whichSound, int whichArray, float maxPitch, float minPitch, float maxVol, float minVol)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dcd/terrain_8cpp_source.html#l00884">terrain.cpp:884</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">Sk3Sfx::CSk3SfxManager::vNUM_SOUND_TYPES</a></div><div class="ttdeci">@ vNUM_SOUND_TYPES</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00078">sounds.h:78</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827eaf30358af810f4efb3e25e5c792ca437b"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaf30358af810f4efb3e25e5c792ca437b">Sk3Sfx::CSk3SfxManager::vTABLE_WHEELROLL</a></div><div class="ttdeci">@ vTABLE_WHEELROLL</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00067">sounds.h:67</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a9cb17f824b46fb274891360b6af85995"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a9cb17f824b46fb274891360b6af85995">Sk3Sfx::SkaterSoundInfo::surfaceFlag</a></div><div class="ttdeci">int surfaceFlag</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00043">sounds.h:43</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a0f0973986b8dec1ee7a220eabb6b273c"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">Sk3Sfx::CSk3SfxManager::GetVolPercent</a></div><div class="ttdeci">float GetVolPercent(SkaterSoundInfo *pInfo, float volPercent, bool clipToMaxVol=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00198">sounds.cpp:198</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_ab1f2b1c46a60ebdbd883d88428d6b74f"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">Sk3Sfx::CSk3SfxManager::mSoundArray</a></div><div class="ttdeci">SkaterSoundInfo mSoundArray[vNUM_SOUND_TYPES][vMAX_NUM_ENTRIES]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00102">sounds.h:102</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a291e0941ae13510de0b9680574a8c409"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">Sk3Sfx::SkaterSoundInfo::minVol</a></div><div class="ttdeci">float minVol</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00048">sounds.h:48</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea6a0c12a2bc488c55509b7f6b7526dc68"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6a0c12a2bc488c55509b7f6b7526dc68">Sk3Sfx::CSk3SfxManager::vTABLE_GRINDLAND</a></div><div class="ttdeci">@ vTABLE_GRINDLAND</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00073">sounds.h:73</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a4655158730ce483f0db6e23039d46502"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">Sk3Sfx::SkaterSoundInfo::soundChecksum</a></div><div class="ttdeci">uint32 soundChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00044">sounds.h:44</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a0557bfa56883dab4a68417e8d964d926"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0557bfa56883dab4a68417e8d964d926">Sk3Sfx::CSk3SfxManager::~CSk3SfxManager</a></div><div class="ttdeci">CSk3SfxManager::~CSk3SfxManager(void)</div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea6cd64037c4c119d731a99c99d62c0444"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6cd64037c4c119d731a99c99d62c0444">Sk3Sfx::CSk3SfxManager::vTABLE_GRIND</a></div><div class="ttdeci">@ vTABLE_GRIND</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00068">sounds.h:68</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_acf1f245ea6daf6bc1c275c24fa6b41a8"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8">Sk3Sfx::CSk3SfxManager::PlaySound</a></div><div class="ttdeci">void PlaySound(int whichArray, int surfaceFlag, const Mth::Vector &amp;pos, float volPercent, bool propogate=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00142">sounds.cpp:142</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827eaae00beef3a1a7b5b08e9956266731f97"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaae00beef3a1a7b5b08e9956266731f97">Sk3Sfx::CSk3SfxManager::vTABLE_SLIDEJUMP</a></div><div class="ttdeci">@ vTABLE_SLIDEJUMP</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00075">sounds.h:75</a></div></div>
+<div class="ttc" id="a_list_8h_html"><div class="ttname"><a href="../../dc/d1f/_list_8h.html">List.h</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_aa31071d7a1362b5df91935d0dcd9269a"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">Sk3Sfx::CSk3SfxManager::mNumEntries</a></div><div class="ttdeci">int mNumEntries[vNUM_SOUND_TYPES]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00101">sounds.h:101</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827eaa467d5f8264150163dcc73c287fd9fb5"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaa467d5f8264150163dcc73c287fd9fb5">Sk3Sfx::CSk3SfxManager::vTABLE_SLIDE</a></div><div class="ttdeci">@ vTABLE_SLIDE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00074">sounds.h:74</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">Sk3Sfx::CSk3SfxManager::vMAX_NUM_ENTRIES</a></div><div class="ttdeci">@ vMAX_NUM_ENTRIES</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00098">sounds.h:98</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">Sk3Sfx::SkaterSoundInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00039">sounds.h:39</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_e89a037989f0892acab0aa4bd1e4fb94.html">Engine</a></li><li class="navelem"><a class="el" href="../../dc/ddc/sounds_8h.html">sounds.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:32. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

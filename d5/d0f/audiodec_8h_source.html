@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Movies/Ngps/audiodec.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d5/d0f/audiodec_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">audiodec.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/d0f/audiodec_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _AUDIODEC_H_</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _AUDIODEC_H_</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;eetypes.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d3c/macros_8h.html">core/macros.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// ///////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">// Audio decoder state</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define AU_STATE_INIT       0</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define AU_STATE_PRESET     1</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define AU_STATE_PLAY       2</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define AU_STATE_PAUSE      3</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define AU_HDR_SIZE     ( ( int )(sizeof(SpuStreamHeader)                   + sizeof(SpuStreamBody)) )</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// ///////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Spu stream header</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html">   28</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d7/d56/struct_spu_stream_header.html">SpuStreamHeader</a>{</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#aa42c9880a7533137500a3488975ce6c4">   29</a></span>&#160;    <span class="keywordtype">char</span> <span class="keywordtype">id</span>[4];     <span class="comment">// &#39;S&#39;&#39;S&#39;&#39;h&#39;&#39;d&#39;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#aed6ed02e2d4a525f9b6825bede8b5f8d">   30</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#aed6ed02e2d4a525f9b6825bede8b5f8d">size</a>;       <span class="comment">// 24</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#a1960b1f165f16e1ab15ff6efeecc4467">   31</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#a1960b1f165f16e1ab15ff6efeecc4467">type</a>;       <span class="comment">// 0: 16bit big endian</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <span class="comment">// 1: 16bit little endian</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="comment">// 2: SPU2-ADPCM (VAG) </span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#ae40a2829f8499a6f0316c0ec9ba6af32">   34</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#ae40a2829f8499a6f0316c0ec9ba6af32">rate</a>;       <span class="comment">// sampling rate</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#a99d37b7807388645a8020313f45e1682">   35</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#a99d37b7807388645a8020313f45e1682">ch</a>;     <span class="comment">// number of channels</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#aeac8ef126e2cf6f37e2e2bababc30f36">   36</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#aeac8ef126e2cf6f37e2e2bababc30f36">interSize</a>;  <span class="comment">// interleave size ... needs to be 512</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#a5a790661e97ec9803defc09f695f63f3">   37</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#a5a790661e97ec9803defc09f695f63f3">loopStart</a>;  <span class="comment">// loop start block address</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d7/d56/struct_spu_stream_header.html#ad1a89968402bb968800283f3a2e6e531">   38</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d7/d56/struct_spu_stream_header.html#ad1a89968402bb968800283f3a2e6e531">loopEnd</a>;    <span class="comment">// loop end block sddress</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">// ///////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// Spu stream body</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../db/dda/struct_spu_stream_body.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../db/dda/struct_spu_stream_body.html">SpuStreamBody</a>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../db/dda/struct_spu_stream_body.html#a4b44371454492a983fe01e1660edc95f">   46</a></span>&#160;    <span class="keywordtype">char</span> <span class="keywordtype">id</span>[4];     <span class="comment">// &#39;S&#39;&#39;S&#39;&#39;b&#39;&#39;d&#39;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../db/dda/struct_spu_stream_body.html#a9040a416345ef1b18b3f073cd636ad5a">   47</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../db/dda/struct_spu_stream_body.html#a9040a416345ef1b18b3f073cd636ad5a">size</a>;       <span class="comment">// size of audio data</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">// ///////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// Audio decoder</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html">   54</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a>{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#ae98d51b1daea56dd4b8e2110a64929b2">   56</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#ae98d51b1daea56dd4b8e2110a64929b2">state</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// header of ADS format</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a8433f07549e0b56241a52bc8c516a1b3">   59</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../d7/d56/struct_spu_stream_header.html">SpuStreamHeader</a> <a class="code" href="../../d3/d72/struct_audio_dec.html#a8433f07549e0b56241a52bc8c516a1b3">sshd</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#aea2639e1269517fe15bf10ccb005d335">   60</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../db/dda/struct_spu_stream_body.html">SpuStreamBody</a>   <a class="code" href="../../d3/d72/struct_audio_dec.html#aea2639e1269517fe15bf10ccb005d335">ssbd</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#abf4f17e986e7ee84133111d58aa9cd20">   61</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#abf4f17e986e7ee84133111d58aa9cd20">hdrCount</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// audio buffer</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a3fddc2b653405b4f5d34874bff22553f">   64</a></span>&#160;    u_char *<a class="code" href="../../d3/d72/struct_audio_dec.html#a3fddc2b653405b4f5d34874bff22553f">data</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#aa16918b0b0e89d9b36649dfee2908c19">   65</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#aa16918b0b0e89d9b36649dfee2908c19">put</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a4bcae170467189b6edaf0ccb8cc6e8e1">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a4bcae170467189b6edaf0ccb8cc6e8e1">count</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a692d3f4d37c86a072cc6203cfa291a6a">   67</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a692d3f4d37c86a072cc6203cfa291a6a">size</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#ade87884bad617f919db1ec73a7d8972f">   68</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#ade87884bad617f919db1ec73a7d8972f">totalBytes</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// buffer on IOP</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a4b4da31bf25b7adbde330c544ba5ec79">   71</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a4b4da31bf25b7adbde330c544ba5ec79">iopBuff</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a6c27d4c55d0f5a4498dd9b60fa9be942">   72</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a6c27d4c55d0f5a4498dd9b60fa9be942">iopBuffSize</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#acbdfd8edd49a9898fe864e6219eef0f3">   73</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#acbdfd8edd49a9898fe864e6219eef0f3">iopLastPos</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a856b419e2f0f6ff73338bed8b59906df">   74</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a856b419e2f0f6ff73338bed8b59906df">iopPausePos</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a25e28faeade60fcb82cecb3de82462d0">   75</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a25e28faeade60fcb82cecb3de82462d0">totalBytesSent</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d3/d72/struct_audio_dec.html#a8451d1bff81c3fc427030474d74e0d8e">   76</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d3/d72/struct_audio_dec.html#a8451d1bff81c3fc427030474d74e0d8e">iopZero</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/dbb/namespace_flx.html">Flx</a></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">// ///////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">// Functions</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a8a8f308bda5e167ba067e43420a00126">audioDecCreate</a>(</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad,</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    u_char *buff,</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span> buffSize,</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span> iopBuffSize,</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span> pIopBuf</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a474c7a84545fd78cd540d4204eb16056">audioDecDelete</a>( <span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a9ce7c35d6d73b96f72fec731569814a3">audioDecBeginPut</a>( <span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    u_char **ptr0, <span class="keywordtype">int</span> *len0, u_char **ptr1, <span class="keywordtype">int</span> *len1);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af66c6db82c2ee479461f28f9b7d2b6b4">audioDecEndPut</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a7b3dc1ddf33f8f267d1f706b38da1f46">audioDecIsPreset</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a094d4f426c4424ca8ce2b23d53022c21">audioDecStart</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ac540bfdb2de4401280cbdc85121d096f">audioDecSendToIOP</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af573c36e9c5df37ab5eea002ee5e16bf">audioDecReset</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a0304e851aefad440c27f91d3437417ac">audioDecPause</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af2a041eba49942265e67d2e823b60f8e">audioDecResume</a>(<span class="keyword">struct</span> <a class="code" href="../../d3/d72/struct_audio_dec.html">AudioDec</a> *ad);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <span class="comment">// namespace Flx</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif _AUDIODEC_H_</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_spu_stream_body_html"><div class="ttname"><a href="../../db/dda/struct_spu_stream_body.html">SpuStreamBody</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00045">audiodec.h:45</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a474c7a84545fd78cd540d4204eb16056"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a474c7a84545fd78cd540d4204eb16056">Flx::audioDecDelete</a></div><div class="ttdeci">int audioDecDelete(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00115">audiodec.cpp:115</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a7b3dc1ddf33f8f267d1f706b38da1f46"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a7b3dc1ddf33f8f267d1f706b38da1f46">Flx::audioDecIsPreset</a></div><div class="ttdeci">int audioDecIsPreset(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00306">audiodec.cpp:306</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a8451d1bff81c3fc427030474d74e0d8e"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a8451d1bff81c3fc427030474d74e0d8e">AudioDec::iopZero</a></div><div class="ttdeci">int iopZero</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00076">audiodec.h:76</a></div></div>
+<div class="ttc" id="anamespace_flx_html_af2a041eba49942265e67d2e823b60f8e"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#af2a041eba49942265e67d2e823b60f8e">Flx::audioDecResume</a></div><div class="ttdeci">void audioDecResume(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00166">audiodec.cpp:166</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_aea2639e1269517fe15bf10ccb005d335"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#aea2639e1269517fe15bf10ccb005d335">AudioDec::ssbd</a></div><div class="ttdeci">struct SpuStreamBody ssbd</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00060">audiodec.h:60</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a3fddc2b653405b4f5d34874bff22553f"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a3fddc2b653405b4f5d34874bff22553f">AudioDec::data</a></div><div class="ttdeci">u_char * data</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00064">audiodec.h:64</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a692d3f4d37c86a072cc6203cfa291a6a"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a692d3f4d37c86a072cc6203cfa291a6a">AudioDec::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00067">audiodec.h:67</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a9ce7c35d6d73b96f72fec731569814a3"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a9ce7c35d6d73b96f72fec731569814a3">Flx::audioDecBeginPut</a></div><div class="ttdeci">void audioDecBeginPut(AudioDec *ad, u_char **ptr0, int *len0, u_char **ptr1, int *len1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00213">audiodec.cpp:213</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_ae40a2829f8499a6f0316c0ec9ba6af32"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#ae40a2829f8499a6f0316c0ec9ba6af32">SpuStreamHeader::rate</a></div><div class="ttdeci">int rate</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00034">audiodec.h:34</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a6c27d4c55d0f5a4498dd9b60fa9be942"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a6c27d4c55d0f5a4498dd9b60fa9be942">AudioDec::iopBuffSize</a></div><div class="ttdeci">int iopBuffSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00072">audiodec.h:72</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_aa16918b0b0e89d9b36649dfee2908c19"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#aa16918b0b0e89d9b36649dfee2908c19">AudioDec::put</a></div><div class="ttdeci">int put</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00065">audiodec.h:65</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_acbdfd8edd49a9898fe864e6219eef0f3"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#acbdfd8edd49a9898fe864e6219eef0f3">AudioDec::iopLastPos</a></div><div class="ttdeci">int iopLastPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00073">audiodec.h:73</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a856b419e2f0f6ff73338bed8b59906df"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a856b419e2f0f6ff73338bed8b59906df">AudioDec::iopPausePos</a></div><div class="ttdeci">int iopPausePos</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00074">audiodec.h:74</a></div></div>
+<div class="ttc" id="anamespace_flx_html"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html">Flx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d51/_movies_8cpp_source.html#l00047">Movies.cpp:47</a></div></div>
+<div class="ttc" id="amacros_8h_html"><div class="ttname"><a href="../../de/d3c/macros_8h.html">macros.h</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_ade87884bad617f919db1ec73a7d8972f"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#ade87884bad617f919db1ec73a7d8972f">AudioDec::totalBytes</a></div><div class="ttdeci">int totalBytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00068">audiodec.h:68</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a4bcae170467189b6edaf0ccb8cc6e8e1"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a4bcae170467189b6edaf0ccb8cc6e8e1">AudioDec::count</a></div><div class="ttdeci">int count</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00066">audiodec.h:66</a></div></div>
+<div class="ttc" id="anamespace_flx_html_af573c36e9c5df37ab5eea002ee5e16bf"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#af573c36e9c5df37ab5eea002ee5e16bf">Flx::audioDecReset</a></div><div class="ttdeci">void audioDecReset(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00191">audiodec.cpp:191</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ac540bfdb2de4401280cbdc85121d096f"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ac540bfdb2de4401280cbdc85121d096f">Flx::audioDecSendToIOP</a></div><div class="ttdeci">int audioDecSendToIOP(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00315">audiodec.cpp:315</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a4b4da31bf25b7adbde330c544ba5ec79"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a4b4da31bf25b7adbde330c544ba5ec79">AudioDec::iopBuff</a></div><div class="ttdeci">int iopBuff</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00071">audiodec.h:71</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a8a8f308bda5e167ba067e43420a00126"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a8a8f308bda5e167ba067e43420a00126">Flx::audioDecCreate</a></div><div class="ttdeci">int audioDecCreate(AudioDec *ad, u_char *buff, int buffSize, int iopBuffSize, int pIopBuff)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00052">audiodec.cpp:52</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html">SpuStreamHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00028">audiodec.h:28</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a25e28faeade60fcb82cecb3de82462d0"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a25e28faeade60fcb82cecb3de82462d0">AudioDec::totalBytesSent</a></div><div class="ttdeci">int totalBytesSent</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00075">audiodec.h:75</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a094d4f426c4424ca8ce2b23d53022c21"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a094d4f426c4424ca8ce2b23d53022c21">Flx::audioDecStart</a></div><div class="ttdeci">void audioDecStart(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00181">audiodec.cpp:181</a></div></div>
+<div class="ttc" id="anamespace_flx_html_af66c6db82c2ee479461f28f9b7d2b6b4"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#af66c6db82c2ee479461f28f9b7d2b6b4">Flx::audioDecEndPut</a></div><div class="ttdeci">void audioDecEndPut(AudioDec *ad, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00254">audiodec.cpp:254</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_a5a790661e97ec9803defc09f695f63f3"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#a5a790661e97ec9803defc09f695f63f3">SpuStreamHeader::loopStart</a></div><div class="ttdeci">int loopStart</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00037">audiodec.h:37</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_a8433f07549e0b56241a52bc8c516a1b3"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#a8433f07549e0b56241a52bc8c516a1b3">AudioDec::sshd</a></div><div class="ttdeci">struct SpuStreamHeader sshd</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00059">audiodec.h:59</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html">AudioDec</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00054">audiodec.h:54</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_a99d37b7807388645a8020313f45e1682"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#a99d37b7807388645a8020313f45e1682">SpuStreamHeader::ch</a></div><div class="ttdeci">int ch</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00035">audiodec.h:35</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_ae98d51b1daea56dd4b8e2110a64929b2"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#ae98d51b1daea56dd4b8e2110a64929b2">AudioDec::state</a></div><div class="ttdeci">int state</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00056">audiodec.h:56</a></div></div>
+<div class="ttc" id="astruct_audio_dec_html_abf4f17e986e7ee84133111d58aa9cd20"><div class="ttname"><a href="../../d3/d72/struct_audio_dec.html#abf4f17e986e7ee84133111d58aa9cd20">AudioDec::hdrCount</a></div><div class="ttdeci">int hdrCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00061">audiodec.h:61</a></div></div>
+<div class="ttc" id="astruct_spu_stream_body_html_a9040a416345ef1b18b3f073cd636ad5a"><div class="ttname"><a href="../../db/dda/struct_spu_stream_body.html#a9040a416345ef1b18b3f073cd636ad5a">SpuStreamBody::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00047">audiodec.h:47</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a0304e851aefad440c27f91d3437417ac"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a0304e851aefad440c27f91d3437417ac">Flx::audioDecPause</a></div><div class="ttdeci">void audioDecPause(AudioDec *ad)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/audiodec_8cpp_source.html#l00134">audiodec.cpp:134</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_ad1a89968402bb968800283f3a2e6e531"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#ad1a89968402bb968800283f3a2e6e531">SpuStreamHeader::loopEnd</a></div><div class="ttdeci">int loopEnd</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00038">audiodec.h:38</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_aeac8ef126e2cf6f37e2e2bababc30f36"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#aeac8ef126e2cf6f37e2e2bababc30f36">SpuStreamHeader::interSize</a></div><div class="ttdeci">int interSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00036">audiodec.h:36</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_aed6ed02e2d4a525f9b6825bede8b5f8d"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#aed6ed02e2d4a525f9b6825bede8b5f8d">SpuStreamHeader::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00030">audiodec.h:30</a></div></div>
+<div class="ttc" id="astruct_spu_stream_header_html_a1960b1f165f16e1ab15ff6efeecc4467"><div class="ttname"><a href="../../d7/d56/struct_spu_stream_header.html#a1960b1f165f16e1ab15ff6efeecc4467">SpuStreamHeader::type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d0f/audiodec_8h_source.html#l00031">audiodec.h:31</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_2aa0b3620c38bf368798da486fae478f.html">Movies</a></li><li class="navelem"><a class="el" href="../../dir_9a63d79f396880ca497198963fb39e59.html">Ngps</a></li><li class="navelem"><a class="el" href="../../d5/d0f/audiodec_8h.html">audiodec.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:23. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_nxparticle.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('da/dd5/_n_g_p_s_2p__nxparticle_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxparticle.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/dd5/_n_g_p_s_2p__nxparticle_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxParticle.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Paul Robinson</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  3/27/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/nx/render.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d95/dma_8h.html">gfx/ngps/nx/dma.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dde/vif_8h.html">gfx/ngps/nx/vif.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d0f/vu1_8h.html">gfx/ngps/nx/vu1.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d2a/gif_8h.html">gfx/ngps/nx/gif.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d7/db7/gs_8h.html">gfx/ngps/nx/gs.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/nx/line.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/da8/_nx_tex_man_8h.html">gfx/NxTexMan.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/p_nxtexture.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d49/vu1code_8h.html">gfx/ngps/nx/vu1code.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/nx/mesh.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleflat.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleshaded.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticlesmooth.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleglow.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticlestar.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticlesmoothstar.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleline.h&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleribbon.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleribbontrail.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticlesmoothribbon.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticleglowribbontrail.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d43/p__nxparticlenewflat_8h.html">gfx/ngps/p_nxparticlenewflat.h</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;CParticle* <a class="code" href="../../d1/d06/namespace_nx.html#a4d9aee85e5abc8bcc80886971213e8c7">plat_create_particle</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> type_checksum, <span class="keywordtype">int</span> max_particles, <span class="keywordtype">int</span> max_streams, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix, <span class="keywordtype">int</span> num_segments, <span class="keywordtype">float</span> split, <span class="keywordtype">int</span> history )</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Types to add:</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// 1. x Flat color quad</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// 2. x Gouraud quad</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// 3. x Quad with center point &amp; outer color</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// 4. x n sided glow (center color + outer color)</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// 5. x n sided 2 layer glow ( center color + mid color + outer color)</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// 6. x n spiked star (center color + mid color + spike color)</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// 7. Lines (current color + previous color)</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// 8. Ribbons - volumetric lines made from quads (current color + previous color)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">switch</span> ( type_checksum )</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">case</span> 0xf4d8d486:        <span class="comment">// Shaded</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                CPs2ParticleShaded* p_particle = <span class="keyword">new</span> CPs2ParticleShaded( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">case</span> 0x8addac1f:        <span class="comment">// Smooth</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                CPs2ParticleSmooth* p_particle = <span class="keyword">new</span> CPs2ParticleSmooth( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">case</span> 0x15834eea:        <span class="comment">// Glow</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                CPs2ParticleGlow* p_particle = <span class="keyword">new</span> CPs2ParticleGlow( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">case</span> 0x3624a5eb:        <span class="comment">// Star</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                CPs2ParticleStar* p_particle = <span class="keyword">new</span> CPs2ParticleStar( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">case</span> 0x97cb7a9:     <span class="comment">// SmoothStar</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                CPs2ParticleSmoothStar* p_particle = <span class="keyword">new</span> CPs2ParticleSmoothStar( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">case</span> 0x2eeb4b09:        <span class="comment">// Line</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                CPs2ParticleLine* p_particle = <span class="keyword">new</span> CPs2ParticleLine( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">case</span> 0xee6fc5b:     <span class="comment">// Ribbon</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            {</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                CPs2ParticleRibbon* p_particle = <span class="keyword">new</span> CPs2ParticleRibbon( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordflow">case</span> 0xc4d5a4cb:        <span class="comment">// RibbonTrail</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                CPs2ParticleRibbonTrail* p_particle = <span class="keyword">new</span> CPs2ParticleRibbonTrail( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">case</span> 0x3f109fcc:        <span class="comment">// SmoothRibbon</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                CPs2ParticleSmoothRibbon* p_particle = <span class="keyword">new</span> CPs2ParticleSmoothRibbon( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">case</span> 0x7ec7252d:        <span class="comment">// GlowRibbonTrail</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                CPs2ParticleGlowRibbonTrail* p_particle = <span class="keyword">new</span> CPs2ParticleGlowRibbonTrail( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">case</span> 0xdedfc057:        <span class="comment">// NewFlat</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                CPs2ParticleNewFlat* p_particle = <span class="keyword">new</span> CPs2ParticleNewFlat( checksum, max_streams, texture_checksum, blendmode_checksum, fix );</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">case</span> 0xaab555bb:        <span class="comment">// Flat</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                CPs2ParticleFlat* p_particle = <span class="keyword">new</span> CPs2ParticleFlat( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span>CParticle*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_html_a4d9aee85e5abc8bcc80886971213e8c7"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a4d9aee85e5abc8bcc80886971213e8c7">Nx::plat_create_particle</a></div><div class="ttdeci">CParticle * plat_create_particle(uint32 checksum, uint32 type_checksum, int max_particles, int max_streams, uint32 texture_checksum, uint32 blendmode_checksum, int fix, int num_segments, float split, int history)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d86/_n_g_c_2p__nxparticle_8cpp_source.html#l00077">p_nxparticle.cpp:77</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="avif_8h_html"><div class="ttname"><a href="../../d4/dde/vif_8h.html">vif.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="agif_8h_html"><div class="ttname"><a href="../../d0/d2a/gif_8h.html">gif.h</a></div></div>
+<div class="ttc" id="ags_8h_html"><div class="ttname"><a href="../../d7/db7/gs_8h.html">gs.h</a></div></div>
+<div class="ttc" id="avu1_8h_html"><div class="ttname"><a href="../../da/d0f/vu1_8h.html">vu1.h</a></div></div>
+<div class="ttc" id="ap__nxparticlenewflat_8h_html"><div class="ttname"><a href="../../d4/d43/p__nxparticlenewflat_8h.html">p_nxparticlenewflat.h</a></div></div>
+<div class="ttc" id="a_nx_tex_man_8h_html"><div class="ttname"><a href="../../d0/da8/_nx_tex_man_8h.html">NxTexMan.h</a></div></div>
+<div class="ttc" id="avu1code_8h_html"><div class="ttname"><a href="../../d4/d49/vu1code_8h.html">vu1code.h</a></div></div>
+<div class="ttc" id="adma_8h_html"><div class="ttname"><a href="../../d9/d95/dma_8h.html">dma.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../da/dd5/_n_g_p_s_2p__nxparticle_8cpp.html">p_nxparticle.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:28. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

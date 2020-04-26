@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/GameNet/Ngps/p_ezcommon.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/d01/p__ezcommon_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_ezcommon.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/d01/p__ezcommon_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a01659aa178a7335c6b878c8756c537ce">    2</a></span>&#160;<span class="comment">//  ------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">    3</a></span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00004"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#ae10e58f92bb27cc64fa3c1fefcb06114">    4</a></span>&#160;<span class="comment">File: common.h</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a89f234133d3efe315836311cbf21c64b">    5</a></span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00006"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a770d8379901f8d89e5540da3d5e9fd18">    6</a></span>&#160;<span class="comment">shared headers between EE and IOP projects.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//  ------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _COMMON_H</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _COMMON_H</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *  constants</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> *  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define kModName_ezNetCnf &quot;eznetcnf&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define kModName_ezNetCtl &quot;eznetctl&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> *  SIF RPC identifier (aka SIFNUM)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> *  used with sceSifRegisterRpc() and sceSifBindRpc()</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define kRPCId_ezNetCnf 0x75499128</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define kRPCId_ezNetCtl 0x75488909</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *  SIF RPC buffer size</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define kRPCBufferSize  (256 + 64)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> *  SIF DMA are performed in 16-byte blocks from IOP -&gt; EE.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> *  enforce padding in both DMA directions.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define kDMAWait        0</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define kDMANoWait      1</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define kDMABlockSize   16</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define DMA_PAD(_size)  (((_size) + (kDMABlockSize-1)) &amp; ~(kDMABlockSize-1))</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"> *  enums</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment"> *  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> *  eznetcnf RPC function ids</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96">   54</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aac7f2bd5fbe3016ea1e952f59b1dc946">   55</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aac7f2bd5fbe3016ea1e952f59b1dc946">eCnfGetCount</a> = 0,</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a8d81c6fc583340ca918f8a5199fa0f27">   56</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a8d81c6fc583340ca918f8a5199fa0f27">eCnfGetCombinationList</a>,</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aed8bc994b6ed92305e86107bfb577687">   57</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aed8bc994b6ed92305e86107bfb577687">eCnfGetEnvData</a>,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a15047544b24d02af5e8ef44464bcb79d">   59</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a15047544b24d02af5e8ef44464bcb79d">eCnfEnd</a> = 0x1ffff           <span class="comment">// for enum size consistency</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96">ezNetCnfFunctionId</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment"> *  eznetctl RPC function ids</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0">   65</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a217df1bafdbf67852a66c7b586fe833d">   66</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a217df1bafdbf67852a66c7b586fe833d">eCtlGetEnvDataAddress</a> = 0,</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a3c813e197744e94c732cded83222c45d">   67</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a3c813e197744e94c732cded83222c45d">eCtlSetConfiguration</a>,</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a51076bd58826c4b27dde5ae706bb872c">   68</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a51076bd58826c4b27dde5ae706bb872c">eCtlSetCombination</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a8631cd2b2d66366bb83c017022051f2b">   69</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a8631cd2b2d66366bb83c017022051f2b">eCtlWatchStatus</a>,</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0ad5daa736598d78921dd6cc7dd832dd75">   70</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0ad5daa736598d78921dd6cc7dd832dd75">eCtlDownInterface</a>,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a311c26ed4e3e618535cbbe81b933a4ee">   72</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a311c26ed4e3e618535cbbe81b933a4ee">eCtlEnd</a> = 0x1ffff           <span class="comment">// for enum size consistency</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0">ezNetCtlFunctionId</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> *  eznetcnf connection types (deprecated)</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00e">   78</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84fd87602702928eb8f85716e7874117">   79</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84fd87602702928eb8f85716e7874117">eConnInvalid</a> = 0,           <span class="comment">// invalid combination of devType and ifcType</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea9b0a803f15976a76ac87e012b29b304e">   80</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea9b0a803f15976a76ac87e012b29b304e">eConnStatic</a>,                <span class="comment">// Ethernet (static IP)</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea21b3537ab2f3e8ffdc0a61ea7f148be3">   81</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea21b3537ab2f3e8ffdc0a61ea7f148be3">eConnDHCP</a>,                  <span class="comment">// Ethernet (DHCP)</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea5e8573a4b660a7c5eb176ea8a43077cf">   82</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea5e8573a4b660a7c5eb176ea8a43077cf">eConnPPPoE</a>,                 <span class="comment">// Ethernet (PPP over Ethernet)</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea4429c3a61d076e56dfaa918dbd1f4df0">   83</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea4429c3a61d076e56dfaa918dbd1f4df0">eConnPPP</a>,                   <span class="comment">// modem (PPP)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea8273d87aa78982b31eb48b308173b6ee">   84</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea8273d87aa78982b31eb48b308173b6ee">eConnAOLPPP</a>,                <span class="comment">// modem (AOL PPP)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84ac29b8b50875c50cda49d357e6ab5e">   86</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84ac29b8b50875c50cda49d357e6ab5e">eConnPadding</a> = 0x1ffff      <span class="comment">// for enum size consistency</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00e">ezConnectionType</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"> *  network interface protocol family</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afd">   92</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda09b51ccf5735c6116b951fc381dd50f4">   93</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda09b51ccf5735c6116b951fc381dd50f4">eInterfacePPP</a>,      <span class="comment">// modem PPP</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda5e506833a45d87c020651c7ecd75e0b5">   94</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda5e506833a45d87c020651c7ecd75e0b5">eInterfacePPPoE</a>,    <span class="comment">// PPP over Ethernet</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda70d18e6cc0ac63ba2d7c05a0d410b60f">   95</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda70d18e6cc0ac63ba2d7c05a0d410b60f">eInterfaceARP</a>       <span class="comment">// Ethernet (static IP and DHCP)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afd">ezInterfaceType</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment"> *  netcnf file types</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818">  101</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818aab8b5b481fcab1538d27e27a849e5a02">  102</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818aab8b5b481fcab1538d27e27a849e5a02">eCombinationFile</a> = 0,       <span class="comment">// net???.cnf</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a0281e3d0a4dab1895ee5d0d06c75e112">  103</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a0281e3d0a4dab1895ee5d0d06c75e112">eInterfaceFile</a>,             <span class="comment">// ifc???.cnf</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818ad0cb27f73939d608784be68261dea45a">  104</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818ad0cb27f73939d608784be68261dea45a">eDeviceFile</a>,                <span class="comment">// dev???.cnf</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a7ae7ec012c74555650d7c396a6afc065">  106</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a7ae7ec012c74555650d7c396a6afc065">eFilePadding</a> = 0x1ffff      <span class="comment">// for enum size consistency</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818">ezNetCnfType</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/*  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment"> *  typedefs</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"> *  --------------------------------------------------------</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#define kMaxCombinations  10  // maximum number of Combinations</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#define kStrBufferSize    256 // maximum size for any text field</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor">#define kStrDisplaySize   32  // display size for any text field</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html">  120</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../dc/d8d/structez_net_cnf_combination.html">ezNetCnfCombination</a> {</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html#ad824a6daf6023cc9ea9b59f4db985a59">  121</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html#ad824a6daf6023cc9ea9b59f4db985a59">isActive</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html#a9792534b765bd459cc714ba32638cc62">  122</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00e">ezConnectionType</a> <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html#a9792534b765bd459cc714ba32638cc62">connectionType</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html#a7acb56b9da9a2330ecea1410dc8405ad">  123</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html#a7acb56b9da9a2330ecea1410dc8405ad">combinationName</a>[kStrDisplaySize];</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html#acc29dddd0b0e274a29019317b2ce084f">  124</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html#acc29dddd0b0e274a29019317b2ce084f">ifcName</a>[kStrDisplaySize];</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../dc/d8d/structez_net_cnf_combination.html#a138d9086d8990549f4fa33684290b62c">  125</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html#a138d9086d8990549f4fa33684290b62c">devName</a>[kStrDisplaySize];</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;} <a class="code" href="../../d6/d01/p__ezcommon_8h.html#aae8ab366fcb3e08c5dc4c486b06dd09b">ezNetCnfCombination_t</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="../../da/de8/structez_net_cnf_combination_list.html">  129</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../da/de8/structez_net_cnf_combination_list.html">ezNetCnfCombinationList</a> {</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../da/de8/structez_net_cnf_combination_list.html#a444493c68a3de2240957fcd38f7d5fdd">  130</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../da/de8/structez_net_cnf_combination_list.html#a444493c68a3de2240957fcd38f7d5fdd">listLength</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../da/de8/structez_net_cnf_combination_list.html#a2e583981acbcc5c690f3204f770ed6ac">  131</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../da/de8/structez_net_cnf_combination_list.html#a2e583981acbcc5c690f3204f770ed6ac">defaultIndex</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../da/de8/structez_net_cnf_combination_list.html#a45f759d6f90179b5e83eff0c9d38ec0e">  132</a></span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../da/de8/structez_net_cnf_combination_list.html#a45f759d6f90179b5e83eff0c9d38ec0e">netdbOrder</a>[kMaxCombinations];</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../da/de8/structez_net_cnf_combination_list.html#a22dfbdb3f36031771e51eb9b9389de7f">  133</a></span>&#160;  <a class="code" href="../../dc/d8d/structez_net_cnf_combination.html">ezNetCnfCombination_t</a> <a class="code" href="../../da/de8/structez_net_cnf_combination_list.html#a22dfbdb3f36031771e51eb9b9389de7f">list</a>[kMaxCombinations];</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;} ezNetCnfCombinationList_t <a class="code" href="../../d6/d01/p__ezcommon_8h.html#ad8209e3b9deeee07e3d5fe74313002a0">__attribute__</a>((aligned(64)));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html">  137</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="../../dd/db5/structez_net_ctl_status.html">ezNetCtlStatus</a> {</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html#a674feaf33eb150a1dca41e7834fd095d">  138</a></span>&#160;  u_int <a class="code" href="../../dd/db5/structez_net_ctl_status.html#a674feaf33eb150a1dca41e7834fd095d">clientAddr</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html#a9df38518523bad99eb976021d0453afc">  139</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../dd/db5/structez_net_ctl_status.html#a9df38518523bad99eb976021d0453afc">id</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html#ad8b985496bed29d1b19055beb15272c7">  140</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../dd/db5/structez_net_ctl_status.html#ad8b985496bed29d1b19055beb15272c7">event</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html#ab402a7af19d388b11a859e1826bc45c5">  141</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../dd/db5/structez_net_ctl_status.html#ab402a7af19d388b11a859e1826bc45c5">state</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../dd/db5/structez_net_ctl_status.html#ac259233d480658130c55816da590066d">  142</a></span>&#160;  <span class="keywordtype">char</span> <a class="code" href="../../dd/db5/structez_net_ctl_status.html#ac259233d480658130c55816da590066d">message</a>[kStrBufferSize];</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;} ezNetCtlStatus_t <a class="code" href="../../d6/d01/p__ezcommon_8h.html#ad8209e3b9deeee07e3d5fe74313002a0">__attribute__</a>((aligned(64)));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment"> *  RPC buffer type for ezNetCnfGetCount()</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="../../d2/dab/structrpc_get_count__t.html">  149</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../d2/dab/structrpc_get_count__t.html#a12e18a62cb60850d1d5e81e09f76d445">  150</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../d2/dab/structrpc_get_count__t.html#a12e18a62cb60850d1d5e81e09f76d445">result</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="../../d2/dab/structrpc_get_count__t.html#a670c80883e5e881fe87d58405eda2470">  151</a></span>&#160;  <a class="code" href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818">ezNetCnfType</a> <a class="code" href="../../d2/dab/structrpc_get_count__t.html#a670c80883e5e881fe87d58405eda2470">fileType</a>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="../../d2/dab/structrpc_get_count__t.html#ae987ecb96986eb27d075e26586c4cd48">  152</a></span>&#160;  <span class="keywordtype">char</span> netdbPath[kStrBufferSize];</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;} <a class="code" href="../../d2/dab/structrpc_get_count__t.html">rpcGetCount_t</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment"> *  RPC buffer type for ezNetCnfGetCombinationList()</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="../../d8/d35/structrpc_get_combination_list__t.html">  158</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="../../d8/d35/structrpc_get_combination_list__t.html#aa83484f9929473b1539c4369d8cb4c42">  159</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../d8/d35/structrpc_get_combination_list__t.html#aa83484f9929473b1539c4369d8cb4c42">result</a>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="../../d8/d35/structrpc_get_combination_list__t.html#a915f6f242e793945e1891caca525d3b7">  160</a></span>&#160;  u_int <a class="code" href="../../d8/d35/structrpc_get_combination_list__t.html#a915f6f242e793945e1891caca525d3b7">clientAddr</a>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="../../d8/d35/structrpc_get_combination_list__t.html#aff276a6e36c3407e846252fa24fca143">  161</a></span>&#160;  <span class="keywordtype">char</span> netdbPath[kStrBufferSize];</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;} <a class="code" href="../../d8/d35/structrpc_get_combination_list__t.html">rpcGetCombinationList_t</a>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment"> *  RPC buffer type for ezNetCnfGetEnvData()</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="../../db/d89/structrpc_get_env_data__t.html">  167</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../db/d89/structrpc_get_env_data__t.html#a7451118dfccb1a3e4bd0489bf94263d1">  168</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="../../db/d89/structrpc_get_env_data__t.html#a7451118dfccb1a3e4bd0489bf94263d1">result</a>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="../../db/d89/structrpc_get_env_data__t.html#a22bb7118f9e7c138235cf92b7d825f16">  169</a></span>&#160;  u_int <a class="code" href="../../db/d89/structrpc_get_env_data__t.html#a22bb7118f9e7c138235cf92b7d825f16">clientAddr</a>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../db/d89/structrpc_get_env_data__t.html#a6e0769a304e46d2be8dbfb8b4116ea9f">  170</a></span>&#160;  <span class="keywordtype">char</span> netdbPath[kStrBufferSize];</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="../../db/d89/structrpc_get_env_data__t.html#a502b5f4f264bf7b4514b4834b9ad2349">  171</a></span>&#160;  <span class="keywordtype">char</span> combinationName[kStrDisplaySize];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;} <a class="code" href="../../db/d89/structrpc_get_env_data__t.html">rpcGetEnvData_t</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif  // _COMMON_H</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astructrpc_get_combination_list__t_html_a915f6f242e793945e1891caca525d3b7"><div class="ttname"><a href="../../d8/d35/structrpc_get_combination_list__t.html#a915f6f242e793945e1891caca525d3b7">rpcGetCombinationList_t::clientAddr</a></div><div class="ttdeci">u_int clientAddr</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00160">p_ezcommon.h:160</a></div></div>
+<div class="ttc" id="astructrpc_get_count__t_html"><div class="ttname"><a href="../../d2/dab/structrpc_get_count__t.html">rpcGetCount_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00149">p_ezcommon.h:149</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html_acc29dddd0b0e274a29019317b2ce084f"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html#acc29dddd0b0e274a29019317b2ce084f">ezNetCnfCombination::ifcName</a></div><div class="ttdeci">char ifcName[kStrDisplaySize]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00124">p_ezcommon.h:124</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a427cdc1e4b9dc19eac05489511dbaa96"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96">ezNetCnfFunctionId</a></div><div class="ttdeci">ezNetCnfFunctionId</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00054">p_ezcommon.h:54</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_acf9dcccadb17517c3dc48f44d2ed7818a7ae7ec012c74555650d7c396a6afc065"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a7ae7ec012c74555650d7c396a6afc065">eFilePadding</a></div><div class="ttdeci">@ eFilePadding</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00106">p_ezcommon.h:106</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_list_html_a2e583981acbcc5c690f3204f770ed6ac"><div class="ttname"><a href="../../da/de8/structez_net_cnf_combination_list.html#a2e583981acbcc5c690f3204f770ed6ac">ezNetCnfCombinationList::defaultIndex</a></div><div class="ttdeci">unsigned int defaultIndex</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00131">p_ezcommon.h:131</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0a8631cd2b2d66366bb83c017022051f2b"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a8631cd2b2d66366bb83c017022051f2b">eCtlWatchStatus</a></div><div class="ttdeci">@ eCtlWatchStatus</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00069">p_ezcommon.h:69</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea5e8573a4b660a7c5eb176ea8a43077cf"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea5e8573a4b660a7c5eb176ea8a43077cf">eConnPPPoE</a></div><div class="ttdeci">@ eConnPPPoE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00082">p_ezcommon.h:82</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a8ce5b24504b30cd8627732ff50699afd"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afd">ezInterfaceType</a></div><div class="ttdeci">ezInterfaceType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00092">p_ezcommon.h:92</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html_ac259233d480658130c55816da590066d"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html#ac259233d480658130c55816da590066d">ezNetCtlStatus::message</a></div><div class="ttdeci">char message[kStrBufferSize]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00142">p_ezcommon.h:142</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_list_html_a45f759d6f90179b5e83eff0c9d38ec0e"><div class="ttname"><a href="../../da/de8/structez_net_cnf_combination_list.html#a45f759d6f90179b5e83eff0c9d38ec0e">ezNetCnfCombinationList::netdbOrder</a></div><div class="ttdeci">unsigned int netdbOrder[kMaxCombinations]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00132">p_ezcommon.h:132</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_aae8ab366fcb3e08c5dc4c486b06dd09b"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#aae8ab366fcb3e08c5dc4c486b06dd09b">ezNetCnfCombination_t</a></div><div class="ttdeci">struct ezNetCnfCombination ezNetCnfCombination_t</div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0a311c26ed4e3e618535cbbe81b933a4ee"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a311c26ed4e3e618535cbbe81b933a4ee">eCtlEnd</a></div><div class="ttdeci">@ eCtlEnd</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00072">p_ezcommon.h:72</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a427cdc1e4b9dc19eac05489511dbaa96aac7f2bd5fbe3016ea1e952f59b1dc946"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aac7f2bd5fbe3016ea1e952f59b1dc946">eCnfGetCount</a></div><div class="ttdeci">@ eCnfGetCount</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00055">p_ezcommon.h:55</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html_ad8b985496bed29d1b19055beb15272c7"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html#ad8b985496bed29d1b19055beb15272c7">ezNetCtlStatus::event</a></div><div class="ttdeci">int event</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00140">p_ezcommon.h:140</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0a3c813e197744e94c732cded83222c45d"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a3c813e197744e94c732cded83222c45d">eCtlSetConfiguration</a></div><div class="ttdeci">@ eCtlSetConfiguration</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00067">p_ezcommon.h:67</a></div></div>
+<div class="ttc" id="astructrpc_get_env_data__t_html_a7451118dfccb1a3e4bd0489bf94263d1"><div class="ttname"><a href="../../db/d89/structrpc_get_env_data__t.html#a7451118dfccb1a3e4bd0489bf94263d1">rpcGetEnvData_t::result</a></div><div class="ttdeci">int result</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00168">p_ezcommon.h:168</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a427cdc1e4b9dc19eac05489511dbaa96a15047544b24d02af5e8ef44464bcb79d"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a15047544b24d02af5e8ef44464bcb79d">eCnfEnd</a></div><div class="ttdeci">@ eCnfEnd</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00059">p_ezcommon.h:59</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00e"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00e">ezConnectionType</a></div><div class="ttdeci">ezConnectionType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00078">p_ezcommon.h:78</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea9b0a803f15976a76ac87e012b29b304e"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea9b0a803f15976a76ac87e012b29b304e">eConnStatic</a></div><div class="ttdeci">@ eConnStatic</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00080">p_ezcommon.h:80</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea84fd87602702928eb8f85716e7874117"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84fd87602702928eb8f85716e7874117">eConnInvalid</a></div><div class="ttdeci">@ eConnInvalid</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00079">p_ezcommon.h:79</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a427cdc1e4b9dc19eac05489511dbaa96a8d81c6fc583340ca918f8a5199fa0f27"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96a8d81c6fc583340ca918f8a5199fa0f27">eCnfGetCombinationList</a></div><div class="ttdeci">@ eCnfGetCombinationList</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00056">p_ezcommon.h:56</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_list_html"><div class="ttname"><a href="../../da/de8/structez_net_cnf_combination_list.html">ezNetCnfCombinationList</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00129">p_ezcommon.h:129</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_acf9dcccadb17517c3dc48f44d2ed7818a0281e3d0a4dab1895ee5d0d06c75e112"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818a0281e3d0a4dab1895ee5d0d06c75e112">eInterfaceFile</a></div><div class="ttdeci">@ eInterfaceFile</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00103">p_ezcommon.h:103</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html_ad824a6daf6023cc9ea9b59f4db985a59"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html#ad824a6daf6023cc9ea9b59f4db985a59">ezNetCnfCombination::isActive</a></div><div class="ttdeci">int isActive</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00121">p_ezcommon.h:121</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html_a9df38518523bad99eb976021d0453afc"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html#a9df38518523bad99eb976021d0453afc">ezNetCtlStatus::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00139">p_ezcommon.h:139</a></div></div>
+<div class="ttc" id="astructrpc_get_combination_list__t_html"><div class="ttname"><a href="../../d8/d35/structrpc_get_combination_list__t.html">rpcGetCombinationList_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00158">p_ezcommon.h:158</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea4429c3a61d076e56dfaa918dbd1f4df0"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea4429c3a61d076e56dfaa918dbd1f4df0">eConnPPP</a></div><div class="ttdeci">@ eConnPPP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00083">p_ezcommon.h:83</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea84ac29b8b50875c50cda49d357e6ab5e"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea84ac29b8b50875c50cda49d357e6ab5e">eConnPadding</a></div><div class="ttdeci">@ eConnPadding</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00086">p_ezcommon.h:86</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_list_html_a444493c68a3de2240957fcd38f7d5fdd"><div class="ttname"><a href="../../da/de8/structez_net_cnf_combination_list.html#a444493c68a3de2240957fcd38f7d5fdd">ezNetCnfCombinationList::listLength</a></div><div class="ttdeci">int listLength</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00130">p_ezcommon.h:130</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_acf9dcccadb17517c3dc48f44d2ed7818aab8b5b481fcab1538d27e27a849e5a02"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818aab8b5b481fcab1538d27e27a849e5a02">eCombinationFile</a></div><div class="ttdeci">@ eCombinationFile</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00102">p_ezcommon.h:102</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html">ezNetCnfCombination</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00120">p_ezcommon.h:120</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_acf9dcccadb17517c3dc48f44d2ed7818ad0cb27f73939d608784be68261dea45a"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818ad0cb27f73939d608784be68261dea45a">eDeviceFile</a></div><div class="ttdeci">@ eDeviceFile</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00104">p_ezcommon.h:104</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a8ce5b24504b30cd8627732ff50699afda09b51ccf5735c6116b951fc381dd50f4"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda09b51ccf5735c6116b951fc381dd50f4">eInterfacePPP</a></div><div class="ttdeci">@ eInterfacePPP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00093">p_ezcommon.h:93</a></div></div>
+<div class="ttc" id="astructrpc_get_env_data__t_html"><div class="ttname"><a href="../../db/d89/structrpc_get_env_data__t.html">rpcGetEnvData_t</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00167">p_ezcommon.h:167</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a8ce5b24504b30cd8627732ff50699afda5e506833a45d87c020651c7ecd75e0b5"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda5e506833a45d87c020651c7ecd75e0b5">eInterfacePPPoE</a></div><div class="ttdeci">@ eInterfacePPPoE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00094">p_ezcommon.h:94</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_acf9dcccadb17517c3dc48f44d2ed7818"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#acf9dcccadb17517c3dc48f44d2ed7818">ezNetCnfType</a></div><div class="ttdeci">ezNetCnfType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00101">p_ezcommon.h:101</a></div></div>
+<div class="ttc" id="astructrpc_get_count__t_html_a670c80883e5e881fe87d58405eda2470"><div class="ttname"><a href="../../d2/dab/structrpc_get_count__t.html#a670c80883e5e881fe87d58405eda2470">rpcGetCount_t::fileType</a></div><div class="ttdeci">ezNetCnfType fileType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00151">p_ezcommon.h:151</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea8273d87aa78982b31eb48b308173b6ee"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea8273d87aa78982b31eb48b308173b6ee">eConnAOLPPP</a></div><div class="ttdeci">@ eConnAOLPPP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00084">p_ezcommon.h:84</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html_a7acb56b9da9a2330ecea1410dc8405ad"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html#a7acb56b9da9a2330ecea1410dc8405ad">ezNetCnfCombination::combinationName</a></div><div class="ttdeci">char combinationName[kStrDisplaySize]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00123">p_ezcommon.h:123</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a427cdc1e4b9dc19eac05489511dbaa96aed8bc994b6ed92305e86107bfb577687"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a427cdc1e4b9dc19eac05489511dbaa96aed8bc994b6ed92305e86107bfb577687">eCnfGetEnvData</a></div><div class="ttdeci">@ eCnfGetEnvData</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00057">p_ezcommon.h:57</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0">ezNetCtlFunctionId</a></div><div class="ttdeci">ezNetCtlFunctionId</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00065">p_ezcommon.h:65</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a8ce5b24504b30cd8627732ff50699afda70d18e6cc0ac63ba2d7c05a0d410b60f"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a8ce5b24504b30cd8627732ff50699afda70d18e6cc0ac63ba2d7c05a0d410b60f">eInterfaceARP</a></div><div class="ttdeci">@ eInterfaceARP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00095">p_ezcommon.h:95</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0ad5daa736598d78921dd6cc7dd832dd75"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0ad5daa736598d78921dd6cc7dd832dd75">eCtlDownInterface</a></div><div class="ttdeci">@ eCtlDownInterface</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00070">p_ezcommon.h:70</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_ad8209e3b9deeee07e3d5fe74313002a0"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#ad8209e3b9deeee07e3d5fe74313002a0">__attribute__</a></div><div class="ttdeci">typedef __attribute__</div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html_a9792534b765bd459cc714ba32638cc62"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html#a9792534b765bd459cc714ba32638cc62">ezNetCnfCombination::connectionType</a></div><div class="ttdeci">ezConnectionType connectionType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00122">p_ezcommon.h:122</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html_a674feaf33eb150a1dca41e7834fd095d"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html#a674feaf33eb150a1dca41e7834fd095d">ezNetCtlStatus::clientAddr</a></div><div class="ttdeci">u_int clientAddr</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00138">p_ezcommon.h:138</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0a217df1bafdbf67852a66c7b586fe833d"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a217df1bafdbf67852a66c7b586fe833d">eCtlGetEnvDataAddress</a></div><div class="ttdeci">@ eCtlGetEnvDataAddress</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00066">p_ezcommon.h:66</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a705129818248c12775c527daf415e00ea21b3537ab2f3e8ffdc0a61ea7f148be3"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a705129818248c12775c527daf415e00ea21b3537ab2f3e8ffdc0a61ea7f148be3">eConnDHCP</a></div><div class="ttdeci">@ eConnDHCP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00081">p_ezcommon.h:81</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html">ezNetCtlStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00137">p_ezcommon.h:137</a></div></div>
+<div class="ttc" id="astructrpc_get_count__t_html_a12e18a62cb60850d1d5e81e09f76d445"><div class="ttname"><a href="../../d2/dab/structrpc_get_count__t.html#a12e18a62cb60850d1d5e81e09f76d445">rpcGetCount_t::result</a></div><div class="ttdeci">int result</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00150">p_ezcommon.h:150</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_list_html_a22dfbdb3f36031771e51eb9b9389de7f"><div class="ttname"><a href="../../da/de8/structez_net_cnf_combination_list.html#a22dfbdb3f36031771e51eb9b9389de7f">ezNetCnfCombinationList::list</a></div><div class="ttdeci">ezNetCnfCombination_t list[kMaxCombinations]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00133">p_ezcommon.h:133</a></div></div>
+<div class="ttc" id="astructrpc_get_env_data__t_html_a22bb7118f9e7c138235cf92b7d825f16"><div class="ttname"><a href="../../db/d89/structrpc_get_env_data__t.html#a22bb7118f9e7c138235cf92b7d825f16">rpcGetEnvData_t::clientAddr</a></div><div class="ttdeci">u_int clientAddr</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00169">p_ezcommon.h:169</a></div></div>
+<div class="ttc" id="astructrpc_get_combination_list__t_html_aa83484f9929473b1539c4369d8cb4c42"><div class="ttname"><a href="../../d8/d35/structrpc_get_combination_list__t.html#aa83484f9929473b1539c4369d8cb4c42">rpcGetCombinationList_t::result</a></div><div class="ttdeci">int result</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00159">p_ezcommon.h:159</a></div></div>
+<div class="ttc" id="astructez_net_cnf_combination_html_a138d9086d8990549f4fa33684290b62c"><div class="ttname"><a href="../../dc/d8d/structez_net_cnf_combination.html#a138d9086d8990549f4fa33684290b62c">ezNetCnfCombination::devName</a></div><div class="ttdeci">char devName[kStrDisplaySize]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00125">p_ezcommon.h:125</a></div></div>
+<div class="ttc" id="astructez_net_ctl_status_html_ab402a7af19d388b11a859e1826bc45c5"><div class="ttname"><a href="../../dd/db5/structez_net_ctl_status.html#ab402a7af19d388b11a859e1826bc45c5">ezNetCtlStatus::state</a></div><div class="ttdeci">int state</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00141">p_ezcommon.h:141</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a3594db5fa839b2dcc3e3533215cf79a0a51076bd58826c4b27dde5ae706bb872c"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a3594db5fa839b2dcc3e3533215cf79a0a51076bd58826c4b27dde5ae706bb872c">eCtlSetCombination</a></div><div class="ttdeci">@ eCtlSetCombination</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00068">p_ezcommon.h:68</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_a3cf8f9ad5a894ba24ef99c8eebaaec2.html">GameNet</a></li><li class="navelem"><a class="el" href="../../dir_58e57027680c5213465b6b5126a97545.html">Ngps</a></li><li class="navelem"><a class="el" href="../../d6/d01/p__ezcommon_8h.html">p_ezcommon.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:33. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

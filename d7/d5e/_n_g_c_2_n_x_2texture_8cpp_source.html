@@ -1,0 +1,410 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGC/NX/texture.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">texture.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">string.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d4b/_debug_8h.html">core/debug.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;chars.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;texture.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dd/df0/p__gx_8h.html">sys/ngc/p_gx.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a87bb0678eba77e3e26a909d0e2fc7a5a">   14</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*                  <a class="code" href="../../da/d63/namespace_nx_ngc.html#a87bb0678eba77e3e26a909d0e2fc7a5a">TextureBuffer</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//sTexture* Textures        = NULL;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#ae40e26a49bad9a812cf8e4d926b66737">   16</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../da/d63/namespace_nx_ngc.html#ae40e26a49bad9a812cf8e4d926b66737">NumTextures</a>      = 0;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a805c6f25e2202492b0ffa1ca74afaa80">   17</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a805c6f25e2202492b0ffa1ca74afaa80">NumTextureGroups</a> = 0;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">   18</a></span>&#160;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt; sTexture &gt;</a> *<a class="code" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">pTextureTable</a>   = NULL;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac79c597a6d888998811e41aee535b21a">   23</a></span>&#160;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac79c597a6d888998811e41aee535b21a">sTexture::sTexture</a>()</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a> = NULL;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a> = NULL;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a6e0a21c435e499c2ff2c42be6fdf49bb">pOldAlphaData</a> = NULL;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> = 0;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#af3c8d72db97a9e9921ba8a5ff4fb70e7">   31</a></span>&#160;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#af3c8d72db97a9e9921ba8a5ff4fb70e7">sTexture::~sTexture</a>()</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a> )</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a> &amp;&amp; ( ( <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa3c9cc16a67a9656d52f57eedeca18c29">TEXTURE_FLAG_CHANNEL_MASK</a> ) == <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414faf2af48cbe3f9e1815604db3ce970bacd">TEXTURE_FLAG_CHANNEL_GREEN</a> ) )</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> ( ( <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414faca1662ada95fd69262cdff899d4de499">TEXTURE_FLAG_OLD_DATA</a> ) &amp;&amp; <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a6e0a21c435e499c2ff2c42be6fdf49bb">pOldAlphaData</a> )</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a6e0a21c435e499c2ff2c42be6fdf49bb">pOldAlphaData</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// Eeeek - the .img contains PS2 specific register values for bit depth.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">// Use these values to convert them.</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#define PSMCT32     0x00</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#define PSMCT24     0x01</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#define PSMCT16     0x02</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#define PSMCT16S    0x0A</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define PS_GPU24    0x12</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define PSMT8       0x13</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define PSMT4       0x14</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#define PSMT8H      0x1B</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#define PSMT4HL     0x24</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#define PSMT4HH     0x2C</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#define PSMZ32      0x30</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#define PSMZ24      0x31</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#define PSMZ16      0x32</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#define PSMZ16S     0x3A</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a3260e5f8b6b2f7bf8038b22a214a6a8d">   66</a></span>&#160;<span class="keyword">const</span> <span class="keyword">static</span> <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a3260e5f8b6b2f7bf8038b22a214a6a8d">TEXTURE_VERSION</a> = 2;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a428ca5edbc5f0681b83ab8b3b16139cb">   68</a></span>&#160;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html">sTexture</a> *<a class="code" href="../../da/d63/namespace_nx_ngc.html#a428ca5edbc5f0681b83ab8b3b16139cb">LoadTexture</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_filename )</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html">sTexture</a> *p_texture = NULL;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> *p_FH = <a class="code" href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a>( p_filename, <span class="stringliteral">&quot;rb&quot;</span> );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">if</span>( p_FH )</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> version;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> width;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> height;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> depth;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> levels;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rwidth;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rheight;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a> alphamap;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a> hasholes;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> FileSize = <a class="code" href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a>(p_FH);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// Load the actual texture</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        p_texture = <span class="keyword">new</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a59be8d353272f643f39f9f24bf901ce2">sTexture</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;version,  4, 1, p_FH );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;checksum, 4, 1, p_FH );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;width,    4, 1, p_FH );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;height,   4, 1, p_FH );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;depth,    4, 1, p_FH );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;levels,   4, 1, p_FH );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;rwidth,   4, 1, p_FH );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;rheight,  4, 1, p_FH );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;alphamap, 2, 1, p_FH );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;hasholes, 2, 1, p_FH );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        Dbg_MsgAssert( version &lt;= <a class="code" href="../../da/d63/namespace_nx_ngc.html#a3260e5f8b6b2f7bf8038b22a214a6a8d">TEXTURE_VERSION</a>, (<span class="stringliteral">&quot;Illegal texture version number: %d (The newest version we deal with is: %d)\n&quot;</span>, version, <a class="code" href="../../da/d63/namespace_nx_ngc.html#a3260e5f8b6b2f7bf8038b22a214a6a8d">TEXTURE_VERSION</a> ));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        Dbg_MsgAssert( depth == 32, (<span class="stringliteral">&quot;We only deal with 32-bit textures.\n&quot;</span>));</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> tsize = FileSize-(9*4);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> = 0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> |= <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414faf2af48cbe3f9e1815604db3ce970bacd">NxNgc::sTexture::TEXTURE_FLAG_CHANNEL_GREEN</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a17162e2f6ea33ee7c45ffb78044806a9">BottomUpHeap</a>()-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#ad867c0d0ef2ad7b1db3983d0a0baef81">PushAlign</a>( 32 );</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">if</span> ( tsize == ( width * height * 4 ) )</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac990c8c7e50ce686efc0327e18ba5965">format</a>       = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)GX_TF_RGBA8;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a> = <span class="keyword">new</span> <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>[tsize];</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#adf2c737975d2169f0c0cf72722b087ab">byte_size</a> = tsize;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            Dbg_MsgAssert(p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>, (<span class="stringliteral">&quot;couldn&#39;t allocate buffer for texture file %s\n&quot;</span>, p_filename));</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>, 1, tsize, p_FH );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac990c8c7e50ce686efc0327e18ba5965">format</a>       = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)GX_TF_CMPR;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> ( alphamap )</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                tsize = tsize / 2;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a> = <span class="keyword">new</span> <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>[tsize];</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#adf2c737975d2169f0c0cf72722b087ab">byte_size</a> = tsize;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            Dbg_MsgAssert(p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>, (<span class="stringliteral">&quot;couldn&#39;t allocate buffer for texture file %s\n&quot;</span>, p_filename));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>, 1, tsize, p_FH );</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <span class="keywordflow">if</span> ( alphamap )</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a> = <span class="keyword">new</span> <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>[tsize];</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                Dbg_MsgAssert(p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a>, (<span class="stringliteral">&quot;couldn&#39;t allocate buffer for alpha file %s\n&quot;</span>, p_filename));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a>, 1, tsize, p_FH );</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> |= <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa2177c9f99f1e0ab1cc21eb26fc7f2978">NxNgc::sTexture::TEXTURE_FLAG_HAS_ALPHA</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a17162e2f6ea33ee7c45ffb78044806a9">BottomUpHeap</a>()-&gt;<a class="code" href="../../d5/d97/class_mem_1_1_allocator.html#a85a57938d2ec5fe61e575a358f009ca9">PopAlign</a>();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a26a502daf03361c765bdc2b9430407b4">Checksum</a>     = checksum;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a40b83fc618265f92c7be0f15c42343ac">BaseWidth</a>    = width;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aa7961c3658d414a204ad3e96db67438f">BaseHeight</a>   = height;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a>       = levels;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ab88b296bbc41fcb4b0b24b91bc3b4d1e">ActualWidth</a>  = rwidth;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aeb88a74a9fc08f2e590be219607326c8">ActualHeight</a> = rheight;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        p_texture-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> |= hasholes ? <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa2f47c7c3737ff866636577a3d82ed33a">NxNgc::sTexture::TEXTURE_FLAG_HAS_HOLES</a> : 0;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>( p_FH );</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> p_texture;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="../../da/d63/namespace_nx_ngc.html#a6c755d3fc7225726e4fe7108a2e0bd99">  164</a></span>&#160;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html">sTexture</a>* <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6c755d3fc7225726e4fe7108a2e0bd99">GetTexture</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum )</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;{</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">pTextureTable</a> )</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    {</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <a class="code" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">pTextureTable</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html">sTexture</a> *p_tex = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">pTextureTable</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordflow">while</span>( p_tex )</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">if</span>( p_tex-&gt;<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a26a502daf03361c765bdc2b9430407b4">Checksum</a> == checksum )</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="keywordflow">return</span> p_tex;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            }</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            p_tex = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">pTextureTable</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ad014c7282d153eaed795a748dd0eed15">  186</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ad014c7282d153eaed795a748dd0eed15">sTexture::SetRenderTarget</a>( <span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height, <span class="keywordtype">int</span> depth, <span class="keywordtype">int</span> z_depth )</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">//  Checksum        = 0;;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">//  BaseWidth       = width;</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">//  BaseHeight      = height;</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">//  ActualWidth     = width;</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">//  ActualHeight    = height;</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">//  Levels          = 0;</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment">//  pAlphaData      = NULL;</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">//  format          = GX_TF_RGBA8;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">//  </span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">//  pTexelData      = new uint8[width*height*4];</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#acb03e69c19208de9c14e6cb4148b23e1">g_id</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0e28c1da7088e1e754bce324562bc92a">  204</a></span>&#160;GXTexMapID <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0e28c1da7088e1e754bce324562bc92a">sTexture::Upload</a>( GXTexMapID <span class="keywordtype">id</span>, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> <a class="code" href="../../de/d47/namespace_gfx.html#a3b40fd4213d96987efb02104d0068687">flags</a>, <span class="keywordtype">float</span> k )</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;{</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    GXTexMapID  rv = <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">// Texels.</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#a3e64e6e18b204432ef984f38a99f2ac2">GX::UploadTexture</a>(  <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">pTexelData</a>,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ab88b296bbc41fcb4b0b24b91bc3b4d1e">ActualWidth</a>,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aeb88a74a9fc08f2e590be219607326c8">ActualHeight</a>,</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                        ((GXTexFmt)<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac990c8c7e50ce686efc0327e18ba5965">format</a>),</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; (1&lt;&lt;5) ? GX_CLAMP : GX_REPEAT,</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; (1&lt;&lt;6) ? GX_CLAMP : GX_REPEAT,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? GX_TRUE : GX_FALSE,</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? GX_LIN_MIP_LIN : GX_LINEAR,</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                        GX_LINEAR,</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        0.0f,</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> - 1 : 0.0f,</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? k : 0.0f,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                        GX_FALSE,</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                        GX_TRUE,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                        GX_ANISO_1,</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                        rv ); </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    rv = (GXTexMapID)(((<span class="keywordtype">int</span>)rv)+1);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">// Alpha.</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa2177c9f99f1e0ab1cc21eb26fc7f2978">NxNgc::sTexture::TEXTURE_FLAG_HAS_ALPHA</a> )</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a3e64e6e18b204432ef984f38a99f2ac2">GX::UploadTexture</a>(  <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">pAlphaData</a>,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ab88b296bbc41fcb4b0b24b91bc3b4d1e">ActualWidth</a>,</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aeb88a74a9fc08f2e590be219607326c8">ActualHeight</a>,</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                            ((GXTexFmt)<a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac990c8c7e50ce686efc0327e18ba5965">format</a>),</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; (1&lt;&lt;5) ? GX_CLAMP : GX_REPEAT,</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">flags</a> &amp; (1&lt;&lt;6) ? GX_CLAMP : GX_REPEAT,</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? GX_TRUE : GX_FALSE,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? GX_LIN_MIP_LIN : GX_LINEAR,</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                            GX_LINEAR,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                            0.0f,</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> - 1 : 0.0f,</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                            <a class="code" href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">Levels</a> &gt; 1 ? k : 0.0f,</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                            GX_FALSE,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                            GX_TRUE,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                            GX_ANISO_1,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                            rv ); </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        rv = (GXTexMapID)(((<span class="keywordtype">int</span>)rv)+1);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;}</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;} <span class="comment">// namespace NxNgc</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_ngc_html_a87bb0678eba77e3e26a909d0e2fc7a5a"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a87bb0678eba77e3e26a909d0e2fc7a5a">NxNgc::TextureBuffer</a></div><div class="ttdeci">uint8 * TextureBuffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00014">texture.cpp:14</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a40b83fc618265f92c7be0f15c42343ac"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a40b83fc618265f92c7be0f15c42343ac">NxNgc::sTexture::BaseWidth</a></div><div class="ttdeci">uint16 BaseWidth</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00034">texture.h:34</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a17162e2f6ea33ee7c45ffb78044806a9"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a17162e2f6ea33ee7c45ffb78044806a9">Mem::Manager::BottomUpHeap</a></div><div class="ttdeci">Heap * BottomUpHeap(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00132">memman.h:132</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_ac79c597a6d888998811e41aee535b21a"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac79c597a6d888998811e41aee535b21a">NxNgc::sTexture::sTexture</a></div><div class="ttdeci">sTexture()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00023">texture.cpp:23</a></div></div>
+<div class="ttc" id="ap__gx_8h_html"><div class="ttname"><a href="../../dd/df0/p__gx_8h.html">p_gx.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a805c6f25e2202492b0ffa1ca74afaa80"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a805c6f25e2202492b0ffa1ca74afaa80">NxNgc::NumTextureGroups</a></div><div class="ttdeci">uint32 NumTextureGroups</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00017">texture.cpp:17</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_af3c8d72db97a9e9921ba8a5ff4fb70e7"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#af3c8d72db97a9e9921ba8a5ff4fb70e7">NxNgc::sTexture::~sTexture</a></div><div class="ttdeci">~sTexture()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00031">texture.cpp:31</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a3260e5f8b6b2f7bf8038b22a214a6a8d"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a3260e5f8b6b2f7bf8038b22a214a6a8d">NxNgc::TEXTURE_VERSION</a></div><div class="ttdeci">const static uint32 TEXTURE_VERSION</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00066">texture.cpp:66</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a3b40fd4213d96987efb02104d0068687"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a3b40fd4213d96987efb02104d0068687">Gfx::flags</a></div><div class="ttdeci">unsigned char flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01996">BonedAnim.cpp:1996</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_aa7961c3658d414a204ad3e96db67438f"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aa7961c3658d414a204ad3e96db67438f">NxNgc::sTexture::BaseHeight</a></div><div class="ttdeci">uint16 BaseHeight</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00034">texture.h:34</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a6e0a21c435e499c2ff2c42be6fdf49bb"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a6e0a21c435e499c2ff2c42be6fdf49bb">NxNgc::sTexture::pOldAlphaData</a></div><div class="ttdeci">uint8 * pOldAlphaData</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00046">texture.h:46</a></div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a63687bed0f9b05912fe64508d6665871"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a63687bed0f9b05912fe64508d6665871">NxNgc::sTexture::Levels</a></div><div class="ttdeci">uint8 Levels</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00036">texture.h:36</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a052d4dd66a1fb4155450d181bc4c414faf2af48cbe3f9e1815604db3ce970bacd"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414faf2af48cbe3f9e1815604db3ce970bacd">NxNgc::sTexture::TEXTURE_FLAG_CHANNEL_GREEN</a></div><div class="ttdeci">@ TEXTURE_FLAG_CHANNEL_GREEN</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00016">texture.h:16</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a3e64e6e18b204432ef984f38a99f2ac2"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a3e64e6e18b204432ef984f38a99f2ac2">GX::UploadTexture</a></div><div class="ttdeci">void UploadTexture(void *image_ptr, u16 width, u16 height, GXTexFmt format, GXTexWrapMode wrap_s, GXTexWrapMode wrap_t, GXBool mipmap, GXTexFilter min_filt, GXTexFilter mag_filt, f32 min_lod, f32 max_lod, f32 lod_bias, GXBool bias_clamp, GXBool do_edge_lod, GXAnisotropy max_aniso, GXTexMapID id)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00778">p_gx.cpp:778</a></div></div>
+<div class="ttc" id="a_debug_8h_html"><div class="ttname"><a href="../../d0/d4b/_debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="anamespace_file_html_a42faef384ac438a449656a07258cdbec"><div class="ttname"><a href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a></div><div class="ttdeci">long GetFileSize(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00272">p_filesys.cpp:272</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_aeb88a74a9fc08f2e590be219607326c8"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#aeb88a74a9fc08f2e590be219607326c8">NxNgc::sTexture::ActualHeight</a></div><div class="ttdeci">uint16 ActualHeight</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00035">texture.h:35</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a0e28c1da7088e1e754bce324562bc92a"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0e28c1da7088e1e754bce324562bc92a">NxNgc::sTexture::Upload</a></div><div class="ttdeci">GXTexMapID Upload(GXTexMapID id, uint8 flags, float k)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00204">texture.cpp:204</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_acb03e69c19208de9c14e6cb4148b23e1"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#acb03e69c19208de9c14e6cb4148b23e1">NxNgc::g_id</a></div><div class="ttdeci">int g_id</div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a052d4dd66a1fb4155450d181bc4c414fa2177c9f99f1e0ab1cc21eb26fc7f2978"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa2177c9f99f1e0ab1cc21eb26fc7f2978">NxNgc::sTexture::TEXTURE_FLAG_HAS_ALPHA</a></div><div class="ttdeci">@ TEXTURE_FLAG_HAS_ALPHA</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00015">texture.h:15</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a052d4dd66a1fb4155450d181bc4c414fa3c9cc16a67a9656d52f57eedeca18c29"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa3c9cc16a67a9656d52f57eedeca18c29">NxNgc::sTexture::TEXTURE_FLAG_CHANNEL_MASK</a></div><div class="ttdeci">@ TEXTURE_FLAG_CHANNEL_MASK</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00023">texture.h:23</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a0149c1c6e62293ba3bceed488fbf6a5c"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a0149c1c6e62293ba3bceed488fbf6a5c">NxNgc::sTexture::pAlphaData</a></div><div class="ttdeci">uint8 * pAlphaData</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00045">texture.h:45</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a7441ef0865bcb3db9b8064dd7375c1ea"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00003">p_ezcommon.h:3</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a052d4dd66a1fb4155450d181bc4c414fa2f47c7c3737ff866636577a3d82ed33a"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414fa2f47c7c3737ff866636577a3d82ed33a">NxNgc::sTexture::TEXTURE_FLAG_HAS_HOLES</a></div><div class="ttdeci">@ TEXTURE_FLAG_HAS_HOLES</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00014">texture.h:14</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="anamespace_file_html_a180384dc852ac3b971285fc63b1287cb"><div class="ttname"><a href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a></div><div class="ttdeci">void * Open(const char *filename, const char *access)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00391">p_filesys.cpp:391</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_adf2c737975d2169f0c0cf72722b087ab"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#adf2c737975d2169f0c0cf72722b087ab">NxNgc::sTexture::byte_size</a></div><div class="ttdeci">uint32 byte_size</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00043">texture.h:43</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html">NxNgc::sTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00010">texture.h:10</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_ab88b296bbc41fcb4b0b24b91bc3b4d1e"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ab88b296bbc41fcb4b0b24b91bc3b4d1e">NxNgc::sTexture::ActualWidth</a></div><div class="ttdeci">uint16 ActualWidth</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00035">texture.h:35</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d88/_n_g_c_2_n_x_2anim_8cpp_source.html#l00016">anim.cpp:16</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_ad867c0d0ef2ad7b1db3983d0a0baef81"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#ad867c0d0ef2ad7b1db3983d0a0baef81">Mem::Allocator::PushAlign</a></div><div class="ttdeci">void PushAlign(int align)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d9f/alloc_8cpp_source.html#l00416">alloc.cpp:416</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a26a502daf03361c765bdc2b9430407b4"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a26a502daf03361c765bdc2b9430407b4">NxNgc::sTexture::Checksum</a></div><div class="ttdeci">uint32 Checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00033">texture.h:33</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a052d4dd66a1fb4155450d181bc4c414faca1662ada95fd69262cdff899d4de499"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a052d4dd66a1fb4155450d181bc4c414faca1662ada95fd69262cdff899d4de499">NxNgc::sTexture::TEXTURE_FLAG_OLD_DATA</a></div><div class="ttdeci">@ TEXTURE_FLAG_OLD_DATA</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00020">texture.h:20</a></div></div>
+<div class="ttc" id="anamespace_file_html_af5cd83b01fc5f341f767beb7c0b1130c"><div class="ttname"><a href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a></div><div class="ttdeci">int Close(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00425">p_filesys.cpp:425</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html_a85a57938d2ec5fe61e575a358f009ca9"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html#a85a57938d2ec5fe61e575a358f009ca9">Mem::Allocator::PopAlign</a></div><div class="ttdeci">void PopAlign(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d9f/alloc_8cpp_source.html#l00446">alloc.cpp:446</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a428ca5edbc5f0681b83ab8b3b16139cb"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a428ca5edbc5f0681b83ab8b3b16139cb">NxNgc::LoadTexture</a></div><div class="ttdeci">sTexture * LoadTexture(const char *p_filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00068">texture.cpp:68</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_ad014c7282d153eaed795a748dd0eed15"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ad014c7282d153eaed795a748dd0eed15">NxNgc::sTexture::SetRenderTarget</a></div><div class="ttdeci">bool SetRenderTarget(int width, int height, int depth, int z_depth)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00186">texture.cpp:186</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a6c755d3fc7225726e4fe7108a2e0bd99"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a6c755d3fc7225726e4fe7108a2e0bd99">NxNgc::GetTexture</a></div><div class="ttdeci">sTexture * GetTexture(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00164">texture.cpp:164</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_ae40e26a49bad9a812cf8e4d926b66737"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#ae40e26a49bad9a812cf8e4d926b66737">NxNgc::NumTextures</a></div><div class="ttdeci">uint32 NumTextures</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00016">texture.cpp:16</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a59be8d353272f643f39f9f24bf901ce2"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a59be8d353272f643f39f9f24bf901ce2">NxNgc::sTexture</a></div><div class="ttdeci">NxTexture sTexture</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00712">p_gx.h:712</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a061a3c72873e8c96710ec4810a1c4d5f"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a061a3c72873e8c96710ec4810a1c4d5f">NxNgc::sTexture::pTexelData</a></div><div class="ttdeci">uint8 * pTexelData</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00044">texture.h:44</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00052">HashTable.h:52</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_a173902f6bdeaf556fc0d4896cfa3e3e0"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#a173902f6bdeaf556fc0d4896cfa3e3e0">NxNgc::sTexture::flags</a></div><div class="ttdeci">uint16 flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00042">texture.h:42</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_texture_html_ac990c8c7e50ce686efc0327e18ba5965"><div class="ttname"><a href="../../d1/d08/struct_nx_ngc_1_1s_texture.html#ac990c8c7e50ce686efc0327e18ba5965">NxNgc::sTexture::format</a></div><div class="ttdeci">uint8 format</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_c_2_n_x_2texture_8h_source.html#l00038">texture.h:38</a></div></div>
+<div class="ttc" id="anamespace_file_html_ae5e5ed0fd4834fc2e0e1c29edc62fc02"><div class="ttname"><a href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a></div><div class="ttdeci">size_t Read(void *addr, size_t size, size_t count, void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00443">p_filesys.cpp:443</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a05f6b0ae8f6a6e135b0e290c25fe0e4e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></div><div class="ttdeci">unsigned short uint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00135">Defines.h:135</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a2629e97caa5d061bb886f31b95e72f43"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a2629e97caa5d061bb886f31b95e72f43">NxNgc::pTextureTable</a></div><div class="ttdeci">Lst::HashTable&lt; sTexture &gt; * pTextureTable</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp_source.html#l00018">texture.cpp:18</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_fc598ce00690b1053355ea44bbe38731.html">NGC</a></li><li class="navelem"><a class="el" href="../../dir_73de6e80b2aaf5bdccd3aa1409a233c3.html">NX</a></li><li class="navelem"><a class="el" href="../../d7/d5e/_n_g_c_2_n_x_2texture_8cpp.html">texture.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:27. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

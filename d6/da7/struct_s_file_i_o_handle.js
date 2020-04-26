@@ -1,0 +1,25 @@
+var struct_s_file_i_o_handle =
+[
+    [ "m_flags", "d6/da7/struct_s_file_i_o_handle.html#a9c57af95580d0ab0c771fe86c626d040", null ],
+    [ "mp_dest_buffer", "d6/da7/struct_s_file_i_o_handle.html#a90d67ae97b6349c660cd8f5699575c23", null ],
+    [ "m_buffer_size", "d6/da7/struct_s_file_i_o_handle.html#ac611b3b9302c426edfb94b3338f95b77", null ],
+    [ "m_device_type", "d6/da7/struct_s_file_i_o_handle.html#a8dacc39f58e3054ad54bde61c4e8738e", null ],
+    [ "m_host_fd", "d6/da7/struct_s_file_i_o_handle.html#aa332123677830a73a69fd612f9bd7a74", null ],
+    [ "m_priority", "d6/da7/struct_s_file_i_o_handle.html#aa421ef183f97e839cca260f81fb59eb4", null ],
+    [ "m_stream", "d6/da7/struct_s_file_i_o_handle.html#ade27ec36d8b8f2449919a44485c3de21", null ],
+    [ "m_start_sector", "d6/da7/struct_s_file_i_o_handle.html#aeb065baf2235d979b24a927982027cb3", null ],
+    [ "m_cur_sector", "d6/da7/struct_s_file_i_o_handle.html#a794e4da89d48bf889ffafd5a722c62da", null ],
+    [ "m_cur_position", "d6/da7/struct_s_file_i_o_handle.html#a0789eefe9481a8301d3f437170e86c97", null ],
+    [ "m_file_size", "d6/da7/struct_s_file_i_o_handle.html#a9694b40f9a5d1eea6ecd830342dff244", null ],
+    [ "m_open_request_id", "d6/da7/struct_s_file_i_o_handle.html#abdf09c5971efd995d16ea1f6b0a3b607", null ],
+    [ "mp_blocked_request", "d6/da7/struct_s_file_i_o_handle.html#ad13c99419761c015d71046e862b7b9e8", null ],
+    [ "m_cur_function", "d6/da7/struct_s_file_i_o_handle.html#a67249fe86d824d07886d4b6fb27e488c", null ],
+    [ "m_bytes_to_process", "d6/da7/struct_s_file_i_o_handle.html#a54e4650e2d2674720878671fd2000ab2", null ],
+    [ "m_bytes_processing", "d6/da7/struct_s_file_i_o_handle.html#ad231e1da19422ba81c21b5b3802d36f4", null ],
+    [ "m_non_aligned_start_bytes", "d6/da7/struct_s_file_i_o_handle.html#a9ba5bdde16e15f44a04603e0e524eb1c", null ],
+    [ "m_non_aligned_end_bytes", "d6/da7/struct_s_file_i_o_handle.html#a7a40f3359369fbdb8bb300f97d64a3e8", null ],
+    [ "m_request_id", "d6/da7/struct_s_file_i_o_handle.html#ababb9201b3e3aa34cd7cdd9756edea78", null ],
+    [ "m_return_value", "d6/da7/struct_s_file_i_o_handle.html#a6edd2660dbc363bfb031c3c90f81ad12", null ],
+    [ "m_return_data", "d6/da7/struct_s_file_i_o_handle.html#a74b303787da10782b6324294fa7c1fe9", null ],
+    [ "m_last_dma_id", "d6/da7/struct_s_file_i_o_handle.html#a6d68b8043b6e0489e4eefe99315bdf74", null ]
+];

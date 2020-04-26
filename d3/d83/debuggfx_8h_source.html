@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/debuggfx.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d3/d83/debuggfx_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">debuggfx.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d83/debuggfx_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        PS2                                                     **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         GFX                                                     **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      debuggfx.h                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        11/01/00    -   mjd                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __DEBUG_GFX_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __DEBUG_GFX_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef __GEL_OBJECT_H</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d10/object_8h.html">gel/object.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// use this macro to create the last two params to AddDebugLine( )</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define MAKE_RGBA( r, g, b, a ) ( ( ( a ) &lt;&lt; 24 ) | ( ( b ) &lt;&lt; 16 ) | ( ( g ) &lt;&lt; 8 ) | ( r ) )</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#define MAKE_RGB( r, g, b )     ( ( ( 255 ) &lt;&lt; 24 ) | ( ( b ) &lt;&lt; 16 ) | ( ( g ) &lt;&lt; 8 ) | ( r ) )</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define GET_R( rgba )   ( ( ( rgba ) ) &amp; 255 )</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define GET_G( rgba )   ( ( ( rgba ) &gt;&gt; 8 ) &amp; 255 )</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define GET_B( rgba )   ( ( ( rgba ) &gt;&gt; 16 ) &amp; 255 )</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#define GET_A( rgba )   ( ( ( rgba ) &gt;&gt; 24 ) &amp; 255 )</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                        </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">// if i put them here, would they be private any more?</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define SAME_COLOR_AS_RGB0_PLEASE ( 1 &lt;&lt; 31 )</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*  Adds a line to our debug line buffer, to be drawn every frame</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">    until the buffer wraps around again.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">*/</span>                         </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#aa5fe969d58eb3f2da559a24244a15ef9">AddDebugStar</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> v0, <span class="keywordtype">float</span> r = 12.0f, <span class="keywordtype">int</span> rgb0 = MAKE_RGB( 127, 0, 127 ), <span class="keywordtype">int</span> numDrawFrames = 0);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#ae947f7f8dfa849f716b80ee020acb524">AddDebugCircle</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> v0, <span class="keywordtype">int</span> numPoints, <span class="keywordtype">float</span> r, <span class="keywordtype">int</span> rgb0, <span class="keywordtype">int</span> numDrawFrames);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#a93c38062c9614a48d28a5f66d517511f">AdjustDebugLines</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v0);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#a1f9f2c8b6d5def6b6112dab8ed4f00b8">AddDebugLine</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v0, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v1, <span class="keywordtype">int</span> rgb0 = MAKE_RGB( 127, 127, 127 ), <span class="keywordtype">int</span> rgb1 = SAME_COLOR_AS_RGB0_PLEASE, <span class="keywordtype">int</span> numDrawFrames = 0 );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#a10b17d8862a838406cf98d7d9908f20f">AddDebugArrow</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v0, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v1, <span class="keywordtype">int</span> rgb0 = MAKE_RGB( 127, 127, 127 ), <span class="keywordtype">int</span> rgb1 = SAME_COLOR_AS_RGB0_PLEASE, <span class="keywordtype">int</span> numDrawFrames = 0 );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">// For drawing skeleton</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#ac3841d568ccb6ed5f940085bfd808be7">AddDebugBone</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; <a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; <a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>, <span class="keywordtype">float</span> red = 1.0f, <span class="keywordtype">float</span> green = 0.5f, <span class="keywordtype">float</span> blue = 0.5f );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// For drawing bounding box</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#a81ef8ad479a8c5bfb9a553197dde1555">AddDebugBox</a>( <span class="keyword">const</span> <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; root, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; pos, <a class="code" href="../../d1/d05/struct_s_b_box.html">SBBox</a> *pBox, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *pOffset, <span class="keywordtype">int</span> numFrames, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *pRot, <span class="keywordtype">int</span> rgb = MAKE_RGB( 200, 0, 0 ) );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">// Call every frame from the renderer.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#aa1a7f9053ac47c5cf5ff3ff484429e4a">DebugGfx_Draw</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">// Cleanup code for this module:</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#a03bcc6649770340e4504f7f60ea941e3">DebugGfx_CleanUp</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;} <span class="comment">// namespace Gfx</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif  // __DEBUG_GFX_H</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_gfx_html_ae947f7f8dfa849f716b80ee020acb524"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ae947f7f8dfa849f716b80ee020acb524">Gfx::AddDebugCircle</a></div><div class="ttdeci">void AddDebugCircle(Mth::Vector v0, int numPoints, float r, int rgb0, int numDrawFrames)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00527">debuggfx.cpp:527</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a987f27df2a5f3c9f3b402784624cfac3"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a></div><div class="ttdeci">unsigned char p1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00038">p_netcnfif.h:38</a></div></div>
+<div class="ttc" id="astruct_s_b_box_html"><div class="ttname"><a href="../../d1/d05/struct_s_b_box.html">SBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00053">object.h:53</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a81ef8ad479a8c5bfb9a553197dde1555"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a81ef8ad479a8c5bfb9a553197dde1555">Gfx::AddDebugBox</a></div><div class="ttdeci">void AddDebugBox(const Mth::Matrix &amp;root, const Mth::Vector &amp;pos, SBBox *pBox, Mth::Vector *pOffset, int numFrames, Mth::Vector *pRot, int rgb)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00571">debuggfx.cpp:571</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a03bcc6649770340e4504f7f60ea941e3"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a03bcc6649770340e4504f7f60ea941e3">Gfx::DebugGfx_CleanUp</a></div><div class="ttdeci">void DebugGfx_CleanUp(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00659">debuggfx.cpp:659</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a10b17d8862a838406cf98d7d9908f20f"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a10b17d8862a838406cf98d7d9908f20f">Gfx::AddDebugArrow</a></div><div class="ttdeci">void AddDebugArrow(const Mth::Vector &amp;v0, const Mth::Vector &amp;v1, int rgb0, int rgb1, int numDrawFrames)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00450">debuggfx.cpp:450</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ac3841d568ccb6ed5f940085bfd808be7"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ac3841d568ccb6ed5f940085bfd808be7">Gfx::AddDebugBone</a></div><div class="ttdeci">void AddDebugBone(const Mth::Vector &amp;p1, const Mth::Vector &amp;p2, float red, float green, float blue)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00553">debuggfx.cpp:553</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a22f7a8363a7f95b437d6df82a4284cd7"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a></div><div class="ttdeci">unsigned char p2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00039">p_netcnfif.h:39</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_aa1a7f9053ac47c5cf5ff3ff484429e4a"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#aa1a7f9053ac47c5cf5ff3ff484429e4a">Gfx::DebugGfx_Draw</a></div><div class="ttdeci">void DebugGfx_Draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00641">debuggfx.cpp:641</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a1f9f2c8b6d5def6b6112dab8ed4f00b8"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a1f9f2c8b6d5def6b6112dab8ed4f00b8">Gfx::AddDebugLine</a></div><div class="ttdeci">void AddDebugLine(const Mth::Vector &amp;v0, const Mth::Vector &amp;v1, int rgb0, int rgb1, int numDrawFrames)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00394">debuggfx.cpp:394</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_aa5fe969d58eb3f2da559a24244a15ef9"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#aa5fe969d58eb3f2da559a24244a15ef9">Gfx::AddDebugStar</a></div><div class="ttdeci">void AddDebugStar(Mth::Vector v0, float r, int rgb0, int numDrawFrames)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00511">debuggfx.cpp:511</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a93c38062c9614a48d28a5f66d517511f"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a93c38062c9614a48d28a5f66d517511f">Gfx::AdjustDebugLines</a></div><div class="ttdeci">void AdjustDebugLines(const Mth::Vector &amp;v0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00366">debuggfx.cpp:366</a></div></div>
+<div class="ttc" id="aobject_8h_html"><div class="ttname"><a href="../../de/d10/object_8h.html">object.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d3/d83/debuggfx_8h.html">debuggfx.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

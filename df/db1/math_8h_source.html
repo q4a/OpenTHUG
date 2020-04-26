@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/core/math.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/db1/math_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">math.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/db1/math_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        Core Library                                            **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Math (MTH)                                              **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      core/math.h                                             **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        11/23/99    -   mjb                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Math Library                                            **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __CORE_MATH_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define __CORE_MATH_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">**                                 Includes                                 **</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// The following overlaoded functions will make sure that if you accidently call a double version of</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// a trig function with a float argument, then it will simply call the float version</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// (double precision is very very slow on the PS2)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifndef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#ad3746d6ae34f39dc1929395d6af1ecb1">   35</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>  <a class="code" href="../../df/db1/math_8h.html#ad3746d6ae34f39dc1929395d6af1ecb1">acos</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> acosf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}          </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#af7a153258c174c284724467debb9458c">   36</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>  <a class="code" href="../../df/db1/math_8h.html#af7a153258c174c284724467debb9458c">asin</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> asinf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}          </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#aa1707595eec76a358520359b4f20267e">   37</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>  <a class="code" href="../../df/db1/math_8h.html#aa1707595eec76a358520359b4f20267e">atan</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> atanf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}          </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#a9afae4258d91fd27600a1bfb482f6969">   38</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>  <a class="code" href="../../df/db1/math_8h.html#a9afae4258d91fd27600a1bfb482f6969">atan2</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>){<span class="keywordflow">return</span>  atan2f( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> , <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a> );} </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#a5e88e48c21b60ac9b58a322cf8a8bb67">   39</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>   <a class="code" href="../../df/db1/math_8h.html#a5e88e48c21b60ac9b58a322cf8a8bb67">cos</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> cosf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}           </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#a15876915492b5aff219d1dd03ad66def">   40</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>   <a class="code" href="../../df/db1/math_8h.html#a15876915492b5aff219d1dd03ad66def">sin</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> sinf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}           </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#a26971409112830841bd7c7a0d7681b8a">   41</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>   <a class="code" href="../../df/db1/math_8h.html#a26971409112830841bd7c7a0d7681b8a">tan</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> tanf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}           </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/db1/math_8h.html#a0bc70d364c7f180aece2381faae7eafc">   42</a></span>&#160;<span class="keyword">inline</span>  <span class="keywordtype">float</span>   <a class="code" href="../../df/db1/math_8h.html#a0bc70d364c7f180aece2381faae7eafc">fabs</a>( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> ) {<span class="keywordflow">return</span> fabsf( <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> );}           </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif // ifndef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#include &lt;core/math/math.h&gt;</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d68/vector_8h.html">core/math/vector.h</a>&gt;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/df4/matrix_8h.html">core/math/matrix.h</a>&gt;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d45/quat_8h.html">core/math/quat.h</a>&gt;</span>             <span class="comment">// need quat.h before matrix, but after vector (for the GetScalar function)</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d5f/vector_8inl.html">core/math/vector.inl</a>&gt;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d28/matrix_8inl.html">core/math/matrix.inl</a>&gt;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/db2/quat_8inl.html">core/math/quat.inl</a>&gt;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/rect_8h.html">core/math/rect.h</a>&gt;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif // __CORE_MATH_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="avector_8inl_html"><div class="ttname"><a href="../../df/d5f/vector_8inl.html">vector.inl</a></div></div>
+<div class="ttc" id="amatrix_8h_html"><div class="ttname"><a href="../../dd/df4/matrix_8h.html">matrix.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="amath_8h_html_ad3746d6ae34f39dc1929395d6af1ecb1"><div class="ttname"><a href="../../df/db1/math_8h.html#ad3746d6ae34f39dc1929395d6af1ecb1">acos</a></div><div class="ttdeci">float acos(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00035">math.h:35</a></div></div>
+<div class="ttc" id="amath_8h_html_aa1707595eec76a358520359b4f20267e"><div class="ttname"><a href="../../df/db1/math_8h.html#aa1707595eec76a358520359b4f20267e">atan</a></div><div class="ttdeci">float atan(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00037">math.h:37</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="amath_8h_html_a5e88e48c21b60ac9b58a322cf8a8bb67"><div class="ttname"><a href="../../df/db1/math_8h.html#a5e88e48c21b60ac9b58a322cf8a8bb67">cos</a></div><div class="ttdeci">float cos(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00039">math.h:39</a></div></div>
+<div class="ttc" id="aquat_8h_html"><div class="ttname"><a href="../../d4/d45/quat_8h.html">quat.h</a></div></div>
+<div class="ttc" id="amath_8h_html_a9afae4258d91fd27600a1bfb482f6969"><div class="ttname"><a href="../../df/db1/math_8h.html#a9afae4258d91fd27600a1bfb482f6969">atan2</a></div><div class="ttdeci">float atan2(float x, float y)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00038">math.h:38</a></div></div>
+<div class="ttc" id="amatrix_8inl_html"><div class="ttname"><a href="../../dc/d28/matrix_8inl.html">matrix.inl</a></div></div>
+<div class="ttc" id="amath_8h_html_a26971409112830841bd7c7a0d7681b8a"><div class="ttname"><a href="../../df/db1/math_8h.html#a26971409112830841bd7c7a0d7681b8a">tan</a></div><div class="ttdeci">float tan(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00041">math.h:41</a></div></div>
+<div class="ttc" id="avector_8h_html"><div class="ttname"><a href="../../d6/d68/vector_8h.html">vector.h</a></div></div>
+<div class="ttc" id="arect_8h_html"><div class="ttname"><a href="../../d4/d67/rect_8h.html">rect.h</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a6a17d6914fc4d83136bd326e196a9877"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">Nx::x</a></div><div class="ttdeci">static Mth::Vector x</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01913">CollTriData.cpp:1913</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="amath_8h_html_a0bc70d364c7f180aece2381faae7eafc"><div class="ttname"><a href="../../df/db1/math_8h.html#a0bc70d364c7f180aece2381faae7eafc">fabs</a></div><div class="ttdeci">float fabs(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00042">math.h:42</a></div></div>
+<div class="ttc" id="amath_8h_html_af7a153258c174c284724467debb9458c"><div class="ttname"><a href="../../df/db1/math_8h.html#af7a153258c174c284724467debb9458c">asin</a></div><div class="ttdeci">float asin(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00036">math.h:36</a></div></div>
+<div class="ttc" id="aquat_8inl_html"><div class="ttname"><a href="../../d4/db2/quat_8inl.html">quat.inl</a></div></div>
+<div class="ttc" id="amath_8h_html_a15876915492b5aff219d1dd03ad66def"><div class="ttname"><a href="../../df/db1/math_8h.html#a15876915492b5aff219d1dd03ad66def">sin</a></div><div class="ttdeci">float sin(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00040">math.h:40</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="../../df/db1/math_8h.html">math.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:19. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

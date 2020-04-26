@@ -1,0 +1,562 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/2D/ScrollingMenu.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/daa/_scrolling_menu_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ScrollingMenu.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/daa/_scrolling_menu_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d9d/objtrack_8h.html">gel/objtrack.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d6d/_event_8h.html">gel/Event.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d9f/_scrolling_menu_8h.html">gfx/2D/ScrollingMenu.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dac/_menu2_8h.html">gfx/2D/Menu2.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d5/d96/namespace_front.html">Front</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a9b3a4f1eac56a8fb0998e8c9fccf42e0">   16</a></span>&#160;<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a9b3a4f1eac56a8fb0998e8c9fccf42e0">CBaseScrollingMenu::CBaseScrollingMenu</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="../../d7/dd6/class_obj_1_1_c_event_listener.html#af08138c318816ef8a97325da179a9833">RegisterWithTracker</a>(<span class="keyword">this</span>);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> = NULL;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a31b5be192c643b6da7666f56eacc4cbe">m_selected_element_id</a> = 0;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">m_in_focus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> = 0.0f;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// a very large number</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a2486939ec3de2c80f67088a930018cd8">m_scroll_speed</a> = 10000.0f;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> = -1;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> = 0.0f;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> = -1.0f;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">SetType</a>(<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a64466546018b5fb9ab7c91d04ce3a21aa837a57796519061b154569c57c136d97">CScreenElement::TYPE_VSCROLLING_MENU</a>);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae8ddf4a57bdd352326c7d6af3a07f24b">   39</a></span>&#160;<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae8ddf4a57bdd352326c7d6af3a07f24b">CBaseScrollingMenu::~CBaseScrollingMenu</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a7e1754f2bb554b129bf54c74ffb4dd23">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a7e1754f2bb554b129bf54c74ffb4dd23">CBaseScrollingMenu::SetProperties</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pProps)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span> just[2] = { 0.0f, 0.0f };</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#af5b8cd843b3f0d42cc5a6abbf5bdce09">resolve_just</a>(pProps, CRCD(0x67e093e4,<span class="stringliteral">&quot;internal_just&quot;</span>), just, just+1))</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a29fad0950861a6463978c7e47ed412c9">SetInternalJust</a>(just[0], just[1]);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">int</span> scroll_speed;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (pProps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>(CRCD(0x9020a1d1,<span class="stringliteral">&quot;scroll_speed&quot;</span>), &amp;scroll_speed))</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a2486939ec3de2c80f67088a930018cd8">m_scroll_speed</a> = (float) scroll_speed;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    pProps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>(CRCD(0xc855511c,<span class="stringliteral">&quot;num_items_to_show&quot;</span>), &amp;<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (pProps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">ContainsFlag</a>(CRCD(0xed889e1f,<span class="stringliteral">&quot;reset_window_top&quot;</span>)))</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> = 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (pProps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">ContainsFlag</a>(CRCD(0xc3a894f6,<span class="stringliteral">&quot;reset_window_bottom&quot;</span>)))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> p_child = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a45b006011ea26ff5438b26699071d892">GetLastChild</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">float</span> element_x, element_z, element_w, element_l;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">compute_element_area</a>(p_child, element_x, element_z, element_w, element_l);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> = element_z + element_l - <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( pProps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">ContainsFlag</a>( CRCD(0xa1f3b8bb,<span class="stringliteral">&quot;reset_window&quot;</span>) ) )</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a37dc72386147947605fbd36504cd645a">CScreenElement::SetProperties</a>(pProps);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a833ac8e87007a2f2e78f5721b681d74f">   82</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a833ac8e87007a2f2e78f5721b681d74f">CBaseScrollingMenu::PassTargetedEvent</a>(<a class="code" href="../../de/da0/class_obj_1_1_c_event.html">Obj::CEvent</a> *pEvent, <span class="keywordtype">bool</span> broadcast)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a80f8bd468a6dd472d4422c577d48566b">Obj::CObject::PassTargetedEvent</a>(pEvent))</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="../../df/d80/class_obj_1_1_c_tracker.html">Obj::CTracker</a>* p_tracker = Obj::CTracker::Instance();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">GetType</a>() == <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea045859e10b785a5bd7504851fc4764c3">Obj::CEvent::TYPE_NOTIFY_CHILD_LOCK</a>)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// we can assume that VMenu child is in place now, find it</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">get_the_menu</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a6d6f8ac4343df90cb29c0ba5c3edfc24">update</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a83e885c2ba86282fa6e0d6bbcbc3d28f">MarkHandled</a>(<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">m_id</a>);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">GetType</a>() == <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea3b9d00a49e47cf59bd9bd8e0f520b44d">Obj::CEvent::TYPE_FOCUS</a>)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">get_the_menu</a>();</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// event is for this scrolling menu         </span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">m_in_focus</a>)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <span class="comment">//printf(&quot;VMenu %s receives focus event, sending to 0x%x\n&quot;, Script::FindChecksumName(m_id), m_selected_id);</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">m_in_focus</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            p_tracker-&gt;<a class="code" href="../../df/d80/class_obj_1_1_c_tracker.html#aff42a8a7d4fe4050e424421697ffe0ac">LaunchEvent</a>(<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea3b9d00a49e47cf59bd9bd8e0f520b44d">Obj::CEvent::TYPE_FOCUS</a>, <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>(), <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a9d526ec9868d6b8088eb51c7effe1ddfa5becd786290abfd1bd0c42b3506861cb">Obj::CEvent::vSYSTEM_EVENT</a>, pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a7873ec6fe91a942147bc480f3bbe291c">GetData</a>());       </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a83e885c2ba86282fa6e0d6bbcbc3d28f">MarkHandled</a>(<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">m_id</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">GetType</a>() == <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea33c4ffd7d364a2feff4800058a12de38">Obj::CEvent::TYPE_UNFOCUS</a> &amp;&amp; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">m_in_focus</a>)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">get_the_menu</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">//printf(&quot;VMenu %s receives focus event, sending to 0x%x\n&quot;, Script::FindChecksumName(m_id), m_selected_id);</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">m_in_focus</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        p_tracker-&gt;<a class="code" href="../../df/d80/class_obj_1_1_c_tracker.html#aff42a8a7d4fe4050e424421697ffe0ac">LaunchEvent</a>(<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea33c4ffd7d364a2feff4800058a12de38">Obj::CEvent::TYPE_UNFOCUS</a>, <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>());        </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a83e885c2ba86282fa6e0d6bbcbc3d28f">MarkHandled</a>(<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">m_id</a>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a093879633af92fd105c09d59bb1094cd">  130</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a093879633af92fd105c09d59bb1094cd">CBaseScrollingMenu::pass_event_to_listener</a>(<a class="code" href="../../de/da0/class_obj_1_1_c_event.html">Obj::CEvent</a> *pEvent)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">//printf(&quot;VMenu receives event of type %s\n&quot;, Script::FindChecksumName(pEvent-&gt;GetType()));</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">GetType</a>() == <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea045859e10b785a5bd7504851fc4764c3">Obj::CEvent::TYPE_NOTIFY_CHILD_LOCK</a> &amp;&amp; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#aa83fd739e7d212be3245161762c51560">GetTarget</a>() == <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>())</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a6d6f8ac4343df90cb29c0ba5c3edfc24">update</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">//Obj::CTracker* p_tracker = Obj::CTracker::Instance();</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="comment">//p_tracker-&gt;PrintEventLog(true, 100);</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a6cfe5ce38de7c4ae733bd622d5aecb6f">MarkRead</a>(<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">m_id</a>);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span> (pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">GetType</a>() == <a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea3b9d00a49e47cf59bd9bd8e0f520b44d">Obj::CEvent::TYPE_FOCUS</a>)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>)</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">get_the_menu</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">// see if focus event is for one of contained menu&#39;s children</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> p_child = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a97815db7bf356ae697fb4f97c4fa5a34">GetFirstChild</a>();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="keywordflow">while</span>(p_child)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            <span class="keywordflow">if</span> (p_child-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>() == pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#aa83fd739e7d212be3245161762c51560">GetTarget</a>())</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a1d06e5c2468654fe648606275d3e4643">put_element_in_view</a>(p_child);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;                pEvent-&gt;<a class="code" href="../../de/da0/class_obj_1_1_c_event.html#a6cfe5ce38de7c4ae733bd622d5aecb6f">MarkRead</a>(<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">m_id</a>);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            p_child = p_child-&gt;GetNextSibling();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">  170</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">CBaseScrollingMenu::get_the_menu</a>()</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> p_child = <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a97815db7bf356ae697fb4f97c4fa5a34">GetFirstChild</a>();</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">while</span>(p_child)</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>) p_child-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#adf29aa023697e596d50506797d316b7a">GetType</a>() == CRCX(<span class="stringliteral">&quot;vmenu&quot;</span>) &amp;&amp; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> = (<a class="code" href="../../db/d54/class_front_1_1_c_base_menu.html">CBaseMenu</a> *) p_child.<a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html#abfded371e4740217057f76240804b0eb">Convert</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>) p_child-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#adf29aa023697e596d50506797d316b7a">GetType</a>() == CRCX(<span class="stringliteral">&quot;hmenu&quot;</span>) &amp;&amp; !<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> = (<a class="code" href="../../db/d54/class_front_1_1_c_base_menu.html">CBaseMenu</a> *) p_child.<a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html#abfded371e4740217057f76240804b0eb">Convert</a>();</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        p_child = p_child-&gt;GetNextSibling();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> || !<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>, (<span class="stringliteral">&quot;could not find VMenu&quot;</span>));</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> || <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>, (<span class="stringliteral">&quot;could not find HMenu&quot;</span>));</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keywordtype">float</span> space_amount = -1.0f;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../db/d54/class_front_1_1_c_base_menu.html#a8e70ebb71807869e354adb6b2a6850e9">UsingRegularSpacing</a>(space_amount) &amp;&amp; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> &gt;= 0)</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> = space_amount * <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> = space_amount;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> = -1;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> = (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>) ? <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a3035a981c02e02d15700220b2f52d129">m_base_h</a> : <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a37fe660f2015ba88474e53c1b7d7e999">m_base_w</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a1d06e5c2468654fe648606275d3e4643">  201</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a1d06e5c2468654fe648606275d3e4643">CBaseScrollingMenu::put_element_in_view</a>(<span class="keyword">const</span> <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> &amp;pElement)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;{</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    Dbg_Assert(<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a31b5be192c643b6da7666f56eacc4cbe">m_selected_element_id</a> = pElement-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>();</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a6d6f8ac4343df90cb29c0ba5c3edfc24">  211</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a6d6f8ac4343df90cb29c0ba5c3edfc24">CBaseScrollingMenu::update</a>()</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;{</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> pElement = NULL;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordtype">int</span> element_index = 0;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="keywordtype">float</span> center_menu_offset_up = 0.0f;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">float</span> center_menu_offset_down = 0.0f;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a> )</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a31b5be192c643b6da7666f56eacc4cbe">m_selected_element_id</a> )</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            pElement = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a5e1d6a5c85f7ab814b6b21840c706576">GetChildById</a>(<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a31b5be192c643b6da7666f56eacc4cbe">m_selected_element_id</a>, &amp;element_index);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            pElement = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#ae20122020bb1a862fa369f52faef9971">GetChildByIndex</a>( 0 );</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">if</span> ( pElement )</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordtype">int</span> num_children = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a49abcc2234b0b54e8dcc1a656be7a88a">CountChildren</a>();</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="comment">// Good doggy. Now find out if the selection needs to be centered in the window</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> &gt;= 0.0f)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                <span class="keywordflow">if</span> (element_index &gt;= (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> / 2))</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    center_menu_offset_up = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> * ((<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> - 1) / 2);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                <span class="keywordflow">if</span> (element_index &lt; num_children - (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> / 2))</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    center_menu_offset_down = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> * (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">m_num_items_to_display</a> / 2);</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="keywordflow">if</span> (pElement)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    {   </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordtype">float</span> menu_x, menu_y;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a0c19d707f55585e8b280da8739878cfe">SetJust</a>(-1.0f, -1.0f);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#acb7c287520ab4b7462fedb3277b9d23f">GetLocalPos</a>(&amp;menu_x, &amp;menu_y);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="comment">// get upper-left of element, local coordinates (in relation to VMenu)</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordtype">float</span> element_x, element_y, element_w, element_h;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordtype">float</span> element_z, element_l;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">compute_element_area</a>(pElement, element_x, element_z, element_w, element_l);</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">compute_element_area</a>(pElement, element_z, element_y, element_l, element_h);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        }</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> &gt;= 0.0f) </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        {</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            element_z = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> * element_index;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            element_l = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="comment">// if element top is above window top</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">if</span> (element_z &lt; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> + center_menu_offset_up)</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="comment">// scroll up</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> -= <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a2486939ec3de2c80f67088a930018cd8">m_scroll_speed</a>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> &lt; element_z)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> = element_z - center_menu_offset_up;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="comment">// if element bottom is below window bottom</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (element_z + element_l &gt; <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> + <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> - center_menu_offset_down)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="comment">// scroll down</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> += <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a2486939ec3de2c80f67088a930018cd8">m_scroll_speed</a>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> + <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> &gt; element_z + element_l)</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> = element_z + element_l - <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> + center_menu_offset_down;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a>)</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        {</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>)</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a1dd8e5b816bdf363ac8e0ef09fae7297">SetPos</a>(menu_x, -<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a>, <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd">FORCE_INSTANT</a>);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a1dd8e5b816bdf363ac8e0ef09fae7297">SetPos</a>(-<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a>, menu_y, <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd">FORCE_INSTANT</a>);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="comment">//printf(&quot;m_top_or_left_line is %.2f\n&quot;, m_top_or_left_line);</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            <span class="comment">// make elements visible or invisible</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            element_index = 0;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> p_child = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a97815db7bf356ae697fb4f97c4fa5a34">GetFirstChild</a>();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <span class="keywordflow">while</span>(p_child)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a>)</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">compute_element_area</a>(p_child, element_x, element_z, element_w, element_l);</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">compute_element_area</a>(p_child, element_z, element_y, element_l, element_h);</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> &gt;= 0.0f) </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                {</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                    element_z = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a> * element_index;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                    element_l = <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">m_regular_space_amount</a>;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                    <span class="comment">//Ryan(&quot;oog\n&quot;);</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">float</span> TOLERANCE = 0.0f;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="keywordflow">if</span> (element_z &gt;= <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> - TOLERANCE &amp;&amp; element_z + element_l &lt;= <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">m_top_or_left_line</a> + <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">m_window_dimension</a> + TOLERANCE)</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                {</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                    <span class="comment">// top is (mostly) in window, bottom is (mostly) in window</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                    p_child-&gt;SetAlpha(1.0f, <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd">FORCE_INSTANT</a>);</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                }</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                {</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                    p_child-&gt;SetAlpha(0.0f, <a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd">FORCE_INSTANT</a>);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                p_child = p_child-&gt;GetNextSibling();</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                element_index++;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">m_needs_update</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        }</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    } <span class="comment">// end if pElement</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">// finds area of element in coordinates relative to this scrolling menu</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno"><a class="line" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">  339</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">CBaseScrollingMenu::compute_element_area</a>(<span class="keyword">const</span> <a class="code" href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">CScreenElementPtr</a> &amp;pElement, <span class="keywordtype">float</span> &amp;elementX, <span class="keywordtype">float</span> &amp;elementY, <span class="keywordtype">float</span> &amp;elementW, <span class="keywordtype">float</span> &amp;elementH)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;{</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    pElement-&gt;GetLocalPos(&amp;elementX, &amp;elementY);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    elementX *= <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a5db0e9f07f034f42a4be57e5efdd8e80">GetScaleX</a>();</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    elementY *= <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a3353f5215a79b5e3e05db1e0f2af415e">GetScaleY</a>();</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    elementW = pElement-&gt;GetBaseW() * pElement-&gt;GetScaleX() * <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a5db0e9f07f034f42a4be57e5efdd8e80">GetScaleX</a>();</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    elementH = pElement-&gt;GetBaseH() * pElement-&gt;GetScaleY() * <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">mp_the_menu</a>-&gt;<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a3353f5215a79b5e3e05db1e0f2af415e">GetScaleY</a>();</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordtype">float</span> element_just_x, element_just_y;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    pElement-&gt;GetJust(&amp;element_just_x, &amp;element_just_y);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    elementX -= (element_just_x + 1.0f) * elementW / 2.0f;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    elementY -= (element_just_y + 1.0f) * elementH / 2.0f;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a530fb1f6df94974ca8d297c20174e48d">  355</a></span>&#160;<a class="code" href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a530fb1f6df94974ca8d297c20174e48d">CVScrollingMenu::CVScrollingMenu</a>()</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;}</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
+<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a04860b6da9cc0a74f713d682ba9576a5">  363</a></span>&#160;<a class="code" href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a04860b6da9cc0a74f713d682ba9576a5">CVScrollingMenu::~CVScrollingMenu</a>()</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#ae99ceb5ce05a3d9eeb6a0bc272949041">  370</a></span>&#160;<a class="code" href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#ae99ceb5ce05a3d9eeb6a0bc272949041">CHScrollingMenu::CHScrollingMenu</a>()</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <a class="code" href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">m_is_vertical</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#aac5974b88b861731896f1df4bcd6a4ca">  378</a></span>&#160;<a class="code" href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#aac5974b88b861731896f1df4bcd6a4ca">CHScrollingMenu::~CHScrollingMenu</a>()</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;}</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_front_html"><div class="ttname"><a href="../../d5/d96/namespace_front.html">Front</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00066">object.h:66</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_h_scrolling_menu_html_aac5974b88b861731896f1df4bcd6a4ca"><div class="ttname"><a href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#aac5974b88b861731896f1df4bcd6a4ca">Front::CHScrollingMenu::~CHScrollingMenu</a></div><div class="ttdeci">virtual ~CHScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00378">ScrollingMenu.cpp:378</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_aff3988e448cfb6b3a5a8f8f6a29719e8"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aff3988e448cfb6b3a5a8f8f6a29719e8">Front::CBaseScrollingMenu::m_is_vertical</a></div><div class="ttdeci">bool m_is_vertical</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00050">ScrollingMenu.h:50</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a093879633af92fd105c09d59bb1094cd"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a093879633af92fd105c09d59bb1094cd">Front::CBaseScrollingMenu::pass_event_to_listener</a></div><div class="ttdeci">void pass_event_to_listener(Obj::CEvent *pEvent)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00130">ScrollingMenu.cpp:130</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_listener_html_af08138c318816ef8a97325da179a9833"><div class="ttname"><a href="../../d7/dd6/class_obj_1_1_c_event_listener.html#af08138c318816ef8a97325da179a9833">Obj::CEventListener::RegisterWithTracker</a></div><div class="ttdeci">void RegisterWithTracker(CObject *pObject)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dd4/_event_8cpp_source.html#l00107">Event.cpp:107</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a7b942d733a9694bbee0e859c25800aa3"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a7b942d733a9694bbee0e859c25800aa3">Obj::CObject::m_id</a></div><div class="ttdeci">uint32 m_id</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00233">object.h:233</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_v_scrolling_menu_html_a530fb1f6df94974ca8d297c20174e48d"><div class="ttname"><a href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a530fb1f6df94974ca8d297c20174e48d">Front::CVScrollingMenu::CVScrollingMenu</a></div><div class="ttdeci">CVScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00355">ScrollingMenu.cpp:355</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a5db0e9f07f034f42a4be57e5efdd8e80"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a5db0e9f07f034f42a4be57e5efdd8e80">Front::CScreenElement::GetScaleX</a></div><div class="ttdeci">float GetScaleX()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00196">ScreenElement2.h:196</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a6d6f8ac4343df90cb29c0ba5c3edfc24"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a6d6f8ac4343df90cb29c0ba5c3edfc24">Front::CBaseScrollingMenu::update</a></div><div class="ttdeci">virtual void update()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00211">ScrollingMenu.cpp:211</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a6cfe5ce38de7c4ae733bd622d5aecb6f"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a6cfe5ce38de7c4ae733bd622d5aecb6f">Obj::CEvent::MarkRead</a></div><div class="ttdeci">void MarkRead(uint32 receiverId=0, uint32 script=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dd4/_event_8cpp_source.html#l00047">Event.cpp:47</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa27bdd009eb62b22c75dac7b9398a902"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">Script::CStruct::ContainsFlag</a></div><div class="ttdeci">bool ContainsFlag(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01846">struct.cpp:1846</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a516d98273544f7ec223c5c8b2525293ea33c4ffd7d364a2feff4800058a12de38"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea33c4ffd7d364a2feff4800058a12de38">Obj::CEvent::TYPE_UNFOCUS</a></div><div class="ttdeci">@ TYPE_UNFOCUS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00040">Event.h:40</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a29fad0950861a6463978c7e47ed412c9"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a29fad0950861a6463978c7e47ed412c9">Front::CBaseScrollingMenu::SetInternalJust</a></div><div class="ttdeci">void SetInternalJust(float h, float v)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00018">ScrollingMenu.h:18</a></div></div>
+<div class="ttc" id="aobjtrack_8h_html"><div class="ttname"><a href="../../d2/d9d/objtrack_8h.html">objtrack.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a2486939ec3de2c80f67088a930018cd8"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a2486939ec3de2c80f67088a930018cd8">Front::CBaseScrollingMenu::m_scroll_speed</a></div><div class="ttdeci">float m_scroll_speed</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00042">ScrollingMenu.h:42</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_af4886302ac3b64f0f1601631e5137834"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#af4886302ac3b64f0f1601631e5137834">Front::CBaseScrollingMenu::m_window_dimension</a></div><div class="ttdeci">float m_window_dimension</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00046">ScrollingMenu.h:46</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a1d06e5c2468654fe648606275d3e4643"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a1d06e5c2468654fe648606275d3e4643">Front::CBaseScrollingMenu::put_element_in_view</a></div><div class="ttdeci">void put_element_in_view(const CScreenElementPtr &amp;pElement)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00201">ScrollingMenu.cpp:201</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a37fe660f2015ba88474e53c1b7d7e999"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a37fe660f2015ba88474e53c1b7d7e999">Front::CScreenElement::m_base_w</a></div><div class="ttdeci">float m_base_w</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00313">ScreenElement2.h:313</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a3353f5215a79b5e3e05db1e0f2af415e"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a3353f5215a79b5e3e05db1e0f2af415e">Front::CScreenElement::GetScaleY</a></div><div class="ttdeci">float GetScaleY()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00197">ScreenElement2.h:197</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a5e1d6a5c85f7ab814b6b21840c706576"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a5e1d6a5c85f7ab814b6b21840c706576">Front::CScreenElement::GetChildById</a></div><div class="ttdeci">CScreenElement * GetChildById(uint32 id, int *pIndex=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00483">ScreenElement2.cpp:483</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a7e1754f2bb554b129bf54c74ffb4dd23"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a7e1754f2bb554b129bf54c74ffb4dd23">Front::CBaseScrollingMenu::SetProperties</a></div><div class="ttdeci">virtual void SetProperties(Script::CStruct *pProps)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00046">ScrollingMenu.cpp:46</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a97815db7bf356ae697fb4f97c4fa5a34"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a97815db7bf356ae697fb4f97c4fa5a34">Front::CScreenElement::GetFirstChild</a></div><div class="ttdeci">CScreenElement * GetFirstChild()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00231">ScreenElement2.h:231</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a5db56c29bbe0595bc866f97a947ea3a7"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a5db56c29bbe0595bc866f97a947ea3a7">Front::CBaseScrollingMenu::get_the_menu</a></div><div class="ttdeci">void get_the_menu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00170">ScrollingMenu.cpp:170</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a2dcecb7e9833794bb9a0d895ae2feaca"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a2dcecb7e9833794bb9a0d895ae2feaca">Obj::CEvent::GetType</a></div><div class="ttdeci">uint32 GetType()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00073">Event.h:73</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_tracker_html"><div class="ttname"><a href="../../df/d80/class_obj_1_1_c_tracker.html">Obj::CTracker</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d9d/objtrack_8h_source.html#l00138">objtrack.h:138</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a3035a981c02e02d15700220b2f52d129"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a3035a981c02e02d15700220b2f52d129">Front::CScreenElement::m_base_h</a></div><div class="ttdeci">float m_base_h</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00313">ScreenElement2.h:313</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a1dd8e5b816bdf363ac8e0ef09fae7297"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a1dd8e5b816bdf363ac8e0ef09fae7297">Front::CScreenElement::SetPos</a></div><div class="ttdeci">void SetPos(float x, float y, EForceInstant forceInstant=DONT_FORCE_INSTANT)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00184">ScreenElement2.cpp:184</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="a_menu2_8h_html"><div class="ttname"><a href="../../d5/dac/_menu2_8h.html">Menu2.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a64466546018b5fb9ab7c91d04ce3a21aa837a57796519061b154569c57c136d97"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a64466546018b5fb9ab7c91d04ce3a21aa837a57796519061b154569c57c136d97">Front::CScreenElement::TYPE_VSCROLLING_MENU</a></div><div class="ttdeci">@ TYPE_VSCROLLING_MENU</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00051">ScreenElement2.h:51</a></div></div>
+<div class="ttc" id="a_scrolling_menu_8h_html"><div class="ttname"><a href="../../df/d9f/_scrolling_menu_8h.html">ScrollingMenu.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a9b3a4f1eac56a8fb0998e8c9fccf42e0"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a9b3a4f1eac56a8fb0998e8c9fccf42e0">Front::CBaseScrollingMenu::CBaseScrollingMenu</a></div><div class="ttdeci">CBaseScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00016">ScrollingMenu.cpp:16</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_smt_ptr_html"><div class="ttname"><a href="../../de/dd8/class_obj_1_1_c_smt_ptr.html">Obj::CSmtPtr&lt; CScreenElement &gt;</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a49abcc2234b0b54e8dcc1a656be7a88a"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a49abcc2234b0b54e8dcc1a656be7a88a">Front::CScreenElement::CountChildren</a></div><div class="ttdeci">int CountChildren()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00508">ScreenElement2.cpp:508</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a4c712b97cd2801aa62a9c237b0267df2"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">Obj::CObject::SetType</a></div><div class="ttdeci">void SetType(sint type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00261">object.cpp:261</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a833ac8e87007a2f2e78f5721b681d74f"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a833ac8e87007a2f2e78f5721b681d74f">Front::CBaseScrollingMenu::PassTargetedEvent</a></div><div class="ttdeci">virtual bool PassTargetedEvent(Obj::CEvent *pEvent, bool broadcast=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00082">ScrollingMenu.cpp:82</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_ae20122020bb1a862fa369f52faef9971"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#ae20122020bb1a862fa369f52faef9971">Front::CScreenElement::GetChildByIndex</a></div><div class="ttdeci">CScreenElement * GetChildByIndex(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00497">ScreenElement2.cpp:497</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_h_scrolling_menu_html_ae99ceb5ce05a3d9eeb6a0bc272949041"><div class="ttname"><a href="../../d9/dd8/class_front_1_1_c_h_scrolling_menu.html#ae99ceb5ce05a3d9eeb6a0bc272949041">Front::CHScrollingMenu::CHScrollingMenu</a></div><div class="ttdeci">CHScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00370">ScrollingMenu.cpp:370</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a7873ec6fe91a942147bc480f3bbe291c"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a7873ec6fe91a942147bc480f3bbe291c">Obj::CEvent::GetData</a></div><div class="ttdeci">Script::CStruct * GetData()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00076">Event.h:76</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_adf29aa023697e596d50506797d316b7a"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#adf29aa023697e596d50506797d316b7a">Obj::CObject::GetType</a></div><div class="ttdeci">sint GetType() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00131">object.h:131</a></div></div>
+<div class="ttc" id="a_event_8h_html"><div class="ttname"><a href="../../de/d6d/_event_8h.html">Event.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_menu_html"><div class="ttname"><a href="../../db/d54/class_front_1_1_c_base_menu.html">Front::CBaseMenu</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dac/_menu2_8h_source.html#l00012">Menu2.h:12</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a0c19d707f55585e8b280da8739878cfe"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a0c19d707f55585e8b280da8739878cfe">Front::CScreenElement::SetJust</a></div><div class="ttdeci">void SetJust(float justX, float justY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00267">ScreenElement2.cpp:267</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a37dc72386147947605fbd36504cd645a"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a37dc72386147947605fbd36504cd645a">Front::CScreenElement::SetProperties</a></div><div class="ttdeci">virtual void SetProperties(Script::CStruct *pProps)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00530">ScreenElement2.cpp:530</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a9e41593658c56ddbaf15fabe58c92cb0ad4f45c543051222c5b06e8a4585682dd">Front::CScreenElement::FORCE_INSTANT</a></div><div class="ttdeci">@ FORCE_INSTANT</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00205">ScreenElement2.h:205</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_abb45b11d9732e81bb48a545831b4406d"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#abb45b11d9732e81bb48a545831b4406d">Front::CBaseScrollingMenu::m_top_or_left_line</a></div><div class="ttdeci">float m_top_or_left_line</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00041">ScrollingMenu.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_ad39f6409df17fb6ee459d1071258c645"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">Obj::CObject::GetID</a></div><div class="ttdeci">uint32 GetID() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00130">object.h:130</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a45b006011ea26ff5438b26699071d892"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a45b006011ea26ff5438b26699071d892">Front::CScreenElement::GetLastChild</a></div><div class="ttdeci">CScreenElement * GetLastChild()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00463">ScreenElement2.cpp:463</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_aa83fd739e7d212be3245161762c51560"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#aa83fd739e7d212be3245161762c51560">Obj::CEvent::GetTarget</a></div><div class="ttdeci">uint32 GetTarget()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00075">Event.h:75</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_ae68ceca2ec5e09327897b725395974e4"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae68ceca2ec5e09327897b725395974e4">Front::CBaseScrollingMenu::m_needs_update</a></div><div class="ttdeci">bool m_needs_update</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00039">ScrollingMenu.h:39</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a017d91aa21574d71b38c4fe52f096b26"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a017d91aa21574d71b38c4fe52f096b26">Front::CBaseScrollingMenu::m_num_items_to_display</a></div><div class="ttdeci">int m_num_items_to_display</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00045">ScrollingMenu.h:45</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a516d98273544f7ec223c5c8b2525293ea045859e10b785a5bd7504851fc4764c3"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea045859e10b785a5bd7504851fc4764c3">Obj::CEvent::TYPE_NOTIFY_CHILD_LOCK</a></div><div class="ttdeci">@ TYPE_NOTIFY_CHILD_LOCK</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00041">Event.h:41</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_menu_html_a8e70ebb71807869e354adb6b2a6850e9"><div class="ttname"><a href="../../db/d54/class_front_1_1_c_base_menu.html#a8e70ebb71807869e354adb6b2a6850e9">Front::CBaseMenu::UsingRegularSpacing</a></div><div class="ttdeci">bool UsingRegularSpacing(float &amp;rRegularSpaceAmount)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dc3/_menu2_8cpp_source.html#l00254">Menu2.cpp:254</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_af5b8cd843b3f0d42cc5a6abbf5bdce09"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#af5b8cd843b3f0d42cc5a6abbf5bdce09">Front::CScreenElement::resolve_just</a></div><div class="ttdeci">bool resolve_just(Script::CStruct *pProps, const uint32 RefName, float *pHJust, float *pVJust)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l01227">ScreenElement2.cpp:1227</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_aba7e5b9604f42edec385e53aee1d846f"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#aba7e5b9604f42edec385e53aee1d846f">Front::CBaseScrollingMenu::compute_element_area</a></div><div class="ttdeci">void compute_element_area(const CScreenElementPtr &amp;pElement, float &amp;elementX, float &amp;elementY, float &amp;elementW, float &amp;elementH)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00339">ScrollingMenu.cpp:339</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a69565a5beead9c87169826dfe55a6659"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a69565a5beead9c87169826dfe55a6659">Front::CBaseScrollingMenu::mp_the_menu</a></div><div class="ttdeci">CBaseMenu * mp_the_menu</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00033">ScrollingMenu.h:33</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html">Obj::CEvent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00023">Event.h:23</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_v_scrolling_menu_html_a04860b6da9cc0a74f713d682ba9576a5"><div class="ttname"><a href="../../dc/df5/class_front_1_1_c_v_scrolling_menu.html#a04860b6da9cc0a74f713d682ba9576a5">Front::CVScrollingMenu::~CVScrollingMenu</a></div><div class="ttdeci">virtual ~CVScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00363">ScrollingMenu.cpp:363</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a1e85eee5e600de8358db26f6c777e42d"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">Script::CStruct::GetInteger</a></div><div class="ttdeci">bool GetInteger(uint32 nameChecksum, int *p_integerValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01480">struct.cpp:1480</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a9d526ec9868d6b8088eb51c7effe1ddfa5becd786290abfd1bd0c42b3506861cb"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a9d526ec9868d6b8088eb51c7effe1ddfa5becd786290abfd1bd0c42b3506861cb">Obj::CEvent::vSYSTEM_EVENT</a></div><div class="ttdeci">@ vSYSTEM_EVENT</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00032">Event.h:32</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a31b5be192c643b6da7666f56eacc4cbe"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a31b5be192c643b6da7666f56eacc4cbe">Front::CBaseScrollingMenu::m_selected_element_id</a></div><div class="ttdeci">uint32 m_selected_element_id</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00034">ScrollingMenu.h:34</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_ae8ddf4a57bdd352326c7d6af3a07f24b"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#ae8ddf4a57bdd352326c7d6af3a07f24b">Front::CBaseScrollingMenu::~CBaseScrollingMenu</a></div><div class="ttdeci">virtual ~CBaseScrollingMenu()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/daa/_scrolling_menu_8cpp_source.html#l00039">ScrollingMenu.cpp:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_tracker_html_aff42a8a7d4fe4050e424421697ffe0ac"><div class="ttname"><a href="../../df/d80/class_obj_1_1_c_tracker.html#aff42a8a7d4fe4050e424421697ffe0ac">Obj::CTracker::LaunchEvent</a></div><div class="ttdeci">bool LaunchEvent(uint32 type, uint32 target=CEvent::vSYSTEM_EVENT, uint32 source=CEvent::vSYSTEM_EVENT, Script::CStruct *pData=NULL, bool broadcast=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d5d/objtrack_8cpp_source.html#l00519">objtrack.cpp:519</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_acb7c287520ab4b7462fedb3277b9d23f"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#acb7c287520ab4b7462fedb3277b9d23f">Front::CScreenElement::GetLocalPos</a></div><div class="ttdeci">void GetLocalPos(float *pX, float *pY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/de3/_screen_element2_8cpp_source.html#l00137">ScreenElement2.cpp:137</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a83e885c2ba86282fa6e0d6bbcbc3d28f"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a83e885c2ba86282fa6e0d6bbcbc3d28f">Obj::CEvent::MarkHandled</a></div><div class="ttdeci">void MarkHandled(uint32 receiverId=0, uint32 script=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dd4/_event_8cpp_source.html#l00057">Event.cpp:57</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_event_html_a516d98273544f7ec223c5c8b2525293ea3b9d00a49e47cf59bd9bd8e0f520b44d"><div class="ttname"><a href="../../de/da0/class_obj_1_1_c_event.html#a516d98273544f7ec223c5c8b2525293ea3b9d00a49e47cf59bd9bd8e0f520b44d">Obj::CEvent::TYPE_FOCUS</a></div><div class="ttdeci">@ TYPE_FOCUS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6d/_event_8h_source.html#l00039">Event.h:39</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a93b11c612b2daf7d5f1b06a1e46a69f6"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a93b11c612b2daf7d5f1b06a1e46a69f6">Front::CBaseScrollingMenu::m_regular_space_amount</a></div><div class="ttdeci">float m_regular_space_amount</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00048">ScrollingMenu.h:48</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_base_scrolling_menu_html_a63d0ace78eefae3f1d5125ee62dcb280"><div class="ttname"><a href="../../d9/db2/class_front_1_1_c_base_scrolling_menu.html#a63d0ace78eefae3f1d5125ee62dcb280">Front::CBaseScrollingMenu::m_in_focus</a></div><div class="ttdeci">bool m_in_focus</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d9f/_scrolling_menu_8h_source.html#l00038">ScrollingMenu.h:38</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a80f8bd468a6dd472d4422c577d48566b"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a80f8bd468a6dd472d4422c577d48566b">Obj::CObject::PassTargetedEvent</a></div><div class="ttdeci">virtual bool PassTargetedEvent(CEvent *pEvent, bool broadcast=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00904">object.cpp:904</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_smt_ptr_html_abfded371e4740217057f76240804b0eb"><div class="ttname"><a href="../../de/dd8/class_obj_1_1_c_smt_ptr.html#abfded371e4740217057f76240804b0eb">Obj::CSmtPtr::Convert</a></div><div class="ttdeci">T * Convert() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dab/_obj_ptr_8h_source.html#l00042">ObjPtr.h:42</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_cfec92c1b516b6ca8cfbda9edefa5b9d.html">2D</a></li><li class="navelem"><a class="el" href="../../de/daa/_scrolling_menu_8cpp.html">ScrollingMenu.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

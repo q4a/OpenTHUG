@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/2D/BlurEffect.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d7f/_blur_effect_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">BlurEffect.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d7f/_blur_effect_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __GFX_2D_BLUREFFECT_H__</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __GFX_2D_BLUREFFECT_H__</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd5/_screen_element2_8h.html">gfx/2D/ScreenElement2.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d5/d96/namespace_front.html">Front</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html">CBlurEffect</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html">   19</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html">Props</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a043b55460c63f13efb780dc26bd8add0">   21</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a043b55460c63f13efb780dc26bd8add0">topAlpha</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a303a8eea704d0c5cdf28f9356dcaa4f5">   22</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a303a8eea704d0c5cdf28f9356dcaa4f5">bottomAlpha</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a7c394c36f934cf8ac42877c139ae0126">   23</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a7c394c36f934cf8ac42877c139ae0126">bottomScaleX</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#ad01f82e253877c2fdf32ddb51cfe04de">   24</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#ad01f82e253877c2fdf32ddb51cfe04de">bottomScaleY</a>;                   </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a573d26a96137d28cd2114e09c92b1ded">   25</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a573d26a96137d28cd2114e09c92b1ded">maxDisplacementX</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a19aa6dbd45e7eb0a7162cabe78eddaaf">   26</a></span>&#160;        <span class="keywordtype">float</span>                       <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a19aa6dbd45e7eb0a7162cabe78eddaaf">maxDisplacementY</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                                    <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a795e6b16a63034265cecf4ab4ac8253d">CBlurEffect</a>();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                                    <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a8f0b7078bef8c79af9404575e6773beb">~CBlurEffect</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a52c004e596b5af97e4846c30f056d86a">Update</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../db/d5a/struct_front_1_1_c_screen_element_1_1_concat_props.html">CScreenElement::ConcatProps</a> &amp;   <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a8bf36b4bc694ef97b35aa135823b9cf7">GetInfo</a>(<span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a5fe663ff6b72d7caf04f19105832dbb8">   35</a></span>&#160;    <span class="keywordtype">int</span>                             <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a5fe663ff6b72d7caf04f19105832dbb8">GetNumEntries</a>() {<span class="keywordflow">return</span> 16;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a1210970a5c687b2387ddc2fe971eae0b">   36</a></span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>                     <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a1210970a5c687b2387ddc2fe971eae0b">GetRGBA</a>() {<span class="keywordflow">return</span> <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ad2873966b09ce3778df5a686195bb198">m_rgba</a>;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a9a4f4e3c807f0f2b85602fc0e14ff017">   38</a></span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a9a4f4e3c807f0f2b85602fc0e14ff017">SetAlphas</a>(<span class="keywordtype">float</span> top, <span class="keywordtype">float</span> bottom) {<a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a043b55460c63f13efb780dc26bd8add0">topAlpha</a> = top; <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a303a8eea704d0c5cdf28f9356dcaa4f5">bottomAlpha</a> = bottom;}</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a7ea85f1771e300dd2021d6fc13657f52">   39</a></span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a7ea85f1771e300dd2021d6fc13657f52">SetBottomScales</a>(<span class="keywordtype">float</span> scaleX, <span class="keywordtype">float</span> scaleY) {<a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a7c394c36f934cf8ac42877c139ae0126">bottomScaleX</a> = scaleX; <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#ad01f82e253877c2fdf32ddb51cfe04de">bottomScaleY</a> = scaleY;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a91421c747532b0edf6ae17201eca4dcc">   40</a></span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a91421c747532b0edf6ae17201eca4dcc">SetMaxDisplacements</a>(<span class="keywordtype">float</span> dispX, <span class="keywordtype">float</span> dispY) {<a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a573d26a96137d28cd2114e09c92b1ded">maxDisplacementX</a> = dispX; <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>.<a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a19aa6dbd45e7eb0a7162cabe78eddaaf">maxDisplacementY</a> = dispY;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a04d2dafaf951352b36ed8a5c49b51664">   41</a></span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a04d2dafaf951352b36ed8a5c49b51664">SetRGBA</a>(<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> rgba) {<a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ad2873966b09ce3778df5a686195bb198">m_rgba</a> = rgba;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a9851cb57039e113c857c332ecc8a49c2">SetAllTargetProps</a>(<span class="keyword">const</span> Props &amp;newProps, <a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a> time);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a885ec138e6fbd8926ba5a5a8c95c11fe">SetAnimTime</a>(<a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a> time);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> Props &amp;                   <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ae91958ee2c68c717ccca285453d42182">SetMorph</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pProps, <a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a> *pRetTime = NULL);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a9991cf7e66796c43b36a921d76081e6d">   49</a></span>&#160;    <a class="code" href="../../db/d5a/struct_front_1_1_c_screen_element_1_1_concat_props.html">CScreenElement::ConcatProps</a>     <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a9991cf7e66796c43b36a921d76081e6d">m_tab</a>[16];</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">   51</a></span>&#160;    <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html">Props</a>                           <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">m_target</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#a319db6bdef55f22cca8b6b4182317f6a">   52</a></span>&#160;    <a class="code" href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html">Props</a>                           <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#a319db6bdef55f22cca8b6b4182317f6a">m_current</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#af2c0ee50698ff7285a9dc2a4b8df8413">   54</a></span>&#160;    <a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a>                       <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#af2c0ee50698ff7285a9dc2a4b8df8413">m_last_time</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#ae25c96569360bc9cd2bcdc09b74ab7c7">   55</a></span>&#160;    <a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a>                       <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ae25c96569360bc9cd2bcdc09b74ab7c7">m_key_time</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../df/d87/class_front_1_1_c_blur_effect.html#ad2873966b09ce3778df5a686195bb198">   57</a></span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>                     <a class="code" href="../../df/d87/class_front_1_1_c_blur_effect.html#ad2873966b09ce3778df5a686195bb198">m_rgba</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#endif // __GFX_2D_BLUREFFECT_H__</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_a19aa6dbd45e7eb0a7162cabe78eddaaf"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a19aa6dbd45e7eb0a7162cabe78eddaaf">Front::CBlurEffect::Props::maxDisplacementY</a></div><div class="ttdeci">float maxDisplacementY</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00026">BlurEffect.h:26</a></div></div>
+<div class="ttc" id="anamespace_front_html"><div class="ttname"><a href="../../d5/d96/namespace_front.html">Front</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00066">object.h:66</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a7ea85f1771e300dd2021d6fc13657f52"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a7ea85f1771e300dd2021d6fc13657f52">Front::CBlurEffect::SetBottomScales</a></div><div class="ttdeci">void SetBottomScales(float scaleX, float scaleY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00039">BlurEffect.h:39</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a50be6f0b0f6cc99949aef978978a9d9e"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a></div><div class="ttdeci">uint32 Time</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd0/timer_8h_source.html#l00060">timer.h:60</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a9851cb57039e113c857c332ecc8a49c2"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a9851cb57039e113c857c332ecc8a49c2">Front::CBlurEffect::SetAllTargetProps</a></div><div class="ttdeci">void SetAllTargetProps(const Props &amp;newProps, Tmr::Time time)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00072">BlurEffect.cpp:72</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a5fe663ff6b72d7caf04f19105832dbb8"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a5fe663ff6b72d7caf04f19105832dbb8">Front::CBlurEffect::GetNumEntries</a></div><div class="ttdeci">int GetNumEntries()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00035">BlurEffect.h:35</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a1210970a5c687b2387ddc2fe971eae0b"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a1210970a5c687b2387ddc2fe971eae0b">Front::CBlurEffect::GetRGBA</a></div><div class="ttdeci">Image::RGBA GetRGBA()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00036">BlurEffect.h:36</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_a043b55460c63f13efb780dc26bd8add0"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a043b55460c63f13efb780dc26bd8add0">Front::CBlurEffect::Props::topAlpha</a></div><div class="ttdeci">float topAlpha</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00021">BlurEffect.h:21</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_ad2873966b09ce3778df5a686195bb198"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#ad2873966b09ce3778df5a686195bb198">Front::CBlurEffect::m_rgba</a></div><div class="ttdeci">Image::RGBA m_rgba</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00057">BlurEffect.h:57</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_af2c0ee50698ff7285a9dc2a4b8df8413"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#af2c0ee50698ff7285a9dc2a4b8df8413">Front::CBlurEffect::m_last_time</a></div><div class="ttdeci">Tmr::Time m_last_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00054">BlurEffect.h:54</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_ae25c96569360bc9cd2bcdc09b74ab7c7"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#ae25c96569360bc9cd2bcdc09b74ab7c7">Front::CBlurEffect::m_key_time</a></div><div class="ttdeci">Tmr::Time m_key_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00055">BlurEffect.h:55</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a8bf36b4bc694ef97b35aa135823b9cf7"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a8bf36b4bc694ef97b35aa135823b9cf7">Front::CBlurEffect::GetInfo</a></div><div class="ttdeci">CScreenElement::ConcatProps &amp; GetInfo(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00064">BlurEffect.cpp:64</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a795e6b16a63034265cecf4ab4ac8253d"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a795e6b16a63034265cecf4ab4ac8253d">Front::CBlurEffect::CBlurEffect</a></div><div class="ttdeci">CBlurEffect()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00012">BlurEffect.cpp:12</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a885ec138e6fbd8926ba5a5a8c95c11fe"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a885ec138e6fbd8926ba5a5a8c95c11fe">Front::CBlurEffect::SetAnimTime</a></div><div class="ttdeci">void SetAnimTime(Tmr::Time time)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00081">BlurEffect.cpp:81</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a8f0b7078bef8c79af9404575e6773beb"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a8f0b7078bef8c79af9404575e6773beb">Front::CBlurEffect::~CBlurEffect</a></div><div class="ttdeci">~CBlurEffect()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00019">BlurEffect.cpp:19</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_a303a8eea704d0c5cdf28f9356dcaa4f5"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a303a8eea704d0c5cdf28f9356dcaa4f5">Front::CBlurEffect::Props::bottomAlpha</a></div><div class="ttdeci">float bottomAlpha</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00022">BlurEffect.h:22</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_a7c394c36f934cf8ac42877c139ae0126"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a7c394c36f934cf8ac42877c139ae0126">Front::CBlurEffect::Props::bottomScaleX</a></div><div class="ttdeci">float bottomScaleX</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00023">BlurEffect.h:23</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a04d2dafaf951352b36ed8a5c49b51664"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a04d2dafaf951352b36ed8a5c49b51664">Front::CBlurEffect::SetRGBA</a></div><div class="ttdeci">void SetRGBA(Image::RGBA rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00041">BlurEffect.h:41</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a9a4f4e3c807f0f2b85602fc0e14ff017"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a9a4f4e3c807f0f2b85602fc0e14ff017">Front::CBlurEffect::SetAlphas</a></div><div class="ttdeci">void SetAlphas(float top, float bottom)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00038">BlurEffect.h:38</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_ad01f82e253877c2fdf32ddb51cfe04de"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#ad01f82e253877c2fdf32ddb51cfe04de">Front::CBlurEffect::Props::bottomScaleY</a></div><div class="ttdeci">float bottomScaleY</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00024">BlurEffect.h:24</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html_a573d26a96137d28cd2114e09c92b1ded"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html#a573d26a96137d28cd2114e09c92b1ded">Front::CBlurEffect::Props::maxDisplacementX</a></div><div class="ttdeci">float maxDisplacementX</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00025">BlurEffect.h:25</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a52c004e596b5af97e4846c30f056d86a"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a52c004e596b5af97e4846c30f056d86a">Front::CBlurEffect::Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00026">BlurEffect.cpp:26</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a319db6bdef55f22cca8b6b4182317f6a"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a319db6bdef55f22cca8b6b4182317f6a">Front::CBlurEffect::m_current</a></div><div class="ttdeci">Props m_current</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00052">BlurEffect.h:52</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html">Front::CBlurEffect</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00015">BlurEffect.h:15</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_ac460a8d508a7c0b2591ba0cbca445dca"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#ac460a8d508a7c0b2591ba0cbca445dca">Front::CBlurEffect::m_target</a></div><div class="ttdeci">Props m_target</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00051">BlurEffect.h:51</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a91421c747532b0edf6ae17201eca4dcc"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a91421c747532b0edf6ae17201eca4dcc">Front::CBlurEffect::SetMaxDisplacements</a></div><div class="ttdeci">void SetMaxDisplacements(float dispX, float dispY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00040">BlurEffect.h:40</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_ae91958ee2c68c717ccca285453d42182"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#ae91958ee2c68c717ccca285453d42182">Front::CBlurEffect::SetMorph</a></div><div class="ttdeci">const Props &amp; SetMorph(Script::CStruct *pProps, Tmr::Time *pRetTime=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbf/_blur_effect_8cpp_source.html#l00093">BlurEffect.cpp:93</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="a_screen_element2_8h_html"><div class="ttname"><a href="../../d9/dd5/_screen_element2_8h.html">ScreenElement2.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_blur_effect_html_a9991cf7e66796c43b36a921d76081e6d"><div class="ttname"><a href="../../df/d87/class_front_1_1_c_blur_effect.html#a9991cf7e66796c43b36a921d76081e6d">Front::CBlurEffect::m_tab</a></div><div class="ttdeci">CScreenElement::ConcatProps m_tab[16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00049">BlurEffect.h:49</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_screen_element_1_1_concat_props_html"><div class="ttname"><a href="../../db/d5a/struct_front_1_1_c_screen_element_1_1_concat_props.html">Front::CScreenElement::ConcatProps</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00126">ScreenElement2.h:126</a></div></div>
+<div class="ttc" id="astruct_front_1_1_c_blur_effect_1_1_props_html"><div class="ttname"><a href="../../dc/dc9/struct_front_1_1_c_blur_effect_1_1_props.html">Front::CBlurEffect::Props</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d7f/_blur_effect_8h_source.html#l00019">BlurEffect.h:19</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_cfec92c1b516b6ca8cfbda9edefa5b9d.html">2D</a></li><li class="navelem"><a class="el" href="../../d9/d7f/_blur_effect_8h.html">BlurEffect.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

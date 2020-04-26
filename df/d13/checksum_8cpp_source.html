@@ -1,0 +1,405 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Scripting/checksum.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/d13/checksum_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">checksum.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d13/checksum_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// checksum.cpp     KSH 22 Oct 2001</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Checksum name lookup stuff for use by asserts.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Uses up a heck of a lot of memory, but only when __NOPT_ASSERT__ is defined.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#ifdef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifdef __QDEBUG__</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;../tools/src/monitor/stdafx.h&gt;</span> <span class="comment">// Needed for the message box</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">string.h</a>&gt;</span> <span class="comment">// For stricmp</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/de6/crc_8h.html">core/crc.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d16/config_8h.html">sys/config/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d72/debugger_8h.html">gel/scripting/debugger.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// These are only referenced in the Playstation version.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// They are set in NGPS.lk</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="../../df/d13/checksum_8cpp.html#ac4b6d79659f841db0ece216fb1cee07d">_script_debugger_start</a>[];</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="../../df/d13/checksum_8cpp.html#a3b7c86fca414ea051fe7041bdfd203e3">_script_start</a>[];</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">char</span> <a class="code" href="../../df/d13/checksum_8cpp.html#a6149055d2e6858317e6eed692d2c7c6b">_script_end</a>[];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">// The number of bits is set to be high to speed up AddChecksumName, so that</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// LoadQB does not take ages to execute.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define CHECKSUM_LOOKUP_HASH_BITS 16</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// This probably does not need to be so big, but we&#39;ve got lots of memory in debug so it&#39;s OK.</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define CHECKSUM_ENTRIES_PER_SLOT 10</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// There are (1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS) * CHECKSUM_ENTRIES_PER_SLOT of these,</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// which uses about 5.2Meg.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">   41</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">   43</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">mChecksum</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">   44</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;};</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">// The space available to hold all the checksum names. The names are stored contiguously</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// with no wasted space in between. They stay in memory forever.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#define CHECKSUM_NAME_SPACE 5000000</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">   51</a></span>&#160;<span class="keyword">static</span> <a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a> *<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>=NULL;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">   52</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">char</span> *<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>=NULL;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">   53</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">char</span> *<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>=NULL;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a7d57fd3b9a96f6cf8d8cec73bcae92ed">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d54/namespace_script.html#a7d57fd3b9a96f6cf8d8cec73bcae92ed">AllocateChecksumNameLookupTables</a>()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a>())</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>==NULL,(<span class="stringliteral">&quot;sp_checksum_name_hash_table not NULL ?&quot;</span>));                  </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>==NULL,(<span class="stringliteral">&quot;sp_checksum_names not NULL ?&quot;</span>));                  </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>==NULL,(<span class="stringliteral">&quot;sp_end_of_checksum_names not NULL ?&quot;</span>));                </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">    #ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">    #ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Use the chunk of memory that was set aside for script debug stuff in NGPS.lk</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> script_debug_mem_size=(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)(<a class="code" href="../../df/d13/checksum_8cpp.html#a6149055d2e6858317e6eed692d2c7c6b">_script_end</a>-<a class="code" href="../../df/d13/checksum_8cpp.html#a3b7c86fca414ea051fe7041bdfd203e3">_script_start</a>);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// Check there is enough space.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> hash_table_size=(1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS) * CHECKSUM_ENTRIES_PER_SLOT * <span class="keyword">sizeof</span>(<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a>);  </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    Dbg_MsgAssert(script_debug_mem_size&gt;=hash_table_size+CHECKSUM_NAME_SPACE,(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                  <span class="stringliteral">&quot;Chunk of debug memory reserved for script stuff is not big enough.\nRequired=%d, got=%d&quot;</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                  hash_table_size+CHECKSUM_NAME_SPACE, script_debug_mem_size));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">    #endif                </span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                  </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>=(<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a>*)<a class="code" href="../../df/d13/checksum_8cpp.html#a3b7c86fca414ea051fe7041bdfd203e3">_script_start</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>=(<span class="keywordtype">char</span>*)(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>+((1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS) * CHECKSUM_ENTRIES_PER_SLOT));</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>=<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Set up pointers to the locations of sp_checksum_names and sp_end_of_checksum_names</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// so that later the script debugger can find the list of names using the target manager API </span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// and register their checksums too.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    Dbg_MsgAssert((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)<a class="code" href="../../df/d13/checksum_8cpp.html#ac4b6d79659f841db0ece216fb1cee07d">_script_debugger_start</a>==<a class="code" href="../../da/d37/namespace_dbg.html#a420c810c95dea8b610897efe46a99893a3a2684763defe6b00429913329b9cdbd">Dbg::SCRIPT_DEBUGGER_MEMORY_START</a>,(<span class="stringliteral">&quot;Need to update SCRIPT_DEBUGGER_MEMORY_START in debugger.h to match the location of the script_debugger group in ngps.lk&quot;</span>));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html">Dbg::SChecksumNameInfo</a> *p_checksum_name_info=(<a class="code" href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html">Dbg::SChecksumNameInfo</a>*)<a class="code" href="../../df/d13/checksum_8cpp.html#ac4b6d79659f841db0ece216fb1cee07d">_script_debugger_start</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    p_checksum_name_info-&gt;<a class="code" href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html#a6f0b5d4a40620f66a437e0a87b96f489">mppStart</a>=&amp;<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    p_checksum_name_info-&gt;<a class="code" href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html#a11a8a02bfeb7bd4cb12f878271be5f8f">mppEnd</a>=&amp;<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Just allocate the arrays off the heap.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">// Checksum-name lookup stuff.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>=(<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>((1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS) * CHECKSUM_ENTRIES_PER_SLOT * <span class="keyword">sizeof</span>(<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a>));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>=(<span class="keywordtype">char</span>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>(CHECKSUM_NAME_SPACE);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>=<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">    #endif // __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Initialise the hash table.</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;(1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS) * CHECKSUM_ENTRIES_PER_SLOT; ++i)</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>[i].<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">mChecksum</a>=0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>[i].<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>=NULL;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Initialise the pile of strings.</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    *<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>=0;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a706664dedb8ae1f54d021973ddd2f82e">  112</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d54/namespace_script.html#a706664dedb8ae1f54d021973ddd2f82e">DeallocateChecksumNameLookupTables</a>()</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a>())</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>,(<span class="stringliteral">&quot;NULL sp_checksum_name_hash_table ?&quot;</span>));                </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>,(<span class="stringliteral">&quot;NULL sp_checksum_names ?&quot;</span>));                </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">    #ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Nothing to delete on PS2 because the arrays were not dynamically allocated.</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">    #else</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>(<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>=NULL;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>=NULL;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>=NULL;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}   </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">// Used by the script debugger code to send the set of checksum names to the debugger program</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">// running on the PC.</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a0fb46050fe42020777f7793cefdd2c9f">  136</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d54/namespace_script.html#a0fb46050fe42020777f7793cefdd2c9f">GetChecksumNamesBuffer</a>(<span class="keywordtype">char</span> **pp_start, <span class="keywordtype">char</span> **pp_end)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;{</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    Dbg_MsgAssert(pp_start &amp;&amp; pp_end,(<span class="stringliteral">&quot;pp_start and pp_end must be non-NULL&quot;</span>));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a>())</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        *pp_start=NULL;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        *pp_end=NULL;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    *pp_start=<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    *pp_end=<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}   </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">//uint32 sNumChecksums=0;</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a817056f2b15a652d887fe7928c6b9ee9">  152</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d54/namespace_script.html#a817056f2b15a652d887fe7928c6b9ee9">AddChecksumName</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <span class="keyword">const</span> <span class="keywordtype">char</span> *p_name)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a>())</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    Dbg_MsgAssert(checksum,(<span class="stringliteral">&quot;Zero checksum sent to AddChecksumName&quot;</span>));</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    Dbg_MsgAssert(p_name,(<span class="stringliteral">&quot;NULL p_name sent to AddChecksumName&quot;</span>));</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>,(<span class="stringliteral">&quot;NULL sp_checksum_name_hash_table&quot;</span>));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a> *p_first=&amp;<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>[(checksum&amp;((1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS)-1))*CHECKSUM_ENTRIES_PER_SLOT];</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">int</span> c=0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">while</span> (p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="comment">// Already a name here.</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// See if it has the same checksum.</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">if</span> (p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">mChecksum</a>==checksum)</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        {</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="comment">// It does! Check whether it is the same name.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="keywordflow">if</span> (stricmp(p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>,p_name)==0)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                <span class="comment">// Phew, the name matches. No need to do anything.</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                <span class="comment">// Oh bugger, a checksum clash.</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">                #ifdef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">                #ifdef __QDEBUG__</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <span class="keywordtype">char</span> p_foo[1024];</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>(p_foo,<span class="stringliteral">&quot;Checksum clash between %s and %s, both have checksum 0x%08x&quot;</span>,p_name,p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>,checksum);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                MessageBox(NULL,p_foo,<span class="stringliteral">&quot;Warning&quot;</span>,MB_OK);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="comment">// Carry on anyway, won&#39;t cause a crash.</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">                #else               </span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                Dbg_MsgAssert(0,(<span class="stringliteral">&quot;Checksum clash between %s and %s, both have checksum 0x%08x&quot;</span>,p_name,p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>,checksum));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">                #endif</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// Not the same checksum. Onto the next entry.</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        ++c;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        Dbg_MsgAssert(c&lt;CHECKSUM_ENTRIES_PER_SLOT,(<span class="stringliteral">&quot;Need to increase CHECKSUM_ENTRIES_PER_SLOT in checksum.cpp&quot;</span>));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        ++p_first;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment">//++sNumChecksums;</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">//printf(&quot;sNumChecksums=%d\n&quot;,sNumChecksums);</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">mChecksum</a>=checksum;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>=<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordtype">int</span> space_left=CHECKSUM_NAME_SPACE-(<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>-<a class="code" href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">sp_checksum_names</a>);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">while</span> (*p_name)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        Dbg_MsgAssert(space_left&gt;0,(<span class="stringliteral">&quot;Need to increase CHECKSUM_NAME_SPACE in checksum.cpp&quot;</span>));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        *<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>++=*p_name++;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        --space_left;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }   </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    Dbg_MsgAssert(space_left&gt;0,(<span class="stringliteral">&quot;Need to increase CHECKSUM_NAME_SPACE in checksum.cpp&quot;</span>));</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    *<a class="code" href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">sp_end_of_checksum_names</a>++=0;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">  217</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">char</span> <a class="code" href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">sp_unknown_checksum_buf</a>[100];</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">// Returns NULL if not found.</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">// This version is not safe to use in a printf because it may return NULL, but can be handy for</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">// when the calling code needs to do something special if the name is not found.</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#a5cc52c4ff5ea5bb27681d819212dfdca">  222</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d1/d54/namespace_script.html#a5cc52c4ff5ea5bb27681d819212dfdca">FindChecksumNameNULL</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a>())</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>,(<span class="stringliteral">&quot;NULL sp_checksum_name_hash_table&quot;</span>));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html">SChecksumName</a> *p_first=&amp;<a class="code" href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">sp_checksum_name_hash_table</a>[(checksum&amp;((1&lt;&lt;CHECKSUM_LOOKUP_HASH_BITS)-1))*CHECKSUM_ENTRIES_PER_SLOT];</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">int</span> c=CHECKSUM_ENTRIES_PER_SLOT;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">while</span> (p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">if</span> (p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">mChecksum</a>==checksum)</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        {</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            <span class="keywordflow">return</span> p_first-&gt;<a class="code" href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">mpName</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        }   </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        --c;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">if</span> (c==0)</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="comment">// Run out of slots.</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }   </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        ++p_first;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    }</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">return</span> NULL;        </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">// Returns &quot;Unknown&quot; if not found.</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">// This version is always safe to use in a printf.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">  252</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">FindChecksumName</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum)</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_name=<a class="code" href="../../d1/d54/namespace_script.html#a5cc52c4ff5ea5bb27681d819212dfdca">FindChecksumNameNULL</a>(checksum);</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">if</span> (p_name) </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> p_name;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">        #ifdef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="comment">// The monitor.exe application requires that the unknown checksum be</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="comment">// displayed like this.</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>(<a class="code" href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">sp_unknown_checksum_buf</a>,<span class="stringliteral">&quot;0x%08x&quot;</span>,checksum); </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>(<a class="code" href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">sp_unknown_checksum_buf</a>,<span class="stringliteral">&quot;Unknown(0x%08x)&quot;</span>,checksum);    </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">sp_unknown_checksum_buf</a>;     </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    }   </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;}</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;} <span class="comment">// namespace Script</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_script_html_a0fb46050fe42020777f7793cefdd2c9f"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a0fb46050fe42020777f7793cefdd2c9f">Script::GetChecksumNamesBuffer</a></div><div class="ttdeci">void GetChecksumNamesBuffer(char **pp_start, char **pp_end)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00136">checksum.cpp:136</a></div></div>
+<div class="ttc" id="achecksum_8cpp_html_a6149055d2e6858317e6eed692d2c7c6b"><div class="ttname"><a href="../../df/d13/checksum_8cpp.html#a6149055d2e6858317e6eed692d2c7c6b">_script_end</a></div><div class="ttdeci">char _script_end[]</div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="astruct_dbg_1_1_s_checksum_name_info_html_a11a8a02bfeb7bd4cb12f878271be5f8f"><div class="ttname"><a href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html#a11a8a02bfeb7bd4cb12f878271be5f8f">Dbg::SChecksumNameInfo::mppEnd</a></div><div class="ttdeci">char ** mppEnd</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d72/debugger_8h_source.html#l00057">debugger.h:57</a></div></div>
+<div class="ttc" id="acrc_8h_html"><div class="ttname"><a href="../../dc/de6/crc_8h.html">crc.h</a></div></div>
+<div class="ttc" id="astruct_script_1_1_s_checksum_name_html_a34dc3dd95aac4c59e38e9b7696fbaac8"><div class="ttname"><a href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a34dc3dd95aac4c59e38e9b7696fbaac8">Script::SChecksumName::mpName</a></div><div class="ttdeci">const char * mpName</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00044">checksum.cpp:44</a></div></div>
+<div class="ttc" id="anamespace_script_html_a706664dedb8ae1f54d021973ddd2f82e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a706664dedb8ae1f54d021973ddd2f82e">Script::DeallocateChecksumNameLookupTables</a></div><div class="ttdeci">void DeallocateChecksumNameLookupTables()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00112">checksum.cpp:112</a></div></div>
+<div class="ttc" id="anamespace_script_html_a7d57fd3b9a96f6cf8d8cec73bcae92ed"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a7d57fd3b9a96f6cf8d8cec73bcae92ed">Script::AllocateChecksumNameLookupTables</a></div><div class="ttdeci">void AllocateChecksumNameLookupTables()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00055">checksum.cpp:55</a></div></div>
+<div class="ttc" id="achecksum_8cpp_html_a3b7c86fca414ea051fe7041bdfd203e3"><div class="ttname"><a href="../../df/d13/checksum_8cpp.html#a3b7c86fca414ea051fe7041bdfd203e3">_script_start</a></div><div class="ttdeci">char _script_start[]</div></div>
+<div class="ttc" id="adebugger_8h_html"><div class="ttname"><a href="../../dc/d72/debugger_8h.html">debugger.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_a5cc52c4ff5ea5bb27681d819212dfdca"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a5cc52c4ff5ea5bb27681d819212dfdca">Script::FindChecksumNameNULL</a></div><div class="ttdeci">const char * FindChecksumNameNULL(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00222">checksum.cpp:222</a></div></div>
+<div class="ttc" id="anamespace_script_html_a817056f2b15a652d887fe7928c6b9ee9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a817056f2b15a652d887fe7928c6b9ee9">Script::AddChecksumName</a></div><div class="ttdeci">void AddChecksumName(uint32 checksum, const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00152">checksum.cpp:152</a></div></div>
+<div class="ttc" id="anamespace_script_html_ac2bb131bf56ab295b7086e5dd2438902"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ac2bb131bf56ab295b7086e5dd2438902">Script::sp_end_of_checksum_names</a></div><div class="ttdeci">static char * sp_end_of_checksum_names</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00053">checksum.cpp:53</a></div></div>
+<div class="ttc" id="anamespace_config_html_a709cc81780d49900157e3476b63aa25d"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a709cc81780d49900157e3476b63aa25d">Config::GotExtraMemory</a></div><div class="ttdeci">bool GotExtraMemory()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00078">config.h:78</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aeedb606ea94a3398fdcfa3101c5ea8d9"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a></div><div class="ttdeci">void Free(void *p_mem)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00108">win32functions.cpp:108</a></div></div>
+<div class="ttc" id="astruct_dbg_1_1_s_checksum_name_info_html"><div class="ttname"><a href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html">Dbg::SChecksumNameInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d72/debugger_8h_source.html#l00054">debugger.h:54</a></div></div>
+<div class="ttc" id="astruct_script_1_1_s_checksum_name_html"><div class="ttname"><a href="../../d2/df9/struct_script_1_1_s_checksum_name.html">Script::SChecksumName</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00041">checksum.cpp:41</a></div></div>
+<div class="ttc" id="astruct_dbg_1_1_s_checksum_name_info_html_a6f0b5d4a40620f66a437e0a87b96f489"><div class="ttname"><a href="../../d6/df6/struct_dbg_1_1_s_checksum_name_info.html#a6f0b5d4a40620f66a437e0a87b96f489">Dbg::SChecksumNameInfo::mppStart</a></div><div class="ttdeci">char ** mppStart</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d72/debugger_8h_source.html#l00056">debugger.h:56</a></div></div>
+<div class="ttc" id="anamespace_script_html_adc47842a43e3eb7b7e373556b697d0d2"><div class="ttname"><a href="../../d1/d54/namespace_script.html#adc47842a43e3eb7b7e373556b697d0d2">Script::sp_checksum_name_hash_table</a></div><div class="ttdeci">static SChecksumName * sp_checksum_name_hash_table</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00051">checksum.cpp:51</a></div></div>
+<div class="ttc" id="astruct_script_1_1_s_checksum_name_html_a51ad892d37b58bee2c5a28e9ebc5f2a0"><div class="ttname"><a href="../../d2/df9/struct_script_1_1_s_checksum_name.html#a51ad892d37b58bee2c5a28e9ebc5f2a0">Script::SChecksumName::mChecksum</a></div><div class="ttdeci">uint32 mChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00043">checksum.cpp:43</a></div></div>
+<div class="ttc" id="anamespace_script_html_a537083cb09b82527a3379d134e69bc64"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a537083cb09b82527a3379d134e69bc64">Script::sp_checksum_names</a></div><div class="ttdeci">static char * sp_checksum_names</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00052">checksum.cpp:52</a></div></div>
+<div class="ttc" id="anamespace_script_html_aec2e74e5240d1d813bab9b55862bcbf6"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aec2e74e5240d1d813bab9b55862bcbf6">Script::sp_unknown_checksum_buf</a></div><div class="ttdeci">static char sp_unknown_checksum_buf[100]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00217">checksum.cpp:217</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="../../db/d16/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="achecksum_8cpp_html_ac4b6d79659f841db0ece216fb1cee07d"><div class="ttname"><a href="../../df/d13/checksum_8cpp.html#ac4b6d79659f841db0ece216fb1cee07d">_script_debugger_start</a></div><div class="ttdeci">char _script_debugger_start[]</div></div>
+<div class="ttc" id="anamespace_script_html_ae80ed69ea4edcbcbbbd4985a6efdcd6e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a></div><div class="ttdeci">const char * FindChecksumName(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00252">checksum.cpp:252</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab406a8cc16de5046c7d9fd09c9de5e22"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">Dbg::sprintf</a></div><div class="ttdeci">sprintf(tmp1, &quot;FILE:      %s(%d) &quot;, file, line)</div></div>
+<div class="ttc" id="anamespace_dbg_html_a420c810c95dea8b610897efe46a99893a3a2684763defe6b00429913329b9cdbd"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a420c810c95dea8b610897efe46a99893a3a2684763defe6b00429913329b9cdbd">Dbg::SCRIPT_DEBUGGER_MEMORY_START</a></div><div class="ttdeci">@ SCRIPT_DEBUGGER_MEMORY_START</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d72/debugger_8h_source.html#l00047">debugger.h:47</a></div></div>
+<div class="ttc" id="anamespace_mem_html_a10246603d03405159c82320b96e3efbf"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a></div><div class="ttdeci">void * Malloc(size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00103">win32functions.cpp:103</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_bf8e5fca1748327330c6e305e7d9d8ed.html">Scripting</a></li><li class="navelem"><a class="el" href="../../df/d13/checksum_8cpp.html">checksum.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:24. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

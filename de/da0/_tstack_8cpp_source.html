@@ -1,0 +1,514 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/core/Task/Tstack.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/da0/_tstack_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Tstack.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/da0/_tstack_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        Core Library                                            **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Task Manager (TSK)                                      **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      tstack.cpp                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     05/27/99    -   mjb                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Task Stack Support                                      **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dc5/_task_8h.html">core/task.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">**                            DBG Information                               **</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/da5/namespace_tsk.html">Tsk</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">class  </span>Stack::StackElement : <span class="keyword">public</span>  List </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a4641b458711966e157e765a8aef3476c">Stack</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;public :</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                            <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#aee87a3ca32c59d6a3cc477cd609dc371">StackElement</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                            <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a22f58566313b74d283ee7828ffbd5cdb">~StackElement</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    Lst::Node&lt; StackElement &gt;*  <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">   74</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">Stack::remove_dead_entries</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    Lst::Search&lt; StackElement &gt; iterator;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">StackElement</a>*   dead_entry;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;     </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d1/d11/class_spt_1_1_access.html#aed89dbfc1452383a249b35ebfc243ef2">HaveAccess</a>(),( <span class="stringliteral">&quot;List currently being processed&quot;</span> ));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">while</span> (( dead_entry = iterator.FirstItem( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ac4f44720f4707a439b3ef0d1baa13fba">m_dead</a> )))</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keyword">delete</span> dead_entry;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a4641b458711966e157e765a8aef3476c">  106</a></span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#aee87a3ca32c59d6a3cc477cd609dc371">Stack::StackElement::StackElement</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">  111</a></span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a> = <span class="keyword">new</span> Lst::Node&lt; StackElement &gt;( <span class="keyword">this</span> );</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    Dbg_AssertType( <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a>, Lst::Node&lt; StackElement &gt; );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">  115</a></span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a22f58566313b74d283ee7828ffbd5cdb">Stack::StackElement::~StackElement</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    Dbg_AssertType( m_node, Lst::Node&lt; StackElement &gt; );</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">delete</span> m_node;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#aee87a3ca32c59d6a3cc477cd609dc371">  130</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ae883a668926e0e9a8df398573d547c09">Stack::Stack</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">m_poppedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ae5d00b058819902e10a5f4e81378f081">Push</a>();                             <span class="comment">// create initial list</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a22f58566313b74d283ee7828ffbd5cdb">  143</a></span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a> = <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>;  </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">m_poppedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a88903846bd2a8c19b741ecf187301074">Stack::~Stack</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#ae883a668926e0e9a8df398573d547c09">  157</a></span>&#160;    </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d1/d11/class_spt_1_1_access.html#aed89dbfc1452383a249b35ebfc243ef2">HaveAccess</a>(),( <span class="stringliteral">&quot;List currently being processed&quot;</span> ));</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    Dbg_Code</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    (</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ad6a2ca20aca66c60a4545f52c89019e2">m_stack</a>.CountItems() != 1 )</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            Dbg_Warning( <span class="stringliteral">&quot;Task Stack contains %d Task Lists&quot;</span>, m_stack.CountItems());</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    )</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    while ( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ad6a2ca20aca66c60a4545f52c89019e2">m_stack</a>.CountItems() )</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#aaa6fd303783b4d0ae4cce398756d64d4">Pop</a> ();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">remove_dead_entries</a>();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    Dbg_MsgAssert (( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a> == NULL ),( <span class="stringliteral">&quot;Task Stack not empty&quot;</span> ));</div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a88903846bd2a8c19b741ecf187301074">  176</a></span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ae5d00b058819902e10a5f4e81378f081">Stack::Push</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">        On entry:</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">        m_add -&gt; top list on stack (the one being processed)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">        m_run -&gt; probably the same</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">        On exit:        </span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">        m_run -&gt; new top list</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">        m_add -&gt; old top list (the one being processed)</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    Dbg_MsgAssert(!<a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a>,( <span class="stringliteral">&quot;push already called this frame&quot;</span>));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a> = <span class="keyword">new</span> StackElement;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, StackElement );</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ad6a2ca20aca66c60a4545f52c89019e2">m_stack</a>.AddToHead( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a> ); <span class="comment">// deferred push</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#ae5d00b058819902e10a5f4e81378f081">  205</a></span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#aaa6fd303783b4d0ae4cce398756d64d4">Stack::Pop</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;{</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">        On entry:</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">        m_add -&gt; top list on stack (the one being processed)</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">        m_run -&gt; top list on stack</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">        On exit:        </span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">        m_run and m_add -&gt; the new top list (originally second to top)</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">        m_dead -&gt; list to be destroyed (still being processed)</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, StackElement );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="comment">// this assert is problematic because the task system does not call Process() on the input</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <span class="comment">// task list stacks for inactive devices, though Push() and Pop() are called</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="comment">//Dbg_MsgAssert(!m_poppedList,( &quot;pop already called this frame&quot;));</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment">// remove item</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    Lst::Search&lt; StackElement &gt; iterator;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    iterator.FirstItem( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ad6a2ca20aca66c60a4545f52c89019e2">m_stack</a> );</div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#aaa6fd303783b4d0ae4cce398756d64d4">  234</a></span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">// must use this test, m_pushedList is not reliable</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a> == <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a> = iterator.NextItem();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="comment">// otherwise, current list is retained, m_add stays the same</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <span class="comment">// m_run may have been just added this frame, but that shouldn&#39;t matter</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">IsEmpty</a>(),( <span class="stringliteral">&quot;Tasks List not Empty&quot;</span> ));    </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d1/d11/class_spt_1_1_access.html#aed89dbfc1452383a249b35ebfc243ef2">HaveAccess</a>() )</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a>-&gt;Remove();</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#ac4f44720f4707a439b3ef0d1baa13fba">m_dead</a>.AddToHead( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">m_node</a> ); <span class="comment">// deferred kill</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a> = <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">m_poppedList</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a752c6034dc3458c7808848d12d9088ad">Stack::Process</a>( <span class="keywordtype">bool</span> time )</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <a class="code" href="../../d1/d11/class_spt_1_1_access.html#ac8f91ecea4f4feac49263248ab7b6d32">Forbid</a>();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, StackElement );</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a> = <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>;                          <span class="comment">// push now in effect </span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#aab4d1b96c4674e7ab802b979a1ab232a">Process</a>( time, <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a521dc3982da940c5adf3c02d190f0bf7">m_mask_off</a> );</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="../../d1/d11/class_spt_1_1_access.html#abb35bd6fe6044a984ac541f839602ffa">Permit</a>();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">remove_dead_entries</a>();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">m_poppedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd22432fb00306894f7be58bfded0be6">Stack::Dump</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;{</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    </div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a752c6034dc3458c7808848d12d9088ad">  288</a></span>&#160;    </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <a class="code" href="../../d1/d11/class_spt_1_1_access.html#ac8f91ecea4f4feac49263248ab7b6d32">Forbid</a>();</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">StackElement</a> );</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a> = <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>;                          <span class="comment">// push now in effect </span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a0c9371653c2949191721b5494c89b8af">Dump</a>();</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="../../d1/d11/class_spt_1_1_access.html#abb35bd6fe6044a984ac541f839602ffa">Permit</a>();</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">remove_dead_entries</a>();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">m_poppedList</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#acd22432fb00306894f7be58bfded0be6">  307</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a2accefdfe8ab6753f33959f9cc87b002">Stack::AddTask</a>( <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">BaseTask</a>&amp; task )</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;{</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    Dbg_AssertType( &amp;task, <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">BaseTask</a> );</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a>, <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">StackElement</a> );</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a36bf5cae6a78e44ef97b552954c96eaa">AddTask</a>( task );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;}</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a5083a3daaa5579b087112a2c56f52627">Stack::AddPushTask</a>( <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">BaseTask</a>&amp; task )</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;{</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    Dbg_AssertType( &amp;task, <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">BaseTask</a> );</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, StackElement );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a2accefdfe8ab6753f33959f9cc87b002">  332</a></span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a36bf5cae6a78e44ef97b552954c96eaa">AddTask</a>( task );</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;}</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a723d2e366310b0e1393602b171cc6942">Stack::RemoveAllTasks</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;{</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="comment">// we may really be removing all tasks in list about to be pushed</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">m_pushedList</a>)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    {</div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a5083a3daaa5579b087112a2c56f52627">  347</a></span>&#160;        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#aaac31f29351dc0c53c9d1ef4bea64d3f">RemoveAllPushTasks</a>();</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">IsEmpty</a>(),( <span class="stringliteral">&quot;should now be empty&quot;</span> ));     </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a>, StackElement );</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">m_add</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ae3288d03c60b55ed6a4d0fcde836af3a">RemoveAllTasks</a>();</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="../../d8/d8c/class_tsk_1_1_stack.html#a723d2e366310b0e1393602b171cc6942">  362</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#aaac31f29351dc0c53c9d1ef4bea64d3f">Stack::RemoveAllPushTasks</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;{</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    Dbg_AssertType( <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>, <a class="code" href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">StackElement</a> );</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <a class="code" href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">m_run</a>-&gt;<a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ae3288d03c60b55ed6a4d0fcde836af3a">RemoveAllTasks</a>();</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;}</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;} <span class="comment">// namespace Tsk</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_spt_1_1_access_html_aed89dbfc1452383a249b35ebfc243ef2"><div class="ttname"><a href="../../d1/d11/class_spt_1_1_access.html#aed89dbfc1452383a249b35ebfc243ef2">Spt::Access::HaveAccess</a></div><div class="ttdeci">bool HaveAccess(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2d/_lock_8h_source.html#l00138">Lock.h:138</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_ae883a668926e0e9a8df398573d547c09"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#ae883a668926e0e9a8df398573d547c09">Tsk::Stack::Stack</a></div><div class="ttdeci">Stack(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00157">Tstack.cpp:157</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a2accefdfe8ab6753f33959f9cc87b002"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a2accefdfe8ab6753f33959f9cc87b002">Tsk::Stack::AddTask</a></div><div class="ttdeci">void AddTask(BaseTask &amp;task)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00332">Tstack.cpp:332</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a88903846bd2a8c19b741ecf187301074"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a88903846bd2a8c19b741ecf187301074">Tsk::Stack::~Stack</a></div><div class="ttdeci">~Stack(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00176">Tstack.cpp:176</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_1_1_stack_element_html_aee87a3ca32c59d6a3cc477cd609dc371"><div class="ttname"><a href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#aee87a3ca32c59d6a3cc477cd609dc371">Tsk::Stack::StackElement::StackElement</a></div><div class="ttdeci">StackElement(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00130">Tstack.cpp:130</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a6e7b1e885f1950218f90c6717be9f70c"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a6e7b1e885f1950218f90c6717be9f70c">Tsk::Stack::remove_dead_entries</a></div><div class="ttdeci">void remove_dead_entries(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00111">Tstack.cpp:111</a></div></div>
+<div class="ttc" id="a_task_8h_html"><div class="ttname"><a href="../../d5/dc5/_task_8h.html">Task.h</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_acd22432fb00306894f7be58bfded0be6"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#acd22432fb00306894f7be58bfded0be6">Tsk::Stack::Dump</a></div><div class="ttdeci">void Dump(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00307">Tstack.cpp:307</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_ae3288d03c60b55ed6a4d0fcde836af3a"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#ae3288d03c60b55ed6a4d0fcde836af3a">Tsk::List::RemoveAllTasks</a></div><div class="ttdeci">void RemoveAllTasks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00279">Tlist.cpp:279</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_1_1_stack_element_html_a8887733210b563b33bdc46f245eed8ff"><div class="ttname"><a href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a8887733210b563b33bdc46f245eed8ff">Tsk::Stack::StackElement::m_node</a></div><div class="ttdeci">Lst::Node&lt; StackElement &gt; * m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00115">Tstack.cpp:115</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a752c6034dc3458c7808848d12d9088ad"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a752c6034dc3458c7808848d12d9088ad">Tsk::Stack::Process</a></div><div class="ttdeci">void Process(bool time=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00288">Tstack.cpp:288</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a521dc3982da940c5adf3c02d190f0bf7"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a521dc3982da940c5adf3c02d190f0bf7">Tsk::Stack::m_mask_off</a></div><div class="ttdeci">uint m_mask_off</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00072">Stack.h:72</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_aaa6fd303783b4d0ae4cce398756d64d4"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#aaa6fd303783b4d0ae4cce398756d64d4">Tsk::Stack::Pop</a></div><div class="ttdeci">void Pop(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00234">Tstack.cpp:234</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_1_1_stack_element_html"><div class="ttname"><a href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html">Tsk::Stack::StackElement</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00074">Tstack.cpp:74</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a723d2e366310b0e1393602b171cc6942"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a723d2e366310b0e1393602b171cc6942">Tsk::Stack::RemoveAllTasks</a></div><div class="ttdeci">void RemoveAllTasks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00362">Tstack.cpp:362</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_1_1_stack_element_html_a22f58566313b74d283ee7828ffbd5cdb"><div class="ttname"><a href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a22f58566313b74d283ee7828ffbd5cdb">Tsk::Stack::StackElement::~StackElement</a></div><div class="ttdeci">~StackElement(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00143">Tstack.cpp:143</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_base_task_html"><div class="ttname"><a href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dfd/_task_2_task_8h_source.html#l00050">Task.h:50</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_access_html_abb35bd6fe6044a984ac541f839602ffa"><div class="ttname"><a href="../../d1/d11/class_spt_1_1_access.html#abb35bd6fe6044a984ac541f839602ffa">Spt::Access::Permit</a></div><div class="ttdeci">void Permit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2d/_lock_8h_source.html#l00114">Lock.h:114</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_aab4d1b96c4674e7ab802b979a1ab232a"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#aab4d1b96c4674e7ab802b979a1ab232a">Tsk::List::Process</a></div><div class="ttdeci">void Process(bool time, uint mask)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00127">Tlist.cpp:127</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_ae5d00b058819902e10a5f4e81378f081"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#ae5d00b058819902e10a5f4e81378f081">Tsk::Stack::Push</a></div><div class="ttdeci">void Push(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00205">Tstack.cpp:205</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a0c9371653c2949191721b5494c89b8af"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a0c9371653c2949191721b5494c89b8af">Tsk::List::Dump</a></div><div class="ttdeci">void Dump(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00211">Tlist.cpp:211</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_ad6a2ca20aca66c60a4545f52c89019e2"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#ad6a2ca20aca66c60a4545f52c89019e2">Tsk::Stack::m_stack</a></div><div class="ttdeci">Lst::Head&lt; StackElement &gt; m_stack</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00076">Stack.h:76</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a085d746cb563e3ef12ee97985c992743"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">Tsk::List::IsEmpty</a></div><div class="ttdeci">bool IsEmpty(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d5b/_task_2_list_8h_source.html#l00100">List.h:100</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a968eaa404f206a69f74048065dd1816a"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a968eaa404f206a69f74048065dd1816a">Tsk::Stack::m_add</a></div><div class="ttdeci">StackElement * m_add</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00081">Stack.h:81</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_1_1_stack_element_html_a4641b458711966e157e765a8aef3476c"><div class="ttname"><a href="../../de/dbc/class_tsk_1_1_stack_1_1_stack_element.html#a4641b458711966e157e765a8aef3476c">Tsk::Stack::StackElement::Stack</a></div><div class="ttdeci">friend class Stack</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00106">Tstack.cpp:106</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_ac4f44720f4707a439b3ef0d1baa13fba"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#ac4f44720f4707a439b3ef0d1baa13fba">Tsk::Stack::m_dead</a></div><div class="ttdeci">Lst::Head&lt; StackElement &gt; m_dead</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00079">Stack.h:79</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a36bf5cae6a78e44ef97b552954c96eaa"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a36bf5cae6a78e44ef97b552954c96eaa">Tsk::List::AddTask</a></div><div class="ttdeci">void AddTask(BaseTask &amp;task)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00257">Tlist.cpp:257</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a23520bb33bc2ddade2c70c3390941627"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a23520bb33bc2ddade2c70c3390941627">Tsk::Stack::m_run</a></div><div class="ttdeci">StackElement * m_run</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00080">Stack.h:80</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_access_html_ac8f91ecea4f4feac49263248ab7b6d32"><div class="ttname"><a href="../../d1/d11/class_spt_1_1_access.html#ac8f91ecea4f4feac49263248ab7b6d32">Spt::Access::Forbid</a></div><div class="ttdeci">void Forbid(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2d/_lock_8h_source.html#l00102">Lock.h:102</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a5083a3daaa5579b087112a2c56f52627"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a5083a3daaa5579b087112a2c56f52627">Tsk::Stack::AddPushTask</a></div><div class="ttdeci">void AddPushTask(BaseTask &amp;task)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00347">Tstack.cpp:347</a></div></div>
+<div class="ttc" id="anamespace_tsk_html"><div class="ttname"><a href="../../dc/da5/namespace_tsk.html">Tsk</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d84/_hook_8h_source.html#l00030">Hook.h:30</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_aaac31f29351dc0c53c9d1ef4bea64d3f"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#aaac31f29351dc0c53c9d1ef4bea64d3f">Tsk::Stack::RemoveAllPushTasks</a></div><div class="ttdeci">void RemoveAllPushTasks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/da0/_tstack_8cpp_source.html#l00384">Tstack.cpp:384</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_acd78fd4b87134cfb31206de9b45ed7c1"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#acd78fd4b87134cfb31206de9b45ed7c1">Tsk::Stack::m_pushedList</a></div><div class="ttdeci">bool m_pushedList</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00084">Stack.h:84</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_stack_html_a3e677a90082c439999fb4469f9b75671"><div class="ttname"><a href="../../d8/d8c/class_tsk_1_1_stack.html#a3e677a90082c439999fb4469f9b75671">Tsk::Stack::m_poppedList</a></div><div class="ttdeci">bool m_poppedList</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_stack_8h_source.html#l00085">Stack.h:85</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="../../dir_dd99984523d4742f03c6fb426ad65e56.html">Task</a></li><li class="navelem"><a class="el" href="../../de/da0/_tstack_8cpp.html">Tstack.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

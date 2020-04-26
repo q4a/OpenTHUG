@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/maintest.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('da/d23/maintest_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">maintest.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d23/maintest_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;eekernel.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;sifrpc.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sifdev.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;libpad.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;libgraph.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/df1/_profiler_8h.html">sys/profiler.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;render.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;line.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;nx_init.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;chars.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/dd1/group_8h.html">group.h</a>&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;sprite.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/db2/switches_8h.html">switches.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d7/d6c/nx_8h.html">gfx/nx.h</a>&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d6/d00/nxparticlemgr_8h.html">gfx/NxParticleMgr.h</a>&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d0/d03/_nx_textured3d_poly_8h.html">gfx/NxTextured3dPoly.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d7/d79/p___nx_light_man_8h.html">gfx/ngps/p_NxLightMan.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/de6/namespace_sys.html">Sys</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dc/de6/namespace_sys.html#aee98e42adc07ae54816e144ddef98a72">Render_Profiler</a>();      </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../de/d47/namespace_gfx.html#aa1a7f9053ac47c5cf5ff3ff484429e4a">DebugGfx_Draw</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d0d/namespace_tmr.html">Tmr</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d1/d0d/namespace_tmr.html#a43b20429dc4a3b8b3f3e4e6574cf55d0">VSync</a>();   </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;}</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">void LineTest(void);</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">void CharTest(void);</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a2e9cbc5e8383284b5256a6b4400fdd33">   46</a></span>&#160;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html">SFont</a> *<a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac92e1c3f2361a34ae09833bd21b23007">pMyFont1</a>, *<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a2e9cbc5e8383284b5256a6b4400fdd33">pMyFont2</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d5/d12/_main_8cpp.html#a3272e4d8d050afd5ecdbb7645d0ea2fa">   50</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a6f6abe30e32861159701adcbaf7aa32a">maintest</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> *argv[])</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d5/d12/_main_8cpp.html#a500f3e6675ddc2ae311f22f90e919653">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#acacef891855775d983e5c1cca2887d91">test_init</a>()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a92e27e9047a637ac8565b862fc9e73a6">InitialiseEngine</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">// I&#39;m forward declaring this, so the compiler does not try to inline it</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">volatile</span> sGroup *<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a157d15ce675e8191a6b586d4079948b7">get_render_group</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a9e05f85c27414293eceb2d2ba5321902">WaitForRendering</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#af9175ce2b5c9572b2aa5742ea5a75193">patch_texture_dma</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#af129a99fd4ff08c684c4eb9cd1df8f51">   69</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#af129a99fd4ff08c684c4eb9cd1df8f51">test_render_start_frame</a>()</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//------------------------------------------------------------</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">// MICK: Note, this is done in the main loop now, for profiling reasons</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// wait for rendering completion</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a9e05f85c27414293eceb2d2ba5321902">NxPs2::WaitForRendering</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// wait for vsync</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d1/d0d/namespace_tmr.html#a43b20429dc4a3b8b3f3e4e6574cf55d0">Tmr::VSync</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// now the dma list has finished, we can swap dma buffers</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a32be83b130e830f48a1eb59a152e054b">render::Field</a> ^= 1;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// kick off dma from previous frame (if there was one)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#aeb009ce01180ec4b00d2cc1b573eec80">render::Frame</a> &gt; 0)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aa3e3a04112dcfea450f69073d021d291">SendDisplayList</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">// wait for pRenderGroup to be null</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">// note curius use of a seperate function to read pRenderGroup</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// due to compler getting confused if we just read it directly</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// even though it is volatile, it does not re-read it              </span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a9e05f85c27414293eceb2d2ba5321902">   97</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a9e05f85c27414293eceb2d2ba5321902">WaitForRendering</a>()</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a157d15ce675e8191a6b586d4079948b7">get_render_group</a>())</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        ;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Update the 2D DMA lists</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a1967d69b103913238185013b0b24fa30">Update2DDMA</a>();</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a56d9aa1768ff806598442afa4ac6f9c0">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56d9aa1768ff806598442afa4ac6f9c0">StuffAfterGSFinished</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="../../db/de2/class_nx_1_1_c_ps2_light_manager.html#ace2fe18d349d6c38b8061425b5d1f09d">Nx::CPs2LightManager::sUpdateEngine</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// particle systems effectively have their transform double-buffered for dma purposes</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// so now is the time to do the buffer flip by updating the transforms</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="../../d9/d8c/class_nx_1_1_c_engine.html#a2fdc01bbd87e07446fe6e2d5127c4e46">Nx::CEngine::sGetParticleManager</a>()-&gt;<a class="code" href="../../d8/d34/class_nx_1_1_c_new_particle_manager.html#a7c4949e41d69bb47ea20a3d5011a213d">UpdateParticles</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="comment">// patch up texture DMA</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#af9175ce2b5c9572b2aa5742ea5a75193">patch_texture_dma</a>();    </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                    </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a157d15ce675e8191a6b586d4079948b7">  123</a></span>&#160;<span class="keyword">volatile</span> <a class="code" href="../../d2/dd3/struct_nx_ps2_1_1s_group.html">sGroup</a> *<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a157d15ce675e8191a6b586d4079948b7">get_render_group</a>()</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d2/dd3/struct_nx_ps2_1_1s_group.html#a519e95915abf16fe74bc18841b719e1d">sGroup::pRenderGroup</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a475cf63be5da371e0e5434e7dfaae5bd">  130</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a475cf63be5da371e0e5434e7dfaae5bd">test_render</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>* camera_orient, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>* camera_pos, <span class="keywordtype">float</span> view_angle, <span class="keywordtype">float</span> screen_aspect)</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">//RenderPrologue();     // should this be in test_render_start_frame? (Garrett: Answer is no, it won&#39;t work)</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// render everything</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a7c5dfc7bba6f876b5cf370dd1f4f2720">RenderWorld</a>(camera_orient, camera_pos, view_angle, screen_aspect);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">//LineTest();</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">//CharTest();</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a595cddff6e0e3abe5738b1ad4fece3da">  140</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a595cddff6e0e3abe5738b1ad4fece3da">test_render_end_frame</a>()</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a472978c8d0d7e0704e4a5b898f598b63">SetTextWindow</a>(0,HRES-1,0,VRES-1);                       <span class="comment">// a full-screen clipping window</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#aa1a7f9053ac47c5cf5ff3ff484429e4a">Gfx::DebugGfx_Draw</a>( );</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="comment">// Make sure 2D VRAM is up-to-date</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">// Mick: Moved to CEngine::s_plat_render_world, which is earlier in the frame</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">// so it happens before we draw the texture splats.</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">//  Reallocate2DVRAM();</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a58975c44a9d9ce0f3e3e1220ff9f8316">SDraw2D::DrawAll</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">    #ifdef      __USE_PROFILER__</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#aee98e42adc07ae54816e144ddef98a72">Sys::Render_Profiler</a>();     </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#af507bea50215dd107ebccc7cf05d827e">RenderEpilogue</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">// set frame for next render</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#aeb009ce01180ec4b00d2cc1b573eec80">render::Frame</a>++;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a1bb5fb9bf7e75b8ed03e378f5fdb3606">  162</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a1bb5fb9bf7e75b8ed03e378f5fdb3606">LineTest</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;{</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/*  </span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">    int xo,yo,zo;</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">    // do some 3D lines with r=0xFF, g=0x00, b=0x00, a=0x80</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">    BeginLines3D(0x800000FF);</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">    for (xo=-130; xo&lt;=110; xo+=80)</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">        for (yo=-90; yo&lt;=70; yo+=80)</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">            for (zo=-130; zo&lt;=110; zo+=80)</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">                DrawLine3D(-10+xo, 10+yo, 10+zo, 10+xo, 10+yo, 10+zo);</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">                DrawLine3D(-10+xo,-10+yo, 10+zo, 10+xo,-10+yo, 10+zo);</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">                DrawLine3D(-10+xo, 10+yo,-10+zo, 10+xo, 10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">                DrawLine3D(-10+xo,-10+yo,-10+zo, 10+xo,-10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">                </span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">                DrawLine3D(-10+xo, 10+yo, 10+zo,-10+xo,-10+yo, 10+zo);</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">                DrawLine3D( 10+xo, 10+yo, 10+zo, 10+xo,-10+yo, 10+zo);</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">                DrawLine3D(-10+xo, 10+yo,-10+zo,-10+xo,-10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">                DrawLine3D( 10+xo, 10+yo,-10+zo, 10+xo,-10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">                </span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">                DrawLine3D(-10+xo, 10+yo, 10+zo,-10+xo, 10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">                DrawLine3D( 10+xo, 10+yo, 10+zo, 10+xo, 10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">                DrawLine3D(-10+xo,-10+yo, 10+zo,-10+xo,-10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">                DrawLine3D( 10+xo,-10+yo, 10+zo, 10+xo,-10+yo,-10+zo);</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">    EndLines3D();</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">    // do some 2D lines with r=0xFF, g=0xFF, b=0xFF, a=0x80</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">    BeginLines2D(0x80FFFFFF);</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">    // &quot;LINE&quot;</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">    DrawLine2D(100,100,0, 100,150,0);</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">    DrawLine2D(100,150,0, 150,150,0);</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">    DrawLine2D(160,100,0, 160,150,0);</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">    DrawLine2D(170,100,0, 170,150,0);</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">    DrawLine2D(170,100,0, 220,150,0);</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">    DrawLine2D(220,100,0, 220,150,0);</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">    DrawLine2D(230,100,0, 230,150,0);</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">    DrawLine2D(230,100,0, 280,100,0);</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">    DrawLine2D(230,125,0, 260,125,0);</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">    DrawLine2D(230,150,0, 280,150,0);</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">    // &quot;TEST&quot;</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">    DrawLine2D(320,100,0, 370,100,0);</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">    DrawLine2D(345,100,0, 345,150,0);</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">    DrawLine2D(380,100,0, 380,150,0);</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">    DrawLine2D(380,100,0, 430,100,0);</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">    DrawLine2D(380,125,0, 410,125,0);</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">    DrawLine2D(380,150,0, 430,150,0);</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">    DrawLine2D(440,100,0, 490,100,0);</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">    DrawLine2D(440,125,0, 490,125,0);</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">    DrawLine2D(440,150,0, 490,150,0);</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">    DrawLine2D(440,100,0, 440,125,0);</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">    DrawLine2D(490,125,0, 490,150,0);</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">    DrawLine2D(500,100,0, 550,100,0);</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">    DrawLine2D(525,100,0, 525,150,0);</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">    EndLines2D();</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a8a1475c1f8ed94726acda8538d8ef4a3">  229</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a8a1475c1f8ed94726acda8538d8ef4a3">CharTest</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;{</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordtype">float</span> Width,Height;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    SetFont(<span class="stringliteral">&quot;small&quot;</span>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    QueryString(<span class="stringliteral">&quot;Hello World&quot;</span>, &amp;Width, &amp;Height);    <span class="comment">// width and height in pixels</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a472978c8d0d7e0704e4a5b898f598b63">SetTextWindow</a>(0,639,0,447);                     <span class="comment">// a full-screen clipping window</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    BeginText(0x403070A0, 1.5);                     <span class="comment">// r=0xA0, g=0x70, b=0x30, a=0x40, scale=1.5</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    DrawString(<span class="stringliteral">&quot;Score&quot;</span>,  30, 30);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    DrawString(<span class="stringliteral">&quot;000000&quot;</span>, 100, 30);</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    EndText();</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    BeginText(0x40A06080, 1.5);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    DrawString(<span class="stringliteral">&quot;Skate4&quot;</span>, 520, 400);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    EndText();</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;} <span class="comment">// namespace NxPs2</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_aeb009ce01180ec4b00d2cc1b573eec80"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#aeb009ce01180ec4b00d2cc1b573eec80">NxPs2::render::Frame</a></div><div class="ttdeci">uint Frame</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01951">render.cpp:1951</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a9e05f85c27414293eceb2d2ba5321902"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a9e05f85c27414293eceb2d2ba5321902">NxPs2::WaitForRendering</a></div><div class="ttdeci">void WaitForRendering()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00097">maintest.cpp:97</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a58975c44a9d9ce0f3e3e1220ff9f8316"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a58975c44a9d9ce0f3e3e1220ff9f8316">NxPs2::SDraw2D::DrawAll</a></div><div class="ttdeci">static void DrawAll(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01162">sprite.cpp:1162</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a43b20429dc4a3b8b3f3e4e6574cf55d0"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a43b20429dc4a3b8b3f3e4e6574cf55d0">Tmr::VSync</a></div><div class="ttdeci">void VSync()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00469">p_timer.cpp:469</a></div></div>
+<div class="ttc" id="agroup_8h_html"><div class="ttname"><a href="../../d9/dd1/group_8h.html">group.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a32be83b130e830f48a1eb59a152e054b"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a32be83b130e830f48a1eb59a152e054b">NxPs2::render::Field</a></div><div class="ttdeci">uint Field</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01951">render.cpp:1951</a></div></div>
+<div class="ttc" id="aswitches_8h_html"><div class="ttname"><a href="../../de/db2/switches_8h.html">switches.h</a></div></div>
+<div class="ttc" id="anamespace_sys_html_aee98e42adc07ae54816e144ddef98a72"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#aee98e42adc07ae54816e144ddef98a72">Sys::Render_Profiler</a></div><div class="ttdeci">void Render_Profiler()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00446">Profiler.cpp:446</a></div></div>
+<div class="ttc" id="ap___nx_light_man_8h_html"><div class="ttname"><a href="../../d7/d79/p___nx_light_man_8h.html">p_NxLightMan.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a472978c8d0d7e0704e4a5b898f598b63"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a472978c8d0d7e0704e4a5b898f598b63">NxPs2::SetTextWindow</a></div><div class="ttdeci">void SetTextWindow(uint16 x0, uint16 x1, uint16 y0, uint16 y1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01013">sprite.cpp:1013</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_group_html_a519e95915abf16fe74bc18841b719e1d"><div class="ttname"><a href="../../d2/dd3/struct_nx_ps2_1_1s_group.html#a519e95915abf16fe74bc18841b719e1d">NxPs2::sGroup::pRenderGroup</a></div><div class="ttdeci">static volatile sGroup * pRenderGroup</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd1/group_8h_source.html#l00049">group.h:49</a></div></div>
+<div class="ttc" id="anamespace_sys_html"><div class="ttname"><a href="../../dc/de6/namespace_sys.html">Sys</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00040">debuggfx.cpp:40</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ac92e1c3f2361a34ae09833bd21b23007"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ac92e1c3f2361a34ae09833bd21b23007">NxPs2::pMyFont1</a></div><div class="ttdeci">SFont * pMyFont1</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00046">maintest.cpp:46</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html">NxPs2::SFont</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00018">chars.h:18</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="a_profiler_8h_html"><div class="ttname"><a href="../../d6/df1/_profiler_8h.html">Profiler.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a1bb5fb9bf7e75b8ed03e378f5fdb3606"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a1bb5fb9bf7e75b8ed03e378f5fdb3606">NxPs2::LineTest</a></div><div class="ttdeci">void LineTest(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00162">maintest.cpp:162</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_af507bea50215dd107ebccc7cf05d827e"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#af507bea50215dd107ebccc7cf05d827e">NxPs2::RenderEpilogue</a></div><div class="ttdeci">void RenderEpilogue(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01371">render.cpp:1371</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_group_html"><div class="ttname"><a href="../../d2/dd3/struct_nx_ps2_1_1s_group.html">NxPs2::sGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd1/group_8h_source.html#l00018">group.h:18</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_aa1a7f9053ac47c5cf5ff3ff484429e4a"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#aa1a7f9053ac47c5cf5ff3ff484429e4a">Gfx::DebugGfx_Draw</a></div><div class="ttdeci">void DebugGfx_Draw(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00641">debuggfx.cpp:641</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a1967d69b103913238185013b0b24fa30"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a1967d69b103913238185013b0b24fa30">NxPs2::Update2DDMA</a></div><div class="ttdeci">void Update2DDMA()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01662">render.cpp:1662</a></div></div>
+<div class="ttc" id="anxparticlemgr_8h_html"><div class="ttname"><a href="../../d6/d00/nxparticlemgr_8h.html">nxparticlemgr.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_af9175ce2b5c9572b2aa5742ea5a75193"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#af9175ce2b5c9572b2aa5742ea5a75193">NxPs2::patch_texture_dma</a></div><div class="ttdeci">void patch_texture_dma()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l00977">render.cpp:977</a></div></div>
+<div class="ttc" id="anamespace_tmr_html"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html">Tmr</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00007">win32functions.cpp:7</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a2e9cbc5e8383284b5256a6b4400fdd33"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a2e9cbc5e8383284b5256a6b4400fdd33">NxPs2::pMyFont2</a></div><div class="ttdeci">SFont * pMyFont2</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00046">maintest.cpp:46</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_acacef891855775d983e5c1cca2887d91"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#acacef891855775d983e5c1cca2887d91">NxPs2::test_init</a></div><div class="ttdeci">void test_init()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00058">maintest.cpp:58</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a595cddff6e0e3abe5738b1ad4fece3da"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a595cddff6e0e3abe5738b1ad4fece3da">NxPs2::test_render_end_frame</a></div><div class="ttdeci">void test_render_end_frame()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00140">maintest.cpp:140</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_engine_html_a2fdc01bbd87e07446fe6e2d5127c4e46"><div class="ttname"><a href="../../d9/d8c/class_nx_1_1_c_engine.html#a2fdc01bbd87e07446fe6e2d5127c4e46">Nx::CEngine::sGetParticleManager</a></div><div class="ttdeci">static CNewParticleManager * sGetParticleManager(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6c/nx_8h_source.html#l00141">nx.h:141</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a7c5dfc7bba6f876b5cf370dd1f4f2720"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a7c5dfc7bba6f876b5cf370dd1f4f2720">NxPs2::RenderWorld</a></div><div class="ttdeci">void RenderWorld(Mth::Matrix *camera_orient, Mth::Vector *camera_pos, float view_angle, float screen_aspect)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l00254">render.cpp:254</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_af129a99fd4ff08c684c4eb9cd1df8f51"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#af129a99fd4ff08c684c4eb9cd1df8f51">NxPs2::test_render_start_frame</a></div><div class="ttdeci">void test_render_start_frame()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00069">maintest.cpp:69</a></div></div>
+<div class="ttc" id="a_nx_textured3d_poly_8h_html"><div class="ttname"><a href="../../d0/d03/_nx_textured3d_poly_8h.html">NxTextured3dPoly.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a6f6abe30e32861159701adcbaf7aa32a"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a6f6abe30e32861159701adcbaf7aa32a">NxPs2::maintest</a></div><div class="ttdeci">int maintest(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00050">maintest.cpp:50</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a56d9aa1768ff806598442afa4ac6f9c0"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a56d9aa1768ff806598442afa4ac6f9c0">NxPs2::StuffAfterGSFinished</a></div><div class="ttdeci">void StuffAfterGSFinished()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00107">maintest.cpp:107</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a157d15ce675e8191a6b586d4079948b7"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a157d15ce675e8191a6b586d4079948b7">NxPs2::get_render_group</a></div><div class="ttdeci">volatile sGroup * get_render_group()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00123">maintest.cpp:123</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a92e27e9047a637ac8565b862fc9e73a6"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a92e27e9047a637ac8565b862fc9e73a6">NxPs2::InitialiseEngine</a></div><div class="ttdeci">void InitialiseEngine(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d07/_n_g_p_s_2_n_x_2nx__init_8cpp_source.html#l00074">nx_init.cpp:74</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a8a1475c1f8ed94726acda8538d8ef4a3"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a8a1475c1f8ed94726acda8538d8ef4a3">NxPs2::CharTest</a></div><div class="ttdeci">void CharTest(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00229">maintest.cpp:229</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_new_particle_manager_html_a7c4949e41d69bb47ea20a3d5011a213d"><div class="ttname"><a href="../../d8/d34/class_nx_1_1_c_new_particle_manager.html#a7c4949e41d69bb47ea20a3d5011a213d">Nx::CNewParticleManager::UpdateParticles</a></div><div class="ttdeci">void UpdateParticles(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d97/_nx_new_particle_mgr_8cpp_source.html#l00179">NxNewParticleMgr.cpp:179</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aa3e3a04112dcfea450f69073d021d291"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aa3e3a04112dcfea450f69073d021d291">NxPs2::SendDisplayList</a></div><div class="ttdeci">void SendDisplayList(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01501">render.cpp:1501</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_light_manager_html_ace2fe18d349d6c38b8061425b5d1f09d"><div class="ttname"><a href="../../db/de2/class_nx_1_1_c_ps2_light_manager.html#ace2fe18d349d6c38b8061425b5d1f09d">Nx::CPs2LightManager::sUpdateEngine</a></div><div class="ttdeci">static void sUpdateEngine(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dcf/_n_g_p_s_2p___nx_light_man_8cpp_source.html#l00206">p_NxLightMan.cpp:206</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a475cf63be5da371e0e5434e7dfaae5bd"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a475cf63be5da371e0e5434e7dfaae5bd">NxPs2::test_render</a></div><div class="ttdeci">void test_render(Mth::Matrix *camera_orient, Mth::Vector *camera_pos, float view_angle, float screen_aspect)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d23/maintest_8cpp_source.html#l00130">maintest.cpp:130</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../da/d23/maintest_8cpp.html">maintest.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

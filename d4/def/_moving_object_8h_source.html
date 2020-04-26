@@ -1,0 +1,320 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/MovingObject.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/def/_moving_object_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">MovingObject.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/def/_moving_object_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Sk/Objects</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       MovingObject.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  10/25/2000</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __OBJECTS_MOVINGOBJECT_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __OBJECTS_MOVINGOBJECT_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dc5/_task_8h.html">core/task.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">**                          Forward Declarations                            **</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">class   </span>CSkeleton;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">class   </span>CModelAppearance;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                                              </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">class   </span>CModel;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">class   </span>CCollObj;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">class   </span>CFollowOb;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">class   </span>CRailManager;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">class   </span>CObjectHookManager;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">**                             Class Definitions                            **</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html">   53</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>     <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae41a647b7eaf58ca6bc389b3f021105e">matrix</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae4c2511789f1dbaeff6a966fe86099e5">height</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ad85dc5207b1cbed2fe10b9d8b3ba9462">dist</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ad8d2309085760eb549a68b5dd4b9595c">width</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae41a647b7eaf58ca6bc389b3f021105e">   59</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae15b817d62f0d5e1e7804ee2d30649ba">angle</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae4c2511789f1dbaeff6a966fe86099e5">   60</a></span>&#160;    <a class="code" href="../../d1/d05/struct_s_b_box.html">SBBox</a>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#a152f1b3ec9b9f04641457c4cc29ed654">bbox</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ad85dc5207b1cbed2fe10b9d8b3ba9462">   61</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ab4847e53cd8539720fa60346febccd4b">initialized</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ad8d2309085760eb549a68b5dd4b9595c">   62</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ab703a4812525dba013c7f814fa6a8835">maxDistInitialized</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ae15b817d62f0d5e1e7804ee2d30649ba">   63</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#a7157a21f1953a0acd2d9cb502814fa31">maxDistSquared</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#a152f1b3ec9b9f04641457c4cc29ed654">   64</a></span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ab4847e53cd8539720fa60346febccd4b">   65</a></span>&#160;<span class="preprocessor">#ifdef __NOPT_ASSERT__  </span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ab703a4812525dba013c7f814fa6a8835">   66</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html#ac06b38a2531364dbfeda5acf86bdabf0">debug</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#a7157a21f1953a0acd2d9cb502814fa31">   67</a></span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../dd/d6b/struct_obj_1_1_site_box.html#ac06b38a2531364dbfeda5acf86bdabf0">   70</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html">CMovingObject</a> : <span class="keyword">public</span> <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">CCompositeObject</a> </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;public :</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a76504b5b481829c73d1453a1123603a6">CMovingObject</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a672a35eee0302ef148715f29fea4c7b1">~CMovingObject</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a27367ea10bd1b046e338eb4d02748360">MovingObjectCreateComponents</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a123da2ee5d67c1f592bf4a63064932a3">MovingObjectInit</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pNodeData, <a class="code" href="../../d7/d00/class_obj_1_1_c_general_manager.html">CGeneralManager</a>* p_obj_man );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a1ffce31f636249b991e638d66a89f0ee">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <a class="code" href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a>*         <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#acd3f0e7651eb52deb39bc8c7db351943">GetSkeleton</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>*             <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#ad20f8fad87e6f398a5513c34c2e2b8c2">GetModel</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a27c9764451ecb5c278596611ee6a2950">FillInSiteBox</a>(<a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *p_siteBox, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#afde1471e76ba40b0349f79a2d3315594">ObjInSiteBox</a>( <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html">CMovingObject</a> *pObj, <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//      bool                    IsFlipped( void );</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a96a96722d3be435f3fa226f80ace40f6">GetHoverOrgPos</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *p_orgPos );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#af099176ac379a58fde14cfe9c9c9de6a">ObjectWithinRange</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript, <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox = NULL );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#ad48ac1841704becb6838a5f794d832be">ObjectWithinRect</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#abbfa658f574c12ffc8602876c2bfc9a9">ObjectFromNodeWithinRange</a>( <span class="keywordtype">int</span> nodeIndex, <span class="keywordtype">int</span> radiusSqr, <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a720b9c007ce90b4e9d45878e41a64cfe">InitializeSiteBox</a>( <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">float</span>                   <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#aa8ee1b0f9af6cc754fc683e3431f7177">GetSiteBoxMaxRadiusSquared</a>( <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a864ba43ed659270cbd9fc25f4befa77f">ObjTypeInRange</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript, <span class="keywordtype">float</span> radiusSqr, <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> typeChecksum );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a366b34489657a8b4e7e839f68d7072ac">SkaterInRange</a>( <a class="code" href="../../dd/d6b/struct_obj_1_1_site_box.html">SiteBox</a> *pBox, <span class="keywordtype">float</span> radiusSqr );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a04365faba0feb88e8397c29566805646">DrawBoundingBox</a>( <a class="code" href="../../d1/d05/struct_s_b_box.html">SBBox</a> *pBox, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *pOffset = NULL, <span class="keywordtype">int</span> numFrames = 1, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *pRot = NULL );</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a6d38dda5ac92c11bfabe024d049170ff">ToggleFlipState</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="comment">// float                    m_time;                 // time since last frame</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// the rest of the flags stay here...</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//      int                     m_general_flags;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="comment">// will add rotation vector (or rotation class?) to this ASAP...</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">private</span>:        </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a32f4c6a02c3834c06f344478ef028f24">LookAtObject_Init</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">void</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#af7d30ef620f5d753cf1e83050786fbe1">FollowLeader_Init</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">// GJ:  MOVED THESE FROM POSOBJECT.H</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="comment">// Currently used by the PauseSkaters script command, which is used to pause all the skaters whilst</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">// a camera animation is running.</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../df/d19/class_obj_1_1_c_moving_object.html#ae162c669a65b8776d38717c2289153a0">  123</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#ae162c669a65b8776d38717c2289153a0">Pause</a>() {<a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">mPaused</a>=<span class="keyword">true</span>; <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ace8aa709bb935a784fd56db2767a61cf">CCompositeObject::Pause</a>(<span class="keyword">true</span>);}</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../df/d19/class_obj_1_1_c_moving_object.html#a4b5ccf5650c1edee55c07393a2376124">  124</a></span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a4b5ccf5650c1edee55c07393a2376124">UnPause</a>() {<a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">mPaused</a>=<span class="keyword">false</span>; <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ace8aa709bb935a784fd56db2767a61cf">CCompositeObject::Pause</a>(<span class="keyword">false</span>);}</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../df/d19/class_obj_1_1_c_moving_object.html#a172dfc233a8987afe34eacd6c5cf89a3">  125</a></span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a172dfc233a8987afe34eacd6c5cf89a3">IsPaused</a>() {<span class="keywordflow">return</span> <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">mPaused</a>;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../df/d19/class_obj_1_1_c_moving_object.html#a31357ad14cd656aa38b6b1e6e101d4c4">  127</a></span>&#160;        <a class="code" href="../../d1/d05/struct_s_b_box.html">SBBox</a>                   <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a31357ad14cd656aa38b6b1e6e101d4c4">m_bbox</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">CCompositeObject</a>*       <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a9dae12f8a0103e2615efc7b5984dffe0">GetClosestObjectOfType</a>( <span class="keywordtype">int</span> <a class="code" href="../../d7/dbd/p__netcnfif_8h.html#ac765329451135abec74c45e1897abf26">type</a> );</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    public :</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// Whether the object is paused.</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">  134</a></span>&#160;        <span class="keywordtype">bool</span>                    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">mPaused</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;};</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                              </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;} <span class="comment">// namespace Obj</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif  // __OBJECTS_MOVINGOBJECT_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a04365faba0feb88e8397c29566805646"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a04365faba0feb88e8397c29566805646">Obj::CMovingObject::DrawBoundingBox</a></div><div class="ttdeci">void DrawBoundingBox(SBBox *pBox, Mth::Vector *pOffset=NULL, int numFrames=1, Mth::Vector *pRot=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00062">MovingObject.cpp:62</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html">Obj::CCompositeObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00024">compositeobject.h:24</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_a7157a21f1953a0acd2d9cb502814fa31"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#a7157a21f1953a0acd2d9cb502814fa31">Obj::SiteBox::maxDistSquared</a></div><div class="ttdeci">float maxDistSquared</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00067">MovingObject.h:67</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_ad20f8fad87e6f398a5513c34c2e2b8c2"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#ad20f8fad87e6f398a5513c34c2e2b8c2">Obj::CMovingObject::GetModel</a></div><div class="ttdeci">Nx::CModel * GetModel(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00185">MovingObject.cpp:185</a></div></div>
+<div class="ttc" id="astruct_s_b_box_html"><div class="ttname"><a href="../../d1/d05/struct_s_b_box.html">SBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00053">object.h:53</a></div></div>
+<div class="ttc" id="a_task_8h_html"><div class="ttname"><a href="../../d5/dc5/_task_8h.html">Task.h</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_a152f1b3ec9b9f04641457c4cc29ed654"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#a152f1b3ec9b9f04641457c4cc29ed654">Obj::SiteBox::bbox</a></div><div class="ttdeci">SBBox bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00064">MovingObject.h:64</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a720b9c007ce90b4e9d45878e41a64cfe"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a720b9c007ce90b4e9d45878e41a64cfe">Obj::CMovingObject::InitializeSiteBox</a></div><div class="ttdeci">void InitializeSiteBox(SiteBox *pBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00350">MovingObject.cpp:350</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ab703a4812525dba013c7f814fa6a8835"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ab703a4812525dba013c7f814fa6a8835">Obj::SiteBox::maxDistInitialized</a></div><div class="ttdeci">bool maxDistInitialized</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00066">MovingObject.h:66</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_af7d30ef620f5d753cf1e83050786fbe1"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#af7d30ef620f5d753cf1e83050786fbe1">Obj::CMovingObject::FollowLeader_Init</a></div><div class="ttdeci">void FollowLeader_Init(Script::CStruct *pParams)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_general_manager_html"><div class="ttname"><a href="../../d7/d00/class_obj_1_1_c_general_manager.html">Obj::CGeneralManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d0d/objman_8h_source.html#l00132">objman.h:132</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a96a96722d3be435f3fa226f80ace40f6"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a96a96722d3be435f3fa226f80ace40f6">Obj::CMovingObject::GetHoverOrgPos</a></div><div class="ttdeci">void GetHoverOrgPos(Mth::Vector *p_orgPos)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a27c9764451ecb5c278596611ee6a2950"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a27c9764451ecb5c278596611ee6a2950">Obj::CMovingObject::FillInSiteBox</a></div><div class="ttdeci">void FillInSiteBox(SiteBox *p_siteBox, Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00482">MovingObject.cpp:482</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_afde1471e76ba40b0349f79a2d3315594"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#afde1471e76ba40b0349f79a2d3315594">Obj::CMovingObject::ObjInSiteBox</a></div><div class="ttdeci">bool ObjInSiteBox(CMovingObject *pObj, SiteBox *pBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00420">MovingObject.cpp:420</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a32f4c6a02c3834c06f344478ef028f24"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a32f4c6a02c3834c06f344478ef028f24">Obj::CMovingObject::LookAtObject_Init</a></div><div class="ttdeci">bool LookAtObject_Init(Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00201">MovingObject.cpp:201</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a254d96120b5f2096a94141c969e1393c"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a254d96120b5f2096a94141c969e1393c">Obj::CMovingObject::mPaused</a></div><div class="ttdeci">bool mPaused</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00134">MovingObject.h:134</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_ae162c669a65b8776d38717c2289153a0"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#ae162c669a65b8776d38717c2289153a0">Obj::CMovingObject::Pause</a></div><div class="ttdeci">virtual void Pause()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00123">MovingObject.h:123</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_ace8aa709bb935a784fd56db2767a61cf"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ace8aa709bb935a784fd56db2767a61cf">Obj::CCompositeObject::Pause</a></div><div class="ttdeci">void Pause(bool paused)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00049">compositeobject.h:49</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00055">NxModel.h:55</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ac06b38a2531364dbfeda5acf86bdabf0"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ac06b38a2531364dbfeda5acf86bdabf0">Obj::SiteBox::debug</a></div><div class="ttdeci">bool debug</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00070">MovingObject.h:70</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a9dae12f8a0103e2615efc7b5984dffe0"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a9dae12f8a0103e2615efc7b5984dffe0">Obj::CMovingObject::GetClosestObjectOfType</a></div><div class="ttdeci">CCompositeObject * GetClosestObjectOfType(int type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00834">MovingObject.cpp:834</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a6d38dda5ac92c11bfabe024d049170ff"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a6d38dda5ac92c11bfabe024d049170ff">Obj::CMovingObject::ToggleFlipState</a></div><div class="ttdeci">void ToggleFlipState(void)</div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ad85dc5207b1cbed2fe10b9d8b3ba9462"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ad85dc5207b1cbed2fe10b9d8b3ba9462">Obj::SiteBox::dist</a></div><div class="ttdeci">float dist</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00061">MovingObject.h:61</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ae41a647b7eaf58ca6bc389b3f021105e"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ae41a647b7eaf58ca6bc389b3f021105e">Obj::SiteBox::matrix</a></div><div class="ttdeci">Mth::Matrix matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00059">MovingObject.h:59</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ae15b817d62f0d5e1e7804ee2d30649ba"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ae15b817d62f0d5e1e7804ee2d30649ba">Obj::SiteBox::angle</a></div><div class="ttdeci">float angle</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00063">MovingObject.h:63</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a672a35eee0302ef148715f29fea4c7b1"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a672a35eee0302ef148715f29fea4c7b1">Obj::CMovingObject::~CMovingObject</a></div><div class="ttdeci">virtual ~CMovingObject(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00091">MovingObject.cpp:91</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a864ba43ed659270cbd9fc25f4befa77f"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a864ba43ed659270cbd9fc25f4befa77f">Obj::CMovingObject::ObjTypeInRange</a></div><div class="ttdeci">bool ObjTypeInRange(Script::CStruct *pParams, Script::CScript *pScript, float radiusSqr, SiteBox *pBox, uint32 typeChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00579">MovingObject.cpp:579</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_af099176ac379a58fde14cfe9c9c9de6a"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#af099176ac379a58fde14cfe9c9c9de6a">Obj::CMovingObject::ObjectWithinRange</a></div><div class="ttdeci">bool ObjectWithinRange(Script::CStruct *pParams, Script::CScript *pScript, SiteBox *pBox=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00632">MovingObject.cpp:632</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_ac765329451135abec74c45e1897abf26"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#ac765329451135abec74c45e1897abf26">type</a></div><div class="ttdeci">int type</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00002">p_netcnfif.h:2</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html">Obj::CMovingObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00070">MovingObject.h:70</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ad8d2309085760eb549a68b5dd4b9595c"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ad8d2309085760eb549a68b5dd4b9595c">Obj::SiteBox::width</a></div><div class="ttdeci">float width</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00062">MovingObject.h:62</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a31357ad14cd656aa38b6b1e6e101d4c4"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a31357ad14cd656aa38b6b1e6e101d4c4">Obj::CMovingObject::m_bbox</a></div><div class="ttdeci">SBBox m_bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00127">MovingObject.h:127</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html">Obj::SiteBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00053">MovingObject.h:53</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a76504b5b481829c73d1453a1123603a6"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a76504b5b481829c73d1453a1123603a6">Obj::CMovingObject::CMovingObject</a></div><div class="ttdeci">CMovingObject()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00072">MovingObject.cpp:72</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_skeleton_html"><div class="ttname"><a href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d28/_skeleton_8h_source.html#l00094">Skeleton.h:94</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ab4847e53cd8539720fa60346febccd4b"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ab4847e53cd8539720fa60346febccd4b">Obj::SiteBox::initialized</a></div><div class="ttdeci">bool initialized</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00065">MovingObject.h:65</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a1ffce31f636249b991e638d66a89f0ee"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a1ffce31f636249b991e638d66a89f0ee">Obj::CMovingObject::CallMemberFunction</a></div><div class="ttdeci">virtual bool CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00701">MovingObject.cpp:701</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a4b5ccf5650c1edee55c07393a2376124"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a4b5ccf5650c1edee55c07393a2376124">Obj::CMovingObject::UnPause</a></div><div class="ttdeci">virtual void UnPause()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00124">MovingObject.h:124</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_abbfa658f574c12ffc8602876c2bfc9a9"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#abbfa658f574c12ffc8602876c2bfc9a9">Obj::CMovingObject::ObjectFromNodeWithinRange</a></div><div class="ttdeci">bool ObjectFromNodeWithinRange(int nodeIndex, int radiusSqr, SiteBox *pBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00267">MovingObject.cpp:267</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_ad48ac1841704becb6838a5f794d832be"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#ad48ac1841704becb6838a5f794d832be">Obj::CMovingObject::ObjectWithinRect</a></div><div class="ttdeci">bool ObjectWithinRect(Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00535">MovingObject.cpp:535</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a123da2ee5d67c1f592bf4a63064932a3"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a123da2ee5d67c1f592bf4a63064932a3">Obj::CMovingObject::MovingObjectInit</a></div><div class="ttdeci">void MovingObjectInit(Script::CStruct *pNodeData, CGeneralManager *p_obj_man)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00126">MovingObject.cpp:126</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a27367ea10bd1b046e338eb4d02748360"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a27367ea10bd1b046e338eb4d02748360">Obj::CMovingObject::MovingObjectCreateComponents</a></div><div class="ttdeci">void MovingObjectCreateComponents()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00100">MovingObject.cpp:100</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a172dfc233a8987afe34eacd6c5cf89a3"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a172dfc233a8987afe34eacd6c5cf89a3">Obj::CMovingObject::IsPaused</a></div><div class="ttdeci">bool IsPaused()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00125">MovingObject.h:125</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_acd3f0e7651eb52deb39bc8c7db351943"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#acd3f0e7651eb52deb39bc8c7db351943">Obj::CMovingObject::GetSkeleton</a></div><div class="ttdeci">Gfx::CSkeleton * GetSkeleton(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00169">MovingObject.cpp:169</a></div></div>
+<div class="ttc" id="astruct_obj_1_1_site_box_html_ae4c2511789f1dbaeff6a966fe86099e5"><div class="ttname"><a href="../../dd/d6b/struct_obj_1_1_site_box.html#ae4c2511789f1dbaeff6a966fe86099e5">Obj::SiteBox::height</a></div><div class="ttdeci">float height</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00060">MovingObject.h:60</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_aa8ee1b0f9af6cc754fc683e3431f7177"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#aa8ee1b0f9af6cc754fc683e3431f7177">Obj::CMovingObject::GetSiteBoxMaxRadiusSquared</a></div><div class="ttdeci">float GetSiteBoxMaxRadiusSquared(SiteBox *pBox)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00309">MovingObject.cpp:309</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a366b34489657a8b4e7e839f68d7072ac"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a366b34489657a8b4e7e839f68d7072ac">Obj::CMovingObject::SkaterInRange</a></div><div class="ttdeci">bool SkaterInRange(SiteBox *pBox, float radiusSqr)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00548">MovingObject.cpp:548</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../d4/def/_moving_object_8h.html">MovingObject.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

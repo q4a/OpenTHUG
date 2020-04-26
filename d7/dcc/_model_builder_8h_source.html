@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/ModelBuilder.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d7/dcc/_model_builder_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ModelBuilder.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/dcc/_model_builder_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       ModelBuilder.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  10/16/2001</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GFX_MODELBUILDER_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GFX_MODELBUILDER_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d10/object_8h.html">gel/object.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">**                          Forward Declarations                            **</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">class </span>CModel;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">class </span>CModelAppearance;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">class </span>CSkeleton;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ae3286d14e70e0c56da8b408aa329131b">   39</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/d47/namespace_gfx.html#ae3286d14e70e0c56da8b408aa329131b">vCHECKSUM_CREATE_MODEL_FROM_APPEARANCE</a> = 0x91c1ec93;   <span class="comment">// create_model_from_appearance</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#a4d2a8d9b1ee9af0109953af34b79e968">   40</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/d47/namespace_gfx.html#a4d2a8d9b1ee9af0109953af34b79e968">vCHECKSUM_COLOR_MODEL_FROM_APPEARANCE</a> = 0xd2c041c2;    <span class="comment">// color_model_from_appearance</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#afee0736c3717c7115c605c04e6206574">   41</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/d47/namespace_gfx.html#afee0736c3717c7115c605c04e6206574">vCHECKSUM_SCALE_MODEL_FROM_APPEARANCE</a> = 0xaee1af7d;    <span class="comment">// scale_model_from_appearance</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ae38d7feaa50faf8b05eddb2cf29f65db">   42</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/d47/namespace_gfx.html#ae38d7feaa50faf8b05eddb2cf29f65db">vCHECKSUM_HIDE_MODEL_FROM_APPEARANCE</a> = 0xb1a55798;     <span class="comment">// hide_model_from_appearance</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">**                             Class Definitions                            **</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html">CModelBuilder</a> : <span class="keyword">public</span> <a class="code" href="../../df/dde/class_obj_1_1_c_object.html">Obj::CObject</a></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a440768424c335ec91ae967051c9e2dfd">CModelBuilder</a>( <span class="keywordtype">bool</span> useAssetManager, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texDictOffset );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ad0d64726fbfbaca54c9a321c07a39239">BuildModel</a>( <a class="code" href="../../d1/d92/class_gfx_1_1_c_model_appearance.html">CModelAppearance</a>* pAppearance, <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>* pModel, <a class="code" href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a>* pSkeleton, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> scriptName = <a class="code" href="../../de/d47/namespace_gfx.html#ae3286d14e70e0c56da8b408aa329131b">vCHECKSUM_CREATE_MODEL_FROM_APPEARANCE</a> );</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a83489401b4585e3da3b65e81ee9fae96">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a54920947972502f2b2c07bc7a81ae388">model_add_geom</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a46f14a8277bd96c857cf21995f6f935e">model_clear_geom</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#aba1a339c3ee77b222cbd9534069fe55a">model_hide_geom</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum, <span class="keywordtype">bool</span> hidden );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a12f36996da2fba541befff0eecf2593e">geom_modulate_color</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a94890221d5492b499b18fd0367395dc6">geom_set_uv_offset</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> matChecksum, <span class="keywordtype">int</span> pass );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#afeeafb0ebdc1937b9232920d5720a6ff">geom_allocate_uv_matrix_params</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> matChecksum, <span class="keywordtype">int</span> pass );</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a6dcd89ce347d0c3956ecf963ee17ee39">geom_replace_texture</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a210fa0205b3ed66471c856d2b3893f8f">model_clear_all_geoms</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ad6cc486c78b783a1a7e4962f06dac781">model_remove_polys</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a61121dafe8411bf2d2d9c5dafc36cbc0">model_reset_scale</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a9cda4e07b526063016bdd9c95eda417e">model_apply_body_shape</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ac185bf881f1dca410b46b7d101a3759c">model_apply_bone_scale</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a5ef41dbbbe9f4d74ad1502a9789d6694">model_apply_object_scale</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ac7fb87ef297578efa43509450c379df8">model_finalize</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span>    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#abebde55ebdbb95f21e220c0877c6f323">model_run_script</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> partChecksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> targetChecksum );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="comment">// temporary pointer to the model, so that CallMemberFunctions</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// can operate on the Nx::CModel.  This only exists for the</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// duration of the BuildModel() function call.</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">static</span> <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>*          <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adefd7d869cac5fa9cbe24cf163128a3a">mp_model</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keyword">static</span> <a class="code" href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a>*      <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a8bb0e0fad3a676bfe03c0138c7698175">mp_skeleton</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adefd7d869cac5fa9cbe24cf163128a3a">   81</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="../../d1/d92/class_gfx_1_1_c_model_appearance.html">CModelAppearance</a>*    <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#addc7d1d5787b938ba738af3376fa8c48">mp_appearance</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a8bb0e0fad3a676bfe03c0138c7698175">   82</a></span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a26f1dd7e9e721e80478c45d296ee21c9">m_useAssetManager</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#addc7d1d5787b938ba738af3376fa8c48">   83</a></span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adc7f68dddaf3990889aae616014b0607">m_texDictOffset</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a26f1dd7e9e721e80478c45d296ee21c9">   84</a></span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adc7f68dddaf3990889aae616014b0607">   85</a></span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;} <span class="comment">// namespace Obj</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif  // __GFX_MODELBUILDER_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_ad6cc486c78b783a1a7e4962f06dac781"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ad6cc486c78b783a1a7e4962f06dac781">Gfx::CModelBuilder::model_remove_polys</a></div><div class="ttdeci">virtual bool model_remove_polys()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00749">ModelBuilder.cpp:749</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a94890221d5492b499b18fd0367395dc6"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a94890221d5492b499b18fd0367395dc6">Gfx::CModelBuilder::geom_set_uv_offset</a></div><div class="ttdeci">virtual bool geom_set_uv_offset(uint32 partChecksum, uint32 matChecksum, int pass)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00840">ModelBuilder.cpp:840</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ae3286d14e70e0c56da8b408aa329131b"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ae3286d14e70e0c56da8b408aa329131b">Gfx::vCHECKSUM_CREATE_MODEL_FROM_APPEARANCE</a></div><div class="ttdeci">const uint32 vCHECKSUM_CREATE_MODEL_FROM_APPEARANCE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00039">ModelBuilder.h:39</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a210fa0205b3ed66471c856d2b3893f8f"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a210fa0205b3ed66471c856d2b3893f8f">Gfx::CModelBuilder::model_clear_all_geoms</a></div><div class="ttdeci">virtual bool model_clear_all_geoms()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00543">ModelBuilder.cpp:543</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_ac7fb87ef297578efa43509450c379df8"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ac7fb87ef297578efa43509450c379df8">Gfx::CModelBuilder::model_finalize</a></div><div class="ttdeci">virtual bool model_finalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00990">ModelBuilder.cpp:990</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_adc7f68dddaf3990889aae616014b0607"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adc7f68dddaf3990889aae616014b0607">Gfx::CModelBuilder::m_texDictOffset</a></div><div class="ttdeci">uint32 m_texDictOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00085">ModelBuilder.h:85</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a46f14a8277bd96c857cf21995f6f935e"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a46f14a8277bd96c857cf21995f6f935e">Gfx::CModelBuilder::model_clear_geom</a></div><div class="ttdeci">virtual bool model_clear_geom(uint32 partChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00526">ModelBuilder.cpp:526</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_abebde55ebdbb95f21e220c0877c6f323"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#abebde55ebdbb95f21e220c0877c6f323">Gfx::CModelBuilder::model_run_script</a></div><div class="ttdeci">virtual bool model_run_script(uint32 partChecksum, uint32 targetChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l01005">ModelBuilder.cpp:1005</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a54920947972502f2b2c07bc7a81ae388"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a54920947972502f2b2c07bc7a81ae388">Gfx::CModelBuilder::model_add_geom</a></div><div class="ttdeci">virtual bool model_add_geom(uint32 partChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00461">ModelBuilder.cpp:461</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a9cda4e07b526063016bdd9c95eda417e"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a9cda4e07b526063016bdd9c95eda417e">Gfx::CModelBuilder::model_apply_body_shape</a></div><div class="ttdeci">virtual bool model_apply_body_shape()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00581">ModelBuilder.cpp:581</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a8bb0e0fad3a676bfe03c0138c7698175"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a8bb0e0fad3a676bfe03c0138c7698175">Gfx::CModelBuilder::mp_skeleton</a></div><div class="ttdeci">static Gfx::CSkeleton * mp_skeleton</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00082">ModelBuilder.h:82</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_aba1a339c3ee77b222cbd9534069fe55a"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#aba1a339c3ee77b222cbd9534069fe55a">Gfx::CModelBuilder::model_hide_geom</a></div><div class="ttdeci">virtual bool model_hide_geom(uint32 partChecksum, bool hidden)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00438">ModelBuilder.cpp:438</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_appearance_html"><div class="ttname"><a href="../../d1/d92/class_gfx_1_1_c_model_appearance.html">Gfx::CModelAppearance</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dfd/_model_appearance_8h_source.html#l00046">ModelAppearance.h:46</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_afeeafb0ebdc1937b9232920d5720a6ff"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#afeeafb0ebdc1937b9232920d5720a6ff">Gfx::CModelBuilder::geom_allocate_uv_matrix_params</a></div><div class="ttdeci">virtual bool geom_allocate_uv_matrix_params(uint32 matChecksum, int pass)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00827">ModelBuilder.cpp:827</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a26f1dd7e9e721e80478c45d296ee21c9"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a26f1dd7e9e721e80478c45d296ee21c9">Gfx::CModelBuilder::m_useAssetManager</a></div><div class="ttdeci">bool m_useAssetManager</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00084">ModelBuilder.h:84</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ae38d7feaa50faf8b05eddb2cf29f65db"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ae38d7feaa50faf8b05eddb2cf29f65db">Gfx::vCHECKSUM_HIDE_MODEL_FROM_APPEARANCE</a></div><div class="ttdeci">const uint32 vCHECKSUM_HIDE_MODEL_FROM_APPEARANCE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00042">ModelBuilder.h:42</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00055">NxModel.h:55</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_ac185bf881f1dca410b46b7d101a3759c"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ac185bf881f1dca410b46b7d101a3759c">Gfx::CModelBuilder::model_apply_bone_scale</a></div><div class="ttdeci">virtual bool model_apply_bone_scale(uint32 partChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00604">ModelBuilder.cpp:604</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_adefd7d869cac5fa9cbe24cf163128a3a"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#adefd7d869cac5fa9cbe24cf163128a3a">Gfx::CModelBuilder::mp_model</a></div><div class="ttdeci">static Nx::CModel * mp_model</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00081">ModelBuilder.h:81</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a440768424c335ec91ae967051c9e2dfd"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a440768424c335ec91ae967051c9e2dfd">Gfx::CModelBuilder::CModelBuilder</a></div><div class="ttdeci">CModelBuilder(bool useAssetManager, uint32 texDictOffset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00127">ModelBuilder.cpp:127</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a4d2a8d9b1ee9af0109953af34b79e968"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a4d2a8d9b1ee9af0109953af34b79e968">Gfx::vCHECKSUM_COLOR_MODEL_FROM_APPEARANCE</a></div><div class="ttdeci">const uint32 vCHECKSUM_COLOR_MODEL_FROM_APPEARANCE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00040">ModelBuilder.h:40</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a6dcd89ce347d0c3956ecf963ee17ee39"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a6dcd89ce347d0c3956ecf963ee17ee39">Gfx::CModelBuilder::geom_replace_texture</a></div><div class="ttdeci">virtual bool geom_replace_texture(uint32 partChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00903">ModelBuilder.cpp:903</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a83489401b4585e3da3b65e81ee9fae96"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a83489401b4585e3da3b65e81ee9fae96">Gfx::CModelBuilder::CallMemberFunction</a></div><div class="ttdeci">virtual bool CallMemberFunction(uint32 checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00206">ModelBuilder.cpp:206</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a12f36996da2fba541befff0eecf2593e"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a12f36996da2fba541befff0eecf2593e">Gfx::CModelBuilder::geom_modulate_color</a></div><div class="ttdeci">virtual bool geom_modulate_color(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00764">ModelBuilder.cpp:764</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a61121dafe8411bf2d2d9c5dafc36cbc0"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a61121dafe8411bf2d2d9c5dafc36cbc0">Gfx::CModelBuilder::model_reset_scale</a></div><div class="ttdeci">virtual bool model_reset_scale()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00558">ModelBuilder.cpp:558</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_skeleton_html"><div class="ttname"><a href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d28/_skeleton_8h_source.html#l00094">Skeleton.h:94</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_afee0736c3717c7115c605c04e6206574"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#afee0736c3717c7115c605c04e6206574">Gfx::vCHECKSUM_SCALE_MODEL_FROM_APPEARANCE</a></div><div class="ttdeci">const uint32 vCHECKSUM_SCALE_MODEL_FROM_APPEARANCE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00041">ModelBuilder.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html">Obj::CObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00110">object.h:110</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_addc7d1d5787b938ba738af3376fa8c48"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#addc7d1d5787b938ba738af3376fa8c48">Gfx::CModelBuilder::mp_appearance</a></div><div class="ttdeci">static CModelAppearance * mp_appearance</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00083">ModelBuilder.h:83</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_a5ef41dbbbe9f4d74ad1502a9789d6694"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#a5ef41dbbbe9f4d74ad1502a9789d6694">Gfx::CModelBuilder::model_apply_object_scale</a></div><div class="ttdeci">virtual bool model_apply_object_scale()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00682">ModelBuilder.cpp:682</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html_ad0d64726fbfbaca54c9a321c07a39239"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html#ad0d64726fbfbaca54c9a321c07a39239">Gfx::CModelBuilder::BuildModel</a></div><div class="ttdeci">virtual void BuildModel(CModelAppearance *pAppearance, Nx::CModel *pModel, Gfx::CSkeleton *pSkeleton, uint32 scriptName=vCHECKSUM_CREATE_MODEL_FROM_APPEARANCE)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d26/_model_builder_8cpp_source.html#l00148">ModelBuilder.cpp:148</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_model_builder_html"><div class="ttname"><a href="../../d8/db9/class_gfx_1_1_c_model_builder.html">Gfx::CModelBuilder</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dcc/_model_builder_8h_source.html#l00049">ModelBuilder.h:49</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aobject_8h_html"><div class="ttname"><a href="../../de/d10/object_8h.html">object.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d7/dcc/_model_builder_8h.html">ModelBuilder.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

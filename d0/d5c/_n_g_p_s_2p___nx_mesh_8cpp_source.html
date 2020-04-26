@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_NxMesh.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxMesh.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxMesh.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  2/15/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/p_nxmesh.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d9e/stringutils_8h.html">core/string/stringutils.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                  </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d6c/nx_8h.html">gfx/nx.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/p_nxtexture.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/geomnode.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/mesh.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/scene.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/texture.h&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/db0/pip_8h.html">sys/file/pip.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;                        </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">   36</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">CPs2Mesh::build_casdata_table</a>(<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* p_casData)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">    #ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> version = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)p_casData);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    p_casData += <span class="keyword">sizeof</span>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    Dbg_MsgAssert( version &gt;= 2, ( <span class="stringliteral">&quot;Obsolete version of CAS file.  Please re-export.&quot;</span> ) )</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">m_CASRemovalMask</a> = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)p_casData);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    p_casData += <span class="keyword">sizeof</span>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a> = *((<span class="keywordtype">int</span>*)p_casData);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    p_casData += <span class="keyword">sizeof</span>(int);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// temporary lookup table, for the duration of the scene loading</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a4a2ac9a560d0c235570669e0abc4d498">NxPs2::CreateCASDataLookupTable</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a> &gt; 0 )</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">// create-a-skater flags</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a> = <span class="keyword">new</span> <a class="code" href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html">NxPs2::sCASData</a>[<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a>];</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a>; i++ )</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>[i].<a class="code" href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html#aed66a71a263a6817b30e1a1eeef932b3">mask</a> = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)p_casData);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            p_casData += <span class="keyword">sizeof</span>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">// this will get converted into a pointer to the DMA data</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordtype">int</span> vertIndex = *((<span class="keywordtype">int</span>*)p_casData);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            p_casData += <span class="keyword">sizeof</span>(int);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a24b6535447b06a6416ebb2156f14ac02">NxPs2::SetCASDataLookupData</a>( vertIndex, &amp;<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>[i] );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }       </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a> &gt; 0 );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a80cc371dc24152d9361571e16d6ceccf">   80</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">CPs2Mesh::build_casdata_table</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* pFileName)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> *pFile = <a class="code" href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a>(pFileName, <span class="stringliteral">&quot;rb&quot;</span>);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    Dbg_MsgAssert(pFile, (<span class="stringliteral">&quot;Couldn&#39;t open CAS data file %s\n&quot;</span>, pFileName));</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">int</span> file_size = <a class="code" href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a>(pFile);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().TopDownHeap());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* p_fileBuffer = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( file_size );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>(p_fileBuffer, file_size, 1, pFile);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>( pFile );</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">bool</span> success = <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">build_casdata_table</a>( p_fileBuffer );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>(p_fileBuffer);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// some debugging information for the artists</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d54/namespace_script.html#aa0c62774649e1e3abcab019ea335a3ad">Script::GetInteger</a>( <span class="stringliteral">&quot;DebugCAS&quot;</span>, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> ) )</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;%s removes %08x: [&quot;</span>, pFileName, <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">m_CASRemovalMask</a> );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; 32; i++ )</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mask = ( 1 &lt;&lt; i );</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">m_CASRemovalMask</a> &amp; mask )</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot; %d&quot;</span>, i );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;]\n&quot;</span> );</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> success;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">**                              Public Functions                            **</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a529626c2e37ddbee83c2bf0ede39e206">  125</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d1/d06/namespace_nx.html#a529626c2e37ddbee83c2bf0ede39e206">use_new_geom_format</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* pMeshFileName )</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// &quot;reetest&quot; is a quick kludge to get the skeletal trees</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="comment">// up and running...  eventually, pass this in as a parameter</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// from the nx.cpp level...</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="keywordflow">if</span> ( strstr( pMeshFileName, <span class="stringliteral">&quot;eh_&quot;</span> ) || strstr( pMeshFileName, <span class="stringliteral">&quot;reetest&quot;</span> ) )</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// if it&#39;s a vehicle, then use the new geomnode format</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a3e8f801906db83f236f8f62c84b88c1c">  146</a></span>&#160;<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a3e8f801906db83f236f8f62c84b88c1c">CPs2Mesh::CPs2Mesh</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>* pModelData, <span class="keywordtype">int</span> modelDataSize, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* pCASData, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html">Nx::CTexDict</a>* pTexDict, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texDictOffset, <span class="keywordtype">bool</span> isSkin, <span class="keywordtype">bool</span> doShadowVolume)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    Dbg_Assert( pTexDict );</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">mp_texDict</a> = pTexDict;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// polys should only be hidden once</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ac0a598670e3e55cf06ea8ae379951f49">m_polysAlreadyHidden</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">m_isPipped</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a> = 0;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// don&#39;t do this for models</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">if</span> ( isSkin &amp;&amp; pCASData )</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">build_casdata_table</a>( pCASData );</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">// GJ:  The geomnodes blow off the texDictOffset, </span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// which means it won&#39;t work with skater models, </span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">// or the 10 board gameobjs in the boardshop.</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">if</span> ( !isSkin &amp;&amp; texDictOffset == 0 )</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    {        </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="comment">// since we&#39;re not actually opening a PIP file</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment">// we don&#39;t need to keep track of it</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">m_isPipped</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="comment">// this should already be in GEOM format,</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="comment">// by the time the data arrives here...</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// (we&#39;re not loading up the Pip through the</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">// normal Pip::Load process, so we need</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">// to remember the pointer to the pip data</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">// so that we can delete it later)</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( modelDataSize );</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        Dbg_Assert( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a> );</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        memcpy( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a>, pModelData, modelDataSize );</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="comment">// process data in place</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment">// final arg (0) says to hold it in a database to be rendered later</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// (as opposed to rendering it unconditionally, LOADFLAG_RENDERNOW)</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> = <a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af23cb604f2fdc21fc8010dcbfdaa6d4a">NxPs2::CGeomNode::sProcessInPlace</a>( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a>, 0 );</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="comment">// Get hierarchy array</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a18850e9b32a2d14e827684bfbb10e3a9">mp_hierarchyObjects</a> = (<a class="code" href="../../db/dc7/class_nx_1_1_c_hierarchy_object.html">CHierarchyObject</a>*) <a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#ac43eee622e709c10a9eb8a02fbbe5fa9">NxPs2::CGeomNode::sGetHierarchyArray</a>(<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a>, <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a3e3b310e164961505132dbc0ab4f73cf">m_numHierarchyObjects</a>);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <a class="code" href="../../df/da1/struct_nx_ps2_1_1s_scene.html">NxPs2::sScene</a>* pTextureDictionary = ((<a class="code" href="../../da/da2/class_nx_1_1_c_ps2_tex_dict.html">Nx::CPs2TexDict</a>*)<a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">mp_texDict</a>)-&gt;GetEngineTextureDictionary();</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#afc286d9977822080c601bf7d0ab54afb">NxPs2::LoadScene</a>( pModelData, modelDataSize, pTextureDictionary, <span class="keyword">true</span>, <span class="keyword">true</span>, texDictOffset, doShadowVolume );</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> = NULL;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="comment">// temporary lookup table is no longer needed</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aff8a07e8d6bb6b0a4c7d857f81a9526a">NxPs2::DestroyCASDataLookupTable</a>();</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ab74af5d3ec037458b38a309a2e50ea75">  210</a></span>&#160;<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a3e8f801906db83f236f8f62c84b88c1c">CPs2Mesh::CPs2Mesh</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* pMeshFileName, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html">Nx::CTexDict</a>* pTexDict, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texDictOffset, <span class="keywordtype">bool</span> isSkin, <span class="keywordtype">bool</span> doShadowVolume)</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    Dbg_Assert( pTexDict );</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">m_isPipped</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">mp_texDict</a> = pTexDict;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a> = 0;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="comment">// don&#39;t do this for models</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <span class="keywordflow">if</span> ( isSkin )</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordtype">char</span> CASFileName[256];</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        strcpy(CASFileName, pMeshFileName);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <a class="code" href="../../df/d07/namespace_str.html#aea5a8a6b4937f14ae4969e56ddeaa664">Str::LowerCase</a>( CASFileName );</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordtype">char</span>* pExt = strstr( CASFileName, <span class="stringliteral">&quot;skin.ps2&quot;</span> );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        <span class="keywordflow">if</span> ( pExt )</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            Dbg_MsgAssert( pExt, (<span class="stringliteral">&quot;Couldn&#39;t find skin.ps2 extension in %s&quot;</span>, CASFileName));</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            strcpy(pExt, <span class="stringliteral">&quot;cas.ps2&quot;</span>);</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">build_casdata_table</a>( CASFileName );</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        }</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// GJ:  The geomnodes blow off the texDictOffset, </span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">// which means it won&#39;t work with skater models, </span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// or the 10 board gameobjs in the boardshop.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> ( !isSkin &amp;&amp; texDictOffset == 0 )</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {        </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="comment">// change the file name so that it&#39;s using the new Geom</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="comment">// file format rather than Mdl.</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordtype">char</span> msg[512];</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        strcpy( msg, pMeshFileName );</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordtype">char</span>* pDot = strstr( msg, <span class="stringliteral">&quot;.&quot;</span> );</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        Dbg_Assert( pDot );</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        *pDot = NULL;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( pDot, <span class="stringliteral">&quot;.geom.%s&quot;</span>, <a class="code" href="../../d9/d8c/class_nx_1_1_c_engine.html#a4cf2d35c67dfff18681004fa02853d62">Nx::CEngine::sGetPlatformExtension</a>() );</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#aa10f0b75dcb4fe33ac8796e8ba302d63">m_pipFileName</a> = msg;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">m_isPipped</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">//      printf( &quot;about to load pip file %s %d\n&quot;, m_pipFileName.getString(), texDictOffset );</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="comment">// Pip::Load the new file</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* pPipData = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../dc/da6/namespace_pip.html#a7714c76a789c212f01267ab38ac33b1d">Pip::Load</a>( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#aa10f0b75dcb4fe33ac8796e8ba302d63">m_pipFileName</a>.<a class="code" href="../../d6/ddd/class_str_1_1_string.html#a95d6e7b705530f3a964187e790f4eaba">getString</a>() );</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        Dbg_Assert( pPipData );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="comment">// process data in place</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        <span class="comment">// final arg (0) says to hold it in a database to be rendered later</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="comment">// (as opposed to rendering it unconditionally, LOADFLAG_RENDERNOW)</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> = <a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af23cb604f2fdc21fc8010dcbfdaa6d4a">NxPs2::CGeomNode::sProcessInPlace</a>( pPipData, 0 );</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="comment">// Find CGeomNodeObjects</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">//      if ( use_new_geom_format(pMeshFileName) )</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            <span class="comment">// Get hierarchy array</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a18850e9b32a2d14e827684bfbb10e3a9">mp_hierarchyObjects</a> = (<a class="code" href="../../db/dc7/class_nx_1_1_c_hierarchy_object.html">CHierarchyObject</a> *) <a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#ac43eee622e709c10a9eb8a02fbbe5fa9">NxPs2::CGeomNode::sGetHierarchyArray</a>(pPipData, <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a3e3b310e164961505132dbc0ab4f73cf">m_numHierarchyObjects</a>);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <a class="code" href="../../df/da1/struct_nx_ps2_1_1s_scene.html">NxPs2::sScene</a>* pTextureDictionary = ((<a class="code" href="../../da/da2/class_nx_1_1_c_ps2_tex_dict.html">Nx::CPs2TexDict</a>*)<a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">mp_texDict</a>)-&gt;GetEngineTextureDictionary();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#afc286d9977822080c601bf7d0ab54afb">NxPs2::LoadScene</a>( pMeshFileName, pTextureDictionary, <span class="keyword">true</span>, <span class="keyword">true</span>, texDictOffset, doShadowVolume );</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> = NULL;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="comment">// temporary lookup table is no longer needed</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aff8a07e8d6bb6b0a4c7d857f81a9526a">NxPs2::DestroyCASDataLookupTable</a>();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ab9b7695511c150070b5e7267baede14c">  287</a></span>&#160;<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ab9b7695511c150070b5e7267baede14c">CPs2Mesh::~CPs2Mesh</a>()</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;{</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="comment">//if (mp_geomNodeObjects)</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="comment">//{</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="comment">//  delete[] mp_geomNodeObjects;</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">//}</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> )</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    {</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="comment">// clean up the node we created</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        Dbg_Assert( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a> );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">mp_geomNode</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa30fa82eb390598af9e3f925fccd0e46">Cleanup</a>();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// Pip::Unload the file</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">m_isPipped</a> )</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a>( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#aa10f0b75dcb4fe33ac8796e8ba302d63">m_pipFileName</a>.<a class="code" href="../../d6/ddd/class_str_1_1_string.html#a95d6e7b705530f3a964187e790f4eaba">getString</a>() );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// the file was not loaded using Pip::Load()</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a> )</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a> );</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;            <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">mp_pipData</a> = NULL;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <a class="code" href="../../df/da1/struct_nx_ps2_1_1s_scene.html">NxPs2::sScene</a>* pScene = ((<a class="code" href="../../da/da2/class_nx_1_1_c_ps2_tex_dict.html">Nx::CPs2TexDict</a>*)<a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">mp_texDict</a>)-&gt;GetEngineTextureDictionary();</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="comment">// unload scene</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a21b274b9faa78f6b12fac22f3de685ab">NxPs2::DeleteScene</a>( pScene );</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a> )</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keyword">delete</span>[] <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno"><a class="line" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a51b3c736e7e892effdec79572d924069">  332</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a51b3c736e7e892effdec79572d924069">CPs2Mesh::HidePolys</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mask )</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;{</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="comment">// this function should only be called once per mesh</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="comment">// because after the ADC bits are squeezed,</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// the pointers are no longer valid...</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="comment">// (was causing a crash in the secret level</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <span class="comment">// with random peds that were doing poly removal)</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ac0a598670e3e55cf06ea8ae379951f49">m_polysAlreadyHidden</a> )</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">//  printf( &quot;Hiding polys with mask 0x%08x\n&quot;, mask);</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> j = 0; j &lt; <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">m_numCASData</a>; j++ )</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    {</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        Dbg_Assert( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a> );</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>[j].mask &amp; mask )</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>[j].pADCBit )</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;                *<a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">mp_CASData</a>[j].<a class="code" href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html#a61720d66a064d22529391f5fe4d89035">pADCBit</a> = 0xC000;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            count++;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        }</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">//  printf( &quot;Hiding %d polys\n&quot;, count );</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <a class="code" href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ac0a598670e3e55cf06ea8ae379951f49">m_polysAlreadyHidden</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_adfe10eb1ba5529221840c3ceaa8b7eb6"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#adfe10eb1ba5529221840c3ceaa8b7eb6">Nx::CPs2Mesh::mp_geomNode</a></div><div class="ttdeci">NxPs2::CGeomNode * mp_geomNode</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00048">p_NxMesh.h:48</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a4a2ac9a560d0c235570669e0abc4d498"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a4a2ac9a560d0c235570669e0abc4d498">NxPs2::CreateCASDataLookupTable</a></div><div class="ttdeci">void CreateCASDataLookupTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc2/_n_g_p_s_2_n_x_2mesh_8cpp_source.html#l01161">mesh.cpp:1161</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_c_a_s_data_html_aed66a71a263a6817b30e1a1eeef932b3"><div class="ttname"><a href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html#aed66a71a263a6817b30e1a1eeef932b3">NxPs2::sCASData::mask</a></div><div class="ttdeci">uint32 mask</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d62/_n_g_p_s_2_n_x_2mesh_8h_source.html#l00048">mesh.h:48</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_tex_dict_html"><div class="ttname"><a href="../../d1/d37/class_nx_1_1_c_tex_dict.html">Nx::CTexDict</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00160">NxTexture.h:160</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_scene_html"><div class="ttname"><a href="../../df/da1/struct_nx_ps2_1_1s_scene.html">NxPs2::sScene</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dd4/_n_g_p_s_2_n_x_2scene_8h_source.html#l00049">scene.h:49</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a7714c76a789c212f01267ab38ac33b1d"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a7714c76a789c212f01267ab38ac33b1d">Pip::Load</a></div><div class="ttdeci">void * Load(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00035">win32functions.cpp:35</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_engine_html_a4cf2d35c67dfff18681004fa02853d62"><div class="ttname"><a href="../../d9/d8c/class_nx_1_1_c_engine.html#a4cf2d35c67dfff18681004fa02853d62">Nx::CEngine::sGetPlatformExtension</a></div><div class="ttdeci">static const char * sGetPlatformExtension()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d16/nx_8cpp_source.html#l00929">nx.cpp:929</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_ab9b7695511c150070b5e7267baede14c"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ab9b7695511c150070b5e7267baede14c">Nx::CPs2Mesh::~CPs2Mesh</a></div><div class="ttdeci">virtual ~CPs2Mesh()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html#l00287">p_NxMesh.cpp:287</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_a51b3c736e7e892effdec79572d924069"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a51b3c736e7e892effdec79572d924069">Nx::CPs2Mesh::HidePolys</a></div><div class="ttdeci">void HidePolys(uint32 mask)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html#l00332">p_NxMesh.cpp:332</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_ad434c04dd50d00b145f473abbf734ccf"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ad434c04dd50d00b145f473abbf734ccf">Nx::CPs2Mesh::m_isPipped</a></div><div class="ttdeci">bool m_isPipped</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00050">p_NxMesh.h:50</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a529626c2e37ddbee83c2bf0ede39e206"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a529626c2e37ddbee83c2bf0ede39e206">Nx::use_new_geom_format</a></div><div class="ttdeci">bool use_new_geom_format(const char *pMeshFileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html#l00125">p_NxMesh.cpp:125</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_acbe407c08e3eae1d5960011d60bba11c"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acbe407c08e3eae1d5960011d60bba11c">Nx::CPs2Mesh::mp_CASData</a></div><div class="ttdeci">NxPs2::sCASData * mp_CASData</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00057">p_NxMesh.h:57</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a3e3b310e164961505132dbc0ab4f73cf"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a3e3b310e164961505132dbc0ab4f73cf">Nx::CMesh::m_numHierarchyObjects</a></div><div class="ttdeci">int m_numHierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00065">NxMesh.h:65</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_c_a_s_data_html"><div class="ttname"><a href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html">NxPs2::sCASData</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d62/_n_g_p_s_2_n_x_2mesh_8h_source.html#l00046">mesh.h:46</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a></div><div class="ttdeci">@ NO_ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00015">scriptdefs.h:15</a></div></div>
+<div class="ttc" id="anamespace_file_html_a42faef384ac438a449656a07258cdbec"><div class="ttname"><a href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a></div><div class="ttdeci">long GetFileSize(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00272">p_filesys.cpp:272</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_ac0a598670e3e55cf06ea8ae379951f49"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#ac0a598670e3e55cf06ea8ae379951f49">Nx::CPs2Mesh::m_polysAlreadyHidden</a></div><div class="ttdeci">bool m_polysAlreadyHidden</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00049">p_NxMesh.h:49</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_a89f304ebee472a261ecf98a6268d2752"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a89f304ebee472a261ecf98a6268d2752">Nx::CPs2Mesh::m_numCASData</a></div><div class="ttdeci">int m_numCASData</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00058">p_NxMesh.h:58</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_hierarchy_object_html"><div class="ttname"><a href="../../db/dc7/class_nx_1_1_c_hierarchy_object.html">Nx::CHierarchyObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d23/_nx_hierarchy_8h_source.html#l00023">NxHierarchy.h:23</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a50517a256484b095215edbea30d4e557"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">Nx::CMesh::m_CASRemovalMask</a></div><div class="ttdeci">uint32 m_CASRemovalMask</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00061">NxMesh.h:61</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a21b274b9faa78f6b12fac22f3de685ab"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a21b274b9faa78f6b12fac22f3de685ab">NxPs2::DeleteScene</a></div><div class="ttdeci">void DeleteScene(sScene *pScene)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc0/_n_g_p_s_2_n_x_2scene_8cpp_source.html#l00196">scene.cpp:196</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_afc286d9977822080c601bf7d0ab54afb"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#afc286d9977822080c601bf7d0ab54afb">NxPs2::LoadScene</a></div><div class="ttdeci">sScene * LoadScene(const char *Filename, sScene *pScene, bool IsSkin, bool IsInstanceable, uint32 texDictOffset, bool doShadowVolume)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dc0/_n_g_p_s_2_n_x_2scene_8cpp_source.html#l00161">scene.cpp:161</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_ac43eee622e709c10a9eb8a02fbbe5fa9"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#ac43eee622e709c10a9eb8a02fbbe5fa9">NxPs2::CGeomNode::sGetHierarchyArray</a></div><div class="ttdeci">static void * sGetHierarchyArray(uint8 *pPipData, int &amp;size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l03202">geomnode.cpp:3202</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="aclass_str_1_1_string_html_a95d6e7b705530f3a964187e790f4eaba"><div class="ttname"><a href="../../d6/ddd/class_str_1_1_string.html#a95d6e7b705530f3a964187e790f4eaba">Str::String::getString</a></div><div class="ttdeci">const char * getString() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d3b/_c_string_8cpp_source.html#l00284">CString.cpp:284</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_acac6cf0aaa6f007009a70c7312f5e46f"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#acac6cf0aaa6f007009a70c7312f5e46f">Nx::CPs2Mesh::build_casdata_table</a></div><div class="ttdeci">bool build_casdata_table(uint8 *pCASData)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html#l00036">p_NxMesh.cpp:36</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_aa30fa82eb390598af9e3f925fccd0e46"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa30fa82eb390598af9e3f925fccd0e46">NxPs2::CGeomNode::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l03234">geomnode.cpp:3234</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aff8a07e8d6bb6b0a4c7d857f81a9526a"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aff8a07e8d6bb6b0a4c7d857f81a9526a">NxPs2::DestroyCASDataLookupTable</a></div><div class="ttdeci">void DestroyCASDataLookupTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc2/_n_g_p_s_2_n_x_2mesh_8cpp_source.html#l01177">mesh.cpp:1177</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_tex_dict_html"><div class="ttname"><a href="../../da/da2/class_nx_1_1_c_ps2_tex_dict.html">Nx::CPs2TexDict</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d0f/_n_g_p_s_2p__nxtexture_8h_source.html#l00210">p_NxTexture.h:210</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_af23cb604f2fdc21fc8010dcbfdaa6d4a"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af23cb604f2fdc21fc8010dcbfdaa6d4a">NxPs2::CGeomNode::sProcessInPlace</a></div><div class="ttdeci">static CGeomNode * sProcessInPlace(uint8 *pPipData, uint32 loadFlags)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l03161">geomnode.cpp:3161</a></div></div>
+<div class="ttc" id="anamespace_file_html_a180384dc852ac3b971285fc63b1287cb"><div class="ttname"><a href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a></div><div class="ttdeci">void * Open(const char *filename, const char *access)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00391">p_filesys.cpp:391</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aeedb606ea94a3398fdcfa3101c5ea8d9"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a></div><div class="ttdeci">void Free(void *p_mem)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00108">win32functions.cpp:108</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="astringutils_8h_html"><div class="ttname"><a href="../../d9/d9e/stringutils_8h.html">stringutils.h</a></div></div>
+<div class="ttc" id="apip_8h_html"><div class="ttname"><a href="../../d2/db0/pip_8h.html">pip.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a1cbfa0b0afd614b3cbb2e30d61452ce0"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a1cbfa0b0afd614b3cbb2e30d61452ce0">Nx::CMesh::mp_texDict</a></div><div class="ttdeci">Nx::CTexDict * mp_texDict</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00054">NxMesh.h:54</a></div></div>
+<div class="ttc" id="anamespace_file_html_af5cd83b01fc5f341f767beb7c0b1130c"><div class="ttname"><a href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a></div><div class="ttdeci">int Close(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00425">p_filesys.cpp:425</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a24b6535447b06a6416ebb2156f14ac02"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a24b6535447b06a6416ebb2156f14ac02">NxPs2::SetCASDataLookupData</a></div><div class="ttdeci">void SetCASDataLookupData(int index, sCASData *pData)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc2/_n_g_p_s_2_n_x_2mesh_8cpp_source.html#l01186">mesh.cpp:1186</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a6ee3f2a13a08091a1e0145f209593325"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a></div><div class="ttdeci">void Unload(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00040">win32functions.cpp:40</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="anamespace_script_html_aa0c62774649e1e3abcab019ea335a3ad"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aa0c62774649e1e3abcab019ea335a3ad">Script::GetInteger</a></div><div class="ttdeci">int GetInteger(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00514">symboltable.cpp:514</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_a707d3feedd8078629161c193e6e72782"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a707d3feedd8078629161c193e6e72782">Nx::CPs2Mesh::mp_pipData</a></div><div class="ttdeci">uint8 * mp_pipData</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00051">p_NxMesh.h:51</a></div></div>
+<div class="ttc" id="anamespace_str_html_aea5a8a6b4937f14ae4969e56ddeaa664"><div class="ttname"><a href="../../df/d07/namespace_str.html#aea5a8a6b4937f14ae4969e56ddeaa664">Str::LowerCase</a></div><div class="ttdeci">void LowerCase(char *p)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dbf/stringutils_8cpp_source.html#l00121">stringutils.cpp:121</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_aa10f0b75dcb4fe33ac8796e8ba302d63"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#aa10f0b75dcb4fe33ac8796e8ba302d63">Nx::CPs2Mesh::m_pipFileName</a></div><div class="ttdeci">Str::String m_pipFileName</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d39/_n_g_p_s_2p___nx_mesh_8h_source.html#l00052">p_NxMesh.h:52</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab406a8cc16de5046c7d9fd09c9de5e22"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">Dbg::sprintf</a></div><div class="ttdeci">sprintf(tmp1, &quot;FILE:      %s(%d) &quot;, file, line)</div></div>
+<div class="ttc" id="anamespace_mem_html_a10246603d03405159c82320b96e3efbf"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a></div><div class="ttdeci">void * Malloc(size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00103">win32functions.cpp:103</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_c_a_s_data_html_a61720d66a064d22529391f5fe4d89035"><div class="ttname"><a href="../../d9/db3/struct_nx_ps2_1_1s_c_a_s_data.html#a61720d66a064d22529391f5fe4d89035">NxPs2::sCASData::pADCBit</a></div><div class="ttdeci">uint16 * pADCBit</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d62/_n_g_p_s_2_n_x_2mesh_8h_source.html#l00050">mesh.h:50</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_mesh_html_a3e8f801906db83f236f8f62c84b88c1c"><div class="ttname"><a href="../../d5/d5b/class_nx_1_1_c_ps2_mesh.html#a3e8f801906db83f236f8f62c84b88c1c">Nx::CPs2Mesh::CPs2Mesh</a></div><div class="ttdeci">CPs2Mesh(uint32 *pModelData, int modelDataSize, uint8 *pCASData, Nx::CTexDict *pTexDict, uint32 texDictOffset, bool isSkin, bool doShadowVolume)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp_source.html#l00146">p_NxMesh.cpp:146</a></div></div>
+<div class="ttc" id="anamespace_file_html_ae5e5ed0fd4834fc2e0e1c29edc62fc02"><div class="ttname"><a href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a></div><div class="ttdeci">size_t Read(void *addr, size_t size, size_t count, void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00443">p_filesys.cpp:443</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a18850e9b32a2d14e827684bfbb10e3a9"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a18850e9b32a2d14e827684bfbb10e3a9">Nx::CMesh::mp_hierarchyObjects</a></div><div class="ttdeci">CHierarchyObject * mp_hierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00064">NxMesh.h:64</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../d0/d5c/_n_g_p_s_2p___nx_mesh_8cpp.html">p_NxMesh.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:28. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

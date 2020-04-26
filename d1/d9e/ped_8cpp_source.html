@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/ped.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d9e/ped_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ped.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d9e/ped_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Sk/Objects</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       ped.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  10/15/2000</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    MD:  Derived from CMovingObject, the ped just adds some functionality</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">    for jumping out of the way of the skater.  That&#39;s all!  Other than</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">    that, the ped inherits all the abilities of the moving object class,</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">    such as having an animating model, that can follow paths, or play</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">    sounds, etc...</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    GJ:  The above comment used to be true, but now peds are defined as</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    having skinned models and animations, running extra scripts to shut</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    off extra bones, etc.  Some of this stuff should be moved up to</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">    the CMovingObject level (in particular, the skinned model/anim stuff)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// start autoduck documentation</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// @DOC ped</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// @module ped | None</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// @subindex Scripting Database</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// @index script | ped</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d6c/ped_8h.html">sk/objects/ped.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d0d/objman_8h.html">gel/objman.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d91/_skater_proximity_component_8h.html">sk/components/skaterproximitycomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d45/modelcomponent_8h.html">gel/components/modelcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d64/motioncomponent_8h.html">gel/components/motioncomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/def/_moving_object_8h.html">sk/objects/movingobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/da4/_path_ob_8h.html">sk/objects/pathob.h</a>&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d47/nodearray_8h.html">sk/scripting/nodearray.h</a>&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a44f7a66bfbf0568bb64f39d046b8cb7e">DEFAULT_PED_TURN_DIST</a> = 2.0f;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a4cb95de7a4dd7dc88f566b90c1ea88ba">DEFAULT_PED_MAX_VEL</a> = 2.5f;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a41f6e536e63b97606f680a1b795a947c">DEFAULT_PED_ACCELERATION</a> = 4.0f;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a81ec96b04064613f44e1c14a0b4e2098">DEFAULT_PED_DECELERATION</a> = 1.0f;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a44f7a66bfbf0568bb64f39d046b8cb7e">   64</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a39044bbe4e3ed1bdf1193d2300aaa9cd">DEFAULT_PED_STOP_DIST</a> = 2.0f;       <span class="comment">// stopping distance from wp</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a4cb95de7a4dd7dc88f566b90c1ea88ba">   65</a></span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a41f6e536e63b97606f680a1b795a947c">   66</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a81ec96b04064613f44e1c14a0b4e2098">   67</a></span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a39044bbe4e3ed1bdf1193d2300aaa9cd">   68</a></span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">**                              Public Functions                            **</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/d10/namespace_obj.html#afd0edfcc8763581076bf67c882536326">CreatePed</a>(<a class="code" href="../../d7/d00/class_obj_1_1_c_general_manager.html">CGeneralManager</a>* p_obj_man, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pNodeData)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html">CMovingObject</a>* pPed = <span class="keyword">new</span> <a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html">CMovingObject</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#afd0edfcc8763581076bf67c882536326">   91</a></span>&#160;    pPed-&gt;<a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a27367ea10bd1b046e338eb4d02748360">MovingObjectCreateComponents</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    pPed-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">SetType</a>( <a class="code" href="../../df/d23/skate_8h.html#abe4eb8a7f480877e96248c1c2b2b96a4ab63b2e879487f629e97ef83cb36a9e08">SKATE_TYPE_PED</a> );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    Dbg_MsgAssert(pPed, (<span class="stringliteral">&quot;Failed to create pedestrian.&quot;</span>));</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    p_obj_man-&gt;<a class="code" href="../../d1/d72/class_obj_1_1_c_base_manager.html#a836cff08de968d1ac29b22250392e24d">RegisterObject</a>(*pPed);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// GJ:  This should come before the model gets initialized</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// get position, from the node that created us:</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a5638e95247d626e24d46bfc5c7d7d068">SkateScript::GetPosition</a>( pNodeData, &amp;pPed-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    pPed-&gt;<a class="code" href="../../df/d19/class_obj_1_1_c_moving_object.html#a123da2ee5d67c1f592bf4a63064932a3">MovingObjectInit</a>( pNodeData, p_obj_man );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( CRCD(0xf3eec45e,<span class="stringliteral">&quot;ped_add_components&quot;</span>), pNodeData, pPed );</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="comment">// Finalize the components, after everything has been added </span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    pPed-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a56d24d6676042c054d9b834bedbe90ad">Finalize</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( CRCD(0x955a2767,<span class="stringliteral">&quot;ped_init_model&quot;</span>), pNodeData, pPed );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">// designer controlled variables:</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="comment">// set defaults, to be overridden by script values if they exist:</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a>* pMotionComponent = GetMotionComponentFromObject( pPed );</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#a52849368f52c577cf4cfbe7955a23659">m_max_vel</a> = ( MPH_TO_INCHES_PER_SECOND ( <a class="code" href="../../d2/d10/namespace_obj.html#a4cb95de7a4dd7dc88f566b90c1ea88ba">DEFAULT_PED_MAX_VEL</a> ) );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#a9843bdbbf76d3830b8fc7396a3e42e81">m_acceleration</a> = FEET_TO_INCHES( <a class="code" href="../../d2/d10/namespace_obj.html#a41f6e536e63b97606f680a1b795a947c">DEFAULT_PED_ACCELERATION</a> );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#a73d064a6c9b8dd090a0ffc28c73a39fd">m_deceleration</a> = FEET_TO_INCHES( <a class="code" href="../../d2/d10/namespace_obj.html#a81ec96b04064613f44e1c14a0b4e2098">DEFAULT_PED_DECELERATION</a> );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#ab0618b5fc2051431fd95ffc81b9816c1">m_stop_dist</a> = FEET_TO_INCHES( <a class="code" href="../../d2/d10/namespace_obj.html#a39044bbe4e3ed1bdf1193d2300aaa9cd">DEFAULT_PED_STOP_DIST</a> );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#aabb97d33c57ff8a9fc8c43cc5a0e6176">EnsurePathobExists</a>( pPed );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#ad36251e918d3e3df80be438f3120aa1e">GetPathOb</a>()-&gt;<a class="code" href="../../db/d5a/class_obj_1_1_c_path_ob.html#aeca2dd1f72765246e78911fd06535fa5">m_enter_turn_dist</a> = FEET_TO_INCHES( <a class="code" href="../../d2/d10/namespace_obj.html#a44f7a66bfbf0568bb64f39d046b8cb7e">DEFAULT_PED_TURN_DIST</a> );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// don&#39;t let his pitch get messed up when going up hills...</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">m_movingobj_flags</a> |= MOVINGOBJ_FLAG_NO_PITCH_PLEASE;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// need to synchronize rendered model&#39;s position to initial world position</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    GetModelComponentFromObject( pPed )-&gt;FinalizeModelInitialization();</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// now that the skeleton has been updated at least once,</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// we can turn off the extra bones that don&#39;t animate:  </span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( CRCD(0x48ca2d26,<span class="stringliteral">&quot;ped_disable_bones&quot;</span>), NULL, pPed );</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    pPed-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a37cf3d1b587ffb1f6020f5a25ddd62f9">SetProfileColor</a>(0xc000c0);                <span class="comment">// magenta = ped</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;} <span class="comment">// namespace Obj</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="amotioncomponent_8h_html"><div class="ttname"><a href="../../db/d64/motioncomponent_8h.html">motioncomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a75150b149fb2f45075cdebc2422afaff"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">Obj::CCompositeObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00099">compositeobject.h:99</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_ab0618b5fc2051431fd95ffc81b9816c1"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#ab0618b5fc2051431fd95ffc81b9816c1">Obj::CMotionComponent::m_stop_dist</a></div><div class="ttdeci">float m_stop_dist</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00169">motioncomponent.h:169</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a37cf3d1b587ffb1f6020f5a25ddd62f9"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a37cf3d1b587ffb1f6020f5a25ddd62f9">Obj::CCompositeObject::SetProfileColor</a></div><div class="ttdeci">void SetProfileColor(uint32 ProfileColor)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00142">compositeobject.h:142</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a56d24d6676042c054d9b834bedbe90ad"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a56d24d6676042c054d9b834bedbe90ad">Obj::CCompositeObject::Finalize</a></div><div class="ttdeci">void Finalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d95/compositeobject_8cpp_source.html#l00526">compositeobject.cpp:526</a></div></div>
+<div class="ttc" id="anamespace_script_html_af49b12363c52ae6f00363d582c3bdc7e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a></div><div class="ttdeci">void RunScript(uint32 scriptChecksum, CStruct *p_params, Obj::CObject *p_object, bool netScript, const char *p_scriptName)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/script_8cpp_source.html#l02995">script.cpp:2995</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_a9843bdbbf76d3830b8fc7396a3e42e81"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#a9843bdbbf76d3830b8fc7396a3e42e81">Obj::CMotionComponent::m_acceleration</a></div><div class="ttdeci">float m_acceleration</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00165">motioncomponent.h:165</a></div></div>
+<div class="ttc" id="askate_8h_html_abe4eb8a7f480877e96248c1c2b2b96a4ab63b2e879487f629e97ef83cb36a9e08"><div class="ttname"><a href="../../df/d23/skate_8h.html#abe4eb8a7f480877e96248c1c2b2b96a4ab63b2e879487f629e97ef83cb36a9e08">SKATE_TYPE_PED</a></div><div class="ttdeci">@ SKATE_TYPE_PED</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00047">skate.h:47</a></div></div>
+<div class="ttc" id="a_path_ob_8h_html"><div class="ttname"><a href="../../d3/da4/_path_ob_8h.html">PathOb.h</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a39044bbe4e3ed1bdf1193d2300aaa9cd"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a39044bbe4e3ed1bdf1193d2300aaa9cd">Obj::DEFAULT_PED_STOP_DIST</a></div><div class="ttdeci">const float DEFAULT_PED_STOP_DIST</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00068">ped.cpp:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_general_manager_html"><div class="ttname"><a href="../../d7/d00/class_obj_1_1_c_general_manager.html">Obj::CGeneralManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d0d/objman_8h_source.html#l00132">objman.h:132</a></div></div>
+<div class="ttc" id="a_moving_object_8h_html"><div class="ttname"><a href="../../d4/def/_moving_object_8h.html">MovingObject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_aacb2be1b98fd3b26fa444a93fde64508"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">Obj::CMotionComponent::m_movingobj_flags</a></div><div class="ttdeci">int m_movingobj_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00162">motioncomponent.h:162</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_a73d064a6c9b8dd090a0ffc28c73a39fd"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#a73d064a6c9b8dd090a0ffc28c73a39fd">Obj::CMotionComponent::m_deceleration</a></div><div class="ttdeci">float m_deceleration</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00166">motioncomponent.h:166</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_ad36251e918d3e3df80be438f3120aa1e"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#ad36251e918d3e3df80be438f3120aa1e">Obj::CMotionComponent::GetPathOb</a></div><div class="ttdeci">CPathOb * GetPathOb()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc5/motioncomponent_8cpp_source.html#l01046">motioncomponent.cpp:1046</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a41f6e536e63b97606f680a1b795a947c"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a41f6e536e63b97606f680a1b795a947c">Obj::DEFAULT_PED_ACCELERATION</a></div><div class="ttdeci">const float DEFAULT_PED_ACCELERATION</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00066">ped.cpp:66</a></div></div>
+<div class="ttc" id="aped_8h_html"><div class="ttname"><a href="../../df/d6c/ped_8h.html">ped.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a4c712b97cd2801aa62a9c237b0267df2"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">Obj::CObject::SetType</a></div><div class="ttdeci">void SetType(sint type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00261">object.cpp:261</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_manager_html_a836cff08de968d1ac29b22250392e24d"><div class="ttname"><a href="../../d1/d72/class_obj_1_1_c_base_manager.html#a836cff08de968d1ac29b22250392e24d">Obj::CBaseManager::RegisterObject</a></div><div class="ttdeci">virtual void RegisterObject(CObject &amp;obj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/ded/objman_8cpp_source.html#l00140">objman.cpp:140</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="a_skater_proximity_component_8h_html"><div class="ttname"><a href="../../d4/d91/_skater_proximity_component_8h.html">SkaterProximityComponent.h</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a44f7a66bfbf0568bb64f39d046b8cb7e"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a44f7a66bfbf0568bb64f39d046b8cb7e">Obj::DEFAULT_PED_TURN_DIST</a></div><div class="ttdeci">const float DEFAULT_PED_TURN_DIST</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00064">ped.cpp:64</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a5638e95247d626e24d46bfc5c7d7d068"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a5638e95247d626e24d46bfc5c7d7d068">SkateScript::GetPosition</a></div><div class="ttdeci">void GetPosition(CStruct *p_node, Mth::Vector *p_vector)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00877">nodearray.cpp:877</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_path_ob_html_aeca2dd1f72765246e78911fd06535fa5"><div class="ttname"><a href="../../db/d5a/class_obj_1_1_c_path_ob.html#aeca2dd1f72765246e78911fd06535fa5">Obj::CPathOb::m_enter_turn_dist</a></div><div class="ttdeci">float m_enter_turn_dist</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da4/_path_ob_8h_source.html#l00068">PathOb.h:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_a52849368f52c577cf4cfbe7955a23659"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#a52849368f52c577cf4cfbe7955a23659">Obj::CMotionComponent::m_max_vel</a></div><div class="ttdeci">float m_max_vel</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00167">motioncomponent.h:167</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00085">motioncomponent.h:85</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html">Obj::CMovingObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/def/_moving_object_8h_source.html#l00070">MovingObject.h:70</a></div></div>
+<div class="ttc" id="anamespace_obj_html_afd0edfcc8763581076bf67c882536326"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#afd0edfcc8763581076bf67c882536326">Obj::CreatePed</a></div><div class="ttdeci">void CreatePed(CGeneralManager *p_obj_man, Script::CStruct *pNodeData)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00091">ped.cpp:91</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a4cb95de7a4dd7dc88f566b90c1ea88ba"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a4cb95de7a4dd7dc88f566b90c1ea88ba">Obj::DEFAULT_PED_MAX_VEL</a></div><div class="ttdeci">const float DEFAULT_PED_MAX_VEL</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00065">ped.cpp:65</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="amodelcomponent_8h_html"><div class="ttname"><a href="../../db/d45/modelcomponent_8h.html">modelcomponent.h</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a81ec96b04064613f44e1c14a0b4e2098"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a81ec96b04064613f44e1c14a0b4e2098">Obj::DEFAULT_PED_DECELERATION</a></div><div class="ttdeci">const float DEFAULT_PED_DECELERATION</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d9e/ped_8cpp_source.html#l00067">ped.cpp:67</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_aabb97d33c57ff8a9fc8c43cc5a0e6176"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#aabb97d33c57ff8a9fc8c43cc5a0e6176">Obj::CMotionComponent::EnsurePathobExists</a></div><div class="ttdeci">void EnsurePathobExists(CCompositeObject *pCompositeObj)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc5/motioncomponent_8cpp_source.html#l01032">motioncomponent.cpp:1032</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="anodearray_8h_html"><div class="ttname"><a href="../../df/d47/nodearray_8h.html">nodearray.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aobjman_8h_html"><div class="ttname"><a href="../../d2/d0d/objman_8h.html">objman.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a123da2ee5d67c1f592bf4a63064932a3"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a123da2ee5d67c1f592bf4a63064932a3">Obj::CMovingObject::MovingObjectInit</a></div><div class="ttdeci">void MovingObjectInit(Script::CStruct *pNodeData, CGeneralManager *p_obj_man)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00126">MovingObject.cpp:126</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_moving_object_html_a27367ea10bd1b046e338eb4d02748360"><div class="ttname"><a href="../../df/d19/class_obj_1_1_c_moving_object.html#a27367ea10bd1b046e338eb4d02748360">Obj::CMovingObject::MovingObjectCreateComponents</a></div><div class="ttdeci">void MovingObjectCreateComponents()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d32/_moving_object_8cpp_source.html#l00100">MovingObject.cpp:100</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../d1/d9e/ped_8cpp.html">ped.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

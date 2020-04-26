@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/2D/Window.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d3/db8/_window_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Window.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/db8/_window_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d42/_window_8h.html">gfx/2D/Window.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d3a/_nx_win2_d_8h.html">gfx/NxWin2D.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__ </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h.html">gfx/NGPS/NX/chars.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d5/d96/namespace_front.html">Front</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../d5/df8/class_front_1_1_c_window_element.html#a5ed4e995167b3c1cdba91d41b6aae2d9">   15</a></span>&#160;<a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#a5ed4e995167b3c1cdba91d41b6aae2d9">CWindowElement::CWindowElement</a>()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">SetType</a>(<a class="code" href="../../d7/df0/class_front_1_1_c_screen_element.html#a64466546018b5fb9ab7c91d04ce3a21aa7985de400a32e4fa38889398944119a1">CScreenElement::TYPE_WINDOW_ELEMENT</a>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#ad46175db7dccffd163a6fa9f5b3132f9">mp_clip_window</a> = <a class="code" href="../../d1/dea/class_nx_1_1_c_window2_d_manager.html#abd226bdf416f7c14eb94489f69d191c9">Nx::CWindow2DManager::sGetWindowInstance</a>(0, 0, 640, 448);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../d5/df8/class_front_1_1_c_window_element.html#a89d161c0b1761c5a84005d2a35b5b002">   24</a></span>&#160;<a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#a89d161c0b1761c5a84005d2a35b5b002">CWindowElement::~CWindowElement</a>()</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    Dbg_Assert(<a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#ad46175db7dccffd163a6fa9f5b3132f9">mp_clip_window</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d1/dea/class_nx_1_1_c_window2_d_manager.html#a8d61736b5c8199cf1607f53c1064ba80">Nx::CWindow2DManager::sFreeWindowInstance</a>(<a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#ad46175db7dccffd163a6fa9f5b3132f9">mp_clip_window</a>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d5/df8/class_front_1_1_c_window_element.html#a6dd44f19abaf1ccec8bf948e10834788">   31</a></span>&#160;<a class="code" href="../../d4/dce/class_nx_1_1_c_window2_d.html">Nx::CWindow2D</a> * <a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#a6dd44f19abaf1ccec8bf948e10834788">CWindowElement::GetClipWindow</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d5/df8/class_front_1_1_c_window_element.html#ad46175db7dccffd163a6fa9f5b3132f9">mp_clip_window</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keywordtype">void</span> CWindowElement::drawMainPart()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__ </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a472978c8d0d7e0704e4a5b898f598b63">NxPs2::SetTextWindow</a>(0,639,0,447);                      <span class="comment">// a full-screen clipping window</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;WARNING: drawMainPart not the same on this platform....\n&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_front_html"><div class="ttname"><a href="../../d5/d96/namespace_front.html">Front</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00066">object.h:66</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_window2_d_manager_html_a8d61736b5c8199cf1607f53c1064ba80"><div class="ttname"><a href="../../d1/dea/class_nx_1_1_c_window2_d_manager.html#a8d61736b5c8199cf1607f53c1064ba80">Nx::CWindow2DManager::sFreeWindowInstance</a></div><div class="ttdeci">static void sFreeWindowInstance(CWindow2D *p_window)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d8c/_nx_win2_d_8cpp_source.html#l00118">NxWin2D.cpp:118</a></div></div>
+<div class="ttc" id="a_nx_win2_d_8h_html"><div class="ttname"><a href="../../de/d3a/_nx_win2_d_8h.html">NxWin2D.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_window2_d_manager_html_abd226bdf416f7c14eb94489f69d191c9"><div class="ttname"><a href="../../d1/dea/class_nx_1_1_c_window2_d_manager.html#abd226bdf416f7c14eb94489f69d191c9">Nx::CWindow2DManager::sGetWindowInstance</a></div><div class="ttdeci">static CWindow2D * sGetWindowInstance(int x=0, int y=0, int width=640, int height=448)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d8c/_nx_win2_d_8cpp_source.html#l00095">NxWin2D.cpp:95</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a472978c8d0d7e0704e4a5b898f598b63"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a472978c8d0d7e0704e4a5b898f598b63">NxPs2::SetTextWindow</a></div><div class="ttdeci">void SetTextWindow(uint16 x0, uint16 x1, uint16 y0, uint16 y1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01013">sprite.cpp:1013</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_screen_element_html_a64466546018b5fb9ab7c91d04ce3a21aa7985de400a32e4fa38889398944119a1"><div class="ttname"><a href="../../d7/df0/class_front_1_1_c_screen_element.html#a64466546018b5fb9ab7c91d04ce3a21aa7985de400a32e4fa38889398944119a1">Front::CScreenElement::TYPE_WINDOW_ELEMENT</a></div><div class="ttdeci">@ TYPE_WINDOW_ELEMENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd5/_screen_element2_8h_source.html#l00054">ScreenElement2.h:54</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a4c712b97cd2801aa62a9c237b0267df2"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a4c712b97cd2801aa62a9c237b0267df2">Obj::CObject::SetType</a></div><div class="ttdeci">void SetType(sint type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00261">object.cpp:261</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="a_window_8h_html"><div class="ttname"><a href="../../de/d42/_window_8h.html">Window.h</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_window_element_html_ad46175db7dccffd163a6fa9f5b3132f9"><div class="ttname"><a href="../../d5/df8/class_front_1_1_c_window_element.html#ad46175db7dccffd163a6fa9f5b3132f9">Front::CWindowElement::mp_clip_window</a></div><div class="ttdeci">Nx::CWindow2D * mp_clip_window</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d42/_window_8h_source.html#l00025">Window.h:25</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_window_element_html_a6dd44f19abaf1ccec8bf948e10834788"><div class="ttname"><a href="../../d5/df8/class_front_1_1_c_window_element.html#a6dd44f19abaf1ccec8bf948e10834788">Front::CWindowElement::GetClipWindow</a></div><div class="ttdeci">Nx::CWindow2D * GetClipWindow() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/db8/_window_8cpp_source.html#l00031">Window.cpp:31</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_window_element_html_a89d161c0b1761c5a84005d2a35b5b002"><div class="ttname"><a href="../../d5/df8/class_front_1_1_c_window_element.html#a89d161c0b1761c5a84005d2a35b5b002">Front::CWindowElement::~CWindowElement</a></div><div class="ttdeci">virtual ~CWindowElement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/db8/_window_8cpp_source.html#l00024">Window.cpp:24</a></div></div>
+<div class="ttc" id="a_n_g_p_s_2_n_x_2chars_8h_html"><div class="ttname"><a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h.html">chars.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_window2_d_html"><div class="ttname"><a href="../../d4/dce/class_nx_1_1_c_window2_d.html">Nx::CWindow2D</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3a/_nx_win2_d_8h_source.html#l00025">NxWin2D.h:25</a></div></div>
+<div class="ttc" id="aclass_front_1_1_c_window_element_html_a5ed4e995167b3c1cdba91d41b6aae2d9"><div class="ttname"><a href="../../d5/df8/class_front_1_1_c_window_element.html#a5ed4e995167b3c1cdba91d41b6aae2d9">Front::CWindowElement::CWindowElement</a></div><div class="ttdeci">CWindowElement()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/db8/_window_8cpp_source.html#l00015">Window.cpp:15</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_cfec92c1b516b6ca8cfbda9edefa5b9d.html">2D</a></li><li class="navelem"><a class="el" href="../../d3/db8/_window_8cpp.html">Window.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

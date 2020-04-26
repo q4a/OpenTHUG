@@ -1,0 +1,424 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_NxFont.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxFont.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxFont.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxFont.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxWin2D.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of the CFont</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ad1f5fcb04fb39d34ac98bdfa16a24825">   20</a></span>&#160;<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ad1f5fcb04fb39d34ac98bdfa16a24825">CPs2Font::CPs2Font</a>() : mp_plat_font(NULL)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2385964f7c2ba7470ee55bd4685211b9">   29</a></span>&#160;<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2385964f7c2ba7470ee55bd4685211b9">CPs2Font::~CPs2Font</a>()</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a0217c7afcda903121eec496e989d1585">plat_unload</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a3cb00ff914a71ffd94efb6893ae3c860">   42</a></span>&#160;<span class="keywordtype">bool</span>        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a3cb00ff914a71ffd94efb6893ae3c860">CPs2Font::plat_load</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a> = <a class="code" href="../../d8/d79/namespace_nx_ps2.html#abdbdab2ad5c05c0e0a63938d30476210">NxPs2::LoadFont</a>(filename);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a> != NULL);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2fef0449e9268855a4d3b07169b3d86a">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2fef0449e9268855a4d3b07169b3d86a">CPs2Font::plat_set_spacings</a>(<span class="keywordtype">int</span> charSpacing, <span class="keywordtype">int</span> spaceSpacing)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a3392158f8a5536fddf94e37b301160de">mCharSpacing</a> = charSpacing;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (spaceSpacing &gt; 0)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a8c086c3a6543c93bfc27b3d387b2c06f">mSpaceSpacing</a> = spaceSpacing;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#af88eb2ebb1c539467817f12289b597a4">   66</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#af88eb2ebb1c539467817f12289b597a4">CPs2Font::plat_set_rgba_table</a>(<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *pTab)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 16; i++)</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#acf230c52c20b156ec5c87c1fe8f2e5ee">mRGBATab</a>[i] = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> *) &amp;pTab[i]);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ab1f596b078dd3c3b176540b953f4c50d">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ab1f596b078dd3c3b176540b953f4c50d">CPs2Font::plat_mark_as_button_font</a>(<span class="keywordtype">bool</span> isButton)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a0a088b21d1aa45158dc45a2655a8de14">NxPs2::pButtonsFont</a> = (isButton) ? <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a> : NULL;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a0217c7afcda903121eec496e989d1585">   87</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a0217c7afcda903121eec496e989d1585">CPs2Font::plat_unload</a>()</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac06e79e105cf6aaded32d786db5b8c43">NxPs2::UnloadFont</a>(<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a> = NULL;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a57980d57d5145cd92b7869d76a3cae45">   98</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a57980d57d5145cd92b7869d76a3cae45">CPs2Font::plat_get_default_height</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    Dbg_Assert(<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a50b84543e549c45cc8be5128755d6268">GetDefaultHeight</a>();</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a8356ddca3ab2e7dbf95ac69bca1cb0d6">  110</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a8356ddca3ab2e7dbf95ac69bca1cb0d6">CPs2Font::plat_get_default_base</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    Dbg_Assert(<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#ada2dd9a7cf19be64334cf0285c31c850">GetDefaultBase</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;}</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a94779bca38dced314ff631c192797b38">  122</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a94779bca38dced314ff631c192797b38">CPs2Font::plat_query_string</a>(<span class="keywordtype">char</span> *String, <span class="keywordtype">float</span> &amp;width, <span class="keywordtype">float</span> &amp;height)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    Dbg_Assert(<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">mp_plat_font</a>-&gt;<a class="code" href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a88d18c573159ff549ad737078ce0934e">QueryString</a>(String, width, height);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of the CText</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a8fda7dd3164072bd33ea10c838bdf526">  137</a></span>&#160;<a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a8fda7dd3164072bd33ea10c838bdf526">CPs2Text::CPs2Text</a>(<a class="code" href="../../d4/dce/class_nx_1_1_c_window2_d.html">CWindow2D</a> *p_window) : <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html">CText</a>(p_window)</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a> = <span class="keyword">new</span> <a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html">NxPs2::SText</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5a7c080752055788b4ebac5df67fb7d4">plat_initialize</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a6dc87445ed5ae52796b0a8df2c321bfe">  149</a></span>&#160;<a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a6dc87445ed5ae52796b0a8df2c321bfe">CPs2Text::~CPs2Text</a>()</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5a7c080752055788b4ebac5df67fb7d4">  163</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5a7c080752055788b4ebac5df67fb7d4">CPs2Text::plat_initialize</a>()</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#ab1ee1550e79b194459e95fc091834374">plat_update_engine</a>();</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5f56795c151c144be79f35a7db7a1992">plat_update_priority</a>();</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a07acadcfde9479da9291eb9a3d2856ad">plat_update_hidden</a>();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5db048c543030b8f0a8802b66e131736">plat_update_window</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a07acadcfde9479da9291eb9a3d2856ad">  176</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a07acadcfde9479da9291eb9a3d2856ad">CPs2Text::plat_update_hidden</a>()</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a1583f333e052da1b6390be0502c96638">SetHidden</a>(<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#accac3b11769946d5d5c5a95c84b6c813">m_hidden</a>);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#ab1ee1550e79b194459e95fc091834374">  186</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#ab1ee1550e79b194459e95fc091834374">CPs2Text::plat_update_engine</a>()</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;{</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html">CPs2Font</a> *p_ps2_font = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html">CPs2Font</a> *<span class="keyword">&gt;</span>(<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a20b3b68d5a008a1cfc0109ab1d99e4ac">mp_font</a>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a8b80ae83dc43193cce69da6c4621f0b3">mp_string</a> = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a076765fb1a741b5a12a29a8802a62412">m_string</a>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">if</span> (p_ps2_font) {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a3fc36df2c7740a70b1fa05be24b00949">mp_font</a>   = p_ps2_font-&gt;<a class="code" href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a10656fc72d861590f8b8b069d6c51773">GetEngineFont</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a1b1a647446b7b92edf85423ab4695aad">m_xpos</a>    = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#aefa398a80a0d1c78dcdcb4cebf00f020">m_xpos</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#aa87ec5e61791169211142307fc7e5a5c">m_ypos</a>    = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a25175ab41388f7893bd7e4fa4f4e82d7">m_ypos</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a50164909a23554865a40e2ec2668aded">m_xscale</a>  = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ac2037ae7db3b3245c5dec7bfc0b77ad2">m_xscale</a>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a97830780c85c2ef765672b9750799072">m_yscale</a>  = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ad2d7f44127227c32ec971b672cd855cc">m_yscale</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a93f6ab69fd81b15c85a33263021da9ed">m_rgba</a>    = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> *) &amp;<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ac4620ad2162c903d4965d614d0c6de53">m_rgba</a>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a668d0d0e6221646054c104678b57a5aa">m_color_override</a> = <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a24888379d359f4fcd9783f43adb41615">m_color_override</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5f56795c151c144be79f35a7db7a1992">  209</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5f56795c151c144be79f35a7db7a1992">CPs2Text::plat_update_priority</a>()</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;{</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">// Update draw list</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ab1635b22a27702fb33867750fe902250">m_use_zbuffer</a>)</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a2b05a0c77633a9320ec71a298e5fed0b">SetZValue</a>((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>) <a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a12ca39ee9fc33a9bcab96854048ef28a">m_zvalue</a>);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a575bf1c2e4e6962a0a34c19d840920c7">SetPriority</a>(<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ac3276b9652285396601452ad73be4083">m_priority</a>);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;}</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5db048c543030b8f0a8802b66e131736">  225</a></span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5db048c543030b8f0a8802b66e131736">CPs2Text::plat_update_window</a>()</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;{</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    <a class="code" href="../../d0/da1/class_nx_1_1_c_ps2_window2_d.html">CPs2Window2D</a> *p_ps2_window = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d0/da1/class_nx_1_1_c_ps2_window2_d.html">CPs2Window2D</a> *<span class="keyword">&gt;</span>(<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#ada4cd1f362243520c6da10787b742742">mp_window</a>);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <span class="keywordflow">if</span> (p_ps2_window)</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a87329743e5ae4157eb5ab038c8a1658d">SetScissorWindow</a>(p_ps2_window-&gt;<a class="code" href="../../d0/da1/class_nx_1_1_c_ps2_window2_d.html#a26c0782bc69e80bfc57c840eb4ea829e">GetEngineWindow</a>());</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">mp_plat_text</a>-&gt;<a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a87329743e5ae4157eb5ab038c8a1658d">SetScissorWindow</a>(NULL);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../d4/d03/class_nx_1_1_c_text_man.html#a61297fc077db8adc53f0e97cbe074779">CTextMan::s_plat_alloc_text_pool</a>()</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;{</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html">CPs2Text</a> *p_text_array = <span class="keyword">new</span> <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html">CPs2Text</a>[<a class="code" href="../../d4/d03/class_nx_1_1_c_text_man.html#afce11423adf6bef09aa09df52a98c0dbadabebcf77f58f825c38e50181a2c51f5">vMAX_TEXT_INSTANCES</a>];</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../d4/d03/class_nx_1_1_c_text_man.html#afce11423adf6bef09aa09df52a98c0dbadabebcf77f58f825c38e50181a2c51f5">vMAX_TEXT_INSTANCES</a>; i++)</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    {</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">//      CPs2Text *p_text = new CPs2Text(NULL);</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        <a class="code" href="../../db/d20/class_nx_1_1_c_ps2_text.html">CPs2Text</a> *p_text = &amp;p_text_array[i];</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        p_text-&gt;<a class="code" href="../../d7/dd9/class_nx_1_1_c_text.html#a9bf76a31aa6fac23ce35915ec2aca164">mp_next</a> = <a class="code" href="../../d4/d03/class_nx_1_1_c_text_man.html#a2adabae5bd52b7c3574c4755365e876a">sp_dynamic_text_list</a>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <a class="code" href="../../d4/d03/class_nx_1_1_c_text_man.html#a2adabae5bd52b7c3574c4755365e876a">sp_dynamic_text_list</a> = p_text;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;}</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a0217c7afcda903121eec496e989d1585"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a0217c7afcda903121eec496e989d1585">Nx::CPs2Font::plat_unload</a></div><div class="ttdeci">virtual void plat_unload()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00087">p_NxFont.cpp:87</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a87329743e5ae4157eb5ab038c8a1658d"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a87329743e5ae4157eb5ab038c8a1658d">NxPs2::SDraw2D::SetScissorWindow</a></div><div class="ttdeci">void SetScissorWindow(SScissorWindow *p_scissor)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01149">sprite.cpp:1149</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a3cb00ff914a71ffd94efb6893ae3c860"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a3cb00ff914a71ffd94efb6893ae3c860">Nx::CPs2Font::plat_load</a></div><div class="ttdeci">virtual bool plat_load(const char *filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00042">p_NxFont.cpp:42</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ac4620ad2162c903d4965d614d0c6de53"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ac4620ad2162c903d4965d614d0c6de53">Nx::CText::m_rgba</a></div><div class="ttdeci">Image::RGBA m_rgba</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00125">NxFont.h:125</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html">Nx::CPs2Font</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d71/_n_g_p_s_2p__nxfont_8h_source.html#l00017">p_NxFont.h:17</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_window2_d_html_a26c0782bc69e80bfc57c840eb4ea829e"><div class="ttname"><a href="../../d0/da1/class_nx_1_1_c_ps2_window2_d.html#a26c0782bc69e80bfc57c840eb4ea829e">Nx::CPs2Window2D::GetEngineWindow</a></div><div class="ttdeci">NxPs2::SScissorWindow * GetEngineWindow() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/_n_g_p_s_2p__nxwin2_d_8h_source.html#l00042">p_NxWin2D.h:42</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a1583f333e052da1b6390be0502c96638"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a1583f333e052da1b6390be0502c96638">NxPs2::SDraw2D::SetHidden</a></div><div class="ttdeci">virtual void SetHidden(bool hide)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01122">sprite.cpp:1122</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_ae36e0de4c1a901a29e0440d87071e49b"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ae36e0de4c1a901a29e0440d87071e49b">Nx::CPs2Font::mp_plat_font</a></div><div class="ttdeci">NxPs2::SFont * mp_plat_font</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d71/_n_g_p_s_2p__nxfont_8h_source.html#l00037">p_NxFont.h:37</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a0a088b21d1aa45158dc45a2655a8de14"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a0a088b21d1aa45158dc45a2655a8de14">NxPs2::pButtonsFont</a></div><div class="ttdeci">SFont * pButtonsFont</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00104">chars.cpp:104</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a575bf1c2e4e6962a0a34c19d840920c7"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a575bf1c2e4e6962a0a34c19d840920c7">NxPs2::SDraw2D::SetPriority</a></div><div class="ttdeci">void SetPriority(float pri)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01075">sprite.cpp:1075</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_af45f6c935b8894879017e2a90a24ced1"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#af45f6c935b8894879017e2a90a24ced1">Nx::CPs2Text::mp_plat_text</a></div><div class="ttdeci">NxPs2::SText * mp_plat_text</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d71/_n_g_p_s_2p__nxfont_8h_source.html#l00058">p_NxFont.h:58</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a668d0d0e6221646054c104678b57a5aa"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a668d0d0e6221646054c104678b57a5aa">NxPs2::SText::m_color_override</a></div><div class="ttdeci">bool m_color_override</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00070">chars.h:70</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ac3276b9652285396601452ad73be4083"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ac3276b9652285396601452ad73be4083">Nx::CText::m_priority</a></div><div class="ttdeci">float m_priority</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00123">NxFont.h:123</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a97830780c85c2ef765672b9750799072"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a97830780c85c2ef765672b9750799072">NxPs2::SText::m_yscale</a></div><div class="ttdeci">float m_yscale</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00068">chars.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a25175ab41388f7893bd7e4fa4f4e82d7"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a25175ab41388f7893bd7e4fa4f4e82d7">Nx::CText::m_ypos</a></div><div class="ttdeci">float m_ypos</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00120">NxFont.h:120</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_man_html_a61297fc077db8adc53f0e97cbe074779"><div class="ttname"><a href="../../d4/d03/class_nx_1_1_c_text_man.html#a61297fc077db8adc53f0e97cbe074779">Nx::CTextMan::s_plat_alloc_text_pool</a></div><div class="ttdeci">static void s_plat_alloc_text_pool()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd8/_n_g_c_2p__nxfont_8cpp_source.html#l00246">p_nxfont.cpp:246</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a10656fc72d861590f8b8b069d6c51773"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a10656fc72d861590f8b8b069d6c51773">Nx::CPs2Font::GetEngineFont</a></div><div class="ttdeci">NxPs2::SFont * GetEngineFont() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d71/_n_g_p_s_2p__nxfont_8h_source.html#l00066">p_NxFont.h:66</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html">Nx::CPs2Text</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d71/_n_g_p_s_2p__nxfont_8h_source.html#l00042">p_NxFont.h:42</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_acf230c52c20b156ec5c87c1fe8f2e5ee"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#acf230c52c20b156ec5c87c1fe8f2e5ee">NxPs2::SFont::mRGBATab</a></div><div class="ttdeci">uint32 mRGBATab[16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00045">chars.h:45</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a9bf76a31aa6fac23ce35915ec2aca164"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a9bf76a31aa6fac23ce35915ec2aca164">Nx::CText::mp_next</a></div><div class="ttdeci">CText * mp_next</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00134">NxFont.h:134</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a8356ddca3ab2e7dbf95ac69bca1cb0d6"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a8356ddca3ab2e7dbf95ac69bca1cb0d6">Nx::CPs2Font::plat_get_default_base</a></div><div class="ttdeci">virtual uint32 plat_get_default_base() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00110">p_NxFont.cpp:110</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_ad1f5fcb04fb39d34ac98bdfa16a24825"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ad1f5fcb04fb39d34ac98bdfa16a24825">Nx::CPs2Font::CPs2Font</a></div><div class="ttdeci">CPs2Font()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00020">p_NxFont.cpp:20</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_ab1ee1550e79b194459e95fc091834374"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#ab1ee1550e79b194459e95fc091834374">Nx::CPs2Text::plat_update_engine</a></div><div class="ttdeci">virtual void plat_update_engine()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00186">p_NxFont.cpp:186</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a94779bca38dced314ff631c192797b38"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a94779bca38dced314ff631c192797b38">Nx::CPs2Font::plat_query_string</a></div><div class="ttdeci">virtual void plat_query_string(char *String, float &amp;width, float &amp;height) const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00122">p_NxFont.cpp:122</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a8b80ae83dc43193cce69da6c4621f0b3"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a8b80ae83dc43193cce69da6c4621f0b3">NxPs2::SText::mp_string</a></div><div class="ttdeci">char * mp_string</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00064">chars.h:64</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_accac3b11769946d5d5c5a95c84b6c813"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#accac3b11769946d5d5c5a95c84b6c813">Nx::CText::m_hidden</a></div><div class="ttdeci">bool m_hidden</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00128">NxFont.h:128</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a20b3b68d5a008a1cfc0109ab1d99e4ac"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a20b3b68d5a008a1cfc0109ab1d99e4ac">Nx::CText::mp_font</a></div><div class="ttdeci">CFont * mp_font</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00113">NxFont.h:113</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_man_html_afce11423adf6bef09aa09df52a98c0dbadabebcf77f58f825c38e50181a2c51f5"><div class="ttname"><a href="../../d4/d03/class_nx_1_1_c_text_man.html#afce11423adf6bef09aa09df52a98c0dbadabebcf77f58f825c38e50181a2c51f5">Nx::CTextMan::vMAX_TEXT_INSTANCES</a></div><div class="ttdeci">@ vMAX_TEXT_INSTANCES</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00162">NxFont.h:162</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_a8c086c3a6543c93bfc27b3d387b2c06f"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a8c086c3a6543c93bfc27b3d387b2c06f">NxPs2::SFont::mSpaceSpacing</a></div><div class="ttdeci">sint16 mSpaceSpacing</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00044">chars.h:44</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a93f6ab69fd81b15c85a33263021da9ed"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a93f6ab69fd81b15c85a33263021da9ed">NxPs2::SText::m_rgba</a></div><div class="ttdeci">uint32 m_rgba</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00069">chars.h:69</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_aefa398a80a0d1c78dcdcb4cebf00f020"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#aefa398a80a0d1c78dcdcb4cebf00f020">Nx::CText::m_xpos</a></div><div class="ttdeci">float m_xpos</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00119">NxFont.h:119</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a076765fb1a741b5a12a29a8802a62412"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a076765fb1a741b5a12a29a8802a62412">Nx::CText::m_string</a></div><div class="ttdeci">char m_string[vMAX_TEXT_CHARS]</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00115">NxFont.h:115</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a2b05a0c77633a9320ec71a298e5fed0b"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a2b05a0c77633a9320ec71a298e5fed0b">NxPs2::SDraw2D::SetZValue</a></div><div class="ttdeci">void SetZValue(uint32 z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d18/_n_g_p_s_2_n_x_2sprite_8cpp_source.html#l01101">sprite.cpp:1101</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_man_html_a2adabae5bd52b7c3574c4755365e876a"><div class="ttname"><a href="../../d4/d03/class_nx_1_1_c_text_man.html#a2adabae5bd52b7c3574c4755365e876a">Nx::CTextMan::sp_dynamic_text_list</a></div><div class="ttdeci">static CText * sp_dynamic_text_list</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00171">NxFont.h:171</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html">NxPs2::SText</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00056">chars.h:56</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_a88d18c573159ff549ad737078ce0934e"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a88d18c573159ff549ad737078ce0934e">NxPs2::SFont::QueryString</a></div><div class="ttdeci">void QueryString(char *String, float &amp;width, float &amp;height)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00436">chars.cpp:436</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ac06e79e105cf6aaded32d786db5b8c43"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ac06e79e105cf6aaded32d786db5b8c43">NxPs2::UnloadFont</a></div><div class="ttdeci">void UnloadFont(SFont *pFont)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00355">chars.cpp:355</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a2fef0449e9268855a4d3b07169b3d86a"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2fef0449e9268855a4d3b07169b3d86a">Nx::CPs2Font::plat_set_spacings</a></div><div class="ttdeci">virtual void plat_set_spacings(int charSpacing, int spaceSpacing)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00054">p_NxFont.cpp:54</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a12ca39ee9fc33a9bcab96854048ef28a"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a12ca39ee9fc33a9bcab96854048ef28a">Nx::CText::m_zvalue</a></div><div class="ttdeci">ZBufferValue m_zvalue</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00124">NxFont.h:124</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_ab1f596b078dd3c3b176540b953f4c50d"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#ab1f596b078dd3c3b176540b953f4c50d">Nx::CPs2Font::plat_mark_as_button_font</a></div><div class="ttdeci">virtual void plat_mark_as_button_font(bool isButton)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00077">p_NxFont.cpp:77</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ac2037ae7db3b3245c5dec7bfc0b77ad2"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ac2037ae7db3b3245c5dec7bfc0b77ad2">Nx::CText::m_xscale</a></div><div class="ttdeci">float m_xscale</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00121">NxFont.h:121</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a57980d57d5145cd92b7869d76a3cae45"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a57980d57d5145cd92b7869d76a3cae45">Nx::CPs2Font::plat_get_default_height</a></div><div class="ttdeci">virtual uint32 plat_get_default_height() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00098">p_NxFont.cpp:98</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_a24888379d359f4fcd9783f43adb41615"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#a24888379d359f4fcd9783f43adb41615">Nx::CText::m_color_override</a></div><div class="ttdeci">bool m_color_override</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00126">NxFont.h:126</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_a3392158f8a5536fddf94e37b301160de"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a3392158f8a5536fddf94e37b301160de">NxPs2::SFont::mCharSpacing</a></div><div class="ttdeci">sint16 mCharSpacing</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00043">chars.h:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ab1635b22a27702fb33867750fe902250"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ab1635b22a27702fb33867750fe902250">Nx::CText::m_use_zbuffer</a></div><div class="ttdeci">bool m_use_zbuffer</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00129">NxFont.h:129</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a5db048c543030b8f0a8802b66e131736"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5db048c543030b8f0a8802b66e131736">Nx::CPs2Text::plat_update_window</a></div><div class="ttdeci">virtual void plat_update_window()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00225">p_NxFont.cpp:225</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_abdbdab2ad5c05c0e0a63938d30476210"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#abdbdab2ad5c05c0e0a63938d30476210">NxPs2::LoadFont</a></div><div class="ttdeci">SFont * LoadFont(const char *Filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00142">chars.cpp:142</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a07acadcfde9479da9291eb9a3d2856ad"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a07acadcfde9479da9291eb9a3d2856ad">Nx::CPs2Text::plat_update_hidden</a></div><div class="ttdeci">virtual void plat_update_hidden()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00176">p_NxFont.cpp:176</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ad2d7f44127227c32ec971b672cd855cc"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ad2d7f44127227c32ec971b672cd855cc">Nx::CText::m_yscale</a></div><div class="ttdeci">float m_yscale</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00122">NxFont.h:122</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_window2_d_html"><div class="ttname"><a href="../../d0/da1/class_nx_1_1_c_ps2_window2_d.html">Nx::CPs2Window2D</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d29/_n_g_p_s_2p__nxwin2_d_8h_source.html#l00019">p_NxWin2D.h:19</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_af88eb2ebb1c539467817f12289b597a4"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#af88eb2ebb1c539467817f12289b597a4">Nx::CPs2Font::plat_set_rgba_table</a></div><div class="ttdeci">virtual void plat_set_rgba_table(Image::RGBA *pTab)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00066">p_NxFont.cpp:66</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a3fc36df2c7740a70b1fa05be24b00949"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a3fc36df2c7740a70b1fa05be24b00949">NxPs2::SText::mp_font</a></div><div class="ttdeci">SFont * mp_font</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00062">chars.h:62</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a6dc87445ed5ae52796b0a8df2c321bfe"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a6dc87445ed5ae52796b0a8df2c321bfe">Nx::CPs2Text::~CPs2Text</a></div><div class="ttdeci">virtual ~CPs2Text()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00149">p_NxFont.cpp:149</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a5f56795c151c144be79f35a7db7a1992"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5f56795c151c144be79f35a7db7a1992">Nx::CPs2Text::plat_update_priority</a></div><div class="ttdeci">virtual void plat_update_priority()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00209">p_NxFont.cpp:209</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html_ada4cd1f362243520c6da10787b742742"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html#ada4cd1f362243520c6da10787b742742">Nx::CText::mp_window</a></div><div class="ttdeci">CWindow2D * mp_window</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00131">NxFont.h:131</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_font_html_a2385964f7c2ba7470ee55bd4685211b9"><div class="ttname"><a href="../../d6/d49/class_nx_1_1_c_ps2_font.html#a2385964f7c2ba7470ee55bd4685211b9">Nx::CPs2Font::~CPs2Font</a></div><div class="ttdeci">virtual ~CPs2Font()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00029">p_NxFont.cpp:29</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a50164909a23554865a40e2ec2668aded"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a50164909a23554865a40e2ec2668aded">NxPs2::SText::m_xscale</a></div><div class="ttdeci">float m_xscale</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00067">chars.h:67</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_a1b1a647446b7b92edf85423ab4695aad"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#a1b1a647446b7b92edf85423ab4695aad">NxPs2::SText::m_xpos</a></div><div class="ttdeci">float m_xpos</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00065">chars.h:65</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_a50b84543e549c45cc8be5128755d6268"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#a50b84543e549c45cc8be5128755d6268">NxPs2::SFont::GetDefaultHeight</a></div><div class="ttdeci">uint32 GetDefaultHeight() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00426">chars.cpp:426</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a5a7c080752055788b4ebac5df67fb7d4"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a5a7c080752055788b4ebac5df67fb7d4">Nx::CPs2Text::plat_initialize</a></div><div class="ttdeci">virtual void plat_initialize()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00163">p_NxFont.cpp:163</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_font_html_ada2dd9a7cf19be64334cf0285c31c850"><div class="ttname"><a href="../../de/d4f/struct_nx_ps2_1_1_s_font.html#ada2dd9a7cf19be64334cf0285c31c850">NxPs2::SFont::GetDefaultBase</a></div><div class="ttdeci">uint32 GetDefaultBase() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6b/_n_g_p_s_2_n_x_2chars_8cpp_source.html#l00431">chars.cpp:431</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_text_html"><div class="ttname"><a href="../../d7/dd9/class_nx_1_1_c_text.html">Nx::CText</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00063">NxFont.h:63</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_window2_d_html"><div class="ttname"><a href="../../d4/dce/class_nx_1_1_c_window2_d.html">Nx::CWindow2D</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3a/_nx_win2_d_8h_source.html#l00025">NxWin2D.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_text_html_a8fda7dd3164072bd33ea10c838bdf526"><div class="ttname"><a href="../../db/d20/class_nx_1_1_c_ps2_text.html#a8fda7dd3164072bd33ea10c838bdf526">Nx::CPs2Text::CPs2Text</a></div><div class="ttdeci">CPs2Text(CWindow2D *p_window=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp_source.html#l00137">p_NxFont.cpp:137</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_text_html_aa87ec5e61791169211142307fc7e5a5c"><div class="ttname"><a href="../../d7/d58/struct_nx_ps2_1_1_s_text.html#aa87ec5e61791169211142307fc7e5a5c">NxPs2::SText::m_ypos</a></div><div class="ttdeci">float m_ypos</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d34/_n_g_p_s_2_n_x_2chars_8h_source.html#l00066">chars.h:66</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../db/d25/_n_g_p_s_2p__nxfont_8cpp.html">p_NxFont.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:27. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

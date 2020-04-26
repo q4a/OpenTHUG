@@ -1,0 +1,574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/light.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">light.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __LIGHT_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __LIGHT_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Forward declarations</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>CLightGroup;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html">CBaseLightGroup</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                                <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#ac89f2476f10f3f834825d2b900069dcb">CBaseLightGroup</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">virtual</span>                     <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#ab6a00a9ed97a5dfc8404008750100685">~CBaseLightGroup</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a983cf02eae4f6b4a882a4fb9cd3a8976">GetDirection</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a8e4e8d54baab27d9232a351095ea1825">GetAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a3251f2601d6a282d4b7e1318d2d810a0">GetDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Directional light vectors</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2f0c02e983b26e01154525a6825dc3cc">   27</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2f0c02e983b26e01154525a6825dc3cc">m_light_vector</a>[MAX_DIFFUSE_LIGHTS];</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Light base colors</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2b260d269a1542c47742dca8494ad9a0">   30</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2b260d269a1542c47742dca8494ad9a0">m_diffuse_base_color</a>[MAX_DIFFUSE_LIGHTS];</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a101b1181bfa0899d0cd3a7b17ed171ef">   31</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a101b1181bfa0899d0cd3a7b17ed171ef">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a33ba498415a46bfe94e300341d167b92">   33</a></span>&#160;    <span class="keyword">friend</span> <a class="code" href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a33ba498415a46bfe94e300341d167b92">CLightGroup</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">   37</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a><span class="comment">/* : public CBaseLightGroup*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a5077b080c250661890fafebd61700ad4">   40</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">   45</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a> = 3,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                                <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#aaa01016f3ee13a5c7ef327d9e40a28a7">CLightGroup</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                                <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8298c452c2d66f4f181d3d35e4105afa">~CLightGroup</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//virtual                       ~CLightGroup();</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">GetDirection</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetDirection(int idx) const;</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad4e8f429add117282399cb65493848be">GetBaseAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad2fb29154f92a4e82ae76ebd554e0b76">GetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">GetAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">GetDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetAmbientColor() const;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetDiffuseColor(int idx) const;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a097fbd697563f88d4c306021dae5cc26">SetDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a37038a4760b5e709535980a16b0ccf6b">SetBaseAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#afc740cf9786c76f96bfb1bd5ab23b0ae">SetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// Enable lights</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#accc0cc8a4794c7dbd3b4eb60d10c0695">EnableAmbientLight</a>(<span class="keywordtype">bool</span> enable);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a286962b8a6c173b5c4d41c693f510399">EnableDiffuseLight</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">bool</span> enable);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ac418998c8a81f35568d465c4fb3ff8a6">IsAmbientLightEnabled</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2037fbff85885abf2c658db2fb48ad00">IsDiffuseLightEnabled</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Set brightness of lights</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ab80029c1605a692bc4b98a668e7a0cd9">SetAmbientBrightness</a>(<span class="keywordtype">float</span> brightness);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a62cd8aefa25733146d81c54f777b6bca">SetDiffuseBrightness</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">float</span> brightness);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// Default lights</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">sGetDefaultDirection</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">sGetDefaultAmbientColor</a>();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">sGetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ae04a1ac6435eed8e0fc3c36a0ab2fb31">sSetDefaultDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a06771c113027c7651340d1ad66bedf39">sSetDefaultAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8f5a2deb3e5b8644fb041e8185698e2f">sSetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Internal flags.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">   89</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a>                = 0x0001,                   <span class="comment">// Use ambient light</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">   90</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a>              = 0x0002,                   <span class="comment">// Use diffuse light 0</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a37aad6a231b855d79c1ad7491c4dee6f">   91</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a37aad6a231b855d79c1ad7491c4dee6f">mUSE_DIFFUSE_1</a>              = 0x0004,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a22d805fa53b458f33df1378ab2161de5">   92</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a22d805fa53b458f33df1378ab2161de5">mUSE_DIFFUSE_2</a>              = 0x0008,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">   93</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">mMODULATING_AMBIENT</a>         = 0x0010,                   <span class="comment">// setting ambient brightness</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">   94</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">mMODULATING_DIFFUSE_0</a>       = 0x0020,                   <span class="comment">// setting diffuse brightness 0</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a736528dcb7cb366a264a7c30bbb755e0">   95</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a736528dcb7cb366a264a7c30bbb755e0">mMODULATING_DIFFUSE_1</a>       = 0x0040,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a766f7708add771007fcf93c44c40c719">   96</a></span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a766f7708add771007fcf93c44c40c719">mMODULATING_DIFFUSE_2</a>       = 0x0040,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">   99</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// Directional light vectors</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">  102</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>];</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// Light base colors</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">  105</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>];</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">  106</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Light modulated colors (modified base colors)</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">  109</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">m_diffuse_mod_color</a>[<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>];</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">  110</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">m_ambient_mod_color</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Default lights</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//  static Mth::Vector      s_default_directions[MAX_DIFFUSE_LIGHTS];</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//  static CBaseLightGroup  s_default_colors;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">  115</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a>      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}; <span class="comment">// class CLightGroup</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">// Inline functions</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">  127</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">CLightGroup::GetDirection</a>(<span class="keywordtype">int</span> idx)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx))</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[idx];</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[idx];</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad4e8f429add117282399cb65493848be">  144</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad4e8f429add117282399cb65493848be">CLightGroup::GetBaseAmbientColor</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a>)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;}</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad2fb29154f92a4e82ae76ebd554e0b76">  159</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad2fb29154f92a4e82ae76ebd554e0b76">CLightGroup::GetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx))</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx];</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx];</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">  176</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">CLightGroup::GetAmbientColor</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a> | <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">mMODULATING_AMBIENT</a>))</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">m_ambient_mod_color</a>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">  191</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">CLightGroup::GetDiffuseColor</a>(<span class="keywordtype">int</span> idx)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; ((<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> | <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">mMODULATING_DIFFUSE_0</a>) &lt;&lt; idx))</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">m_diffuse_mod_color</a>[idx];</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx];</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a097fbd697563f88d4c306021dae5cc26">  208</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a097fbd697563f88d4c306021dae5cc26">CLightGroup::SetDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction)</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;{</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">//Dbg_Assert(m_flags &amp; (mUSE_DIFFUSE_0 &lt;&lt; idx));</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> |= (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx);  <span class="comment">// turn on light if it isn&#39;t already on</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[idx] = direction;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a37038a4760b5e709535980a16b0ccf6b">  222</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a37038a4760b5e709535980a16b0ccf6b">CLightGroup::SetBaseAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">//Dbg_Assert(m_flags &amp; mUSE_AMBIENT);</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">// Mick:  turning on and off lights should be done ABOVE the p_line</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// Mick:    m_flags |= mUSE_AMBIENT;        // turn on light if it isn&#39;t already on</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a> = color;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span> (!(<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">mMODULATING_AMBIENT</a>))</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">m_ambient_mod_color</a> = color;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;}</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#afc740cf9786c76f96bfb1bd5ab23b0ae">  241</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#afc740cf9786c76f96bfb1bd5ab23b0ae">CLightGroup::SetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">//Dbg_Assert(m_flags &amp; (mUSE_DIFFUSE_0 &lt;&lt; idx));</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">// Mick:  turning on and off lights should be done ABOVE the p_line</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">// Mick:    m_flags |= (mUSE_DIFFUSE_0 &lt;&lt; idx);  // turn on light if it isn&#39;t already on</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx] = color;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span> (!(<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">mMODULATING_DIFFUSE_0</a> &lt;&lt; idx)))</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">m_diffuse_mod_color</a>[idx] = color;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#accc0cc8a4794c7dbd3b4eb60d10c0695">  261</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#accc0cc8a4794c7dbd3b4eb60d10c0695">CLightGroup::EnableAmbientLight</a>(<span class="keywordtype">bool</span> enable)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span> (enable)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> |= <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp;= ~<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a286962b8a6c173b5c4d41c693f510399">  276</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a286962b8a6c173b5c4d41c693f510399">CLightGroup::EnableDiffuseLight</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">bool</span> enable)</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;{</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">if</span> (enable)</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> |= (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp;= ~(<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx);</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;}</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ac418998c8a81f35568d465c4fb3ff8a6">  293</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ac418998c8a81f35568d465c4fb3ff8a6">CLightGroup::IsAmbientLightEnabled</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">mUSE_AMBIENT</a>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2037fbff85885abf2c658db2fb48ad00">  303</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2037fbff85885abf2c658db2fb48ad00">CLightGroup::IsDiffuseLightEnabled</a>(<span class="keywordtype">int</span> idx)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> &amp; (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">mUSE_DIFFUSE_0</a> &lt;&lt; idx));</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ab80029c1605a692bc4b98a668e7a0cd9">  315</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ab80029c1605a692bc4b98a668e7a0cd9">CLightGroup::SetAmbientBrightness</a>(<span class="keywordtype">float</span> brightness)</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;{</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">m_ambient_mod_color</a> = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad4e8f429add117282399cb65493848be">GetBaseAmbientColor</a>() * brightness;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> |= <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">mMODULATING_AMBIENT</a>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a62cd8aefa25733146d81c54f777b6bca">  329</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a62cd8aefa25733146d81c54f777b6bca">CLightGroup::SetDiffuseBrightness</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">float</span> brightness)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;{</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">m_diffuse_mod_color</a>[idx] = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad2fb29154f92a4e82ae76ebd554e0b76">GetBaseDiffuseColor</a>(idx) * brightness;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">m_flags</a> |= (<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">mMODULATING_DIFFUSE_0</a> &lt;&lt; idx);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">  345</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">CLightGroup::sGetDefaultDirection</a>(<span class="keywordtype">int</span> idx)</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;{</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[idx];</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">  357</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">CLightGroup::sGetDefaultAmbientColor</a>()</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;{</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;}</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">  367</a></span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;      <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">CLightGroup::sGetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;{</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160; </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx];</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160; </div>
+<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ae04a1ac6435eed8e0fc3c36a0ab2fb31">  379</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ae04a1ac6435eed8e0fc3c36a0ab2fb31">CLightGroup::sSetDefaultDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction)</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;{</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">m_light_vector</a>[idx] = direction;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a06771c113027c7651340d1ad66bedf39">  391</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a06771c113027c7651340d1ad66bedf39">CLightGroup::sSetDefaultAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;{</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">m_ambient_base_color</a> = color;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8f5a2deb3e5b8644fb041e8185698e2f">  401</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span>                 <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8f5a2deb3e5b8644fb041e8185698e2f">CLightGroup::sSetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color)</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;{</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    Dbg_Assert(idx &lt; <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">MAX_DIFFUSE_LIGHTS</a>);</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160; </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">s_default_lights</a>.<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">m_diffuse_base_color</a>[idx] = color;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;}</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;} <span class="comment">// namespace NxPs2</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#endif // __LIGHT_H</span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_aaa01016f3ee13a5c7ef327d9e40a28a7"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#aaa01016f3ee13a5c7ef327d9e40a28a7">NxPs2::CLightGroup::CLightGroup</a></div><div class="ttdeci">CLightGroup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df7/_n_g_p_s_2_n_x_2light_8cpp_source.html#l00016">light.cpp:16</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_adf07aa7d01f5a7778ba69ee643829b66"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#adf07aa7d01f5a7778ba69ee643829b66">NxPs2::CLightGroup::m_ambient_mod_color</a></div><div class="ttdeci">Mth::Vector m_ambient_mod_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00110">light.h:110</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a22d805fa53b458f33df1378ab2161de5"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a22d805fa53b458f33df1378ab2161de5">NxPs2::CLightGroup::mUSE_DIFFUSE_2</a></div><div class="ttdeci">@ mUSE_DIFFUSE_2</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00092">light.h:92</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a097fbd697563f88d4c306021dae5cc26"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a097fbd697563f88d4c306021dae5cc26">NxPs2::CLightGroup::SetDirection</a></div><div class="ttdeci">void SetDirection(int idx, const Mth::Vector &amp;direction)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00208">light.h:208</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8298c452c2d66f4f181d3d35e4105afa"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8298c452c2d66f4f181d3d35e4105afa">NxPs2::CLightGroup::~CLightGroup</a></div><div class="ttdeci">~CLightGroup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/df7/_n_g_p_s_2_n_x_2light_8cpp_source.html#l00053">light.cpp:53</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a62cd8aefa25733146d81c54f777b6bca"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a62cd8aefa25733146d81c54f777b6bca">NxPs2::CLightGroup::SetDiffuseBrightness</a></div><div class="ttdeci">bool SetDiffuseBrightness(int idx, float brightness)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00329">light.h:329</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a00f60dc08221ac8ecd4c309d5efe13d7"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a00f60dc08221ac8ecd4c309d5efe13d7">NxPs2::CLightGroup::m_light_vector</a></div><div class="ttdeci">Mth::Vector m_light_vector[MAX_DIFFUSE_LIGHTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00102">light.h:102</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a2c380c7ff183cbbb6c5fa48680f1c5f4"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2c380c7ff183cbbb6c5fa48680f1c5f4">NxPs2::CLightGroup::m_diffuse_base_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_base_color[MAX_DIFFUSE_LIGHTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00105">light.h:105</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">NxPs2::CLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00037">light.h:37</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a74fdddec5bf482830bd155e6935f4260">NxPs2::CLightGroup::mMODULATING_AMBIENT</a></div><div class="ttdeci">@ mMODULATING_AMBIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00093">light.h:93</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ac418998c8a81f35568d465c4fb3ff8a6"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ac418998c8a81f35568d465c4fb3ff8a6">NxPs2::CLightGroup::IsAmbientLightEnabled</a></div><div class="ttdeci">bool IsAmbientLightEnabled() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00293">light.h:293</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8f5a2deb3e5b8644fb041e8185698e2f"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8f5a2deb3e5b8644fb041e8185698e2f">NxPs2::CLightGroup::sSetDefaultDiffuseColor</a></div><div class="ttdeci">static void sSetDefaultDiffuseColor(int idx, const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00401">light.h:401</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a149ce7a79f75181ba06a2afbb306fd94"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">NxPs2::CLightGroup::sGetDefaultDirection</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDirection(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00345">light.h:345</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ae04a1ac6435eed8e0fc3c36a0ab2fb31"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ae04a1ac6435eed8e0fc3c36a0ab2fb31">NxPs2::CLightGroup::sSetDefaultDirection</a></div><div class="ttdeci">static void sSetDefaultDirection(int idx, const Mth::Vector &amp;direction)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00379">light.h:379</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a778c2b21013f8824c6aeb39ccdf632a7">NxPs2::CLightGroup::mUSE_AMBIENT</a></div><div class="ttdeci">@ mUSE_AMBIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00089">light.h:89</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a1c53d4835627de1752f435c020bcc396"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">NxPs2::CLightGroup::GetAmbientColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetAmbientColor() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00176">light.h:176</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_ab6a00a9ed97a5dfc8404008750100685"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#ab6a00a9ed97a5dfc8404008750100685">NxPs2::CBaseLightGroup::~CBaseLightGroup</a></div><div class="ttdeci">virtual ~CBaseLightGroup()</div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ad2fb29154f92a4e82ae76ebd554e0b76"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad2fb29154f92a4e82ae76ebd554e0b76">NxPs2::CLightGroup::GetBaseDiffuseColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetBaseDiffuseColor(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00159">light.h:159</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a3a45af5ea415baa30bfa9a7f9ec52900"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a3a45af5ea415baa30bfa9a7f9ec52900">NxPs2::CLightGroup::m_ambient_base_color</a></div><div class="ttdeci">Mth::Vector m_ambient_base_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00106">light.h:106</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_afc740cf9786c76f96bfb1bd5ab23b0ae"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#afc740cf9786c76f96bfb1bd5ab23b0ae">NxPs2::CLightGroup::SetBaseDiffuseColor</a></div><div class="ttdeci">void SetBaseDiffuseColor(int idx, const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00241">light.h:241</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a983cf02eae4f6b4a882a4fb9cd3a8976"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a983cf02eae4f6b4a882a4fb9cd3a8976">NxPs2::CBaseLightGroup::GetDirection</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetDirection(int idx) const</div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a32acbe6c1db9a0c540c3dcb6d0bd6ee6"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">NxPs2::CLightGroup::sGetDefaultAmbientColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultAmbientColor()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00357">light.h:357</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a660bc0e33bec1286d2b58fa4529736d4"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">NxPs2::CLightGroup::GetDirection</a></div><div class="ttdeci">const Mth::Vector &amp; GetDirection(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00127">light.h:127</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ad4e8f429add117282399cb65493848be"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad4e8f429add117282399cb65493848be">NxPs2::CLightGroup::GetBaseAmbientColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetBaseAmbientColor() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00144">light.h:144</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a2f0c02e983b26e01154525a6825dc3cc"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2f0c02e983b26e01154525a6825dc3cc">NxPs2::CBaseLightGroup::m_light_vector</a></div><div class="ttdeci">Mth::Vector m_light_vector[MAX_DIFFUSE_LIGHTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00027">light.h:27</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">NxPs2::CVu1Context</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00047">vu1context.h:47</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a286962b8a6c173b5c4d41c693f510399"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a286962b8a6c173b5c4d41c693f510399">NxPs2::CLightGroup::EnableDiffuseLight</a></div><div class="ttdeci">void EnableDiffuseLight(int idx, bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00276">light.h:276</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a3251f2601d6a282d4b7e1318d2d810a0"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a3251f2601d6a282d4b7e1318d2d810a0">NxPs2::CBaseLightGroup::GetDiffuseColor</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetDiffuseColor(int idx) const</div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a6f2524a612fa02a55dc609f37e75bb45"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a6f2524a612fa02a55dc609f37e75bb45">NxPs2::CLightGroup::s_default_lights</a></div><div class="ttdeci">static CLightGroup s_default_lights</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00115">light.h:115</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887aaf326917f15743e885691121ab3218b4">NxPs2::CLightGroup::mUSE_DIFFUSE_0</a></div><div class="ttdeci">@ mUSE_DIFFUSE_0</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00090">light.h:90</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ab80029c1605a692bc4b98a668e7a0cd9"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ab80029c1605a692bc4b98a668e7a0cd9">NxPs2::CLightGroup::SetAmbientBrightness</a></div><div class="ttdeci">bool SetAmbientBrightness(float brightness)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00315">light.h:315</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a2037fbff85885abf2c658db2fb48ad00"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a2037fbff85885abf2c658db2fb48ad00">NxPs2::CLightGroup::IsDiffuseLightEnabled</a></div><div class="ttdeci">bool IsDiffuseLightEnabled(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00303">light.h:303</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html">NxPs2::CBaseLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00014">light.h:14</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ad546c56da8ad8fa7ad1f01dddd548c81"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">NxPs2::CLightGroup::sGetDefaultDiffuseColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDiffuseColor(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00367">light.h:367</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a0e7de1e9d1ce1ef84b862d953d946a6c"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">NxPs2::CLightGroup::GetDiffuseColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetDiffuseColor(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00191">light.h:191</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_ac89f2476f10f3f834825d2b900069dcb"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#ac89f2476f10f3f834825d2b900069dcb">NxPs2::CBaseLightGroup::CBaseLightGroup</a></div><div class="ttdeci">CBaseLightGroup()</div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a33ba498415a46bfe94e300341d167b92"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a33ba498415a46bfe94e300341d167b92">NxPs2::CBaseLightGroup::CLightGroup</a></div><div class="ttdeci">friend CLightGroup</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00033">light.h:33</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a766f7708add771007fcf93c44c40c719"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a766f7708add771007fcf93c44c40c719">NxPs2::CLightGroup::mMODULATING_DIFFUSE_2</a></div><div class="ttdeci">@ mMODULATING_DIFFUSE_2</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00096">light.h:96</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_accc0cc8a4794c7dbd3b4eb60d10c0695"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#accc0cc8a4794c7dbd3b4eb60d10c0695">NxPs2::CLightGroup::EnableAmbientLight</a></div><div class="ttdeci">void EnableAmbientLight(bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00261">light.h:261</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a101b1181bfa0899d0cd3a7b17ed171ef"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a101b1181bfa0899d0cd3a7b17ed171ef">NxPs2::CBaseLightGroup::m_ambient_base_color</a></div><div class="ttdeci">Mth::Vector m_ambient_base_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00031">light.h:31</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a736528dcb7cb366a264a7c30bbb755e0"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a736528dcb7cb366a264a7c30bbb755e0">NxPs2::CLightGroup::mMODULATING_DIFFUSE_1</a></div><div class="ttdeci">@ mMODULATING_DIFFUSE_1</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00095">light.h:95</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a8e4e8d54baab27d9232a351095ea1825"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a8e4e8d54baab27d9232a351095ea1825">NxPs2::CBaseLightGroup::GetAmbientColor</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetAmbientColor() const</div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ad0672649f3d918ad17112f149a5ec632"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad0672649f3d918ad17112f149a5ec632">NxPs2::CLightGroup::m_diffuse_mod_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_mod_color[MAX_DIFFUSE_LIGHTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00109">light.h:109</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a37038a4760b5e709535980a16b0ccf6b"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a37038a4760b5e709535980a16b0ccf6b">NxPs2::CLightGroup::SetBaseAmbientColor</a></div><div class="ttdeci">void SetBaseAmbientColor(const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00222">light.h:222</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a06771c113027c7651340d1ad66bedf39"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a06771c113027c7651340d1ad66bedf39">NxPs2::CLightGroup::sSetDefaultAmbientColor</a></div><div class="ttdeci">static void sSetDefaultAmbientColor(const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00391">light.h:391</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a7be13ee8589ddd9ff30a29130e49fded">NxPs2::CLightGroup::mMODULATING_DIFFUSE_0</a></div><div class="ttdeci">@ mMODULATING_DIFFUSE_0</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00094">light.h:94</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a83bd3af811081207244709aecb3361d8aae17dba71ad34766fba5010d23d2a2c1">NxPs2::CLightGroup::MAX_DIFFUSE_LIGHTS</a></div><div class="ttdeci">@ MAX_DIFFUSE_LIGHTS</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00045">light.h:45</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_base_light_group_html_a2b260d269a1542c47742dca8494ad9a0"><div class="ttname"><a href="../../de/d66/class_nx_ps2_1_1_c_base_light_group.html#a2b260d269a1542c47742dca8494ad9a0">NxPs2::CBaseLightGroup::m_diffuse_base_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_base_color[MAX_DIFFUSE_LIGHTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00030">light.h:30</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a27a202ace88e5eeb59b7fe2500ffb33f"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a27a202ace88e5eeb59b7fe2500ffb33f">NxPs2::CLightGroup::m_flags</a></div><div class="ttdeci">uint32 m_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00099">light.h:99</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a8a888ca20514f88ad6586f90d6866887a37aad6a231b855d79c1ad7491c4dee6f"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a8a888ca20514f88ad6586f90d6866887a37aad6a231b855d79c1ad7491c4dee6f">NxPs2::CLightGroup::mUSE_DIFFUSE_1</a></div><div class="ttdeci">@ mUSE_DIFFUSE_1</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00091">light.h:91</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h.html">light.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

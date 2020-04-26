@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGC/NX/light.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/dd1/_n_g_c_2_n_x_2light_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">light.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __LIGHT_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __LIGHT_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Forward declarations</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">class </span>CLightGroup;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html">CBaseLightGroup</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                                <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ac4d55978e320bdeac2e8534341254a6d">CBaseLightGroup</a>();</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">virtual</span>                     <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#acfc83fd9e725598ebbc6e57666f4d30c">~CBaseLightGroup</a>();</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ae1cc146c71876e8280631c32d59dd505">GetDirection</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a61a7686d69847c1a54c5437c7c2565f1">GetAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#afd216d59ab1433a644013e7e2be45100">GetDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Directional light vectors</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#aaca4ac0dec185909ed0e625c5bde9d58">   26</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#aaca4ac0dec185909ed0e625c5bde9d58">m_light_vector</a>[2];</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// Light base colors</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a15819586c43c71859af717742df33626">   29</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a15819586c43c71859af717742df33626">m_diffuse_base_color</a>[2];</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a84d12b06f6c8b61e154adf5c4cb7a742">   30</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a84d12b06f6c8b61e154adf5c4cb7a742">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ae59b12a642e586799e5efed9e3101342">   32</a></span>&#160;    <span class="keyword">friend</span> <a class="code" href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ae59b12a642e586799e5efed9e3101342">CLightGroup</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html">   35</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html">CLightGroup</a><span class="comment">/* : public CBaseLightGroup*/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a1517c82e5262adf273a74dfabb923e4ca1da55afb290d6231124f27b1f92df9fb">   42</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a1517c82e5262adf273a74dfabb923e4ca1da55afb290d6231124f27b1f92df9fb">MAX_DIFFUSE_LIGHTS</a> = 2,</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    };</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                                <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a5fcf640881022a490c2c47f805246286">CLightGroup</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                                <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a2bc105a07d2adb75bce32ce03339db81">~CLightGroup</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">//virtual                       ~CLightGroup();</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a832a362f860fbe9a9a3d2d0803ecff2d">GetDirection</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetDirection(int idx) const;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ae15dc3c427364b020872bcc27b2656bb">GetBaseAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a7527e3b3093176c96ca09134f763801c">GetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a596f09602f513cabfe19acc2b803af86">GetAmbientColor</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;         <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a7b8a60e768e35c25fcc99871a467d4f8">GetDiffuseColor</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetAmbientColor() const;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">//virtual const Mth::Vector &amp;   GetDiffuseColor(int idx) const;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a313b7acf12472c9e53b219cb01feba49">SetDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#af303c344682ea7de7dd5ffdf9adc1997">SetBaseAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ac6b967996ddb4050935f3f6452158d99">SetBaseDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Enable lights</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#adb3b92ea8cf338be3f2280e5ebae9f42">EnableAmbientLight</a>(<span class="keywordtype">bool</span> enable);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa807f20d43a0d536e954068370672825">EnableDiffuseLight</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">bool</span> enable);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa46dfbe930183407357e7e5aa669b988">IsAmbientLightEnabled</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a1ea9d832ed12f06bd7c7e9f23e75a221">IsDiffuseLightEnabled</a>(<span class="keywordtype">int</span> idx) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Set brightness of lights</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a6482ca324427836421ac4af67cf88a9b">SetAmbientBrightness</a>(<span class="keywordtype">float</span> brightness);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ab21292f4941085494aebd1b1a9806009">SetDiffuseBrightness</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">float</span> brightness);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Default lights</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a31d8d6fa8d5349e99019c3d38d988c12">sGetDefaultDirection</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a5118aa09e46da550779d1fc794cc0801">sGetDefaultAmbientColor</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;  <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a421bd5a0167c52c2fe9d54b988eb82de">sGetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aab9604b24815eb103e7134a533dc9db3">sSetDefaultDirection</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; direction);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a3b3fea3c16add8c163e2e55e6974df7c">sSetDefaultAmbientColor</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                 <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a33a531bf231c98ec9fb599d2023bf99f">sSetDefaultDiffuseColor</a>(<span class="keywordtype">int</span> idx, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; color);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// Internal flags.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3bd524201a43c1a0bf76dd3147369de3">   86</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3bd524201a43c1a0bf76dd3147369de3">mUSE_AMBIENT</a>                = 0x0001,                   <span class="comment">// Use ambient light</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a0cd7937004bcfdd261a5db9d3a877a92">   87</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a0cd7937004bcfdd261a5db9d3a877a92">mUSE_DIFFUSE_0</a>              = 0x0002,                   <span class="comment">// Use diffuse light 0</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3aeab15b02bd53cc00bc9e5eac66f901">   88</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3aeab15b02bd53cc00bc9e5eac66f901">mUSE_DIFFUSE_1</a>              = 0x0004,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6e24b411358ad96716724383412c5bee">   89</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6e24b411358ad96716724383412c5bee">mMODULATING_AMBIENT</a>         = 0x0008,                   <span class="comment">// setting ambient brightness</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a05dc57f7f0c6ab7043e7efa3026c0af6">   90</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a05dc57f7f0c6ab7043e7efa3026c0af6">mMODULATING_DIFFUSE_0</a>       = 0x0010,                   <span class="comment">// setting diffuse brightness 0</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6c5a7bb200657fe15ff05187532682cd">   91</a></span>&#160;        <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6c5a7bb200657fe15ff05187532682cd">mMODULATING_DIFFUSE_1</a>       = 0x0020,                   <span class="comment">// rest of diffuse must follow 0</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    };</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa9db14a18b55af312e6e950c58d072b6">   94</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa9db14a18b55af312e6e950c58d072b6">m_flags</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// Directional light vectors</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a47637b67c2d9f924c8d8e40fd5c74104">   97</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a47637b67c2d9f924c8d8e40fd5c74104">m_light_vector</a>[2];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Light base colors</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ae7a1d759064ed5b2db58b941292206bd">  100</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ae7a1d759064ed5b2db58b941292206bd">m_diffuse_base_color</a>[2];</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a06ce891f3acb77b2727f4da2fdb08470">  101</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a06ce891f3acb77b2727f4da2fdb08470">m_ambient_base_color</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Light modulated colors (modified base colors)</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a3643091d5264e330055b13ded64dac01">  104</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a3643091d5264e330055b13ded64dac01">m_diffuse_mod_color</a>[2];</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ac2fadfd0afd3b63f0ab57c8988648ce5">  105</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ac2fadfd0afd3b63f0ab57c8988648ce5">m_ambient_mod_color</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Default lights</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//  static Mth::Vector      s_default_directions[2];</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//  static CBaseLightGroup  s_default_colors;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aed6c0c9254a0d6e74f5664060afe5fed">  110</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html">CLightGroup</a>      <a class="code" href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aed6c0c9254a0d6e74f5664060afe5fed">s_default_lights</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}; <span class="comment">// class CLightGroup</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">// namespace NxNgc</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif // __LIGHT_H</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a5118aa09e46da550779d1fc794cc0801"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a5118aa09e46da550779d1fc794cc0801">NxNgc::CLightGroup::sGetDefaultAmbientColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultAmbientColor()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00273">light.cpp:273</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_a61a7686d69847c1a54c5437c7c2565f1"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a61a7686d69847c1a54c5437c7c2565f1">NxNgc::CBaseLightGroup::GetAmbientColor</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetAmbientColor() const</div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a3b3fea3c16add8c163e2e55e6974df7c"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a3b3fea3c16add8c163e2e55e6974df7c">NxNgc::CLightGroup::sSetDefaultAmbientColor</a></div><div class="ttdeci">static void sSetDefaultAmbientColor(const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00307">light.cpp:307</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_ae59b12a642e586799e5efed9e3101342"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ae59b12a642e586799e5efed9e3101342">NxNgc::CBaseLightGroup::CLightGroup</a></div><div class="ttdeci">friend CLightGroup</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00032">light.h:32</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a3643091d5264e330055b13ded64dac01"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a3643091d5264e330055b13ded64dac01">NxNgc::CLightGroup::m_diffuse_mod_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_mod_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00104">light.h:104</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a313b7acf12472c9e53b219cb01feba49"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a313b7acf12472c9e53b219cb01feba49">NxNgc::CLightGroup::SetDirection</a></div><div class="ttdeci">void SetDirection(int idx, const Mth::Vector &amp;direction)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00126">light.cpp:126</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a1ea9d832ed12f06bd7c7e9f23e75a221"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a1ea9d832ed12f06bd7c7e9f23e75a221">NxNgc::CLightGroup::IsDiffuseLightEnabled</a></div><div class="ttdeci">bool IsDiffuseLightEnabled(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00219">light.cpp:219</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a06ce891f3acb77b2727f4da2fdb08470"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a06ce891f3acb77b2727f4da2fdb08470">NxNgc::CLightGroup::m_ambient_base_color</a></div><div class="ttdeci">Mth::Vector m_ambient_base_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00101">light.h:101</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a3bd524201a43c1a0bf76dd3147369de3"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3bd524201a43c1a0bf76dd3147369de3">NxNgc::CLightGroup::mUSE_AMBIENT</a></div><div class="ttdeci">@ mUSE_AMBIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00086">light.h:86</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a596f09602f513cabfe19acc2b803af86"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a596f09602f513cabfe19acc2b803af86">NxNgc::CLightGroup::GetAmbientColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetAmbientColor() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00094">light.cpp:94</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a7b8a60e768e35c25fcc99871a467d4f8"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a7b8a60e768e35c25fcc99871a467d4f8">NxNgc::CLightGroup::GetDiffuseColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetDiffuseColor(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00109">light.cpp:109</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_ae15dc3c427364b020872bcc27b2656bb"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ae15dc3c427364b020872bcc27b2656bb">NxNgc::CLightGroup::GetBaseAmbientColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetBaseAmbientColor() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00062">light.cpp:62</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_ae1cc146c71876e8280631c32d59dd505"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ae1cc146c71876e8280631c32d59dd505">NxNgc::CBaseLightGroup::GetDirection</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetDirection(int idx) const</div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_adb3b92ea8cf338be3f2280e5ebae9f42"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#adb3b92ea8cf338be3f2280e5ebae9f42">NxNgc::CLightGroup::EnableAmbientLight</a></div><div class="ttdeci">void EnableAmbientLight(bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00177">light.cpp:177</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_acfc83fd9e725598ebbc6e57666f4d30c"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#acfc83fd9e725598ebbc6e57666f4d30c">NxNgc::CBaseLightGroup::~CBaseLightGroup</a></div><div class="ttdeci">virtual ~CBaseLightGroup()</div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a33a531bf231c98ec9fb599d2023bf99f"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a33a531bf231c98ec9fb599d2023bf99f">NxNgc::CLightGroup::sSetDefaultDiffuseColor</a></div><div class="ttdeci">static void sSetDefaultDiffuseColor(int idx, const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00317">light.cpp:317</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_a84d12b06f6c8b61e154adf5c4cb7a742"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a84d12b06f6c8b61e154adf5c4cb7a742">NxNgc::CBaseLightGroup::m_ambient_base_color</a></div><div class="ttdeci">Mth::Vector m_ambient_base_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00030">light.h:30</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_aed6c0c9254a0d6e74f5664060afe5fed"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aed6c0c9254a0d6e74f5664060afe5fed">NxNgc::CLightGroup::s_default_lights</a></div><div class="ttdeci">static CLightGroup s_default_lights</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00110">light.h:110</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a2bc105a07d2adb75bce32ce03339db81"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a2bc105a07d2adb75bce32ce03339db81">NxNgc::CLightGroup::~CLightGroup</a></div><div class="ttdeci">~CLightGroup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00036">light.cpp:36</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a5fcf640881022a490c2c47f805246286"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a5fcf640881022a490c2c47f805246286">NxNgc::CLightGroup::CLightGroup</a></div><div class="ttdeci">CLightGroup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00016">light.cpp:16</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a6c5a7bb200657fe15ff05187532682cd"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6c5a7bb200657fe15ff05187532682cd">NxNgc::CLightGroup::mMODULATING_DIFFUSE_1</a></div><div class="ttdeci">@ mMODULATING_DIFFUSE_1</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00091">light.h:91</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_aa46dfbe930183407357e7e5aa669b988"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa46dfbe930183407357e7e5aa669b988">NxNgc::CLightGroup::IsAmbientLightEnabled</a></div><div class="ttdeci">bool IsAmbientLightEnabled() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00209">light.cpp:209</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_aa9db14a18b55af312e6e950c58d072b6"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa9db14a18b55af312e6e950c58d072b6">NxNgc::CLightGroup::m_flags</a></div><div class="ttdeci">uint32 m_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00094">light.h:94</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_ac4d55978e320bdeac2e8534341254a6d"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#ac4d55978e320bdeac2e8534341254a6d">NxNgc::CBaseLightGroup::CBaseLightGroup</a></div><div class="ttdeci">CBaseLightGroup()</div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_ab21292f4941085494aebd1b1a9806009"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ab21292f4941085494aebd1b1a9806009">NxNgc::CLightGroup::SetDiffuseBrightness</a></div><div class="ttdeci">bool SetDiffuseBrightness(int idx, float brightness)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00245">light.cpp:245</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a3aeab15b02bd53cc00bc9e5eac66f901"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a3aeab15b02bd53cc00bc9e5eac66f901">NxNgc::CLightGroup::mUSE_DIFFUSE_1</a></div><div class="ttdeci">@ mUSE_DIFFUSE_1</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00088">light.h:88</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a7527e3b3093176c96ca09134f763801c"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a7527e3b3093176c96ca09134f763801c">NxNgc::CLightGroup::GetBaseDiffuseColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetBaseDiffuseColor(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00077">light.cpp:77</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a05dc57f7f0c6ab7043e7efa3026c0af6"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a05dc57f7f0c6ab7043e7efa3026c0af6">NxNgc::CLightGroup::mMODULATING_DIFFUSE_0</a></div><div class="ttdeci">@ mMODULATING_DIFFUSE_0</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00090">light.h:90</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a1517c82e5262adf273a74dfabb923e4ca1da55afb290d6231124f27b1f92df9fb"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a1517c82e5262adf273a74dfabb923e4ca1da55afb290d6231124f27b1f92df9fb">NxNgc::CLightGroup::MAX_DIFFUSE_LIGHTS</a></div><div class="ttdeci">@ MAX_DIFFUSE_LIGHTS</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00042">light.h:42</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_ac6b967996ddb4050935f3f6452158d99"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ac6b967996ddb4050935f3f6452158d99">NxNgc::CLightGroup::SetBaseDiffuseColor</a></div><div class="ttdeci">void SetBaseDiffuseColor(int idx, const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00158">light.cpp:158</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html">NxNgc::CBaseLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00013">light.h:13</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a832a362f860fbe9a9a3d2d0803ecff2d"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a832a362f860fbe9a9a3d2d0803ecff2d">NxNgc::CLightGroup::GetDirection</a></div><div class="ttdeci">const Mth::Vector &amp; GetDirection(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00045">light.cpp:45</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_a15819586c43c71859af717742df33626"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#a15819586c43c71859af717742df33626">NxNgc::CBaseLightGroup::m_diffuse_base_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_base_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00029">light.h:29</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_afd216d59ab1433a644013e7e2be45100"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#afd216d59ab1433a644013e7e2be45100">NxNgc::CBaseLightGroup::GetDiffuseColor</a></div><div class="ttdeci">virtual const Mth::Vector &amp; GetDiffuseColor(int idx) const</div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_ac2fadfd0afd3b63f0ab57c8988648ce5"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ac2fadfd0afd3b63f0ab57c8988648ce5">NxNgc::CLightGroup::m_ambient_mod_color</a></div><div class="ttdeci">Mth::Vector m_ambient_mod_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00105">light.h:105</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a421bd5a0167c52c2fe9d54b988eb82de"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a421bd5a0167c52c2fe9d54b988eb82de">NxNgc::CLightGroup::sGetDefaultDiffuseColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDiffuseColor(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00283">light.cpp:283</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a31d8d6fa8d5349e99019c3d38d988c12"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a31d8d6fa8d5349e99019c3d38d988c12">NxNgc::CLightGroup::sGetDefaultDirection</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDirection(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00261">light.cpp:261</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d88/_n_g_c_2_n_x_2anim_8cpp_source.html#l00016">anim.cpp:16</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a6e24b411358ad96716724383412c5bee"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a6e24b411358ad96716724383412c5bee">NxNgc::CLightGroup::mMODULATING_AMBIENT</a></div><div class="ttdeci">@ mMODULATING_AMBIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00089">light.h:89</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html">NxNgc::CLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00035">light.h:35</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a6482ca324427836421ac4af67cf88a9b"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a6482ca324427836421ac4af67cf88a9b">NxNgc::CLightGroup::SetAmbientBrightness</a></div><div class="ttdeci">bool SetAmbientBrightness(float brightness)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00231">light.cpp:231</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_ae7a1d759064ed5b2db58b941292206bd"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#ae7a1d759064ed5b2db58b941292206bd">NxNgc::CLightGroup::m_diffuse_base_color</a></div><div class="ttdeci">Mth::Vector m_diffuse_base_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00100">light.h:100</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_af303c344682ea7de7dd5ffdf9adc1997"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#af303c344682ea7de7dd5ffdf9adc1997">NxNgc::CLightGroup::SetBaseAmbientColor</a></div><div class="ttdeci">void SetBaseAmbientColor(const Mth::Vector &amp;color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00140">light.cpp:140</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_base_light_group_html_aaca4ac0dec185909ed0e625c5bde9d58"><div class="ttname"><a href="../../d7/d15/class_nx_ngc_1_1_c_base_light_group.html#aaca4ac0dec185909ed0e625c5bde9d58">NxNgc::CBaseLightGroup::m_light_vector</a></div><div class="ttdeci">Mth::Vector m_light_vector[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00026">light.h:26</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a8b7397e038572b8ffcc4772b28db2870a0cd7937004bcfdd261a5db9d3a877a92"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a8b7397e038572b8ffcc4772b28db2870a0cd7937004bcfdd261a5db9d3a877a92">NxNgc::CLightGroup::mUSE_DIFFUSE_0</a></div><div class="ttdeci">@ mUSE_DIFFUSE_0</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00087">light.h:87</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_a47637b67c2d9f924c8d8e40fd5c74104"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#a47637b67c2d9f924c8d8e40fd5c74104">NxNgc::CLightGroup::m_light_vector</a></div><div class="ttdeci">Mth::Vector m_light_vector[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd1/_n_g_c_2_n_x_2light_8h_source.html#l00097">light.h:97</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_aab9604b24815eb103e7134a533dc9db3"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aab9604b24815eb103e7134a533dc9db3">NxNgc::CLightGroup::sSetDefaultDirection</a></div><div class="ttdeci">static void sSetDefaultDirection(int idx, const Mth::Vector &amp;direction)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00295">light.cpp:295</a></div></div>
+<div class="ttc" id="aclass_nx_ngc_1_1_c_light_group_html_aa807f20d43a0d536e954068370672825"><div class="ttname"><a href="../../dd/d15/class_nx_ngc_1_1_c_light_group.html#aa807f20d43a0d536e954068370672825">NxNgc::CLightGroup::EnableDiffuseLight</a></div><div class="ttdeci">void EnableDiffuseLight(int idx, bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d3a/_n_g_c_2_n_x_2light_8cpp_source.html#l00192">light.cpp:192</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_fc598ce00690b1053355ea44bbe38731.html">NGC</a></li><li class="navelem"><a class="el" href="../../dir_73de6e80b2aaf5bdccd3aa1409a233c3.html">NX</a></li><li class="navelem"><a class="el" href="../../d4/dd1/_n_g_c_2_n_x_2light_8h.html">light.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGC/p_nxparticle.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/d86/_n_g_c_2p__nxparticle_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxparticle.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/d86/_n_g_c_2p__nxparticle_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxParticle.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Paul Robinson</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  3/27/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/da8/_nx_tex_man_8h.html">gfx/NxTexMan.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;gfx/Ngc/p_nxtexture.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/nx/mesh.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleflat.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleshaded.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticlesmooth.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleglow.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticlestar.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticlesmoothstar.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleline.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleribbon.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleribbontrail.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticlesmoothribbon.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;gfx/Ngc/p_nxparticleglowribbontrail.h&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a334a3760cf7b9cce9ad528822cb7f00b">   29</a></span>&#160;<a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264">NxNgc::BlendModes</a> <a class="code" href="../../d1/d06/namespace_nx.html#a334a3760cf7b9cce9ad528822cb7f00b">get_texture_blend</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blend_checksum )</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264">NxNgc::BlendModes</a> rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a27a4eff6d9c518ec8dbd198aa06b7290">NxNgc::vBLEND_MODE_DIFFUSE</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">switch</span> ( blend_checksum )</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">case</span> 0x54628ed7:        <span class="comment">// Blend</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264abc82b73387e3c446b8deaa138fa75beb">NxNgc::vBLEND_MODE_BLEND</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">case</span> 0x02e58c18:        <span class="comment">// Add</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ad8cf6215c10aff976cbd2a79282922b4">NxNgc::vBLEND_MODE_ADD</a>;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">case</span> 0xa7fd7d23:        <span class="comment">// Sub</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">case</span> 0xdea7e576:        <span class="comment">// Subtract</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ac259804e8f0f146f58a2ab5dee741342">NxNgc::vBLEND_MODE_SUBTRACT</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">case</span> 0x40f44b8a:        <span class="comment">// Modulate</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a5aaaada985d2f48b74b3ee2770706af3">NxNgc::vBLEND_MODE_MODULATE</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordflow">case</span> 0x68e77f40:        <span class="comment">// Brighten</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a53851375b0cc40618b27267fdbce95f2">NxNgc::vBLEND_MODE_BRIGHTEN</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">case</span> 0x18b98905:        <span class="comment">// FixBlend</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ac59dcb5713d087f0924c129624dc6140">NxNgc::vBLEND_MODE_BLEND_FIXED</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">case</span> 0xa86285a1:        <span class="comment">// FixAdd</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ab0a7c70df973ac10e634cb557077504b">NxNgc::vBLEND_MODE_ADD_FIXED</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">case</span> 0x0d7a749a:        <span class="comment">// FixSub</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">case</span> 0x0eea99ff:        <span class="comment">// FixSubtract</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a4be606c92d7ad529127de91e1a623f08">NxNgc::vBLEND_MODE_SUB_FIXED</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">case</span> 0x90b93703:        <span class="comment">// FixModulate</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a809aab25e27b3e756598de6f70b7d88f">NxNgc::vBLEND_MODE_MODULATE_FIXED</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">case</span> 0xb8aa03c9:        <span class="comment">// FixBrighten</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a83967f0096c8bb939b675e9336ea2b8e">NxNgc::vBLEND_MODE_BRIGHTEN_FIXED</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">case</span> 0x515e298e:        <span class="comment">// Diffuse</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">case</span> 0x806fff30:        <span class="comment">// None</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            rv = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a27a4eff6d9c518ec8dbd198aa06b7290">NxNgc::vBLEND_MODE_DIFFUSE</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            Dbg_MsgAssert(0,(<span class="stringliteral">&quot;Illegal blend mode specified. Please use (fix)blend/add/sub/modulate/brighten or diffuse/none.&quot;</span>));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">return</span> rv;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a4d9aee85e5abc8bcc80886971213e8c7">   77</a></span>&#160;<a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>* <a class="code" href="../../d1/d06/namespace_nx.html#a4d9aee85e5abc8bcc80886971213e8c7">plat_create_particle</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> type_checksum, <span class="keywordtype">int</span> max_particles, <span class="keywordtype">int</span> max_streams, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix, <span class="keywordtype">int</span> num_segments, <span class="keywordtype">float</span> split, <span class="keywordtype">int</span> history )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Types to add:</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// 1. x Flat color quad</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// 2. x Gouraud quad</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// 3. x Quad with center point &amp; outer color</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// 4. x n sided glow (center color + outer color)</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// 5. x n sided 2 layer glow ( center color + mid color + outer color)</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// 6. x n spiked star (center color + mid color + spike color)</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// 7. Lines (current color + previous color)</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// 8. Ribbons - volumetric lines made from quads (current color + previous color)</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">switch</span> ( type_checksum )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">case</span> 0xf4d8d486:        <span class="comment">// Shaded</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="../../d4/d08/class_nx_1_1_c_ngc_particle_shaded.html">CNgcParticleShaded</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d4/d08/class_nx_1_1_c_ngc_particle_shaded.html">CNgcParticleShaded</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">case</span> 0x8addac1f:        <span class="comment">// Smooth</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                <a class="code" href="../../d1/d07/class_nx_1_1_c_ngc_particle_smooth.html">CNgcParticleSmooth</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d1/d07/class_nx_1_1_c_ngc_particle_smooth.html">CNgcParticleSmooth</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">case</span> 0x15834eea:        <span class="comment">// Glow</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="../../d1/df2/class_nx_1_1_c_ngc_particle_glow.html">CNgcParticleGlow</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d1/df2/class_nx_1_1_c_ngc_particle_glow.html">CNgcParticleGlow</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">case</span> 0x3624a5eb:        <span class="comment">// Star</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                <a class="code" href="../../dc/d18/class_nx_1_1_c_ngc_particle_star.html">CNgcParticleStar</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../dc/d18/class_nx_1_1_c_ngc_particle_star.html">CNgcParticleStar</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            }</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">case</span> 0x97cb7a9:     <span class="comment">// SmoothStar</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;                <a class="code" href="../../db/d18/class_nx_1_1_c_ngc_particle_smooth_star.html">CNgcParticleSmoothStar</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../db/d18/class_nx_1_1_c_ngc_particle_smooth_star.html">CNgcParticleSmoothStar</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">case</span> 0x2eeb4b09:        <span class="comment">// Line</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <a class="code" href="../../db/d65/class_nx_1_1_c_ngc_particle_line.html">CNgcParticleLine</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../db/d65/class_nx_1_1_c_ngc_particle_line.html">CNgcParticleLine</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">case</span> 0xee6fc5b:     <span class="comment">// Ribbon</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <a class="code" href="../../d8/d10/class_nx_1_1_c_ngc_particle_ribbon.html">CNgcParticleRibbon</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d8/d10/class_nx_1_1_c_ngc_particle_ribbon.html">CNgcParticleRibbon</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">case</span> 0xc4d5a4cb:        <span class="comment">// RibbonTrail</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <a class="code" href="../../d9/d0d/class_nx_1_1_c_ngc_particle_ribbon_trail.html">CNgcParticleRibbonTrail</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d9/d0d/class_nx_1_1_c_ngc_particle_ribbon_trail.html">CNgcParticleRibbonTrail</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">case</span> 0x3f109fcc:        <span class="comment">// SmoothRibbon</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                <a class="code" href="../../df/d89/class_nx_1_1_c_ngc_particle_smooth_ribbon.html">CNgcParticleSmoothRibbon</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../df/d89/class_nx_1_1_c_ngc_particle_smooth_ribbon.html">CNgcParticleSmoothRibbon</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">case</span> 0x7ec7252d:        <span class="comment">// GlowRibbonTrail</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <a class="code" href="../../d6/d36/class_nx_1_1_c_ngc_particle_glow_ribbon_trail.html">CNgcParticleGlowRibbonTrail</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../d6/d36/class_nx_1_1_c_ngc_particle_glow_ribbon_trail.html">CNgcParticleGlowRibbonTrail</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">case</span> 0xaab555bb:        <span class="comment">// Flat</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                <a class="code" href="../../de/dfe/class_nx_1_1_c_ngc_particle_flat.html">CNgcParticleFlat</a>* p_particle = <span class="keyword">new</span> <a class="code" href="../../de/dfe/class_nx_1_1_c_ngc_particle_flat.html">CNgcParticleFlat</a>( checksum, max_particles, texture_checksum, blendmode_checksum, fix, num_segments, split, history );</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span><a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a>*<span class="keyword">&gt;</span>( p_particle );</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264ac259804e8f0f146f58a2ab5dee741342"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ac259804e8f0f146f58a2ab5dee741342">NxNgc::vBLEND_MODE_SUBTRACT</a></div><div class="ttdeci">@ vBLEND_MODE_SUBTRACT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00039">render.h:39</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a4d9aee85e5abc8bcc80886971213e8c7"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a4d9aee85e5abc8bcc80886971213e8c7">Nx::plat_create_particle</a></div><div class="ttdeci">CParticle * plat_create_particle(uint32 checksum, uint32 type_checksum, int max_particles, int max_streams, uint32 texture_checksum, uint32 blendmode_checksum, int fix, int num_segments, float split, int history)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d86/_n_g_c_2p__nxparticle_8cpp_source.html#l00077">p_nxparticle.cpp:77</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html">Nx::CParticle</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00038">nxparticle.h:38</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_smooth_ribbon_html"><div class="ttname"><a href="../../df/d89/class_nx_1_1_c_ngc_particle_smooth_ribbon.html">Nx::CNgcParticleSmoothRibbon</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/ddc/_n_g_c_2p__nxparticlesmoothribbon_8h_source.html#l00025">p_nxparticlesmoothribbon.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_ribbon_trail_html"><div class="ttname"><a href="../../d9/d0d/class_nx_1_1_c_ngc_particle_ribbon_trail.html">Nx::CNgcParticleRibbonTrail</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d48/_n_g_c_2p__nxparticleribbontrail_8h_source.html#l00025">p_nxparticleribbontrail.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_smooth_star_html"><div class="ttname"><a href="../../db/d18/class_nx_1_1_c_ngc_particle_smooth_star.html">Nx::CNgcParticleSmoothStar</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dba/_n_g_c_2p__nxparticlesmoothstar_8h_source.html#l00025">p_nxparticlesmoothstar.h:25</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264ab0a7c70df973ac10e634cb557077504b"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ab0a7c70df973ac10e634cb557077504b">NxNgc::vBLEND_MODE_ADD_FIXED</a></div><div class="ttdeci">@ vBLEND_MODE_ADD_FIXED</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00038">render.h:38</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_line_html"><div class="ttname"><a href="../../db/d65/class_nx_1_1_c_ngc_particle_line.html">Nx::CNgcParticleLine</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d41/_n_g_c_2p__nxparticleline_8h_source.html#l00025">p_nxparticleline.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_shaded_html"><div class="ttname"><a href="../../d4/d08/class_nx_1_1_c_ngc_particle_shaded.html">Nx::CNgcParticleShaded</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/da8/_n_g_c_2p__nxparticleshaded_8h_source.html#l00025">p_nxparticleshaded.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264abc82b73387e3c446b8deaa138fa75beb"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264abc82b73387e3c446b8deaa138fa75beb">NxNgc::vBLEND_MODE_BLEND</a></div><div class="ttdeci">@ vBLEND_MODE_BLEND</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00041">render.h:41</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264ad8cf6215c10aff976cbd2a79282922b4"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ad8cf6215c10aff976cbd2a79282922b4">NxNgc::vBLEND_MODE_ADD</a></div><div class="ttdeci">@ vBLEND_MODE_ADD</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00037">render.h:37</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a27a4eff6d9c518ec8dbd198aa06b7290"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a27a4eff6d9c518ec8dbd198aa06b7290">NxNgc::vBLEND_MODE_DIFFUSE</a></div><div class="ttdeci">@ vBLEND_MODE_DIFFUSE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00036">render.h:36</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_glow_ribbon_trail_html"><div class="ttname"><a href="../../d6/d36/class_nx_1_1_c_ngc_particle_glow_ribbon_trail.html">Nx::CNgcParticleGlowRibbonTrail</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d55/_n_g_c_2p__nxparticleglowribbontrail_8h_source.html#l00025">p_nxparticleglowribbontrail.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a4be606c92d7ad529127de91e1a623f08"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a4be606c92d7ad529127de91e1a623f08">NxNgc::vBLEND_MODE_SUB_FIXED</a></div><div class="ttdeci">@ vBLEND_MODE_SUB_FIXED</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00040">render.h:40</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a83967f0096c8bb939b675e9336ea2b8e"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a83967f0096c8bb939b675e9336ea2b8e">NxNgc::vBLEND_MODE_BRIGHTEN_FIXED</a></div><div class="ttdeci">@ vBLEND_MODE_BRIGHTEN_FIXED</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00046">render.h:46</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a334a3760cf7b9cce9ad528822cb7f00b"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a334a3760cf7b9cce9ad528822cb7f00b">Nx::get_texture_blend</a></div><div class="ttdeci">NxNgc::BlendModes get_texture_blend(uint32 blend_checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d86/_n_g_c_2p__nxparticle_8cpp_source.html#l00029">p_nxparticle.cpp:29</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a53851375b0cc40618b27267fdbce95f2"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a53851375b0cc40618b27267fdbce95f2">NxNgc::vBLEND_MODE_BRIGHTEN</a></div><div class="ttdeci">@ vBLEND_MODE_BRIGHTEN</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00045">render.h:45</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_flat_html"><div class="ttname"><a href="../../de/dfe/class_nx_1_1_c_ngc_particle_flat.html">Nx::CNgcParticleFlat</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d53/_n_g_c_2p__nxparticleflat_8h_source.html#l00025">p_nxparticleflat.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264ac59dcb5713d087f0924c129624dc6140"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264ac59dcb5713d087f0924c129624dc6140">NxNgc::vBLEND_MODE_BLEND_FIXED</a></div><div class="ttdeci">@ vBLEND_MODE_BLEND_FIXED</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00042">render.h:42</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_star_html"><div class="ttname"><a href="../../dc/d18/class_nx_1_1_c_ngc_particle_star.html">Nx::CNgcParticleStar</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d1d/_n_g_c_2p__nxparticlestar_8h_source.html#l00025">p_nxparticlestar.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_smooth_html"><div class="ttname"><a href="../../d1/d07/class_nx_1_1_c_ngc_particle_smooth.html">Nx::CNgcParticleSmooth</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d7b/_n_g_c_2p__nxparticlesmooth_8h_source.html#l00025">p_nxparticlesmooth.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a5aaaada985d2f48b74b3ee2770706af3"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a5aaaada985d2f48b74b3ee2770706af3">NxNgc::vBLEND_MODE_MODULATE</a></div><div class="ttdeci">@ vBLEND_MODE_MODULATE</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00043">render.h:43</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264a809aab25e27b3e756598de6f70b7d88f"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264a809aab25e27b3e756598de6f70b7d88f">NxNgc::vBLEND_MODE_MODULATE_FIXED</a></div><div class="ttdeci">@ vBLEND_MODE_MODULATE_FIXED</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00044">render.h:44</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_ribbon_html"><div class="ttname"><a href="../../d8/d10/class_nx_1_1_c_ngc_particle_ribbon.html">Nx::CNgcParticleRibbon</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d16/_n_g_c_2p__nxparticleribbon_8h_source.html#l00025">p_nxparticleribbon.h:25</a></div></div>
+<div class="ttc" id="a_nx_tex_man_8h_html"><div class="ttname"><a href="../../d0/da8/_nx_tex_man_8h.html">NxTexMan.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ngc_particle_glow_html"><div class="ttname"><a href="../../d1/df2/class_nx_1_1_c_ngc_particle_glow.html">Nx::CNgcParticleGlow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d42/_n_g_c_2p__nxparticleglow_8h_source.html#l00025">p_nxparticleglow.h:25</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a080b491317b8dd81c1fe67104e068264"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a080b491317b8dd81c1fe67104e068264">NxNgc::BlendModes</a></div><div class="ttdeci">BlendModes</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dce/_n_g_c_2_n_x_2render_8h_source.html#l00034">render.h:34</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_fc598ce00690b1053355ea44bbe38731.html">NGC</a></li><li class="navelem"><a class="el" href="../../d6/d86/_n_g_c_2p__nxparticle_8cpp.html">p_nxparticle.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:28. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

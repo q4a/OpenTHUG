@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/SuspendComponent.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/d91/_suspend_component_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SuspendComponent.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d91/_suspend_component_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       SuspendComponent.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          ???</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  ??/??/??</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d6d/_suspend_component_8h.html">gel/components/suspendcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d45/modelcomponent_8h.html">gel/components/modelcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/dff/compositeobjectmanager_8h.html">gel/object/compositeobjectmanager.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/d60/utils_8h.html">gel/scripting/utils.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de7/mainloop_8h.html">gel/mainloop.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d6c/nx_8h.html">gfx/nx.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d5a/_nx_model_8h.html">gfx/nxmodel.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/de9/_nx_view_man_8h.html">gfx/nxviewman.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span>     <span class="comment">// &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;   GET RID OF THIS, use the NX camera&#39;s directly</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d0c/skatercareer_8h.html">sk/objects/skatercareer.h</a>&gt;</span>    <span class="comment">// &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;   GET RID OF THIS TOO!</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// This static function is what is registered with the component factory </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// object, (currently the CCompositeObjectManager) </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a2885fb317dd0753826e60dc415c9f71c">   39</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a2885fb317dd0753826e60dc415c9f71c">CSuspendComponent::s_create</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <span class="keyword">&gt;</span>( <span class="keyword">new</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">CSuspendComponent</a> ); </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// And this one is the optional &quot;register&quot; function that provides on-time initilization</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">// usually of a component manager</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a1f7e66ff6e8534ad828474efb6ef3f34">   51</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a1f7e66ff6e8534ad828474efb6ef3f34">CSuspendComponent::s_register</a>()</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Create and initilize the manager</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    SuspendManager::Manager::Create();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">   64</a></span>&#160;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">CSuspendComponent::CSuspendComponent</a>() : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>()</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">SetType</a>( CRC_SUSPEND );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>=<a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>(CRCD(0xad501995,<span class="stringliteral">&quot;DefaultMovingObjectSuspendDistance&quot;</span>)) * 12.0f;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">m_suspend_distance_squared</a>=<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>*<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">m_no_suspend_count</a> = 3; <span class="comment">// default to not allowing suspensions in the first 3 frames</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// Mick: We don&#39;t want to display things before they have done at least one frame of</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// animation, because they start out in their default position (the &quot;Blair Witch&quot; position)</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// so, we set a default number of animations that we MUST do before we are allowed to</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="comment">// not animate.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="comment">// This also overrides the SkipLogic test, so we do a frame of logic</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// which fixes problems where something is moving to the first node of a path</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Since the first couple of frames of the game are hidden behind the loading screen</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// we don&#39;t need to worry about framerate glitched due to the large </span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// number of objects being created at start.    </span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">// I Initially had this at 1, which seemed fine</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// however, when you change levels, it needs to be at 3</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// I&#39;m not sure why - it might be good to look into this later.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a> = 3;       </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a897ff38a809f5f58cd9d1197df03ff40">   95</a></span>&#160;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a897ff38a809f5f58cd9d1197df03ff40">CSuspendComponent::~CSuspendComponent</a>()</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#abe2a27d984e47421bc151ebd394f1545">  104</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#abe2a27d984e47421bc151ebd394f1545">CSuspendComponent::InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="comment">// anything that has a suspend distance will allow suspension</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0xe4279ba2,<span class="stringliteral">&quot;SuspendDistance&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>))</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a> == 0.0f)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            <span class="comment">// if zero suspend dist, then try to get it from lod_dist1</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">if</span> (!pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0x4eedfae7,<span class="stringliteral">&quot;Lod_dist1&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>))</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                <span class="comment">// else get the default distance</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>=<a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>(CRCD(0xad501995,<span class="stringliteral">&quot;DefaultMovingObjectSuspendDistance&quot;</span>));</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="comment">// if we&#39;ve got a suspend distance, then convert it into inches</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a> *= 12.0f;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">m_suspend_distance_squared</a>=<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>*<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="comment">// suspension can be overridden by the &quot;NeverSuspend&quot; flag</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">ContainsFlag</a>(CRCD(0xcb839dc1,<span class="stringliteral">&quot;NeverSuspend&quot;</span>)))</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">// Get the LOD distances from the node</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a>(CRCD(0x95edc6f6,<span class="stringliteral">&quot;NoLOD&quot;</span>),<span class="keyword">false</span>))                  </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0] = 1000000;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] = 1000001;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2] = 1000002;  <span class="comment">// Note, this is used as a magic number to turn off the high level culling</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3] = 1000003;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        Dbg_Assert( pParams );</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0] = 50;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2] = 1000001;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3] = 1000002;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0x4eedfae7,<span class="stringliteral">&quot;lod_dist1&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0]);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] = <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0] + 75;                     <span class="comment">// default for LOD dist 2 is 75 feet beyond 1</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0xd7e4ab5d,<span class="stringliteral">&quot;lod_dist2&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0xa0e39bcb,<span class="stringliteral">&quot;lod_dist3&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2]);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0x3e870e68,<span class="stringliteral">&quot;lod_dist4&quot;</span>),&amp;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3]);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="comment">// LOD dist is in feet</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0] *= 12.0f;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] *= 12.0f;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2] *= 12.0f;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3] *= 12.0f;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0]&gt;=<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] )</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <a class="code" href="../../d1/d54/namespace_script.html#a0d003ee93577e31adb6597bce0002009">Script::PrintContents</a>( pParams );</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            Dbg_MsgAssert(0,(<span class="stringliteral">&quot;lod_dist1 (%f) &gt;= lod_dist2 (%f) in node&quot;</span>,<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0],<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]));</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]&gt;=<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2] )</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <a class="code" href="../../d1/d54/namespace_script.html#a0d003ee93577e31adb6597bce0002009">Script::PrintContents</a>( pParams );</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            Dbg_MsgAssert(0,(<span class="stringliteral">&quot;lod_dist2 (%f) &gt;= lod_dist3 (%f) in node&quot;</span>,<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1],<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2]));</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2]&gt;=<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3] )</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <a class="code" href="../../d1/d54/namespace_script.html#a0d003ee93577e31adb6597bce0002009">Script::PrintContents</a>( pParams );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            Dbg_MsgAssert(0,(<span class="stringliteral">&quot;lod_dist3 (%f) &gt;= lod_dist4 (%f) in node&quot;</span>,<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2],<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3]));</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#if defined( __PLAT_XBOX__ ) || defined( __PLAT_NGC__ )</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="comment">// Some platform specific changes to the LOD stuff</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0]       *= <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>( 0xd3d072f9 <span class="comment">/* LOD0DistanceMultiplier */</span> );</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]       *= <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>( 0x0432f2a1 <span class="comment">/* LOD1DistanceMultiplier */</span> );</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aab2e4657f1777b8e58b41cc193cda017">  180</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aab2e4657f1777b8e58b41cc193cda017">CSuspendComponent::Finalize</a>()</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">// Might be NULL, if we don&#39;t have a model</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a> = GetModelComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a536faf3f2be922a85c8e4d3edd60bb0a">  191</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a536faf3f2be922a85c8e4d3edd60bb0a">CSuspendComponent::Update</a>()</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">// this funtion does not need to be called, so flag it as such</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">CBaseComponent::Suspend</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    </div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a0ec772871c6506939edac1a095287a52">  202</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">CBaseComponent::EMemberFunctionResult</a> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a0ec772871c6506939edac1a095287a52">CSuspendComponent::CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript )</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;{</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keywordflow">switch</span> ( Checksum )</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">CBaseComponent::MF_NOT_EXECUTED</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">// the &quot;default&quot; case of the switch statement handles</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">// unrecognized functions;  if we make it down here,</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">// that means that the component already handled it</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">// somehow</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    </div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a10812b13cf3aef632fe050e50929092d">  222</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a10812b13cf3aef632fe050e50929092d">CSuspendComponent::Suspend</a>(<span class="keywordtype">bool</span> suspend)</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">// does nothing, as we need to keep checking for unsuspension</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">// returns true if we skip logic on this frame</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">// this can be true for a number of reasons</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">// but mostly boils down to LOD</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">  235</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">CSuspendComponent::SkipLogic</a>()</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;{</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;}</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">// returns true if we skip logic on this frame</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">// this can be true for a number of reasons</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">// but mostly boils down to LOD</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">  248</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">CSuspendComponent::SkipRender</a>()</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;{</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a> &gt; <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]*<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] )</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }   </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    </div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a35115ef435cbb5b87040c0db02cb5e37">  267</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a35115ef435cbb5b87040c0db02cb5e37">CSuspendComponent::GetDebugInfo</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_info)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;{</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#ifdef  __DEBUG_CODE__</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    Dbg_MsgAssert(p_info,(<span class="stringliteral">&quot;NULL p_info sent to CSuspendComponent::GetDebugInfo&quot;</span>));</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="comment">// we call the base component&#39;s GetDebugInfo, so we can add info from the common base component                                      </span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">CBaseComponent::GetDebugInfo</a>(p_info);   </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>(CRCD(0x7cf2a233,<span class="stringliteral">&quot;m_never_suspend&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a>);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0x519ab8e0,<span class="stringliteral">&quot;m_suspend_distance&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0x340a53d3,<span class="stringliteral">&quot;distance_to_camera&quot;</span>),sqrtf(<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a>));</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0x266306b9,<span class="stringliteral">&quot;m_lod_dist_0&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0]);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0x5164362f,<span class="stringliteral">&quot;m_lod_dist_1&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1]);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0xc86d6795,<span class="stringliteral">&quot;m_lod_dist_2&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2]);</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0xbf6a5703,<span class="stringliteral">&quot;m_lod_dist_3&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[3]);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>(CRCD(0xd9872f4b,<span class="stringliteral">&quot;SKIPLOGIC_RETURNS&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">SkipLogic</a>());</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>(CRCD(0xd55771a6,<span class="stringliteral">&quot;SKIPRENDER_RETURNS&quot;</span>),<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">SkipRender</a>());</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif               </span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;}</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">  292</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">CSuspendComponent::should_animate</a>( <span class="keywordtype">float</span> *p_dist )</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;{</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">true</span>;  </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="comment">// Mick:  don&#39;t update the skeleton if it&#39;s a long way from the camera</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">//  Gfx::Camera * p_camera = Nx::CViewportManager::sGetActiveCamera( 0 );</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">//  if (p_camera)</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">//      Mth::Vector cam_pos = p_camera-&gt;GetPos();</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">//      cam_pos = cam_pos - GetObject()-&gt;GetPos();</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">//      float dist = cam_pos.LengthSqr();</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordtype">float</span> dist = <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="comment">// Save this dist if a valid pointer was passed.</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="keywordflow">if</span>( p_dist )</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            *p_dist = dist;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordflow">if</span> (dist &gt; <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0] * <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[0])       <span class="comment">// dist at what we stop animating           </span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        }</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="comment">// update animation intermittently</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="comment">// more so as distance from camera increases</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#ifndef TESTING_GUNSLINGER</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#if defined( __PLAT_XBOX__ ) || defined( __PLAT_NGC__ )</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="keywordtype">float</span> interleave2 = <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>( 0xdb120fb5 <span class="comment">/* AnimLODInterleave2 */</span> );</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <span class="keywordtype">float</span> interleave4 = <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>( 0x3271aa80 <span class="comment">/* AnimLODInterleave4 */</span> );</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            interleave2 *= interleave2;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            interleave4 *= interleave4;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            <span class="keywordtype">float</span> interleave2 = 500.0f * 500.0f;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <span class="keywordtype">float</span> interleave4 = 800.0f * 800.0f;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">m_interleave</a>++;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">false</span>;             </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            <span class="keywordflow">if</span> (dist &gt; interleave4)                       </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                <span class="comment">// 1 in 4 for distance 500-1000</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                <span class="keywordflow">if</span> (!(<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">m_interleave</a>&amp;3))</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (dist &gt; interleave2)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            {</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                <span class="comment">// 1 in 2 for 200 to 500</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;                <span class="keywordflow">if</span> ((<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">m_interleave</a>&amp;1))</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;                {</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;                }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;             }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;             <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;             {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                <span class="comment">// always animate if &lt; 200</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;             }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#endif      </span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a>)</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a>;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;}</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">// Set Model&#39;s Active/Inactive flag based on other flags</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="comment">// and if the model is actually visible or not (with culling and occlusion)</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">// and upon the load_dist2 distance  </span></div>
+<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">  378</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">CSuspendComponent::CheckModelActive</a>()</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;{</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a> &amp;&amp; <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>() )</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <span class="keywordtype">bool</span> active = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;GetFlags() &amp; <a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a09848126f811cf4e2e0121e8c56bef3fa6b6e55a653f863396d875263a3ce9ceb">CObject::vINVISIBLE</a> )</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            <span class="comment">// just leave it inactive</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        }</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            <span class="comment">// quick check for if the NoLOD flag is set</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <span class="comment">// Note use of magic number (but this is only for debugging/screenshots)</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[2] == 1000002 )</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;                active =  true ;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            }</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            {</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                <span class="comment">// PATCH for multiple viewports</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                <span class="comment">// always return true, until we sort out the per-viewport visibility (which might not be needed)                   </span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;                <span class="keywordflow">if</span> ( <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#a7b9ce551d861a570e3892f0f2e52a8ce">Nx::CViewportManager::sGetNumActiveViewports</a>() &gt; 1 )</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;                {</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;                    active = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                }</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#acffe146e08214b4e9806b4058d8d1b37">HasRefObject</a>() )</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;                    <span class="comment">// GJ:  a ref model doesn&#39;t actually have a valid bounding sphere</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;                    <span class="comment">// so don&#39;t let Nx::CEngine::sIsVisible() be called...</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                    <span class="comment">// (alternatively, we could fake a large bounding sphere</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;                    <span class="comment">// but that seems kludgy)</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                    active = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                }</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;                {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;                    <span class="keywordtype">float</span> dist = <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;                    </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                    <span class="keywordflow">if</span> ( dist &lt; <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] * <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[1] )</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                    {       </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> sphere = <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>()-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#aeb66acc63ecec85f758848bb34ad5ff1">GetBoundingSphere</a>();</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a> = sphere;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                        <a class="code" href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a>[3] = 1.0f;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                        <a class="code" href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a> *= <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a18d374784f1787eb7b22b92a84084dfc">GetMatrix</a>();</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                        <a class="code" href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a> += <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#addf10ff084fa457e293e69afe013ee4c">GetPos</a>();</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                        active = ( <a class="code" href="../../d9/d8c/class_nx_1_1_c_engine.html#a7703d1dff70a885766a2bac03eb0f1e3">Nx::CEngine::sIsVisible</a>( <a class="code" href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a>, sphere[3]) );</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                    }</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                    {</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;                        active = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;                    }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;                }</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;            }</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        }</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="keywordtype">bool</span>    was_active = <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>()-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#ac9018f528ee094e831e64a76cb41041f">GetActive</a>();</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>()-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#a37c75370cd784fe701c6ef8efce65eb2">SetActive</a>( active);     </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="comment">// If we&#39;ve just turned the model component back on, then run the update on it</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="comment">// so we set it to the right place</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="comment">// otherwise it will be in the old place for a frame</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <span class="comment">// TODO:  This all might be better IN the modelcomponent</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        <span class="keywordflow">if</span> (active &amp;&amp; !was_active)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a958467a5bfdc9b4f73928feb08cf8267">Update</a>();           </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        }</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    }   </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a952ff93526fc5c3d5f5e02553a48a3cb">  449</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a952ff93526fc5c3d5f5e02553a48a3cb">CSuspendComponent::GetDistanceSquaredToCamera</a>()</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;{</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a> * p_camera = <a class="code" href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ab261671c2c6af15bf4d3b040c58c8a4b">Nx::CViewportManager::sGetActiveCamera</a>( 0 );</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordflow">if</span> ( p_camera )</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    {</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        <span class="keywordflow">return</span> ( p_camera-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">GetPos</a>() - <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a>() ).LengthSqr();</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;No active camera!\n&quot;</span> );</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="comment">// no camera?!?</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;}</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="comment">// The following is the SuspendOb manager, which iterates over the suspendob components </span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="comment">// to suspend them to whatever they are suspended to</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno"><a class="line" href="../../da/d68/namespace_obj_1_1_suspend_manager.html">  473</a></span>&#160;<span class="keyword">namespace </span>SuspendManager</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;{</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="comment">// The purpose of this manager is just to update all the suspended objects, by calling</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="comment">// CMovingObject::SuspendToObject on all objects that have had Obj_SuspendToObject run on them.</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;<span class="comment">// It is a manager so that it can be given a task with a priority such that it is called</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="comment">// after all the objects are updated.</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="comment">// The reason the suspend logic cannot be done in the object update is because sometimes the parent&#39;s </span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="comment">// update might happen after the child&#39;s, causing a frame lag. This was making the gorilla appear</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="comment">// behind the tram seat in the zoo when the tram was being skitched. (TT2324)</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno"><a class="line" href="../../da/d68/namespace_obj_1_1_suspend_manager.html#a07a2b127140304b10d2a2100efd3b9ae">  483</a></span>&#160;<a class="code" href="../../da/d68/namespace_obj_1_1_suspend_manager.html#a07a2b127140304b10d2a2100efd3b9ae">DefineSingletonClass</a>( <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Manager</a>, <span class="stringliteral">&quot;Suspended object Manager&quot;</span> )</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160; </div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Manager</a>::<a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Manager</a>()</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;{</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    mp_task = <span class="keyword">new</span> Tsk::Task&lt; Manager &gt; ( s_code, *<span class="keyword">this</span>,</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                                        Tsk::BaseTask::Node::vLOGIC_TASK_PRIORITY_LOCKED_OBJECT_MANAGER_LOGIC );</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <a class="code" href="../../d3/d66/class_mlp_1_1_manager.html">Mlp::Manager</a> * mlp_manager = Mlp::Manager::Instance();</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    mlp_manager-&gt;<a class="code" href="../../d3/d66/class_mlp_1_1_manager.html#aa7a0728da054658606de57081696f746">AddLogicTask</a>( *mp_task );</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;}</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno"><a class="line" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ad07415f287681660ded02bc714dc0633">  504</a></span>&#160;<a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ad07415f287681660ded02bc714dc0633">Manager::~Manager</a>()</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;{</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb43d28af4aad4ce5d563ecc1b83fba4">mp_task</a>;</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;}</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#a255f92941242c60e98cda94c160e7444">Manager::s_code</a>( <span class="keyword">const</span> Tsk::Task&lt; Manager &gt;&amp; task )</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;{</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <a class="code" href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html">Mdl::SPreCalculatedObjectUpdateInfo</a>* p_info = Mdl::Skate::Instance()-&gt;GetPreCalculatedObjectUpdateInfo();</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html">Obj::CSuspendComponent</a> *p_suspend_component = <span class="keyword">static_cast&lt;</span><a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html">Obj::CSuspendComponent</a>*<span class="keyword">&gt;</span>( Obj::CCompositeObjectManager::Instance()-&gt;GetFirstComponentByType( CRC_SUSPEND ));</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    <span class="keywordflow">while</span>( p_suspend_component )</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160; </div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        <span class="comment">// Set camera dist to zero for the purposes of LOD</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a> = 0;</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">m_no_suspend_count</a>)</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        {</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;            p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">m_no_suspend_count</a>--;</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        }</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        <span class="keywordflow">if</span> ( p_info-&gt;<a class="code" href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html#abb364968b9b4a9037702961c0f0e0c98">mDoNotSuspendAnything</a> )</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        {</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        }   </div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a> )</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        {</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;        }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a> )</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        {</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a>--;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        }</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        {</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a> = <a class="code" href="../../d5/db9/namespace_mth.html#a4829497c960aa6d670291025162364d0">Mth::DistanceSqr</a>(p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#addf10ff084fa457e293e69afe013ee4c">GetPos</a>(),p_info-&gt;<a class="code" href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html#a5a698496093e6094b9cc633ed86451de">mActiveCameraPosition</a>);</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        </div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            <span class="keywordflow">if</span> ( p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a> &gt; p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">m_suspend_distance_squared</a> )</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            {</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;                p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;            }   </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;                p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            }</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        <span class="comment">// suspend or unsuspend the object and its components</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;        <span class="comment">// based on the new state of m_skip_logic</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a>)</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        {</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            <span class="keywordflow">if</span> (!p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ab30f6e3e89841c2f0bc2997d680d8218">IsSuspended</a>())</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            {</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;                p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ae607716435de3a84d9c87090d649c951">Suspend</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            }</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        }</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ab30f6e3e89841c2f0bc2997d680d8218">IsSuspended</a>())</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ae607716435de3a84d9c87090d649c951">Suspend</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            }</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        <span class="comment">// If it has a model, then check for LOD to nothing </span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>)</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        {</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;            <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a>)</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                <span class="keywordflow">if</span> (p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>())</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;                {</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                    p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>()-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#a37c75370cd784fe701c6ef8efce65eb2">SetActive</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            }</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            {</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;                p_suspend_component-&gt;<a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">CheckModelActive</a>();    </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;            }</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        }</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        </div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        p_suspend_component = <span class="keyword">static_cast&lt;</span><a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html">Obj::CSuspendComponent</a>*<span class="keyword">&gt;</span>( p_suspend_component-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#abf4309b1a671392193628ea6e7c9f885">GetNextSameType</a>());</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;    }</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;}</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160; </div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160; </div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; </div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;}</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    </div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a1b617ce9442e7fe78cc830537567a305"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">Obj::CBaseComponent::Suspend</a></div><div class="ttdeci">virtual void Suspend(bool suspend)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00079">basecomponent.cpp:79</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a374bbc6f31927ea8e6871fd9d771223a"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">Obj::CSuspendComponent::m_lod_dist</a></div><div class="ttdeci">float m_lod_dist[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00099">SuspendComponent.h:99</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_ab261671c2c6af15bf4d3b040c58c8a4b"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#ab261671c2c6af15bf4d3b040c58c8a4b">Nx::CViewportManager::sGetActiveCamera</a></div><div class="ttdeci">static Gfx::Camera * sGetActiveCamera(int cam=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de7/_nx_view_man_8cpp_source.html#l00266">NxViewMan.cpp:266</a></div></div>
+<div class="ttc" id="acompositeobjectmanager_8h_html"><div class="ttname"><a href="../../d8/dff/compositeobjectmanager_8h.html">compositeobjectmanager.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5522cfd23f5a576aa1641f35666231a5"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">Obj::CSuspendComponent::m_initial_animations</a></div><div class="ttdeci">int m_initial_animations</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00100">SuspendComponent.h:100</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_ac9018f528ee094e831e64a76cb41041f"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#ac9018f528ee094e831e64a76cb41041f">Nx::CModel::GetActive</a></div><div class="ttdeci">bool GetActive()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00113">NxModel.h:113</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a536faf3f2be922a85c8e4d3edd60bb0a"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a536faf3f2be922a85c8e4d3edd60bb0a">Obj::CSuspendComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00191">SuspendComponent.cpp:191</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1ef6ac6b15ddd2fcff21e6a3dd6e5938"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a></div><div class="ttdeci">float GetFloat(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00483">symboltable.cpp:483</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa27bdd009eb62b22c75dac7b9398a902"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">Script::CStruct::ContainsFlag</a></div><div class="ttdeci">bool ContainsFlag(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01846">struct.cpp:1846</a></div></div>
+<div class="ttc" id="anamespace_script_html_a0d003ee93577e31adb6597bce0002009"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a0d003ee93577e31adb6597bce0002009">Script::PrintContents</a></div><div class="ttdeci">void PrintContents(CStruct *p_structure, int indent)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html_a958467a5bfdc9b4f73928feb08cf8267"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html#a958467a5bfdc9b4f73928feb08cf8267">Obj::CModelComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d14/modelcomponent_8cpp_source.html#l00643">modelcomponent.cpp:643</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html_a8ed12fa8e2a0c911029c771d085f3c92"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">Obj::CModelComponent::GetModel</a></div><div class="ttdeci">Nx::CModel * GetModel()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d45/modelcomponent_8h_source.html#l00190">modelcomponent.h:190</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a18d374784f1787eb7b22b92a84084dfc"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a18d374784f1787eb7b22b92a84084dfc">Obj::CCompositeObject::GetMatrix</a></div><div class="ttdeci">Mth::Matrix &amp; GetMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00091">compositeobject.h:91</a></div></div>
+<div class="ttc" id="amatrix_8h_html_ad393a55b0cd17b6dea798c49863e8de4"><div class="ttname"><a href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a></div><div class="ttdeci">Vector &amp; GetPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00066">matrix.h:66</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_addf10ff084fa457e293e69afe013ee4c"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#addf10ff084fa457e293e69afe013ee4c">Obj::CCompositeObject::GetPos</a></div><div class="ttdeci">const Mth::Vector &amp; GetPos(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00089">compositeobject.h:89</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html">Obj::CSuspendComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00056">SuspendComponent.h:56</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a76fcf9640a7f0b97c7425a8e7b7cdec9"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">Script::CStruct::AddFloat</a></div><div class="ttdeci">void AddFloat(uint32 nameChecksum, float float_val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01055">struct.cpp:1055</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a0ec772871c6506939edac1a095287a52"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a0ec772871c6506939edac1a095287a52">Obj::CSuspendComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00202">SuspendComponent.cpp:202</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a880a8b9b7ec5b22563c6821ae0f1903e"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">Obj::CBaseComponent::SetType</a></div><div class="ttdeci">void SetType(uint32 type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00077">basecomponent.h:77</a></div></div>
+<div class="ttc" id="aclass_mlp_1_1_manager_html"><div class="ttname"><a href="../../d3/d66/class_mlp_1_1_manager.html">Mlp::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de7/mainloop_8h_source.html#l00046">mainloop.h:46</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_ab6805f805d22e3876bcd47552a663f1a"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">Script::CStruct::AddInteger</a></div><div class="ttdeci">void AddInteger(uint32 nameChecksum, int integer)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01039">struct.cpp:1039</a></div></div>
+<div class="ttc" id="astruct_mdl_1_1_s_pre_calculated_object_update_info_html"><div class="ttname"><a href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html">Mdl::SPreCalculatedObjectUpdateInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00143">skate.h:143</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_ad07415f287681660ded02bc714dc0633"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ad07415f287681660ded02bc714dc0633">Obj::SuspendManager::Manager::~Manager</a></div><div class="ttdeci">~Manager()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00504">SuspendComponent.cpp:504</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_a37c75370cd784fe701c6ef8efce65eb2"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#a37c75370cd784fe701c6ef8efce65eb2">Nx::CModel::SetActive</a></div><div class="ttdeci">bool SetActive(bool active)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d45/_nx_model_8cpp_source.html#l00779">NxModel.cpp:779</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_viewport_manager_html_a7b9ce551d861a570e3892f0f2e52a8ce"><div class="ttname"><a href="../../d0/d19/class_nx_1_1_c_viewport_manager.html#a7b9ce551d861a570e3892f0f2e52a8ce">Nx::CViewportManager::sGetNumActiveViewports</a></div><div class="ttdeci">static int sGetNumActiveViewports()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/de9/_nx_view_man_8h_source.html#l00165">NxViewMan.h:165</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a952ff93526fc5c3d5f5e02553a48a3cb"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a952ff93526fc5c3d5f5e02553a48a3cb">Obj::CSuspendComponent::GetDistanceSquaredToCamera</a></div><div class="ttdeci">float GetDistanceSquaredToCamera()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00449">SuspendComponent.cpp:449</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_aeb43d28af4aad4ce5d563ecc1b83fba4"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb43d28af4aad4ce5d563ecc1b83fba4">Obj::SuspendManager::Manager::mp_task</a></div><div class="ttdeci">Tsk::Task&lt; Manager &gt; * mp_task</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00041">SuspendComponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a10812b13cf3aef632fe050e50929092d"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a10812b13cf3aef632fe050e50929092d">Obj::CSuspendComponent::Suspend</a></div><div class="ttdeci">virtual void Suspend(bool suspend)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00222">SuspendComponent.cpp:222</a></div></div>
+<div class="ttc" id="amainloop_8h_html"><div class="ttname"><a href="../../d8/de7/mainloop_8h.html">mainloop.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a952f40d99323d28b3ca2f55567edfa85"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">Obj::CBaseComponent::GetObject</a></div><div class="ttdeci">CCompositeObject * GetObject() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00059">basecomponent.h:59</a></div></div>
+<div class="ttc" id="a_nx_view_man_8h_html"><div class="ttname"><a href="../../d2/de9/_nx_view_man_8h.html">NxViewMan.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">Obj::CBaseComponent::MF_NOT_EXECUTED</a></div><div class="ttdeci">@ MF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00042">basecomponent.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad0134c955817c1901a2b38268ac723f2"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">Obj::CSuspendComponent::should_animate</a></div><div class="ttdeci">bool should_animate(float *p_dist=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00292">SuspendComponent.cpp:292</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aca3c7db8a221b31d2b738ad62d683e7b"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">Obj::CSuspendComponent::m_interleave</a></div><div class="ttdeci">int m_interleave</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00103">SuspendComponent.h:103</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="autils_8h_html"><div class="ttname"><a href="../../d5/d60/utils_8h.html">utils.h</a></div></div>
+<div class="ttc" id="astruct_mdl_1_1_s_pre_calculated_object_update_info_html_a5a698496093e6094b9cc633ed86451de"><div class="ttname"><a href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html#a5a698496093e6094b9cc633ed86451de">Mdl::SPreCalculatedObjectUpdateInfo::mActiveCameraPosition</a></div><div class="ttdeci">Mth::Vector mActiveCameraPosition</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00149">skate.h:149</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a06a8df27e7f213d3a8666fc8904b1428"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">Obj::CSuspendComponent::m_no_suspend_count</a></div><div class="ttdeci">int m_no_suspend_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00089">SuspendComponent.h:89</a></div></div>
+<div class="ttc" id="astruct_mdl_1_1_s_pre_calculated_object_update_info_html_abb364968b9b4a9037702961c0f0e0c98"><div class="ttname"><a href="../../da/d6e/struct_mdl_1_1_s_pre_calculated_object_update_info.html#abb364968b9b4a9037702961c0f0e0c98">Mdl::SPreCalculatedObjectUpdateInfo::mDoNotSuspendAnything</a></div><div class="ttdeci">bool mDoNotSuspendAnything</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00146">skate.h:146</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a65566869a3e5600ca26bd9fbd9fcd2d8"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">Obj::CSuspendComponent::m_skip_logic</a></div><div class="ttdeci">bool m_skip_logic</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00093">SuspendComponent.h:93</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_acae6f1a5a02d406ab56292ec3fcfaefd"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">Script::CStruct::GetFloat</a></div><div class="ttdeci">bool GetFloat(uint32 nameChecksum, float *p_floatValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01503">struct.cpp:1503</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_ae607716435de3a84d9c87090d649c951"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ae607716435de3a84d9c87090d649c951">Obj::CCompositeObject::Suspend</a></div><div class="ttdeci">void Suspend(bool suspended)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d95/compositeobject_8cpp_source.html#l00351">compositeobject.cpp:351</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_engine_html_a7703d1dff70a885766a2bac03eb0f1e3"><div class="ttname"><a href="../../d9/d8c/class_nx_1_1_c_engine.html#a7703d1dff70a885766a2bac03eb0f1e3">Nx::CEngine::sIsVisible</a></div><div class="ttdeci">static bool sIsVisible(Mth::Vector &amp;center, float radius)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d16/nx_8cpp_source.html#l00970">nx.cpp:970</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00043">camera.h:43</a></div></div>
+<div class="ttc" id="ap__camera_8cpp_html_a8f1e186a6b1af30cc237b7e145c7c598"><div class="ttname"><a href="../../d0/db2/p__camera_8cpp.html#a8f1e186a6b1af30cc237b7e145c7c598">position</a></div><div class="ttdeci">NsVector position(0.0f, 0.0f, 0.0f)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a3e89a55e2939f9addff09f8dbf322662"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">Obj::CSuspendComponent::mp_model_component</a></div><div class="ttdeci">CModelComponent * mp_model_component</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00091">SuspendComponent.h:91</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_abe2a27d984e47421bc151ebd394f1545"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#abe2a27d984e47421bc151ebd394f1545">Obj::CSuspendComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00104">SuspendComponent.cpp:104</a></div></div>
+<div class="ttc" id="anamespace_script_html_ac722bae4acb2ce23888cb428818f12af"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a></div><div class="ttdeci">int GetInt(uint32 checksum, bool assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00740">symboltable.cpp:740</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad4a4707c3977a769782b5f1840238573"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">Obj::CSuspendComponent::SkipRender</a></div><div class="ttdeci">bool SkipRender()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00248">SuspendComponent.cpp:248</a></div></div>
+<div class="ttc" id="aclass_mlp_1_1_manager_html_aa7a0728da054658606de57081696f746"><div class="ttname"><a href="../../d3/d66/class_mlp_1_1_manager.html#aa7a0728da054658606de57081696f746">Mlp::Manager::AddLogicTask</a></div><div class="ttdeci">void AddLogicTask(Tsk::BaseTask &amp;task)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de7/mainloop_8h_source.html#l00196">mainloop.h:196</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae2af213dc0845ab5e04de4a7f6afa138"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">Gfx::Camera::GetPos</a></div><div class="ttdeci">Mth::Vector &amp; GetPos()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00280">camera.cpp:280</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aa78c853a9a42f92095e0f3483cf2820f"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">Obj::CSuspendComponent::m_suspend_distance_squared</a></div><div class="ttdeci">float m_suspend_distance_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00087">SuspendComponent.h:87</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5a0ec45719d9b5837bb9355e5c258f23"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">Obj::CSuspendComponent::CheckModelActive</a></div><div class="ttdeci">void CheckModelActive()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00378">SuspendComponent.cpp:378</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a09848126f811cf4e2e0121e8c56bef3fa6b6e55a653f863396d875263a3ce9ceb"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a09848126f811cf4e2e0121e8c56bef3fa6b6e55a653f863396d875263a3ce9ceb">Obj::CObject::vINVISIBLE</a></div><div class="ttdeci">@ vINVISIBLE</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00194">object.h:194</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">Obj::CBaseComponent::MF_TRUE</a></div><div class="ttdeci">@ MF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00041">basecomponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_abf4309b1a671392193628ea6e7c9f885"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#abf4309b1a671392193628ea6e7c9f885">Obj::CBaseComponent::GetNextSameType</a></div><div class="ttdeci">CBaseComponent * GetNextSameType() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00061">basecomponent.h:61</a></div></div>
+<div class="ttc" id="anamespace_obj_1_1_suspend_manager_html_a07a2b127140304b10d2a2100efd3b9ae"><div class="ttname"><a href="../../da/d68/namespace_obj_1_1_suspend_manager.html#a07a2b127140304b10d2a2100efd3b9ae">Obj::SuspendManager::DefineSingletonClass</a></div><div class="ttdeci">DefineSingletonClass(Manager, &quot;Suspended object Manager&quot;) Manager</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00483">SuspendComponent.cpp:483</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a35115ef435cbb5b87040c0db02cb5e37"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a35115ef435cbb5b87040c0db02cb5e37">Obj::CSuspendComponent::GetDebugInfo</a></div><div class="ttdeci">void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00267">SuspendComponent.cpp:267</a></div></div>
+<div class="ttc" id="a_suspend_component_8h_html"><div class="ttname"><a href="../../d4/d6d/_suspend_component_8h.html">SuspendComponent.h</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_acb60b78cb120aaaa883df1fd4d4d15bf"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">Obj::CBaseComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00113">basecomponent.cpp:113</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Obj::SuspendManager::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00039">SuspendComponent.h:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a897ff38a809f5f58cd9d1197df03ff40"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a897ff38a809f5f58cd9d1197df03ff40">Obj::CSuspendComponent::~CSuspendComponent</a></div><div class="ttdeci">virtual ~CSuspendComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00095">SuspendComponent.cpp:95</a></div></div>
+<div class="ttc" id="a_nx_model_8h_html"><div class="ttname"><a href="../../d9/d5a/_nx_model_8h.html">NxModel.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_ab30f6e3e89841c2f0bc2997d680d8218"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#ab30f6e3e89841c2f0bc2997d680d8218">Obj::CCompositeObject::IsSuspended</a></div><div class="ttdeci">bool IsSuspended(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00052">compositeobject.h:52</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="askatercareer_8h_html"><div class="ttname"><a href="../../de/d0c/skatercareer_8h.html">skatercareer.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aef21ad637ff647f116cde480aa8009cc"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">Obj::CSuspendComponent::m_never_suspend</a></div><div class="ttdeci">bool m_never_suspend</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00085">SuspendComponent.h:85</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad3baead48296fd9ae83b73418b2d72f6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">Obj::CSuspendComponent::m_camera_distance_squared</a></div><div class="ttdeci">float m_camera_distance_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00088">SuspendComponent.h:88</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="amodelcomponent_8h_html"><div class="ttname"><a href="../../db/d45/modelcomponent_8h.html">modelcomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a597d1baef8e7f38c2124b6fc0e3bc6a6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">Obj::CSuspendComponent::m_suspend_distance</a></div><div class="ttdeci">float m_suspend_distance</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00086">SuspendComponent.h:86</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a2885fb317dd0753826e60dc415c9f71c"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a2885fb317dd0753826e60dc415c9f71c">Obj::CSuspendComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00039">SuspendComponent.cpp:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a1f7e66ff6e8534ad828474efb6ef3f34"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a1f7e66ff6e8534ad828474efb6ef3f34">Obj::CSuspendComponent::s_register</a></div><div class="ttdeci">static void s_register()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00051">SuspendComponent.cpp:51</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_a255f92941242c60e98cda94c160e7444"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#a255f92941242c60e98cda94c160e7444">Obj::SuspendManager::Manager::s_code</a></div><div class="ttdeci">static Tsk::Task&lt; Manager &gt;::Code s_code</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00042">SuspendComponent.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5fcbbdad35660c62be2355de5a2e2ba6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">Obj::CSuspendComponent::SkipLogic</a></div><div class="ttdeci">bool SkipLogic()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00235">SuspendComponent.cpp:235</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aab2e4657f1777b8e58b41cc193cda017"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aab2e4657f1777b8e58b41cc193cda017">Obj::CSuspendComponent::Finalize</a></div><div class="ttdeci">virtual void Finalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00180">SuspendComponent.cpp:180</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html_acffe146e08214b4e9806b4058d8d1b37"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html#acffe146e08214b4e9806b4058d8d1b37">Obj::CModelComponent::HasRefObject</a></div><div class="ttdeci">bool HasRefObject()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d45/modelcomponent_8h_source.html#l00176">modelcomponent.h:176</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_aeb66acc63ecec85f758848bb34ad5ff1"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#aeb66acc63ecec85f758848bb34ad5ff1">Nx::CModel::GetBoundingSphere</a></div><div class="ttdeci">Mth::Vector GetBoundingSphere()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d45/_nx_model_8cpp_source.html#l01541">NxModel.cpp:1541</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a4829497c960aa6d670291025162364d0"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a4829497c960aa6d670291025162364d0">Mth::DistanceSqr</a></div><div class="ttdeci">float DistanceSqr(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01059">vector.inl:1059</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a551a37fa47b03c34a094e867cd46348d"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">Obj::CSuspendComponent::CSuspendComponent</a></div><div class="ttdeci">CSuspendComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00064">SuspendComponent.cpp:64</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../df/d91/_suspend_component_8cpp.html">SuspendComponent.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:22. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

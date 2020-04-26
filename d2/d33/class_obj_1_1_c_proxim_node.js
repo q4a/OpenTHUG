@@ -1,0 +1,35 @@
+var class_obj_1_1_c_proxim_node =
+[
+    [ "EShape", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3b", [
+      [ "vSHAPE_SPHERE", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3ba149960f421db732528fb65c38592e231", null ],
+      [ "vSHAPE_BBOX", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3bafb6c2dbffafbf40ba230dc4907b16d81", null ],
+      [ "vSHAPE_NON_AA_BBOX", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3ba0c70efcbf0cbc33ed0c16fe8a9aaa894", null ],
+      [ "vSHAPE_CYLINDER", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3baea8a7261e23320fad3ac4ebc1c7a322e", null ],
+      [ "vSHAPE_GEOMETRY", "d2/d33/class_obj_1_1_c_proxim_node.html#a2ca1e818501963a8d3b464d302873b3ba851d3a2efe53df301f98913fe62597ea", null ]
+    ] ],
+    [ "SetActive", "d2/d33/class_obj_1_1_c_proxim_node.html#a539204c519f63bd8f260424d6d383312", null ],
+    [ "InitGeometry", "d2/d33/class_obj_1_1_c_proxim_node.html#a9f9beac914744ea9585d6d722dcbac50", null ],
+    [ "HasGeometry", "d2/d33/class_obj_1_1_c_proxim_node.html#a6ea9a205852847a05eed2004acd2b645", null ],
+    [ "CheckInside", "d2/d33/class_obj_1_1_c_proxim_node.html#aecb839264bae0fe99e33e8c41170a2a3", null ],
+    [ "GetClosestIntersectionPoint", "d2/d33/class_obj_1_1_c_proxim_node.html#a4819dd9f1b8539f0b2e7f985f1c0f736", null ],
+    [ "sGetShapeFromChecksum", "d2/d33/class_obj_1_1_c_proxim_node.html#a28517901f2f976a92a7eb48e4eb1ed43", null ],
+    [ "m_node", "d2/d33/class_obj_1_1_c_proxim_node.html#add5145644c47861a7f4e4455fbbf1aed", null ],
+    [ "m_link", "d2/d33/class_obj_1_1_c_proxim_node.html#ac90bdca65d235047afa15914b0de2855", null ],
+    [ "m_name", "d2/d33/class_obj_1_1_c_proxim_node.html#aaca8aebcecbac8d7958288ce9278eb68", null ],
+    [ "m_pos", "d2/d33/class_obj_1_1_c_proxim_node.html#a44fcaa22e67d1357e278ac46d4d813f7", null ],
+    [ "m_angles", "d2/d33/class_obj_1_1_c_proxim_node.html#a8a40b98cb4ab3b71fe6f46991c7f5180", null ],
+    [ "m_active", "d2/d33/class_obj_1_1_c_proxim_node.html#a6245b3ad86db4a57ff055288e56f9c8e", null ],
+    [ "m_proxim_object", "d2/d33/class_obj_1_1_c_proxim_node.html#a0d98f61eddbe09bca551db1e6d33924d", null ],
+    [ "m_active_objects", "d2/d33/class_obj_1_1_c_proxim_node.html#a37204a63f7159420e84740155d7d47ac", null ],
+    [ "m_active_scripts", "d2/d33/class_obj_1_1_c_proxim_node.html#aa68507c6f5b53c7668122131d3e43f27", null ],
+    [ "m_outside_flags", "d2/d33/class_obj_1_1_c_proxim_node.html#afa594a266ddb5bed5ba133153275e9a3", null ],
+    [ "m_type", "d2/d33/class_obj_1_1_c_proxim_node.html#aeed066db0ac5a71ab5a7d58ada83535e", null ],
+    [ "m_shape", "d2/d33/class_obj_1_1_c_proxim_node.html#adfb76c0d9ba983dbe0db4b5437bcb72a", null ],
+    [ "m_radius", "d2/d33/class_obj_1_1_c_proxim_node.html#ab3071807cb0f5f8c4c0638639979593e", null ],
+    [ "m_radius_squared", "d2/d33/class_obj_1_1_c_proxim_node.html#ac7eb17d4df234d4f4efa630c65225c40", null ],
+    [ "mp_sector", "d2/d33/class_obj_1_1_c_proxim_node.html#ae62951b4a641ac02c25422b8e7308eed", null ],
+    [ "m_bbox", "d2/d33/class_obj_1_1_c_proxim_node.html#abbd1c16abca6db8a6d9f8a3a5b1e6f3b", null ],
+    [ "m_last_distance_squared", "d2/d33/class_obj_1_1_c_proxim_node.html#ab61494dd3fc1c8d2efa00150fe202b65", null ],
+    [ "m_script", "d2/d33/class_obj_1_1_c_proxim_node.html#a06f289bbcff149c96aa8998973547e39", null ],
+    [ "m_pNext", "d2/d33/class_obj_1_1_c_proxim_node.html#a41991be33fd924aac873a48200d19ed8", null ]
+];

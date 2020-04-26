@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Modules/Skate/FindGapsGoal.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d77/_find_gaps_goal_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FindGapsGoal.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d77/_find_gaps_goal_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// find x gaps</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d88/_goal_manager_8h.html">sk/modules/skate/GoalManager.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/dad/_find_gaps_goal_8h.html">sk/modules/skate/FindGapsGoal.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d91/skater_8h.html">sk/objects/skater.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/df8/score_8h.html">sk/modules/skate/score.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// #include &lt;gel/scripting/utils.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d97/namespace_game.html">Game</a></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;{</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a810e616604ffefc644e28e5ff8c02395">   19</a></span>&#160;<a class="code" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a810e616604ffefc644e28e5ff8c02395">CFindGapsGoal::CFindGapsGoal</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams ) : <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html">CGoal</a>( pParams )</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a574c40dd6a805e55425a19d8c3549341">   27</a></span>&#160;<a class="code" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a574c40dd6a805e55425a19d8c3549341">CFindGapsGoal::~CFindGapsGoal</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a8da8bf2615375cd0a787eaaa815f6c35">   35</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a8da8bf2615375cd0a787eaaa815f6c35">CFindGapsGoal::Activate</a>()</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a0e3942531905b344953ec9180b7291a1">RemoveComponent</a>( CRCD(0x735af2dd,<span class="stringliteral">&quot;completedGaps&quot;</span>) );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pCompletedGaps = <span class="keyword">new</span> <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>();</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a913fd4c1ea4ac9c8e7a9d946e9b11bab">AddStructure</a>( CRCD(0x735af2dd,<span class="stringliteral">&quot;completedGaps&quot;</span>), pCompletedGaps );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">delete</span> pCompletedGaps;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( CRCD(0xf1e59083,<span class="stringliteral">&quot;num_gaps_found&quot;</span>), 0 );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( CRCD(0x129daa10,<span class="stringliteral">&quot;number_collected&quot;</span>), 0 );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">int</span> num_gaps_to_find;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>( CRCD(0xe75c4bbf,<span class="stringliteral">&quot;num_gaps_to_find&quot;</span>), &amp;num_gaps_to_find, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Dbg_MsgAssert( num_gaps_to_find &gt; 0, ( <span class="stringliteral">&quot;find gaps goal activated but num_gaps_to_find &lt;= 0!&quot;</span> ) );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a6c4770e488735a21adfe31c14e1b6a4b">CGoal::Activate</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#ae26f71f351a9860e385b033f6f82d74f">   56</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#ae26f71f351a9860e385b033f6f82d74f">CFindGapsGoal::Deactivate</a>( <span class="keywordtype">bool</span> force, <span class="keywordtype">bool</span> affect_tree )</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#af904f6f960f7fb705778f500703fe5bf">CGoal::Deactivate</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a1815bab46db7e6397a11e7407dda803f">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a1815bab46db7e6397a11e7407dda803f">CFindGapsGoal::CheckGaps</a>()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="comment">// printf(&quot;CFindGapsGoal::CheckGaps\n&quot;);</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../d6/df1/class_mdl_1_1_skate.html">Mdl::Skate</a>* skate_mod = Mdl::Skate::Instance();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html">Obj::CSkater</a>* pSkater = skate_mod-&gt;<a class="code" href="../../d6/df1/class_mdl_1_1_skate.html#acea90d23a9d7c62758e7efdbe19c1019">GetLocalSkater</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pCompletedGaps;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a7d6929b5a907965b7a7ef86dc9b90123">GetStructure</a>( CRCD(0x735af2dd,<span class="stringliteral">&quot;completedGaps&quot;</span>), &amp;pCompletedGaps, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">int</span> num_gaps_found;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>( CRCD(0xf1e59083,<span class="stringliteral">&quot;num_gaps_found&quot;</span>), &amp;num_gaps_found, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../d1/d1e/class_mdl_1_1_score.html">Mdl::Score</a>* pScore = pSkater-&gt;<a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html#a2506afd232d5f6b6f2d66220969bb379">GetScoreObject</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> numTricks = pScore-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#a9a8aca853ac12ebcc633e3a5fbcbc65f">GetCurrentTrickCount</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">bool</span> found_gap = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; numTricks; i++ )</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">if</span> ( pScore-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#a87cdd5baa74aa0f6464749cce8f7a42e">TrickIsGap</a>( i ) )</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> gap_name = pScore-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#a06d5d02fd642584b17a3a2bc5bab5fae">GetTrickId</a>( i );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">if</span> ( !pCompletedGaps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">ContainsComponentNamed</a>( gap_name ) )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                pCompletedGaps-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( gap_name, 1 );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                num_gaps_found++;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                found_gap = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( CRCD(0xf1e59083,<span class="stringliteral">&quot;num_gaps_found&quot;</span>), num_gaps_found );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( CRCD(0x129daa10,<span class="stringliteral">&quot;number_collected&quot;</span>), num_gaps_found );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">if</span> ( found_gap )</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pScriptParams = <span class="keyword">new</span> <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        pScriptParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">AddChecksum</a>( CRCD(0x9982e501,<span class="stringliteral">&quot;goal_id&quot;</span>), <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#aa7464c36cb00222d78e19fcc2f245577">GetGoalId</a>() );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( CRCD(0x851aa6b8,<span class="stringliteral">&quot;goal_find_gaps_found_gap&quot;</span>), pScriptParams );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keyword">delete</span> pScriptParams;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}   <span class="comment">// namespace Game</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_game_1_1_c_goal_html_af904f6f960f7fb705778f500703fe5bf"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#af904f6f960f7fb705778f500703fe5bf">Game::CGoal::Deactivate</a></div><div class="ttdeci">virtual bool Deactivate(bool force=false, bool affect_tree=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l00642">Goal.cpp:642</a></div></div>
+<div class="ttc" id="a_find_gaps_goal_8h_html"><div class="ttname"><a href="../../da/dad/_find_gaps_goal_8h.html">FindGapsGoal.h</a></div></div>
+<div class="ttc" id="askater_8h_html"><div class="ttname"><a href="../../d2/d91/skater_8h.html">skater.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html">Mdl::Skate</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00156">skate.h:156</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_script_html_af49b12363c52ae6f00363d582c3bdc7e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a></div><div class="ttdeci">void RunScript(uint32 scriptChecksum, CStruct *p_params, Obj::CObject *p_object, bool netScript, const char *p_scriptName)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/script_8cpp_source.html#l02995">script.cpp:2995</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_find_gaps_goal_html_a574c40dd6a805e55425a19d8c3549341"><div class="ttname"><a href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a574c40dd6a805e55425a19d8c3549341">Game::CFindGapsGoal::~CFindGapsGoal</a></div><div class="ttdeci">virtual ~CFindGapsGoal()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d77/_find_gaps_goal_8cpp_source.html#l00027">FindGapsGoal.cpp:27</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_ab6805f805d22e3876bcd47552a663f1a"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">Script::CStruct::AddInteger</a></div><div class="ttdeci">void AddInteger(uint32 nameChecksum, int integer)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01039">struct.cpp:1039</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html_acea90d23a9d7c62758e7efdbe19c1019"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html#acea90d23a9d7c62758e7efdbe19c1019">Mdl::Skate::GetLocalSkater</a></div><div class="ttdeci">Obj::CSkater * GetLocalSkater(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc5/skate_8cpp_source.html#l01567">skate.cpp:1567</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a0e3942531905b344953ec9180b7291a1"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a0e3942531905b344953ec9180b7291a1">Script::CStruct::RemoveComponent</a></div><div class="ttdeci">void RemoveComponent(uint32 nameChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l00643">struct.cpp:643</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html_a2506afd232d5f6b6f2d66220969bb379"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html#a2506afd232d5f6b6f2d66220969bb379">Obj::CSkater::GetScoreObject</a></div><div class="ttdeci">Mdl::Score * GetScoreObject()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6e/skater_8cpp_source.html#l00302">skater.cpp:302</a></div></div>
+<div class="ttc" id="anamespace_game_html"><div class="ttname"><a href="../../d2/d97/namespace_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/ddf/_betting_guy_8cpp_source.html#l00024">BettingGuy.cpp:24</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_find_gaps_goal_html_a8da8bf2615375cd0a787eaaa815f6c35"><div class="ttname"><a href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a8da8bf2615375cd0a787eaaa815f6c35">Game::CFindGapsGoal::Activate</a></div><div class="ttdeci">bool Activate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d77/_find_gaps_goal_8cpp_source.html#l00035">FindGapsGoal.cpp:35</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_a06d5d02fd642584b17a3a2bc5bab5fae"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#a06d5d02fd642584b17a3a2bc5bab5fae">Mdl::Score::GetTrickId</a></div><div class="ttdeci">uint32 GetTrickId(int trickIndex)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3d/score_8cpp_source.html#l00451">score.cpp:451</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_aa7464c36cb00222d78e19fcc2f245577"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#aa7464c36cb00222d78e19fcc2f245577">Game::CGoal::GetGoalId</a></div><div class="ttdeci">uint32 GetGoalId()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l01868">Goal.cpp:1868</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_find_gaps_goal_html_a1815bab46db7e6397a11e7407dda803f"><div class="ttname"><a href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a1815bab46db7e6397a11e7407dda803f">Game::CFindGapsGoal::CheckGaps</a></div><div class="ttdeci">void CheckGaps()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d77/_find_gaps_goal_8cpp_source.html#l00065">FindGapsGoal.cpp:65</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a847c66d2b9ed99bc36489dca616f1e70"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">Script::CStruct::ContainsComponentNamed</a></div><div class="ttdeci">bool ContainsComponentNamed(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01759">struct.cpp:1759</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_find_gaps_goal_html_ae26f71f351a9860e385b033f6f82d74f"><div class="ttname"><a href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#ae26f71f351a9860e385b033f6f82d74f">Game::CFindGapsGoal::Deactivate</a></div><div class="ttdeci">bool Deactivate(bool force=false, bool affect_tree=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d77/_find_gaps_goal_8cpp_source.html#l00056">FindGapsGoal.cpp:56</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a7d6929b5a907965b7a7ef86dc9b90123"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a7d6929b5a907965b7a7ef86dc9b90123">Script::CStruct::GetStructure</a></div><div class="ttdeci">bool GetStructure(uint32 nameChecksum, CStruct **pp_structure, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01585">struct.cpp:1585</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a4194edfd404d1599074084eb954840f5"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">Game::CGoal::mp_params</a></div><div class="ttdeci">Script::CStruct * mp_params</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dcf/_goal_8h_source.html#l00223">Goal.h:223</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html">Game::CGoal</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dcf/_goal_8h_source.html#l00054">Goal.h:54</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_a87cdd5baa74aa0f6464749cce8f7a42e"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#a87cdd5baa74aa0f6464749cce8f7a42e">Mdl::Score::TrickIsGap</a></div><div class="ttdeci">bool TrickIsGap(int trickIndex)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3d/score_8cpp_source.html#l02693">score.cpp:2693</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_find_gaps_goal_html_a810e616604ffefc644e28e5ff8c02395"><div class="ttname"><a href="../../de/d46/class_game_1_1_c_find_gaps_goal.html#a810e616604ffefc644e28e5ff8c02395">Game::CFindGapsGoal::CFindGapsGoal</a></div><div class="ttdeci">CFindGapsGoal(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d77/_find_gaps_goal_8cpp_source.html#l00019">FindGapsGoal.cpp:19</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html">Mdl::Score</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/score_8h_source.html#l00083">score.h:83</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a148f8f6bc239cff60340c410df449c71"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">Script::CStruct::AddChecksum</a></div><div class="ttdeci">void AddChecksum(uint32 nameChecksum, uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01071">struct.cpp:1071</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="a_goal_manager_8h_html"><div class="ttname"><a href="../../d3/d88/_goal_manager_8h.html">GoalManager.h</a></div></div>
+<div class="ttc" id="ascore_8h_html"><div class="ttname"><a href="../../dd/df8/score_8h.html">score.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a1e85eee5e600de8358db26f6c777e42d"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">Script::CStruct::GetInteger</a></div><div class="ttdeci">bool GetInteger(uint32 nameChecksum, int *p_integerValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01480">struct.cpp:1480</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html">Obj::CSkater</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d91/skater_8h_source.html#l00263">skater.h:263</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a></div><div class="ttdeci">@ ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00016">scriptdefs.h:16</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_a9a8aca853ac12ebcc633e3a5fbcbc65f"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#a9a8aca853ac12ebcc633e3a5fbcbc65f">Mdl::Score::GetCurrentTrickCount</a></div><div class="ttdeci">int GetCurrentTrickCount()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/score_8h_source.html#l00172">score.h:172</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a6c4770e488735a21adfe31c14e1b6a4b"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a6c4770e488735a21adfe31c14e1b6a4b">Game::CGoal::Activate</a></div><div class="ttdeci">virtual bool Activate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l00514">Goal.cpp:514</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a913fd4c1ea4ac9c8e7a9d946e9b11bab"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a913fd4c1ea4ac9c8e7a9d946e9b11bab">Script::CStruct::AddStructure</a></div><div class="ttdeci">void AddStructure(uint32 nameChecksum, const CStruct *p_structure)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01174">struct.cpp:1174</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_8a1f0fe72cf15c8f12a4a305167e3d4d.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_54d7426c14152959ec57b87c06ed0b17.html">Skate</a></li><li class="navelem"><a class="el" href="../../d9/d77/_find_gaps_goal_8cpp.html">FindGapsGoal.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:33. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/skatercareer.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/d0c/skatercareer_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">skatercareer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d0c/skatercareer_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        PS2                                                     **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Object (OBJ)                                            **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      objects/SkaterCareer.h                                  **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        21/5/01 - Mick (Based on SkaterApperance.h by gj)       **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __OBJECTS_SKATERCAREER_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __OBJECTS_SKATERCAREER_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">    #include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}   </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">**                          Forward Declarations                        **</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class   </span>CGapChecklist;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">**                             Class Definitions                            **</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">class  </span>CSkaterCareer  : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html">   55</a></span>&#160;    </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">enum</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da76aa977ec8a69815dab9e6a63fdbb686">vVERSION_NUMBER</a> = 0x00000001,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">vMAX_CAREER_LEVELS</a> = 21,        <span class="comment">// changes in this are handled automatically, so don&#39;t change the version number</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da81e9cdaab67b39ee2cd623d04e103ac2">vMAX_GLOBAL_FLAGS</a> = 16,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dafb068668da8edce0dd33b14825d161a1">vMAGIC_NUMBER</a> = 0x84751129,     <span class="comment">// magic terminator, for integrity check</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dae982264ffff4e597abeac33f779793b0">vNUM_FLAG_BITS</a> = 64,            <span class="comment">// used for assertions</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        };</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da76aa977ec8a69815dab9e6a63fdbb686">   66</a></span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">   67</a></span>&#160;        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a3224ff7da3e9f6269daa5846fe9afc9e">CSkaterCareer</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da81e9cdaab67b39ee2cd623d04e103ac2">   68</a></span>&#160;        <span class="keyword">virtual</span>                     <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#abb1d989c87d03051df56791d7742ce41">~CSkaterCareer</a>();</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dafb068668da8edce0dd33b14825d161a1">   69</a></span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dae982264ffff4e597abeac33f779793b0">   70</a></span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// for memory card loading/saving</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab13ff8785f1bb3d7da1291faf4db6092">WriteToBuffer</a>(<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* pBuffer, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> bufferSize);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a67f40824ea875468ab7ce2b894f24f52">ReadFromBuffer</a>(<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* pBuffer);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a12b44262818a5d0368a8a6ef08e28064">ReadFromStructure</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pIn);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a10fb4d428c6ee4ffafde70d43fffe1c1">WriteIntoStructure</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pIn);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// Initialize the career to &quot;Nothing Done Yet&quot; </span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a4ba493937365b56486e08b83d8353663">Init</a>( <span class="keywordtype">bool</span> init_gaps = <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="comment">// Reset&#39;s the career to &quot;Nothing Done Yet&quot;</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a67546bd57cdda1da7fc135772a92b757">Reset</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="comment">// Start the level, setting the default level number</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="comment">// and remembering which goals and flags were set at the start of this level</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab1a819d64974d4544764886e5fd1513a">StartLevel</a>(<span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="comment">// Access function for Level. Added by Ken, used by CareerLevelIs script command.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a1b41e09f787ad002084dc45dbb864138">GetLevel</a>();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// marks a level visited</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a47450dac159bfd1b95632c1355bd2abc">MarkLevelVisited</a>( <span class="keywordtype">int</span> level_num );</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a5d46f9aaa058d8068159154eb86a883f">HasVisitedLevel</a>( <span class="keywordtype">int</span> level_num );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">// Access functions for goals and flags</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#afad9244f572e5f12328aac34bdfe3580">SetGoal</a>(<span class="keywordtype">int</span> goal, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#ac60355c7b033605f26db7b388e24844c">UnSetGoal</a>(<span class="keywordtype">int</span> goal, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#aac84a9a6ad958463a4857b56b12db4f4">GetGoal</a>(<span class="keywordtype">int</span> goal, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#aa6d21494a2979e32d6d77aaa0810cd0c">CountGoalsCompleted</a>(<span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a9acda90570f2c679ad275829987786ca">JustGotGoal</a>(<span class="keywordtype">int</span> goal);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#adaf4501ce62652d699cc6a3fccecc4a1">SetFlag</a>(<span class="keywordtype">int</span> flag, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab78b54e9ec632cd9d9d0f55bdff12604">UnSetFlag</a>(<span class="keywordtype">int</span> flag, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a87dd0ad500d74e42c93b1b58f79c9045">GetFlag</a>(<span class="keywordtype">int</span> flag, <span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a0a25a28fe3c23929eb0bc54ace4c69ec">GetCheat</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> cheat_checksum);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#afec67eaeeb044ede6283c6e5f5421ae8">SetGlobalFlag</a>(<span class="keywordtype">int</span> flag);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordtype">void</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a6c40dcf30f237c0ba9d198059b51f7c7">UnSetGlobalFlag</a>(<span class="keywordtype">int</span> flag);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#aebf118f2cdf5b025ffef621d40ff70e3">GetGlobalFlag</a>(<span class="keywordtype">int</span> flag);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#afd6c6da2efec11bcba207fd2f5c76ad8">JustGotFlag</a>(<span class="keywordtype">int</span> flag);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#addba01b6166f7c3f265339323da328e2">CountTotalGoalsCompleted</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#af2f5cc8a9c8ceb7e05a86d2af8608d39">CountMedals</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a5fc21f65e71fd22b6fbdef62713e4fda">GetBestMedal</a>(<span class="keywordtype">int</span> <a class="code" href="../../da/d37/namespace_dbg.html#a456523a1b54af3021887d94b68087ac3">Level</a>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <a class="code" href="../../da/d03/class_obj_1_1_c_gap_checklist.html">Obj::CGapChecklist</a>  *       <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a1f946e6faad637ef1c71a65b864f0be3">GetGapChecklist</a>(<span class="keywordtype">int</span> level = -1);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#ad545eccff8aad2181a60446e61352826">GotAllGaps</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a010f8462ceae47ba40903edeb5d51649">m_goal_flags</a>[<a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">vMAX_CAREER_LEVELS</a>][8];</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a336b5b5ff34ee951ec7e9afb5e1e39ae">m_level_flags</a>[<a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">vMAX_CAREER_LEVELS</a>][8];</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a91ba69d9c6b62cf465580772724f8e04">m_start_goal_flags</a>[8];</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a454da61f599cf7c62bde32b0404f9459">m_start_level_flags</a>[8];</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a010f8462ceae47ba40903edeb5d51649">  130</a></span>&#160;        </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a336b5b5ff34ee951ec7e9afb5e1e39ae">  131</a></span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a0b5a423f8f84dbe770420c865e683f1c">m_global_flags</a>[<a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da81e9cdaab67b39ee2cd623d04e103ac2">vMAX_GLOBAL_FLAGS</a>];      <span class="comment">// 8x32 = 256 global flags</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a91ba69d9c6b62cf465580772724f8e04">  132</a></span>&#160;        </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a454da61f599cf7c62bde32b0404f9459">  133</a></span>&#160;        <span class="keywordtype">int</span>                         <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a9678ec12b267cc186a55f0ba317e7752">m_current_level</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a0b5a423f8f84dbe770420c865e683f1c">  135</a></span>&#160;        <a class="code" href="../../da/d03/class_obj_1_1_c_gap_checklist.html">Obj::CGapChecklist</a>      *   <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a729765113857b2745744fce572b2eddc">mp_gap_checklist</a>[<a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">vMAX_CAREER_LEVELS</a>];</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordtype">bool</span>                        <a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a17e043ea45c9675f795684d5cdd3f15a">m_level_visited</a>[<a class="code" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">vMAX_CAREER_LEVELS</a>];</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a9678ec12b267cc186a55f0ba317e7752">  137</a></span>&#160;};</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a729765113857b2745744fce572b2eddc">  139</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../d4/df3/class_obj_1_1_c_skater_career.html#a17e043ea45c9675f795684d5cdd3f15a">  140</a></span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <span class="comment">// namespace Obj</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif  // __OBJECTS_SKATERCAREER_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a67f40824ea875468ab7ce2b894f24f52"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a67f40824ea875468ab7ce2b894f24f52">Obj::CSkaterCareer::ReadFromBuffer</a></div><div class="ttdeci">uint8 * ReadFromBuffer(uint8 *pBuffer)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_ab13ff8785f1bb3d7da1291faf4db6092"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab13ff8785f1bb3d7da1291faf4db6092">Obj::CSkaterCareer::WriteToBuffer</a></div><div class="ttdeci">uint32 WriteToBuffer(uint8 *pBuffer, uint32 bufferSize)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a1b41e09f787ad002084dc45dbb864138"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a1b41e09f787ad002084dc45dbb864138">Obj::CSkaterCareer::GetLevel</a></div><div class="ttdeci">int GetLevel()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00265">skatercareer.cpp:265</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a729765113857b2745744fce572b2eddc"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a729765113857b2745744fce572b2eddc">Obj::CSkaterCareer::mp_gap_checklist</a></div><div class="ttdeci">Obj::CGapChecklist * mp_gap_checklist[vMAX_CAREER_LEVELS]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00139">skatercareer.h:139</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a17e043ea45c9675f795684d5cdd3f15a"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a17e043ea45c9675f795684d5cdd3f15a">Obj::CSkaterCareer::m_level_visited</a></div><div class="ttdeci">bool m_level_visited[vMAX_CAREER_LEVELS]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00140">skatercareer.h:140</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a87dd0ad500d74e42c93b1b58f79c9045"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a87dd0ad500d74e42c93b1b58f79c9045">Obj::CSkaterCareer::GetFlag</a></div><div class="ttdeci">bool GetFlag(int flag, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00562">skatercareer.cpp:562</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_af2f5cc8a9c8ceb7e05a86d2af8608d39"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#af2f5cc8a9c8ceb7e05a86d2af8608d39">Obj::CSkaterCareer::CountMedals</a></div><div class="ttdeci">int CountMedals()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00415">skatercareer.cpp:415</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a67546bd57cdda1da7fc135772a92b757"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a67546bd57cdda1da7fc135772a92b757">Obj::CSkaterCareer::Reset</a></div><div class="ttdeci">bool Reset(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00161">skatercareer.cpp:161</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a651e81913db881cdf990ac39a708220da76aa977ec8a69815dab9e6a63fdbb686"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da76aa977ec8a69815dab9e6a63fdbb686">Obj::CSkaterCareer::vVERSION_NUMBER</a></div><div class="ttdeci">@ vVERSION_NUMBER</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00066">skatercareer.h:66</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_adaf4501ce62652d699cc6a3fccecc4a1"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#adaf4501ce62652d699cc6a3fccecc4a1">Obj::CSkaterCareer::SetFlag</a></div><div class="ttdeci">void SetFlag(int flag, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00527">skatercareer.cpp:527</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_aebf118f2cdf5b025ffef621d40ff70e3"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#aebf118f2cdf5b025ffef621d40ff70e3">Obj::CSkaterCareer::GetGlobalFlag</a></div><div class="ttdeci">bool GetGlobalFlag(int flag)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00509">skatercareer.cpp:509</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a5d46f9aaa058d8068159154eb86a883f"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a5d46f9aaa058d8068159154eb86a883f">Obj::CSkaterCareer::HasVisitedLevel</a></div><div class="ttdeci">bool HasVisitedLevel(int level_num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00288">skatercareer.cpp:288</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_afad9244f572e5f12328aac34bdfe3580"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#afad9244f572e5f12328aac34bdfe3580">Obj::CSkaterCareer::SetGoal</a></div><div class="ttdeci">void SetGoal(int goal, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00299">skatercareer.cpp:299</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_afec67eaeeb044ede6283c6e5f5421ae8"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#afec67eaeeb044ede6283c6e5f5421ae8">Obj::CSkaterCareer::SetGlobalFlag</a></div><div class="ttdeci">void SetGlobalFlag(int flag)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00483">skatercareer.cpp:483</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a9678ec12b267cc186a55f0ba317e7752"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a9678ec12b267cc186a55f0ba317e7752">Obj::CSkaterCareer::m_current_level</a></div><div class="ttdeci">int m_current_level</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00137">skatercareer.h:137</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_addba01b6166f7c3f265339323da328e2"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#addba01b6166f7c3f265339323da328e2">Obj::CSkaterCareer::CountTotalGoalsCompleted</a></div><div class="ttdeci">int CountTotalGoalsCompleted()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00396">skatercareer.cpp:396</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a6c40dcf30f237c0ba9d198059b51f7c7"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a6c40dcf30f237c0ba9d198059b51f7c7">Obj::CSkaterCareer::UnSetGlobalFlag</a></div><div class="ttdeci">void UnSetGlobalFlag(int flag)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00495">skatercareer.cpp:495</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a0b5a423f8f84dbe770420c865e683f1c"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a0b5a423f8f84dbe770420c865e683f1c">Obj::CSkaterCareer::m_global_flags</a></div><div class="ttdeci">uint32 m_global_flags[vMAX_GLOBAL_FLAGS]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00135">skatercareer.h:135</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a47450dac159bfd1b95632c1355bd2abc"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a47450dac159bfd1b95632c1355bd2abc">Obj::CSkaterCareer::MarkLevelVisited</a></div><div class="ttdeci">void MarkLevelVisited(int level_num)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00277">skatercareer.cpp:277</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_ab1a819d64974d4544764886e5fd1513a"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab1a819d64974d4544764886e5fd1513a">Obj::CSkaterCareer::StartLevel</a></div><div class="ttdeci">void StartLevel(int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00237">skatercareer.cpp:237</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a651e81913db881cdf990ac39a708220dafb068668da8edce0dd33b14825d161a1"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dafb068668da8edce0dd33b14825d161a1">Obj::CSkaterCareer::vMAGIC_NUMBER</a></div><div class="ttdeci">@ vMAGIC_NUMBER</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00069">skatercareer.h:69</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a010f8462ceae47ba40903edeb5d51649"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a010f8462ceae47ba40903edeb5d51649">Obj::CSkaterCareer::m_goal_flags</a></div><div class="ttdeci">uint32 m_goal_flags[vMAX_CAREER_LEVELS][8]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00130">skatercareer.h:130</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a651e81913db881cdf990ac39a708220dae982264ffff4e597abeac33f779793b0"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220dae982264ffff4e597abeac33f779793b0">Obj::CSkaterCareer::vNUM_FLAG_BITS</a></div><div class="ttdeci">@ vNUM_FLAG_BITS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00070">skatercareer.h:70</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_ac60355c7b033605f26db7b388e24844c"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#ac60355c7b033605f26db7b388e24844c">Obj::CSkaterCareer::UnSetGoal</a></div><div class="ttdeci">void UnSetGoal(int goal, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00319">skatercareer.cpp:319</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_ab78b54e9ec632cd9d9d0f55bdff12604"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#ab78b54e9ec632cd9d9d0f55bdff12604">Obj::CSkaterCareer::UnSetFlag</a></div><div class="ttdeci">void UnSetFlag(int flag, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00543">skatercareer.cpp:543</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a651e81913db881cdf990ac39a708220da81e9cdaab67b39ee2cd623d04e103ac2"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220da81e9cdaab67b39ee2cd623d04e103ac2">Obj::CSkaterCareer::vMAX_GLOBAL_FLAGS</a></div><div class="ttdeci">@ vMAX_GLOBAL_FLAGS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00068">skatercareer.h:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a0a25a28fe3c23929eb0bc54ace4c69ec"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a0a25a28fe3c23929eb0bc54ace4c69ec">Obj::CSkaterCareer::GetCheat</a></div><div class="ttdeci">bool GetCheat(uint32 cheat_checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00470">skatercareer.cpp:470</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_gap_checklist_html"><div class="ttname"><a href="../../da/d03/class_obj_1_1_c_gap_checklist.html">Obj::CGapChecklist</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dde/gap_8h_source.html#l00105">gap.h:105</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a4ba493937365b56486e08b83d8353663"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a4ba493937365b56486e08b83d8353663">Obj::CSkaterCareer::Init</a></div><div class="ttdeci">bool Init(bool init_gaps=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00122">skatercareer.cpp:122</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a9acda90570f2c679ad275829987786ca"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a9acda90570f2c679ad275829987786ca">Obj::CSkaterCareer::JustGotGoal</a></div><div class="ttdeci">bool JustGotGoal(int goal)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00365">skatercareer.cpp:365</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_aa6d21494a2979e32d6d77aaa0810cd0c"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#aa6d21494a2979e32d6d77aaa0810cd0c">Obj::CSkaterCareer::CountGoalsCompleted</a></div><div class="ttdeci">int CountGoalsCompleted(int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00381">skatercareer.cpp:381</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a336b5b5ff34ee951ec7e9afb5e1e39ae"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a336b5b5ff34ee951ec7e9afb5e1e39ae">Obj::CSkaterCareer::m_level_flags</a></div><div class="ttdeci">uint32 m_level_flags[vMAX_CAREER_LEVELS][8]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00131">skatercareer.h:131</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a1f946e6faad637ef1c71a65b864f0be3"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a1f946e6faad637ef1c71a65b864f0be3">Obj::CSkaterCareer::GetGapChecklist</a></div><div class="ttdeci">Obj::CGapChecklist * GetGapChecklist(int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00176">skatercareer.cpp:176</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_abb1d989c87d03051df56791d7742ce41"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#abb1d989c87d03051df56791d7742ce41">Obj::CSkaterCareer::~CSkaterCareer</a></div><div class="ttdeci">virtual ~CSkaterCareer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00109">skatercareer.cpp:109</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a91ba69d9c6b62cf465580772724f8e04"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a91ba69d9c6b62cf465580772724f8e04">Obj::CSkaterCareer::m_start_goal_flags</a></div><div class="ttdeci">uint32 m_start_goal_flags[8]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00132">skatercareer.h:132</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a456523a1b54af3021887d94b68087ac3"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a456523a1b54af3021887d94b68087ac3">Dbg::Level</a></div><div class="ttdeci">Level</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00045">Messages.h:45</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_afd6c6da2efec11bcba207fd2f5c76ad8"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#afd6c6da2efec11bcba207fd2f5c76ad8">Obj::CSkaterCareer::JustGotFlag</a></div><div class="ttdeci">bool JustGotFlag(int flag)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00585">skatercareer.cpp:585</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a651e81913db881cdf990ac39a708220daa87a1d028fde4b4ab50d6d40e6504aa3">Obj::CSkaterCareer::vMAX_CAREER_LEVELS</a></div><div class="ttdeci">@ vMAX_CAREER_LEVELS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00067">skatercareer.h:67</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_aac84a9a6ad958463a4857b56b12db4f4"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#aac84a9a6ad958463a4857b56b12db4f4">Obj::CSkaterCareer::GetGoal</a></div><div class="ttdeci">bool GetGoal(int goal, int level=-1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00342">skatercareer.cpp:342</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_ad545eccff8aad2181a60446e61352826"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#ad545eccff8aad2181a60446e61352826">Obj::CSkaterCareer::GotAllGaps</a></div><div class="ttdeci">bool GotAllGaps()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00187">skatercareer.cpp:187</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a3224ff7da3e9f6269daa5846fe9afc9e"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a3224ff7da3e9f6269daa5846fe9afc9e">Obj::CSkaterCareer::CSkaterCareer</a></div><div class="ttdeci">CSkaterCareer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00092">skatercareer.cpp:92</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a454da61f599cf7c62bde32b0404f9459"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a454da61f599cf7c62bde32b0404f9459">Obj::CSkaterCareer::m_start_level_flags</a></div><div class="ttdeci">uint32 m_start_level_flags[8]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d0c/skatercareer_8h_source.html#l00133">skatercareer.h:133</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a5fc21f65e71fd22b6fbdef62713e4fda"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a5fc21f65e71fd22b6fbdef62713e4fda">Obj::CSkaterCareer::GetBestMedal</a></div><div class="ttdeci">int GetBestMedal(int Level)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00433">skatercareer.cpp:433</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a12b44262818a5d0368a8a6ef08e28064"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a12b44262818a5d0368a8a6ef08e28064">Obj::CSkaterCareer::ReadFromStructure</a></div><div class="ttdeci">void ReadFromStructure(Script::CStruct *pIn)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00728">skatercareer.cpp:728</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_career_html_a10fb4d428c6ee4ffafde70d43fffe1c1"><div class="ttname"><a href="../../d4/df3/class_obj_1_1_c_skater_career.html#a10fb4d428c6ee4ffafde70d43fffe1c1">Obj::CSkaterCareer::WriteIntoStructure</a></div><div class="ttdeci">void WriteIntoStructure(Script::CStruct *pIn)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d2e/skatercareer_8cpp_source.html#l00600">skatercareer.cpp:600</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../de/d0c/skatercareer_8h.html">skatercareer.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:35. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

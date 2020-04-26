@@ -1,0 +1,865 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/p_nxtexture.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/dbf/_x_box_2p__nxtexture_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxtexture.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/dbf/_x_box_2p__nxtexture_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxTexture.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d7/d6c/nx_8h.html">Gfx/Nx.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;Gfx/xbox/p_NxTexture.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of CTexture</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af02f10749b873d56f77a54edea199b23">   18</a></span>&#160;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af02f10749b873d56f77a54edea199b23">CXboxTexture::CXboxTexture</a>() :  m_transparent( false ), mp_texture( NULL )</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#afad07812a1e8fdbc6a81449851027927">m_num_mipmaps</a> = 0;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad8c34aeabb61aa7e18a4c46740ec6c95">   27</a></span>&#160;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad8c34aeabb61aa7e18a4c46740ec6c95">CXboxTexture::~CXboxTexture</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a> )</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad885632a56b845f9cfaa4410786d9d60">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad885632a56b845f9cfaa4410786d9d60">CXboxTexture::SetEngineTexture</a>( <a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a> *p_texture )</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>  = p_texture;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html#a91acd590ca0c65c590d851272dd69d98">m_checksum</a>  = p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">Checksum</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a9bf5b381307145b58e46f488daa04ed3">   58</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a9bf5b381307145b58e46f488daa04ed3">CXboxTexture::plat_load_texture</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_texture_name, <span class="keywordtype">bool</span> sprite, <span class="keywordtype">bool</span> alloc_vram )</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">char</span> filename[256];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    strcpy( filename, p_texture_name );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Append &#39;.img.xbx&#39; to the end.</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    strcat( filename, <span class="stringliteral">&quot;.img.xbx&quot;</span> );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a> = <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#afa6f3ca08cae7de3359c7e6bce78fe25">NxXbox::LoadTexture</a>( filename );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90ca39ee332dd18ac565d1079af4d75">   78</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90ca39ee332dd18ac565d1079af4d75">CXboxTexture::plat_replace_texture</a>( <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *p_texture )</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{                                   </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a> *p_xbox_texture = <span class="keyword">static_cast&lt;</span><a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a> *<span class="keyword">&gt;</span>( p_texture );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Go through and copy the texture.</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a> *p_src = p_xbox_texture-&gt;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90d1d3ea80208baa028e95cdec2d405">GetEngineTexture</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a> *p_dst = <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90d1d3ea80208baa028e95cdec2d405">GetEngineTexture</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">if</span>( p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a> )</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;Release();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span>( p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a>-&gt;Release();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    D3DSURFACE_DESC desc;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          num_levels = p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;GetLevelCount();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;GetLevelDesc( 0, &amp;desc );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateTexture(  desc.Width,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;                                            desc.Height,</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;                                            num_levels,</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                                            0,</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                                            desc.Format,</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                                            0,</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;                                            &amp;p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a> ))</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        exit( 0 );</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="comment">// Create and copy the palette if present.</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span>( p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> )</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreatePalette( D3DPALETTE_256, &amp;p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> ))</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        D3DCOLOR *p_src_palette;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        D3DCOLOR *p_dst_palette;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a>-&gt;Lock( &amp;p_src_palette, D3DLOCK_READONLY );</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a>-&gt;Lock( &amp;p_dst_palette, 0 );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        CopyMemory( p_dst_palette, p_src_palette, <span class="keyword">sizeof</span>( D3DCOLOR ) * 256 );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> l = 0; l &lt; num_levels; ++l )</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;GetLevelDesc( l, &amp;desc );</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        D3DLOCKED_RECT src_rect, dst_rect;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        p_src-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;LockRect( l, &amp;src_rect, NULL, D3DLOCK_READONLY );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        p_dst-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;LockRect( l, &amp;dst_rect, NULL, 0 );</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        CopyMemory( dst_rect.pBits, src_rect.pBits, desc.Size );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a8cbf39e6b148aa9e42e714330e0e8149">  144</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a8cbf39e6b148aa9e42e714330e0e8149">CXboxTexture::plat_add_to_vram</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;{                                   </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// Meaningless on Xbox, added to remove annoying debug stub output.</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;}</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a0346a3aef18e6b7dc3a3fad80be3a0a1">  156</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a0346a3aef18e6b7dc3a3fad80be3a0a1">CXboxTexture::plat_remove_from_vram</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{                                   </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Meaningless on Xbox, added to remove annoying debug stub output.</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af95fce0b57d9d46920656d5f4cf0d8c8">  168</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>  <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af95fce0b57d9d46920656d5f4cf0d8c8">CXboxTexture::plat_get_width</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a> )</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#ae6a1231109871d448b0a8501b04ec80b">ActualWidth</a>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a395464ac4af4dd820aac0300307a5cf7">  181</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>  <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a395464ac4af4dd820aac0300307a5cf7">CXboxTexture::plat_get_height</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a> )</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#ad1a4573284e5801c20a02eceab62204f">ActualHeight</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a4bd916bc483af646a895019761bc05c2">  194</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>   <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a4bd916bc483af646a895019761bc05c2">CXboxTexture::plat_get_bitdepth</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a> )</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">mp_texture</a>-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ae97e5a79f446116c24de647f12b3f8a6">  207</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>   <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ae97e5a79f446116c24de647f12b3f8a6">CXboxTexture::plat_get_num_mipmaps</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#afad07812a1e8fdbc6a81449851027927">m_num_mipmaps</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;}</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno"><a class="line" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#aa74fe90a66fe2c3af914af2c5c940e9d">  217</a></span>&#160;<span class="keywordtype">bool</span>    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#aa74fe90a66fe2c3af914af2c5c940e9d">CXboxTexture::plat_is_transparent</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a3bbb710ddc84ee3c665e9e904c2e7cca">m_transparent</a>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;}</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of CTexDict</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a27b388e2ce46579a0b745eb7c41114be">  230</a></span>&#160;<a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a27b388e2ce46579a0b745eb7c41114be">CXboxTexDict::CXboxTexDict</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum ) : <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html">CTexDict</a>( checksum )</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">// Load nothing</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#afdce1794ef26d0f6c59c2242d08eb5c9">  240</a></span>&#160;<a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a27b388e2ce46579a0b745eb7c41114be">CXboxTexDict::CXboxTexDict</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_tex_dict_name ) : <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html">CTexDict</a>( p_tex_dict_name, true )</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;{</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;     <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#aa226450bdc74e51beac3e70c55a86637">LoadTextureDictionary</a>( p_tex_dict_name );  <span class="comment">// the derived class will does this</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;}</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68a1ae4e793876d1f3233f23c0f2e86b">  251</a></span>&#160;<a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68a1ae4e793876d1f3233f23c0f2e86b">CXboxTexDict::~CXboxTexDict</a>()</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a17c64af95fdc0b0dcdfca678fe83989d">UnloadTextureDictionary</a>();              <span class="comment">// the derived class does this</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#aa226450bdc74e51beac3e70c55a86637">  262</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#aa226450bdc74e51beac3e70c55a86637">CXboxTexDict::LoadTextureDictionary</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_tex_dict_name )</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;{</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// Count the number of entries in the lookup table. If it is empty, it is safe</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// to delete it and create a new, optimum sized one during the load process itself.</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> )</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    {</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordtype">int</span> num_items = 0;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">while</span>( <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>-&gt;IterateNext())</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            ++num_items;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span>( num_items == 0 )</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> = <a class="code" href="../../d1/d06/namespace_nx.html#a2ad0efe6891352cc0e37099ad1f39efa">Nx::LoadTextureFile</a>( p_tex_dict_name, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <a class="code" href="../../d1/d06/namespace_nx.html#a2ad0efe6891352cc0e37099ad1f39efa">Nx::LoadTextureFile</a>( p_tex_dict_name, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> );</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <a class="code" href="../../d1/d06/namespace_nx.html#a2ad0efe6891352cc0e37099ad1f39efa">Nx::LoadTextureFile</a>( p_tex_dict_name, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> );</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;}</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a80d37d45994fa003c1a2e69dc2803986">  291</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a80d37d45994fa003c1a2e69dc2803986">CXboxTexDict::LoadTextureDictionaryFromMemory</a>( <span class="keywordtype">void</span> *p_mem )</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;{</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">// Count the number of entries in the lookup table. If it is empty, it is safe</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="comment">// to delete it and create a new, optimum sized one during the load process itself.</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> )</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordtype">int</span> num_items = 0;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">while</span>( <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>-&gt;IterateNext())</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            ++num_items;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">if</span>( num_items == 0 )</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> = <a class="code" href="../../d1/d06/namespace_nx.html#a4420a4e0ab65fc1908e2d34f6a42f5d9">Nx::LoadTextureFileFromMemory</a>( &amp;p_mem, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a>, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            <a class="code" href="../../d1/d06/namespace_nx.html#a4420a4e0ab65fc1908e2d34f6a42f5d9">Nx::LoadTextureFileFromMemory</a>( &amp;p_mem, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> );</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <a class="code" href="../../d1/d06/namespace_nx.html#a4420a4e0ab65fc1908e2d34f6a42f5d9">Nx::LoadTextureFileFromMemory</a>( &amp;p_mem, <a class="code" href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">mp_texture_lookup</a> );</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;}</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a17c64af95fdc0b0dcdfca678fe83989d">  320</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a17c64af95fdc0b0dcdfca678fe83989d">CXboxTexDict::UnloadTextureDictionary</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;{</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;}</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68641bf8222e35f85b67e3e76cb85f77">  331</a></span>&#160;<a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *<a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68641bf8222e35f85b67e3e76cb85f77">CXboxTexDict::plat_load_texture</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_texture_name, <span class="keywordtype">bool</span> sprite, <span class="keywordtype">bool</span> alloc_vram )</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;{</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a> *p_texture = <span class="keyword">new</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">if</span>( !p_texture-&gt;<a class="code" href="../../da/df1/class_nx_1_1_c_texture.html#a68899fea61b55de20223212d4787e56b">LoadTexture</a>( p_texture_name, sprite ))</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a771b760c9d0250da6766f107453b9c60">Dbg_Error</a>(<span class="stringliteral">&quot;Can&#39;t load texture %s&quot;</span>, p_texture_name);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">return</span> p_texture;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;}</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a3a296ad2df99e672aee32ae0f26a60e0">  347</a></span>&#160;<a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *<a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a3a296ad2df99e672aee32ae0f26a60e0">CXboxTexDict::plat_reload_texture</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *p_texture_name )</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;{</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a606bc2b2a31fa4a1c13ba3a29c5cb14f">  358</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a606bc2b2a31fa4a1c13ba3a29c5cb14f">CXboxTexDict::plat_unload_texture</a>( <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *p_texture )</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;{</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <span class="keyword">delete</span> p_texture;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a33d30b820fa6105e2237abc49a66b465">  371</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a33d30b820fa6105e2237abc49a66b465">CXboxTexDict::plat_add_texture</a>( <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *p_texture )</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;{</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;}</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a9835db966e6fde8e4a198aafcca61ee0">  381</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a9835db966e6fde8e4a198aafcca61ee0">CXboxTexDict::plat_remove_texture</a>( <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">CTexture</a> *p_texture )</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#define MemoryRead( dst, size, num, src )   CopyMemory(( dst ), ( src ), (( num ) * ( size ))); \</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">                                            ( src ) += (( num ) * ( size ))</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#aa3a8bca1f7450214099567801c740c04">  395</a></span>&#160;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a>* <a class="code" href="../../d1/d06/namespace_nx.html#a4420a4e0ab65fc1908e2d34f6a42f5d9">LoadTextureFileFromMemory</a>( <span class="keywordtype">void</span> **pp_mem, <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a> *p_texture_table, <span class="keywordtype">bool</span> okay_to_rebuild_texture_table )</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;{</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *<a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)( *pp_mem );</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="comment">// Read the texture file version and number of textures.</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordtype">int</span> version, num_textures;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    MemoryRead( &amp;version, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    MemoryRead( &amp;num_textures, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <span class="comment">// If allowed, rebuild the texture table to the optimum size, using the same heap as the original table.</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <span class="keywordflow">if</span>( okay_to_rebuild_texture_table )</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    {</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> optimal_table_size   = num_textures * 2;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> test                 = 2;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> size                 = 1;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        <span class="keywordflow">for</span>( ;; test &lt;&lt;= 1, ++size )</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;            <span class="comment">// Check if this iteration of table size is sufficient, or if we have hit the maximum size.</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;            <span class="keywordflow">if</span>(( optimal_table_size &lt;= test ) || ( size &gt;= 12 ))</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;            {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;                <a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html">Mem::Allocator::BlockHeader</a>*    p_bheader   = <a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a5f7685a68e26b5e1af7e94dc38499957">Mem::Allocator::BlockHeader::sRead</a>( p_texture_table );</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                <a class="code" href="../../d5/d97/class_mem_1_1_allocator.html">Mem::Allocator</a>*                 p_allocater = p_bheader-&gt;<a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a7312fc24720d3c223b2645a1fcbc2af8">mpAlloc</a>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                <span class="keyword">delete</span> p_texture_table;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160; </div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( p_allocater );</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                p_texture_table = <span class="keyword">new</span> <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a>( size );</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        }</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> t = 0; t &lt; num_textures; ++t )</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="comment">// Create the engine level texture.</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a> *p_texture = <span class="keyword">new</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a59be8d353272f643f39f9f24bf901ce2">NxXbox::sTexture</a>;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> base_width, base_height, levels, texel_depth, palette_depth, dxt, palette_size;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        MemoryRead( &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">Checksum</a>,   <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        MemoryRead( &amp;base_width,            <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        MemoryRead( &amp;base_height,           <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        MemoryRead( &amp;levels,                <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        MemoryRead( &amp;texel_depth,           <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        MemoryRead( &amp;palette_depth,         <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        MemoryRead( &amp;dxt,                   <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        MemoryRead( &amp;palette_size,          <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a4a997d6efe0956ee22eecaacda20c3ee">BaseWidth</a>    = (<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>)base_width;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a0e356476617cbbe9cb278be7d0d52317">BaseHeight</a>   = (<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>)base_height;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>       = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)levels;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a>   = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)texel_depth;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a226f8ac09e11532bcbcc44d09389585d">PaletteDepth</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)palette_depth;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a>          = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)dxt;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        D3DFORMAT   texture_format;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> &gt; 0 )</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            <span class="keywordflow">if</span>(( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 1 ) || ( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 2 ))</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;            {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                texture_format = D3DFMT_DXT1;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;            }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 5 )</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;                texture_format = D3DFMT_DXT5;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            }</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;            }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 8 )</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            texture_format = D3DFMT_P8;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        }</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 16 )</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        {</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            texture_format = D3DFMT_A1R5G5B5;   <span class="comment">// Could also be X1R5G5B5;</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        }</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 32 )</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        {</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            texture_format = D3DFMT_A8R8G8B8;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;        {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;            Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateTexture(  p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a4a997d6efe0956ee22eecaacda20c3ee">BaseWidth</a>, p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a0e356476617cbbe9cb278be7d0d52317">BaseHeight</a>, p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>, 0, texture_format, 0, &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a> ))</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        {</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        }</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keywordflow">if</span>( palette_size &gt; 0 )</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        {</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            <span class="comment">// Create and lock the palette.</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;            <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreatePalette(  palette_size == ( 256 * <span class="keyword">sizeof</span>( D3DCOLOR )) ? D3DPALETTE_256 : D3DPALETTE_32, &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> ))</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;            {</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;            }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;            {</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;                D3DCOLOR* p_colors;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;                <span class="keywordflow">if</span>( D3D_OK != p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a>-&gt;Lock( &amp;p_colors, 0 ))</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;                {</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;                    Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;                }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;                {</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;                    <span class="comment">// Read in palette data.</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;                    MemoryRead( p_colors, palette_size, 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;                }</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;            }</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;        }</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        {</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> = NULL;</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mip_level = 0; mip_level &lt; p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>; ++mip_level )</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;        {</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_level_data_size;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            MemoryRead( &amp;texture_level_data_size, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            D3DLOCKED_RECT locked_rect;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            <span class="keywordflow">if</span>( D3D_OK != p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;LockRect( mip_level, &amp;locked_rect, NULL, 0 ))</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            }</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;            {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;                MemoryRead( locked_rect.pBits, texture_level_data_size, 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;            }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        }</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        <span class="comment">// Add this texture to the table.</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a> *p_xbox_texture = <span class="keyword">new</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a>();</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        p_xbox_texture-&gt;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad885632a56b845f9cfaa4410786d9d60">SetEngineTexture</a>( p_texture );</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        p_texture_table-&gt;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html#a34e6689d015d8e7217d3fd785f42cc99">PutItem</a>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">Checksum</a>, p_xbox_texture );</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    }</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">return</span> p_texture_table;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;}</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160; </div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a5e57e83f2d4210ca51ab055361ce49df">  544</a></span>&#160;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a>* <a class="code" href="../../d1/d06/namespace_nx.html#a2ad0efe6891352cc0e37099ad1f39efa">LoadTextureFile</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *Filename, <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a> *p_texture_table, <span class="keywordtype">bool</span> okay_to_rebuild_texture_table )</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;{</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="comment">// Open the texture file.</span></div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    <span class="keywordtype">void</span> *p_FH = <a class="code" href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a>( Filename, <span class="stringliteral">&quot;rb&quot;</span> );</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    <span class="keywordflow">if</span>( !p_FH )</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Couldn&#39;t open texture file %s\n&quot;</span>, Filename );</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;        <span class="keywordflow">return</span> p_texture_table;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    }</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;    <span class="comment">// Read the texture file version and number of textures.</span></div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    <span class="keywordtype">int</span> version, num_textures;</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;version, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, p_FH );</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;num_textures, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, p_FH );</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160; </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    <span class="comment">// If allowed, rebuild the texture table to the optimum size, using the same heap as the original table.</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    <span class="keywordflow">if</span>( okay_to_rebuild_texture_table )</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    {</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> optimal_table_size   = num_textures * 2;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> test                 = 2;</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> size                 = 1;</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        <span class="keywordflow">for</span>( ;; test &lt;&lt;= 1, ++size )</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="comment">// Check if this iteration of table size is sufficient, or if we have hit the maximum size.</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <span class="keywordflow">if</span>(( optimal_table_size &lt;= test ) || ( size &gt;= 12 ))</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            {</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;                <a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html">Mem::Allocator::BlockHeader</a>*    p_bheader   = <a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a5f7685a68e26b5e1af7e94dc38499957">Mem::Allocator::BlockHeader::sRead</a>( p_texture_table );</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;                <a class="code" href="../../d5/d97/class_mem_1_1_allocator.html">Mem::Allocator</a>*                 p_allocater = p_bheader-&gt;<a class="code" href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a7312fc24720d3c223b2645a1fcbc2af8">mpAlloc</a>;</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160; </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                <span class="keyword">delete</span> p_texture_table;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160; </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( p_allocater );</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;                p_texture_table = <span class="keyword">new</span> <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Nx::CTexture&gt;</a>( size );</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            }</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> t = 0; t &lt; num_textures; ++t )</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    {</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        <span class="comment">// Create the engine level texture.</span></div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        <a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a> *p_texture = <span class="keyword">new</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a59be8d353272f643f39f9f24bf901ce2">NxXbox::sTexture</a>;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> base_width, base_height, levels, texel_depth, palette_depth, dxt, palette_size;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">Checksum</a>,   <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;base_width,            <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;base_height,           <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;levels,                <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;texel_depth,           <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;palette_depth,         <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;dxt,                   <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;palette_size,          <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a4a997d6efe0956ee22eecaacda20c3ee">BaseWidth</a>    = (<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>)base_width;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a0e356476617cbbe9cb278be7d0d52317">BaseHeight</a>   = (<a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>)base_height;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>       = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)levels;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a>   = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)texel_depth;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a226f8ac09e11532bcbcc44d09389585d">PaletteDepth</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)palette_depth;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a>          = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)dxt;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        </div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;        D3DFORMAT   texture_format;</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> &gt; 0 )</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        {</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;            <span class="keywordflow">if</span>(( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 1 ) || ( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 2 ))</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            {</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;                texture_format = D3DFMT_DXT1;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;            }</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">DXT</a> == 5 )</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;            {</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;                texture_format = D3DFMT_DXT5;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            }</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;            {</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;            }</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;        }</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 8 )</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;        {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;            texture_format = D3DFMT_P8;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        }</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 16 )</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        {</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;            texture_format = D3DFMT_A1R5G5B5;   <span class="comment">// Could also be X1R5G5B5;</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;        }</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">TexelDepth</a> == 32 )</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        {</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;            texture_format = D3DFMT_A8R8G8B8;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        }</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;        {</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;            Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;        }</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateTexture(  p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a4a997d6efe0956ee22eecaacda20c3ee">BaseWidth</a>, p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a0e356476617cbbe9cb278be7d0d52317">BaseHeight</a>, p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>, 0, texture_format, 0, &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a> ))</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;        {</div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;            Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        }</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160; </div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        <span class="keywordflow">if</span>( palette_size &gt; 0 )</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        {</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;            <span class="comment">// Create and lock the palette.</span></div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreatePalette(  palette_size == ( 256 * <span class="keyword">sizeof</span>( D3DCOLOR )) ? D3DPALETTE_256 : D3DPALETTE_32, &amp;p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> ))</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;            {</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;            }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;            {</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                D3DCOLOR* p_colors;</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;                <span class="keywordflow">if</span>( D3D_OK != p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a>-&gt;Lock( &amp;p_colors, 0 ))</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;                {</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;                    Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;                }</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;                {</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;                    <span class="comment">// Read in palette data.</span></div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;                    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( p_colors, palette_size, 1, p_FH );</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;                }</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;            }</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;        }</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;        {</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;            p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">pD3DPalette</a> = NULL;</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;        }</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160; </div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mip_level = 0; mip_level &lt; p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">Levels</a>; ++mip_level )</div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;        {</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_level_data_size;</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;texture_level_data_size, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, p_FH );</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160; </div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;            D3DLOCKED_RECT locked_rect;</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;            <span class="keywordflow">if</span>( D3D_OK != p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">pD3DTexture</a>-&gt;LockRect( mip_level, &amp;locked_rect, NULL, 0 ))</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;            {</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;                Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;            }</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;            {</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;                <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( locked_rect.pBits, texture_level_data_size, 1, p_FH );</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;            }</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;        }</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;        <span class="comment">// Add this texture to the table.</span></div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;        <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a> *p_xbox_texture = <span class="keyword">new</span> <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a>();</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;        p_xbox_texture-&gt;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad885632a56b845f9cfaa4410786d9d60">SetEngineTexture</a>( p_texture );</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;        p_texture_table-&gt;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html#a34e6689d015d8e7217d3fd785f42cc99">PutItem</a>( p_texture-&gt;<a class="code" href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">Checksum</a>, p_xbox_texture );</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;    }</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>( p_FH );</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    <span class="keywordflow">return</span> p_texture_table;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;}</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160; </div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160; </div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;                </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a606bc2b2a31fa4a1c13ba3a29c5cb14f"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a606bc2b2a31fa4a1c13ba3a29c5cb14f">Nx::CXboxTexDict::plat_unload_texture</a></div><div class="ttdeci">virtual bool plat_unload_texture(CTexture *p_texture)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00358">p_nxtexture.cpp:358</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a530ecad5c462b0371dda5f97566180d4"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a530ecad5c462b0371dda5f97566180d4">NxXbox::sTexture::DXT</a></div><div class="ttdeci">uint8 DXT</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00024">texture.h:24</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_tex_dict_html"><div class="ttname"><a href="../../d1/d37/class_nx_1_1_c_tex_dict.html">Nx::CTexDict</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00160">NxTexture.h:160</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ab90ca39ee332dd18ac565d1079af4d75"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90ca39ee332dd18ac565d1079af4d75">Nx::CXboxTexture::plat_replace_texture</a></div><div class="ttdeci">virtual bool plat_replace_texture(CTexture *p_texture)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00078">p_nxtexture.cpp:78</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a226f8ac09e11532bcbcc44d09389585d"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a226f8ac09e11532bcbcc44d09389585d">NxXbox::sTexture::PaletteDepth</a></div><div class="ttdeci">uint8 PaletteDepth</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00023">texture.h:23</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00018">p_nxtexture.h:18</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_af02f10749b873d56f77a54edea199b23"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af02f10749b873d56f77a54edea199b23">Nx::CXboxTexture::CXboxTexture</a></div><div class="ttdeci">CXboxTexture()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00018">p_nxtexture.cpp:18</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_afccdfadad7520b50620c35e5fde626eb"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#afccdfadad7520b50620c35e5fde626eb">NxXbox::sTexture::TexelDepth</a></div><div class="ttdeci">uint8 TexelDepth</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00022">texture.h:22</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a5632acfb30e11749516f7861879407fd"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">Gfx::p_data</a></div><div class="ttdeci">p_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01903">BonedAnim.cpp:1903</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_aa226450bdc74e51beac3e70c55a86637"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#aa226450bdc74e51beac3e70c55a86637">Nx::CXboxTexDict::LoadTextureDictionary</a></div><div class="ttdeci">bool LoadTextureDictionary(const char *p_tex_dict_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00262">p_nxtexture.cpp:262</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a917fa9f4966c164d234cd05e0a6aedc3"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a917fa9f4966c164d234cd05e0a6aedc3">NxXbox::sTexture::pD3DTexture</a></div><div class="ttdeci">IDirect3DTexture8 * pD3DTexture</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00026">texture.h:26</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_ae6a1231109871d448b0a8501b04ec80b"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#ae6a1231109871d448b0a8501b04ec80b">NxXbox::sTexture::ActualWidth</a></div><div class="ttdeci">uint16 ActualWidth</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00019">texture.h:19</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a68641bf8222e35f85b67e3e76cb85f77"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68641bf8222e35f85b67e3e76cb85f77">Nx::CXboxTexDict::plat_load_texture</a></div><div class="ttdeci">virtual CTexture * plat_load_texture(const char *p_texture_name, bool sprite, bool alloc_vram)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00331">p_nxtexture.cpp:331</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a2ad0efe6891352cc0e37099ad1f39efa"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a2ad0efe6891352cc0e37099ad1f39efa">Nx::LoadTextureFile</a></div><div class="ttdeci">void LoadTextureFile(const char *Filename, Lst::HashTable&lt; Nx::CTexture &gt; *p_texture_table)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d4b/import_8cpp_source.html#l00021">import.cpp:21</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a8cbf39e6b148aa9e42e714330e0e8149"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a8cbf39e6b148aa9e42e714330e0e8149">Nx::CXboxTexture::plat_add_to_vram</a></div><div class="ttdeci">virtual bool plat_add_to_vram(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00144">p_nxtexture.cpp:144</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_af95fce0b57d9d46920656d5f4cf0d8c8"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#af95fce0b57d9d46920656d5f4cf0d8c8">Nx::CXboxTexture::plat_get_width</a></div><div class="ttdeci">virtual uint16 plat_get_width() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00168">p_nxtexture.cpp:168</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a17c64af95fdc0b0dcdfca678fe83989d"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a17c64af95fdc0b0dcdfca678fe83989d">Nx::CXboxTexDict::UnloadTextureDictionary</a></div><div class="ttdeci">bool UnloadTextureDictionary()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00320">p_nxtexture.cpp:320</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ab90d1d3ea80208baa028e95cdec2d405"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90d1d3ea80208baa028e95cdec2d405">Nx::CXboxTexture::GetEngineTexture</a></div><div class="ttdeci">NxXbox::sTexture * GetEngineTexture() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00052">p_nxtexture.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a80d37d45994fa003c1a2e69dc2803986"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a80d37d45994fa003c1a2e69dc2803986">Nx::CXboxTexDict::LoadTextureDictionaryFromMemory</a></div><div class="ttdeci">bool LoadTextureDictionaryFromMemory(void *p_mem)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00291">p_nxtexture.cpp:291</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_afad07812a1e8fdbc6a81449851027927"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#afad07812a1e8fdbc6a81449851027927">Nx::CXboxTexture::m_num_mipmaps</a></div><div class="ttdeci">uint8 m_num_mipmaps</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00040">p_nxtexture.h:40</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_texture_html_a91acd590ca0c65c590d851272dd69d98"><div class="ttname"><a href="../../da/df1/class_nx_1_1_c_texture.html#a91acd590ca0c65c590d851272dd69d98">Nx::CTexture::m_checksum</a></div><div class="ttdeci">uint32 m_checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00089">NxTexture.h:89</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a3a296ad2df99e672aee32ae0f26a60e0"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a3a296ad2df99e672aee32ae0f26a60e0">Nx::CXboxTexDict::plat_reload_texture</a></div><div class="ttdeci">virtual CTexture * plat_reload_texture(const char *p_texture_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00347">p_nxtexture.cpp:347</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_1_1_block_header_html_a5f7685a68e26b5e1af7e94dc38499957"><div class="ttname"><a href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a5f7685a68e26b5e1af7e94dc38499957">Mem::Allocator::BlockHeader::sRead</a></div><div class="ttdeci">static BlockHeader * sRead(void *pMem)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d9f/alloc_8cpp_source.html#l00208">alloc.cpp:208</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_1_1_block_header_html"><div class="ttname"><a href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html">Mem::Allocator::BlockHeader</a></div><div class="ttdoc">sorry, need to access this from elsewhere, for debugging... (MICK)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00143">alloc.h:143</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_afa6f3ca08cae7de3359c7e6bce78fe25"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#afa6f3ca08cae7de3359c7e6bce78fe25">NxXbox::LoadTexture</a></div><div class="ttdeci">sTexture * LoadTexture(const char *p_filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7a/_x_box_2_n_x_2texture_8cpp_source.html#l00152">texture.cpp:152</a></div></div>
+<div class="ttc" id="anamespace_file_html_a180384dc852ac3b971285fc63b1287cb"><div class="ttname"><a href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a></div><div class="ttdeci">void * Open(const char *filename, const char *access)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00391">p_filesys.cpp:391</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a9835db966e6fde8e4a198aafcca61ee0"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a9835db966e6fde8e4a198aafcca61ee0">Nx::CXboxTexDict::plat_remove_texture</a></div><div class="ttdeci">virtual bool plat_remove_texture(CTexture *p_texture)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00381">p_nxtexture.cpp:381</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a33d30b820fa6105e2237abc49a66b465"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a33d30b820fa6105e2237abc49a66b465">Nx::CXboxTexDict::plat_add_texture</a></div><div class="ttdeci">virtual void plat_add_texture(CTexture *p_texture)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00371">p_nxtexture.cpp:371</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a4bd916bc483af646a895019761bc05c2"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a4bd916bc483af646a895019761bc05c2">Nx::CXboxTexture::plat_get_bitdepth</a></div><div class="ttdeci">virtual uint8 plat_get_bitdepth() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00194">p_nxtexture.cpp:194</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a4420a4e0ab65fc1908e2d34f6a42f5d9"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a4420a4e0ab65fc1908e2d34f6a42f5d9">Nx::LoadTextureFileFromMemory</a></div><div class="ttdeci">void LoadTextureFileFromMemory(void **pp_mem, Lst::HashTable&lt; Nx::CTexture &gt; *p_texture_table)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dcf/_n_g_c_2p__nxtexture_8cpp_source.html#l00409">p_nxtexture.cpp:409</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_1_1_block_header_html_a7312fc24720d3c223b2645a1fcbc2af8"><div class="ttname"><a href="../../da/d27/class_mem_1_1_allocator_1_1_block_header.html#a7312fc24720d3c223b2645a1fcbc2af8">Mem::Allocator::BlockHeader::mpAlloc</a></div><div class="ttdeci">Allocator * mpAlloc</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00164">alloc.h:164</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ad885632a56b845f9cfaa4410786d9d60"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad885632a56b845f9cfaa4410786d9d60">Nx::CXboxTexture::SetEngineTexture</a></div><div class="ttdeci">void SetEngineTexture(NxXbox::sTexture *p_texture)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00041">p_nxtexture.cpp:41</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html">NxXbox::sTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00009">texture.h:9</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a4a997d6efe0956ee22eecaacda20c3ee"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a4a997d6efe0956ee22eecaacda20c3ee">NxXbox::sTexture::BaseWidth</a></div><div class="ttdeci">uint16 BaseWidth</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00018">texture.h:18</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_texture_html_a68899fea61b55de20223212d4787e56b"><div class="ttname"><a href="../../da/df1/class_nx_1_1_c_texture.html#a68899fea61b55de20223212d4787e56b">Nx::CTexture::LoadTexture</a></div><div class="ttdeci">bool LoadTexture(const char *p_texture_name, bool sprite, bool alloc_vram=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dba/_nx_texture_8cpp_source.html#l00088">NxTexture.cpp:88</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html_a34e6689d015d8e7217d3fd785f42cc99"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html#a34e6689d015d8e7217d3fd785f42cc99">Lst::HashTable::PutItem</a></div><div class="ttdeci">bool PutItem(const uint32 &amp;key, _V *item)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00170">HashTable.h:170</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a395464ac4af4dd820aac0300307a5cf7"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a395464ac4af4dd820aac0300307a5cf7">Nx::CXboxTexture::plat_get_height</a></div><div class="ttdeci">virtual uint16 plat_get_height() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00181">p_nxtexture.cpp:181</a></div></div>
+<div class="ttc" id="anamespace_file_html_af5cd83b01fc5f341f767beb7c0b1130c"><div class="ttname"><a href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a></div><div class="ttdeci">int Close(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00425">p_filesys.cpp:425</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_texture_html"><div class="ttname"><a href="../../da/df1/class_nx_1_1_c_texture.html">Nx::CTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00023">NxTexture.h:23</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_aa74fe90a66fe2c3af914af2c5c940e9d"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#aa74fe90a66fe2c3af914af2c5c940e9d">Nx::CXboxTexture::plat_is_transparent</a></div><div class="ttdeci">virtual bool plat_is_transparent() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00217">p_nxtexture.cpp:217</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_ad1a4573284e5801c20a02eceab62204f"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#ad1a4573284e5801c20a02eceab62204f">NxXbox::sTexture::ActualHeight</a></div><div class="ttdeci">uint16 ActualHeight</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00019">texture.h:19</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a0346a3aef18e6b7dc3a3fad80be3a0a1"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a0346a3aef18e6b7dc3a3fad80be3a0a1">Nx::CXboxTexture::plat_remove_from_vram</a></div><div class="ttdeci">virtual bool plat_remove_from_vram(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00156">p_nxtexture.cpp:156</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a3bbb710ddc84ee3c665e9e904c2e7cca"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a3bbb710ddc84ee3c665e9e904c2e7cca">Nx::CXboxTexture::m_transparent</a></div><div class="ttdeci">bool m_transparent</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00041">p_nxtexture.h:41</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a771b760c9d0250da6766f107453b9c60"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a771b760c9d0250da6766f107453b9c60">Dbg_Error</a></div><div class="ttdeci">void Dbg_Error(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00115">Messages.h:115</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_allocator_html"><div class="ttname"><a href="../../d5/d97/class_mem_1_1_allocator.html">Mem::Allocator</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dfe/alloc_8h_source.html#l00098">alloc.h:98</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ae97e5a79f446116c24de647f12b3f8a6"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ae97e5a79f446116c24de647f12b3f8a6">Nx::CXboxTexture::plat_get_num_mipmaps</a></div><div class="ttdeci">virtual uint8 plat_get_num_mipmaps() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00207">p_nxtexture.cpp:207</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_tex_dict_html_a6cf07baa0f40accbdf5323d23600a04b"><div class="ttname"><a href="../../d1/d37/class_nx_1_1_c_tex_dict.html#a6cf07baa0f40accbdf5323d23600a04b">Nx::CTexDict::mp_texture_lookup</a></div><div class="ttdeci">Lst::HashTable&lt; CTexture &gt; * mp_texture_lookup</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00204">NxTexture.h:204</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ad8c34aeabb61aa7e18a4c46740ec6c95"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ad8c34aeabb61aa7e18a4c46740ec6c95">Nx::CXboxTexture::~CXboxTexture</a></div><div class="ttdeci">virtual ~CXboxTexture()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00027">p_nxtexture.cpp:27</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a59be8d353272f643f39f9f24bf901ce2"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a59be8d353272f643f39f9f24bf901ce2">NxNgc::sTexture</a></div><div class="ttdeci">NxTexture sTexture</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00712">p_gx.h:712</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a60ba67b6e75c898942a318382f14500f"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a60ba67b6e75c898942a318382f14500f">NxXbox::sTexture::Levels</a></div><div class="ttdeci">uint8 Levels</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00021">texture.h:21</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a9bf5b381307145b58e46f488daa04ed3"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a9bf5b381307145b58e46f488daa04ed3">Nx::CXboxTexture::plat_load_texture</a></div><div class="ttdeci">virtual bool plat_load_texture(const char *p_texture_name, bool sprite, bool alloc_vram)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00058">p_nxtexture.cpp:58</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt; Nx::CTexture &gt;</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_abe6240b33a14384ce4025d17fceaf495"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#abe6240b33a14384ce4025d17fceaf495">NxXbox::sTexture::pD3DPalette</a></div><div class="ttdeci">IDirect3DPalette8 * pD3DPalette</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00027">texture.h:27</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_af68d355af6c7926ef466e952ecfc640b"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#af68d355af6c7926ef466e952ecfc640b">NxXbox::sTexture::Checksum</a></div><div class="ttdeci">uint32 Checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00017">texture.h:17</a></div></div>
+<div class="ttc" id="anamespace_file_html_ae5e5ed0fd4834fc2e0e1c29edc62fc02"><div class="ttname"><a href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a></div><div class="ttdeci">size_t Read(void *addr, size_t size, size_t count, void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00443">p_filesys.cpp:443</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a05f6b0ae8f6a6e135b0e290c25fe0e4e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></div><div class="ttdeci">unsigned short uint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00135">Defines.h:135</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a27b388e2ce46579a0b745eb7c41114be"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a27b388e2ce46579a0b745eb7c41114be">Nx::CXboxTexDict::CXboxTexDict</a></div><div class="ttdeci">CXboxTexDict(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00230">p_nxtexture.cpp:230</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_tex_dict_html_a68a1ae4e793876d1f3233f23c0f2e86b"><div class="ttname"><a href="../../d8/dbb/class_nx_1_1_c_xbox_tex_dict.html#a68a1ae4e793876d1f3233f23c0f2e86b">Nx::CXboxTexDict::~CXboxTexDict</a></div><div class="ttdeci">virtual ~CXboxTexDict()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/dbf/_x_box_2p__nxtexture_8cpp_source.html#l00251">p_nxtexture.cpp:251</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_a2facc96a1cb042f8464935c8e7cc407f"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#a2facc96a1cb042f8464935c8e7cc407f">Nx::CXboxTexture::mp_texture</a></div><div class="ttdeci">NxXbox::sTexture * mp_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00044">p_nxtexture.h:44</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_texture_html_a0e356476617cbbe9cb278be7d0d52317"><div class="ttname"><a href="../../d6/dd9/struct_nx_xbox_1_1s_texture.html#a0e356476617cbbe9cb278be7d0d52317">NxXbox::sTexture::BaseHeight</a></div><div class="ttdeci">uint16 BaseHeight</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d46/_x_box_2_n_x_2texture_8h_source.html#l00018">texture.h:18</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../de/dbf/_x_box_2p__nxtexture_8cpp.html">p_nxtexture.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

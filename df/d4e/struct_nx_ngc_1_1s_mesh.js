@@ -1,0 +1,37 @@
+var struct_nx_ngc_1_1s_mesh =
+[
+    [ "EMeshFlags", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10", [
+      [ "MESH_FLAG_IS_INSTANCE", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a5bcf2b7d6e7d4372c97aa7051dc78bfb", null ],
+      [ "MESH_FLAG_ACTIVE", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8", null ],
+      [ "MESH_FLAG_IS_CLONED", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a4a403a1bb2b93f1e1122b17b1fd1dcf4", null ],
+      [ "MESH_FLAG_VISIBLE", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a2bd7d267c8ccdcd5e91ac19103bd80ba", null ],
+      [ "MESH_FLAG_CLONED_POS", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a624e7abcb051b542a58751733d1c3bd0", null ],
+      [ "MESH_FLAG_CLONED_COL", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a9d403016e0ce8a52b797db925b1eabba", null ],
+      [ "MESH_FLAG_INDEX_COUNT_SET", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10ac2e3e3fae84a2e815b4c50ecc8b9815d", null ],
+      [ "MESH_FLAG_NO_SKATER_SHADOW", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10aeb9ebcbfd81197c6b43f0d88b771c8fe", null ],
+      [ "MESH_FLAG_CLONED_DL", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10af0313d429a3420527d390c3fa0970ba8", null ]
+    ] ],
+    [ "sMesh", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a61a5f895ddae1c14d486c7b0112b58c9", null ],
+    [ "~sMesh", "df/d4e/struct_nx_ngc_1_1s_mesh.html#abe6e96c7f2a0a5ad8fd3df9780f59394", null ],
+    [ "wibble_vc", "df/d4e/struct_nx_ngc_1_1s_mesh.html#adf1bb638f088ccb683119a3794051bab", null ],
+    [ "wibble_normals", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2265c74cef9d80038e551fa73bfc548c", null ],
+    [ "GetChecksum", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a62eddc29c0e22d346d0a073f9d738333", null ],
+    [ "GetFlags", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a0155f3bdafe0eb94e529b0a7d34d89cf", null ],
+    [ "SetActive", "df/d4e/struct_nx_ngc_1_1s_mesh.html#acda1570fbd95c0efa82365c276a8f643", null ],
+    [ "SetPosition", "df/d4e/struct_nx_ngc_1_1s_mesh.html#aa3c024b9d980bed3d2c0171b0dc6a004", null ],
+    [ "GetPosition", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a93f2a384f530c0e3454b0ed4dd97bf98", null ],
+    [ "SetYRotation", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a720d9af24f4791ace4da1c85ca845456", null ],
+    [ "SetVisibility", "df/d4e/struct_nx_ngc_1_1s_mesh.html#af6d834ff1c1b5bfd0dbcfaeb990a2381", null ],
+    [ "GetVisibility", "df/d4e/struct_nx_ngc_1_1s_mesh.html#ac55a2c2148ade413d5f3400904cfacb1", null ],
+    [ "Clone", "df/d4e/struct_nx_ngc_1_1s_mesh.html#abc35b06bcaf1b42e40b7635ac2b1eba2", null ],
+    [ "Build", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a2833308792d69084007c7b4dbd93b4ad", null ],
+    [ "Rebuild", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a09c26dcd4068b13830bbc4e990d34279", null ],
+    [ "Submit", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a7da6628762f3ee279a671c04c9cc3ce2", null ],
+    [ "Checksum", "df/d4e/struct_nx_ngc_1_1s_mesh.html#ab5c1bf0f8b7c3c9a8b9a2023169a790b", null ],
+    [ "m_flags", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f", null ],
+    [ "m_bone_idx", "df/d4e/struct_nx_ngc_1_1s_mesh.html#ae16d513eb8a5fc5f2fe089c75f7f6a35", null ],
+    [ "m_visibility_mask", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1", null ],
+    [ "m_bottom_y", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a88e68b6e0160feb7bd792caa04c67913", null ],
+    [ "mp_dl", "df/d4e/struct_nx_ngc_1_1s_mesh.html#aa64f869a674d17d1ea92e446ce4362ed", null ],
+    [ "m_base_color", "df/d4e/struct_nx_ngc_1_1s_mesh.html#a4dc62b6a2d5067c5d14eb0a0fac70a3b", null ]
+];

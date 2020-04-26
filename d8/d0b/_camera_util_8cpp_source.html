@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/CameraUtil.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d8/d0b/_camera_util_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">CameraUtil.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d0b/_camera_util_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       CameraUtil.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Dan</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  4/10/3</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * Utility functions for camera behavior components.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d34/_camera_util_8h.html">gel/components/camerautil.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d74/feeler_8h.html">sk/engine/feeler.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/*******************************************************************************************************</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">logic for getTimeAdjustedSlerp()</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">If the camera is lagging a distance D behind the target, and the target is moving with velocity V, and the lerp is set to L.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">Then when the camera is stable, it will be moving at the same rate as the target (V), and since the distance it will move is</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">equal to the lerp multiplied by the distance from the target (which will be the old distance plus the new movement of the</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">target V)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">Then:</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">L*(D+V) = V </span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">L*D + L*V = V</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">D = V * (1 - L) / L</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">Assuming in the above T = 1, then if we have a variable T, the speed of the skater will be T*V, yet we want the distance (Dt)</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">moved to remain unchanged (D), so for a time adjusted lerp Lt</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">Dt = T * V * (1-Lt)/Lt</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">Since D = Dt</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">V * (1 - L) / L = T * V * (1-Lt)/Lt</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">V cancels out, and we get</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">Lt = TL / (1 - L + TL)</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">Sanity check,  </span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">if L is 0.25, and T is 1, then Lt = 1*0.25 / (1 - 0.25 + 1*0.25)  = 0.25</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">if L is 0.25, and T is 2, then Lt = 2*0.25 / (1 - 0.25 + 2*0.25)  = 0.5 / 1.25 = 0.40</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">if L is 0.25, and T is 5, then Lt = 5*0.25 / (1 - 0.25 + 5*0.25)  = 1.25 / 2 = 0.625</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">Sounds about right.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a25104fb2105a70d19e7433b726225de1">   60</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a25104fb2105a70d19e7433b726225de1">GetTimeAdjustedSlerp</a>( <span class="keywordtype">float</span> slerp, <span class="keywordtype">float</span> <a class="code" href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp.html#a1ee4a05b54419bfadd66ee351d05812e">delta</a> )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// Mick&#39;s method, tries to guarantee that the distance from the target point</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// will never alter at constant velocity, with changing frame rate</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Lt = TL / (1 - L + TL)</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">float</span> t     = <a class="code" href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp.html#a1ee4a05b54419bfadd66ee351d05812e">delta</a> * 60.0f;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">float</span> Lt    = t * slerp / ( 1.0f - slerp + t * slerp );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">return</span> Lt;  </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define vMIN_WALL_DISTANCE (2.0f)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#afff5d76f34536c53ab70189befb1da70">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/d10/namespace_obj.html#afff5d76f34536c53ab70189befb1da70">ApplyCameraCollisionDetection</a> ( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; camera_pos, <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; camera_matrix, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; target_pos, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; focus_pos, <span class="keywordtype">bool</span> side_feelers, <span class="keywordtype">bool</span> refocus )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// camera collision detection</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> target_to_camera_direction = camera_pos - target_pos;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    target_to_camera_direction.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="../../dc/d35/class_c_feeler.html">CFeeler</a> feeler;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// Ignore faces based on face falgs</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#a5c0c368f4b1aea9842d62d938b9f85fa">SetIgnore</a>(IGNORE_FACE_FLAGS_1, IGNORE_FACE_FLAGS_0);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#a1e717a8031e844d3485c64460b20c3ec">SetLine</a>(target_pos, camera_pos + vMIN_WALL_DISTANCE * target_to_camera_direction);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> collision = feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">GetCollision</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">if</span>( collision )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//          Gfx::AddDebugLine( at_pos, cam_pos, MAKE_RGB( 128, 0, 0 ), MAKE_RGB( 128, 0, 0 ), 2000 );</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Limits the camera to getting nearer than 11.9 inches to the focus point.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">float</span> distance = feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#a85369c8702f7abb6fffe8fae9cfacc48">GetDist</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">float</span> length = feeler.<a class="code" href="../../da/db3/class_mth_1_1_line.html#a2647dfd57ec22744613873e854e46ef9">Length</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span>( length * distance &lt; 11.9f + vMIN_WALL_DISTANCE )</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            distance = (11.9f + vMIN_WALL_DISTANCE) / length;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        camera_pos = target_pos + (distance * length - vMIN_WALL_DISTANCE) * target_to_camera_direction;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span> (!side_feelers) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//# if defined( __PLAT_NGPS__ ) || defined ( __PLAT_XBOX__ )</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="comment">// Now do two additional checks 1 foot to either side of the camera.</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> left( camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>], 0.0f, camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>], 0.0f );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    left.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>( 8.0f );</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    left += camera_pos;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    collision = feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">GetCollision</a>(camera_pos, left, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span>( collision )</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        left           -= feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea160384997eb4812d98eba9f497e727">GetPoint</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        camera_pos         -= left;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> right( -camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>], 0.0f, -camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>], 0.0f );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        right.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>( 8.0f );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        right += camera_pos;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        collision = feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">GetCollision</a>(camera_pos, right, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span>( collision )</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            right          -= feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea160384997eb4812d98eba9f497e727">GetPoint</a>();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            camera_pos         -= right;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span> (!refocus) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span>( collision )</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="comment">// Re-orient the camera again.</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>].Set( focus_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">GetX</a>() - camera_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">GetX</a>(), focus_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a180cc532ba059d5717b486ae74170b13">GetY</a>() - camera_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a180cc532ba059d5717b486ae74170b13">GetY</a>(), focus_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a09bf1a16a342e3424a5768a7f754d5ed">GetZ</a>() - camera_pos.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a09bf1a16a342e3424a5768a7f754d5ed">GetZ</a>());</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>].Normalize();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// Read back the Y from the current matrix.</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">//          target[Y][0]    = p_frame_matrix-&gt;up.x;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">//          target[Y][1]    = p_frame_matrix-&gt;up.y;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">//          target[Y][2]    = p_frame_matrix-&gt;up.z;</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">// Generate new orthonormal X and Y axes.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>]        = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>], camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>].Normalize();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>]        = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>], camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] );</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>].Normalize();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="comment">// Write back into camera matrix.</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>]        = -camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>];</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]        = -camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>];</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">// Fix the final column</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 0.0f;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 0.0f;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 0.0f;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        camera_matrix[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 1.0f;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">//#endif</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_c_feeler_html_a85369c8702f7abb6fffe8fae9cfacc48"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#a85369c8702f7abb6fffe8fae9cfacc48">CFeeler::GetDist</a></div><div class="ttdeci">float GetDist() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d74/feeler_8h_source.html#l00102">feeler.h:102</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_ac68fbfe676c95bf1ada686076c00675a"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Mth::Vector::Normalize</a></div><div class="ttdeci">Vector &amp; Normalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00469">vector.inl:469</a></div></div>
+<div class="ttc" id="anamespace_obj_html_afff5d76f34536c53ab70189befb1da70"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#afff5d76f34536c53ab70189befb1da70">Obj::ApplyCameraCollisionDetection</a></div><div class="ttdeci">void ApplyCameraCollisionDetection(Mth::Vector &amp;camera_pos, Mth::Matrix &amp;camera_matrix, const Mth::Vector &amp;target_pos, const Mth::Vector &amp;focus_pos, bool side_feelers, bool refocus)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d0b/_camera_util_8cpp_source.html#l00077">CameraUtil.cpp:77</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html_aea160384997eb4812d98eba9f497e727"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#aea160384997eb4812d98eba9f497e727">CFeeler::GetPoint</a></div><div class="ttdeci">const Mth::Vector &amp; GetPoint() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d74/feeler_8h_source.html#l00107">feeler.h:107</a></div></div>
+<div class="ttc" id="anamespace_mth_html_aaca09fd5728158c602a3970017204614"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a></div><div class="ttdeci">Vector CrossProduct(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01000">vector.inl:1000</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a25104fb2105a70d19e7433b726225de1"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a25104fb2105a70d19e7433b726225de1">Obj::GetTimeAdjustedSlerp</a></div><div class="ttdeci">float GetTimeAdjustedSlerp(float slerp, float delta)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d0b/_camera_util_8cpp_source.html#l00060">CameraUtil.cpp:60</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a></div><div class="ttdeci">@ W</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html_a1e717a8031e844d3485c64460b20c3ec"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#a1e717a8031e844d3485c64460b20c3ec">CFeeler::SetLine</a></div><div class="ttdeci">void SetLine(const Mth::Vector &amp;start, const Mth::Vector &amp;end)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df1/feeler_8cpp_source.html#l00079">feeler.cpp:79</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_aa5879c6e3b01b313acdc899265a46247"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">Mth::Vector::GetX</a></div><div class="ttdeci">float GetX(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00840">vector.inl:840</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="afeeler_8h_html"><div class="ttname"><a href="../../d1/d74/feeler_8h.html">feeler.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html_a5c0c368f4b1aea9842d62d938b9f85fa"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#a5c0c368f4b1aea9842d62d938b9f85fa">CFeeler::SetIgnore</a></div><div class="ttdeci">void SetIgnore(uint16 ignore_1, uint16 ignore_0)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df1/feeler_8cpp_source.html#l00062">feeler.cpp:62</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_a180cc532ba059d5717b486ae74170b13"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#a180cc532ba059d5717b486ae74170b13">Mth::Vector::GetY</a></div><div class="ttdeci">float GetY(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00852">vector.inl:852</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html">CFeeler</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d74/feeler_8h_source.html#l00029">feeler.h:29</a></div></div>
+<div class="ttc" id="a_n_g_p_s_2p__gfxman_8cpp_html_a1ee4a05b54419bfadd66ee351d05812e"><div class="ttname"><a href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp.html#a1ee4a05b54419bfadd66ee351d05812e">delta</a></div><div class="ttdeci">float delta</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d94/_n_g_p_s_2p__gfxman_8cpp_source.html#l00221">p_gfxman.cpp:221</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="a_camera_util_8h_html"><div class="ttname"><a href="../../d1/d34/_camera_util_8h.html">CameraUtil.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html_aea1151612313752f5457aa1b15eca92b"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">CFeeler::GetCollision</a></div><div class="ttdeci">bool GetCollision(const Mth::Vector &amp;start, const Mth::Vector &amp;end, bool movables=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df1/feeler_8cpp_source.html#l00366">feeler.cpp:366</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_a09bf1a16a342e3424a5768a7f754d5ed"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#a09bf1a16a342e3424a5768a7f754d5ed">Mth::Vector::GetZ</a></div><div class="ttdeci">float GetZ(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00864">vector.inl:864</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_line_html_a2647dfd57ec22744613873e854e46ef9"><div class="ttname"><a href="../../da/db3/class_mth_1_1_line.html#a2647dfd57ec22744613873e854e46ef9">Mth::Line::Length</a></div><div class="ttdeci">float Length() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00080">geometry.h:80</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../d8/d0b/_camera_util_8cpp.html">CameraUtil.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

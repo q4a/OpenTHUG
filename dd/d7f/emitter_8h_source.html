@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/emitter.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dd/d7f/emitter_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">emitter.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dd/d7f/emitter_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Emitter.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef __OBJECTS_Emitter_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define __OBJECTS_Emitter_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/def/_hash_table_8h.html">core\hashtable.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/geometry_8h.html">core\math\geometry.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">class   </span>CSector;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">class   </span>Camera;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">class   </span>CScript;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">class   </span>CSkater;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">class </span>CEmitterManager;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html">CEmitterObject</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51">   34</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51">EShape</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a51944d498aeb81d23b4bfbaf77bab134">   36</a></span>&#160;        <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a51944d498aeb81d23b4bfbaf77bab134">vSHAPE_BBOX</a> = 0,        <span class="comment">// Axis-aligned bounding box</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a5c13e2f5d783231bedd477b6145b2cd2">   37</a></span>&#160;        <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a5c13e2f5d783231bedd477b6145b2cd2">vSHAPE_NON_AA_BBOX</a>,     <span class="comment">// Non-axis-aligned bounding box</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a65a8354278cdd8fe279d6ce08e3889b5">   38</a></span>&#160;        <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a65a8354278cdd8fe279d6ce08e3889b5">vSHAPE_SPHERE</a>,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Functions</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a7ca80e0cc39ece9cf0d04decfc90c4e3">InitGeometry</a>(<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">Nx::CSector</a> *p_sector);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">bool</span>                <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a85cc9cbd769f2f714595cf2f1d35bd9f">CheckInside</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;object_pos) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>         <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ae09df29f5fd8c1c3688443b797a91a45">GetClosestPoint</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;object_pos) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// Checksum conversion functions</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51">EShape</a>       <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#aba2a02e9374e501f29734d368e9f8f2d">sGetShapeFromChecksum</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Variables</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a8d228e78d36822435a6f7da8597bee08">   53</a></span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a8d228e78d36822435a6f7da8597bee08">m_node</a>;             <span class="comment">// Number of the node in the trigger array</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ad500239c6a1ec17bc32be3a96d1a5c52">   54</a></span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ad500239c6a1ec17bc32be3a96d1a5c52">m_link</a>;             <span class="comment">// link number</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a04ea0be5baef22fb1a6c79816802c8ef">   55</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a04ea0be5baef22fb1a6c79816802c8ef">m_name</a>;             <span class="comment">// checksum of name of the node in the trigger array</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a06e7a5ee216b94292e54c8c31fd2e8f8">   56</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a06e7a5ee216b94292e54c8c31fd2e8f8">m_pos</a>;              <span class="comment">// position of the node</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a99be45b57bc0c05df596ecbeca187e5a">   57</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a99be45b57bc0c05df596ecbeca187e5a">m_angles</a>;           <span class="comment">// angles of the node</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab6428acf4219b443320b331f71c97b56">   58</a></span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab6428acf4219b443320b331f71c97b56">m_active</a>;           <span class="comment">// Emitter segment starting at this node: active or not?</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">//int           m_outside_flags;    // bitmask of flags, 0 = inside the radius, 1 = outside</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a675eaf7ee3fb314a5b991ade77a82549">   62</a></span>&#160;    <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51">EShape</a>      <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a675eaf7ee3fb314a5b991ade77a82549">m_shape_type</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Sphere data</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a32039106f077366968f44a52af819b89">   65</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a32039106f077366968f44a52af819b89">m_radius</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a360e443bf16e75d2221f036ab22ab8f0">   66</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a360e443bf16e75d2221f036ab22ab8f0">m_radius_squared</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">// Geometry Data</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a4242e6a87695558277368463cdb578d7">   69</a></span>&#160;    <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">Nx::CSector</a> *<a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a4242e6a87695558277368463cdb578d7">mp_sector</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// BBox data</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#adac71fd3a6cbdc017590feb179c60710">   72</a></span>&#160;    <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a>  <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#adac71fd3a6cbdc017590feb179c60710">m_bbox</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a731c1116b49f813eaacc6409ade8b58f">   74</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a731c1116b49f813eaacc6409ade8b58f">m_last_distance_squared</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab87e6375206c5f42b17586803261280b">   76</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab87e6375206c5f42b17586803261280b">m_script</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">//CEmitterObject *m_pNext;</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// friends</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ac8cd7f1033d8ab4607e060e5737edaf3">   82</a></span>&#160;    <span class="keyword">friend</span> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ac8cd7f1033d8ab4607e060e5737edaf3">CEmitterManager</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../df/d02/class_obj_1_1_c_emitter_manager.html">   87</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html">CEmitterManager</a></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>             <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a105acc859b0ae7736b124c4913889e04">sInit</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>             <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a9a44f68bdc0ef3bc5390a44f985afd0a">sCleanup</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>             <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#aa449f21d38198435422b8969239eb796">sAddEmitter</a>(<span class="keywordtype">int</span> node, <span class="keywordtype">bool</span> active);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>             <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a01cf3011285242025b4c5e5d649508e0">sAddedAll</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html">CEmitterObject</a> * <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a4850a7fae54682547c006a242946b603">sGetEmitter</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// activate/deactivate Emitter:</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>             <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#ac23b9dd88726bca4861d68fca35cd51f">sSetEmitterActive</a>(<span class="keywordtype">int</span> node, <span class="keywordtype">int</span> active);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">//static void               sUpdateEmitters(CSkater *pSkater, Gfx::Camera* camera);</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a995b24286198e6e76cb60560c2146eb7">  102</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;CEmitterObject&gt;</a> * <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a995b24286198e6e76cb60560c2146eb7">sp_emitter_lookup</a>;  </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;} </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif          // #ifndef __OBJECTS_Emitter_H</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_aa449f21d38198435422b8969239eb796"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#aa449f21d38198435422b8969239eb796">Obj::CEmitterManager::sAddEmitter</a></div><div class="ttdeci">static void sAddEmitter(int node, bool active)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00058">emitter.cpp:58</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a493fa5995464417f3e117a1975cebf51a65a8354278cdd8fe279d6ce08e3889b5"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a65a8354278cdd8fe279d6ce08e3889b5">Obj::CEmitterObject::vSHAPE_SPHERE</a></div><div class="ttdeci">@ vSHAPE_SPHERE</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00038">emitter.h:38</a></div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="../../d4/d67/geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a01cf3011285242025b4c5e5d649508e0"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a01cf3011285242025b4c5e5d649508e0">Obj::CEmitterManager::sAddedAll</a></div><div class="ttdeci">static void sAddedAll()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00129">emitter.cpp:129</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_aba2a02e9374e501f29734d368e9f8f2d"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#aba2a02e9374e501f29734d368e9f8f2d">Obj::CEmitterObject::sGetShapeFromChecksum</a></div><div class="ttdeci">static EShape sGetShapeFromChecksum(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00289">emitter.cpp:289</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a995b24286198e6e76cb60560c2146eb7"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a995b24286198e6e76cb60560c2146eb7">Obj::CEmitterManager::sp_emitter_lookup</a></div><div class="ttdeci">static Lst::HashTable&lt; CEmitterObject &gt; * sp_emitter_lookup</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00102">emitter.h:102</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a4242e6a87695558277368463cdb578d7"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a4242e6a87695558277368463cdb578d7">Obj::CEmitterObject::mp_sector</a></div><div class="ttdeci">Nx::CSector * mp_sector</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00069">emitter.h:69</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a360e443bf16e75d2221f036ab22ab8f0"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a360e443bf16e75d2221f036ab22ab8f0">Obj::CEmitterObject::m_radius_squared</a></div><div class="ttdeci">float m_radius_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00066">emitter.h:66</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a731c1116b49f813eaacc6409ade8b58f"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a731c1116b49f813eaacc6409ade8b58f">Obj::CEmitterObject::m_last_distance_squared</a></div><div class="ttdeci">float m_last_distance_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00074">emitter.h:74</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a4850a7fae54682547c006a242946b603"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a4850a7fae54682547c006a242946b603">Obj::CEmitterManager::sGetEmitter</a></div><div class="ttdeci">static CEmitterObject * sGetEmitter(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00147">emitter.cpp:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a493fa5995464417f3e117a1975cebf51"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51">Obj::CEmitterObject::EShape</a></div><div class="ttdeci">EShape</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00034">emitter.h:34</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ab6428acf4219b443320b331f71c97b56"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab6428acf4219b443320b331f71c97b56">Obj::CEmitterObject::m_active</a></div><div class="ttdeci">bool m_active</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00058">emitter.h:58</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a7ca80e0cc39ece9cf0d04decfc90c4e3"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a7ca80e0cc39ece9cf0d04decfc90c4e3">Obj::CEmitterObject::InitGeometry</a></div><div class="ttdeci">void InitGeometry(Nx::CSector *p_sector)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00313">emitter.cpp:313</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a9a44f68bdc0ef3bc5390a44f985afd0a"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a9a44f68bdc0ef3bc5390a44f985afd0a">Obj::CEmitterManager::sCleanup</a></div><div class="ttdeci">static void sCleanup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00038">emitter.cpp:38</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a105acc859b0ae7736b124c4913889e04"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a105acc859b0ae7736b124c4913889e04">Obj::CEmitterManager::sInit</a></div><div class="ttdeci">static void sInit()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00026">emitter.cpp:26</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00118">geometry.h:118</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a493fa5995464417f3e117a1975cebf51a5c13e2f5d783231bedd477b6145b2cd2"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a5c13e2f5d783231bedd477b6145b2cd2">Obj::CEmitterObject::vSHAPE_NON_AA_BBOX</a></div><div class="ttdeci">@ vSHAPE_NON_AA_BBOX</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00037">emitter.h:37</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a32039106f077366968f44a52af819b89"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a32039106f077366968f44a52af819b89">Obj::CEmitterObject::m_radius</a></div><div class="ttdeci">float m_radius</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00065">emitter.h:65</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a493fa5995464417f3e117a1975cebf51a51944d498aeb81d23b4bfbaf77bab134"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a493fa5995464417f3e117a1975cebf51a51944d498aeb81d23b4bfbaf77bab134">Obj::CEmitterObject::vSHAPE_BBOX</a></div><div class="ttdeci">@ vSHAPE_BBOX</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00036">emitter.h:36</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ae09df29f5fd8c1c3688443b797a91a45"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ae09df29f5fd8c1c3688443b797a91a45">Obj::CEmitterObject::GetClosestPoint</a></div><div class="ttdeci">Mth::Vector GetClosestPoint(const Mth::Vector &amp;object_pos) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00387">emitter.cpp:387</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ad500239c6a1ec17bc32be3a96d1a5c52"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ad500239c6a1ec17bc32be3a96d1a5c52">Obj::CEmitterObject::m_link</a></div><div class="ttdeci">int m_link</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00054">emitter.h:54</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a04ea0be5baef22fb1a6c79816802c8ef"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a04ea0be5baef22fb1a6c79816802c8ef">Obj::CEmitterObject::m_name</a></div><div class="ttdeci">uint32 m_name</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00055">emitter.h:55</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_ac23b9dd88726bca4861d68fca35cd51f"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#ac23b9dd88726bca4861d68fca35cd51f">Obj::CEmitterManager::sSetEmitterActive</a></div><div class="ttdeci">static void sSetEmitterActive(int node, int active)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00161">emitter.cpp:161</a></div></div>
+<div class="ttc" id="a_hash_table_8h_html"><div class="ttname"><a href="../../de/def/_hash_table_8h.html">HashTable.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a99be45b57bc0c05df596ecbeca187e5a"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a99be45b57bc0c05df596ecbeca187e5a">Obj::CEmitterObject::m_angles</a></div><div class="ttdeci">Mth::Vector m_angles</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00057">emitter.h:57</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a8d228e78d36822435a6f7da8597bee08"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a8d228e78d36822435a6f7da8597bee08">Obj::CEmitterObject::m_node</a></div><div class="ttdeci">int m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00053">emitter.h:53</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html">Obj::CEmitterManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00087">emitter.h:87</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a675eaf7ee3fb314a5b991ade77a82549"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a675eaf7ee3fb314a5b991ade77a82549">Obj::CEmitterObject::m_shape_type</a></div><div class="ttdeci">EShape m_shape_type</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00062">emitter.h:62</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html">Obj::CEmitterObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00031">emitter.h:31</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ac8cd7f1033d8ab4607e060e5737edaf3"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ac8cd7f1033d8ab4607e060e5737edaf3">Obj::CEmitterObject::CEmitterManager</a></div><div class="ttdeci">friend CEmitterManager</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00082">emitter.h:82</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_adac71fd3a6cbdc017590feb179c60710"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#adac71fd3a6cbdc017590feb179c60710">Obj::CEmitterObject::m_bbox</a></div><div class="ttdeci">Mth::CBBox m_bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00072">emitter.h:72</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a85cc9cbd769f2f714595cf2f1d35bd9f"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a85cc9cbd769f2f714595cf2f1d35bd9f">Obj::CEmitterObject::CheckInside</a></div><div class="ttdeci">bool CheckInside(const Mth::Vector &amp;object_pos) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00354">emitter.cpp:354</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html">Nx::CSector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4a/_nx_sector_8h_source.html#l00079">NxSector.h:79</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00052">HashTable.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ab87e6375206c5f42b17586803261280b"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ab87e6375206c5f42b17586803261280b">Obj::CEmitterObject::m_script</a></div><div class="ttdeci">uint32 m_script</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00076">emitter.h:76</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_a06e7a5ee216b94292e54c8c31fd2e8f8"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#a06e7a5ee216b94292e54c8c31fd2e8f8">Obj::CEmitterObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d7f/emitter_8h_source.html#l00056">emitter.h:56</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../dd/d7f/emitter_8h.html">emitter.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

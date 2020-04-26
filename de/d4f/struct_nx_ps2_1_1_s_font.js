@@ -1,0 +1,27 @@
+var struct_nx_ps2_1_1_s_font =
+[
+    [ "GetDefaultHeight", "de/d4f/struct_nx_ps2_1_1_s_font.html#a50b84543e549c45cc8be5128755d6268", null ],
+    [ "GetDefaultBase", "de/d4f/struct_nx_ps2_1_1_s_font.html#ada2dd9a7cf19be64334cf0285c31c850", null ],
+    [ "QueryString", "de/d4f/struct_nx_ps2_1_1_s_font.html#a88d18c573159ff549ad737078ce0934e", null ],
+    [ "ReallocateVRAM", "de/d4f/struct_nx_ps2_1_1_s_font.html#ac5161d77aedabf42369970bc9816c36e", null ],
+    [ "UpdateDMA", "de/d4f/struct_nx_ps2_1_1_s_font.html#a61df0fe57b4d0f8e63ab1c107e64240d", null ],
+    [ "DefaultHeight", "de/d4f/struct_nx_ps2_1_1_s_font.html#a23ca4eb3133a115e79eec3e5e925391f", null ],
+    [ "DefaultBase", "de/d4f/struct_nx_ps2_1_1_s_font.html#a2e9b11e1839449ec39e709ea22b59fde", null ],
+    [ "pChars", "de/d4f/struct_nx_ps2_1_1_s_font.html#a07da5a6e60839667ef22013b9790e292", null ],
+    [ "Map", "de/d4f/struct_nx_ps2_1_1_s_font.html#a828030f958f970e70904697e4508c57e", null ],
+    [ "SpecialMap", "de/d4f/struct_nx_ps2_1_1_s_font.html#a9c4cd977106079d1d9e39a0c13e79570", null ],
+    [ "pVifData", "de/d4f/struct_nx_ps2_1_1_s_font.html#a2a718f93c371f089ddbd60791f03a268", null ],
+    [ "VifSize", "de/d4f/struct_nx_ps2_1_1_s_font.html#a72d09573f178dfe5bbd138d5efe11e58", null ],
+    [ "RegTEX0", "de/d4f/struct_nx_ps2_1_1_s_font.html#a57b05d04e679a3ccd95c5205637f7e94", null ],
+    [ "RegTEX1", "de/d4f/struct_nx_ps2_1_1_s_font.html#a8e2bae08d3db00a8fd9053e03f84207f", null ],
+    [ "mp_TexBitBltBuf", "de/d4f/struct_nx_ps2_1_1_s_font.html#a87483bcb0393c97e9a3f2db556806def", null ],
+    [ "mp_ClutBitBltBuf", "de/d4f/struct_nx_ps2_1_1_s_font.html#a5b7c91e209684453938c4acfe2d6598e", null ],
+    [ "m_NumTexVramBlocks", "de/d4f/struct_nx_ps2_1_1_s_font.html#aef23969850e95ff1ad046dc13b44b388", null ],
+    [ "m_NumClutVramBlocks", "de/d4f/struct_nx_ps2_1_1_s_font.html#a6a072a5e3f7627253ec32a0810a9d626", null ],
+    [ "m_TBP", "de/d4f/struct_nx_ps2_1_1_s_font.html#a239f0ca083da27edbc1db49a4ee6eb34", null ],
+    [ "m_CBP", "de/d4f/struct_nx_ps2_1_1_s_font.html#ad35471132ed6a3eeafe895486caf3d94", null ],
+    [ "mCharSpacing", "de/d4f/struct_nx_ps2_1_1_s_font.html#a3392158f8a5536fddf94e37b301160de", null ],
+    [ "mSpaceSpacing", "de/d4f/struct_nx_ps2_1_1_s_font.html#a8c086c3a6543c93bfc27b3d387b2c06f", null ],
+    [ "mRGBATab", "de/d4f/struct_nx_ps2_1_1_s_font.html#acf230c52c20b156ec5c87c1fe8f2e5ee", null ],
+    [ "pNext", "de/d4f/struct_nx_ps2_1_1_s_font.html#a2485e2da7bb9384dde13f942b2e7f8e9", null ]
+];

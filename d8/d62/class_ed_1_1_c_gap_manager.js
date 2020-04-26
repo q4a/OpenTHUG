@@ -1,0 +1,28 @@
+var class_ed_1_1_c_gap_manager =
+[
+    [ "GapDescriptor", "db/d04/struct_ed_1_1_c_gap_manager_1_1_gap_descriptor.html", "db/d04/struct_ed_1_1_c_gap_manager_1_1_gap_descriptor" ],
+    [ "CGapManager", "d8/d62/class_ed_1_1_c_gap_manager.html#a2a6f9f23ab04f970349a3cce5bde32a3", null ],
+    [ "~CGapManager", "d8/d62/class_ed_1_1_c_gap_manager.html#a7d80560df65b182fc8fae27b1bc12d1b", null ],
+    [ "GetFreeGapIndex", "d8/d62/class_ed_1_1_c_gap_manager.html#a77128b7982537ef06cb3fe7edbab0c6e", null ],
+    [ "StartGap", "d8/d62/class_ed_1_1_c_gap_manager.html#a49a6a6d9b416fa674a37f78be752a1ec", null ],
+    [ "EndGap", "d8/d62/class_ed_1_1_c_gap_manager.html#a412f4a77f4ec3704436da9877639bcb0", null ],
+    [ "SetGapInfo", "d8/d62/class_ed_1_1_c_gap_manager.html#a8c058cac710dd8916ed889556c4c179f", null ],
+    [ "IsGapAttached", "d8/d62/class_ed_1_1_c_gap_manager.html#af4fb3da8e2421417a4371877fcdfc1c9", null ],
+    [ "RemoveGap", "d8/d62/class_ed_1_1_c_gap_manager.html#adda4ef32b8a373c030555c44441aae21", null ],
+    [ "RemoveAllGaps", "d8/d62/class_ed_1_1_c_gap_manager.html#af0a8b41f90ca0560d7c5139e96225ab9", null ],
+    [ "RegisterGapsWithSkaterCareer", "d8/d62/class_ed_1_1_c_gap_manager.html#a4dfa6733d397642df075f768aae8b3bb", null ],
+    [ "GetGapTriggerScript", "d8/d62/class_ed_1_1_c_gap_manager.html#aff75f07850e3eb2a2f3d20cf81db187a", null ],
+    [ "GetGapDescriptor", "d8/d62/class_ed_1_1_c_gap_manager.html#a6e7c6c26972006b4b54f696ff08f750e", null ],
+    [ "MakeGapWireframe", "d8/d62/class_ed_1_1_c_gap_manager.html#aead99266b8af234bd81b5b7c5791417f", null ],
+    [ "LaunchGap", "d8/d62/class_ed_1_1_c_gap_manager.html#a43e1f9c25a6f59622340ed1804d6d445", null ],
+    [ "sInstance", "d8/d62/class_ed_1_1_c_gap_manager.html#a63bc5ae6873ff59d105df0475cab2aa8", null ],
+    [ "SetInstance", "d8/d62/class_ed_1_1_c_gap_manager.html#a261896d300e28a54aeb316d18117d9a4", null ],
+    [ "sInstanceNoAssert", "d8/d62/class_ed_1_1_c_gap_manager.html#afc51780ff05cff2edd048e58851ab626", null ],
+    [ "operator=", "d8/d62/class_ed_1_1_c_gap_manager.html#a47405471022f4a09d9d0a82b28b0c9d7", null ],
+    [ "vMAX_GAPS", "d8/d62/class_ed_1_1_c_gap_manager.html#ac3eb98005a4ce8c38770b60892de69eb", null ],
+    [ "m_currentId", "d8/d62/class_ed_1_1_c_gap_manager.html#a48929ee730004e53b0a75159730aae35", null ],
+    [ "mp_gapInfoTab", "d8/d62/class_ed_1_1_c_gap_manager.html#a19c46f5131d7b43e5a061bc2bd6443ef", null ],
+    [ "m_startOfGap", "d8/d62/class_ed_1_1_c_gap_manager.html#ac996e3dc19fb3ae3f6a927bf144b015a", null ],
+    [ "mp_manager", "d8/d62/class_ed_1_1_c_gap_manager.html#aad1cdcfd19fa9944bd5aad5f0137532e", null ],
+    [ "sp_instance", "d8/d62/class_ed_1_1_c_gap_manager.html#aaf7335b4aa2aa914a756b29abf84223d", null ]
+];

@@ -1,0 +1,727 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/occlude.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">occlude.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        GFX (Graphics Library)                                  **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Graphics (GFX)                                          **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      occlude.cpp                                             **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        04/02/02    -   dc                                      **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Occlusion testing code                                  **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d83/debuggfx_8h.html">gfx/debuggfx.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//#include &lt;libdma.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;occlude.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d8/d01/resource_8h.html">resource.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//extern D3DXMATRIX *p_bbox_transform;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a> = <span class="keyword">false</span>;        <span class="comment">// tells that occluders have been copied to a fast ram and the</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>           = 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NextOcclusionPolyToCheck</a>    = 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;sOcclusionPoly  <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a30b6a1f532fe13c9fe4cb432defae353">MAX_OCCLUSION_POLYS</a>];</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>             = 0;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;sOccluder   <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#afe8bc7e03f994c08a4fb46ebbc2e7a9f">MAX_OCCLUDERS</a>];</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">bool</span>        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a6ae21675dc1f225337a723bda1a037b7">sOccluder::sUseVU0</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">bool</span>        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">sOccluder::sUseScratchPad</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">   81</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a7d67eb59fa2affedca8d571adf25f28d">sOccluder::add_to_stack</a>( <a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html">sOcclusionPoly</a> *p_poly )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">   87</a></span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a> &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#afe8bc7e03f994c08a4fb46ebbc2e7a9f">MAX_OCCLUDERS</a> )</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">   88</a></span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">   89</a></span>&#160;        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>[<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a>].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">p_poly</a>  = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">p_poly</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">p_poly</a>-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#aaa5ab3304f23aa42a90c5dba84d46839">in_use</a>                  = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        ++<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a70363d8f82b25e2e36ae13201621e9cf">cmp</a>( <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a> )</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// Zero the score for any occlusion poly that is no longer available. This will force it out of the stack.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">if</span>(((sOccluder*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>)-&gt;p_poly-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">available</a> == <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        ((sOccluder*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>)-&gt;score = 0;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span>(((sOccluder*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>)-&gt;p_poly-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">available</a> == <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        ((sOccluder*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>)-&gt;score = 0;</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a7d67eb59fa2affedca8d571adf25f28d">  109</a></span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span>((<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">sOccluder</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>)-&gt;score &lt; ((<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">sOccluder</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>)-&gt;score ? 1 : ((<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">sOccluder</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>)-&gt;score &gt; ((<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">sOccluder</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>)-&gt;score ? -1 : 0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ae5cfa26e64cf1c29146d709d3a6a2318">sOccluder::sort_stack</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    qsort( <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>, <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a>, <span class="keyword">sizeof</span>( <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">sOccluder</a> ), <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a70363d8f82b25e2e36ae13201621e9cf">cmp</a> );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a70363d8f82b25e2e36ae13201621e9cf">  125</a></span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ad4faf74e5a7210bbb5366e2cf6aed794">sOccluder::tidy_stack</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a> &gt; 0 )</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="comment">// Sort in descending score order.</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ae5cfa26e64cf1c29146d709d3a6a2318">sort_stack</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordtype">int</span> total = 0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordtype">int</span> demoted = 0;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// Count backwards so we know we get all the bad occluders.</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">for</span>( <span class="keywordtype">int</span> i = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a> - 1; i &gt;= 0; --i )</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ae5cfa26e64cf1c29146d709d3a6a2318">  143</a></span>&#160;            <span class="comment">// If we have hit an occluder with zero meshes culled, cut off the stack at this point.</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="comment">// also, if the stack is full, then demote the lowest scoring 4</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span>( <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#aff9db97d68bb66810ff65fde6116de07">score</a> == 0  || i &gt; (<span class="keywordtype">int</span>)(<a class="code" href="../../d8/d79/namespace_nx_ps2.html#afe8bc7e03f994c08a4fb46ebbc2e7a9f">MAX_OCCLUDERS</a>-<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a9e439b7aa833af874c18b96b21e443d5">MIN_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</a>))</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="comment">// No longer using this poly.</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">p_poly</a>-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#aaa5ab3304f23aa42a90c5dba84d46839">in_use</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                <span class="comment">// One less occluder to worry about.</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                --<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NumOccluders</a>;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                demoted++;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            }</div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ad4faf74e5a7210bbb5366e2cf6aed794">  154</a></span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                total += <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#aff9db97d68bb66810ff65fde6116de07">score</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="comment">// Reset the good occluders.</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#aff9db97d68bb66810ff65fde6116de07">score</a> = 0;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">//      printf (&quot;\nOccluded %d objects with %d Occluders (demoted %d)\n&quot;,total,NumOccluders,demoted);</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">/* Used to add an occlusion poly to the list. Likely to be called */</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/* as geometry is spooled in.                                     */</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a47bf8ac365b40a85028cc2f1cd18953f">AddOcclusionPoly</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v0, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v1, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v2, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;v3, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum )</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">//  printf (&quot; Adding occlusion polygons, currently %d\n&quot;,NumOcclusionPolys);</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a> &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a30b6a1f532fe13c9fe4cb432defae353">MAX_OCCLUSION_POLYS</a>,(<span class="stringliteral">&quot;Too many (%d) occlusion polygons&quot;</span>,<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>) );    </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#aaa5ab3304f23aa42a90c5dba84d46839">in_use</a>    = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">available</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a5f656a3303cf4fb2c0741327d7221765">checksum</a>  = checksum;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a2b3a723b7b6a6aa98032d4bdefac5dca">verts</a>[0]  = v0;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a2b3a723b7b6a6aa98032d4bdefac5dca">verts</a>[1]  = v1;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a2b3a723b7b6a6aa98032d4bdefac5dca">verts</a>[2]  = v2;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a2b3a723b7b6a6aa98032d4bdefac5dca">verts</a>[3]  = v3;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a5808a289c4eaffb9897262c0c724a2fa">normal</a>    = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( v1 - v0, v3 - v0 );</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a5808a289c4eaffb9897262c0c724a2fa">normal</a>.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    ++<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a> = <span class="keyword">false</span>;        <span class="comment">// current scores now invalid</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;}</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a47bf8ac365b40a85028cc2f1cd18953f">  203</a></span>&#160;<span class="comment">/* Used to toggle whether an occlusion poly can be used or not    */</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a30522b5d6d3d797f886a87904003d11f">EnableOcclusionPoly</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <span class="keywordtype">bool</span> available )</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 0; i &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>; ++i )</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[i].checksum == checksum )</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[i].<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">available</a> = available;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;}</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">/* Used to clear all occlusion polys (when a level is unloaded)   */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#abd1cddb379589c07d3b46a5720ce45a6">RemoveAllOcclusionPolys</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    Dbg_Assert( <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a> &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a30b6a1f532fe13c9fe4cb432defae353">MAX_OCCLUSION_POLYS</a> );  </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>     = 0;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>           = 0;</div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a30522b5d6d3d797f886a87904003d11f">  230</a></span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NextOcclusionPolyToCheck</a>    = 0;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a> = <span class="keyword">false</span>;        <span class="comment">// current scores now invalid</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;}</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aea96630e1cdd0aa78b6c2e928b163b8d">CheckForOptimalOccluders</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;cam_pos, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;view_direction )</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a> &gt; 0 )</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> added    = 0;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checked  = 0;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#abd1cddb379589c07d3b46a5720ce45a6">  248</a></span>&#160;        <span class="keywordflow">while</span>( added &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a8ed0520666bb2b6f48dd2974886c05b7">MAX_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</a> )</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;        {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="comment">// Given the current position of the camera, check through the unused occlusion polys to see if one scores higher</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            <span class="comment">// than the lowest scoring occlusion poly in use.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            <a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html">sOcclusionPoly</a> *poly_to_check = &amp;<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">OcclusionPolys</a>[<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NextOcclusionPolyToCheck</a>++];</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;            <span class="keywordflow">if</span>(( !poly_to_check-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#aaa5ab3304f23aa42a90c5dba84d46839">in_use</a> ) &amp;&amp; ( poly_to_check-&gt;<a class="code" href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">available</a> ))</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;            {</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a7d67eb59fa2affedca8d571adf25f28d">sOccluder::add_to_stack</a>( poly_to_check );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                ++added;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;            ++checked;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;            <span class="comment">// Ensure we are always checking within bounds.</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;            <span class="keywordflow">if</span>( <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NextOcclusionPolyToCheck</a> &gt;= <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a> )</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;            {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NextOcclusionPolyToCheck</a> = 0;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;            }</div>
+<div class="line"><a name="l00265"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#aea96630e1cdd0aa78b6c2e928b163b8d">  265</a></span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            <span class="comment">// Quit out if we have less available occluders than spaces to fill.</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">if</span>( checked &gt;= <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a> )</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            }</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;}</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160; </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">//char scratch[16384];</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a9f3dd04d8f904f4aa02515162b130786">BuildOccluders</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *p_cam_pos )</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;{</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="preprocessor">#ifdef  OCCLUDER_USES_VU0_MACROMODE</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a>)</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    {</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        sOccluder * p_occluder = &amp;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[0];</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a> * p_vu0_mem = (<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*)0x11004060;     <span class="comment">// Start of first score</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> o = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>; o &gt; 0 ; --o )</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            p_occluder-&gt;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#aff9db97d68bb66810ff65fde6116de07">score</a> = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*) (p_vu0_mem));</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            p_occluder++;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            p_vu0_mem += 6;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a> = <span class="keyword">false</span>;    <span class="comment">// we are now up-to-date</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 0; i &lt; <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NumOcclusionPolys</a>; ++i )</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">//      Gfx::AddDebugLine( OcclusionPolys[i].verts[0], OcclusionPolys[i].verts[1], 0xFFFFFFFFUL, 0, 1 );</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">//      Gfx::AddDebugLine( OcclusionPolys[i].verts[1], OcclusionPolys[i].verts[2], 0xFFFFFFFFUL, 0, 1 );</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">//      Gfx::AddDebugLine( OcclusionPolys[i].verts[2], OcclusionPolys[i].verts[3], 0xFFFFFFFFUL, 0, 1 );</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">//      Gfx::AddDebugLine( OcclusionPolys[i].verts[3], OcclusionPolys[i].verts[0], 0xFFFFFFFFUL, 0, 1 );</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a9f3dd04d8f904f4aa02515162b130786">  307</a></span>&#160;    }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">// Tidy up from last frame.</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ad4faf74e5a7210bbb5366e2cf6aed794">sOccluder::tidy_stack</a>();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">// Cyclically add more occluders for checking.</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aea96630e1cdd0aa78b6c2e928b163b8d">CheckForOptimalOccluders</a>( *p_cam_pos, *p_cam_pos );</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="comment">// Build all 5 planes for each occluder.</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> u0, u1, p;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="comment">// The order in which the verts are used to build tha planes depends upon where the camera is in relation to the occlusion</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="comment">// poly. We use the default order when the viewpoint is on the side of the poly on which the default poly normal faces.</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 0; i &lt; <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>; ++i )</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    {</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        sOcclusionPoly *p_poly = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">p_poly</a>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( *p_cam_pos - p_poly-&gt;verts[0], p_poly-&gt;normal ) &gt;= 0.0f )</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="comment">// Start with left (0-&gt;1-&gt;2)...</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            u0                      = p_poly-&gt;verts[0] - *p_cam_pos;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            u1                      = p_poly-&gt;verts[1] - *p_cam_pos;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[0]   = p;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;            <span class="comment">// ...then right (0-&gt;3-&gt;4)...</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            u0                      = p_poly-&gt;verts[2] - *p_cam_pos;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            u1                      = p_poly-&gt;verts[3] - *p_cam_pos;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[1]   = p;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            <span class="comment">// ...then top (0-&gt;2-&gt;3)...</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            u0                      = p_poly-&gt;verts[1] - *p_cam_pos;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;            u1                      = p_poly-&gt;verts[2] - *p_cam_pos;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[2]   = p;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <span class="comment">// ...then bottom (0-&gt;4-&gt;1)...</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;            u0                      = p_poly-&gt;verts[3] - *p_cam_pos;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;            u1                      = p_poly-&gt;verts[0] - *p_cam_pos;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[3]   = p;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;            <span class="comment">// ...then front. We want to reverse the order of the front plane to ensure that objects *behind* the plane</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;            <span class="comment">// are considered occluded. (1-&gt;3-&gt;4)...</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;            u0                      = p_poly-&gt;verts[2] - p_poly-&gt;verts[0];</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;            u1                      = p_poly-&gt;verts[3] - p_poly-&gt;verts[0];</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, p_poly-&gt;verts[0] );</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[4]   = p;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        }</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;            <span class="comment">// Start with left (0-&gt;2-&gt;1)...</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            u0                      = p_poly-&gt;verts[1] - *p_cam_pos;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;            u1                      = p_poly-&gt;verts[0] - *p_cam_pos;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[0]   = p;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;            <span class="comment">// ...then right (0-&gt;4-&gt;3)...</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            u0                      = p_poly-&gt;verts[3] - *p_cam_pos;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            u1                      = p_poly-&gt;verts[2] - *p_cam_pos;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[1]   = p;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <span class="comment">// ...then top (0-&gt;3-&gt;2)...</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;            u0                      = p_poly-&gt;verts[2] - *p_cam_pos;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            u1                      = p_poly-&gt;verts[1] - *p_cam_pos;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[2]   = p;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;            <span class="comment">// ...then bottom (0-&gt;1-&gt;4)...</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;            u0                      = p_poly-&gt;verts[0] - *p_cam_pos;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            u1                      = p_poly-&gt;verts[3] - *p_cam_pos;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, *p_cam_pos );</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[3]   = p;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            <span class="comment">// ...then front. We want to reverse the order of the front plane to ensure that objects *behind* the plane</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            <span class="comment">// are considered occluded. (1-&gt;4-&gt;3)...</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            u0                      = p_poly-&gt;verts[3] - p_poly-&gt;verts[0];</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            u1                      = p_poly-&gt;verts[2] - p_poly-&gt;verts[0];</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            p                       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( u0, u1 );</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            p.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>]                    = -<a class="code" href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a>( p, p_poly-&gt;verts[0] );</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[i].<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">planes</a>[4]   = p;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">sOccluder::sUseScratchPad</a>)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <span class="comment">// Copy the occlusion polygons to the scratchpad</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="comment">// as we will read them a zillion times during rendering</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        sOccluder * p_occluder = &amp;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[0];</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        sOccluder * p_scratch = (sOccluder*)0x70000000;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="comment">//  sOccluder * p_scratch = (sOccluder*)scratch;</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> o = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>; o &gt; 0 ; --o )</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;            *p_scratch = *p_occluder;</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;            p_occluder++;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            p_scratch++;</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        }</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        Dbg_MsgAssert((<span class="keywordtype">void</span>*)p_scratch &lt; (<span class="keywordtype">void</span>*)0x70004000,(<span class="stringliteral">&quot;Scratchpad overflow&quot;</span>));  <span class="comment">// 16k scratchpad.  Nice.</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;<span class="preprocessor">#ifdef  OCCLUDER_USES_VU0_MACROMODE</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    sOccluder * p_occluder = &amp;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[0];</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a> * p_vu0_mem = (<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*)0x11004000;     <span class="comment">// VU0 data memory</span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="comment">// Copies the number of occulders into X</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*) (p_vu0_mem++)) = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> o = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>; o &gt; 0 ; --o )</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        *(p_vu0_mem++) = *((<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*) &amp;(p_occluder-&gt;planes[0]));</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        *(p_vu0_mem++) = *((<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*) &amp;(p_occluder-&gt;planes[1]));</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        *(p_vu0_mem++) = *((<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*) &amp;(p_occluder-&gt;planes[2]));</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        *(p_vu0_mem++) = *((<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*) &amp;(p_occluder-&gt;planes[3]));</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        *(p_vu0_mem++) = *((<a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>*) &amp;(p_occluder-&gt;planes[4]));</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*) (p_vu0_mem++)) = p_occluder-&gt;score;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        p_occluder++;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    }</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    FlushCache(WRITEBACK_DCACHE);</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    Dbg_MsgAssert((<span class="keywordtype">void</span>*)p_vu0_mem &lt; (<span class="keywordtype">void</span>*)0x11005000,(<span class="stringliteral">&quot;VU0 memory overflow&quot;</span>));  <span class="comment">// 4k vu0 mem.  Nice.</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">sCopiedOccludersOffline</a> = <span class="keyword">true</span>;         <span class="comment">// so we know to copy the scores back (technically, this should be in</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;                                            <span class="comment">// TestSphereAgainstOccluders(), but we only want to write this var once</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;<span class="preprocessor">#ifdef  OCCLUDER_USES_VU0_MICROMODE</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="comment">// copy occlusion planes to VUMem0</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    sOccluder * p_occluder = &amp;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">sOccluder::Occluders</a>[0];</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="comment">// Mick: removed this to fix a warning in final build.</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="comment">//  float * p_vumem0 = (float *)0x11004000;     // VUMem0</span></div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> * p_plane;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="keyword">asm</span> (<span class="stringliteral">&quot;viaddi vi01,vi00,0&quot;</span>: : : <span class="stringliteral">&quot;$8&quot;</span>);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> o = <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>; o &gt; 0 ; --o )</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    {</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        p_plane = &amp;(p_occluder-&gt;planes[0]);</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> p = 5; p &gt; 0; --p )</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor">            #if 0</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            *p_vumem0++ = p_plane-&gt;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">GetX</a>();</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            *p_vumem0++ = p_plane-&gt;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a180cc532ba059d5717b486ae74170b13">GetY</a>();</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            *p_vumem0++ = p_plane-&gt;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a09bf1a16a342e3424a5768a7f754d5ed">GetZ</a>();</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;            *p_vumem0++ = p_plane-&gt;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ad3a232b18d083664954c8e4cfe6a060c">GetW</a>();</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="preprocessor">            #else</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;            <span class="comment">// this way we don&#39;t need the FlushCache()</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;            <span class="keyword">asm</span> __volatile__(<span class="stringliteral">&quot;</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;<span class="stringliteral">                lq      $8,0(%0)</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="stringliteral">                qmtc2   $8,vf01</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="stringliteral">                vsqi    vf01,(vi01++)</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="stringliteral">            &quot;</span>: : <span class="stringliteral">&quot;r&quot;</span> (p_plane) : <span class="stringliteral">&quot;$8&quot;</span>);</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;            p_plane++;</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        }</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        p_occluder++;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    }</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="comment">// Mick - removed this assertions as it is no longer valid</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="comment">//  Dbg_MsgAssert((void*)p_vumem0 &lt; (void*)0x11004FA0,(&quot;VUMem0 overflow&quot;));     // 50 occluders max</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    <span class="comment">// flush the cache so VU0 can work on the data now.... not needed anymore</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="comment">//FlushCache(WRITEBACK_DCACHE);</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="comment">// call vu0 microsubroutine to rearrange data into a special format</span></div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    <span class="keyword">asm</span> __volatile__(<span class="stringliteral">&quot;</span></div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="stringliteral"></span> </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="stringliteral">        #sync                                   # wait for write-back of the mem we just wrote to</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="stringliteral">        lw          $8,(%0)                     # t0 = num occluders</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="stringliteral">        ctc2        $8,$vi01                    # move it to vi01 in vu0</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="stringliteral">        vcallms     InitialiseOccluders         # call microsubroutine to rearrange vu0 memory</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="stringliteral">        vnop                                    # interlocking instruction, waits for vu0 completion</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;<span class="stringliteral">    </span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;<span class="stringliteral">    &quot;</span>: : <span class="stringliteral">&quot;r&quot;</span> (&amp;<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">sOccluder::NumOccluders</a>) : <span class="stringliteral">&quot;$8&quot;</span>);</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160; </div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;}</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160; </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160; </div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160; </div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a2624f170f37b2e367569469bbc395747">OccludeUseVU0</a>()</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;{</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a6ae21675dc1f225337a723bda1a037b7">sOccluder::sUseVU0</a> = <a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#ab38829b090579bdf8202112d328ba32c">CSystemResources::sRequestResource</a>(<a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fdab6ceeedeb5378e0df85769a527cd63d6">CSystemResources::vVU0_MEMORY</a>);</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;}</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160; </div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a281206bac5b2e24abfe0740a71486fa1">OccludeDisableVU0</a>()</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;{</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a6ae21675dc1f225337a723bda1a037b7">sOccluder::sUseVU0</a>)</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a0e0d06977ccaa473b4038be117d0d167">CSystemResources::sFreeResource</a>(<a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fdab6ceeedeb5378e0df85769a527cd63d6">CSystemResources::vVU0_MEMORY</a>);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a6ae21675dc1f225337a723bda1a037b7">sOccluder::sUseVU0</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    }</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;}</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160; </div>
+<div class="line"><a name="l00544"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a2624f170f37b2e367569469bbc395747">  544</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a082c26bb4ca7611d7ae51b89227103f8">OccludeUseScratchPad</a>()</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;{</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">sOccluder::sUseScratchPad</a> = <a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#ab38829b090579bdf8202112d328ba32c">CSystemResources::sRequestResource</a>(<a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fda0c65f05f356cccdd701df4fb8aad0d49">CSystemResources::vSCRATCHPAD_MEMORY</a>);</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;}</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
+<div class="line"><a name="l00554"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a281206bac5b2e24abfe0740a71486fa1">  554</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ad8c0ea7e2e2776e6c5642b2366816d69">OccludeDisableScratchPad</a>()</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;{</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">sOccluder::sUseScratchPad</a>)</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    {</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        <a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a0e0d06977ccaa473b4038be117d0d167">CSystemResources::sFreeResource</a>(<a class="code" href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fda0c65f05f356cccdd701df4fb8aad0d49">CSystemResources::vSCRATCHPAD_MEMORY</a>);</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        <a class="code" href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">sOccluder::sUseScratchPad</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;}</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160; </div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#a082c26bb4ca7611d7ae51b89227103f8">  568</a></span>&#160; </div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;} <span class="comment">// namespace NxXbox</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html">NxPs2::sOccluder</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00042">occlude.h:42</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_ac68fbfe676c95bf1ada686076c00675a"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Mth::Vector::Normalize</a></div><div class="ttdeci">Vector &amp; Normalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00469">vector.inl:469</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_system_resources_html_a0e0d06977ccaa473b4038be117d0d167"><div class="ttname"><a href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a0e0d06977ccaa473b4038be117d0d167">NxPs2::CSystemResources::sFreeResource</a></div><div class="ttdeci">static void sFreeResource(EResourceType resource)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d01/resource_8cpp_source.html#l00049">resource.cpp:49</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ad8c0ea7e2e2776e6c5642b2366816d69"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ad8c0ea7e2e2776e6c5642b2366816d69">NxPs2::OccludeDisableScratchPad</a></div><div class="ttdeci">void OccludeDisableScratchPad()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00578">occlude.cpp:578</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a080d7b43cef3432e00ff8a5b4b176220"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a080d7b43cef3432e00ff8a5b4b176220">NxPs2::sOccluder::planes</a></div><div class="ttdeci">Mth::Vector planes[5]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00054">occlude.h:54</a></div></div>
+<div class="ttc" id="adebuggfx_8h_html"><div class="ttname"><a href="../../d3/d83/debuggfx_8h.html">debuggfx.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html_add92efb22580051a205ec3b0f004c3ea"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#add92efb22580051a205ec3b0f004c3ea">NxPs2::sOcclusionPoly::available</a></div><div class="ttdeci">bool available</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00036">occlude.h:36</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a082c26bb4ca7611d7ae51b89227103f8"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a082c26bb4ca7611d7ae51b89227103f8">NxPs2::OccludeUseScratchPad</a></div><div class="ttdeci">bool OccludeUseScratchPad()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00568">occlude.cpp:568</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a7d67eb59fa2affedca8d571adf25f28d"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a7d67eb59fa2affedca8d571adf25f28d">NxPs2::sOccluder::add_to_stack</a></div><div class="ttdeci">static void add_to_stack(sOcclusionPoly *p_poly)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00109">occlude.cpp:109</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a79a2abc60e8f50416506020950101ce2"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a></div><div class="ttdeci">u_long128 uint128</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00163">Defines.h:163</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_aff9db97d68bb66810ff65fde6116de07"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#aff9db97d68bb66810ff65fde6116de07">NxPs2::sOccluder::score</a></div><div class="ttdeci">int score</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00055">occlude.h:55</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_afe8bc7e03f994c08a4fb46ebbc2e7a9f"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#afe8bc7e03f994c08a4fb46ebbc2e7a9f">NxPs2::MAX_OCCLUDERS</a></div><div class="ttdeci">const uint32 MAX_OCCLUDERS</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00040">occlude.h:40</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a348b3aa6315614533b186b02218af45c"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a348b3aa6315614533b186b02218af45c">NxPs2::NumOcclusionPolys</a></div><div class="ttdeci">uint32 NumOcclusionPolys</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00087">occlude.cpp:87</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a987f27df2a5f3c9f3b402784624cfac3"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a></div><div class="ttdeci">unsigned char p1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00038">p_netcnfif.h:38</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a5d44f72093d997ca5bfd460323e320eb"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a5d44f72093d997ca5bfd460323e320eb">NxPs2::NextOcclusionPolyToCheck</a></div><div class="ttdeci">uint32 NextOcclusionPolyToCheck</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00088">occlude.cpp:88</a></div></div>
+<div class="ttc" id="anamespace_mth_html_aaca09fd5728158c602a3970017204614"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a></div><div class="ttdeci">Vector CrossProduct(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01000">vector.inl:1000</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html_a5808a289c4eaffb9897262c0c724a2fa"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a5808a289c4eaffb9897262c0c724a2fa">NxPs2::sOcclusionPoly::normal</a></div><div class="ttdeci">Mth::Vector normal</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00039">occlude.h:39</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a30522b5d6d3d797f886a87904003d11f"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a30522b5d6d3d797f886a87904003d11f">NxPs2::EnableOcclusionPoly</a></div><div class="ttdeci">void EnableOcclusionPoly(uint32 checksum, bool available)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00230">occlude.cpp:230</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a9e439b7aa833af874c18b96b21e443d5"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a9e439b7aa833af874c18b96b21e443d5">NxPs2::MIN_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</a></div><div class="ttdeci">const uint32 MIN_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00024">occlude.h:24</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a></div><div class="ttdeci">@ W</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_system_resources_html_a4bcdefc43ec1c93570db2ae95c3c54fda0c65f05f356cccdd701df4fb8aad0d49"><div class="ttname"><a href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fda0c65f05f356cccdd701df4fb8aad0d49">NxPs2::CSystemResources::vSCRATCHPAD_MEMORY</a></div><div class="ttdeci">@ vSCRATCHPAD_MEMORY</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d01/resource_8h_source.html#l00020">resource.h:20</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_aa5879c6e3b01b313acdc899265a46247"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">Mth::Vector::GetX</a></div><div class="ttdeci">float GetX(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00840">vector.inl:840</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a6ae21675dc1f225337a723bda1a037b7"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a6ae21675dc1f225337a723bda1a037b7">NxPs2::sOccluder::sUseVU0</a></div><div class="ttdeci">static bool sUseVU0</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00046">occlude.h:46</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a1367dae86b22e75cd72599c8c1ddba5c"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a1367dae86b22e75cd72599c8c1ddba5c">NxPs2::sOccluder::NumOccluders</a></div><div class="ttdeci">static uint32 NumOccluders</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00044">occlude.h:44</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a281206bac5b2e24abfe0740a71486fa1"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a281206bac5b2e24abfe0740a71486fa1">NxPs2::OccludeDisableVU0</a></div><div class="ttdeci">void OccludeDisableVU0()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00554">occlude.cpp:554</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_abd1cddb379589c07d3b46a5720ce45a6"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#abd1cddb379589c07d3b46a5720ce45a6">NxPs2::RemoveAllOcclusionPolys</a></div><div class="ttdeci">void RemoveAllOcclusionPolys(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00248">occlude.cpp:248</a></div></div>
+<div class="ttc" id="aresource_8h_html"><div class="ttname"><a href="../../d8/d01/resource_8h.html">resource.h</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html_a5f656a3303cf4fb2c0741327d7221765"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a5f656a3303cf4fb2c0741327d7221765">NxPs2::sOcclusionPoly::checksum</a></div><div class="ttdeci">uint32 checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00037">occlude.h:37</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a0543202913c3b99c7be87db3e13710b0"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a0543202913c3b99c7be87db3e13710b0">Mth::DotProduct</a></div><div class="ttdeci">float DotProduct(const Quat &amp;v1, const Quat &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/db2/quat_8inl_source.html#l00522">quat.inl:522</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a19deb28eac1c2d08fa369cfd25ac2546"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a19deb28eac1c2d08fa369cfd25ac2546">NxPs2::sOccluder::Occluders</a></div><div class="ttdeci">static sOccluder Occluders[MAX_OCCLUDERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00045">occlude.h:45</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html_aaa5ab3304f23aa42a90c5dba84d46839"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#aaa5ab3304f23aa42a90c5dba84d46839">NxPs2::sOcclusionPoly::in_use</a></div><div class="ttdeci">bool in_use</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00035">occlude.h:35</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a22f7a8363a7f95b437d6df82a4284cd7"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a></div><div class="ttdeci">unsigned char p2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00039">p_netcnfif.h:39</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html">NxPs2::sOcclusionPoly</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00031">occlude.h:31</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_a180cc532ba059d5717b486ae74170b13"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#a180cc532ba059d5717b486ae74170b13">Mth::Vector::GetY</a></div><div class="ttdeci">float GetY(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00852">vector.inl:852</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a5abcd634d896780abc9699ba5c56bacb"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a5abcd634d896780abc9699ba5c56bacb">NxPs2::OcclusionPolys</a></div><div class="ttdeci">sOcclusionPoly OcclusionPolys[MAX_OCCLUSION_POLYS]</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00089">occlude.cpp:89</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a649b2d482951ea01466ebfd67f23cab4"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a649b2d482951ea01466ebfd67f23cab4">NxPs2::sCopiedOccludersOffline</a></div><div class="ttdeci">static bool sCopiedOccludersOffline</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00081">occlude.cpp:81</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_system_resources_html_ab38829b090579bdf8202112d328ba32c"><div class="ttname"><a href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#ab38829b090579bdf8202112d328ba32c">NxPs2::CSystemResources::sRequestResource</a></div><div class="ttdeci">static bool sRequestResource(EResourceType resource)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d01/resource_8cpp_source.html#l00029">resource.cpp:29</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_ad3a232b18d083664954c8e4cfe6a060c"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#ad3a232b18d083664954c8e4cfe6a060c">Mth::Vector::GetW</a></div><div class="ttdeci">float GetW(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00876">vector.inl:876</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a8ed0520666bb2b6f48dd2974886c05b7"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a8ed0520666bb2b6f48dd2974886c05b7">NxPs2::MAX_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</a></div><div class="ttdeci">const uint32 MAX_NEW_OCCLUSION_POLYS_TO_CHECK_PER_FRAME</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00023">occlude.h:23</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occlusion_poly_html_a2b3a723b7b6a6aa98032d4bdefac5dca"><div class="ttname"><a href="../../db/db5/struct_nx_ps2_1_1s_occlusion_poly.html#a2b3a723b7b6a6aa98032d4bdefac5dca">NxPs2::sOcclusionPoly::verts</a></div><div class="ttdeci">Mth::Vector verts[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00038">occlude.h:38</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aea96630e1cdd0aa78b6c2e928b163b8d"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aea96630e1cdd0aa78b6c2e928b163b8d">NxPs2::CheckForOptimalOccluders</a></div><div class="ttdeci">void CheckForOptimalOccluders(Mth::Vector &amp;cam_pos, Mth::Vector &amp;view_direction)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00265">occlude.cpp:265</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a70363d8f82b25e2e36ae13201621e9cf"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a70363d8f82b25e2e36ae13201621e9cf">NxPs2::cmp</a></div><div class="ttdeci">static int cmp(const void *p1, const void *p2)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00125">occlude.cpp:125</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a118efe361b82f51ce8d5e861e3496729"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a118efe361b82f51ce8d5e861e3496729">NxPs2::sOccluder::p_poly</a></div><div class="ttdeci">sOcclusionPoly * p_poly</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00053">occlude.h:53</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a9f3dd04d8f904f4aa02515162b130786"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a9f3dd04d8f904f4aa02515162b130786">NxPs2::BuildOccluders</a></div><div class="ttdeci">void BuildOccluders(Mth::Vector *p_cam_pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00307">occlude.cpp:307</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a30b6a1f532fe13c9fe4cb432defae353"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a30b6a1f532fe13c9fe4cb432defae353">NxPs2::MAX_OCCLUSION_POLYS</a></div><div class="ttdeci">const uint32 MAX_OCCLUSION_POLYS</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00058">occlude.h:58</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_a38a905065bb15be084a4c9a18c99b66c"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#a38a905065bb15be084a4c9a18c99b66c">NxPs2::sOccluder::sUseScratchPad</a></div><div class="ttdeci">static bool sUseScratchPad</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d21/_n_g_p_s_2_n_x_2occlude_8h_source.html#l00047">occlude.h:47</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a47bf8ac365b40a85028cc2f1cd18953f"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a47bf8ac365b40a85028cc2f1cd18953f">NxPs2::AddOcclusionPoly</a></div><div class="ttdeci">void AddOcclusionPoly(Mth::Vector &amp;v0, Mth::Vector &amp;v1, Mth::Vector &amp;v2, Mth::Vector &amp;v3, uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00203">occlude.cpp:203</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_system_resources_html_a4bcdefc43ec1c93570db2ae95c3c54fdab6ceeedeb5378e0df85769a527cd63d6"><div class="ttname"><a href="../../dc/d3d/class_nx_ps2_1_1_c_system_resources.html#a4bcdefc43ec1c93570db2ae95c3c54fdab6ceeedeb5378e0df85769a527cd63d6">NxPs2::CSystemResources::vVU0_MEMORY</a></div><div class="ttdeci">@ vVU0_MEMORY</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d01/resource_8h_source.html#l00019">resource.h:19</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_a09bf1a16a342e3424a5768a7f754d5ed"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#a09bf1a16a342e3424a5768a7f754d5ed">Mth::Vector::GetZ</a></div><div class="ttdeci">float GetZ(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00864">vector.inl:864</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a2624f170f37b2e367569469bbc395747"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a2624f170f37b2e367569469bbc395747">NxPs2::OccludeUseVU0</a></div><div class="ttdeci">bool OccludeUseVU0()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00544">occlude.cpp:544</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_ad4faf74e5a7210bbb5366e2cf6aed794"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ad4faf74e5a7210bbb5366e2cf6aed794">NxPs2::sOccluder::tidy_stack</a></div><div class="ttdeci">static void tidy_stack(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00154">occlude.cpp:154</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1s_occluder_html_ae5cfa26e64cf1c29146d709d3a6a2318"><div class="ttname"><a href="../../d6/d0a/struct_nx_ps2_1_1s_occluder.html#ae5cfa26e64cf1c29146d709d3a6a2318">NxPs2::sOccluder::sort_stack</a></div><div class="ttdeci">static void sort_stack(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp_source.html#l00143">occlude.cpp:143</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../da/dc9/_n_g_p_s_2_n_x_2occlude_8cpp.html">occlude.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Modules/Skate/horse.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d5e/horse_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">horse.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d5e/horse_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment.                          **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 2000 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        skate3                                                  **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         sk                                                      **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      horse.h                                                 **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     7/17/01 - Gary                                          **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    &lt;description&gt;                                           **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __SK_MODULES_HORSE_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define __SK_MODULES_HORSE_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d86/_c_string_8h.html">core/string/cstring.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;                                </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d4/d0a/namespace_mdl.html">Mdl</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html">   60</a></span>&#160;<span class="keyword">class  </span><a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html">CHorse</a>  : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a8e0f8a521faa0b3ec61c21657c533871a151dfb721609b356d1303d03ba2f392f">vMAX_RESTARTS</a> = 32</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    };</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a668d1edbae6f0c7a2843359cd256912c">CHorse</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a422ea4ea7e5ec8969754c3802bebc36f">Init</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a08e13293dec1eff93d588dc5a06ede31">SwitchPlayers</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a285e2c59945ffe5d6309fc769e90c6a3">StartRun</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a341b72c8f6223c5060f78dcd469471db">EndRun</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3fd4142cd2526e9759e86a4875d2ecf3">Ended</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">char</span>*                       <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#ac1d2c2dd37dcf4c29dffed498268e182">GetWord</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#ad48ea41e36c65e90070b712a67581b4f">SetWord</a>( <a class="code" href="../../d6/ddd/class_str_1_1_string.html">Str::String</a> word );</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d6/ddd/class_str_1_1_string.html">Str::String</a>                 <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3439a36a519f465bceb380ec1d0c9533">GetWordForPlayer</a>( <span class="keywordtype">int</span> skater_id );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a24174c6bd72bbf034cfcd50a107a86a7">GetCurrentSkaterId</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a8e0f8a521faa0b3ec61c21657c533871a151dfb721609b356d1303d03ba2f392f">   82</a></span>&#160;    <a class="code" href="../../d6/ddd/class_str_1_1_string.html">Str::String</a>                 <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#ac9bab8bb30f516f18a5bc0a255b6942e">GetString</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a5c163ecad8cc7419b6133d8b925ac01d">GetCurrentRestartIndex</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#abcd41256f34814efc97a22183bf320f0">SetNextRestartPoint</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">bool</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a91e28277c7e821d070dd65b161b67b15">StatusEquals</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a1f40255b731a527c699806f814dddfb1">get_next_valid_skater_id</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a2ab711179e5473abd8681c7e104813bb">get_score</a>( <span class="keywordtype">int</span> <span class="keywordtype">id</span> );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#acabe728121c014339a608c30d5fd67bc">m_scoreToBeat</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a2c5b937729c4d2ed00159061b4db8335">m_currentSkaterId</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3c4f1416c5c0f71989dfb2ea49efd8a5">m_nextSkaterId</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">char</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a36732c729ee5f19ea50b9646a3f899c4">m_string</a>[512];</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">char</span>                        <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a01317fcad6f11b3fcd2b9bbf4f01cd2f">m_nextHorseMessage</a>[512];</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a25549bb9d5cdac5cc362ce7f77ef4697">m_numLetters</a>[<a class="code" href="../../d6/df1/class_mdl_1_1_skate.html#a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274">Skate::vMAX_SKATERS</a>];</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#ad0a6f3caf06441c65bbf40e04c3f7801">m_numRestarts</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a4bba566b3846dc821bca2062acc6fda5">m_currentRestartIndex</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#acabe728121c014339a608c30d5fd67bc">  100</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a9414762c1b7d9ff107a6bc4d62258d1e">m_status</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a2c5b937729c4d2ed00159061b4db8335">  101</a></span>&#160;};</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3c4f1416c5c0f71989dfb2ea49efd8a5">  102</a></span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a36732c729ee5f19ea50b9646a3f899c4">  103</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a01317fcad6f11b3fcd2b9bbf4f01cd2f">  104</a></span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a25549bb9d5cdac5cc362ce7f77ef4697">  105</a></span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#ad0a6f3caf06441c65bbf40e04c3f7801">  106</a></span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a4bba566b3846dc821bca2062acc6fda5">  107</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../d8/d0e/class_mdl_1_1_c_horse.html#a9414762c1b7d9ff107a6bc4d62258d1e">  108</a></span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;} <span class="comment">// namespace Mdl</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif      // __SK_MODULES_HORSE_H</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a3fd4142cd2526e9759e86a4875d2ecf3"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3fd4142cd2526e9759e86a4875d2ecf3">Mdl::CHorse::Ended</a></div><div class="ttdeci">bool Ended()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00328">horse.cpp:328</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a25549bb9d5cdac5cc362ce7f77ef4697"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a25549bb9d5cdac5cc362ce7f77ef4697">Mdl::CHorse::m_numLetters</a></div><div class="ttdeci">uint32 m_numLetters[Skate::vMAX_SKATERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00105">horse.h:105</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a4bba566b3846dc821bca2062acc6fda5"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a4bba566b3846dc821bca2062acc6fda5">Mdl::CHorse::m_currentRestartIndex</a></div><div class="ttdeci">uint32 m_currentRestartIndex</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00107">horse.h:107</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a668d1edbae6f0c7a2843359cd256912c"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a668d1edbae6f0c7a2843359cd256912c">Mdl::CHorse::CHorse</a></div><div class="ttdeci">CHorse()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00138">horse.cpp:138</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a3439a36a519f465bceb380ec1d0c9533"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3439a36a519f465bceb380ec1d0c9533">Mdl::CHorse::GetWordForPlayer</a></div><div class="ttdeci">Str::String GetWordForPlayer(int skater_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00367">horse.cpp:367</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a9414762c1b7d9ff107a6bc4d62258d1e"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a9414762c1b7d9ff107a6bc4d62258d1e">Mdl::CHorse::m_status</a></div><div class="ttdeci">uint32 m_status</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00108">horse.h:108</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a285e2c59945ffe5d6309fc769e90c6a3"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a285e2c59945ffe5d6309fc769e90c6a3">Mdl::CHorse::StartRun</a></div><div class="ttdeci">void StartRun()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00196">horse.cpp:196</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a3c4f1416c5c0f71989dfb2ea49efd8a5"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a3c4f1416c5c0f71989dfb2ea49efd8a5">Mdl::CHorse::m_nextSkaterId</a></div><div class="ttdeci">int m_nextSkaterId</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00102">horse.h:102</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_ad0a6f3caf06441c65bbf40e04c3f7801"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#ad0a6f3caf06441c65bbf40e04c3f7801">Mdl::CHorse::m_numRestarts</a></div><div class="ttdeci">uint32 m_numRestarts</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00106">horse.h:106</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a08e13293dec1eff93d588dc5a06ede31"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a08e13293dec1eff93d588dc5a06ede31">Mdl::CHorse::SwitchPlayers</a></div><div class="ttdeci">void SwitchPlayers()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00296">horse.cpp:296</a></div></div>
+<div class="ttc" id="anamespace_mdl_html"><div class="ttname"><a href="../../d4/d0a/namespace_mdl.html">Mdl</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4f/trickcomponent_8h_source.html#l00037">trickcomponent.h:37</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_ad48ea41e36c65e90070b712a67581b4f"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#ad48ea41e36c65e90070b712a67581b4f">Mdl::CHorse::SetWord</a></div><div class="ttdeci">void SetWord(Str::String word)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00350">horse.cpp:350</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a8e0f8a521faa0b3ec61c21657c533871a151dfb721609b356d1303d03ba2f392f"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a8e0f8a521faa0b3ec61c21657c533871a151dfb721609b356d1303d03ba2f392f">Mdl::CHorse::vMAX_RESTARTS</a></div><div class="ttdeci">@ vMAX_RESTARTS</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00082">horse.h:82</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html">Mdl::CHorse</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00060">horse.h:60</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a341b72c8f6223c5060f78dcd469471db"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a341b72c8f6223c5060f78dcd469471db">Mdl::CHorse::EndRun</a></div><div class="ttdeci">void EndRun()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00212">horse.cpp:212</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a91e28277c7e821d070dd65b161b67b15"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a91e28277c7e821d070dd65b161b67b15">Mdl::CHorse::StatusEquals</a></div><div class="ttdeci">bool StatusEquals(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00307">horse.cpp:307</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a1f40255b731a527c699806f814dddfb1"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a1f40255b731a527c699806f814dddfb1">Mdl::CHorse::get_next_valid_skater_id</a></div><div class="ttdeci">int get_next_valid_skater_id()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00400">horse.cpp:400</a></div></div>
+<div class="ttc" id="a_c_string_8h_html"><div class="ttname"><a href="../../db/d86/_c_string_8h.html">CString.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a2c5b937729c4d2ed00159061b4db8335"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a2c5b937729c4d2ed00159061b4db8335">Mdl::CHorse::m_currentSkaterId</a></div><div class="ttdeci">int m_currentSkaterId</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00101">horse.h:101</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a422ea4ea7e5ec8969754c3802bebc36f"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a422ea4ea7e5ec8969754c3802bebc36f">Mdl::CHorse::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00150">horse.cpp:150</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_ac1d2c2dd37dcf4c29dffed498268e182"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#ac1d2c2dd37dcf4c29dffed498268e182">Mdl::CHorse::GetWord</a></div><div class="ttdeci">char * GetWord()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00390">horse.cpp:390</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_abcd41256f34814efc97a22183bf320f0"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#abcd41256f34814efc97a22183bf320f0">Mdl::CHorse::SetNextRestartPoint</a></div><div class="ttdeci">void SetNextRestartPoint(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00558">horse.cpp:558</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html_a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html#a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274">Mdl::Skate::vMAX_SKATERS</a></div><div class="ttdeci">@ vMAX_SKATERS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00167">skate.h:167</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_acabe728121c014339a608c30d5fd67bc"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#acabe728121c014339a608c30d5fd67bc">Mdl::CHorse::m_scoreToBeat</a></div><div class="ttdeci">int m_scoreToBeat</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00100">horse.h:100</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a01317fcad6f11b3fcd2b9bbf4f01cd2f"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a01317fcad6f11b3fcd2b9bbf4f01cd2f">Mdl::CHorse::m_nextHorseMessage</a></div><div class="ttdeci">char m_nextHorseMessage[512]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00104">horse.h:104</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a5c163ecad8cc7419b6133d8b925ac01d"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a5c163ecad8cc7419b6133d8b925ac01d">Mdl::CHorse::GetCurrentRestartIndex</a></div><div class="ttdeci">uint32 GetCurrentRestartIndex()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00540">horse.cpp:540</a></div></div>
+<div class="ttc" id="aclass_str_1_1_string_html"><div class="ttname"><a href="../../d6/ddd/class_str_1_1_string.html">Str::String</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d86/_c_string_8h_source.html#l00059">CString.h:59</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a24174c6bd72bbf034cfcd50a107a86a7"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a24174c6bd72bbf034cfcd50a107a86a7">Mdl::CHorse::GetCurrentSkaterId</a></div><div class="ttdeci">int GetCurrentSkaterId()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00185">horse.cpp:185</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a2ab711179e5473abd8681c7e104813bb"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a2ab711179e5473abd8681c7e104813bb">Mdl::CHorse::get_score</a></div><div class="ttdeci">int get_score(int id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00434">horse.cpp:434</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_ac9bab8bb30f516f18a5bc0a255b6942e"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#ac9bab8bb30f516f18a5bc0a255b6942e">Mdl::CHorse::GetString</a></div><div class="ttdeci">Str::String GetString(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d02/horse_8cpp_source.html#l00453">horse.cpp:453</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_c_horse_html_a36732c729ee5f19ea50b9646a3f899c4"><div class="ttname"><a href="../../d8/d0e/class_mdl_1_1_c_horse.html#a36732c729ee5f19ea50b9646a3f899c4">Mdl::CHorse::m_string</a></div><div class="ttdeci">char m_string[512]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d5e/horse_8h_source.html#l00103">horse.h:103</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_8a1f0fe72cf15c8f12a4a305167e3d4d.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_54d7426c14152959ec57b87c06ed0b17.html">Skate</a></li><li class="navelem"><a class="el" href="../../d2/d5e/horse_8h.html">horse.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

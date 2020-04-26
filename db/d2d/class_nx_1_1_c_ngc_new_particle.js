@@ -1,0 +1,25 @@
+var class_nx_1_1_c_ngc_new_particle =
+[
+    [ "plat_build", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a6ba325bfa01a369d2109a53fccb57fc9", null ],
+    [ "plat_destroy", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a084470dc0a481940be060d5e5d8bd9ef", null ],
+    [ "plat_render", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a7e39bfa1f513d6a785997aa23360ee0e", null ],
+    [ "plat_update", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a7cb2e1fcca59530298b8dfc0b261d969", null ],
+    [ "update_position", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a9520d1f33d64dd695161672b0d49fa3a", null ],
+    [ "m_emitting", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#af1893d55115e8137c78dc56d370c4257", null ],
+    [ "m_max_streams", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a29690f02d67b060ec991718014108c50", null ],
+    [ "m_num_streams", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#af1b84818d1d68726677135435c254f2a", null ],
+    [ "mp_stream", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#adaa5d4a1d0c82cfcf838e51d543ff8eb", null ],
+    [ "mp_newest_stream", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#aa6f67704c6ee1678a76e5a840d4f9fe4", null ],
+    [ "mp_oldest_stream", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a2d58b099d2fe779675aab511f316184e", null ],
+    [ "m_rotation", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#aeac6146dd195baa09f52b5c5ac4edc38", null ],
+    [ "m_new_matrix", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#ac81bf36f5000c8f64446a7dbcd69673c", null ],
+    [ "mp_texture", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#ae5d8c9794b2a5737764c2e92596a2df8", null ],
+    [ "m_blend", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a331fc37211a82d96bcd26854bd0866a4", null ],
+    [ "m_fix", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a196f61cbe0c5f3216913428fbc90fa05", null ],
+    [ "m_s0", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#ac9ef1b99af1062ed8213d96405ed5954", null ],
+    [ "m_s1", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a4d5a8e0d92898ae1a506775bcc0783ac", null ],
+    [ "m_s2", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#a147104d6d2cf0b20aff25c2f6653ff35", null ],
+    [ "m_p0", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#af086b34b8e65c9b930661f5e476dd638", null ],
+    [ "m_p1", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#adcc4823bfb71da089c0bab9e4252ab70", null ],
+    [ "m_p2", "db/d2d/class_nx_1_1_c_ngc_new_particle.html#ac72859082a412b5853b4415371a597f0", null ]
+];

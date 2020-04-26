@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/core/Thread/ngc/t_thread.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d25/ngc_2t__thread_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">t_thread.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d25/ngc_2t__thread_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*******************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">*    DESCRIPTION: thread/ngc/t_thread.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">*    AUTHOR:    JAB</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">*    HISTORY:   </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*    DATE:9/1/2000</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">*******************************************************************/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#ifndef __CORE_THREAD_NGC_T_THREAD_H__</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define __CORE_THREAD_NGC_T_THREAD_H__</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//#include &lt;eekernel.h&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../d8/d76/namespace_thread.html">   20</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d76/namespace_thread.html">Thread</a> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d8/d76/namespace_thread.html#a485b6e2ea36dc9b912d82b4fa1a1847c">   21</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/d76/namespace_thread.html#a485b6e2ea36dc9b912d82b4fa1a1847c">THREADID</a>;           <span class="comment">// Id for use and assigned by application</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d8/d76/namespace_thread.html#a6442b6a52821239fc831b09c144df132">   22</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/d76/namespace_thread.html#a6442b6a52821239fc831b09c144df132">OSTHREADID</a>;         <span class="comment">// Id assigned by the OS.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../d8/d76/namespace_thread.html#aa393d6f232ad1d0279ee6815cf87afb1">   23</a></span>&#160;    <span class="keyword">typedef</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/d76/namespace_thread.html#aa393d6f232ad1d0279ee6815cf87afb1">HTHREAD</a>;   <span class="comment">// A value that is easy to determine from the OS</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html">   25</a></span>&#160;    <span class="keyword">class </span><a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html">PerThreadStruct</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#ae1ca033d69cec04b7624b9b94d06750e">   27</a></span>&#160;        <span class="keywordtype">char</span>        <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#ae1ca033d69cec04b7624b9b94d06750e">m_cID</a>[16];          <span class="comment">// a text name so its easy to </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a717813ee9dd9383308ef535d833a388c">   28</a></span>&#160;        <a class="code" href="../../d8/d76/namespace_thread.html#a485b6e2ea36dc9b912d82b4fa1a1847c">THREADID</a>    <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a717813ee9dd9383308ef535d833a388c">m_utid</a>;             <span class="comment">// an id that the use can assign</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#ac1327899c16f39febb42d2392b29713e">   29</a></span>&#160;        <a class="code" href="../../d8/d76/namespace_thread.html#a6442b6a52821239fc831b09c144df132">OSTHREADID</a>  <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#ac1327899c16f39febb42d2392b29713e">m_osId</a>;             <span class="comment">// an id that the OS assigns</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a400434551ad127d4164ddc542416fcef">   30</a></span>&#160;        <span class="keywordtype">void</span>*       <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a400434551ad127d4164ddc542416fcef">m_pEntry</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a1b3c06c2598cace39784800c83484c3f">   31</a></span>&#160;        <span class="keywordtype">void</span>*       <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a1b3c06c2598cace39784800c83484c3f">m_pStackBase</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a310cfb86394ec93d8676835d016d4212">   32</a></span>&#160;        <span class="keywordtype">int</span>         <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a310cfb86394ec93d8676835d016d4212">m_iStackSize</a>;</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a8b1b258b614ca3dc59f85bad79eb1455">   33</a></span>&#160;        <span class="keywordtype">int</span>         <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a8b1b258b614ca3dc59f85bad79eb1455">m_iInitialPriority</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a759ede6f3517a9bcb15707c7e3f1ddbd">   34</a></span>&#160;        <span class="keywordtype">void</span>*       <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html#a759ede6f3517a9bcb15707c7e3f1ddbd">m_pRpcData</a>;         <span class="comment">// ptr to rpc specific data.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    };</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// PJR - Not sure...</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//  register PerThreadStruct*   g_pCurrThread asm (&quot;gp&quot;);   // Gotta fucking love that, eh?</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//  inline THREADID         GetCurrentThreadId()    { return (g_pCurrThread) ?  g_pCurrThread-&gt;m_utid : 0; }</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">//  inline HTHREAD          GetCurrentHandle()      { return (HTHREAD) g_pCurrThread; } // This is fastest, so use it if you want to get data fast;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">//inline void               StartThread( HTHREAD hthr, void* arg = NULL )  { ::StartThread( ((PerThreadStruct*)hthr)-&gt;m_osId, arg ); }</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// So you must set up the stack, and the perthreadstruct.</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d8/d76/namespace_thread.html#aa393d6f232ad1d0279ee6815cf87afb1">HTHREAD</a> <a class="code" href="../../d8/d76/namespace_thread.html#ad1549c943a1c4a0b057be3df3be102f1">CreateThread</a>( <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html">PerThreadStruct</a>* pPTS );</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">    Commentary on data for submodules (eg m_pRpcData):</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">    Yes there are less data dependent ways of doing this. For example,</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">    by having an array of pointers and the subsystem requests an index</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">    that it can use. But the extra work (small tho it is) seems a bit</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">    pointless when the penalty for hardcoding it is having to recompile</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">    lots of things if it changes. Not a big deal.</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/d76/namespace_thread.html#a839e6442fa00236052184eb91586f6be">dummy</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html">   57</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d5/dd5/struct_p_t_s.html">PTS</a>{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#a0913024e44368aff8e761056fd145651">   58</a></span>&#160;    <span class="keywordtype">char</span>        <a class="code" href="../../d5/dd5/struct_p_t_s.html#a0913024e44368aff8e761056fd145651">m_cID</a>[16];          <span class="comment">// a text name so its easy to </span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#af12469b23babcef8ed084b334452af31">   59</a></span>&#160;    <a class="code" href="../../d8/d76/namespace_thread.html#a485b6e2ea36dc9b912d82b4fa1a1847c">Thread::THREADID</a>    <a class="code" href="../../d5/dd5/struct_p_t_s.html#af12469b23babcef8ed084b334452af31">m_utid</a>;             <span class="comment">// an id that the use can assign</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#a800dbef4dca31eb4a90c5c64f44f426f">   60</a></span>&#160;    <a class="code" href="../../d8/d76/namespace_thread.html#a6442b6a52821239fc831b09c144df132">Thread::OSTHREADID</a>  <a class="code" href="../../d5/dd5/struct_p_t_s.html#a800dbef4dca31eb4a90c5c64f44f426f">m_osId</a>;             <span class="comment">// an id that the OS assigns</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#ae250e29cc4a2d50366cc797dd35c40b8">   61</a></span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d5/dd5/struct_p_t_s.html#ae250e29cc4a2d50366cc797dd35c40b8">m_pEntry</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#ac6920245695df8a827a7028c4bbd7de9">   62</a></span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d5/dd5/struct_p_t_s.html#ac6920245695df8a827a7028c4bbd7de9">m_pStackBase</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#ad21108489753d3c77080b9b45e88a0be">   63</a></span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d5/dd5/struct_p_t_s.html#ad21108489753d3c77080b9b45e88a0be">m_iStackSize</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#a79cd6955f29a3cd02697699a9cdf7932">   64</a></span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d5/dd5/struct_p_t_s.html#a79cd6955f29a3cd02697699a9cdf7932">m_iInitialPriority</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d5/dd5/struct_p_t_s.html#abf58e424fd795ed3b11383d70cec6ea1">   65</a></span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d5/dd5/struct_p_t_s.html#abf58e424fd795ed3b11383d70cec6ea1">m_pRpcData</a>;         <span class="comment">// ptr to rpc specific data.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d2/d25/ngc_2t__thread_8h.html#a5fab9ad9efb680ab1085423e1ec37823">   68</a></span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <a class="code" href="../../db/da6/class_thread_1_1_per_thread_struct.html">Thread::PerThreadStruct</a> <a class="code" href="../../d2/d25/ngc_2t__thread_8h.html#a5fab9ad9efb680ab1085423e1ec37823">_rootThreadStruct</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif  // __CORE_THREAD_NGC_T_THREAD_H__</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_p_t_s_html_ad21108489753d3c77080b9b45e88a0be"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#ad21108489753d3c77080b9b45e88a0be">PTS::m_iStackSize</a></div><div class="ttdeci">int m_iStackSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00063">t_thread.h:63</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_a79cd6955f29a3cd02697699a9cdf7932"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#a79cd6955f29a3cd02697699a9cdf7932">PTS::m_iInitialPriority</a></div><div class="ttdeci">int m_iInitialPriority</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00064">t_thread.h:64</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a310cfb86394ec93d8676835d016d4212"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a310cfb86394ec93d8676835d016d4212">Thread::PerThreadStruct::m_iStackSize</a></div><div class="ttdeci">int m_iStackSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00032">t_thread.h:32</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_ac1327899c16f39febb42d2392b29713e"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#ac1327899c16f39febb42d2392b29713e">Thread::PerThreadStruct::m_osId</a></div><div class="ttdeci">OSTHREADID m_osId</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00029">t_thread.h:29</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a400434551ad127d4164ddc542416fcef"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a400434551ad127d4164ddc542416fcef">Thread::PerThreadStruct::m_pEntry</a></div><div class="ttdeci">void * m_pEntry</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00030">t_thread.h:30</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html">PTS</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00057">t_thread.h:57</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_ac6920245695df8a827a7028c4bbd7de9"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#ac6920245695df8a827a7028c4bbd7de9">PTS::m_pStackBase</a></div><div class="ttdeci">void * m_pStackBase</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00062">t_thread.h:62</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html">Thread::PerThreadStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00025">t_thread.h:25</a></div></div>
+<div class="ttc" id="anamespace_thread_html_aa393d6f232ad1d0279ee6815cf87afb1"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#aa393d6f232ad1d0279ee6815cf87afb1">Thread::HTHREAD</a></div><div class="ttdeci">unsigned int HTHREAD</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00023">t_thread.h:23</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a8b1b258b614ca3dc59f85bad79eb1455"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a8b1b258b614ca3dc59f85bad79eb1455">Thread::PerThreadStruct::m_iInitialPriority</a></div><div class="ttdeci">int m_iInitialPriority</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00033">t_thread.h:33</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_a0913024e44368aff8e761056fd145651"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#a0913024e44368aff8e761056fd145651">PTS::m_cID</a></div><div class="ttdeci">char m_cID[16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00058">t_thread.h:58</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a717813ee9dd9383308ef535d833a388c"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a717813ee9dd9383308ef535d833a388c">Thread::PerThreadStruct::m_utid</a></div><div class="ttdeci">THREADID m_utid</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00028">t_thread.h:28</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_ae250e29cc4a2d50366cc797dd35c40b8"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#ae250e29cc4a2d50366cc797dd35c40b8">PTS::m_pEntry</a></div><div class="ttdeci">void * m_pEntry</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00061">t_thread.h:61</a></div></div>
+<div class="ttc" id="anamespace_thread_html_a485b6e2ea36dc9b912d82b4fa1a1847c"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#a485b6e2ea36dc9b912d82b4fa1a1847c">Thread::THREADID</a></div><div class="ttdeci">int THREADID</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00021">t_thread.h:21</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_abf58e424fd795ed3b11383d70cec6ea1"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#abf58e424fd795ed3b11383d70cec6ea1">PTS::m_pRpcData</a></div><div class="ttdeci">void * m_pRpcData</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00065">t_thread.h:65</a></div></div>
+<div class="ttc" id="angc_2t__thread_8h_html_a5fab9ad9efb680ab1085423e1ec37823"><div class="ttname"><a href="../../d2/d25/ngc_2t__thread_8h.html#a5fab9ad9efb680ab1085423e1ec37823">_rootThreadStruct</a></div><div class="ttdeci">Thread::PerThreadStruct _rootThreadStruct</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00068">t_thread.h:68</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_a800dbef4dca31eb4a90c5c64f44f426f"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#a800dbef4dca31eb4a90c5c64f44f426f">PTS::m_osId</a></div><div class="ttdeci">Thread::OSTHREADID m_osId</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00060">t_thread.h:60</a></div></div>
+<div class="ttc" id="anamespace_thread_html"><div class="ttname"><a href="../../d8/d76/namespace_thread.html">Thread</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00020">t_thread.h:20</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a1b3c06c2598cace39784800c83484c3f"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a1b3c06c2598cace39784800c83484c3f">Thread::PerThreadStruct::m_pStackBase</a></div><div class="ttdeci">void * m_pStackBase</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00031">t_thread.h:31</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_a759ede6f3517a9bcb15707c7e3f1ddbd"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#a759ede6f3517a9bcb15707c7e3f1ddbd">Thread::PerThreadStruct::m_pRpcData</a></div><div class="ttdeci">void * m_pRpcData</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00034">t_thread.h:34</a></div></div>
+<div class="ttc" id="anamespace_thread_html_a839e6442fa00236052184eb91586f6be"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#a839e6442fa00236052184eb91586f6be">Thread::dummy</a></div><div class="ttdeci">int dummy</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dff/ngps_2t__thread_8h_source.html#l00051">t_thread.h:51</a></div></div>
+<div class="ttc" id="aclass_thread_1_1_per_thread_struct_html_ae1ca033d69cec04b7624b9b94d06750e"><div class="ttname"><a href="../../db/da6/class_thread_1_1_per_thread_struct.html#ae1ca033d69cec04b7624b9b94d06750e">Thread::PerThreadStruct::m_cID</a></div><div class="ttdeci">char m_cID[16]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00027">t_thread.h:27</a></div></div>
+<div class="ttc" id="anamespace_thread_html_ad1549c943a1c4a0b057be3df3be102f1"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#ad1549c943a1c4a0b057be3df3be102f1">Thread::CreateThread</a></div><div class="ttdeci">HTHREAD CreateThread(PerThreadStruct *pPTS)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d8a/ngps_2t__thread_8cpp_source.html#l00052">t_thread.cpp:52</a></div></div>
+<div class="ttc" id="astruct_p_t_s_html_af12469b23babcef8ed084b334452af31"><div class="ttname"><a href="../../d5/dd5/struct_p_t_s.html#af12469b23babcef8ed084b334452af31">PTS::m_utid</a></div><div class="ttdeci">Thread::THREADID m_utid</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00059">t_thread.h:59</a></div></div>
+<div class="ttc" id="anamespace_thread_html_a6442b6a52821239fc831b09c144df132"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#a6442b6a52821239fc831b09c144df132">Thread::OSTHREADID</a></div><div class="ttdeci">int OSTHREADID</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d25/ngc_2t__thread_8h_source.html#l00022">t_thread.h:22</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="../../dir_804e5d13c69547940b35da2fd89f54c8.html">Thread</a></li><li class="navelem"><a class="el" href="../../dir_506b120422a8c6fe36e1b167c67b093e.html">ngc</a></li><li class="navelem"><a class="el" href="../../d2/d25/ngc_2t__thread_8h.html">t_thread.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

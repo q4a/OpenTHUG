@@ -1,0 +1,26 @@
+var _x_box_2_n_x_2anim_8h =
+[
+    [ "GetVertexShader", "da/dd9/_x_box_2_n_x_2anim_8h.html#a77f9af4686fb32625004ee3f2acdf2f4", null ],
+    [ "CreateWeightedMeshVertexShaders", "da/dd9/_x_box_2_n_x_2anim_8h.html#a1253919e68002c380d8b4432d095db86", null ],
+    [ "startup_weighted_mesh_vertex_shader", "da/dd9/_x_box_2_n_x_2anim_8h.html#a36bff70689365d305755ca6bec7639cc", null ],
+    [ "setup_weighted_mesh_vertex_shader", "da/dd9/_x_box_2_n_x_2anim_8h.html#a8a8933b9aa8ad3f8ddbbd2ed59329fd2", null ],
+    [ "shutdown_weighted_mesh_vertex_shader", "da/dd9/_x_box_2_n_x_2anim_8h.html#a1c1e2d7613565b14cd823f7640682fdb", null ],
+    [ "WeightedMeshVS_VXC_1Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#a1d2462a15786553fa77791368bba253f", null ],
+    [ "WeightedMeshVS_VXC_2Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#ac5e7dc241351e483fad6056c8a92aedb", null ],
+    [ "WeightedMeshVS_VXC_3Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#a3135fe474fe037d79a8f8aec82b821a9", null ],
+    [ "WeightedMeshVS_VXC_Specular_1Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#ad76ed24b02f2201fe7b2f6bfe458f33a", null ],
+    [ "WeightedMeshVS_VXC_Specular_2Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#a88d92011d056439b7de12577f787e27a", null ],
+    [ "WeightedMeshVS_VXC_Specular_3Weight", "da/dd9/_x_box_2_n_x_2anim_8h.html#acfb71ffcdca0afbcbce459f0b028b1e3", null ],
+    [ "WeightedMeshVS_VXC_1Weight_UVTransform", "da/dd9/_x_box_2_n_x_2anim_8h.html#aa847e04dafb23b89de4f817af909f495", null ],
+    [ "WeightedMeshVS_VXC_2Weight_UVTransform", "da/dd9/_x_box_2_n_x_2anim_8h.html#afa785034898e6c626fdbfe5d2b18094d", null ],
+    [ "WeightedMeshVS_VXC_3Weight_UVTransform", "da/dd9/_x_box_2_n_x_2anim_8h.html#a187370ff8a7a102f87d29d2a1cf04a3b", null ],
+    [ "WeightedMeshVS_VXC_1Weight_SBPassThru", "da/dd9/_x_box_2_n_x_2anim_8h.html#a4274b62ba49181cfa2714c64c2459850", null ],
+    [ "WeightedMeshVS_VXC_2Weight_SBPassThru", "da/dd9/_x_box_2_n_x_2anim_8h.html#ae70dcaf5276679e8c417aff141604cdb", null ],
+    [ "WeightedMeshVS_VXC_3Weight_SBPassThru", "da/dd9/_x_box_2_n_x_2anim_8h.html#a3d8adada4894450d9bc781db82151026", null ],
+    [ "WeightedMeshVertexShader_SBWrite", "da/dd9/_x_box_2_n_x_2anim_8h.html#ad2ab4bdb61c8f0f00039d14ed45644f5", null ],
+    [ "BillboardScreenAlignedVS", "da/dd9/_x_box_2_n_x_2anim_8h.html#abb651f6712545bbe18396b59f5fdde0b", null ],
+    [ "ParticleFlatVS", "da/dd9/_x_box_2_n_x_2anim_8h.html#a3660548fcf781a76a82e8c40378e687d", null ],
+    [ "ParticleNewFlatVS", "da/dd9/_x_box_2_n_x_2anim_8h.html#aba6d83c0b0f41a7e663eab62cba6e7f3", null ],
+    [ "ParticleNewFlatPointSpriteVS", "da/dd9/_x_box_2_n_x_2anim_8h.html#a4e4af9ac2782a2c11173ff02e276afcb", null ],
+    [ "ShadowBufferStaticGeomVS", "da/dd9/_x_box_2_n_x_2anim_8h.html#a734fff43e89d4842364259045a7c8ed8", null ]
+];

@@ -1,0 +1,540 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_NxScene.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxScene.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxScene.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;<a class="code" href="../../d7/d6c/nx_8h.html">Gfx/nx.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxGeom.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxScene.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/p_NxSector.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include    &quot;Gfx/NGPS/NX/geomnode.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;libgraph.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/db0/pip_8h.html">sys/file/pip.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3f3b6d7a2f6881dc0e938dc54a3b0477">   22</a></span>&#160;<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3f3b6d7a2f6881dc0e938dc54a3b0477">CPs2Scene::CPs2Scene</a>()</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a> = NULL;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a> = NULL;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a> = NULL;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac78ed4e083956634a91208a7792e5905">   34</a></span>&#160;<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac78ed4e083956634a91208a7792e5905">CPs2Scene::~CPs2Scene</a>()</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="comment">// Have to delete the sectors here first</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *p_sector;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">while</span> ((p_sector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext()))</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            p_sector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a22357fcc9ed667a9079f9d30d1988fae">clear_flags</a>(<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#abae01995e25a8fb12414055215798145a6796cc21a55861b3b80b807f6d05fc95">CSector::mIN_SUPER_SECTORS</a>);  <span class="comment">// Tells cloned sectors it is OK to go away (and SuperSectors will be dead, anyway)</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keyword">delete</span> p_sector;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a> = NULL;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa30fa82eb390598af9e3f925fccd0e46">Cleanup</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7b8fc7ff51a4bf56e2c7d40f02d4db55">   59</a></span>&#160;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *  <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7b8fc7ff51a4bf56e2c7d40f02d4db55">CPs2Scene::GetEngineScene</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a4d3fb601b1abd2a44ee5c4c6fb344876">   69</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a4d3fb601b1abd2a44ee5c4c6fb344876">CPs2Scene::SetEngineScene</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_scene)</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a> = p_scene;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2bce388b346a4b67d2a1f7e89b86cfb2">   79</a></span>&#160;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *  <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2bce388b346a4b67d2a1f7e89b86cfb2">CPs2Scene::GetEngineCloneScene</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ad083542520749967cf3663214ee69702">   89</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ad083542520749967cf3663214ee69702">CPs2Scene::SetEngineCloneScene</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_scene)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a> = p_scene;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7002231ea48d1d2321cccce69fd71584">   99</a></span>&#160;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *  <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7002231ea48d1d2321cccce69fd71584">CPs2Scene::GetEngineAddScene</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2cd5db1270f1fd23e57c9e32c2c2505b">  109</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2cd5db1270f1fd23e57c9e32c2c2505b">CPs2Scene::SetEngineAddScene</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_scene)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a> = p_scene;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of the CScene</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a96d10f08aa094f7c2f0f6767b905fbce">  124</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a96d10f08aa094f7c2f0f6767b905fbce">CPs2Scene::create_sectors</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_node)</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;{</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> (!p_node)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">while</span> (p_node)</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// Recursively traverse tree, treating the object-level nodes as leaves.</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// From each object, create a sector.</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// (Mick: optimized tail recursion, after suggestion from John Brandwood)</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">if</span> (p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a80584d9147ceef627c6370c39fc8dbf7">IsObject</a>())         <span class="comment">// Create CSector from object</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *pSector;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a> *pPs2Sector;     <span class="comment">// platform dependent class</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html">CPs2Geom</a> *pGeom;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="comment">// Find Sector</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a86aa74ca84558d05ae844cf89adfcae5">GetSector</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>());</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            Dbg_MsgAssert(!pSector, (<span class="stringliteral">&quot;We already have a sector with checksum %x&quot;</span>, p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>()));</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="comment">// If it doesn&#39;t exist yet, create it</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span> (!pSector)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                pSector = <span class="keyword">new</span> <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a>;       <span class="comment">// Create platform specific data</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a6da0d71528a80e92b386584ffed5dee5">SetChecksum</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>());</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;                pGeom = <span class="keyword">new</span> <a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html">CPs2Geom</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;                pGeom-&gt;<a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html#a65fc5834b88dd46cff72a319d19e52e3">SetEngineObject</a>(p_node);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a4b181e11e1f93dc3bfbb2b6e63778e1d">SetGeom</a>(pGeom);</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#afe389f00a45051e690f2003e3f7cedff">AddSector</a>(pSector);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                <span class="comment">//Dbg_Message(&quot;Creating new sector %x&quot;, p_node-&gt;GetChecksum());</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            <span class="comment">// Access platform dependent data</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            pPs2Sector = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a> *<span class="keyword">&gt;</span>(pSector);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <span class="comment">// Add node to sector</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="comment">//pPs2Sector-&gt;SetEngineObject(p_node);</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            pPs2Sector-&gt;<a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html#a7b66ad453a90d958faa972660dea08a5">SetEngineObject</a>(NULL);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        } <span class="keywordflow">else</span> {    <span class="comment">// Traverse children and siblings</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a96d10f08aa094f7c2f0f6767b905fbce">create_sectors</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">GetChild</a>());</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        p_node = p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa65c23f85308d2cde4595b021ee399e3">GetSibling</a>();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">  179</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">CPs2Scene::add_sectors</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_node)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">if</span> (!p_node)</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="comment">// Recursively traverse tree, treating the object-level nodes as leaves.</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// From each object, create a sector.</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a80584d9147ceef627c6370c39fc8dbf7">IsObject</a>())         <span class="comment">// Create CSector from object</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *pSector, *p_found_sector;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a> *pPs2Sector;     <span class="comment">// platform dependent class</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html">CPs2Geom</a> *pGeom;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">// Find Sector</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        p_found_sector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a86aa74ca84558d05ae844cf89adfcae5">GetSector</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>());</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">//Dbg_MsgAssert(!pSector, (&quot;We already have a sector with checksum %x&quot;, p_node-&gt;GetChecksum()));</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="comment">// Even if it does exist, create it</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        pSector = <span class="keyword">new</span> <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a>;       <span class="comment">// Create platform specific data</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a6da0d71528a80e92b386584ffed5dee5">SetChecksum</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>());</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        pGeom = <span class="keyword">new</span> <a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html">CPs2Geom</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        pGeom-&gt;<a class="code" href="../../de/d72/class_nx_1_1_c_ps2_geom.html#a65fc5834b88dd46cff72a319d19e52e3">SetEngineObject</a>(p_node);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a4b181e11e1f93dc3bfbb2b6e63778e1d">SetGeom</a>(pGeom);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="preprocessor">        #ifdef  __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *p_old_sector =</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#af3fcd6c0f7b8163a6747a3049fd4392f">ReplaceSector</a>(pSector);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        Dbg_Assert(p_old_sector == p_found_sector);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="comment">//Dbg_Message(&quot;Creating new sector %x&quot;, p_node-&gt;GetChecksum());</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="comment">// Access platform dependent data</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        pPs2Sector = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a> *<span class="keyword">&gt;</span>(pSector);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="comment">// Add node to sector</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        pPs2Sector-&gt;<a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html#a7b66ad453a90d958faa972660dea08a5">SetEngineObject</a>(NULL);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    } <span class="keywordflow">else</span> {    <span class="comment">// Traverse children and siblings</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">add_sectors</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">GetChild</a>());</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">add_sectors</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa65c23f85308d2cde4595b021ee399e3">GetSibling</a>());</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a604a75b6151c70075dbf79ab4ed3efa3">  230</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a604a75b6151c70075dbf79ab4ed3efa3">CPs2Scene::delete_sectors</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a> *p_node)</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;{</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keywordflow">if</span> (!p_node)</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="comment">// Recursively traverse tree, treating the object-level nodes as leaves.</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="comment">// From each object, delete the sector.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">if</span> (p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a80584d9147ceef627c6370c39fc8dbf7">IsObject</a>())         <span class="comment">// Create CSector from object</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="comment">// Find Sector</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a86aa74ca84558d05ae844cf89adfcae5">GetSector</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>());</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        Dbg_MsgAssert(pSector, (<span class="stringliteral">&quot;Cant find a sector with checksum %x to delete&quot;</span>, p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">GetChecksum</a>()));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a987ad9e0c3ebfa183f403e3f74609a9e">DeleteSector</a>(pSector);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    } <span class="keywordflow">else</span> {    <span class="comment">// Traverse children and siblings</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a604a75b6151c70075dbf79ab4ed3efa3">delete_sectors</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">GetChild</a>());</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a604a75b6151c70075dbf79ab4ed3efa3">delete_sectors</a>(p_node-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa65c23f85308d2cde4595b021ee399e3">GetSibling</a>());</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6f8ea2761e71a5a71d86a3955aa6f60e">  256</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6f8ea2761e71a5a71d86a3955aa6f60e">CPs2Scene::plat_post_load</a>()</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;{</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="comment">// Generate CSectors first</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">// Garrett: TEMP HACK: We don&#39;t want to traverse siblings, so we send down the child.</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">//          This works because we know there won&#39;t be any data in the root node.</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="comment">//          THIS WILL GO AWAY VERY SOON.  DON&#39;T COPY THIS HACK WITHOUT THIS MESSAGE.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a96d10f08aa094f7c2f0f6767b905fbce">create_sectors</a>(<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">GetChild</a>());</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3b2c2b332ac2bdc728b681ce39cd82b1">  270</a></span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3b2c2b332ac2bdc728b681ce39cd82b1">CPs2Scene::plat_post_add</a>()</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;{</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// Generate CSectors first</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">// Garrett: TEMP HACK: We don&#39;t want to traverse siblings, so we send down the child.</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="comment">//          This works because we know there won&#39;t be any data in the root node.</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">//          THIS WILL GO AWAY VERY SOON.  DON&#39;T COPY THIS HACK WITHOUT THIS MESSAGE.</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">add_sectors</a>(<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">GetChild</a>());</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#adb32dbf69d881f6ebcb7055bdd222b7b">  284</a></span>&#160;<span class="keywordtype">bool</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#adb32dbf69d881f6ebcb7055bdd222b7b">CPs2Scene::plat_load_textures</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_name)</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;{</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;}</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160; </div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#aacb49da32f43114a229a75013ce7e4a6">  294</a></span>&#160;<span class="keywordtype">bool</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#aacb49da32f43114a229a75013ce7e4a6">CPs2Scene::plat_load_collision</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_name)</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;{</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;}</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ae9607bf7b653289bfcc6e032837f4de3">  304</a></span>&#160;<span class="keywordtype">bool</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ae9607bf7b653289bfcc6e032837f4de3">CPs2Scene::plat_add_collision</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_name)</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;{</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;}</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a131467d12f884fd783e064460d73068c">  314</a></span>&#160;<span class="keywordtype">bool</span>            <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a131467d12f884fd783e064460d73068c">CPs2Scene::plat_unload_add_scene</a>()</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;{</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a>)</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        sceGsSyncPath(0, 0);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="comment">// Delete CSectors first</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="comment">// Garrett: TEMP HACK: We don&#39;t want to traverse siblings, so we send down the child.</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="comment">//          This works because we know there won&#39;t be any data in the root node.</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="comment">//          THIS WILL GO AWAY VERY SOON.  DON&#39;T COPY THIS HACK WITHOUT THIS MESSAGE.</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="comment">//delete_sectors(mp_plat_add_scene-&gt;GetChild());</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="comment">// clean up the node we created</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">mp_plat_add_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa30fa82eb390598af9e3f925fccd0e46">Cleanup</a>();</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <span class="comment">// Pip::Unload the file</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <a class="code" href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a>(<a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a8a3c46940f116a4bf864093719519c90">m_add_scene_filename</a>);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#a8a3c46940f116a4bf864093719519c90">m_add_scene_filename</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    }</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;   </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;<span class="comment">// Create an empty sector</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#acbaf4e250b4c74981894d44736d1a5be">  344</a></span>&#160;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *           <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#acbaf4e250b4c74981894d44736d1a5be">CPs2Scene::plat_create_sector</a>()</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;{</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a> * p_sector = <span class="keyword">new</span> <a class="code" href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">CPs2Sector</a>(); </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordflow">return</span> p_sector;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;}</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160; </div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a48c59159f04e5b0baa058c1b473d256f">  357</a></span>&#160;<span class="keywordtype">void</span>                <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a48c59159f04e5b0baa058c1b473d256f">CPs2Scene::plat_set_majority_color</a>(<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> rgba)</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;{</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    {</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <span class="comment">// Set the color of the root node</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#adfa64cb1387443b7d39e4e2af9d6cf35">SetColored</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a05bc2f9c6730b6351e0850be91f6daa4">SetColor</a>(*((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> *) &amp;rgba));</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    }</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="comment">// Set the color of the root clone node</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#adfa64cb1387443b7d39e4e2af9d6cf35">SetColored</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">mp_plat_clone_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a05bc2f9c6730b6351e0850be91f6daa4">SetColor</a>(*((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> *) &amp;rgba));</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;}</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;         </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno"><a class="line" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ab148478d951a16c9757e1c29229774a5">  378</a></span>&#160;<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>         <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ab148478d951a16c9757e1c29229774a5">CPs2Scene::plat_get_majority_color</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color = <a class="code" href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">mp_plat_scene</a>-&gt;<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a2319f4b4508a39a749108acca4e69294">GetColor</a>();</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="keywordflow">return</span> *((<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *) &amp;color);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_ad083542520749967cf3663214ee69702"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ad083542520749967cf3663214ee69702">Nx::CPs2Scene::SetEngineCloneScene</a></div><div class="ttdeci">void SetEngineCloneScene(NxPs2::CGeomNode *p_scene)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00089">p_NxScene.cpp:89</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_geom_html_a65fc5834b88dd46cff72a319d19e52e3"><div class="ttname"><a href="../../de/d72/class_nx_1_1_c_ps2_geom.html#a65fc5834b88dd46cff72a319d19e52e3">Nx::CPs2Geom::SetEngineObject</a></div><div class="ttdeci">void SetEngineObject(NxPs2::CGeomNode *p_object)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3e/_n_g_p_s_2p___nx_geom_8h_source.html#l00135">p_NxGeom.h:135</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_abb116ae5ea9b9f3a324b6cdbe783b44f"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#abb116ae5ea9b9f3a324b6cdbe783b44f">Nx::CPs2Scene::mp_plat_scene</a></div><div class="ttdeci">NxPs2::CGeomNode * mp_plat_scene</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d53/_n_g_p_s_2p__nxscene_8h_source.html#l00052">p_NxScene.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a6e93e00197ecb262f37295b77114f93d"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6e93e00197ecb262f37295b77114f93d">Nx::CPs2Scene::mp_plat_add_scene</a></div><div class="ttdeci">NxPs2::CGeomNode * mp_plat_add_scene</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d53/_n_g_p_s_2p__nxscene_8h_source.html#l00054">p_NxScene.h:54</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a21f960f84591bfa00b118567dd545e3a"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a21f960f84591bfa00b118567dd545e3a">Nx::CPs2Scene::mp_plat_clone_scene</a></div><div class="ttdeci">NxPs2::CGeomNode * mp_plat_clone_scene</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d53/_n_g_p_s_2p__nxscene_8h_source.html#l00053">p_NxScene.h:53</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_ab148478d951a16c9757e1c29229774a5"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ab148478d951a16c9757e1c29229774a5">Nx::CPs2Scene::plat_get_majority_color</a></div><div class="ttdeci">virtual Image::RGBA plat_get_majority_color() const</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00378">p_NxScene.cpp:378</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html_a6da0d71528a80e92b386584ffed5dee5"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html#a6da0d71528a80e92b386584ffed5dee5">Nx::CSector::SetChecksum</a></div><div class="ttdeci">void SetChecksum(uint32 c)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d01/_nx_sector_8cpp_source.html#l00075">NxSector.cpp:75</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_ae9607bf7b653289bfcc6e032837f4de3"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ae9607bf7b653289bfcc6e032837f4de3">Nx::CPs2Scene::plat_add_collision</a></div><div class="ttdeci">virtual bool plat_add_collision(const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00304">p_NxScene.cpp:304</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_afe389f00a45051e690f2003e3f7cedff"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#afe389f00a45051e690f2003e3f7cedff">Nx::CScene::AddSector</a></div><div class="ttdeci">void AddSector(CSector *pSector)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d81/_nx_scene_8cpp_source.html#l00204">NxScene.cpp:204</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d06/_n_g_p_s_2_n_x_2geomnode_8h_source.html#l00128">geomnode.h:128</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_ac49e54b5a7dc6ac8f0de567494b841fa"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac49e54b5a7dc6ac8f0de567494b841fa">Nx::CPs2Scene::add_sectors</a></div><div class="ttdeci">void add_sectors(NxPs2::CGeomNode *p_node)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00179">p_NxScene.cpp:179</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_a05bc2f9c6730b6351e0850be91f6daa4"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a05bc2f9c6730b6351e0850be91f6daa4">NxPs2::CGeomNode::SetColor</a></div><div class="ttdeci">void SetColor(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02607">geomnode.cpp:2607</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_a8a3c46940f116a4bf864093719519c90"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#a8a3c46940f116a4bf864093719519c90">Nx::CScene::m_add_scene_filename</a></div><div class="ttdeci">char m_add_scene_filename[128]</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dca/_nx_scene_8h_source.html#l00138">NxScene.h:138</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a4d3fb601b1abd2a44ee5c4c6fb344876"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a4d3fb601b1abd2a44ee5c4c6fb344876">Nx::CPs2Scene::SetEngineScene</a></div><div class="ttdeci">void SetEngineScene(NxPs2::CGeomNode *p_scene)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00069">p_NxScene.cpp:69</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html_abae01995e25a8fb12414055215798145a6796cc21a55861b3b80b807f6d05fc95"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html#abae01995e25a8fb12414055215798145a6796cc21a55861b3b80b807f6d05fc95">Nx::CSector::mIN_SUPER_SECTORS</a></div><div class="ttdeci">@ mIN_SUPER_SECTORS</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4a/_nx_sector_8h_source.html#l00160">NxSector.h:160</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html_a4b181e11e1f93dc3bfbb2b6e63778e1d"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html#a4b181e11e1f93dc3bfbb2b6e63778e1d">Nx::CSector::SetGeom</a></div><div class="ttdeci">void SetGeom(CGeom *p_geom)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d01/_nx_sector_8cpp_source.html#l00095">NxSector.cpp:95</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_ac78ed4e083956634a91208a7792e5905"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#ac78ed4e083956634a91208a7792e5905">Nx::CPs2Scene::~CPs2Scene</a></div><div class="ttdeci">virtual ~CPs2Scene()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00034">p_NxScene.cpp:34</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_adb32dbf69d881f6ebcb7055bdd222b7b"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#adb32dbf69d881f6ebcb7055bdd222b7b">Nx::CPs2Scene::plat_load_textures</a></div><div class="ttdeci">virtual bool plat_load_textures(const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00284">p_NxScene.cpp:284</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a604a75b6151c70075dbf79ab4ed3efa3"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a604a75b6151c70075dbf79ab4ed3efa3">Nx::CPs2Scene::delete_sectors</a></div><div class="ttdeci">void delete_sectors(NxPs2::CGeomNode *p_node)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00230">p_NxScene.cpp:230</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_geom_html"><div class="ttname"><a href="../../de/d72/class_nx_1_1_c_ps2_geom.html">Nx::CPs2Geom</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d3e/_n_g_p_s_2p___nx_geom_8h_source.html#l00035">p_NxGeom.h:35</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a7b8fc7ff51a4bf56e2c7d40f02d4db55"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7b8fc7ff51a4bf56e2c7d40f02d4db55">Nx::CPs2Scene::GetEngineScene</a></div><div class="ttdeci">NxPs2::CGeomNode * GetEngineScene() const</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00059">p_NxScene.cpp:59</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a7002231ea48d1d2321cccce69fd71584"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a7002231ea48d1d2321cccce69fd71584">Nx::CPs2Scene::GetEngineAddScene</a></div><div class="ttdeci">NxPs2::CGeomNode * GetEngineAddScene() const</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00099">p_NxScene.cpp:99</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_aa30fa82eb390598af9e3f925fccd0e46"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa30fa82eb390598af9e3f925fccd0e46">NxPs2::CGeomNode::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l03234">geomnode.cpp:3234</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_a6197306b94c90d94a665b8bf69b90e0b"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a6197306b94c90d94a665b8bf69b90e0b">NxPs2::CGeomNode::GetChecksum</a></div><div class="ttdeci">uint32 GetChecksum()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02444">geomnode.cpp:2444</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_a80584d9147ceef627c6370c39fc8dbf7"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a80584d9147ceef627c6370c39fc8dbf7">NxPs2::CGeomNode::IsObject</a></div><div class="ttdeci">bool IsObject()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02276">geomnode.cpp:2276</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_aa65c23f85308d2cde4595b021ee399e3"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#aa65c23f85308d2cde4595b021ee399e3">NxPs2::CGeomNode::GetSibling</a></div><div class="ttdeci">CGeomNode * GetSibling()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02527">geomnode.cpp:2527</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_ade9af942bebed2e555036180139ad53f"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">Nx::CScene::mp_sector_table</a></div><div class="ttdeci">Lst::HashTable&lt; CSector &gt; * mp_sector_table</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dca/_nx_scene_8h_source.html#l00129">NxScene.h:129</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_acbaf4e250b4c74981894d44736d1a5be"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#acbaf4e250b4c74981894d44736d1a5be">Nx::CPs2Scene::plat_create_sector</a></div><div class="ttdeci">virtual CSector * plat_create_sector()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00344">p_NxScene.cpp:344</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_a987ad9e0c3ebfa183f403e3f74609a9e"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#a987ad9e0c3ebfa183f403e3f74609a9e">Nx::CScene::DeleteSector</a></div><div class="ttdeci">bool DeleteSector(uint32 sector_checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d81/_nx_scene_8cpp_source.html#l00358">NxScene.cpp:358</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_a86aa74ca84558d05ae844cf89adfcae5"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#a86aa74ca84558d05ae844cf89adfcae5">Nx::CScene::GetSector</a></div><div class="ttdeci">CSector * GetSector(uint32 sector_checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d81/_nx_scene_8cpp_source.html#l00194">NxScene.cpp:194</a></div></div>
+<div class="ttc" id="apip_8h_html"><div class="ttname"><a href="../../d2/db0/pip_8h.html">pip.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a48c59159f04e5b0baa058c1b473d256f"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a48c59159f04e5b0baa058c1b473d256f">Nx::CPs2Scene::plat_set_majority_color</a></div><div class="ttdeci">virtual void plat_set_majority_color(Image::RGBA rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00357">p_NxScene.cpp:357</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a2bce388b346a4b67d2a1f7e89b86cfb2"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2bce388b346a4b67d2a1f7e89b86cfb2">Nx::CPs2Scene::GetEngineCloneScene</a></div><div class="ttdeci">NxPs2::CGeomNode * GetEngineCloneScene() const</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00079">p_NxScene.cpp:79</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a96d10f08aa094f7c2f0f6767b905fbce"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a96d10f08aa094f7c2f0f6767b905fbce">Nx::CPs2Scene::create_sectors</a></div><div class="ttdeci">void create_sectors(NxPs2::CGeomNode *p_node)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00124">p_NxScene.cpp:124</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_sector_html_a7b66ad453a90d958faa972660dea08a5"><div class="ttname"><a href="../../d6/da8/class_nx_1_1_c_ps2_sector.html#a7b66ad453a90d958faa972660dea08a5">Nx::CPs2Sector::SetEngineObject</a></div><div class="ttdeci">void SetEngineObject(NxPs2::CGeomNode *p_object)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4b/_n_g_p_s_2p__nxsector_8h_source.html#l00079">p_NxSector.h:79</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a6ee3f2a13a08091a1e0145f209593325"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a></div><div class="ttdeci">void Unload(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00040">win32functions.cpp:40</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_a2319f4b4508a39a749108acca4e69294"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#a2319f4b4508a39a749108acca4e69294">NxPs2::CGeomNode::GetColor</a></div><div class="ttdeci">uint32 GetColor()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02622">geomnode.cpp:2622</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_adfa64cb1387443b7d39e4e2af9d6cf35"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#adfa64cb1387443b7d39e4e2af9d6cf35">NxPs2::CGeomNode::SetColored</a></div><div class="ttdeci">void SetColored(bool yes)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02408">geomnode.cpp:2408</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html_a22357fcc9ed667a9079f9d30d1988fae"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html#a22357fcc9ed667a9079f9d30d1988fae">Nx::CSector::clear_flags</a></div><div class="ttdeci">void clear_flags(uint32 flags)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d01/_nx_sector_8cpp_source.html#l00682">NxSector.cpp:682</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a6f8ea2761e71a5a71d86a3955aa6f60e"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a6f8ea2761e71a5a71d86a3955aa6f60e">Nx::CPs2Scene::plat_post_load</a></div><div class="ttdeci">virtual void plat_post_load()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00256">p_NxScene.cpp:256</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a2cd5db1270f1fd23e57c9e32c2c2505b"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a2cd5db1270f1fd23e57c9e32c2c2505b">Nx::CPs2Scene::SetEngineAddScene</a></div><div class="ttdeci">void SetEngineAddScene(NxPs2::CGeomNode *p_scene)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00109">p_NxScene.cpp:109</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a3f3b6d7a2f6881dc0e938dc54a3b0477"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3f3b6d7a2f6881dc0e938dc54a3b0477">Nx::CPs2Scene::CPs2Scene</a></div><div class="ttdeci">CPs2Scene()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00022">p_NxScene.cpp:22</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_af3fcd6c0f7b8163a6747a3049fd4392f"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#af3fcd6c0f7b8163a6747a3049fd4392f">Nx::CScene::ReplaceSector</a></div><div class="ttdeci">CSector * ReplaceSector(CSector *pSector)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d81/_nx_scene_8cpp_source.html#l00214">NxScene.cpp:214</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_sector_html"><div class="ttname"><a href="../../d6/da8/class_nx_1_1_c_ps2_sector.html">Nx::CPs2Sector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4b/_n_g_p_s_2p__nxsector_8h_source.html#l00026">p_NxSector.h:26</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html">Nx::CSector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4a/_nx_sector_8h_source.html#l00079">NxSector.h:79</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html_af7cfad6dcea586d264ae6edc3ff15fdf"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html#af7cfad6dcea586d264ae6edc3ff15fdf">NxPs2::CGeomNode::GetChild</a></div><div class="ttdeci">CGeomNode * GetChild()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d95/_n_g_p_s_2_n_x_2geomnode_8cpp_source.html#l02494">geomnode.cpp:2494</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a131467d12f884fd783e064460d73068c"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a131467d12f884fd783e064460d73068c">Nx::CPs2Scene::plat_unload_add_scene</a></div><div class="ttdeci">virtual bool plat_unload_add_scene()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00314">p_NxScene.cpp:314</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_aacb49da32f43114a229a75013ce7e4a6"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#aacb49da32f43114a229a75013ce7e4a6">Nx::CPs2Scene::plat_load_collision</a></div><div class="ttdeci">virtual bool plat_load_collision(const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00294">p_NxScene.cpp:294</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_scene_html_a3b2c2b332ac2bdc728b681ce39cd82b1"><div class="ttname"><a href="../../dd/dd8/class_nx_1_1_c_ps2_scene.html#a3b2c2b332ac2bdc728b681ce39cd82b1">Nx::CPs2Scene::plat_post_add</a></div><div class="ttdeci">virtual void plat_post_add()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp_source.html#l00270">p_NxScene.cpp:270</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../da/d04/_n_g_p_s_2p__nxscene_8cpp.html">p_NxScene.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

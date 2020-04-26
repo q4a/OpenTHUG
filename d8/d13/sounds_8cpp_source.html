@@ -1,0 +1,374 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Engine/sounds.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d8/d13/sounds_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sounds.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d13/sounds_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">    This is just a database for arrays of skater sounds on different terrains.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">    For each type of sound in sounds.h (like grind, land, slide, wheel roll, etc...)</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">    there is an array of sounds to play, one for each possible terrain type.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">    A terrain type of zero indicates that the sound is the default (for surfaces not</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">    defined in the list).</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">string.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d00/soundfx_8h.html">gel/soundfx/soundfx.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd4/netserv_8h.html">gel/net/server/netserv.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d20/netclnt_8h.html">gel/net/client/netclnt.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                           </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/ddc/sounds_8h.html">engine/sounds.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d1c/_game_net_8h.html">sk/gamenet/gamenet.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d16/config_8h.html">sys/config/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d02/replay_8h.html">sys/replay/replay.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d6/da8/namespace_sk3_sfx.html">   28</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d6/da8/namespace_sk3_sfx.html">Sk3Sfx</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<a class="code" href="../../d6/da8/namespace_sk3_sfx.html#abdec898d414f1f0393d5387b35384179">DefineSingletonClass</a>( <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">CSk3SfxManager</a>, <span class="stringliteral">&quot;Sk3 Sound FX&quot;</span> );</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;CSk3SfxManager::CSk3SfxManager( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">Reset</a>( );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;CSk3SfxManager::~CSk3SfxManager( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;}</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">   46</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">CSk3SfxManager::Reset</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">vNUM_SOUND_TYPES</a>; i++ )</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ i ] = 0;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;} <span class="comment">// end of Reset( )</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// Sound FX for the level...</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*  The surface flag indicates which surface the skater is currently on (grass, cement, wood, metal)</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">    whichSound is the checksum from the name of the looping sound (should be loaded using LoadSound</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">        in the script file for each level)</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">    whichArray indicates whether this sound belongs in the list of wheels rolling sounds, or</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">        grinding sounds, etc...</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#afaff40a13dc89c3d1525921d9f9a6375">CSk3SfxManager::SetSkaterSoundInfo</a>( <span class="keywordtype">int</span> surfaceFlag, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> whichSound, <span class="keywordtype">int</span> whichArray,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">float</span> maxPitch, <span class="keywordtype">float</span> minPitch, <span class="keywordtype">float</span> maxVol, <span class="keywordtype">float</span> minVol )</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d43/namespace_sfx.html#ac665814a84c0398a09b740554364b146">Sfx::NoSoundPlease</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// must initialize PInfo!</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html">Sfx::CSfxManager</a> * sfx_manager = Sfx::CSfxManager::Instance();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordflow">if</span> ( NULL == sfx_manager-&gt;<a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#a7007f0b33e0a804b0dff839c10ede9a9">GetWaveTableIndex</a>( whichSound ) )</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        Dbg_MsgAssert( 0,( <span class="stringliteral">&quot;Terrain sound not loaded! surface %d sound %s checksum %d soundType %d&quot;</span>,</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            surfaceFlag, <a class="code" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a>( whichSound ), whichSound, whichArray ));</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> numEntries = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ whichArray ];</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    SkaterSoundInfo *pArray = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">mSoundArray</a>[ whichArray ];</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    SkaterSoundInfo *pInfo = NULL;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; numEntries; i++ )</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> ( pArray[ i ].surfaceFlag == surfaceFlag )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Re-defining soundtype %d for surfaceFlag %d&quot;</span>, whichArray, surfaceFlag );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            pInfo = &amp;pArray[ i ];</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">if</span> ( !pInfo )</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        pInfo = &amp;pArray[ <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ whichArray ] ];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ whichArray ] += 1;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ whichArray ] &lt; <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">vMAX_NUM_ENTRIES</a>,( <span class="stringliteral">&quot;Array too small type %d.  Increase MAX_NUM_ENTRIES.&quot;</span>, whichArray ));</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    Dbg_MsgAssert( pInfo,( <span class="stringliteral">&quot;Please fire Matt immediately after kicking him in the nuts.&quot;</span> ));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// surfaceFlag of zero will be used for the default</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    pInfo-&gt;surfaceFlag = surfaceFlag;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="comment">// if soundChecksum is zero, no sound will play on this surface.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    pInfo-&gt;soundChecksum = whichSound;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    pInfo-&gt;maxPitch = maxPitch;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    pInfo-&gt;minPitch = minPitch;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    pInfo-&gt;maxVol = maxVol;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    pInfo-&gt;minVol = minVol;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;} <span class="comment">// end of SetSkaterSoundInfo( )</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">  112</a></span>&#160;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *<a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">CSk3SfxManager::GetSkaterSoundInfo</a>( <span class="keywordtype">int</span> surfaceFlag, <span class="keywordtype">int</span> whichArray )</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d43/namespace_sfx.html#ac665814a84c0398a09b740554364b146">Sfx::NoSoundPlease</a>()) <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">int</span> numEntries = 0;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    numEntries = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">mNumEntries</a>[ whichArray ];</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *pArray = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">mSoundArray</a>[ whichArray ];</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    Dbg_MsgAssert( pArray,( <span class="stringliteral">&quot;Fire Matt please.&quot;</span> ));</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; numEntries; i++ )</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">if</span> ( pArray[ i ].surfaceFlag == surfaceFlag )</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">return</span> ( &amp;pArray[ i ] );</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// couldn&#39;t find the surface flag in the table... return the default:</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">for</span> ( i = 0; i &lt; numEntries; i++ )</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">if</span> ( !pArray[ i ].surfaceFlag )</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">return</span> ( &amp;pArray[ i ] );</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> ( NULL );</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;} <span class="comment">// end of GetSkaterSoundInfo( )</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8">  142</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8">CSk3SfxManager::PlaySound</a>( <span class="keywordtype">int</span> whichArray, <span class="keywordtype">int</span> surfaceFlag, <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;pos, <span class="keywordtype">float</span> volPercent,</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                                <span class="keywordtype">bool</span> propogate )</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/d43/namespace_sfx.html#ac665814a84c0398a09b740554364b146">Sfx::NoSoundPlease</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    <a class="code" href="../../d9/d29/namespace_replay.html#ad0979a74ee193334a26b505a2fefe4b0">Replay::WriteSkaterSoundEffect</a>(whichArray,surfaceFlag,pos,volPercent);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html">Sfx::CSfxManager</a> * sfx_manager = Sfx::CSfxManager::Instance();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="../../d2/d8e/class_game_net_1_1_manager.html">GameNet::Manager</a> * gamenet_manager = GameNet::Manager::Instance();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *pInfo = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">GetSkaterSoundInfo</a>( surfaceFlag, whichArray );</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span> ( !pInfo )</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">// no sounds are supposed to be played for this surface on this transition:</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">if</span>( propogate )</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="../../da/de4/class_net_1_1_client.html">Net::Client</a>* client;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html">GameNet::MsgPlaySound</a> msg;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <a class="code" href="../../d0/d5a/class_net_1_1_msg_desc.html">Net::MsgDesc</a> msg_desc;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        client = gamenet_manager-&gt;<a class="code" href="../../d2/d8e/class_game_net_1_1_manager.html#aa5990409003c3d0dc975eb8197f19339">GetClient</a>( 0 );</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        Dbg_Assert( client );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#a6f719c98054dcd228955fa2e37633659">m_WhichArray</a> = (char) whichArray;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#a4674eccc0ebfecb90f2ce160ee97e7d4">m_SurfaceFlag</a> = (char) surfaceFlag;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ab7afcb1e73cb8aa547f441bb9cdfeb6b">m_Pos</a>[0] = (short) pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ab7afcb1e73cb8aa547f441bb9cdfeb6b">m_Pos</a>[1] = (short) pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>];</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ab7afcb1e73cb8aa547f441bb9cdfeb6b">m_Pos</a>[2] = (short) pos[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>];</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        msg.<a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ac57aefa7e1016dea798420d532f10ef1">m_VolPercent</a> = (char) volPercent;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        msg_desc.<a class="code" href="../../d0/d5a/class_net_1_1_msg_desc.html#a3cc938d6ae0400367ed8825ebc9cdbc7">m_Data</a> = &amp;msg;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        msg_desc.<a class="code" href="../../d0/d5a/class_net_1_1_msg_desc.html#ad4d6b469195250a34d57fd84bc6d03d3">m_Length</a> = <span class="keyword">sizeof</span>( <a class="code" href="../../d4/d91/class_game_net_1_1_msg_play_sound.html">GameNet::MsgPlaySound</a> );</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        msg_desc.<a class="code" href="../../d0/d5a/class_net_1_1_msg_desc.html#a7a74d825c259e9cb3f66a3bb9f96b2be">m_Id</a> = <a class="code" href="../../df/df5/namespace_game_net.html#a68b4f3ffa319719c7dd66f7c9e1f7139a793d4beff2eab91cd23bbca10e300c74">GameNet::MSG_ID_PLAY_SOUND</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        client-&gt;<a class="code" href="../../d5/d7d/class_net_1_1_app.html#ab733378173d8bd5e5902f1124907d62b">EnqueueMessageToServer</a>( &amp;msg_desc );</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">//  float volL, volR;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="../../da/d13/struct_sfx_1_1s_volume.html">Sfx::sVolume</a> vol;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">//  sfx_manager-&gt;SetVolumeFromPos( &amp;volL, &amp;volR, pos, sfx_manager-&gt;GetDropoffDist( pInfo-&gt;soundChecksum ) );</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    sfx_manager-&gt;<a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#ac28a63a77574abed01989635f67c6c72">SetVolumeFromPos</a>( &amp;vol, pos, sfx_manager-&gt;<a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#aca4c7629440c80247c283238cee1a251">GetDropoffDist</a>( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">soundChecksum</a> ));</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="comment">// Adjust volume according to speed.</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    volPercent = <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">GetVolPercent</a>( pInfo, volPercent );</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">//  volL = PERCENT( volL, volPercent );</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">//  volR = PERCENT( volR, volPercent );</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    vol.<a class="code" href="../../da/d13/struct_sfx_1_1s_volume.html#a72a97301fb0362b51cd652d263fc93b8">PercentageAdjustment</a>( volPercent );</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">//  sfx_manager-&gt;PlaySound( pInfo-&gt;soundChecksum, volL, volR );</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    sfx_manager-&gt;<a class="code" href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#a90282dd885da1bf682620f33ef5895e6">PlaySound</a>( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">soundChecksum</a>, &amp;vol );</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="comment">// set the volume according to the range specified by the designers...</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno"><a class="line" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">  198</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">CSk3SfxManager::GetVolPercent</a>( <a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">SkaterSoundInfo</a> *pInfo, <span class="keywordtype">float</span> volPercent, <span class="keywordtype">bool</span> clipToMaxVol )</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    Dbg_MsgAssert( pInfo,(( <span class="stringliteral">&quot;Fire whoever called this function with this nonsense.&quot;</span> )));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">if</span> ( !( ( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">minVol</a> == 0.0f ) &amp;&amp; ( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">maxVol</a> == 100.0f ) ) )</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        volPercent = ( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">minVol</a> + PERCENT( ( pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">maxVol</a> - pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">minVol</a> ), volPercent ) );</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keywordflow">if</span> ( clipToMaxVol )</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span> ( volPercent &gt; pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">maxVol</a> )</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            volPercent = pInfo-&gt;<a class="code" href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">maxVol</a>;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">return</span> ( volPercent );</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;} <span class="comment">// namespace sfx</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_sk3_sfx_html_abdec898d414f1f0393d5387b35384179"><div class="ttname"><a href="../../d6/da8/namespace_sk3_sfx.html#abdec898d414f1f0393d5387b35384179">Sk3Sfx::DefineSingletonClass</a></div><div class="ttdeci">DefineSingletonClass(CSk3SfxManager, &quot;Sk3 Sound FX&quot;)</div></div>
+<div class="ttc" id="asoundfx_8h_html"><div class="ttname"><a href="../../d2/d00/soundfx_8h.html">soundfx.h</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_desc_html_a7a74d825c259e9cb3f66a3bb9f96b2be"><div class="ttname"><a href="../../d0/d5a/class_net_1_1_msg_desc.html#a7a74d825c259e9cb3f66a3bb9f96b2be">Net::MsgDesc::m_Id</a></div><div class="ttdeci">unsigned char m_Id</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01003">net.h:1003</a></div></div>
+<div class="ttc" id="anamespace_replay_html_ad0979a74ee193334a26b505a2fefe4b0"><div class="ttname"><a href="../../d9/d29/namespace_replay.html#ad0979a74ee193334a26b505a2fefe4b0">Replay::WriteSkaterSoundEffect</a></div><div class="ttdeci">void WriteSkaterSoundEffect(int whichArray, int surfaceFlag, const Mth::Vector &amp;pos, float volPercent)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d8f/replay_8cpp_source.html#l03591">replay.cpp:3591</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_manager_html"><div class="ttname"><a href="../../d2/d8e/class_game_net_1_1_manager.html">GameNet::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d1c/_game_net_8h_source.html#l00519">GameNet.h:519</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html">Sk3Sfx::CSk3SfxManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00053">sounds.h:53</a></div></div>
+<div class="ttc" id="aclass_sfx_1_1_c_sfx_manager_html_ac28a63a77574abed01989635f67c6c72"><div class="ttname"><a href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#ac28a63a77574abed01989635f67c6c72">Sfx::CSfxManager::SetVolumeFromPos</a></div><div class="ttdeci">void SetVolumeFromPos(sVolume *p_vol, const Mth::Vector &amp;soundSource, float dropoffDist, EDropoffFunc dropoff_func=DROPOFF_FUNC_STANDARD, Gfx::Camera *pCamera=NULL, const Mth::Vector *p_dropoff_pos=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l01461">soundfx.cpp:1461</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a6fdd5fd1f47f24f4dd1d3d0a5bffc58b"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b">Sk3Sfx::CSk3SfxManager::GetSkaterSoundInfo</a></div><div class="ttdeci">SkaterSoundInfo * GetSkaterSoundInfo(int surfaceFlag, int whichArray)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00112">sounds.cpp:112</a></div></div>
+<div class="ttc" id="anamespace_sk3_sfx_html"><div class="ttname"><a href="../../d6/da8/namespace_sk3_sfx.html">Sk3Sfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00028">sounds.cpp:28</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_ab733378173d8bd5e5902f1124907d62b"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#ab733378173d8bd5e5902f1124907d62b">Net::App::EnqueueMessageToServer</a></div><div class="ttdeci">void EnqueueMessageToServer(MsgDesc *desc)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d50/netapp_8cpp_source.html#l02096">netapp.cpp:2096</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_play_sound_html_a4674eccc0ebfecb90f2ce160ee97e7d4"><div class="ttname"><a href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#a4674eccc0ebfecb90f2ce160ee97e7d4">GameNet::MsgPlaySound::m_SurfaceFlag</a></div><div class="ttdeci">char m_SurfaceFlag</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00504">GameMsg.h:504</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="astruct_sfx_1_1s_volume_html"><div class="ttname"><a href="../../da/d13/struct_sfx_1_1s_volume.html">Sfx::sVolume</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d00/soundfx_8h_source.html#l00187">soundfx.h:187</a></div></div>
+<div class="ttc" id="aclass_net_1_1_client_html"><div class="ttname"><a href="../../da/de4/class_net_1_1_client.html">Net::Client</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/netclnt_8h_source.html#l00043">netclnt.h:43</a></div></div>
+<div class="ttc" id="areplay_8h_html"><div class="ttname"><a href="../../dd/d02/replay_8h.html">replay.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_desc_html_a3cc938d6ae0400367ed8825ebc9cdbc7"><div class="ttname"><a href="../../d0/d5a/class_net_1_1_msg_desc.html#a3cc938d6ae0400367ed8825ebc9cdbc7">Net::MsgDesc::m_Data</a></div><div class="ttdeci">void * m_Data</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01006">net.h:1006</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_play_sound_html_ac57aefa7e1016dea798420d532f10ef1"><div class="ttname"><a href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ac57aefa7e1016dea798420d532f10ef1">GameNet::MsgPlaySound::m_VolPercent</a></div><div class="ttdeci">char m_VolPercent</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00505">GameMsg.h:505</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="astruct_sfx_1_1s_volume_html_a72a97301fb0362b51cd652d263fc93b8"><div class="ttname"><a href="../../da/d13/struct_sfx_1_1s_volume.html#a72a97301fb0362b51cd652d263fc93b8">Sfx::sVolume::PercentageAdjustment</a></div><div class="ttdeci">void PercentageAdjustment(float percentage)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l00221">soundfx.cpp:221</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a1c9d086113704a4aac5f75a6c825bda6"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a1c9d086113704a4aac5f75a6c825bda6">Sk3Sfx::SkaterSoundInfo::maxVol</a></div><div class="ttdeci">float maxVol</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00047">sounds.h:47</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_manager_html_aa5990409003c3d0dc975eb8197f19339"><div class="ttname"><a href="../../d2/d8e/class_game_net_1_1_manager.html#aa5990409003c3d0dc975eb8197f19339">GameNet::Manager::GetClient</a></div><div class="ttdeci">Net::Client * GetClient(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/_game_net_8cpp_source.html#l03045">GameNet.cpp:3045</a></div></div>
+<div class="ttc" id="anetclnt_8h_html"><div class="ttname"><a href="../../d9/d20/netclnt_8h.html">netclnt.h</a></div></div>
+<div class="ttc" id="aclass_sfx_1_1_c_sfx_manager_html_a7007f0b33e0a804b0dff839c10ede9a9"><div class="ttname"><a href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#a7007f0b33e0a804b0dff839c10ede9a9">Sfx::CSfxManager::GetWaveTableIndex</a></div><div class="ttdeci">WaveTableEntry * GetWaveTableIndex(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l00495">soundfx.cpp:495</a></div></div>
+<div class="ttc" id="aclass_sfx_1_1_c_sfx_manager_html_a90282dd885da1bf682620f33ef5895e6"><div class="ttname"><a href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#a90282dd885da1bf682620f33ef5895e6">Sfx::CSfxManager::PlaySound</a></div><div class="ttdeci">uint32 PlaySound(uint32 checksum, sVolume *p_vol, float pitch=100.0f, uint32 controlID=0, SoundUpdateInfo *pUpdateInfo=NULL, const char *pSoundName=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l00989">soundfx.cpp:989</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_adfe4c3b89f56542e63cb2959f217c290"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290">Sk3Sfx::CSk3SfxManager::Reset</a></div><div class="ttdeci">void Reset(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00046">sounds.cpp:46</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_afaff40a13dc89c3d1525921d9f9a6375"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#afaff40a13dc89c3d1525921d9f9a6375">Sk3Sfx::CSk3SfxManager::SetSkaterSoundInfo</a></div><div class="ttdeci">void SetSkaterSoundInfo(int surfaceFlag, uint32 whichSound, int whichArray, float maxPitch, float minPitch, float maxVol, float minVol)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dcd/terrain_8cpp_source.html#l00884">terrain.cpp:884</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945">Sk3Sfx::CSk3SfxManager::vNUM_SOUND_TYPES</a></div><div class="ttdeci">@ vNUM_SOUND_TYPES</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00078">sounds.h:78</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="anetserv_8h_html"><div class="ttname"><a href="../../d5/dd4/netserv_8h.html">netserv.h</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="a_game_net_8h_html"><div class="ttname"><a href="../../db/d1c/_game_net_8h.html">GameNet.h</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a0f0973986b8dec1ee7a220eabb6b273c"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c">Sk3Sfx::CSk3SfxManager::GetVolPercent</a></div><div class="ttdeci">float GetVolPercent(SkaterSoundInfo *pInfo, float volPercent, bool clipToMaxVol=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00198">sounds.cpp:198</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_play_sound_html"><div class="ttname"><a href="../../d4/d91/class_game_net_1_1_msg_play_sound.html">GameNet::MsgPlaySound</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00499">GameMsg.h:499</a></div></div>
+<div class="ttc" id="aclass_sfx_1_1_c_sfx_manager_html"><div class="ttname"><a href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html">Sfx::CSfxManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d00/soundfx_8h_source.html#l00223">soundfx.h:223</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_ab1f2b1c46a60ebdbd883d88428d6b74f"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f">Sk3Sfx::CSk3SfxManager::mSoundArray</a></div><div class="ttdeci">SkaterSoundInfo mSoundArray[vNUM_SOUND_TYPES][vMAX_NUM_ENTRIES]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00102">sounds.h:102</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a291e0941ae13510de0b9680574a8c409"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a291e0941ae13510de0b9680574a8c409">Sk3Sfx::SkaterSoundInfo::minVol</a></div><div class="ttdeci">float minVol</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00048">sounds.h:48</a></div></div>
+<div class="ttc" id="aclass_sfx_1_1_c_sfx_manager_html_aca4c7629440c80247c283238cee1a251"><div class="ttname"><a href="../../d2/d5f/class_sfx_1_1_c_sfx_manager.html#aca4c7629440c80247c283238cee1a251">Sfx::CSfxManager::GetDropoffDist</a></div><div class="ttdeci">float GetDropoffDist(uint32 soundChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l01279">soundfx.cpp:1279</a></div></div>
+<div class="ttc" id="asounds_8h_html"><div class="ttname"><a href="../../dc/ddc/sounds_8h.html">sounds.h</a></div></div>
+<div class="ttc" id="anamespace_game_net_html_a68b4f3ffa319719c7dd66f7c9e1f7139a793d4beff2eab91cd23bbca10e300c74"><div class="ttname"><a href="../../df/df5/namespace_game_net.html#a68b4f3ffa319719c7dd66f7c9e1f7139a793d4beff2eab91cd23bbca10e300c74">GameNet::MSG_ID_PLAY_SOUND</a></div><div class="ttdeci">@ MSG_ID_PLAY_SOUND</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00071">GameMsg.h:71</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_play_sound_html_ab7afcb1e73cb8aa547f441bb9cdfeb6b"><div class="ttname"><a href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#ab7afcb1e73cb8aa547f441bb9cdfeb6b">GameNet::MsgPlaySound::m_Pos</a></div><div class="ttdeci">short m_Pos[3]</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00502">GameMsg.h:502</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html_a4655158730ce483f0db6e23039d46502"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html#a4655158730ce483f0db6e23039d46502">Sk3Sfx::SkaterSoundInfo::soundChecksum</a></div><div class="ttdeci">uint32 soundChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00044">sounds.h:44</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_play_sound_html_a6f719c98054dcd228955fa2e37633659"><div class="ttname"><a href="../../d4/d91/class_game_net_1_1_msg_play_sound.html#a6f719c98054dcd228955fa2e37633659">GameNet::MsgPlaySound::m_WhichArray</a></div><div class="ttdeci">char m_WhichArray</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00503">GameMsg.h:503</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_acf1f245ea6daf6bc1c275c24fa6b41a8"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8">Sk3Sfx::CSk3SfxManager::PlaySound</a></div><div class="ttdeci">void PlaySound(int whichArray, int surfaceFlag, const Mth::Vector &amp;pos, float volPercent, bool propogate=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d13/sounds_8cpp_source.html#l00142">sounds.cpp:142</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="../../db/d16/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_aa31071d7a1362b5df91935d0dcd9269a"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a">Sk3Sfx::CSk3SfxManager::mNumEntries</a></div><div class="ttdeci">int mNumEntries[vNUM_SOUND_TYPES]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00101">sounds.h:101</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="anamespace_script_html_ae80ed69ea4edcbcbbbd4985a6efdcd6e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a></div><div class="ttdeci">const char * FindChecksumName(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00252">checksum.cpp:252</a></div></div>
+<div class="ttc" id="aclass_sk3_sfx_1_1_c_sk3_sfx_manager_html_a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf"><div class="ttname"><a href="../../d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf">Sk3Sfx::CSk3SfxManager::vMAX_NUM_ENTRIES</a></div><div class="ttdeci">@ vMAX_NUM_ENTRIES</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00098">sounds.h:98</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_desc_html"><div class="ttname"><a href="../../d0/d5a/class_net_1_1_msg_desc.html">Net::MsgDesc</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00998">net.h:998</a></div></div>
+<div class="ttc" id="astruct_sk3_sfx_1_1_skater_sound_info_html"><div class="ttname"><a href="../../df/dce/struct_sk3_sfx_1_1_skater_sound_info.html">Sk3Sfx::SkaterSoundInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/ddc/sounds_8h_source.html#l00039">sounds.h:39</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_desc_html_ad4d6b469195250a34d57fd84bc6d03d3"><div class="ttname"><a href="../../d0/d5a/class_net_1_1_msg_desc.html#ad4d6b469195250a34d57fd84bc6d03d3">Net::MsgDesc::m_Length</a></div><div class="ttdeci">unsigned short m_Length</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01005">net.h:1005</a></div></div>
+<div class="ttc" id="anamespace_sfx_html_ac665814a84c0398a09b740554364b146"><div class="ttname"><a href="../../de/d43/namespace_sfx.html#ac665814a84c0398a09b740554364b146">Sfx::NoSoundPlease</a></div><div class="ttdeci">bool NoSoundPlease(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l00080">soundfx.cpp:80</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_e89a037989f0892acab0aa4bd1e4fb94.html">Engine</a></li><li class="navelem"><a class="el" href="../../d8/d13/sounds_8cpp.html">sounds.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:32. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

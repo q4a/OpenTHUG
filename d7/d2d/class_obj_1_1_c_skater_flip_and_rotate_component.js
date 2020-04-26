@@ -1,0 +1,26 @@
+var class_obj_1_1_c_skater_flip_and_rotate_component =
+[
+    [ "CSkaterFlipAndRotateComponent", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a3d135d1f52a53b4006c84be582278301", null ],
+    [ "~CSkaterFlipAndRotateComponent", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#ac51a9fbfa51b4a3513ab7f031eb3ec02", null ],
+    [ "Update", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a22937bf6fecf6909a54c3af5b6d3f380", null ],
+    [ "InitFromStructure", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#af92fcae78d4584b4de76012ef5b5ee67", null ],
+    [ "RefreshFromStructure", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a79715d5eaa41df0c518fbc82a8f8f6eb", null ],
+    [ "Finalize", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a4908459f532647d370f5f1df9c279f09", null ],
+    [ "CallMemberFunction", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a666a5b34ef6b0998b63145868f25a02b", null ],
+    [ "GetDebugInfo", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#afc2dd8c6aea7011edf7363e054818f94", null ],
+    [ "s_create", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a1f819dca050fd3ba707e9a7d63525660", null ],
+    [ "GetSkater", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#aae5760a4d666f830fbc211839a63899c", null ],
+    [ "Reset", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#af834eba4e4b0b161a0c937138d7ffd77", null ],
+    [ "RotateSkateboard", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#ae706a7d285cb501a52a2769acaca0bfa", null ],
+    [ "IsBoardRotated", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a23989bc869926c448172efdfd234b6a4", null ],
+    [ "DoAnyFlipRotateOrBoardRotateAfters", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a6eb88759d86f87741f9d6b3c3abc2178", null ],
+    [ "ToggleFlipState", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a2e726f541795c04405ba21a9a4dc7e59", null ],
+    [ "ApplyFlipState", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#adf55583c642ef3e2a12b4c3cb57caa61", null ],
+    [ "m_rotate_board", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a2d4c98801a5a4f0983bbc3f4ab8423d3", null ],
+    [ "mFlipAfter", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#ab312c28af96a6515d1365caad786e8f4", null ],
+    [ "mRotateAfter", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a22811678f488243e8fdd119ed6fbf5f3", null ],
+    [ "mBoardRotateAfter", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#adf8b0bb355a6f83a5a1fe531724184d8", null ],
+    [ "mp_animation_component", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#aefc42ca478505f2cb4dccb4d1733b448", null ],
+    [ "mp_model_component", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a288ffcf6170060b2efdf93c83d731d69", null ],
+    [ "mp_core_physics_component", "d7/d2d/class_obj_1_1_c_skater_flip_and_rotate_component.html#a879bd911e673ba3efb7d410c96b84618", null ]
+];

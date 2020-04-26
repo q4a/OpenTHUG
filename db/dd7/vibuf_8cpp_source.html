@@ -1,0 +1,796 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Movies/Ngps/vibuf.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('db/dd7/vibuf_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">vibuf.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/dd7/vibuf_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;sifdev.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d64/defs_8h.html">gel/movies/ngps/defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../df/dbe/vibuf_8h.html">gel/movies/ngps/vibuf.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;gel/movies/ngps/p_movies.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Definitions </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define DMA_ID_REFE 0</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define DMA_ID_NEXT 2</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define DMA_ID_REF  3</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define WAITSEMA(v) WaitSema(v)</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define SIGNALSEMA(v) SignalSema(v)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define REST    2</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define TAG_ADDR(i) ((u_int)DmaAddr(f-&gt;tag + i))</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define DATA_ADDR(i)    ((u_int)f-&gt;data + VIBUF_ELM_SIZE * (i))</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define WRAP_ADDR(addr) ((u_int)(f-&gt;data)     + (((u_int)(addr) - (u_int)(f-&gt;data)) % (VIBUF_ELM_SIZE * f-&gt;n)))</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define IsInRegion(i,start,len,n)  (     (0 &lt;= (((i) + (n) - (start)) % (n))) &amp;&amp;     ((((i) + (n) - (start)) % (n)) &lt; (len)))</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define FS(f)   ((f-&gt;dmaStart + f-&gt;dmaN) * VIBUF_ELM_SIZE)</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define FN(f)   ((f-&gt;n - REST -  f-&gt;dmaN) * VIBUF_ELM_SIZE)</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/dbb/namespace_flx.html">Flx</a></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// definition of QWORD</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">   39</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">union </span>{</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a3b2867e187198352d51b22a7568446d4">   40</a></span>&#160;    u_long128   <a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a3b2867e187198352d51b22a7568446d4">q</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a18f5df2e626c2b47f4afbad3660e5c4f">   41</a></span>&#160;    u_long  l[2];</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a661c32ff12da952e8bb6764704895bc6">   42</a></span>&#160;    u_int   i[4];</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a065cb625cefbce207eaf1d81f71d7317">   43</a></span>&#160;    u_short s[8];</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#ad953640f0dc97c838403dd7c49c5a616">   44</a></span>&#160;    u_char  c[16];</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;} <a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ac528b19dfda17d23fcf8c59c438bfe0e">   47</a></span>&#160;<span class="keyword">extern</span> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ac528b19dfda17d23fcf8c59c438bfe0e">IsPtsInRegion</a>(<span class="keywordtype">int</span> tgt, <span class="keywordtype">int</span> pos, <span class="keywordtype">int</span> len, <span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">int</span> tgt1 = (tgt + size - pos) % size;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">return</span> tgt1 &lt; len;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">   53</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">getFIFOindex</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f, <span class="keywordtype">void</span> *addr)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (addr == <a class="code" href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> + (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a> + 1))) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">return</span> ((u_int)addr - (u_int)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>) / VIBUF_ELM_SIZE;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aa35db7b37195c709c99a3c5e5b157d46">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aa35db7b37195c709c99a3c5e5b157d46">setD3_CHCR</a>(u_int val)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    DI();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    *D_ENABLEW = ((*D_ENABLER)|0x00010000); <span class="comment">// pause all channels</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    *D3_CHCR = val;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    *D_ENABLEW = ((*D_ENABLER)&amp;~0x00010000);    <span class="comment">// restart all channels</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    EI();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">   71</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>(u_int val)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    DI();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    *D_ENABLEW = ((*D_ENABLER)|0x00010000); <span class="comment">// pause all channels</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    *D4_CHCR = val;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    *D_ENABLEW = ((*D_ENABLER)&amp;~0x00010000);    <span class="comment">// restart all channels</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    EI();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">scTag2</a>(</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a> *q,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> *addr,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    u_int <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    u_int qwc</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    q-&gt;<a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a18f5df2e626c2b47f4afbad3660e5c4f">l</a>[0] =</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          (u_long)(u_int)addr &lt;&lt; 32</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        | (u_long)<span class="keywordtype">id</span> &lt;&lt; 28</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        | (u_long)qwc &lt;&lt; 0;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">// Create video input buffer</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a64b90334ba70060c52f8bb97e9349d82">   97</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a64b90334ba70060c52f8bb97e9349d82">viBufCreate</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f,</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    u_long128 *<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, u_long128 *tag, <span class="keywordtype">int</span> size,</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *ts, <span class="keywordtype">int</span> n_ts)</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keyword">struct </span>SemaParam param;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> = <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> = ( u_long128 * )<a class="code" href="../../d5/d64/defs_8h.html#aed8353ebf5423c4c79097ab1bf1fb5e9">UncAddr</a>(tag);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a> = size;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">buffSize</a> = size * VIBUF_ELM_SIZE;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a> = ts;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a> = n_ts;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// ////////////////////////////////</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="comment">// Create Semaphore</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    param.initCount = 1;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    param.maxCount = 1;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a> = CreateSema(&amp;param);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">// ////////////////////////////////</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">// Reset</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">viBufReset</a>(f);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a55c394fa66786d782d59a718a685bc66">totalBytes</a> = 0;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">// Reset video input buffer</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">  134</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">viBufReset</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> = 0;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a> = 0;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a> = 0;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">isActive</a> = TRUE;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> = 0;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a> = 0;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>; i++) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[i].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = TS_NONE;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[i].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = TS_NONE;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[i].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> = 0;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[i].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> = 0;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// ////////////////////////////////</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// Init DMA tags</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>; i++) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">scTag2</a>(</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        (<a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a>*)(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> + i),</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a>((<span class="keywordtype">char</span>*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> + VIBUF_ELM_SIZE * i),</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        DMA_ID_REF,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        VIBUF_ELM_SIZE/16</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    );</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">scTag2</a>(</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    (<a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a>*)(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> + i),</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a>),</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    DMA_ID_NEXT,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    0</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    );</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    *D4_QWC = 0;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    *D4_MADR = (u_int)<a class="code" href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    *D4_TADR = (u_int)<a class="code" href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>((0&lt;&lt;8) | (1&lt;&lt;2) | 1);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment">// Get areas to put data</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a1da822d18bc26d3fe79e4ccb8a510976">  183</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a1da822d18bc26d3fe79e4ccb8a510976">viBufBeginPut</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f,</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    u_char **ptr0, <span class="keywordtype">int</span> *len0, u_char **ptr1, <span class="keywordtype">int</span> *len1)</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;{</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">int</span> es;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordtype">int</span> en;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordtype">int</span> fs;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordtype">int</span> fn;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    fs = FS(f);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    fn = FN(f);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    es = (fs + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">buffSize</a>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    en = fn - f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a>;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">if</a> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">buffSize</a> - es &gt;= en) {   <span class="comment">// area0</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    *ptr0 = (u_char*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> + es;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        *len0 = en;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    *ptr1 = NULL;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    *len1 = 0;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    } <span class="keywordflow">else</span> {                <span class="comment">// area0 + area1</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    *ptr0 = (u_char*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> + es;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        *len0 = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">buffSize</a> - es;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    *ptr1 = (u_char*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    *len1 = en - (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">buffSize</a> - es);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">// Proceed inner pointer</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a38a9f74dcbcacaea5eab0c01533a6803">  219</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a38a9f74dcbcacaea5eab0c01533a6803">viBufEndPut</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f, <span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a> += size;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a55c394fa66786d782d59a718a685bc66">totalBytes</a> += size;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">// Add bitstream data to DMA tag list</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a9b586be07b45d70baee3768371198973">  233</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a9b586be07b45d70baee3768371198973">viBufAddDMA</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d1/d54/namespace_script.html#a428a09e379a304379d45d95fc5915441">last</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    u_int d4chcr;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    <span class="keywordtype">int</span> isNewData = 0;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordtype">int</span> consume;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="keywordtype">int</span> read_start, read_n;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">if</span> (!f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">isActive</a>) {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a3facf93ad35cb6d836a121441abbf7c1">ErrMessage</a>(<span class="stringliteral">&quot;DMA ADD not active\n&quot;</span>);</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">return</span> FALSE;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="comment">// ////////////////////////////////////////</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="comment">// STOP DMA ch4</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="comment">// d4chcr:</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="comment">//  (1) DMA was running</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">//      ORIGINAL DMA tag</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="comment">//  (2) DMA was not running</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="comment">//      REFE tag</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>((DMA_ID_REFE&lt;&lt;28) | (0&lt;&lt;8) | (1&lt;&lt;2) | 1);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    d4chcr = *D4_CHCR;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// ////////////////////////////////////////</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// update dma pointer using D4_MADR</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    index = <a class="code" href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">getFIFOindex</a>(f, (<span class="keywordtype">void</span>*)*D4_MADR);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    consume = (index + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a> - f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> + consume) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a> -= consume;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">// ////////////////////////////////////////</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="comment">// update read pointer</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    read_start = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    read_n = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a>/VIBUF_ELM_SIZE;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a> %= VIBUF_ELM_SIZE;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="comment">// ////////////////////////////////////////</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="comment">// the last REFE -&gt; REF</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">if</a> (read_n &gt; 0) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a428a09e379a304379d45d95fc5915441">last</a> = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a> - 1 + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">scTag2</a>(</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        (<a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a>*)(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> + <a class="code" href="../../d1/d54/namespace_script.html#a428a09e379a304379d45d95fc5915441">last</a>),</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        (<span class="keywordtype">char</span>*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> + VIBUF_ELM_SIZE * <a class="code" href="../../d1/d54/namespace_script.html#a428a09e379a304379d45d95fc5915441">last</a>, </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        DMA_ID_REF,</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        VIBUF_ELM_SIZE/16</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    );</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    isNewData = 1;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    index = read_start;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; read_n; i++) {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="keywordtype">id</span> = (i == read_n - 1)? DMA_ID_REFE: DMA_ID_REF;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">scTag2</a>(</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        (<a class="code" href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">QWORD</a>*)(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">tag</a> + index),</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        (<span class="keywordtype">char</span>*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a> + VIBUF_ELM_SIZE * index, </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordtype">id</span>,</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        VIBUF_ELM_SIZE/16</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    index = (index + 1) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a> += read_n;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="comment">// ////////////////////////////////////////</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="comment">// RESTART DMA ch4</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    <span class="keywordflow">if</span> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">if</span> (isNewData) {</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        <span class="comment">// change ref/refe ----&gt; ref</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        d4chcr = (d4chcr &amp; 0x0fffffff) | (DMA_ID_REF &lt;&lt; 28);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    }</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>(d4chcr | 0x100);</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    }</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="comment">// Stop DMA and save DMA environment</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aebf7e136ef0cab09386a57ae284de315">  330</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aebf7e136ef0cab09386a57ae284de315">viBufStopDMA</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">isActive</a> = FALSE;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>((0&lt;&lt;8) | (1&lt;&lt;2) | 1);        <span class="comment">// STR: 0, DIR: 1</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr = *D4_MADR;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4tadr = *D4_TADR;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4qwc =  *D4_QWC;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4chcr = *D4_CHCR;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="comment">// wait till ofc becomes 0</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <span class="keywordflow">while</span> (DGET_IPU_CTRL() &amp; 0xf0)</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    ;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160; </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="comment">// DMA ch3</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#aa35db7b37195c709c99a3c5e5b157d46">setD3_CHCR</a>((0&lt;&lt;8) | 0);     <span class="comment">// STR: 0, DIR: 0</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3madr = *D3_MADR;</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3qwc =  *D3_QWC;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3chcr = *D3_CHCR;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipubp = DGET_IPU_BP();</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipuctrl = DGET_IPU_CTRL();</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;}</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="comment">// Restore DMA environment and restart DMA</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ad1475e89668d47e5d0a74580aeaeb310">  365</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ad1475e89668d47e5d0a74580aeaeb310">viBufRestartDMA</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keywordtype">int</span> bp = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipubp &amp; 0x7f;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keywordtype">int</span> fp = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipubp &gt;&gt; 16) &amp; 0x3;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordtype">int</span> ifc = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipubp &gt;&gt; 8) &amp; 0xf;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    u_int d4madr_next = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr - ((fp + ifc) &lt;&lt; 4);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    u_int d4qwc_next = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4qwc + (fp + ifc);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    u_int d4tadr_next = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4tadr;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    u_int d4chcr_next = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4chcr | 0x100;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="keywordtype">int</span> index_next;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a>;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <span class="comment">// check wrap around</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">if</span> (d4madr_next &lt; (u_int)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>) {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    d4qwc_next = (DATA_ADDR(0) - d4madr_next) &gt;&gt; 4;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        d4madr_next += (u_int)(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a> * VIBUF_ELM_SIZE);</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    d4tadr_next = TAG_ADDR(0);</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">id</span> = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr == DATA_ADDR(0)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        || f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr == DATA_ADDR(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>))?</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        DMA_ID_REFE:</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        DMA_ID_REF;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    d4chcr_next = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4chcr &amp; 0x0fffffff)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;                | (<span class="keywordtype">id</span> &lt;&lt; 28) | 0x100;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160; </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <span class="keywordflow">if</span> (!IsInRegion(0, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a>, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>)) {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a> - 1;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>++;</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((index = <a class="code" href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">getFIFOindex</a>(f, (<span class="keywordtype">void</span>*)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr))</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            != (index_next = <a class="code" href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">getFIFOindex</a>(f, (<span class="keywordtype">void</span>*)d4madr_next))) {</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    d4tadr_next = TAG_ADDR(index);</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    d4qwc_next = (DATA_ADDR(index) - d4madr_next) &gt;&gt; 4;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    <span class="keywordtype">id</span> = (WRAP_ADDR(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4madr)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        == DATA_ADDR((f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>))?</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        DMA_ID_REFE:</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        DMA_ID_REF;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    d4chcr_next = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d4chcr &amp; 0x0fffffff)</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;                | (<span class="keywordtype">id</span> &lt;&lt; 28) | 0x100;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">if</span> (!IsInRegion(index_next, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a>, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>)) {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">dmaStart</a> = index_next;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>++;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="comment">// Restart DMA ch3</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keywordflow">if</span> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3madr &amp;&amp; f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3qwc) {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    *D3_MADR = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3madr;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    *D3_QWC  = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3qwc;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#aa35db7b37195c709c99a3c5e5b157d46">setD3_CHCR</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.d3chcr | 0x100);</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    }</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    <span class="keywordflow">if</span> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>) {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="keywordflow">while</span> (sceIpuIsBusy())</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        ;</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="comment">// BCLR</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    sceIpuBCLR(bp);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <span class="keywordflow">while</span> (sceIpuIsBusy())</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        ;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    }</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="comment">// Restart DMA ch4</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    *D4_MADR = d4madr_next;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    *D4_TADR = d4tadr_next;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    *D4_QWC  = d4qwc_next;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">if</span> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a>) {</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>(d4chcr_next);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    *IPU_CTRL = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipuctrl;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160; </div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">isActive</a> = TRUE;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;}</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;<span class="comment">// Delete video input buffer</span></div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4">  452</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4">viBufDelete</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;{</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">setD4_CHCR</a>((0&lt;&lt;8) | (1&lt;&lt;2) | 1);    <span class="comment">// STR: 0, chain, DIR: 1</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    *D4_QWC = 0;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    *D4_MADR = 0;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    *D4_TADR = 0;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160; </div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    DeleteSema(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;}</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">// Check to see if decoder is in CSC period or not (0: CSC period)</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a38f9fe9fb2250d3ff9fab873b35b1508">  467</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a38f9fe9fb2250d3ff9fab873b35b1508">viBufIsActive</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;{</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160; </div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">isActive</a>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160; </div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160; </div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;}</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160; </div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="comment">// Data size in video input buffer</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aeb37df64f3a9870c4c6d7c2fd8733c66">  484</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aeb37df64f3a9870c4c6d7c2fd8733c66">viBufCount</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;{</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">dmaN</a> * VIBUF_ELM_SIZE + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a>;</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160; </div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="comment">// Flush video input buffer</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ab394919b74eac1a3d9651ca99f6da5d5">  501</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ab394919b74eac1a3d9651ca99f6da5d5">viBufFlush</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f)</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;{</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160; </div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a> = bound(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">readBytes</a>, VIBUF_ELM_SIZE);</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;}</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160; </div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="comment">// Add new time stamp and remove old one from the buffer</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ad775e0655c0d448689be363ef42c165c">  514</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ad775e0655c0d448689be363ef42c165c">viBufModifyPts</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f, <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *new_ts)</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;{</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *ts;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;    <span class="keywordtype">int</span> rd = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a> - f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>;</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="keywordtype">int</span> datasize =  VIBUF_ELM_SIZE * f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="keywordtype">int</span> loop = 1;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160; </div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">if</a> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> &gt; 0) {</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    <span class="keywordflow">while</span> (loop) {</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;        ts = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a> + rd;</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160; </div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">if</span> (ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> == 0 || new_ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> == 0) {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        }</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160; </div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d8/dbb/namespace_flx.html#ac528b19dfda17d23fcf8c59c438bfe0e">IsPtsInRegion</a>(ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a>, new_ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a>, new_ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a>, datasize)) {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;        <span class="keywordtype">int</span> len = min(new_ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> + new_ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> - ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a>, ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a>);</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;        ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> = (ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> + len) % datasize;</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;        ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> -= len;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160; </div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;        <span class="keywordflow">if</span> (ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> == 0) {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;            <span class="keywordflow">if</span> (ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> &gt;= 0) {</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="comment">/*          ErrMessage(&quot;pts is not used&quot;);*/</span></div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = TS_NONE;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;            ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = TS_NONE;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;            ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> = 0;</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> = 0;</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            }</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> = <a class="code" href="../../d1/d54/namespace_script.html#a023fa80aced222388397847244805794">max</a>(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> - 1, 0);</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        }</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        loop = 0;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;        }</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        rd = (rd + 1) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    }</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160; </div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;}</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160; </div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;<span class="comment">// Add new time stamp</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a36472b6009900664084e1dc4ecdbd810">  560</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a36472b6009900664084e1dc4ecdbd810">viBufPutTs</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f, <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *ts)</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;{</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = 0;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160; </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;    <span class="keywordflow">if</span> (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> &lt; f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>) {</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ad775e0655c0d448689be363ef42c165c">viBufModifyPts</a>(f, ts);</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160; </div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;    <span class="keywordflow">if</span> (ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> &gt;= 0 || ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> &gt;= 0) {</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160; </div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a>].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a>;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a>].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a>;</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a>].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> = ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a>;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a>].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> = ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a>;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160; </div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a>++;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a> = (f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a> + 1) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    }</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = 1;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    } </div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160; </div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;}</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;<span class="comment">// Get time stamp</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00591"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ac568488decc2eeacf3fcd644cbf71685">  591</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ac568488decc2eeacf3fcd644cbf71685">viBufGetTs</a>(<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html">ViBuf</a> *f, <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *ts)</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;{</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    u_int d4madr = *D4_MADR;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    u_int ipubp = DGET_IPU_BP();</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    <span class="keywordtype">int</span> bp = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">env</a>.ipubp &amp; 0x7f;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    <span class="keywordtype">int</span> fp = (ipubp &gt;&gt; 16) &amp; 0x3;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;    <span class="keywordtype">int</span> ifc = (ipubp &gt;&gt; 8) &amp; 0xf;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    u_int d4madr_next = d4madr - ((fp + ifc) &lt;&lt; 4);</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    u_int stop;</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    <span class="keywordtype">int</span> datasize =  VIBUF_ELM_SIZE * f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">n</a>;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    <span class="keywordtype">int</span> isEnd = 0;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordtype">int</span> tscount;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="keywordtype">int</span> wt;</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    WAITSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; </div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = TS_NONE;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = TS_NONE;</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160; </div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    stop = (d4madr_next + (bp &gt;&gt; 3) + datasize - (u_int)f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>)</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;                                % datasize;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;    tscount = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a>;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;    wt = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">wt_ts</a>;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    <span class="keywordflow">for</span> (i = 0; i &lt; tscount &amp;&amp; !isEnd; i++) {</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; </div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <span class="keywordtype">int</span> rd = (wt - tscount + f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a> + i) % f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">n_ts</a>;</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160; </div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">if</a> (<a class="code" href="../../d8/dbb/namespace_flx.html#ac528b19dfda17d23fcf8c59c438bfe0e">IsPtsInRegion</a>(stop,</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a>, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a>, datasize)) {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160; </div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;        ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a>;</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;        ts-&gt;<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a>;</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = TS_NONE;</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">ts</a>[rd].<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = TS_NONE;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160; </div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        isEnd = 1;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a> -= min(1, f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">count_ts</a>);</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    }</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;    }</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160; </div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    SIGNALSEMA(f-&gt;<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">sema</a>);</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160; </div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;}</div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160; </div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;} <span class="comment">// namespace Flx</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_flx_html_a38f9fe9fb2250d3ff9fab873b35b1508"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a38f9fe9fb2250d3ff9fab873b35b1508">Flx::viBufIsActive</a></div><div class="ttdeci">int viBufIsActive(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00467">vibuf.cpp:467</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a6baa346e44f4c2158d2be4f9b77b8203"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a></div><div class="ttdeci">int ret</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00077">bgm_com.c:77</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a124b655b47e76c5ad9831e54741674ab"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a124b655b47e76c5ad9831e54741674ab">Flx::ViBuf::dmaStart</a></div><div class="ttdeci">int dmaStart</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00042">vibuf.h:42</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a65c077cc942dd0be1a2a8f32e1073b2d"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a65c077cc942dd0be1a2a8f32e1073b2d">Flx::scTag2</a></div><div class="ttdeci">void scTag2(QWORD *q, void *addr, u_int id, u_int qwc)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00080">vibuf.cpp:80</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aa35db7b37195c709c99a3c5e5b157d46"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aa35db7b37195c709c99a3c5e5b157d46">Flx::setD3_CHCR</a></div><div class="ttdeci">void setD3_CHCR(u_int val)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00062">vibuf.cpp:62</a></div></div>
+<div class="ttc" id="adefs_8h_html_aed8353ebf5423c4c79097ab1bf1fb5e9"><div class="ttname"><a href="../../d5/d64/defs_8h.html#aed8353ebf5423c4c79097ab1bf1fb5e9">UncAddr</a></div><div class="ttdeci">void * UncAddr(void *val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d64/defs_8h_source.html#l00037">defs.h:37</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_ad646e1824b8eed43726ae8d497bab2b9"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">Flx::TimeStamp::pos</a></div><div class="ttdeci">int pos</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00030">vibuf.h:30</a></div></div>
+<div class="ttc" id="anamespace_script_html_a428a09e379a304379d45d95fc5915441"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a428a09e379a304379d45d95fc5915441">Script::last</a></div><div class="ttdeci">static CStruct * last[MAX_LAST]</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l00037">struct.cpp:37</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a0cc0c255bb5dfdc16b506173bf1f59ee"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">Gfx::data</a></div><div class="ttdeci">short data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01898">BonedAnim.cpp:1898</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ac528b19dfda17d23fcf8c59c438bfe0e"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ac528b19dfda17d23fcf8c59c438bfe0e">Flx::IsPtsInRegion</a></div><div class="ttdeci">int IsPtsInRegion(int tgt, int pos, int len, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00047">vibuf.cpp:47</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html">Flx::ViBuf</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00038">vibuf.h:38</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aebf7e136ef0cab09386a57ae284de315"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aebf7e136ef0cab09386a57ae284de315">Flx::viBufStopDMA</a></div><div class="ttdeci">int viBufStopDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00330">vibuf.cpp:330</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a55c394fa66786d782d59a718a685bc66"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a55c394fa66786d782d59a718a685bc66">Flx::ViBuf::totalBytes</a></div><div class="ttdeci">long totalBytes</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00049">vibuf.h:49</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a1da822d18bc26d3fe79e4ccb8a510976"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a1da822d18bc26d3fe79e4ccb8a510976">Flx::viBufBeginPut</a></div><div class="ttdeci">void viBufBeginPut(ViBuf *f, u_char **ptr0, int *len0, u_char **ptr1, int *len1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00183">vibuf.cpp:183</a></div></div>
+<div class="ttc" id="anamespace_flx_html"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html">Flx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d51/_movies_8cpp_source.html#l00047">Movies.cpp:47</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_a8270231090dad0898d8f3eb5cd232b0d"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#a8270231090dad0898d8f3eb5cd232b0d">Dbg::if</a></div><div class="ttdeci">if(again)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d14/_assert_8cpp_source.html#l00148">Assert.cpp:148</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ab394919b74eac1a3d9651ca99f6da5d5"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ab394919b74eac1a3d9651ca99f6da5d5">Flx::viBufFlush</a></div><div class="ttdeci">void viBufFlush(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00501">vibuf.cpp:501</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ac568488decc2eeacf3fcd644cbf71685"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ac568488decc2eeacf3fcd644cbf71685">Flx::viBufGetTs</a></div><div class="ttdeci">int viBufGetTs(ViBuf *f, TimeStamp *ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00591">vibuf.cpp:591</a></div></div>
+<div class="ttc" id="adefs_8h_html_add3c42fa3a74ab72ace94603badfd54b"><div class="ttname"><a href="../../d5/d64/defs_8h.html#add3c42fa3a74ab72ace94603badfd54b">DmaAddr</a></div><div class="ttdeci">void * DmaAddr(void *val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d64/defs_8h_source.html#l00032">defs.h:32</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a0487e318d1cfa15d43f97b4b93bf2026"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a0487e318d1cfa15d43f97b4b93bf2026">Flx::setD4_CHCR</a></div><div class="ttdeci">void setD4_CHCR(u_int val)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00071">vibuf.cpp:71</a></div></div>
+<div class="ttc" id="aunion_flx_1_1_q_w_o_r_d_html_a18f5df2e626c2b47f4afbad3660e5c4f"><div class="ttname"><a href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a18f5df2e626c2b47f4afbad3660e5c4f">Flx::QWORD::l</a></div><div class="ttdeci">u_long l[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00041">vibuf.cpp:41</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a815e7997b63b33121753e0cf8ada4e88"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a815e7997b63b33121753e0cf8ada4e88">Flx::ViBuf::readBytes</a></div><div class="ttdeci">int readBytes</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00044">vibuf.h:44</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a38a9f74dcbcacaea5eab0c01533a6803"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a38a9f74dcbcacaea5eab0c01533a6803">Flx::viBufEndPut</a></div><div class="ttdeci">void viBufEndPut(ViBuf *f, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00219">vibuf.cpp:219</a></div></div>
+<div class="ttc" id="anamespace_flx_html_abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4">Flx::viBufDelete</a></div><div class="ttdeci">int viBufDelete(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00452">vibuf.cpp:452</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_af8b8cfdae7f1b130fe71bc5f26771784"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#af8b8cfdae7f1b130fe71bc5f26771784">Flx::ViBuf::ts</a></div><div class="ttdeci">TimeStamp * ts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00052">vibuf.h:52</a></div></div>
+<div class="ttc" id="anamespace_script_html_a023fa80aced222388397847244805794"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a023fa80aced222388397847244805794">Script::max</a></div><div class="ttdeci">static int max</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l00492">struct.cpp:492</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_afc9ddc01eee9e38f3b5a3fe6cf3ae820"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">Flx::ViBuf::data</a></div><div class="ttdeci">u_long128 * data</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00039">vibuf.h:39</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a8c3081800329a2d6cf13085b270d613a"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a8c3081800329a2d6cf13085b270d613a">Flx::ViBuf::wt_ts</a></div><div class="ttdeci">int wt_ts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00055">vibuf.h:55</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_aae415cf072292e92e8f234e812f38cae"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aae415cf072292e92e8f234e812f38cae">Flx::ViBuf::dmaN</a></div><div class="ttdeci">int dmaN</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00043">vibuf.h:43</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_ab445d7f84042aa8d0e378bc5da6be2db"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ab445d7f84042aa8d0e378bc5da6be2db">Flx::ViBuf::isActive</a></div><div class="ttdeci">int isActive</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00048">vibuf.h:48</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a7441ef0865bcb3db9b8064dd7375c1ea"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a7441ef0865bcb3db9b8064dd7375c1ea">id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00003">p_ezcommon.h:3</a></div></div>
+<div class="ttc" id="aunion_flx_1_1_q_w_o_r_d_html_a3b2867e187198352d51b22a7568446d4"><div class="ttname"><a href="../../da/d20/union_flx_1_1_q_w_o_r_d.html#a3b2867e187198352d51b22a7568446d4">Flx::QWORD::q</a></div><div class="ttdeci">u_long128 q</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00040">vibuf.cpp:40</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a7ab50babe431dd28fef6a68d47625d91"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a7ab50babe431dd28fef6a68d47625d91">Flx::getFIFOindex</a></div><div class="ttdeci">int getFIFOindex(ViBuf *f, void *addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00053">vibuf.cpp:53</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ad775e0655c0d448689be363ef42c165c"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ad775e0655c0d448689be363ef42c165c">Flx::viBufModifyPts</a></div><div class="ttdeci">int viBufModifyPts(ViBuf *f, TimeStamp *new_ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00514">vibuf.cpp:514</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_ad2e9336237ed08187d12cd1986bfc59e"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#ad2e9336237ed08187d12cd1986bfc59e">Flx::ViBuf::sema</a></div><div class="ttdeci">int sema</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00047">vibuf.h:47</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_ad39186b46d198308aaf369bfe6839b91"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">Flx::TimeStamp::pts</a></div><div class="ttdeci">long pts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00028">vibuf.h:28</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a36472b6009900664084e1dc4ecdbd810"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a36472b6009900664084e1dc4ecdbd810">Flx::viBufPutTs</a></div><div class="ttdeci">int viBufPutTs(ViBuf *f, TimeStamp *ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00560">vibuf.cpp:560</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_a1e4d18d271a5cac598ea1d4a508fd442"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">Flx::TimeStamp::dts</a></div><div class="ttdeci">long dts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00029">vibuf.h:29</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a9b586be07b45d70baee3768371198973"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a9b586be07b45d70baee3768371198973">Flx::viBufAddDMA</a></div><div class="ttdeci">int viBufAddDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00233">vibuf.cpp:233</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_a173ad11d93249949ed4eb32c16565a3a"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">Flx::TimeStamp::len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00031">vibuf.h:31</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html">Flx::TimeStamp</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00027">vibuf.h:27</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a0b7f87a041048646030ba42345380faa"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a0b7f87a041048646030ba42345380faa">Flx::ViBuf::buffSize</a></div><div class="ttdeci">int buffSize</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00045">vibuf.h:45</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a70b9399ec6d3d4605e0318a85d88df5e"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a70b9399ec6d3d4605e0318a85d88df5e">Flx::ViBuf::n</a></div><div class="ttdeci">int n</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00041">vibuf.h:41</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a3bb3004c9ec0b1bbb230d0010cf8053e"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a3bb3004c9ec0b1bbb230d0010cf8053e">Flx::ViBuf::count_ts</a></div><div class="ttdeci">int count_ts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00054">vibuf.h:54</a></div></div>
+<div class="ttc" id="avibuf_8h_html"><div class="ttname"><a href="../../df/dbe/vibuf_8h.html">vibuf.h</a></div></div>
+<div class="ttc" id="adefs_8h_html"><div class="ttname"><a href="../../d5/d64/defs_8h.html">defs.h</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a57ba539e64bb11e0f6935e14bc3c0326"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a57ba539e64bb11e0f6935e14bc3c0326">Flx::ViBuf::tag</a></div><div class="ttdeci">u_long128 * tag</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00040">vibuf.h:40</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a4c281505a8d68613a6f491c0fdaad503"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">Flx::viBufReset</a></div><div class="ttdeci">int viBufReset(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00134">vibuf.cpp:134</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a3facf93ad35cb6d836a121441abbf7c1"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a3facf93ad35cb6d836a121441abbf7c1">Flx::ErrMessage</a></div><div class="ttdeci">void ErrMessage(char *message)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d6b/_ngps_2p__movies_8cpp_source.html#l00742">p_movies.cpp:742</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_aca3b7bfead96ba25a5981145f3042e63"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#aca3b7bfead96ba25a5981145f3042e63">Flx::ViBuf::env</a></div><div class="ttdeci">sceIpuDmaEnv env</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00046">vibuf.h:46</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a64b90334ba70060c52f8bb97e9349d82"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a64b90334ba70060c52f8bb97e9349d82">Flx::viBufCreate</a></div><div class="ttdeci">int viBufCreate(ViBuf *f, u_long128 *data, u_long128 *tag, int size, TimeStamp *ts, int n_ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00097">vibuf.cpp:97</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_a4f671fe4d6555daa05ab139ed9f102e4"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#a4f671fe4d6555daa05ab139ed9f102e4">Flx::ViBuf::n_ts</a></div><div class="ttdeci">int n_ts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00053">vibuf.h:53</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ad1475e89668d47e5d0a74580aeaeb310"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ad1475e89668d47e5d0a74580aeaeb310">Flx::viBufRestartDMA</a></div><div class="ttdeci">int viBufRestartDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00365">vibuf.cpp:365</a></div></div>
+<div class="ttc" id="aunion_flx_1_1_q_w_o_r_d_html"><div class="ttname"><a href="../../da/d20/union_flx_1_1_q_w_o_r_d.html">Flx::QWORD</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00039">vibuf.cpp:39</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aeb37df64f3a9870c4c6d7c2fd8733c66"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aeb37df64f3a9870c4c6d7c2fd8733c66">Flx::viBufCount</a></div><div class="ttdeci">int viBufCount(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00484">vibuf.cpp:484</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_2aa0b3620c38bf368798da486fae478f.html">Movies</a></li><li class="navelem"><a class="el" href="../../dir_9a63d79f396880ca497198963fb39e59.html">Ngps</a></li><li class="navelem"><a class="el" href="../../db/dd7/vibuf_8cpp.html">vibuf.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:23. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

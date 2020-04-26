@@ -1,0 +1,432 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Scripting/gs_file.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d3d/gs__file_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">gs_file.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d3d/gs__file_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// gs_file.cpp      KSH 7 Nov 2001</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Game specific functions for loading and unloading qb files.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// These call the LoadQB and UnloadQB functions in the Skate namespace, but then do</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// any additional skate-specific processing required.</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// For example, if the newly loaded qb contained a NodeArray, node name prefix info</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// needs to be regenerated, etc.</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Also, skater exceptions may need to be reloaded.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/de4/gs__file_8h.html">sk/scripting/gs_file.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d4d/file_8h.html">gel/scripting/file.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d2b/parse_8h.html">gel/scripting/parse.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">gel/scripting/string.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d63/array_8h.html">gel/scripting/array.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d47/nodearray_8h.html">sk/scripting/nodearray.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/de6/crc_8h.html">core/crc.h</a>&gt;</span> <span class="comment">// For Crc::GenerateCRCFromString</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/df6/_goal_editor_component_8h.html">sk/components/goaleditorcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/db0/pip_8h.html">sys/file/pip.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/d18/_path_man_8h.html">sk/objects/pathman.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d16/config_8h.html">sys/config/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d66/string_8h.html">string.h</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;dolphin.h&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d3b/p__display_8h.html">sys/ngc/p_display.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html">   38</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/dd2/namespace_skate_script.html">SkateScript</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">using namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// The size of the temporary buffer used when parsing the qdir.txt file. Used in LoadAllStartupQBFiles()</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#define MAX_QB_FILENAME_CHARS_WITH_PATH 100</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#define QDIR_FILE &quot;scripts\\qdir.txt&quot;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#define MAIN_QB_FILEPATH &quot;scripts\\&quot;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#a7076d5e485f4461d13ff2bb16cd93776">   48</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#a7076d5e485f4461d13ff2bb16cd93776">LoadAllStartupQBFiles</a>()</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().TopDownHeap());</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordflow">switch</span> ( <a class="code" href="../../d0/d31/namespace_config.html#af00df21c4710fd212226091adfabb1f0">Config::GetLanguage</a>() )</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">Config::LANGUAGE_FRENCH</a>:</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a7070f1871d5765bd959912b9dfb4501c">Pip::LoadPre</a>(<span class="stringliteral">&quot;qb.prf&quot;</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">Config::LANGUAGE_GERMAN</a>:</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a7070f1871d5765bd959912b9dfb4501c">Pip::LoadPre</a>(<span class="stringliteral">&quot;qb.prd&quot;</span>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a7070f1871d5765bd959912b9dfb4501c">Pip::LoadPre</a>(<span class="stringliteral">&quot;qb.pre&quot;</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../dc/da6/namespace_pip.html#a7070f1871d5765bd959912b9dfb4501c">Pip::LoadPre</a>(<span class="stringliteral">&quot;qb.pre&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Load the qdir.txt file</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_qdir=(<span class="keyword">const</span> <span class="keywordtype">char</span> *)<a class="code" href="../../dc/da6/namespace_pip.html#a7714c76a789c212f01267ab38ac33b1d">Pip::Load</a>(QDIR_FILE);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> file_size=<a class="code" href="../../dc/da6/namespace_pip.html#adca4b5163f977df431e2222c0a5545f7">Pip::GetFileSize</a>(QDIR_FILE);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a2aeab65fd498045c6740c319834260bc">UsePermanentStringHeap</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Load each of the files listed.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">    #define MAX_FILENAME_CHARS 200</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">char</span> p_file_name[MAX_FILENAME_CHARS+1];</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_scan=p_qdir;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">while</span> (p_scan &lt; p_qdir+file_size)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> c=0;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">while</span> (p_scan &lt; p_qdir+file_size &amp;&amp; *p_scan!=0x0d &amp;&amp; *p_scan!=0x0a)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            Dbg_MsgAssert(c&lt;MAX_FILENAME_CHARS,(<span class="stringliteral">&quot;File name too long&quot;</span>));</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            p_file_name[c++]=*p_scan++;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        p_file_name[c]=0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="comment">// If the above loop broke out because *p_scan was 0x0d or 0x0a then</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="comment">// this will skip over it. If p_scan was &gt;= p_qdir+file_size then it</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="comment">// still will be after incrementing p_scan so that&#39;s OK too.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        ++p_scan;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Skip any empty strings, which will happen when encountering 0x0d,0x0a pairs.</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">if</span> (*p_file_name)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="comment">// Note: p_file_name will contain the complete path, eg c:\skate5\data\scripts\blaa.qb</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="comment">// Strip off any preceding data path.           </span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">char</span> *p_data_backslash=strstr(p_file_name,<span class="stringliteral">&quot;data\\&quot;</span>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">if</span> (p_data_backslash)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                strcpy( p_file_name, p_data_backslash+5); <span class="comment">// Safe cos it will copy backwards</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="comment">// Make sure this script isn&#39;t already loaded.</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            <a class="code" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">SkateScript::UnloadQB</a>( <a class="code" href="../../d3/d9b/namespace_crc.html#aed1b5ad21f682b39b09782ec29f5c5cc">Crc::GenerateCRCFromString</a>(p_file_name) );</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            <a class="code" href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">SkateScript::LoadQB</a>(p_file_name,</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                                <span class="comment">// We do want assertions if duplicate symbols when loading all </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;                                <span class="comment">// the qb&#39;s on startup. (Just not when reloading a qb)</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                <a class="code" href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138">ASSERT_IF_DUPLICATE_SYMBOLS</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }   </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="../../dd/d18/namespace_ns_display.html#aadbe1b1484329eb623099b72b6c15569">NsDisplay::doReset</a>();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }   </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a74a6a6dc78593af51b1ee427419ac638">UseRegularStringHeap</a>();</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a>(QDIR_FILE);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">switch</span> ( <a class="code" href="../../d0/d31/namespace_config.html#af00df21c4710fd212226091adfabb1f0">Config::GetLanguage</a>() )</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">Config::LANGUAGE_FRENCH</a>:</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a603cd4581a4548368ac1ade0072f8080">Pip::UnloadPre</a>(<span class="stringliteral">&quot;qb.prf&quot;</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">Config::LANGUAGE_GERMAN</a>:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a603cd4581a4548368ac1ade0072f8080">Pip::UnloadPre</a>(<span class="stringliteral">&quot;qb.prd&quot;</span>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <a class="code" href="../../dc/da6/namespace_pip.html#a603cd4581a4548368ac1ade0072f8080">Pip::UnloadPre</a>(<span class="stringliteral">&quot;qb.pre&quot;</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="../../dc/da6/namespace_pip.html#a603cd4581a4548368ac1ade0072f8080">Pip::UnloadPre</a>(<span class="stringliteral">&quot;qb.pre&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">// A very small memory optimization ...</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="comment">// Remove the debugger_names array since it only exists to get its checksum names registered</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// for the script debugger. They will have got registered by now, so the array is no longer</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// needed. Saves about 3K.</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    <a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">CSymbolTableEntry</a> *p_debugger_names=<a class="code" href="../../d1/d54/namespace_script.html#af293a36c230b10de7d8151c2990b233b">LookUpSymbol</a>(CRCD(0xc2f97ba7,<span class="stringliteral">&quot;debugger_names&quot;</span>));</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">if</span> (p_debugger_names)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#a07d7c51baa73041d8489457816583013">CleanUpAndRemoveSymbol</a>(p_debugger_names);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// Calls the Script::LoadQB, and then do any game-specific stuff that needs to be done when a qb is reloaded, such as </span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">// generating the node name hash table &amp; prefix info</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">  153</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">LoadQB</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_fileName, <a class="code" href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ff">EBoolAssertIfDuplicateSymbols</a> assertIfDuplicateSymbols)</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    Dbg_MsgAssert(p_fileName,(<span class="stringliteral">&quot;NULL p_fileName&quot;</span>));</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="comment">//if (strcmp(&quot;..\\runnow.qb&quot;,p_fileName) != 0)</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">//{</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//  printf(&quot;Loading %s\n&quot;,p_fileName); // REMOVE</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <span class="comment">//}</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// Call the non-game-specific LoadQB, which open the qb and create all the symbols defined within.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#ac31b62c9995635dc82c7b72bf9ed2cb6">Script::LoadQB</a>(p_fileName, assertIfDuplicateSymbols);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">CSymbolTableEntry</a> *p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">while</span> (p_sym)</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">if</span> (p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a6687c958fc0c552ccae96e483a13d2c8">mGotReloaded</a> &amp;&amp; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;            p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21af083d68b7a41c5ed5879270eb54f9344">ESYMBOLTYPE_ARRAY</a> &amp;&amp;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a546f3bd1693e9e6e950f0b42bbb7faf7">mNameChecksum</a>==0xc472ecc5<span class="comment">/*NodeArray*/</span>)</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="comment">// This will resize the NodeArray, adding the extra nodes required by the goal editor.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;            <span class="comment">// Note that p_sym-&gt;mpArray is still valid after doing this, because the resizing only</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <span class="comment">// causes a reallocation of a buffer inside the CArray, the CArray itself is not reallocated.</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <a class="code" href="../../d2/d10/namespace_obj.html#a8883c532f1113fe7419c93bd74cccff5">Obj::InsertGoalEditorNodes</a>();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <a class="code" href="../../de/dd2/namespace_skate_script.html#a2df52f92becb60d77aa305c511ffae0d">CreateNodeNameHashTable</a>();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <a class="code" href="../../de/dd2/namespace_skate_script.html#aa7583c1cb50249a858f525497d69a3dc">GeneratePrefixInfo</a>();</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="comment">// Do a bit of node array processing.</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordtype">int</span> size=p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a85957e7d414e2514aa4eda4a0b82c120">mpArray</a>-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;size; ++i)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">CStruct</a> *p_node=p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a85957e7d414e2514aa4eda4a0b82c120">mpArray</a>-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#af335b83cb06ac2934f891089c295bdf9">GetStructure</a>(i);</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                <span class="comment">// K: This swapping of Position for Pos used to be at a lower level in parse.cpp,</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                <span class="comment">// but that had the problem that it was doing the swap on all structures, including those</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                <span class="comment">// passed to commands in scripts. So I moved it here so as to only affect those structures</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="comment">// in the node array.</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> p(0.0f,0.0f,0.0f);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                <span class="keywordflow">if</span> (p_node-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a40dfb370c37d6da857f33157b2b3bfc7">GetVector</a>(CRCD(0xb9d31b0a,<span class="stringliteral">&quot;Position&quot;</span>),&amp;p))</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                    <span class="comment">// GJ:  The &quot;position&quot; currently written out </span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                    <span class="comment">// by the exporter has an incorrect Z, and there</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                    <span class="comment">// are a bunch of places in the game code which</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                    <span class="comment">// negate the Z value in order to correct it.</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                    <span class="comment">// We&#39;re currently in the process of phasing this</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    <span class="comment">// &quot;Position&quot; out, in favor of the &quot;Pos&quot; vector, </span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                    <span class="comment">// which will have the correct Z.  For backwards</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                    <span class="comment">// compatibility, the code here removes the old</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                    <span class="comment">// &quot;Position&quot; vector if it exists and replaces </span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                    <span class="comment">// it with the new &quot;Pos&quot; vector.  Eventually, </span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                    <span class="comment">// once all the levels have been re-exported, </span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                    <span class="comment">// we can remove this kludge.</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                    p_node-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a0e3942531905b344953ec9180b7291a1">RemoveComponent</a>(CRCD(0xb9d31b0a,<span class="stringliteral">&quot;Position&quot;</span>));</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                    p_node-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a49c79546032fdadb74b1cb94aa9ef6d2">AddVector</a>(CRCD(0x7f261953,<span class="stringliteral">&quot;Pos&quot;</span>),p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>],p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>],-p[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                }   </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="comment">// Do some path preprocessing. This adds PathNum parameters to all nodes that</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <span class="comment">// are on a path so that one can quickly find out what path a particular car is</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="comment">// on without having to scan through a bunch of nodes.</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <a class="code" href="../../d2/d16/class_obj_1_1_c_path_man.html#a7109561fb994d4233e6e52fca166a7f5">Obj::CPathMan::Instance</a>()-&gt;<a class="code" href="../../d2/d16/class_obj_1_1_c_path_man.html#aed1a20c52bd6263d3890af23278caaae">AddPathInfoToNodeArray</a>();</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">// Reset the reloaded flag, otherwise it will stick on forever.</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a6687c958fc0c552ccae96e483a13d2c8">mGotReloaded</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            <span class="comment">// No need to keep checking for more NodeArray&#39;s, there can be only one.</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>(p_sym);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    }       </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// Make sure checksum name lookup table is removed since it is only needed for the node array.</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#aadaacdbfd80509531586f4c0339aa168">RemoveChecksumNameLookupHashTable</a>();</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// Calls the Script::UnloadQB and then does any game-specific stuff that needs to be done </span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">// when a qb is unloaded, such as resetting the node name hash table &amp; prefix info.</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">  228</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">UnloadQB</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> fileNameChecksum)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;{</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="comment">// Call the non-game-specific UnloadQB, which will delete all the symbols that came from this qb.</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a820e5eda5009aeebda3db40d555d4a75">Script::UnloadQB</a>(fileNameChecksum);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">GetArray</a>(0xc472ecc5<span class="comment">/*NodeArray*/</span>))</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="comment">// If there is no node array any more then make sure the prefix info and node name lookup</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="comment">// info is cleaned up.</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="../../de/dd2/namespace_skate_script.html#aecf20f72137b77c2046b6dd2d2c75536">DeletePrefixInfo</a>();</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="../../de/dd2/namespace_skate_script.html#a96f83d239be900b0c735be638933c302">ClearNodeNameHashTable</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    }   </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;}</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#afda1f5b5f2f1ce8d35019c749cd385c3">  242</a></span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/dd2/namespace_skate_script.html#afda1f5b5f2f1ce8d35019c749cd385c3">GenerateFileNameChecksum</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_fileName)</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;{</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    Dbg_MsgAssert(p_fileName,(<span class="stringliteral">&quot;NULL p_fileName&quot;</span>));</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="comment">// TODO May need to process the file name a bit first, eg prefix it with the</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <span class="comment">// full path if it is not there already, before calculating its checksum, in order to ensure a match.</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="comment">// We may want UnloadQB to be able to be passed a filename without the full path.</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// For the moment though, just calculate the checksum for the string as it is.</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/d9b/namespace_crc.html#aed1b5ad21f682b39b09782ec29f5c5cc">Crc::GenerateCRCFromString</a>(p_fileName);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#ae5f9f771938d87fed1cc611e5b6c324f">  254</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">UnloadQB</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_fileName)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;{</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">SkateScript::UnloadQB</a>(<a class="code" href="../../de/dd2/namespace_skate_script.html#afda1f5b5f2f1ce8d35019c749cd385c3">GenerateFileNameChecksum</a>(p_fileName));</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">// TODO Need to add the old &#39;DoIt&#39; function which executes when a qbr is done. It does a LoadQB then</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">// reloads the skater exceptions, updates the decks on the skateshop wall, etc...</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;} <span class="comment">// namespace SkateScript</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="ap__display_8h_html"><div class="ttname"><a href="../../d6/d3b/p__display_8h.html">p_display.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a71c761bdce14193b10bf3c88372ba5a0"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">Script::CArray::GetSize</a></div><div class="ttdeci">uint32 GetSize() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00120">array.h:120</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">Script::CSymbolTableEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00039">symboltable.h:39</a></div></div>
+<div class="ttc" id="anamespace_script_html_aadaacdbfd80509531586f4c0339aa168"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aadaacdbfd80509531586f4c0339aa168">Script::RemoveChecksumNameLookupHashTable</a></div><div class="ttdeci">void RemoveChecksumNameLookupHashTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d09/parse_8cpp_source.html#l02961">parse.cpp:2961</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a7714c76a789c212f01267ab38ac33b1d"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a7714c76a789c212f01267ab38ac33b1d">Pip::Load</a></div><div class="ttdeci">void * Load(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00035">win32functions.cpp:35</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_af293a36c230b10de7d8151c2990b233b"><div class="ttname"><a href="../../d1/d54/namespace_script.html#af293a36c230b10de7d8151c2990b233b">Script::LookUpSymbol</a></div><div class="ttdeci">CSymbolTableEntry * LookUpSymbol(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00079">symboltable.cpp:79</a></div></div>
+<div class="ttc" id="anamespace_config_html_af00df21c4710fd212226091adfabb1f0"><div class="ttname"><a href="../../d0/d31/namespace_config.html#af00df21c4710fd212226091adfabb1f0">Config::GetLanguage</a></div><div class="ttdeci">ELanguage GetLanguage()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00081">config.h:81</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_af335b83cb06ac2934f891089c295bdf9"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#af335b83cb06ac2934f891089c295bdf9">Script::CArray::GetStructure</a></div><div class="ttdeci">CStruct * GetStructure(uint32 index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2a/array_8cpp_source.html#l00528">array.cpp:528</a></div></div>
+<div class="ttc" id="acrc_8h_html"><div class="ttname"><a href="../../dc/de6/crc_8h.html">crc.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a546f3bd1693e9e6e950f0b42bbb7faf7"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a546f3bd1693e9e6e950f0b42bbb7faf7">Script::CSymbolTableEntry::mNameChecksum</a></div><div class="ttdeci">uint32 mNameChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00080">symboltable.h:80</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_path_man_html_a7109561fb994d4233e6e52fca166a7f5"><div class="ttname"><a href="../../d2/d16/class_obj_1_1_c_path_man.html#a7109561fb994d4233e6e52fca166a7f5">Obj::CPathMan::Instance</a></div><div class="ttdeci">static CPathMan * Instance()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dc5/_path_man_8cpp_source.html#l00097">PathMan.cpp:97</a></div></div>
+<div class="ttc" id="aarray_8h_html"><div class="ttname"><a href="../../db/d63/array_8h.html">array.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a6687c958fc0c552ccae96e483a13d2c8"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a6687c958fc0c552ccae96e483a13d2c8">Script::CSymbolTableEntry::mGotReloaded</a></div><div class="ttdeci">uint8 mGotReloaded</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00058">symboltable.h:58</a></div></div>
+<div class="ttc" id="aparse_8h_html"><div class="ttname"><a href="../../d4/d2b/parse_8h.html">parse.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a0e3942531905b344953ec9180b7291a1"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a0e3942531905b344953ec9180b7291a1">Script::CStruct::RemoveComponent</a></div><div class="ttdeci">void RemoveComponent(uint32 nameChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l00643">struct.cpp:643</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_afda1f5b5f2f1ce8d35019c749cd385c3"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#afda1f5b5f2f1ce8d35019c749cd385c3">SkateScript::GenerateFileNameChecksum</a></div><div class="ttdeci">uint32 GenerateFileNameChecksum(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00242">gs_file.cpp:242</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_path_man_8h_html"><div class="ttname"><a href="../../d5/d18/_path_man_8h.html">PathMan.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_aecf20f72137b77c2046b6dd2d2c75536"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#aecf20f72137b77c2046b6dd2d2c75536">SkateScript::DeletePrefixInfo</a></div><div class="ttdeci">void DeletePrefixInfo()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00645">nodearray.cpp:645</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a7dc9d7b79c1006dff9c657bdf615a9b9"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">Script::CSymbolTableEntry::mType</a></div><div class="ttdeci">uint8 mType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00063">symboltable.h:63</a></div></div>
+<div class="ttc" id="anamespace_script_html_a2aeab65fd498045c6740c319834260bc"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a2aeab65fd498045c6740c319834260bc">Script::UsePermanentStringHeap</a></div><div class="ttdeci">void UsePermanentStringHeap()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d24/string_8cpp_source.html#l00143">string.cpp:143</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a8883c532f1113fe7419c93bd74cccff5"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a8883c532f1113fe7419c93bd74cccff5">Obj::InsertGoalEditorNodes</a></div><div class="ttdeci">void InsertGoalEditorNodes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d33/_goal_editor_component_8cpp_source.html#l00270">GoalEditorComponent.cpp:270</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="anamespace_crc_html_aed1b5ad21f682b39b09782ec29f5c5cc"><div class="ttname"><a href="../../d3/d9b/namespace_crc.html#aed1b5ad21f682b39b09782ec29f5c5cc">Crc::GenerateCRCFromString</a></div><div class="ttdeci">uint32 GenerateCRCFromString(const char *pName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dd1/crc_8cpp_source.html#l00259">crc.cpp:259</a></div></div>
+<div class="ttc" id="anamespace_script_html_a820e5eda5009aeebda3db40d555d4a75"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a820e5eda5009aeebda3db40d555d4a75">Script::UnloadQB</a></div><div class="ttdeci">void UnloadQB(uint32 fileNameChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd5/file_8cpp_source.html#l00106">file.cpp:106</a></div></div>
+<div class="ttc" id="ags__file_8h_html"><div class="ttname"><a href="../../d0/de4/gs__file_8h.html">gs_file.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="a_goal_editor_component_8h_html"><div class="ttname"><a href="../../d1/df6/_goal_editor_component_8h.html">GoalEditorComponent.h</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a603cd4581a4548368ac1ade0072f8080"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a603cd4581a4548368ac1ade0072f8080">Pip::UnloadPre</a></div><div class="ttdeci">bool UnloadPre(const char *p_preFileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6b/pip_8cpp_source.html#l00469">pip.cpp:469</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a2df52f92becb60d77aa305c511ffae0d"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a2df52f92becb60d77aa305c511ffae0d">SkateScript::CreateNodeNameHashTable</a></div><div class="ttdeci">void CreateNodeNameHashTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00056">nodearray.cpp:56</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a7070f1871d5765bd959912b9dfb4501c"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a7070f1871d5765bd959912b9dfb4501c">Pip::LoadPre</a></div><div class="ttdeci">void LoadPre(const char *p_preFileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6b/pip_8cpp_source.html#l00173">pip.cpp:173</a></div></div>
+<div class="ttc" id="apip_8h_html"><div class="ttname"><a href="../../d2/db0/pip_8h.html">pip.h</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">Config::LANGUAGE_FRENCH</a></div><div class="ttdeci">@ LANGUAGE_FRENCH</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00029">config.h:29</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a85957e7d414e2514aa4eda4a0b82c120"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a85957e7d414e2514aa4eda4a0b82c120">Script::CSymbolTableEntry::mpArray</a></div><div class="ttdeci">CArray * mpArray</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00104">symboltable.h:104</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a5b5f2e88e034ff29bcf072ebe54c6eda"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">SkateScript::UnloadQB</a></div><div class="ttdeci">void UnloadQB(uint32 fileNameChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00228">gs_file.cpp:228</a></div></div>
+<div class="ttc" id="anamespace_script_html_aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138">Script::ASSERT_IF_DUPLICATE_SYMBOLS</a></div><div class="ttdeci">@ ASSERT_IF_DUPLICATE_SYMBOLS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00022">scriptdefs.h:22</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_path_man_html_aed1a20c52bd6263d3890af23278caaae"><div class="ttname"><a href="../../d2/d16/class_obj_1_1_c_path_man.html#aed1a20c52bd6263d3890af23278caaae">Obj::CPathMan::AddPathInfoToNodeArray</a></div><div class="ttdeci">void AddPathInfoToNodeArray()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dc5/_path_man_8cpp_source.html#l00124">PathMan.cpp:124</a></div></div>
+<div class="ttc" id="anamespace_script_html_ac31b62c9995635dc82c7b72bf9ed2cb6"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ac31b62c9995635dc82c7b72bf9ed2cb6">Script::LoadQB</a></div><div class="ttdeci">void LoadQB(const char *p_fileName, EBoolAssertIfDuplicateSymbols assertIfDuplicateSymbols)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dd5/file_8cpp_source.html#l00057">file.cpp:57</a></div></div>
+<div class="ttc" id="anamespace_pip_html_a6ee3f2a13a08091a1e0145f209593325"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#a6ee3f2a13a08091a1e0145f209593325">Pip::Unload</a></div><div class="ttdeci">void Unload(const char *p_fileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00040">win32functions.cpp:40</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a49c79546032fdadb74b1cb94aa9ef6d2"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a49c79546032fdadb74b1cb94aa9ef6d2">Script::CStruct::AddVector</a></div><div class="ttdeci">void AddVector(uint32 nameChecksum, float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01087">struct.cpp:1087</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_aa7583c1cb50249a858f525497d69a3dc"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#aa7583c1cb50249a858f525497d69a3dc">SkateScript::GeneratePrefixInfo</a></div><div class="ttdeci">void GeneratePrefixInfo()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00655">nodearray.cpp:655</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="../../db/d16/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a96f83d239be900b0c735be638933c302"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a96f83d239be900b0c735be638933c302">SkateScript::ClearNodeNameHashTable</a></div><div class="ttdeci">void ClearNodeNameHashTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00043">nodearray.cpp:43</a></div></div>
+<div class="ttc" id="anodearray_8h_html"><div class="ttname"><a href="../../df/d47/nodearray_8h.html">nodearray.h</a></div></div>
+<div class="ttc" id="anamespace_ns_display_html_aadbe1b1484329eb623099b72b6c15569"><div class="ttname"><a href="../../dd/d18/namespace_ns_display.html#aadbe1b1484329eb623099b72b6c15569">NsDisplay::doReset</a></div><div class="ttdeci">void doReset(bool hard_reset=false, bool forceMenu=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d9a/p__display_8cpp_source.html#l01067">p_display.cpp:1067</a></div></div>
+<div class="ttc" id="anamespace_script_html_a74a6a6dc78593af51b1ee427419ac638"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a74a6a6dc78593af51b1ee427419ac638">Script::UseRegularStringHeap</a></div><div class="ttdeci">void UseRegularStringHeap()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d24/string_8cpp_source.html#l00148">string.cpp:148</a></div></div>
+<div class="ttc" id="afile_8h_html"><div class="ttname"><a href="../../d2/d4d/file_8h.html">file.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="anamespace_script_html_a07d7c51baa73041d8489457816583013"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a07d7c51baa73041d8489457816583013">Script::CleanUpAndRemoveSymbol</a></div><div class="ttdeci">void CleanUpAndRemoveSymbol(CSymbolTableEntry *p_sym)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d09/parse_8cpp_source.html#l02864">parse.cpp:2864</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a40dfb370c37d6da857f33157b2b3bfc7"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a40dfb370c37d6da857f33157b2b3bfc7">Script::CStruct::GetVector</a></div><div class="ttdeci">bool GetVector(uint32 nameChecksum, Mth::Vector *p_vector, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01535">struct.cpp:1535</a></div></div>
+<div class="ttc" id="anamespace_pip_html_adca4b5163f977df431e2222c0a5545f7"><div class="ttname"><a href="../../dc/da6/namespace_pip.html#adca4b5163f977df431e2222c0a5545f7">Pip::GetFileSize</a></div><div class="ttdeci">uint32 GetFileSize(uint32 fileNameCRC)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6b/pip_8cpp_source.html#l00687">pip.cpp:687</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1ad624092ed31eb694b94cebab42d470"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">Script::GetNextSymbolTableEntry</a></div><div class="ttdeci">CSymbolTableEntry * GetNextSymbolTableEntry(CSymbolTableEntry *p_sym)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00405">symboltable.cpp:405</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">Config::LANGUAGE_GERMAN</a></div><div class="ttdeci">@ LANGUAGE_GERMAN</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00031">config.h:31</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a6823057ecc0dd3e195ea41c6cf618126"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">SkateScript::LoadQB</a></div><div class="ttdeci">void LoadQB(const char *p_fileName, EBoolAssertIfDuplicateSymbols assertIfDuplicateSymbols)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00153">gs_file.cpp:153</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a7076d5e485f4461d13ff2bb16cd93776"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a7076d5e485f4461d13ff2bb16cd93776">SkateScript::LoadAllStartupQBFiles</a></div><div class="ttdeci">void LoadAllStartupQBFiles()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00048">gs_file.cpp:48</a></div></div>
+<div class="ttc" id="anamespace_script_html_aeee4dbcb8de713befd44ac8b1314e9ff"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ff">Script::EBoolAssertIfDuplicateSymbols</a></div><div class="ttdeci">EBoolAssertIfDuplicateSymbols</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00019">scriptdefs.h:19</a></div></div>
+<div class="ttc" id="anamespace_script_html_a84ac1eedf37ab70be269e8fcbdc6ea21af083d68b7a41c5ed5879270eb54f9344"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21af083d68b7a41c5ed5879270eb54f9344">Script::ESYMBOLTYPE_ARRAY</a></div><div class="ttdeci">@ ESYMBOLTYPE_ARRAY</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dc0/symboltype_8h_source.html#l00024">symboltype.h:24</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="anamespace_script_html_aacb275494688d5b51c565c932f27f76c"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a></div><div class="ttdeci">CArray * GetArray(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00671">symboltable.cpp:671</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html">SkateScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00038">gs_file.cpp:38</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_5a435ad098a1c5bf157792cc61889963.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d2/d3d/gs__file_8cpp.html">gs_file.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:36. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

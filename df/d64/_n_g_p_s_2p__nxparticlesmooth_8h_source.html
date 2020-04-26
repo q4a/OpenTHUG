@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_nxparticlesmooth.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxparticlesmooth.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxParticle.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Paul Robinson</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  3/27/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GFX_P_NX_PARTICLESmooth_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GFX_P_NX_PARTICLESmooth_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;gfx/ngps/p_nxparticle.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;                   </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of the CParticle</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html">CPs2ParticleSmooth</a> : <span class="keyword">public</span> <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html">CParticle</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;                            <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a0d7783ad296a65bfca6aa37af930b14e">CPs2ParticleSmooth</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                            <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a0d7783ad296a65bfca6aa37af930b14e">CPs2ParticleSmooth</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <span class="keywordtype">int</span> max_particles, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix, <span class="keywordtype">int</span> num_segments, <span class="keywordtype">float</span> split, <span class="keywordtype">int</span> history );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">virtual</span>                 <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a633a1692d360ea42ce102e607b4ef0ca">~CPs2ParticleSmooth</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//  NxPs2::sParticleSystem* GetEngineParticle( void )   { return mp_engine_particle; }</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:                    <span class="comment">// It&#39;s all private, as it is machine specific</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a303934027c80c5fc2b70285c308d8d97">plat_render</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#acbe1192bc3220b94f61dbb62e36c75fa">plat_get_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> * <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> * <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> * z );</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a9b231a4d997c8a442d6f0d1df4d6d5c2">plat_set_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#afd80099c296324cab8056fddcff70c02">plat_add_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a571e1fe1e0cb797843c6c0b83025c429">plat_get_num_vertex_lists</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ac6d693d468f5ce41f694c2f396ce4778">plat_get_num_particle_colors</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a811cf7fa3f2edfa352a2e4e69997083a">plat_set_sr</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a4ff05b6dd4c7560565656f366e80857a">plat_set_sg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a8cd88dd69d2d4ab6c3af857d04c6543a">plat_set_sb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#af6b069c38da0656b54c509996c956bbe">plat_set_sa</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a20c94fd1c21195c5d191ae8e4fca569a">plat_set_mr</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ab6a5cf803c8719eb10d250115da1f18f">plat_set_mg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#abbd1f7033e6a2c6a1f03e89bd32b4e97">plat_set_mb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aa448f529e251940c481adcdfb0c30e0f">plat_set_ma</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a0e9feb49942c5f4c687ce36b803db39f">plat_set_er</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a2cb9716c78c7aa30edce11a0079492ed">plat_set_eg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a4d828e2ba39ab266348ed537fe8ca167">plat_set_eb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aa3487e54ba9dd8bea5af0e64d253cedb">plat_set_ea</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">//  void*                   mp_display_list;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">//  int                     m_display_list_size;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a075c7125765d6176ce6d432e795a5664">   56</a></span>&#160;    <span class="keywordtype">float</span>*                  <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a075c7125765d6176ce6d432e795a5664">mp_vertices</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#abc85df11f7fb22746bc7ec07857499d8">   57</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*                 <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#abc85df11f7fb22746bc7ec07857499d8">mp_colors</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aca52ba1d440e5fdc3513a22b4cdb7189">   58</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>                  <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aca52ba1d440e5fdc3513a22b4cdb7189">m_blend</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//  NxPs2::sParticleSystem* mp_engine_particle;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a95380627dad27b4ef6ed7a7220c08c52">   61</a></span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>             <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a95380627dad27b4ef6ed7a7220c08c52">m_start_color</a>[2];           <span class="comment">// Start color for each corner.</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a3e9b9abb424df075439b45d8514560bb">   62</a></span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>             <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a3e9b9abb424df075439b45d8514560bb">m_mid_color</a>[2];             <span class="comment">// Mid color for each corner.</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aed65c6664d10204c42ed223a5fe82b14">   63</a></span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>             <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aed65c6664d10204c42ed223a5fe82b14">m_end_color</a>[2];             <span class="comment">// End color for each corner.</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ac7f24e4509a182ba0e8e70743d6e2905">   64</a></span>&#160;    <a class="code" href="../../d8/d5f/struct_nx_ps2_1_1_s_single_texture.html">NxPs2::SSingleTexture</a>*  <a class="code" href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ac7f24e4509a182ba0e8e70743d6e2905">mp_engine_texture</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_abbd1f7033e6a2c6a1f03e89bd32b4e97"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#abbd1f7033e6a2c6a1f03e89bd32b4e97">Nx::CPs2ParticleSmooth::plat_set_mb</a></div><div class="ttdeci">void plat_set_mb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00160">p_nxparticlesmooth.cpp:160</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_ac7f24e4509a182ba0e8e70743d6e2905"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ac7f24e4509a182ba0e8e70743d6e2905">Nx::CPs2ParticleSmooth::mp_engine_texture</a></div><div class="ttdeci">NxPs2::SSingleTexture * mp_engine_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00064">p_nxparticlesmooth.h:64</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a20c94fd1c21195c5d191ae8e4fca569a"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a20c94fd1c21195c5d191ae8e4fca569a">Nx::CPs2ParticleSmooth::plat_set_mr</a></div><div class="ttdeci">void plat_set_mr(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00158">p_nxparticlesmooth.cpp:158</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a9b231a4d997c8a442d6f0d1df4d6d5c2"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a9b231a4d997c8a442d6f0d1df4d6d5c2">Nx::CPs2ParticleSmooth::plat_set_position</a></div><div class="ttdeci">void plat_set_position(int entry, int list, float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00126">p_nxparticlesmooth.cpp:126</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html">Nx::CParticle</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00038">nxparticle.h:38</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a95380627dad27b4ef6ed7a7220c08c52"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a95380627dad27b4ef6ed7a7220c08c52">Nx::CPs2ParticleSmooth::m_start_color</a></div><div class="ttdeci">Image::RGBA m_start_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00061">p_nxparticlesmooth.h:61</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a0d7783ad296a65bfca6aa37af930b14e"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a0d7783ad296a65bfca6aa37af930b14e">Nx::CPs2ParticleSmooth::CPs2ParticleSmooth</a></div><div class="ttdeci">CPs2ParticleSmooth()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00036">p_nxparticlesmooth.cpp:36</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_single_texture_html"><div class="ttname"><a href="../../d8/d5f/struct_nx_ps2_1_1_s_single_texture.html">NxPs2::SSingleTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00013">sprite.h:13</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a29940ae63ec06c9998bba873e25407ad"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a></div><div class="ttdeci">unsigned __int64 uint64</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00150">Defines.h:150</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a633a1692d360ea42ce102e607b4ef0ca"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a633a1692d360ea42ce102e607b4ef0ca">Nx::CPs2ParticleSmooth::~CPs2ParticleSmooth</a></div><div class="ttdeci">virtual ~CPs2ParticleSmooth()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00101">p_nxparticlesmooth.cpp:101</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_ac6d693d468f5ce41f694c2f396ce4778"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ac6d693d468f5ce41f694c2f396ce4778">Nx::CPs2ParticleSmooth::plat_get_num_particle_colors</a></div><div class="ttdeci">int plat_get_num_particle_colors(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00152">p_nxparticlesmooth.cpp:152</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_aed65c6664d10204c42ed223a5fe82b14"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aed65c6664d10204c42ed223a5fe82b14">Nx::CPs2ParticleSmooth::m_end_color</a></div><div class="ttdeci">Image::RGBA m_end_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00063">p_nxparticlesmooth.h:63</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a2cb9716c78c7aa30edce11a0079492ed"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a2cb9716c78c7aa30edce11a0079492ed">Nx::CPs2ParticleSmooth::plat_set_eg</a></div><div class="ttdeci">void plat_set_eg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00163">p_nxparticlesmooth.cpp:163</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_af6b069c38da0656b54c509996c956bbe"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#af6b069c38da0656b54c509996c956bbe">Nx::CPs2ParticleSmooth::plat_set_sa</a></div><div class="ttdeci">void plat_set_sa(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00157">p_nxparticlesmooth.cpp:157</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_aa448f529e251940c481adcdfb0c30e0f"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aa448f529e251940c481adcdfb0c30e0f">Nx::CPs2ParticleSmooth::plat_set_ma</a></div><div class="ttdeci">void plat_set_ma(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00161">p_nxparticlesmooth.cpp:161</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a8cd88dd69d2d4ab6c3af857d04c6543a"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a8cd88dd69d2d4ab6c3af857d04c6543a">Nx::CPs2ParticleSmooth::plat_set_sb</a></div><div class="ttdeci">void plat_set_sb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00156">p_nxparticlesmooth.cpp:156</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a4ff05b6dd4c7560565656f366e80857a"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a4ff05b6dd4c7560565656f366e80857a">Nx::CPs2ParticleSmooth::plat_set_sg</a></div><div class="ttdeci">void plat_set_sg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00155">p_nxparticlesmooth.cpp:155</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a23962ea1e77aa36a3f96b0cdd496e6c4"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a></div><div class="ttdeci">ezNetCnfCombination_t list[kMaxCombinations]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00005">p_ezcommon.h:5</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_ab6a5cf803c8719eb10d250115da1f18f"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#ab6a5cf803c8719eb10d250115da1f18f">Nx::CPs2ParticleSmooth::plat_set_mg</a></div><div class="ttdeci">void plat_set_mg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00159">p_nxparticlesmooth.cpp:159</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_abc85df11f7fb22746bc7ec07857499d8"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#abc85df11f7fb22746bc7ec07857499d8">Nx::CPs2ParticleSmooth::mp_colors</a></div><div class="ttdeci">uint32 * mp_colors</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00057">p_nxparticlesmooth.h:57</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a4d828e2ba39ab266348ed537fe8ca167"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a4d828e2ba39ab266348ed537fe8ca167">Nx::CPs2ParticleSmooth::plat_set_eb</a></div><div class="ttdeci">void plat_set_eb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00164">p_nxparticlesmooth.cpp:164</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_aa3487e54ba9dd8bea5af0e64d253cedb"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aa3487e54ba9dd8bea5af0e64d253cedb">Nx::CPs2ParticleSmooth::plat_set_ea</a></div><div class="ttdeci">void plat_set_ea(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00165">p_nxparticlesmooth.cpp:165</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html">Nx::CPs2ParticleSmooth</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00025">p_nxparticlesmooth.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a3e9b9abb424df075439b45d8514560bb"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a3e9b9abb424df075439b45d8514560bb">Nx::CPs2ParticleSmooth::m_mid_color</a></div><div class="ttdeci">Image::RGBA m_mid_color[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00062">p_nxparticlesmooth.h:62</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a811cf7fa3f2edfa352a2e4e69997083a"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a811cf7fa3f2edfa352a2e4e69997083a">Nx::CPs2ParticleSmooth::plat_set_sr</a></div><div class="ttdeci">void plat_set_sr(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00154">p_nxparticlesmooth.cpp:154</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_acbe1192bc3220b94f61dbb62e36c75fa"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#acbe1192bc3220b94f61dbb62e36c75fa">Nx::CPs2ParticleSmooth::plat_get_position</a></div><div class="ttdeci">void plat_get_position(int entry, int list, float *x, float *y, float *z)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00113">p_nxparticlesmooth.cpp:113</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a0e9feb49942c5f4c687ce36b803db39f"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a0e9feb49942c5f4c687ce36b803db39f">Nx::CPs2ParticleSmooth::plat_set_er</a></div><div class="ttdeci">void plat_set_er(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00162">p_nxparticlesmooth.cpp:162</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a6a17d6914fc4d83136bd326e196a9877"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">Nx::x</a></div><div class="ttdeci">static Mth::Vector x</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01913">CollTriData.cpp:1913</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a571e1fe1e0cb797843c6c0b83025c429"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a571e1fe1e0cb797843c6c0b83025c429">Nx::CPs2ParticleSmooth::plat_get_num_vertex_lists</a></div><div class="ttdeci">int plat_get_num_vertex_lists(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00153">p_nxparticlesmooth.cpp:153</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a075c7125765d6176ce6d432e795a5664"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a075c7125765d6176ce6d432e795a5664">Nx::CPs2ParticleSmooth::mp_vertices</a></div><div class="ttdeci">float * mp_vertices</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00056">p_nxparticlesmooth.h:56</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_afd80099c296324cab8056fddcff70c02"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#afd80099c296324cab8056fddcff70c02">Nx::CPs2ParticleSmooth::plat_add_position</a></div><div class="ttdeci">void plat_add_position(int entry, int list, float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00139">p_nxparticlesmooth.cpp:139</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_aca52ba1d440e5fdc3513a22b4cdb7189"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#aca52ba1d440e5fdc3513a22b4cdb7189">Nx::CPs2ParticleSmooth::m_blend</a></div><div class="ttdeci">uint64 m_blend</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h_source.html#l00058">p_nxparticlesmooth.h:58</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_particle_smooth_html_a303934027c80c5fc2b70285c308d8d97"><div class="ttname"><a href="../../d0/d68/class_nx_1_1_c_ps2_particle_smooth.html#a303934027c80c5fc2b70285c308d8d97">Nx::CPs2ParticleSmooth::plat_render</a></div><div class="ttdeci">void plat_render(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d4d/_n_g_p_s_2p__nxparticlesmooth_8cpp_source.html#l00172">p_nxparticlesmooth.cpp:172</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../df/d64/_n_g_p_s_2p__nxparticlesmooth_8h.html">p_nxparticlesmooth.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

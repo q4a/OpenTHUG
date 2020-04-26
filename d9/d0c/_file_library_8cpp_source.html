@@ -1,0 +1,782 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/File/FileLibrary.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d0c/_file_library_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">FileLibrary.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d0c/_file_library_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         File</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       FileLibrary.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  01/21/2003</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/df2/_file_library_8h.html">sys/file/filelibrary.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d6c/_async_filesys_8h.html">sys/file/asyncfilesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d76/memman_8h.html">sys/mem/memman.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d10/music_8h.html">gel/music/music.h</a>&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/da9/p__aram_8h.html">sys/ngc/p_aram.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d8e/p__dma_8h.html">sys/ngc/p_dma.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d10/namespace_file.html">File</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">struct </span>SLibHeader</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  <a class="code" href="../../d6/d35/struct_file_1_1_s_lib_header.html#ab8402f7dba4b31a01c685a39c74d39ae">versionNumber</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span>     <a class="code" href="../../d6/d35/struct_file_1_1_s_lib_header.html#a52739876171aa39b283c16a432f772fe">numFiles</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d6/d35/struct_file_1_1_s_lib_header.html">   55</a></span>&#160;};</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d6/d35/struct_file_1_1_s_lib_header.html#ab8402f7dba4b31a01c685a39c74d39ae">   67</a></span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d6/d35/struct_file_1_1_s_lib_header.html#a52739876171aa39b283c16a432f772fe">   68</a></span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">**                            Private Functions                             **</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d10/namespace_file.html#ab32ca1ecc5fc3efc2bdb3dfcbb9ae04c">filesync_async_callback</a>(<a class="code" href="../../d8/dd3/class_file_1_1_c_async_file_handle.html">File::CAsyncFileHandle</a>*, <a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">File::EAsyncFunctionType</a> <span class="keyword">function</span>, <span class="keywordtype">int</span> result, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> arg0, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> arg1)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Dbg_Message(&quot;Got callback from %x&quot;, arg0);</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">if</span> (<span class="keyword">function</span> == <a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2a3654c6532f80cdb588eecb6455093ea1">File::FUNC_READ</a>)</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../de/d10/namespace_file.html#ab32ca1ecc5fc3efc2bdb3dfcbb9ae04c">   82</a></span>&#160;    {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html">CFileLibrary</a>* <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> = (<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html">CFileLibrary</a>*)arg0;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">bool</span> assertOnFail = (bool)arg1;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a>-&gt;PostLoad( assertOnFail, result );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">**                            Public Functions                              **</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                   </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a64ea401475bf76886eefc9c8d7a24896">CFileLibrary::CFileLibrary</a>()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = NULL;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a64ea401475bf76886eefc9c8d7a24896">  103</a></span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = NULL;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> = NULL;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a7cc545a81f6564dbd9e930cf0742e54a">m_dataLoaded</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ab298faad2bd2994b68db5ec4e5ddd937">CFileLibrary::~CFileLibrary</a>()</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="../../d2/d0b/namespace_ns_a_r_a_m.html#a04ff6fcde9ef2f485c8088d50958c956">NsARAM::free</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">m_aramOffset</a> );</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#ab298faad2bd2994b68db5ec4e5ddd937">  118</a></span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> )</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = NULL;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> )</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a7cc545a81f6564dbd9e930cf0742e54a">m_dataLoaded</a>, ( <span class="stringliteral">&quot;Can&#39;t delete CFileLibrary while it is still being loaded&quot;</span> ) );</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a81e7a1b6677d751061272e907e5b5295">File::CAsyncFileLoader::sClose</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                   </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#aae36d2787ba20d8bc87b646a47ef7df6">CFileLibrary::LoadFinished</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a7cc545a81f6564dbd9e930cf0742e54a">m_dataLoaded</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#aae36d2787ba20d8bc87b646a47ef7df6">  142</a></span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a8c6b22f06ead70967732d66f210888a9">CFileLibrary::PostLoad</a>( <span class="keywordtype">bool</span> assertOnFail, <span class="keywordtype">int</span> file_size )</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <span class="comment">// Handle end of async, if that was used</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> )</div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a8c6b22f06ead70967732d66f210888a9">  152</a></span>&#160;    {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <a class="code" href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a81e7a1b6677d751061272e907e5b5295">File::CAsyncFileLoader::sClose</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> );</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> = NULL;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    Dbg_MsgAssert( (file_size &amp; 0x3) == 0, ( <span class="stringliteral">&quot;Size of file is not multiple of 4 (%d bytes)&quot;</span>, file_size ) );</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#define XFER_SIZE ( sizeof( SLibHeader ) + ( vMAX_LIB_FILES * sizeof( SFileInfo ) ) )</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">char</span> buffer[ XFER_SIZE ];</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="../../d1/d2e/namespace_ns_d_m_a.html#a130c846790715dd776f4aa9dc78cfb94">NsDMA::toMRAM</a>( buffer, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">m_aramOffset</a>, XFER_SIZE );</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *pFileData = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)buffer; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *pFileData = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="../../d6/d35/struct_file_1_1_s_lib_header.html">SLibHeader</a>* pHeader = (<a class="code" href="../../d6/d35/struct_file_1_1_s_lib_header.html">SLibHeader</a>*)pFileData;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    pFileData += <span class="keyword">sizeof</span>( <a class="code" href="../../d6/d35/struct_file_1_1_s_lib_header.html">SLibHeader</a> );</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">if</span> ( pFileData &gt; ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> + file_size ) )</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">// out of bounds</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">goto</span> load_fail;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a> = pHeader-&gt;numFiles;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a> &gt; 0, ( <span class="stringliteral">&quot;No files found in lib mp_fileBuffer = %p&quot;</span>, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> ) );</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a> &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6d9f21712250f2d5300431e93622f72eafe7846727a2acf65d5e3911449556efa">vMAX_LIB_FILES</a>, ( <span class="stringliteral">&quot;Too many subfiles found in lib (%d files, max=%d)&quot;</span>, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6d9f21712250f2d5300431e93622f72eafe7846727a2acf65d5e3911449556efa">vMAX_LIB_FILES</a> ) );</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="comment">// read in table of contents information</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    memcpy( &amp;<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>, pFileData, (<span class="keyword">sizeof</span>(SFileInfo) * <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>) );</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    pFileData += (<span class="keyword">sizeof</span>(SFileInfo) * <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">if</span> ( pFileData &gt; ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> + file_size ) )</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// out of bounds</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">goto</span> load_fail;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>; i++ )</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a3899635bd7d203a2b8e8bf5fba790aaf">m_fileOffsets</a>[i] = (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)(<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">m_aramOffset</a> + <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].fileOffset);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[i] = NULL;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[i] = (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)(<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> + <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].fileOffset);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;File %d @ %08x %s [%d bytes]&quot;</span>, i, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].fileNameChecksum, <a class="code" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a>(<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].fileExtensionChecksum), <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].fileSize );</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="comment">// to reduce the amount of temp memory needed, we first load the LIB file</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">// on the bottom up heap, and then copy sub-file individually onto the top</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">// down heap (as we reallocate shrink the original LIB file on the bottom up heap)</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> i = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a> - 1; i &gt;= 0; i-- )</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="keywordtype">int</span> file_size = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[i].<a class="code" href="../../d5/d4d/struct_file_1_1_s_file_info.html#a63331a95f0dc3dbda70138c90038837d">fileSize</a>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>* pTempFilePointer = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[i];</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">// GJ:  When I first wrote this class, I wanted to make it generic, </span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="comment">// but it gradually became more cutscene-specific to fix</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="comment">// memory issues.  For example, the following uses the</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        <span class="comment">// &quot;cutscene heap&quot; to reduce temp memory overhead.  Perhaps</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="comment">// later on, I can just store the appropriate top/bottomheap pointers</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="comment">// during initialization</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneTopDownHeap(), ( <span class="stringliteral">&quot;No cutscene heap?&quot;</span> ) ); </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneTopDownHeap());</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[i] = (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( file_size );</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        memcpy( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[i], pTempFilePointer, file_size );</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#ifdef  __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>* pOldBuffer = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap(), ( <span class="stringliteral">&quot;No cutscene heap?&quot;</span> ) ); </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap());</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#ac6ec04a67c6bbaaceb10b1d4730890c2">Mem::ReallocateShrink</a>( <a class="code" href="../../db/dc4/namespace_mem.html#aeebecca68839c4120bc6f8bd4186bb3c">Mem::GetAllocSize</a>(<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>) - file_size, <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> );</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> == pOldBuffer, ( <span class="stringliteral">&quot;Pointer was not supposed to change except for shrinking&quot;</span> ) );</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    }</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="comment">// by this point, all that should be left in the original block</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="comment">// is the header, which we don&#39;t need any more</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> );</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = NULL;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = NULL;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// if the data is ready to be accessed</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a7cc545a81f6564dbd9e930cf0742e54a">m_dataLoaded</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;load_fail:</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;Parsing of library failed&quot;</span> ) );</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#aa5979cce82cd634c6c67d2310b079cdc">CFileLibrary::Load</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* p_fileName, <span class="keywordtype">bool</span> assertOnFail, <span class="keywordtype">bool</span> async_load )</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;{</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="comment">// See Garrett, Garrett, or Mick for explanation.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#aa5979cce82cd634c6c67d2310b079cdc">  271</a></span>&#160;    </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    Dbg_MsgAssert( !async_load, ( <span class="stringliteral">&quot;Cutscenes aren&#39;t supposed to be async loaded anymore&quot;</span> ) );</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordtype">int</span> file_size;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap(), ( <span class="stringliteral">&quot;No cutscene heap?&quot;</span> ) ); </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap());</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../de/d10/namespace_file.html#ac4c63667af9ccf3107bc0c87e1f480e3">LoadAlloc</a>( p_fileName, &amp;file_size );</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a8c6b22f06ead70967732d66f210888a9">PostLoad</a>(assertOnFail, file_size);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="comment">// Make sure music is off here as we really need the memory.</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">//  Pcm::StopMusic();</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    async_load = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">// Turn off async for platforms that don&#39;t support it</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a378dd59179bdb5dcbb12abcb34d903d6">File::CAsyncFileLoader::sAsyncSupported</a>())</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    {</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        async_load = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    </div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">if</span> ( async_load )</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        <span class="comment">// Pre-load</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        Dbg_Assert( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> );</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> = <a class="code" href="../../df/d7a/class_file_1_1_c_async_file_loader.html#ab1ad23da6afa5731552c99b632451b98">File::CAsyncFileLoader::sOpen</a>( p_fileName, !async_load );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="comment">// make sure the file is valid</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <span class="keywordflow">if</span> ( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> )</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;            Dbg_MsgAssert( assertOnFail, ( <span class="stringliteral">&quot;Load of %s failed - file not found?&quot;</span>, p_fileName ) );</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <span class="keywordtype">int</span> file_size = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a>-&gt;<a class="code" href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#a6b47a574088d7ca009661485d7080192">GetFileSize</a>();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">if</span> ( file_size == 0 )</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;        {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            Dbg_MsgAssert( 0, (<span class="stringliteral">&quot;Library file %s size is 0 (possibly not found?)&quot;</span>, p_fileName) );</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            <a class="code" href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a81e7a1b6677d751061272e907e5b5295">File::CAsyncFileLoader::sClose</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;            <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a> = NULL;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        }</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        Dbg_Assert( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> );</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        Dbg_Assert( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> );</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="comment">// to reduce the amount of temp memory needed, we first load the LIB file</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        <span class="comment">// on the bottom up heap, and then copy sub-file individually onto the top</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">// down heap (as we reallocate shrink the original LIB file on the bottom up heap)</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap(), ( <span class="stringliteral">&quot;No cutscene heap?&quot;</span> ) ); </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap());</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*) <a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( file_size + 64 );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)(((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>+63)&amp;~63);</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>;      <span class="comment">// Garrett: De-aligning pointer since async filesystem should take care of it.      </span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="comment">// Set the callback</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a>-&gt;<a class="code" href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#ae12f7f56a3f03b3039c7daf0ffd6d1af">SetCallback</a>( <a class="code" href="../../de/d10/namespace_file.html#ab32ca1ecc5fc3efc2bdb3dfcbb9ae04c">filesync_async_callback</a>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)<span class="keyword">this</span>, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)assertOnFail );</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="comment">// read the file in</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">mp_fileHandle</a>-&gt;<a class="code" href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#ab8aefa636d30a8b3cee1159c399b7061">Read</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a>, 1, file_size );</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    {                  </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="comment">// open the file as a stream</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        <span class="keywordtype">void</span>* pStream = <a class="code" href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a>( p_fileName, <span class="stringliteral">&quot;rb&quot;</span> );</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;        <span class="comment">// make sure the file is valid</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;        <span class="keywordflow">if</span> ( !pStream )</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        {</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;            Dbg_MsgAssert( assertOnFail, (<span class="stringliteral">&quot;Load of %s failed - file not found?&quot;</span>, p_fileName) );</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        }</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;        <span class="keywordtype">int</span> file_size = <a class="code" href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a>( pStream );</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        Dbg_MsgAssert( file_size, ( <span class="stringliteral">&quot;Library file size is 0&quot;</span> ) );</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        Dbg_Assert( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> );</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        Dbg_Assert( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> );</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        <span class="comment">// Allocate ARAM</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">m_aramOffset</a> = <a class="code" href="../../d2/d0b/namespace_ns_a_r_a_m.html#a92200ab04303bffa479e4a478f7e7bed">NsARAM::alloc</a>( file_size, <a class="code" href="../../d2/d0b/namespace_ns_a_r_a_m.html#a1597b4f32041a7c7340abc46afd5d5b6a88c410359c20f99ae8b06cb9830e18a7">NsARAM::TOPDOWN</a> );</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor">#define BUFFER_SIZE ( 16 * 1024 )</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <span class="comment">// read the file in blocks &amp; transfer to ARAM</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        <span class="keywordtype">char</span> buffer[BUFFER_SIZE];</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordtype">int</span> size = file_size;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> offset = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">m_aramOffset</a>;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160; </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <span class="keywordflow">while</span> ( size &gt; BUFFER_SIZE )</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( buffer, 1, BUFFER_SIZE, pStream );</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            <a class="code" href="../../d1/d2e/namespace_ns_d_m_a.html#abe57e36832a7e825408ccd76f296c2a1">NsDMA::toARAM</a>( offset, buffer, BUFFER_SIZE );</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160; </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;            size -= BUFFER_SIZE;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;            offset += BUFFER_SIZE;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="comment">// Read &amp; transfer last bit.</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keywordflow">if</span> ( size )</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        {</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( buffer, 1, size, pStream ); </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <a class="code" href="../../d1/d2e/namespace_ns_d_m_a.html#abe57e36832a7e825408ccd76f296c2a1">NsDMA::toARAM</a>( offset, buffer, size );</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">//      mp_baseBuffer = (uint8*)Mem::Malloc( file_size );</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">//      mp_fileBuffer = mp_baseBuffer;</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <span class="comment">// to reduce the amount of temp memory needed, we first load the LIB file</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="comment">// on the bottom up heap, and then copy sub-file individually onto the top</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        <span class="comment">// down heap (as we reallocate shrink the original LIB file on the bottom up heap)</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        Dbg_MsgAssert( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap(), ( <span class="stringliteral">&quot;No cutscene heap?&quot;</span> ) ); </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneBottomUpHeap());</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( file_size );</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a>;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="comment">// read the file in</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="keywordflow">if</span> ( !<a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a>, 1, file_size, pStream ) )</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;            <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> );</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;            <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">mp_baseBuffer</a> = NULL;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">mp_fileBuffer</a> = NULL;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>( pStream );</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            Dbg_MsgAssert( assertOnFail, ( <span class="stringliteral">&quot;Load of %s failed - bad format?&quot;</span>, p_fileName ) );</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>(pStream);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a8c6b22f06ead70967732d66f210888a9">PostLoad</a>(assertOnFail, file_size);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    }</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;                   </div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a9ce210b55495b459ae83ac9cd7d73e6b">CFileLibrary::GetNumFiles</a>()<span class="keyword"> const </span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
+<div class="line"><a name="l00430"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a9ce210b55495b459ae83ac9cd7d73e6b">  430</a></span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                   </div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>* <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac190acc0489b37f2a1c5c14e46a1ba33">CFileLibrary::GetFileData</a>( <span class="keywordtype">int</span> index )</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;{</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    Dbg_MsgAssert( index &gt;= 0 &amp;&amp; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>, ( <span class="stringliteral">&quot;Out of range file index %d&quot;</span>, index ) );</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160; </div>
+<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#ac190acc0489b37f2a1c5c14e46a1ba33">  440</a></span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index] )</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    {</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        <span class="comment">// Allocate memory &amp; copy over.</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">//      Dbg_MsgAssert( Mem::Manager::sHandle().CutsceneTopDownHeap(), ( &quot;No cutscene heap?&quot; ) ); </span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().CutsceneTopDownHeap());</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160; </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        <span class="keywordtype">int</span> mem_available;</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        <span class="keywordtype">bool</span> need_to_pop = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <span class="keywordtype">int</span> size = <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].<a class="code" href="../../d5/d4d/struct_file_1_1_s_file_info.html#a63331a95f0dc3dbda70138c90038837d">fileSize</a>;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().AudioHeap() );</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        mem_available = <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a84fabbc1720b49f917f60a26c42d8fd0">Available</a>();</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;        <span class="keywordflow">if</span> ( size &lt; ( mem_available - ( 15 * 1024 ) ) )</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;        {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;            need_to_pop = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        }</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        {</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;            <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().FrontEndHeap() );</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            mem_available = <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a84fabbc1720b49f917f60a26c42d8fd0">Available</a>();</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">if</span> ( size &lt; ( mem_available - ( 40 * 1024 ) ) )</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                need_to_pop = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            }</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            {</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().ThemeHeap() );</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                mem_available = <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a84fabbc1720b49f917f60a26c42d8fd0">Available</a>();</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;                <span class="keywordflow">if</span> ( size &lt; ( mem_available - ( 5 * 1024 ) ) )</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;                {</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;                    need_to_pop = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                }</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                {</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;                    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>( <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().ScriptHeap() );</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                    mem_available = <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a84fabbc1720b49f917f60a26c42d8fd0">Available</a>();</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                    <span class="keywordflow">if</span> ( size &lt; ( mem_available - ( 40 * 1024 ) ) )</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                    {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;                        need_to_pop = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                    }</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;                    {</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;                    }</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                }</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            }</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        }</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160; </div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index] = (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>*)<a class="code" href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileSize );</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <a class="code" href="../../d1/d2e/namespace_ns_d_m_a.html#a130c846790715dd776f4aa9dc78cfb94">NsDMA::toMRAM</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index], <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a3899635bd7d203a2b8e8bf5fba790aaf">m_fileOffsets</a>[index], <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileSize );</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keywordflow">if</span> ( need_to_pop )</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;        {</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        }</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160; </div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index];</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;}</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160; </div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                   </div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="keyword">const</span> SFileInfo* <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a25de30adffa65538a32c6751ba93831b">CFileLibrary::GetFileInfo</a>( <span class="keywordtype">int</span> index )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    Dbg_MsgAssert( index &gt;= 0 &amp;&amp; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>, ( <span class="stringliteral">&quot;Out of range file index %d&quot;</span>, index ) );</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a25de30adffa65538a32c6751ba93831b">  516</a></span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index];</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;}</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;                   </div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="keyword">const</span> <a class="code" href="../../d5/d4d/struct_file_1_1_s_file_info.html">SFileInfo</a>* <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a25de30adffa65538a32c6751ba93831b">CFileLibrary::GetFileInfo</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../db/dfb/namespacename.html">name</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> extension, <span class="keywordtype">bool</span> assertOnFail )<span class="keyword"> const</span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> index = 0; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>; index++ )</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    {</div>
+<div class="line"><a name="l00528"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#aaf9dc46921ab70906ea62b7d12b094ec">  528</a></span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileNameChecksum == <a class="code" href="../../db/dfb/namespacename.html">name</a> &amp;&amp; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileExtensionChecksum == extension )</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordflow">return</span> &amp;<a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index];</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;        }</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    }</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160; </div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keywordflow">if</span> ( assertOnFail )</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    {</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;        Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;Couldn&#39;t find file %08x %08x\n&quot;</span>, <a class="code" href="../../db/dfb/namespacename.html">name</a>, extension ) );</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    }</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;}</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160; </div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                   </div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>* <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac190acc0489b37f2a1c5c14e46a1ba33">CFileLibrary::GetFileData</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../db/dfb/namespacename.html">name</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> extension, <span class="keywordtype">bool</span> assertOnFail )</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;{</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> index = 0; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>; index++ )</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    {</div>
+<div class="line"><a name="l00551"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a69dd2c4bb1d2de23cd8a6399a307dde0">  551</a></span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileNameChecksum == <a class="code" href="../../db/dfb/namespacename.html">name</a> &amp;&amp; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileExtensionChecksum == extension )</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;        {</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#ac190acc0489b37f2a1c5c14e46a1ba33">GetFileData</a>( index );</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        }</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;    }</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;    <span class="keywordflow">if</span> ( assertOnFail )</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;    {</div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;Couldn&#39;t find file %08x %08x\n&quot;</span>, <a class="code" href="../../db/dfb/namespacename.html">name</a>, extension ) );</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;    }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160; </div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;    <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;}</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160; </div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                   </div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#aa4b5884b79771b809962871dc8a4f92c">CFileLibrary::ClearFile</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../db/dfb/namespacename.html">name</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> extension )</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;{</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
+<div class="line"><a name="l00574"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#aa4b5884b79771b809962871dc8a4f92c">  574</a></span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> index = 0; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>; index++ )</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    {</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileNameChecksum == <a class="code" href="../../db/dfb/namespacename.html">name</a> &amp;&amp; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileExtensionChecksum == extension )</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        {</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            <a class="code" href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a>( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index] );</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">mp_filePointers</a>[index] = NULL;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;            success = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;    }</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160; </div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    <span class="keywordflow">return</span> success;</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;}</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160; </div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;                   </div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a2c0e52a27014c0ac536a308d913197fb">CFileLibrary::FileExists</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../db/dfb/namespacename.html">name</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> extension )</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;{</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> index = 0; index &lt; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">m_numFiles</a>; index++ )</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    {</div>
+<div class="line"><a name="l00596"></a><span class="lineno"><a class="line" href="../../df/dc4/class_file_1_1_c_file_library.html#a2c0e52a27014c0ac536a308d913197fb">  596</a></span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileNameChecksum == <a class="code" href="../../db/dfb/namespacename.html">name</a> &amp;&amp; <a class="code" href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">m_fileInfo</a>[index].fileExtensionChecksum == extension )</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        {</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        }</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    }</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160; </div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;}</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160; </div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;                   </div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;} <span class="comment">// namespace File</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_ac58f93dfdd135c7b8bb32dd1447bf1d6"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#ac58f93dfdd135c7b8bb32dd1447bf1d6">File::CFileLibrary::mp_fileBuffer</a></div><div class="ttdeci">uint8 * mp_fileBuffer</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00083">FileLibrary.h:83</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a6d9f21712250f2d5300431e93622f72eafe7846727a2acf65d5e3911449556efa"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a6d9f21712250f2d5300431e93622f72eafe7846727a2acf65d5e3911449556efa">File::CFileLibrary::vMAX_LIB_FILES</a></div><div class="ttdeci">@ vMAX_LIB_FILES</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00056">FileLibrary.h:56</a></div></div>
+<div class="ttc" id="ap__dma_8h_html"><div class="ttname"><a href="../../d2/d8e/p__dma_8h.html">p_dma.h</a></div></div>
+<div class="ttc" id="anamespace_mem_html_ac6ec04a67c6bbaaceb10b1d4730890c2"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#ac6ec04a67c6bbaaceb10b1d4730890c2">Mem::ReallocateShrink</a></div><div class="ttdeci">void * ReallocateShrink(size_t newSize, void *pOld)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d34/memman_8cpp_source.html#l01307">memman.cpp:1307</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_aa4b5884b79771b809962871dc8a4f92c"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#aa4b5884b79771b809962871dc8a4f92c">File::CFileLibrary::ClearFile</a></div><div class="ttdeci">bool ClearFile(uint32 name, uint32 extension)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00574">FileLibrary.cpp:574</a></div></div>
+<div class="ttc" id="anamespace_ns_a_r_a_m_html_a1597b4f32041a7c7340abc46afd5d5b6a88c410359c20f99ae8b06cb9830e18a7"><div class="ttname"><a href="../../d2/d0b/namespace_ns_a_r_a_m.html#a1597b4f32041a7c7340abc46afd5d5b6a88c410359c20f99ae8b06cb9830e18a7">NsARAM::TOPDOWN</a></div><div class="ttdeci">@ TOPDOWN</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da9/p__aram_8h_source.html#l00014">p_aram.h:14</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_ac190acc0489b37f2a1c5c14e46a1ba33"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#ac190acc0489b37f2a1c5c14e46a1ba33">File::CFileLibrary::GetFileData</a></div><div class="ttdeci">uint32 * GetFileData(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00440">FileLibrary.cpp:440</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_handle_html"><div class="ttname"><a href="../../d8/dd3/class_file_1_1_c_async_file_handle.html">File::CAsyncFileHandle</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6c/_async_filesys_8h_source.html#l00082">AsyncFilesys.h:82</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a5632acfb30e11749516f7861879407fd"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">Gfx::p_data</a></div><div class="ttdeci">p_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01903">BonedAnim.cpp:1903</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="a_file_library_8h_html"><div class="ttname"><a href="../../df/df2/_file_library_8h.html">FileLibrary.h</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aeebecca68839c4120bc6f8bd4186bb3c"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aeebecca68839c4120bc6f8bd4186bb3c">Mem::GetAllocSize</a></div><div class="ttdeci">size_t GetAllocSize(void *pAddr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d34/memman_8cpp_source.html#l01340">memman.cpp:1340</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a26eeb3def2354c833b274cb1dcde0c3f"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a26eeb3def2354c833b274cb1dcde0c3f">File::CFileLibrary::mp_baseBuffer</a></div><div class="ttdeci">uint8 * mp_baseBuffer</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00082">FileLibrary.h:82</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a2c0e52a27014c0ac536a308d913197fb"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a2c0e52a27014c0ac536a308d913197fb">File::CFileLibrary::FileExists</a></div><div class="ttdeci">bool FileExists(uint32 name, uint32 extension)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00596">FileLibrary.cpp:596</a></div></div>
+<div class="ttc" id="anamespace_file_html_a42faef384ac438a449656a07258cdbec"><div class="ttname"><a href="../../de/d10/namespace_file.html#a42faef384ac438a449656a07258cdbec">File::GetFileSize</a></div><div class="ttdeci">long GetFileSize(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00272">p_filesys.cpp:272</a></div></div>
+<div class="ttc" id="astruct_file_1_1_s_lib_header_html"><div class="ttname"><a href="../../d6/d35/struct_file_1_1_s_lib_header.html">File::SLibHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00055">FileLibrary.cpp:55</a></div></div>
+<div class="ttc" id="astruct_file_1_1_s_lib_header_html_a52739876171aa39b283c16a432f772fe"><div class="ttname"><a href="../../d6/d35/struct_file_1_1_s_lib_header.html#a52739876171aa39b283c16a432f772fe">File::SLibHeader::numFiles</a></div><div class="ttdeci">int numFiles</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00068">FileLibrary.cpp:68</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_handle_html_ab8aefa636d30a8b3cee1159c399b7061"><div class="ttname"><a href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#ab8aefa636d30a8b3cee1159c399b7061">File::CAsyncFileHandle::Read</a></div><div class="ttdeci">size_t Read(void *p_buffer, size_t size, size_t count)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00242">AsyncFilesys.cpp:242</a></div></div>
+<div class="ttc" id="anamespace_file_html_ab5b6cd44b0c40aae5dac864d95f792c2"><div class="ttname"><a href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">File::EAsyncFunctionType</a></div><div class="ttdeci">EAsyncFunctionType</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d27/_async_types_8h_source.html#l00057">AsyncTypes.h:57</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a82ed71cd897f3801fbae6906f0f48d86"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a82ed71cd897f3801fbae6906f0f48d86">File::CFileLibrary::m_fileInfo</a></div><div class="ttdeci">SFileInfo m_fileInfo[vMAX_LIB_FILES]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00087">FileLibrary.h:87</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a6c5d7fb3c3dcc43b942a73c916af3dbb"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a6c5d7fb3c3dcc43b942a73c916af3dbb">File::CFileLibrary::mp_filePointers</a></div><div class="ttdeci">uint32 * mp_filePointers[vMAX_LIB_FILES]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00091">FileLibrary.h:91</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_loader_html_ab1ad23da6afa5731552c99b632451b98"><div class="ttname"><a href="../../df/d7a/class_file_1_1_c_async_file_loader.html#ab1ad23da6afa5731552c99b632451b98">File::CAsyncFileLoader::sOpen</a></div><div class="ttdeci">static CAsyncFileHandle * sOpen(const char *filename, bool blocking=true, int priority=DEFAULT_ASYNC_PRIORITY)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00575">AsyncFilesys.cpp:575</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a9ce210b55495b459ae83ac9cd7d73e6b"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a9ce210b55495b459ae83ac9cd7d73e6b">File::CFileLibrary::GetNumFiles</a></div><div class="ttdeci">int GetNumFiles() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00430">FileLibrary.cpp:430</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a25de30adffa65538a32c6751ba93831b"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a25de30adffa65538a32c6751ba93831b">File::CFileLibrary::GetFileInfo</a></div><div class="ttdeci">const SFileInfo * GetFileInfo(int index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00516">FileLibrary.cpp:516</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a1664d1715d56475a185cbeb8bcec784e"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a1664d1715d56475a185cbeb8bcec784e">File::CFileLibrary::m_aramOffset</a></div><div class="ttdeci">uint32 m_aramOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00080">FileLibrary.h:80</a></div></div>
+<div class="ttc" id="anamespace_file_html_a180384dc852ac3b971285fc63b1287cb"><div class="ttname"><a href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a></div><div class="ttdeci">void * Open(const char *filename, const char *access)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00391">p_filesys.cpp:391</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_loader_html_a378dd59179bdb5dcbb12abcb34d903d6"><div class="ttname"><a href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a378dd59179bdb5dcbb12abcb34d903d6">File::CAsyncFileLoader::sAsyncSupported</a></div><div class="ttdeci">static bool sAsyncSupported()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00555">AsyncFilesys.cpp:555</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aeedb606ea94a3398fdcfa3101c5ea8d9"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aeedb606ea94a3398fdcfa3101c5ea8d9">Mem::Free</a></div><div class="ttdeci">void Free(void *p_mem)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00108">win32functions.cpp:108</a></div></div>
+<div class="ttc" id="astruct_file_1_1_s_lib_header_html_ab8402f7dba4b31a01c685a39c74d39ae"><div class="ttname"><a href="../../d6/d35/struct_file_1_1_s_lib_header.html#ab8402f7dba4b31a01c685a39c74d39ae">File::SLibHeader::versionNumber</a></div><div class="ttdeci">uint32 versionNumber</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00067">FileLibrary.cpp:67</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_loader_html_a81e7a1b6677d751061272e907e5b5295"><div class="ttname"><a href="../../df/d7a/class_file_1_1_c_async_file_loader.html#a81e7a1b6677d751061272e907e5b5295">File::CAsyncFileLoader::sClose</a></div><div class="ttdeci">static bool sClose(CAsyncFileHandle *p_file_handle)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00602">AsyncFilesys.cpp:602</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a57e30ac72f70c8defb912afeed6ac657"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a57e30ac72f70c8defb912afeed6ac657">File::CFileLibrary::mp_fileHandle</a></div><div class="ttdeci">CAsyncFileHandle * mp_fileHandle</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00078">FileLibrary.h:78</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a84fabbc1720b49f917f60a26c42d8fd0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a84fabbc1720b49f917f60a26c42d8fd0">Mem::Manager::Available</a></div><div class="ttdeci">int Available()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d34/memman_8cpp_source.html#l00283">memman.cpp:283</a></div></div>
+<div class="ttc" id="anamespace_ns_a_r_a_m_html_a04ff6fcde9ef2f485c8088d50958c956"><div class="ttname"><a href="../../d2/d0b/namespace_ns_a_r_a_m.html#a04ff6fcde9ef2f485c8088d50958c956">NsARAM::free</a></div><div class="ttdeci">void free(uint32 p)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d55/p__aram_8cpp_source.html#l00244">p_aram.cpp:244</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a4c21753eaee3c9b056852062f478e487"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a4c21753eaee3c9b056852062f478e487">File::CFileLibrary::m_numFiles</a></div><div class="ttdeci">int m_numFiles</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00085">FileLibrary.h:85</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_ab298faad2bd2994b68db5ec4e5ddd937"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#ab298faad2bd2994b68db5ec4e5ddd937">File::CFileLibrary::~CFileLibrary</a></div><div class="ttdeci">virtual ~CFileLibrary()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00118">FileLibrary.cpp:118</a></div></div>
+<div class="ttc" id="anamespace_file_html_af5cd83b01fc5f341f767beb7c0b1130c"><div class="ttname"><a href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a></div><div class="ttdeci">int Close(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00425">p_filesys.cpp:425</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_aa5979cce82cd634c6c67d2310b079cdc"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#aa5979cce82cd634c6c67d2310b079cdc">File::CFileLibrary::Load</a></div><div class="ttdeci">bool Load(const char *p_fileName, bool assertOnFail, bool async_load)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00271">FileLibrary.cpp:271</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a3899635bd7d203a2b8e8bf5fba790aaf"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a3899635bd7d203a2b8e8bf5fba790aaf">File::CFileLibrary::m_fileOffsets</a></div><div class="ttdeci">uint32 m_fileOffsets[vMAX_LIB_FILES]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00089">FileLibrary.h:89</a></div></div>
+<div class="ttc" id="anamespacename_html"><div class="ttname"><a href="../../db/dfb/namespacename.html">name</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d54/template_8cpp_source.html#l00031">template.cpp:31</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_handle_html_a6b47a574088d7ca009661485d7080192"><div class="ttname"><a href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#a6b47a574088d7ca009661485d7080192">File::CAsyncFileHandle::GetFileSize</a></div><div class="ttdeci">size_t GetFileSize(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00187">AsyncFilesys.cpp:187</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_async_file_handle_html_ae12f7f56a3f03b3039c7daf0ffd6d1af"><div class="ttname"><a href="../../d8/dd3/class_file_1_1_c_async_file_handle.html#ae12f7f56a3f03b3039c7daf0ffd6d1af">File::CAsyncFileHandle::SetCallback</a></div><div class="ttdeci">void SetCallback(AsyncCallback p_callback, unsigned int arg0, unsigned int arg1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d56/_async_filesys_8cpp_source.html#l00176">AsyncFilesys.cpp:176</a></div></div>
+<div class="ttc" id="amemman_8h_html"><div class="ttname"><a href="../../d3/d76/memman_8h.html">memman.h</a></div></div>
+<div class="ttc" id="anamespace_ns_d_m_a_html_abe57e36832a7e825408ccd76f296c2a1"><div class="ttname"><a href="../../d1/d2e/namespace_ns_d_m_a.html#abe57e36832a7e825408ccd76f296c2a1">NsDMA::toARAM</a></div><div class="ttdeci">void toARAM(u32 aram, void *p_mram, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d58/p__dma_8cpp_source.html#l00061">p_dma.cpp:61</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a8c6b22f06ead70967732d66f210888a9"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a8c6b22f06ead70967732d66f210888a9">File::CFileLibrary::PostLoad</a></div><div class="ttdeci">bool PostLoad(bool assertOnFail, int file_size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00152">FileLibrary.cpp:152</a></div></div>
+<div class="ttc" id="ap__aram_8h_html"><div class="ttname"><a href="../../d6/da9/p__aram_8h.html">p_aram.h</a></div></div>
+<div class="ttc" id="anamespace_ns_d_m_a_html_a130c846790715dd776f4aa9dc78cfb94"><div class="ttname"><a href="../../d1/d2e/namespace_ns_d_m_a.html#a130c846790715dd776f4aa9dc78cfb94">NsDMA::toMRAM</a></div><div class="ttdeci">void toMRAM(void *p_mram, u32 aram, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d58/p__dma_8cpp_source.html#l00123">p_dma.cpp:123</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="amusic_8h_html"><div class="ttname"><a href="../../db/d10/music_8h.html">music.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="anamespace_file_html_ac4c63667af9ccf3107bc0c87e1f480e3"><div class="ttname"><a href="../../de/d10/namespace_file.html#ac4c63667af9ccf3107bc0c87e1f480e3">File::LoadAlloc</a></div><div class="ttdeci">void * LoadAlloc(const char *p_fileName, int *p_filesize=NULL, void *p_dest=NULL, int maxSize=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6b/pip_8cpp_source.html#l00923">pip.cpp:923</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_aae36d2787ba20d8bc87b646a47ef7df6"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#aae36d2787ba20d8bc87b646a47ef7df6">File::CFileLibrary::LoadFinished</a></div><div class="ttdeci">bool LoadFinished() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00142">FileLibrary.cpp:142</a></div></div>
+<div class="ttc" id="astruct_file_1_1_s_file_info_html_a63331a95f0dc3dbda70138c90038837d"><div class="ttname"><a href="../../d5/d4d/struct_file_1_1_s_file_info.html#a63331a95f0dc3dbda70138c90038837d">File::SFileInfo::fileSize</a></div><div class="ttdeci">int fileSize</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00041">FileLibrary.h:41</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html">File::CFileLibrary</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00051">FileLibrary.h:51</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a64ea401475bf76886eefc9c8d7a24896"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a64ea401475bf76886eefc9c8d7a24896">File::CFileLibrary::CFileLibrary</a></div><div class="ttdeci">CFileLibrary()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00103">FileLibrary.cpp:103</a></div></div>
+<div class="ttc" id="anamespace_script_html_ae80ed69ea4edcbcbbbd4985a6efdcd6e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a></div><div class="ttdeci">const char * FindChecksumName(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00252">checksum.cpp:252</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_file_library_html_a7cc545a81f6564dbd9e930cf0742e54a"><div class="ttname"><a href="../../df/dc4/class_file_1_1_c_file_library.html#a7cc545a81f6564dbd9e930cf0742e54a">File::CFileLibrary::m_dataLoaded</a></div><div class="ttdeci">bool m_dataLoaded</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00092">FileLibrary.h:92</a></div></div>
+<div class="ttc" id="anamespace_file_html_ab5b6cd44b0c40aae5dac864d95f792c2a3654c6532f80cdb588eecb6455093ea1"><div class="ttname"><a href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2a3654c6532f80cdb588eecb6455093ea1">File::FUNC_READ</a></div><div class="ttdeci">@ FUNC_READ</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d27/_async_types_8h_source.html#l00062">AsyncTypes.h:62</a></div></div>
+<div class="ttc" id="astruct_file_1_1_s_file_info_html"><div class="ttname"><a href="../../d5/d4d/struct_file_1_1_s_file_info.html">File::SFileInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/df2/_file_library_8h_source.html#l00038">FileLibrary.h:38</a></div></div>
+<div class="ttc" id="anamespace_file_html"><div class="ttname"><a href="../../de/d10/namespace_file.html">File</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d7c/_ngps_2p__music_8h_source.html#l00008">p_music.h:8</a></div></div>
+<div class="ttc" id="anamespace_file_html_ab32ca1ecc5fc3efc2bdb3dfcbb9ae04c"><div class="ttname"><a href="../../de/d10/namespace_file.html#ab32ca1ecc5fc3efc2bdb3dfcbb9ae04c">File::filesync_async_callback</a></div><div class="ttdeci">void filesync_async_callback(File::CAsyncFileHandle *, File::EAsyncFunctionType function, int result, unsigned int arg0, unsigned int arg1)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d0c/_file_library_8cpp_source.html#l00082">FileLibrary.cpp:82</a></div></div>
+<div class="ttc" id="anamespace_mem_html_a10246603d03405159c82320b96e3efbf"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#a10246603d03405159c82320b96e3efbf">Mem::Malloc</a></div><div class="ttdeci">void * Malloc(size_t size)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00103">win32functions.cpp:103</a></div></div>
+<div class="ttc" id="anamespace_file_html_ae5e5ed0fd4834fc2e0e1c29edc62fc02"><div class="ttname"><a href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a></div><div class="ttdeci">size_t Read(void *addr, size_t size, size_t count, void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00443">p_filesys.cpp:443</a></div></div>
+<div class="ttc" id="a_async_filesys_8h_html"><div class="ttname"><a href="../../d4/d6c/_async_filesys_8h.html">AsyncFilesys.h</a></div></div>
+<div class="ttc" id="anamespace_ns_a_r_a_m_html_a92200ab04303bffa479e4a478f7e7bed"><div class="ttname"><a href="../../d2/d0b/namespace_ns_a_r_a_m.html#a92200ab04303bffa479e4a478f7e7bed">NsARAM::alloc</a></div><div class="ttdeci">uint32 alloc(uint32 size, HEAPTYPE heap=BOTTOMUP)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d55/p__aram_8cpp_source.html#l00100">p_aram.cpp:100</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_890777e0b941d77bc493513bfd7bcafd.html">File</a></li><li class="navelem"><a class="el" href="../../d9/d0c/_file_library_8cpp.html">FileLibrary.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:37. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

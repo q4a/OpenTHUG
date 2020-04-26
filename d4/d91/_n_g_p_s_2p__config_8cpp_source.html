@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/Config/NGPS/p_config.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/d91/_n_g_p_s_2p__config_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_config.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d91/_n_g_p_s_2p__config_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Config Manager stuff. KSH 20 Mar 2002</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d16/config_8h.html">sys/config/config.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d89/product__codes_8h.html">sk/product_codes.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;libscf.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;{</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d4/d91/_n_g_p_s_2p__config_8cpp.html#a91105de703a471c6f2a52b993fa5880a">snputs</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* pszStr);</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d0/d31/namespace_config.html">Config</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../d0/d31/namespace_config.html#a97d436f96e5c6cc6e67b25ac85c96b25">   14</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">char</span> <a class="code" href="../../d0/d31/namespace_config.html#a97d436f96e5c6cc6e67b25ac85c96b25">s_elf_name</a>[64];  <span class="comment">// will be &#39;local&#39; or &#39;skate5&#39;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../d0/d31/namespace_config.html#a5c1ec089a8fb1b57fa2f60240e5cc1c4">   16</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> * <a class="code" href="../../d0/d31/namespace_config.html#a5c1ec089a8fb1b57fa2f60240e5cc1c4">GetElfName</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> *)<a class="code" href="../../d0/d31/namespace_config.html#a97d436f96e5c6cc6e67b25ac85c96b25">s_elf_name</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">   21</a></span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_memCardHeader)</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    Dbg_MsgAssert(strlen(p_memCardHeader)==12,(<span class="stringliteral">&quot;Bad length for mem card header &#39;%s&#39;\n&quot;</span>,p_memCardHeader));</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> sp_elf_name[50];</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Note: p_memCardHeader will have the form &quot;BASLUS-20731&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// &quot;BASLUS-20731&quot; needs to map to an elf name of &quot;cdrom:\SLUS_207.31;1&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>(sp_elf_name,<span class="stringliteral">&quot;cdrom0:\\SL%cS_%c%c%c.%c%c;1&quot;</span>,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            p_memCardHeader[4],</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            p_memCardHeader[7],</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            p_memCardHeader[8],</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            p_memCardHeader[9],</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            p_memCardHeader[10],</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            p_memCardHeader[11]);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">return</span> sp_elf_name;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d0/d31/namespace_config.html#a026ccb26c5e91c17719ab315686e01d7">Plat_Init</a>(<a class="code" href="../../d8/de2/_defines_8h.html#ada7e83fdfe943aba4f1d5bf80cb66f40">sint</a> argc, <span class="keywordtype">char</span>** argv)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">gHardware</a>=<a class="code" href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2dab1b9358406c02147713b736617bccc33">HARDWARE_UNDEFINED</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">gCD</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// must check to see if the supplied filename starts &quot;cdrom0:\THPS4\&quot;    SLUS_207.31;1</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// if the first real argument exists and starts with a digit, then assume</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// that we are running from a bootstrap (as we will just have been passed the language in argv[1])</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// and preempt any other parameters...</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// so assume running on a regular PS2, from the CD</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (argc &gt; 1)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (argv[1][0] &gt;= <span class="charliteral">&#39;0&#39;</span> &amp;&amp; argv[1][0] &lt;= <span class="charliteral">&#39;9&#39;</span>)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;argv[1][0] is a digit, so assuming bootstrap format, using \\thps4 directory\n&quot;</span>);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a2e10191c610b52c2fd2176964ead4ac5">gBootstrap</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#ad49066eee12ccb63a841658f8987ae97">gSonyBootstrap</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">gHardware</a>=<a class="code" href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2da36e05466cfef226ae7f082c708cc5fc6">HARDWARE_PS2</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">gCD</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="comment">// the rest we could, in theory, set from the sceLibDemo calls......            </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">LANGUAGE_ENGLISH</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#ab6c53eb4b3c2f8595d809e98498f4c6a">gTerritory</a>=<a class="code" href="../../d0/d31/namespace_config.html#af6aa64a7a8934c87c8caac3af91c3872af5eb72ae7de68862d189ebf6ebaf4875">TERRITORY_UNDEFINED</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a53548118f65aa3f91d08ca1780b99fea">gDisplayType</a>=<a class="code" href="../../d0/d31/namespace_config.html#ab61e0fa885c00e9848d23acb83ad4c3ea3363585cf9e7e85eba1fe2f1edfedcbd">DISPLAY_TYPE_NTSC</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a919bc93d4265ddad0d1fa4ae2b6992c0">gFPS</a>=60;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;argv[1][0] (%s) is not digit, so it&#39;s a regular boot, using root\n&quot;</span>,argv[1]);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;no arguments, so it&#39;s a regular boot, using root\n&quot;</span>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// If the filename ends in .elf, then extract out the name</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// c:\skate5\build\NGPSgnu\local.elf</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (stricmp(argv[0]+strlen(argv[0])-4,<span class="stringliteral">&quot;.elf&quot;</span>)==0)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">char</span> *p = argv[0]+strlen(argv[0])-5;        <span class="comment">// letter before the .elf</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">while</span> (*p != <span class="charliteral">&#39;\\&#39;</span>) p--;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        p++; <span class="comment">// first letter of the name</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">char</span> *q = &amp;<a class="code" href="../../d0/d31/namespace_config.html#a97d436f96e5c6cc6e67b25ac85c96b25">s_elf_name</a>[0];</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">while</span> (*p != <span class="charliteral">&#39;.&#39;</span>) *q++ = *p++;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        *q++ = 0;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span> (!argv[0] || stricmp(argv[0]+strlen(argv[0])-4,<span class="stringliteral">&quot;.elf&quot;</span>)==0)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">gHardware</a>=<a class="code" href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2da6ca21155214eca9e45ac5d3edf75e646">HARDWARE_PS2_DEVSYSTEM</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">gCD</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="comment">// It&#39;s just a normal PS2</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">gHardware</a>=<a class="code" href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2da36e05466cfef226ae7f082c708cc5fc6">HARDWARE_PS2</a>;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">gCD</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">// Check command line to see if they&#39;re using ProView</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d4/d91/_n_g_p_s_2p__config_8cpp.html#a91105de703a471c6f2a52b993fa5880a">snputs</a>(<span class="stringliteral">&quot;Plat_Init detected ProView ...\n&quot;</span>)!=-1)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">gHardware</a>=<a class="code" href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2dab13cb105a2ee655459bc740361f0ec12">HARDWARE_PS2_PROVIEW</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">gCD</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// Check command line to see if they want to force gGotExtraMemory on or off</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d0/d31/namespace_config.html#a0eca7ac7f460400f48aed5c7e50f9c43">CommandLineContainsFlag</a>(<span class="stringliteral">&quot;GotExtraMemory&quot;</span>,argc,argv))        </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d0/d31/namespace_config.html#a0eca7ac7f460400f48aed5c7e50f9c43">CommandLineContainsFlag</a>(<span class="stringliteral">&quot;NoExtraMemory&quot;</span>,argc,argv))     </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">gGotExtraMemory</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    }</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// Detect the language from the product code.</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">LANGUAGE_ENGLISH</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_NTSC;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">if</span> (argv[0])</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="comment">// Doing a stricmp just in case it changes to be CDROM later or something.</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_NTSC))==0)</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">LANGUAGE_ENGLISH</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_NTSC;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_PAL_ENGLISH))==0)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">LANGUAGE_ENGLISH</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_ENGLISH;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_PAL_FRENCH))==0)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">LANGUAGE_FRENCH</a>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_FRENCH;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_PAL_GERMAN))==0)</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">LANGUAGE_GERMAN</a>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_GERMAN;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_PAL_ITALIAN))==0)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba9dc31b2c22d9a2f40a94d7e9828d967f">LANGUAGE_ITALIAN</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_ITALIAN;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        }</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(argv[0],<a class="code" href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">sGenerateElfName</a>(NGPS_PAL_SPANISH))==0)</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baf5f0edde3b533b381364e4efcc42a313">LANGUAGE_SPANISH</a>;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_SPANISH;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }   </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// They may want to force the language to be something else from the command line ...</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_language=<a class="code" href="../../d0/d31/namespace_config.html#a6ab13b6dab3d547278453e459af1b935">GetCommandLineParam</a>(<span class="stringliteral">&quot;Language&quot;</span>,argc,argv);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">if</span> (p_language)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">if</span> (stricmp(p_language,<span class="stringliteral">&quot;English&quot;</span>)==0)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">LANGUAGE_ENGLISH</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_NTSC;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(p_language,<span class="stringliteral">&quot;French&quot;</span>)==0)</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">LANGUAGE_FRENCH</a>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_FRENCH;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(p_language,<span class="stringliteral">&quot;German&quot;</span>)==0)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">LANGUAGE_GERMAN</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_GERMAN;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(p_language,<span class="stringliteral">&quot;Italian&quot;</span>)==0)</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba9dc31b2c22d9a2f40a94d7e9828d967f">LANGUAGE_ITALIAN</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_ITALIAN;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (stricmp(p_language,<span class="stringliteral">&quot;Spanish&quot;</span>)==0)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">gLanguage</a>=<a class="code" href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baf5f0edde3b533b381364e4efcc42a313">LANGUAGE_SPANISH</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">gpMemCardHeader</a>=NGPS_PAL_SPANISH;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        }</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            Dbg_MsgAssert(0,(<span class="stringliteral">&quot;Language &#39;%s&#39; not supported&quot;</span>,p_language));</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#ab6c53eb4b3c2f8595d809e98498f4c6a">gTerritory</a>=<a class="code" href="../../d0/d31/namespace_config.html#af6aa64a7a8934c87c8caac3af91c3872af5eb72ae7de68862d189ebf6ebaf4875">TERRITORY_UNDEFINED</a>;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a53548118f65aa3f91d08ca1780b99fea">gDisplayType</a>=<a class="code" href="../../d0/d31/namespace_config.html#ab61e0fa885c00e9848d23acb83ad4c3ea3363585cf9e7e85eba1fe2f1edfedcbd">DISPLAY_TYPE_NTSC</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <a class="code" href="../../d0/d31/namespace_config.html#a919bc93d4265ddad0d1fa4ae2b6992c0">gFPS</a>=60;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="comment">// Figure out if it is PAL from the product code ...</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> (argv[0])</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordtype">char</span> p_temp[50];</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        strncpy(p_temp,argv[0],12);</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        p_temp[12]=0; <span class="comment">// strncpy won&#39;t terminate</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="comment">// Doing a stricmp just in case it changes to be CDROM later or something.</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">if</span> (stricmp(p_temp,<span class="stringliteral">&quot;cdrom0:\\SLES&quot;</span>)==0)</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a53548118f65aa3f91d08ca1780b99fea">gDisplayType</a>=<a class="code" href="../../d0/d31/namespace_config.html#ab61e0fa885c00e9848d23acb83ad4c3ea26b9882e72eb125b6e5ec76ad573154c">DISPLAY_TYPE_PAL</a>;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            <a class="code" href="../../d0/d31/namespace_config.html#a919bc93d4265ddad0d1fa4ae2b6992c0">gFPS</a>=50;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        }   </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160; </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;} <span class="comment">// namespace Config</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_config_html_a2b53af33c3c008c5448c7053c85d3900"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a2b53af33c3c008c5448c7053c85d3900">Config::gHardware</a></div><div class="ttdeci">EHardware gHardware</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00008">config.cpp:8</a></div></div>
+<div class="ttc" id="anamespace_config_html_ab6c53eb4b3c2f8595d809e98498f4c6a"><div class="ttname"><a href="../../d0/d31/namespace_config.html#ab6c53eb4b3c2f8595d809e98498f4c6a">Config::gTerritory</a></div><div class="ttdeci">ETerritory gTerritory</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00007">config.cpp:7</a></div></div>
+<div class="ttc" id="anamespace_config_html_a97d436f96e5c6cc6e67b25ac85c96b25"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a97d436f96e5c6cc6e67b25ac85c96b25">Config::s_elf_name</a></div><div class="ttdeci">static char s_elf_name[64]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d91/_n_g_p_s_2p__config_8cpp_source.html#l00014">p_config.cpp:14</a></div></div>
+<div class="ttc" id="aproduct__codes_8h_html"><div class="ttname"><a href="../../d1/d89/product__codes_8h.html">product_codes.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_ada7e83fdfe943aba4f1d5bf80cb66f40"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#ada7e83fdfe943aba4f1d5bf80cb66f40">sint</a></div><div class="ttdeci">signed int sint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00137">Defines.h:137</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998ba9dc31b2c22d9a2f40a94d7e9828d967f"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba9dc31b2c22d9a2f40a94d7e9828d967f">Config::LANGUAGE_ITALIAN</a></div><div class="ttdeci">@ LANGUAGE_ITALIAN</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00032">config.h:32</a></div></div>
+<div class="ttc" id="anamespace_config_html_a026ccb26c5e91c17719ab315686e01d7"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a026ccb26c5e91c17719ab315686e01d7">Config::Plat_Init</a></div><div class="ttdeci">void Plat_Init(sint argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d28/_n_g_c_2p__config_8cpp_source.html#l00011">p_config.cpp:11</a></div></div>
+<div class="ttc" id="anamespace_config_html_ab61e0fa885c00e9848d23acb83ad4c3ea3363585cf9e7e85eba1fe2f1edfedcbd"><div class="ttname"><a href="../../d0/d31/namespace_config.html#ab61e0fa885c00e9848d23acb83ad4c3ea3363585cf9e7e85eba1fe2f1edfedcbd">Config::DISPLAY_TYPE_NTSC</a></div><div class="ttdeci">@ DISPLAY_TYPE_NTSC</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00062">config.h:62</a></div></div>
+<div class="ttc" id="anamespace_config_html_ad49066eee12ccb63a841658f8987ae97"><div class="ttname"><a href="../../d0/d31/namespace_config.html#ad49066eee12ccb63a841658f8987ae97">Config::gSonyBootstrap</a></div><div class="ttdeci">bool gSonyBootstrap</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00012">config.cpp:12</a></div></div>
+<div class="ttc" id="anamespace_config_html_af7a1703eb133f4675ca9a600e1adf096"><div class="ttname"><a href="../../d0/d31/namespace_config.html#af7a1703eb133f4675ca9a600e1adf096">Config::gGotExtraMemory</a></div><div class="ttdeci">bool gGotExtraMemory</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00009">config.cpp:9</a></div></div>
+<div class="ttc" id="anamespace_config_html_a919bc93d4265ddad0d1fa4ae2b6992c0"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a919bc93d4265ddad0d1fa4ae2b6992c0">Config::gFPS</a></div><div class="ttdeci">int gFPS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00018">config.cpp:18</a></div></div>
+<div class="ttc" id="anamespace_config_html_a03e67456457a7ea0ae7b7e23bfad43c8"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a03e67456457a7ea0ae7b7e23bfad43c8">Config::sGenerateElfName</a></div><div class="ttdeci">static const char * sGenerateElfName(const char *p_memCardHeader)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d91/_n_g_p_s_2p__config_8cpp_source.html#l00021">p_config.cpp:21</a></div></div>
+<div class="ttc" id="anamespace_config_html_afde1a372ebd0f2464fbc488b65f90d2dab1b9358406c02147713b736617bccc33"><div class="ttname"><a href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2dab1b9358406c02147713b736617bccc33">Config::HARDWARE_UNDEFINED</a></div><div class="ttdeci">@ HARDWARE_UNDEFINED</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00048">config.h:48</a></div></div>
+<div class="ttc" id="anamespace_config_html_afde1a372ebd0f2464fbc488b65f90d2da36e05466cfef226ae7f082c708cc5fc6"><div class="ttname"><a href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2da36e05466cfef226ae7f082c708cc5fc6">Config::HARDWARE_PS2</a></div><div class="ttdeci">@ HARDWARE_PS2</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00050">config.h:50</a></div></div>
+<div class="ttc" id="anamespace_config_html_ab61e0fa885c00e9848d23acb83ad4c3ea26b9882e72eb125b6e5ec76ad573154c"><div class="ttname"><a href="../../d0/d31/namespace_config.html#ab61e0fa885c00e9848d23acb83ad4c3ea26b9882e72eb125b6e5ec76ad573154c">Config::DISPLAY_TYPE_PAL</a></div><div class="ttdeci">@ DISPLAY_TYPE_PAL</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00061">config.h:61</a></div></div>
+<div class="ttc" id="anamespace_config_html_a83b0a86f9478437bc22f8748c3eec440"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a83b0a86f9478437bc22f8748c3eec440">Config::gpMemCardHeader</a></div><div class="ttdeci">const char * gpMemCardHeader</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00020">config.cpp:20</a></div></div>
+<div class="ttc" id="anamespace_config_html_a71e33d4bda7f153cb3905a84a1edc04c"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a71e33d4bda7f153cb3905a84a1edc04c">Config::gCD</a></div><div class="ttdeci">bool gCD</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00010">config.cpp:10</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba8379ebaebab0ac1f415ffb3af6c8c5aa">Config::LANGUAGE_ENGLISH</a></div><div class="ttdeci">@ LANGUAGE_ENGLISH</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00028">config.h:28</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="a_n_g_p_s_2p__config_8cpp_html_a91105de703a471c6f2a52b993fa5880a"><div class="ttname"><a href="../../d4/d91/_n_g_p_s_2p__config_8cpp.html#a91105de703a471c6f2a52b993fa5880a">snputs</a></div><div class="ttdeci">int snputs(const char *pszStr)</div></div>
+<div class="ttc" id="anamespace_config_html_a0eca7ac7f460400f48aed5c7e50f9c43"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a0eca7ac7f460400f48aed5c7e50f9c43">Config::CommandLineContainsFlag</a></div><div class="ttdeci">bool CommandLineContainsFlag(const char *p_name, sint argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00108">config.cpp:108</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baefb550ded5209f16c4f64cd4990cf510">Config::LANGUAGE_FRENCH</a></div><div class="ttdeci">@ LANGUAGE_FRENCH</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00029">config.h:29</a></div></div>
+<div class="ttc" id="anamespace_config_html"><div class="ttname"><a href="../../d0/d31/namespace_config.html">Config</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d89/product__codes_8h_source.html#l00004">product_codes.h:4</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998baf5f0edde3b533b381364e4efcc42a313"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998baf5f0edde3b533b381364e4efcc42a313">Config::LANGUAGE_SPANISH</a></div><div class="ttdeci">@ LANGUAGE_SPANISH</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00030">config.h:30</a></div></div>
+<div class="ttc" id="anamespace_config_html_afde1a372ebd0f2464fbc488b65f90d2dab13cb105a2ee655459bc740361f0ec12"><div class="ttname"><a href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2dab13cb105a2ee655459bc740361f0ec12">Config::HARDWARE_PS2_PROVIEW</a></div><div class="ttdeci">@ HARDWARE_PS2_PROVIEW</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00051">config.h:51</a></div></div>
+<div class="ttc" id="anamespace_config_html_a2e10191c610b52c2fd2176964ead4ac5"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a2e10191c610b52c2fd2176964ead4ac5">Config::gBootstrap</a></div><div class="ttdeci">bool gBootstrap</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00011">config.cpp:11</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1ec089a8fb1b57fa2f60240e5cc1c4"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1ec089a8fb1b57fa2f60240e5cc1c4">Config::GetElfName</a></div><div class="ttdeci">const char * GetElfName()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d91/_n_g_p_s_2p__config_8cpp_source.html#l00016">p_config.cpp:16</a></div></div>
+<div class="ttc" id="anamespace_config_html_a9fc1858436d3d124cdd15b4b7002369e"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a9fc1858436d3d124cdd15b4b7002369e">Config::gLanguage</a></div><div class="ttdeci">ELanguage gLanguage</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00006">config.cpp:6</a></div></div>
+<div class="ttc" id="aconfig_8h_html"><div class="ttname"><a href="../../db/d16/config_8h.html">config.h</a></div></div>
+<div class="ttc" id="anamespace_config_html_a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a5c1c28e60996fd7af6ed16d95735998ba12b9a8e7af0a7b93fe91d840a5d220ff">Config::LANGUAGE_GERMAN</a></div><div class="ttdeci">@ LANGUAGE_GERMAN</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00031">config.h:31</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab406a8cc16de5046c7d9fd09c9de5e22"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">Dbg::sprintf</a></div><div class="ttdeci">sprintf(tmp1, &quot;FILE:      %s(%d) &quot;, file, line)</div></div>
+<div class="ttc" id="anamespace_config_html_af6aa64a7a8934c87c8caac3af91c3872af5eb72ae7de68862d189ebf6ebaf4875"><div class="ttname"><a href="../../d0/d31/namespace_config.html#af6aa64a7a8934c87c8caac3af91c3872af5eb72ae7de68862d189ebf6ebaf4875">Config::TERRITORY_UNDEFINED</a></div><div class="ttdeci">@ TERRITORY_UNDEFINED</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00039">config.h:39</a></div></div>
+<div class="ttc" id="anamespace_config_html_afde1a372ebd0f2464fbc488b65f90d2da6ca21155214eca9e45ac5d3edf75e646"><div class="ttname"><a href="../../d0/d31/namespace_config.html#afde1a372ebd0f2464fbc488b65f90d2da6ca21155214eca9e45ac5d3edf75e646">Config::HARDWARE_PS2_DEVSYSTEM</a></div><div class="ttdeci">@ HARDWARE_PS2_DEVSYSTEM</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d16/config_8h_source.html#l00052">config.h:52</a></div></div>
+<div class="ttc" id="anamespace_config_html_a6ab13b6dab3d547278453e459af1b935"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a6ab13b6dab3d547278453e459af1b935">Config::GetCommandLineParam</a></div><div class="ttdeci">const char * GetCommandLineParam(const char *p_name, sint argc, char **argv)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00050">config.cpp:50</a></div></div>
+<div class="ttc" id="anamespace_config_html_a53548118f65aa3f91d08ca1780b99fea"><div class="ttname"><a href="../../d0/d31/namespace_config.html#a53548118f65aa3f91d08ca1780b99fea">Config::gDisplayType</a></div><div class="ttdeci">EDisplayType gDisplayType</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d59/config_8cpp_source.html#l00017">config.cpp:17</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_e73a6369ead8edbec270d4e9f03997a2.html">Config</a></li><li class="navelem"><a class="el" href="../../dir_ce10d73fefaf2227ad2c6d85fb304879.html">NGPS</a></li><li class="navelem"><a class="el" href="../../d4/d91/_n_g_p_s_2p__config_8cpp.html">p_config.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:36. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/line.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d8/ddb/_n_g_p_s_2_n_x_2line_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">line.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/ddb/_n_g_p_s_2_n_x_2line_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;line.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;render.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d95/dma_8h.html">dma.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dde/vif_8h.html">vif.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../da/d0f/vu1_8h.html">vu1.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d2a/gif_8h.html">gif.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d7/db7/gs_8h.html">gs.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;sprite.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/db2/switches_8h.html">switches.h</a>&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d49/vu1code_8h.html">vu1code.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ab97b55c0761495dde024c54c3730c41b">BeginLines2D</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="comment">// dma tag</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#ab88e645a325d1540404881a55321aba0">dma::BeginTag</a>(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#af9c789ae6ca292dcfdc3f2e763901ea4a725f7ffe63c1892312f717d4c7f86a37">dma::cnt</a>, 0);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#ac68b8a909b9f3da8631e11eebee84d7c">vu1::Buffer</a> = <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">vu1::Loc</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// GS context</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a6a566ee115dc0e4958eb6dbc550b7e1a">gs::BeginPrim</a>(ABS,0,0);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdace74f1e39cd3fcee8c9736f4704d187e">gs::ALPHA_1</a>, PackALPHA(0,1,0,1,0));</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda0d0b237b35ae7b6c47748c493ac8dac5">gs::RGBAQ</a>,   (<a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>)rgba);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a0893068e0d7791f6ccd94383ce8c6d47">gs::EndPrim</a>(0);</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// unpack giftag</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0, V4_32, 1, ABS, UNSIGNED, 0);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">gif::BeginTagImmediate</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">gs::XYZ2</a>, 1, PACKED, LINE|ABE, 1, VU1_ADDR(GSPrim));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// begin unpack for coordinates</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">vif::BeginUNPACK</a>(0, V4_32, ABS, SIGNED, 1);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">DrawLine2D</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0, <span class="keywordtype">float</span> z0, <span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> z1)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ac3a3550292355719bd00189b3d557ae6">vif::StoreV4_32</a>(XOFFSET+(<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)((x0 * <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a26cb6c940fffca651cc1d6e1b681541c">SDraw2D::GetScreenScaleX</a>() * 16.0f)),</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                    YOFFSET+(<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)((y0 * <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#aaad82dd77a2c06ebe114727685e02499">SDraw2D::GetScreenScaleY</a>() * 16.0f)),0xFFFFFF,0);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ac3a3550292355719bd00189b3d557ae6">vif::StoreV4_32</a>(XOFFSET+(<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)((x1 * <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a26cb6c940fffca651cc1d6e1b681541c">SDraw2D::GetScreenScaleX</a>() * 16.0f)),</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                    YOFFSET+(<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)((y1 * <a class="code" href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#aaad82dd77a2c06ebe114727685e02499">SDraw2D::GetScreenScaleY</a>() * 16.0f)),0xFFFFFF,0);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (((<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> - <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a5160fe3ac1c1c9276577cffbebfe8cdc">gif::pTag</a>)&gt;&gt;4) &gt;= 250)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a32333ffa32f6332dcc9df2464b5b91b8">vif::EndUNPACK</a>();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a4ee05b65d22a99cf4444a49558dcffeb">gif::EndTagImmediate</a>(1);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a0f9bc50f5dcc0b924a4db90d0b5e8e6b">vif::MSCAL</a>(VU1_ADDR(Parser));</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0, V4_32, 1, ABS, UNSIGNED, 0);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">gif::BeginTagImmediate</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">gs::XYZ2</a>, 1, PACKED, LINE|ABE, 1, VU1_ADDR(GSPrim));</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">vif::BeginUNPACK</a>(0, V4_32, ABS, SIGNED, 1);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aa20c52391b4d0cb6502966cbb1aa5a4d">EndLines2D</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a32333ffa32f6332dcc9df2464b5b91b8">vif::EndUNPACK</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a4ee05b65d22a99cf4444a49558dcffeb">gif::EndTagImmediate</a>(1);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a0f9bc50f5dcc0b924a4db90d0b5e8e6b">vif::MSCAL</a>(VU1_ADDR(Parser));</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a8a3ead69905280b699ad2b6ed545edde">dma::EndTag</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a599fa70d638561851fd4aeab050a1183">BeginLines3D</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// dma tag  - this will encompass ALL the lines up to the next EndLines3D</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#ab88e645a325d1540404881a55321aba0">dma::BeginTag</a>(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#af9c789ae6ca292dcfdc3f2e763901ea4a725f7ffe63c1892312f717d4c7f86a37">dma::cnt</a>, 0);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#ac68b8a909b9f3da8631e11eebee84d7c">vu1::Buffer</a> = <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">vu1::Loc</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// VU context, uploading the view transform data</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#aeec4f4eef415e06ab532b7d741c3758c">vu1::BeginPrim</a>(ABS, VU1_ADDR(L_VF10));      <span class="comment">// Begin packed register upload to VF10 </span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">//vu1::StoreVec(*(Vec *)&amp;render::ViewportScale);            // VF10</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#aced4d3c2b0aa29b9c05d5dc94bfc5cfa">vu1::StoreVec</a>(*(<a class="code" href="../../db/d16/struct_vec.html">Vec</a> *)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>);            <span class="comment">// VF10</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//  vu1::StoreVec(ViewportOffset);                          // VF11</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//  float z_push = 2.40741243e-34;                          // was e-35</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//  vif::StoreV4_32F(render::ViewportOffset[0],</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//                   render::ViewportOffset[1],</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//                   render::ViewportOffset[2]+z_push,</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//                   render::ViewportOffset[3]);            // VF11</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> temp_inv_viewport_offset;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    temp_inv_viewport_offset[0] = -<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[0] * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a336ba0e250cbd674bbe1c81868de0bd6">render::IntViewportOffset</a>[0] * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[3];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    temp_inv_viewport_offset[1] = -<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[1] * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a336ba0e250cbd674bbe1c81868de0bd6">render::IntViewportOffset</a>[1] * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[3];</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    temp_inv_viewport_offset[2] = -<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[2] * (<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a336ba0e250cbd674bbe1c81868de0bd6">render::IntViewportOffset</a>[2]+1.0e-34f) * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">render::InverseIntViewportScale</a>[3];</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    temp_inv_viewport_offset[3] = 0.0f;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#aced4d3c2b0aa29b9c05d5dc94bfc5cfa">vu1::StoreVec</a>(*(<a class="code" href="../../db/d16/struct_vec.html">Vec</a> *)&amp;temp_inv_viewport_offset);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a28249c2b1aaaf3f44e18a45c3f361e88">vu1::StoreMat</a>(*(Mat *)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#af12fc9b1356569554925fc1313c9011b">render::AdjustedWorldToIntViewport</a>); <span class="comment">// VF12-15</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a1946f9afbf92be3b7151f54946921ccb">vu1::EndPrim</a>(0);                                        <span class="comment">// End upload</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// GS context, setting color</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a6a566ee115dc0e4958eb6dbc550b7e1a">gs::BeginPrim</a>(ABS,0,0);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdace74f1e39cd3fcee8c9736f4704d187e">gs::ALPHA_1</a>, PackALPHA(0,1,0,1,0));</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda0d0b237b35ae7b6c47748c493ac8dac5">gs::RGBAQ</a>,   (<a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>)rgba);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a0893068e0d7791f6ccd94383ce8c6d47">gs::EndPrim</a>(0);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// all lines will be rendered with simple culling</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ad277f34cd326ea5f6e79a283b7430ec3">vif::ITOP</a>(CULL);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">// unpack giftag</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0, V4_32, 1, ABS, UNSIGNED, 0);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">gif::BeginTagImmediate</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">gs::XYZ2</a>, 1, PACKED, LINE|ABE, 1, VU1_ADDR(Line));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// offset mode</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">vif::STMOD</a>(1);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="comment">// begin unpack for coordinates</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">vif::BeginUNPACK</a>(0, V4_32, ABS, SIGNED, 1);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../d8/d79/namespace_nx_ps2.html#aec15b2ce8731a6b78f5573faefff7d21">  123</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aec15b2ce8731a6b78f5573faefff7d21">ChangeLineColor</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">// End the previous batch of lines</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">EndLines3D</a>();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">// Like starting a new batch, but witout the VU context     </span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#ab88e645a325d1540404881a55321aba0">dma::BeginTag</a>(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#af9c789ae6ca292dcfdc3f2e763901ea4a725f7ffe63c1892312f717d4c7f86a37">dma::cnt</a>, 0);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="comment">// GS context</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="comment">// Sets up the GS registers for color and alpha</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a6a566ee115dc0e4958eb6dbc550b7e1a">gs::BeginPrim</a>(ABS,0,0);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdace74f1e39cd3fcee8c9736f4704d187e">gs::ALPHA_1</a>, PackALPHA(0,1,0,1,0));</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">gs::Reg1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda0d0b237b35ae7b6c47748c493ac8dac5">gs::RGBAQ</a>,   (<a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>)rgba);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a0893068e0d7791f6ccd94383ce8c6d47">gs::EndPrim</a>(0);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0, V4_32, 1, ABS, UNSIGNED, 0);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">gif::BeginTagImmediate</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">gs::XYZ2</a>, 1, PACKED, LINE|ABE, 1, VU1_ADDR(Line));</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">vif::STMOD</a>(1);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">vif::BeginUNPACK</a>(0, V4_32, ABS, SIGNED, 1);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a1967c8a81f66a13bdb03d2105159b3b0">DrawLine3D</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0, <span class="keywordtype">float</span> z0, <span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> z1)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ac3a3550292355719bd00189b3d557ae6">vif::StoreV4_32</a>((<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(x0*SUB_INCH_PRECISION), (<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(y0*SUB_INCH_PRECISION), (<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(z0*SUB_INCH_PRECISION), 0);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ac3a3550292355719bd00189b3d557ae6">vif::StoreV4_32</a>((<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(x1*SUB_INCH_PRECISION), (<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(y1*SUB_INCH_PRECISION), (<a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>)(z1*SUB_INCH_PRECISION), 0);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">if</span> (((<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> - <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a5160fe3ac1c1c9276577cffbebfe8cdc">gif::pTag</a>)&gt;&gt;4) &gt;= 250)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a32333ffa32f6332dcc9df2464b5b91b8">vif::EndUNPACK</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a4ee05b65d22a99cf4444a49558dcffeb">gif::EndTagImmediate</a>(1);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">vif::STMOD</a>(0);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a0f9bc50f5dcc0b924a4db90d0b5e8e6b">vif::MSCAL</a>(VU1_ADDR(Parser));</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0, V4_32, 1, ABS, UNSIGNED, 0);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">gif::BeginTagImmediate</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">gs::XYZ2</a>, 1, PACKED, LINE|ABE, 1, VU1_ADDR(Line));</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">vif::STMOD</a>(1);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">vif::BeginUNPACK</a>(0, V4_32, ABS, SIGNED, 1);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    }</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">EndLines3D</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a32333ffa32f6332dcc9df2464b5b91b8">vif::EndUNPACK</a>();</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ae85f068c4a2d3f43532b74564ad0354b">vif::UnpackSize</a>)</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a4ee05b65d22a99cf4444a49558dcffeb">gif::EndTagImmediate</a>(1);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">vif::STMOD</a>(0);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a0f9bc50f5dcc0b924a4db90d0b5e8e6b">vif::MSCAL</a>(VU1_ADDR(Parser));</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> -= 24;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a8a3ead69905280b699ad2b6ed545edde">dma::EndTag</a>();</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;}</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;} <span class="comment">// namespace NxPs2</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_aaad82dd77a2c06ebe114727685e02499"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#aaad82dd77a2c06ebe114727685e02499">NxPs2::SDraw2D::GetScreenScaleY</a></div><div class="ttdeci">static float GetScreenScaleY()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00239">sprite.h:239</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_ae85f068c4a2d3f43532b74564ad0354b"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#ae85f068c4a2d3f43532b74564ad0354b">NxPs2::vif::UnpackSize</a></div><div class="ttdeci">static uint UnpackSize</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00108">vif.h:108</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aec15b2ce8731a6b78f5573faefff7d21"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aec15b2ce8731a6b78f5573faefff7d21">NxPs2::ChangeLineColor</a></div><div class="ttdeci">void ChangeLineColor(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/ddb/_n_g_p_s_2_n_x_2line_8cpp_source.html#l00123">line.cpp:123</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_ac68b8a909b9f3da8631e11eebee84d7c"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#ac68b8a909b9f3da8631e11eebee84d7c">NxPs2::vu1::Buffer</a></div><div class="ttdeci">static uint Buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d0f/vu1_8h_source.html#l00046">vu1.h:46</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a29940ae63ec06c9998bba873e25407ad"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a></div><div class="ttdeci">unsigned __int64 uint64</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00150">Defines.h:150</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_ad277f34cd326ea5f6e79a283b7430ec3"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#ad277f34cd326ea5f6e79a283b7430ec3">NxPs2::vif::ITOP</a></div><div class="ttdeci">static void ITOP(uint16 ADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00198">vif.h:198</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a0573de65958b4fda3a0460ed417dafb8"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a></div><div class="ttdeci">signed long sint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00148">Defines.h:148</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d">NxPs2::gs::XYZ2</a></div><div class="ttdeci">@ XYZ2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db7/gs_8h_source.html#l00553">gs.h:553</a></div></div>
+<div class="ttc" id="avif_8h_html"><div class="ttname"><a href="../../d4/dde/vif_8h.html">vif.h</a></div></div>
+<div class="ttc" id="aswitches_8h_html"><div class="ttname"><a href="../../de/db2/switches_8h.html">switches.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a2beba1ddc0d711bde0ff9bd1eb7ed0b0"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a2beba1ddc0d711bde0ff9bd1eb7ed0b0">NxPs2::render::InverseIntViewportScale</a></div><div class="ttdeci">Mth::Vector InverseIntViewportScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01929">render.cpp:1929</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_af9c789ae6ca292dcfdc3f2e763901ea4a725f7ffe63c1892312f717d4c7f86a37"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#af9c789ae6ca292dcfdc3f2e763901ea4a725f7ffe63c1892312f717d4c7f86a37">NxPs2::dma::cnt</a></div><div class="ttdeci">@ cnt</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00031">dma.h:31</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_ac3a3550292355719bd00189b3d557ae6"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#ac3a3550292355719bd00189b3d557ae6">NxPs2::vif::StoreV4_32</a></div><div class="ttdeci">static void StoreV4_32(sint32 x, sint32 y, sint32 z, sint32 w)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00580">vif.h:580</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_ab97e270d2ee7a3ce814d3f4cbdf6bd04"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#ab97e270d2ee7a3ce814d3f4cbdf6bd04">NxPs2::vif::BeginUNPACK</a></div><div class="ttdeci">static void BeginUNPACK(uint8 m, uint8 vnvl, uint16 FLG, uint16 USN, uint16 ADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00445">vif.h:445</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a04490b223c1ce5d22603a22e36c1b1cdace74f1e39cd3fcee8c9736f4704d187e"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdace74f1e39cd3fcee8c9736f4704d187e">NxPs2::gs::ALPHA_1</a></div><div class="ttdeci">@ ALPHA_1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db7/gs_8h_source.html#l00582">gs.h:582</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a1967c8a81f66a13bdb03d2105159b3b0"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a1967c8a81f66a13bdb03d2105159b3b0">NxPs2::DrawLine3D</a></div><div class="ttdeci">void DrawLine3D(float x0, float y0, float z0, float x1, float y1, float z1)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00095">line.cpp:95</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_aced4d3c2b0aa29b9c05d5dc94bfc5cfa"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#aced4d3c2b0aa29b9c05d5dc94bfc5cfa">NxPs2::vu1::StoreVec</a></div><div class="ttdeci">static void StoreVec(float v[4])</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3f/vu1_8cpp_source.html#l00073">vu1.cpp:73</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_a28249c2b1aaaf3f44e18a45c3f361e88"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#a28249c2b1aaaf3f44e18a45c3f361e88">NxPs2::vu1::StoreMat</a></div><div class="ttdeci">static void StoreMat(float m[4][4])</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3f/vu1_8cpp_source.html#l00081">vu1.cpp:81</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_af12fc9b1356569554925fc1313c9011b"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#af12fc9b1356569554925fc1313c9011b">NxPs2::render::AdjustedWorldToIntViewport</a></div><div class="ttdeci">Mth::Matrix AdjustedWorldToIntViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01917">render.cpp:1917</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aa20c52391b4d0cb6502966cbb1aa5a4d"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aa20c52391b4d0cb6502966cbb1aa5a4d">NxPs2::EndLines2D</a></div><div class="ttdeci">void EndLines2D(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00050">line.cpp:50</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_a32333ffa32f6332dcc9df2464b5b91b8"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#a32333ffa32f6332dcc9df2464b5b91b8">NxPs2::vif::EndUNPACK</a></div><div class="ttdeci">static void EndUNPACK(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00458">vif.h:458</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_a925526d7f124f774f6844dd7c4209d92"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">NxPs2::vif::UNPACK</a></div><div class="ttdeci">static void UNPACK(uint8 m, uint8 vnvl, uint8 SIZE, uint16 FLG, uint16 USN, uint16 ADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00359">vif.h:359</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gif_html_a5160fe3ac1c1c9276577cffbebfe8cdc"><div class="ttname"><a href="../../d5/df5/class_nx_ps2_1_1gif.html#a5160fe3ac1c1c9276577cffbebfe8cdc">NxPs2::gif::pTag</a></div><div class="ttdeci">static uint8 * pTag</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d2a/gif_8h_source.html#l00037">gif.h:37</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ab97b55c0761495dde024c54c3730c41b"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ab97b55c0761495dde024c54c3730c41b">NxPs2::BeginLines2D</a></div><div class="ttdeci">void BeginLines2D(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00009">line.cpp:9</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_aeec4f4eef415e06ab532b7d741c3758c"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#aeec4f4eef415e06ab532b7d741c3758c">NxPs2::vu1::BeginPrim</a></div><div class="ttdeci">static void BeginPrim(uint FLG, uint Addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3f/vu1_8cpp_source.html#l00024">vu1.cpp:24</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_draw2_d_html_a26cb6c940fffca651cc1d6e1b681541c"><div class="ttname"><a href="../../dd/d1f/struct_nx_ps2_1_1_s_draw2_d.html#a26cb6c940fffca651cc1d6e1b681541c">NxPs2::SDraw2D::GetScreenScaleX</a></div><div class="ttdeci">static float GetScreenScaleX()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00234">sprite.h:234</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_a0f9bc50f5dcc0b924a4db90d0b5e8e6b"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#a0f9bc50f5dcc0b924a4db90d0b5e8e6b">NxPs2::vif::MSCAL</a></div><div class="ttdeci">static void MSCAL(uint16 EXECADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00225">vif.h:225</a></div></div>
+<div class="ttc" id="agif_8h_html"><div class="ttname"><a href="../../d0/d2a/gif_8h.html">gif.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gif_html_a4ee05b65d22a99cf4444a49558dcffeb"><div class="ttname"><a href="../../d5/df5/class_nx_ps2_1_1gif.html#a4ee05b65d22a99cf4444a49558dcffeb">NxPs2::gif::EndTagImmediate</a></div><div class="ttdeci">static void EndTagImmediate(uint Eop)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/gif_8cpp_source.html#l00147">gif.cpp:147</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a6a566ee115dc0e4958eb6dbc550b7e1a"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a6a566ee115dc0e4958eb6dbc550b7e1a">NxPs2::gs::BeginPrim</a></div><div class="ttdeci">static void BeginPrim(uint FLG, uint Prim, uint Pre)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3e/gs_8cpp_source.html#l00020">gs.cpp:20</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_ab88e645a325d1540404881a55321aba0"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#ab88e645a325d1540404881a55321aba0">NxPs2::dma::BeginTag</a></div><div class="ttdeci">static void BeginTag(eTag ID, uint ADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00232">dma.h:232</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a0893068e0d7791f6ccd94383ce8c6d47"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a0893068e0d7791f6ccd94383ce8c6d47">NxPs2::gs::EndPrim</a></div><div class="ttdeci">static void EndPrim(uint Eop)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3e/gs_8cpp_source.html#l00030">gs.cpp:30</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a336ba0e250cbd674bbe1c81868de0bd6"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a336ba0e250cbd674bbe1c81868de0bd6">NxPs2::render::IntViewportOffset</a></div><div class="ttdeci">Mth::Vector IntViewportOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01926">render.cpp:1926</a></div></div>
+<div class="ttc" id="astruct_vec_html"><div class="ttname"><a href="../../db/d16/struct_vec.html">Vec</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00011">p_gx.h:11</a></div></div>
+<div class="ttc" id="ags_8h_html"><div class="ttname"><a href="../../d7/db7/gs_8h.html">gs.h</a></div></div>
+<div class="ttc" id="avu1_8h_html"><div class="ttname"><a href="../../da/d0f/vu1_8h.html">vu1.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_a1946f9afbf92be3b7151f54946921ccb"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#a1946f9afbf92be3b7151f54946921ccb">NxPs2::vu1::EndPrim</a></div><div class="ttdeci">static void EndPrim(uint Eop)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d3f/vu1_8cpp_source.html#l00050">vu1.cpp:50</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_a8a3ead69905280b699ad2b6ed545edde"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#a8a3ead69905280b699ad2b6ed545edde">NxPs2::dma::EndTag</a></div><div class="ttdeci">static void EndTag(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00242">dma.h:242</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_ab1f07a7b7d29dda5f47bc9d6748d1819"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#ab1f07a7b7d29dda5f47bc9d6748d1819">NxPs2::vif::STMOD</a></div><div class="ttdeci">static void STMOD(uint16 MODE)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00335">vif.h:335</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a599fa70d638561851fd4aeab050a1183"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a599fa70d638561851fd4aeab050a1183">NxPs2::BeginLines3D</a></div><div class="ttdeci">void BeginLines3D(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00060">line.cpp:60</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a56c4ce6f6a8d961e40400f27b721b654"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a></div><div class="ttdeci">void DrawLine2D(float x0, float y0, float z0, float x1, float y1, float z1)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00032">line.cpp:32</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gif_html_a0e20d78671580236bcc950a800d51c20"><div class="ttname"><a href="../../d5/df5/class_nx_ps2_1_1gif.html#a0e20d78671580236bcc950a800d51c20">NxPs2::gif::BeginTagImmediate</a></div><div class="ttdeci">static void BeginTagImmediate(uint32 Regs, uint NReg, uint Flg, uint Prim, uint Pre, uint Addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/gif_8cpp_source.html#l00136">gif.cpp:136</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_a3c9e76265e24c90c6972d0f4a70ea38f"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">NxPs2::dma::pLoc</a></div><div class="ttdeci">static uint8 * pLoc</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00104">dma.h:104</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ac11151839ab407a9588ccec23c1c3caa"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">NxPs2::EndLines3D</a></div><div class="ttdeci">void EndLines3D(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00115">line.cpp:115</a></div></div>
+<div class="ttc" id="avu1code_8h_html"><div class="ttname"><a href="../../d4/d49/vu1code_8h.html">vu1code.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a04490b223c1ce5d22603a22e36c1b1cda0d0b237b35ae7b6c47748c493ac8dac5"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda0d0b237b35ae7b6c47748c493ac8dac5">NxPs2::gs::RGBAQ</a></div><div class="ttdeci">@ RGBAQ</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db7/gs_8h_source.html#l00549">gs.h:549</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_a107c8ecad53ae5b5974fb40164781698"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">NxPs2::vu1::Loc</a></div><div class="ttdeci">static uint Loc</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d0f/vu1_8h_source.html#l00045">vu1.h:45</a></div></div>
+<div class="ttc" id="adma_8h_html"><div class="ttname"><a href="../../d9/d95/dma_8h.html">dma.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_ab53e9dba61a77ce1d2dcebc45d3a6333"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#ab53e9dba61a77ce1d2dcebc45d3a6333">NxPs2::gs::Reg1</a></div><div class="ttdeci">static void Reg1(eReg Reg, uint64 Data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db7/gs_8h_source.html#l00619">gs.h:619</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../d8/ddb/_n_g_p_s_2_n_x_2line_8cpp.html">line.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

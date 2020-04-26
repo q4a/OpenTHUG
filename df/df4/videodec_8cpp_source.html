@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Movies/Ngps/videodec.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/df4/videodec_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">videodec.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/df4/videodec_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;eetypes.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;gel/movies/ngps/p_movies.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d64/defs_8h.html">gel/movies/ngps/defs.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d37/vobuf_8h.html">gel/movies/ngps/vobuf.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d44/videodec_8h.html">gel/movies/ngps/videodec.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d5f/disp_8h.html">gel/movies/ngps/disp.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/dbb/namespace_flx.html">Flx</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aaf060bd9a2477269e606c0478f3c4967">videoDecMain</a>( <span class="keywordtype">void</span> * <a class="code" href="../../d8/d76/namespace_thread.html#a839e6442fa00236052184eb91586f6be">dummy</a>);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a1c837dffa1fdf5f470193923c993eb1e">decBs0</a>(VideoDec *vd);</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a064457d9fc24011b49ba91729d231af5">mpegError</a>(sceMpeg *mp, sceMpegCbDataError *cberror, <span class="keywordtype">void</span> *anyData);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af8f661398d7a71d754e879e5a2543d2f">mpegNodata</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a01a810ca608658af4c2759e51f3678f1">mpegStopDMA</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a7f2f7919aadfce848edc64cff991c0f7">mpegRestartDMA</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a566564708bfeb577a82f9c4c74fda286">mpegTS</a>(sceMpeg *mp, sceMpegCbDataTimeStamp *cbts, <span class="keywordtype">void</span> *anyData);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ab3868bcaf7958b22242c8ca3cd46bbc2">cpy2area</a>(u_char *pd0, <span class="keywordtype">int</span> d0, u_char *pd1, <span class="keywordtype">int</span> d1,</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    u_char *ps0, <span class="keywordtype">int</span> s0, u_char *ps1, <span class="keywordtype">int</span> s1);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aa5236ce3bf04c37a12a52546595ea4de">vblankCount</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//  Create video decoder</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aeb457af9bb8fb6b172ae4394e614d54b">   30</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aeb457af9bb8fb6b172ae4394e614d54b">videoDecCreate</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    u_char *mpegWork, <span class="keywordtype">int</span> mpegWorkSize,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    u_long128 *<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, u_long128 *tag,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">int</span> tagSize, <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> *pts, <span class="keywordtype">int</span> n_pts)</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Create sceMpeg</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    sceMpegCreate(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>, mpegWork, mpegWorkSize);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Add Callbacks</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    sceMpegAddCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        sceMpegCbError, (sceMpegCallback)<a class="code" href="../../d8/dbb/namespace_flx.html#a064457d9fc24011b49ba91729d231af5">mpegError</a>, NULL);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    sceMpegAddCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        sceMpegCbNodata, <a class="code" href="../../d8/dbb/namespace_flx.html#af8f661398d7a71d754e879e5a2543d2f">mpegNodata</a>, NULL);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    sceMpegAddCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        sceMpegCbStopDMA, <a class="code" href="../../d8/dbb/namespace_flx.html#a01a810ca608658af4c2759e51f3678f1">mpegStopDMA</a>, NULL);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sceMpegAddCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        sceMpegCbRestartDMA, <a class="code" href="../../d8/dbb/namespace_flx.html#a7f2f7919aadfce848edc64cff991c0f7">mpegRestartDMA</a>, NULL);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    sceMpegAddCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>, sceMpegCbTimeStamp,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        (sceMpegCallback)<a class="code" href="../../d8/dbb/namespace_flx.html#a566564708bfeb577a82f9c4c74fda286">mpegTS</a>, NULL);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ae1357a134a192105d0ece5f2a4ca3293">videoDecReset</a>(vd);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Create input video buffer</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a64b90334ba70060c52f8bb97e9349d82">viBufCreate</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, tag, tagSize, pts, n_pts);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">//  Set decode mode</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ad83eb96ff3a48d4ce11221a602587f91">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ad83eb96ff3a48d4ce11221a602587f91">videoDecSetDecodeMode</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd, <span class="keywordtype">int</span> ni, <span class="keywordtype">int</span> np, <span class="keywordtype">int</span> nb)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    sceMpegSetDecodeMode(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>, ni, np, nb);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//  Choose stream to be decoded</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#af9aca0aefe03d4d84aa73b18d02dcda2">   71</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af9aca0aefe03d4d84aa73b18d02dcda2">videoDecSetStream</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd, <span class="keywordtype">int</span> strType, <span class="keywordtype">int</span> ch,</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    sceMpegCallback cb, <span class="keywordtype">void</span> *<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>)</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    sceMpegAddStrCallback(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>, ( sceMpegStrType )strType, ch, cb, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//  Get areas to put data in video input buffer</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a601b9fd3510eb51c71ae34c8adbff0da">   82</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a601b9fd3510eb51c71ae34c8adbff0da">videoDecBeginPut</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd,</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    u_char **ptr0, <span class="keywordtype">int</span> *len0, u_char **ptr1, <span class="keywordtype">int</span> *len1)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a1da822d18bc26d3fe79e4ccb8a510976">viBufBeginPut</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>, ptr0, len0, ptr1, len1);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//  Proceed pointers of video input buffer</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aa5af285eade1e6f641df245764292bc2">   92</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aa5af285eade1e6f641df245764292bc2">videoDecEndPut</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd, <span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a38a9f74dcbcacaea5eab0c01533a6803">viBufEndPut</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>, size);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//  Reset video decoder</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ae1357a134a192105d0ece5f2a4ca3293">  101</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ae1357a134a192105d0ece5f2a4ca3293">videoDecReset</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a> = VD_STATE_NORMAL;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">//  Delete video decoder</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a4c8fe7ec9941a0b2468f4e0db8d9dfc0">  110</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a4c8fe7ec9941a0b2468f4e0db8d9dfc0">videoDecDelete</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4">viBufDelete</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    sceMpegDelete(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">//  Abort decoding</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aa328e190b8d89376d19ea721a9684c50">  122</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aa328e190b8d89376d19ea721a9684c50">videoDecAbort</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a> = VD_STATE_ABORT;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">//  Get state of video decoder</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#afc2df33678268851b47c6d3f62512fa7">  131</a></span>&#160;u_int <a class="code" href="../../d8/dbb/namespace_flx.html#afc2df33678268851b47c6d3f62512fa7">videoDecGetState</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">//  Set state of video decoder</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a1581d4ded718acc442885f3f95c8f897">  140</a></span>&#160;u_int <a class="code" href="../../d8/dbb/namespace_flx.html#a1581d4ded718acc442885f3f95c8f897">videoDecSetState</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd, u_int <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a89f234133d3efe315836311cbf21c64b">state</a>)</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    u_int old = vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a> = <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a89f234133d3efe315836311cbf21c64b">state</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> old;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">//  Put time stamp to the video decoder</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ac679b46bf8e2e9d3069effb4d561e7c9">  153</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ac679b46bf8e2e9d3069effb4d561e7c9">videoDecPutTs</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd, <span class="keywordtype">long</span> pts_val,</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">long</span> dts_val, u_char *<a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> ts;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">// Set PTS</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a> = pts_val;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a> = dts_val;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">pos</a> = <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a> - (u_char*)vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>.<a class="code" href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">data</a>;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">len</a> = len;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a36472b6009900664084e1dc4ecdbd810">viBufPutTs</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf, &amp;ts);</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">//  Data size in video input buffer</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a9055d48bb89773e3c0610e5797b95cb9">  170</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a9055d48bb89773e3c0610e5797b95cb9">videoDecInputCount</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aeb37df64f3a9870c4c6d7c2fd8733c66">viBufCount</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">//  Empty space size in video input buffer</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a18f33aa404f774c93559528a8ac722fd">  179</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a18f33aa404f774c93559528a8ac722fd">videoDecInputSpaceCount</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    u_char *ptr0;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    u_char *ptr1;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordtype">int</span> len0, len1;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a601b9fd3510eb51c71ae34c8adbff0da">videoDecBeginPut</a>(vd, &amp;ptr0, &amp;len0, &amp;ptr1, &amp;len1);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> len0 + len1;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">//  Flush video decoder</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a1516758d6238f48f3154100d446d940f">  194</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a1516758d6238f48f3154100d446d940f">videoDecFlush</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    u_char *pd0;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    u_char *pd1;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    u_char *pd0Unc;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    u_char *pd1Unc;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    u_char seq_end_code[4] = {0x00, 0x00, 0x01, 0xb7};</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordtype">int</span> d0, d1;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordtype">int</span> len;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a601b9fd3510eb51c71ae34c8adbff0da">videoDecBeginPut</a>(vd, &amp;pd0, &amp;d0, &amp;pd1, &amp;d1);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">if</span> (d0 + d1 &lt; 4) {</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    }</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    pd0Unc = (u_char*)<a class="code" href="../../d5/d64/defs_8h.html#aed8353ebf5423c4c79097ab1bf1fb5e9">UncAddr</a>(pd0);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    pd1Unc = (u_char*)<a class="code" href="../../d5/d64/defs_8h.html#aed8353ebf5423c4c79097ab1bf1fb5e9">UncAddr</a>(pd1);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    len = <a class="code" href="../../d8/dbb/namespace_flx.html#ab3868bcaf7958b22242c8ca3cd46bbc2">cpy2area</a>(pd0Unc, d0, pd1Unc, d1, seq_end_code, 4, NULL, 0);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#aa5af285eade1e6f641df245764292bc2">videoDecEndPut</a>(&amp; MOVIE_MEM_PTR videoDec, len);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ab394919b74eac1a3d9651ca99f6da5d5">viBufFlush</a>(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">vibuf</a>);</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">if</span> (vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a> == VD_STATE_NORMAL) {</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">state</a> = VD_STATE_FLUSH;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    }</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">//  Check to see if input buffer and reference image buffer are</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">//  flushed</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a169db524a84571d4bc7620f4ad1c8d41">  231</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a169db524a84571d4bc7620f4ad1c8d41">videoDecIsFlushed</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../d8/dbb/namespace_flx.html#a9055d48bb89773e3c0610e5797b95cb9">videoDecInputCount</a>(vd) == 0)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        &amp;&amp; sceMpegIsRefBuffEmpty(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">//  Main function of decode thread</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#aaf060bd9a2477269e606c0478f3c4967">  241</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/dbb/namespace_flx.html#aaf060bd9a2477269e606c0478f3c4967">videoDecMain</a>( <span class="keywordtype">void</span> * <a class="code" href="../../d8/d76/namespace_thread.html#a839e6442fa00236052184eb91586f6be">dummy</a>)</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    CHECK_MOVIE_MEM;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">//  Dbg_MsgAssert( ( &amp; MOVIE_MEM_PTR videoDec ) == vd, ( &quot;What the fuck assface?&quot; ) );</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">viBufReset</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">//    viBufReset(&amp;vd-&gt;vibuf);</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#aa0474d80469d371e1a49d870518d6f89">voBufReset</a>(&amp; MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160; </div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a1c837dffa1fdf5f470193923c993eb1e">decBs0</a>(&amp; MOVIE_MEM_PTR videoDec);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">while</span> ( MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#a97217ee46a71e874b82dc0d9d059326f">count</a>)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        ;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;     <a class="code" href="../../d8/dbb/namespace_flx.html#a1581d4ded718acc442885f3f95c8f897">videoDecSetState</a>( &amp; MOVIE_MEM_PTR videoDec, VD_STATE_END);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">// Decode bitstream using MPEG decoder</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">// return value</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">//     1: normal end</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">//     -1: aborted</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a1c837dffa1fdf5f470193923c993eb1e">  268</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a1c837dffa1fdf5f470193923c993eb1e">decBs0</a>(<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html">VideoDec</a> *vd)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;{</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    CHECK_MOVIE_MEM;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="../../d9/d00/struct_flx_1_1_vo_data.html">VoData</a> *voData;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    sceIpuRGB32 *rgb32;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="keywordtype">int</span> status = 1;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    sceMpeg *mp = &amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="comment">// ////////////////////////////</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="comment">//  Main loop to decode MPEG bitstream</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    <span class="keywordflow">while</span> (!sceMpegIsEnd(&amp;vd-&gt;<a class="code" href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">mpeg</a>)) {</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d8/dbb/namespace_flx.html#afc2df33678268851b47c6d3f62512fa7">videoDecGetState</a>(vd) == VD_STATE_ABORT) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        status = -1;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>(<span class="stringliteral">&quot;decode thread: aborted\n&quot;</span>);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    }</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="comment">// ////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <span class="comment">//  Get next available ouput buffer from voBuf</span></div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="comment">//  switch to another thread if voBuf is full</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <span class="keywordflow">while</span> (!(voData = <a class="code" href="../../d8/dbb/namespace_flx.html#a48c25fb1a0195cba299e13c3dc9c5d5d">voBufGetData</a>(&amp; MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>))) {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../d8/dbb/namespace_flx.html#afd841b52816206ec6c814cd470dfd36e">switchThread</a>();</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    rgb32 = (sceIpuRGB32*)voData-&gt;<a class="code" href="../../d9/d00/struct_flx_1_1_vo_data.html#af29511ced4ca1b00b6ca5c1150284f15">v</a>;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="comment">// ////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="comment">//  Get decoded picture in sceIpuRGB32 format</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="comment">//</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = sceMpegGetPicture(mp, rgb32, MAX_WIDTH/16 * MAX_HEIGHT/16);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> &lt; 0) {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <a class="code" href="../../d8/dbb/namespace_flx.html#a3facf93ad35cb6d836a121441abbf7c1">ErrMessage</a>(<span class="stringliteral">&quot;sceMpegGetPicture() decode error&quot;</span>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <span class="keywordflow">if</span> (mp-&gt;frameCount == 0) {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordtype">int</span> image_w, image_h;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        image_w = mp-&gt;width;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        image_h = mp-&gt;height;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="keywordflow">for</span> (i = 0; i &lt;  MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#ad2e4f95ebbc74aa66f0a9276a9904b30">size</a>; i++) {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;          <span class="comment">// packet with texture data</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;          <a class="code" href="../../d8/dbb/namespace_flx.html#a7fc68a0a770a01bf43ab7c0074cb6a14">setImageTag</a>( MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#a8e007643579bc40c2a50681f92ed7d52">tag</a>[i].<a class="code" href="../../d7/d7c/struct_flx_1_1_vo_tag.html#abed1e5300be7d1cc903f4f629d7a3df8">v</a>[0],  MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#adbab58538d83f4dc27a4f1cfe4b14c4c">data</a>[i].<a class="code" href="../../d9/d00/struct_flx_1_1_vo_data.html#af29511ced4ca1b00b6ca5c1150284f15">v</a>,</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;              0, image_w, image_h);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;          </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;          <span class="comment">// packet without texture data</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;          <a class="code" href="../../d8/dbb/namespace_flx.html#a7fc68a0a770a01bf43ab7c0074cb6a14">setImageTag</a>( MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#a8e007643579bc40c2a50681f92ed7d52">tag</a>[i].<a class="code" href="../../d7/d7c/struct_flx_1_1_vo_tag.html#abed1e5300be7d1cc903f4f629d7a3df8">v</a>[1],  MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>.<a class="code" href="../../d1/d3f/struct_flx_1_1_vo_buf.html#adbab58538d83f4dc27a4f1cfe4b14c4c">data</a>[i].<a class="code" href="../../d9/d00/struct_flx_1_1_vo_data.html#af29511ced4ca1b00b6ca5c1150284f15">v</a>,</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;              1, image_w, image_h);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="comment">// ////////////////////////////</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">//  Increment video output buffer count</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">// </span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ad3919494b8af301ceb49921e3c1dc413">voBufIncCount</a>(&amp; MOVIE_MEM_PTR <a class="code" href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">voBuf</a>);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#afd841b52816206ec6c814cd470dfd36e">switchThread</a>();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    sceMpegReset(mp);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">return</span> status;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;}</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="comment">//  Callback function for sceMpegCbError</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a064457d9fc24011b49ba91729d231af5">  349</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a064457d9fc24011b49ba91729d231af5">mpegError</a>(sceMpeg *mp, sceMpegCbDataError *cberror, <span class="keywordtype">void</span> *anyData)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;{</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>(<span class="stringliteral">&quot;%s\n&quot;</span>, cberror-&gt;errMessage);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">//  Callback function for sceMpegCbNodata</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#af8f661398d7a71d754e879e5a2543d2f">  359</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#af8f661398d7a71d754e879e5a2543d2f">mpegNodata</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData)</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;{</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#afd841b52816206ec6c814cd470dfd36e">switchThread</a>();</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#a9b586be07b45d70baee3768371198973">viBufAddDMA</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="comment">//  Callback function for sceMpegCbStopDMA</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a01a810ca608658af4c2759e51f3678f1">  370</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a01a810ca608658af4c2759e51f3678f1">mpegStopDMA</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData)</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="comment">// Stop DMA</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#aebf7e136ef0cab09386a57ae284de315">viBufStopDMA</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf);</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;}</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="comment">//  Callback function for sceMpegCbRestartDMA</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a7f2f7919aadfce848edc64cff991c0f7">  381</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a7f2f7919aadfce848edc64cff991c0f7">mpegRestartDMA</a>(sceMpeg *mp, sceMpegCbData *cbdata, <span class="keywordtype">void</span> *anyData)</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="comment">// Restart DMA</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ad1475e89668d47e5d0a74580aeaeb310">viBufRestartDMA</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;}</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">//  Callback function for sceMpegCbTimeStamp</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">//  retruns PTS and DTS</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#a566564708bfeb577a82f9c4c74fda286">  393</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#a566564708bfeb577a82f9c4c74fda286">mpegTS</a>(sceMpeg *mp, sceMpegCbDataTimeStamp *cbts, <span class="keywordtype">void</span> *anyData)</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;{</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html">TimeStamp</a> ts;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <a class="code" href="../../d8/dbb/namespace_flx.html#ac568488decc2eeacf3fcd644cbf71685">viBufGetTs</a>(&amp; MOVIE_MEM_PTR videoDec.vibuf, &amp;ts);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    cbts-&gt;pts = ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">pts</a>;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    cbts-&gt;dts = ts.<a class="code" href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">dts</a>;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">// ////////////////////////////////////////////////////////////////</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="comment">//  copy 2 areas</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="../../d8/dbb/namespace_flx.html#ab3868bcaf7958b22242c8ca3cd46bbc2">  407</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../d8/dbb/namespace_flx.html#ab3868bcaf7958b22242c8ca3cd46bbc2">cpy2area</a>(u_char *pd0, <span class="keywordtype">int</span> d0, u_char *pd1, <span class="keywordtype">int</span> d1,</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    u_char *ps0, <span class="keywordtype">int</span> s0, u_char *ps1, <span class="keywordtype">int</span> s1)</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;{</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="keywordflow">if</span> (d0 + d1 &lt; s0 + s1) {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    <span class="keywordflow">if</span> (s0 &gt;= d0) {</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        memcpy(pd0,     ps0,        d0);</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        memcpy(pd1,     ps0 + d0,   s0 - d0);</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        memcpy(pd1 + s0 - d0,   ps1,        s1);</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    } <span class="keywordflow">else</span> { <span class="comment">// s0 &lt; d0</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        <span class="keywordflow">if</span> (s1 &gt;= d0 - s0) {</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        memcpy(pd0,     ps0,        s0);</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        memcpy(pd0 + s0,    ps1,        d0 - s0);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        memcpy(pd1,     ps1 + d0 - s0,  s1 - (d0 - s0));</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    } <span class="keywordflow">else</span> { <span class="comment">// s1 &lt; d0 - s0</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        memcpy(pd0,     ps0,        s0);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;        memcpy(pd0 + s0,    ps1,        s1);</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    }</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">return</span> s0 + s1;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;} <span class="comment">// namespace Flx</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_flx_html_a064457d9fc24011b49ba91729d231af5"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a064457d9fc24011b49ba91729d231af5">Flx::mpegError</a></div><div class="ttdeci">int mpegError(sceMpeg *mp, sceMpegCbDataError *cberror, void *anyData)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00349">videodec.cpp:349</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_tag_html_abed1e5300be7d1cc903f4f629d7a3df8"><div class="ttname"><a href="../../d7/d7c/struct_flx_1_1_vo_tag.html#abed1e5300be7d1cc903f4f629d7a3df8">Flx::VoTag::v</a></div><div class="ttdeci">u_int v[N_VOBUF][bound((N_LDTAGS+100) *4, 64)]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00044">vobuf.h:44</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ae1357a134a192105d0ece5f2a4ca3293"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ae1357a134a192105d0ece5f2a4ca3293">Flx::videoDecReset</a></div><div class="ttdeci">void videoDecReset(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00101">videodec.cpp:101</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__entr_8c_html_ac92d3b835636641550b12b0f93daf21d"><div class="ttname"><a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a></div><div class="ttdeci">int start()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c_source.html#l00016">bgm_entr.c:16</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a6baa346e44f4c2158d2be4f9b77b8203"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a></div><div class="ttdeci">int ret</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00077">bgm_com.c:77</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a7f2f7919aadfce848edc64cff991c0f7"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a7f2f7919aadfce848edc64cff991c0f7">Flx::mpegRestartDMA</a></div><div class="ttdeci">int mpegRestartDMA(sceMpeg *mp, sceMpegCbData *cbdata, void *anyData)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00381">videodec.cpp:381</a></div></div>
+<div class="ttc" id="avobuf_8h_html"><div class="ttname"><a href="../../d4/d37/vobuf_8h.html">vobuf.h</a></div></div>
+<div class="ttc" id="avideodec_8h_html"><div class="ttname"><a href="../../d9/d44/videodec_8h.html">videodec.h</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_video_dec_html_a359b525301c730fe5fba905697faca9b"><div class="ttname"><a href="../../d9/d17/struct_flx_1_1_video_dec.html#a359b525301c730fe5fba905697faca9b">Flx::VideoDec::state</a></div><div class="ttdeci">u_int state</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d44/videodec_8h_source.html#l00035">videodec.h:35</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_data_html"><div class="ttname"><a href="../../d9/d00/struct_flx_1_1_vo_data.html">Flx::VoData</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00033">vobuf.h:33</a></div></div>
+<div class="ttc" id="adefs_8h_html_aed8353ebf5423c4c79097ab1bf1fb5e9"><div class="ttname"><a href="../../d5/d64/defs_8h.html#aed8353ebf5423c4c79097ab1bf1fb5e9">UncAddr</a></div><div class="ttdeci">void * UncAddr(void *val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d64/defs_8h_source.html#l00037">defs.h:37</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a9055d48bb89773e3c0610e5797b95cb9"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a9055d48bb89773e3c0610e5797b95cb9">Flx::videoDecInputCount</a></div><div class="ttdeci">int videoDecInputCount(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00170">videodec.cpp:170</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_ad646e1824b8eed43726ae8d497bab2b9"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad646e1824b8eed43726ae8d497bab2b9">Flx::TimeStamp::pos</a></div><div class="ttdeci">int pos</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00030">vibuf.h:30</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_buf_html_a97217ee46a71e874b82dc0d9d059326f"><div class="ttname"><a href="../../d1/d3f/struct_flx_1_1_vo_buf.html#a97217ee46a71e874b82dc0d9d059326f">Flx::VoBuf::count</a></div><div class="ttdeci">volatile int count</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00055">vobuf.h:55</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a0cc0c255bb5dfdc16b506173bf1f59ee"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">Gfx::data</a></div><div class="ttdeci">short data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01898">BonedAnim.cpp:1898</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a01a810ca608658af4c2759e51f3678f1"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a01a810ca608658af4c2759e51f3678f1">Flx::mpegStopDMA</a></div><div class="ttdeci">int mpegStopDMA(sceMpeg *mp, sceMpegCbData *cbdata, void *anyData)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00370">videodec.cpp:370</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aebf7e136ef0cab09386a57ae284de315"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aebf7e136ef0cab09386a57ae284de315">Flx::viBufStopDMA</a></div><div class="ttdeci">int viBufStopDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00330">vibuf.cpp:330</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_video_dec_html"><div class="ttname"><a href="../../d9/d17/struct_flx_1_1_video_dec.html">Flx::VideoDec</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d44/videodec_8h_source.html#l00032">videodec.h:32</a></div></div>
+<div class="ttc" id="anamespace_flx_html_afd841b52816206ec6c814cd470dfd36e"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#afd841b52816206ec6c814cd470dfd36e">Flx::switchThread</a></div><div class="ttdeci">void switchThread()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d6b/_ngps_2p__movies_8cpp_source.html#l00508">p_movies.cpp:508</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a7fc68a0a770a01bf43ab7c0074cb6a14"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a7fc68a0a770a01bf43ab7c0074cb6a14">Flx::setImageTag</a></div><div class="ttdeci">void setImageTag(u_int *tags, void *image, int index, int image_w, int image_h)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/df4/disp_8cpp_source.html#l00104">disp.cpp:104</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a601b9fd3510eb51c71ae34c8adbff0da"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a601b9fd3510eb51c71ae34c8adbff0da">Flx::videoDecBeginPut</a></div><div class="ttdeci">void videoDecBeginPut(VideoDec *vd, u_char **ptr0, int *len0, u_char **ptr1, int *len1)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00082">videodec.cpp:82</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aeb457af9bb8fb6b172ae4394e614d54b"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aeb457af9bb8fb6b172ae4394e614d54b">Flx::videoDecCreate</a></div><div class="ttdeci">int videoDecCreate(VideoDec *vd, u_char *mpegWork, int mpegWorkSize, u_long128 *data, u_long128 *tag, int tagSize, TimeStamp *pts, int n_pts)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00030">videodec.cpp:30</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a1da822d18bc26d3fe79e4ccb8a510976"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a1da822d18bc26d3fe79e4ccb8a510976">Flx::viBufBeginPut</a></div><div class="ttdeci">void viBufBeginPut(ViBuf *f, u_char **ptr0, int *len0, u_char **ptr1, int *len1)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00183">vibuf.cpp:183</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_buf_html_ad2e4f95ebbc74aa66f0a9276a9904b30"><div class="ttname"><a href="../../d1/d3f/struct_flx_1_1_vo_buf.html#ad2e4f95ebbc74aa66f0a9276a9904b30">Flx::VoBuf::size</a></div><div class="ttdeci">int size</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00056">vobuf.h:56</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ad83eb96ff3a48d4ce11221a602587f91"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ad83eb96ff3a48d4ce11221a602587f91">Flx::videoDecSetDecodeMode</a></div><div class="ttdeci">void videoDecSetDecodeMode(VideoDec *vd, int ni, int np, int nb)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00062">videodec.cpp:62</a></div></div>
+<div class="ttc" id="anamespace_flx_html"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html">Flx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d51/_movies_8cpp_source.html#l00047">Movies.cpp:47</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ab394919b74eac1a3d9651ca99f6da5d5"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ab394919b74eac1a3d9651ca99f6da5d5">Flx::viBufFlush</a></div><div class="ttdeci">void viBufFlush(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00501">vibuf.cpp:501</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ac568488decc2eeacf3fcd644cbf71685"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ac568488decc2eeacf3fcd644cbf71685">Flx::viBufGetTs</a></div><div class="ttdeci">int viBufGetTs(ViBuf *f, TimeStamp *ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00591">vibuf.cpp:591</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aaf060bd9a2477269e606c0478f3c4967"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aaf060bd9a2477269e606c0478f3c4967">Flx::videoDecMain</a></div><div class="ttdeci">void videoDecMain(void *dummy)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00241">videodec.cpp:241</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a169db524a84571d4bc7620f4ad1c8d41"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a169db524a84571d4bc7620f4ad1c8d41">Flx::videoDecIsFlushed</a></div><div class="ttdeci">int videoDecIsFlushed(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00231">videodec.cpp:231</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_video_dec_html_ae3afe90e947c1580c95ae749750f445d"><div class="ttname"><a href="../../d9/d17/struct_flx_1_1_video_dec.html#ae3afe90e947c1580c95ae749750f445d">Flx::VideoDec::vibuf</a></div><div class="ttdeci">ViBuf vibuf</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d44/videodec_8h_source.html#l00034">videodec.h:34</a></div></div>
+<div class="ttc" id="anamespace_flx_html_abd69cecd8cfa1219bba638fb7dcaba4a"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#abd69cecd8cfa1219bba638fb7dcaba4a">Flx::voBuf</a></div><div class="ttdeci">VoBuf voBuf</div></div>
+<div class="ttc" id="anamespace_flx_html_a38a9f74dcbcacaea5eab0c01533a6803"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a38a9f74dcbcacaea5eab0c01533a6803">Flx::viBufEndPut</a></div><div class="ttdeci">void viBufEndPut(ViBuf *f, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00219">vibuf.cpp:219</a></div></div>
+<div class="ttc" id="anamespace_flx_html_abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#abf1a5cc0e6b36ae1ffdf4d5ccf7d5da4">Flx::viBufDelete</a></div><div class="ttdeci">int viBufDelete(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00452">vibuf.cpp:452</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vi_buf_html_afc9ddc01eee9e38f3b5a3fe6cf3ae820"><div class="ttname"><a href="../../d7/d6f/struct_flx_1_1_vi_buf.html#afc9ddc01eee9e38f3b5a3fe6cf3ae820">Flx::ViBuf::data</a></div><div class="ttdeci">u_long128 * data</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00039">vibuf.h:39</a></div></div>
+<div class="ttc" id="anamespace_flx_html_afc2df33678268851b47c6d3f62512fa7"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#afc2df33678268851b47c6d3f62512fa7">Flx::videoDecGetState</a></div><div class="ttdeci">u_int videoDecGetState(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00131">videodec.cpp:131</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a48c25fb1a0195cba299e13c3dc9c5d5d"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a48c25fb1a0195cba299e13c3dc9c5d5d">Flx::voBufGetData</a></div><div class="ttdeci">VoData * voBufGetData(VoBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/vobuf_8cpp_source.html#l00063">vobuf.cpp:63</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_buf_html_a8e007643579bc40c2a50681f92ed7d52"><div class="ttname"><a href="../../d1/d3f/struct_flx_1_1_vo_buf.html#a8e007643579bc40c2a50681f92ed7d52">Flx::VoBuf::tag</a></div><div class="ttdeci">VoTag * tag</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00053">vobuf.h:53</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aa328e190b8d89376d19ea721a9684c50"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aa328e190b8d89376d19ea721a9684c50">Flx::videoDecAbort</a></div><div class="ttdeci">void videoDecAbort(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00122">videodec.cpp:122</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ad3919494b8af301ceb49921e3c1dc413"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ad3919494b8af301ceb49921e3c1dc413">Flx::voBufIncCount</a></div><div class="ttdeci">void voBufIncCount(VoBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/vobuf_8cpp_source.html#l00050">vobuf.cpp:50</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aa0474d80469d371e1a49d870518d6f89"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aa0474d80469d371e1a49d870518d6f89">Flx::voBufReset</a></div><div class="ttdeci">void voBufReset(VoBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/vobuf_8cpp_source.html#l00039">vobuf.cpp:39</a></div></div>
+<div class="ttc" id="anamespace_flx_html_af9aca0aefe03d4d84aa73b18d02dcda2"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#af9aca0aefe03d4d84aa73b18d02dcda2">Flx::videoDecSetStream</a></div><div class="ttdeci">int videoDecSetStream(VideoDec *vd, int strType, int ch, sceMpegCallback cb, void *data)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00071">videodec.cpp:71</a></div></div>
+<div class="ttc" id="anamespace_flx_html_af8f661398d7a71d754e879e5a2543d2f"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#af8f661398d7a71d754e879e5a2543d2f">Flx::mpegNodata</a></div><div class="ttdeci">int mpegNodata(sceMpeg *mp, sceMpegCbData *cbdata, void *anyData)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00359">videodec.cpp:359</a></div></div>
+<div class="ttc" id="adisp_8h_html"><div class="ttname"><a href="../../d6/d5f/disp_8h.html">disp.h</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a18f33aa404f774c93559528a8ac722fd"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a18f33aa404f774c93559528a8ac722fd">Flx::videoDecInputSpaceCount</a></div><div class="ttdeci">int videoDecInputSpaceCount(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00179">videodec.cpp:179</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_ad39186b46d198308aaf369bfe6839b91"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#ad39186b46d198308aaf369bfe6839b91">Flx::TimeStamp::pts</a></div><div class="ttdeci">long pts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00028">vibuf.h:28</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a36472b6009900664084e1dc4ecdbd810"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a36472b6009900664084e1dc4ecdbd810">Flx::viBufPutTs</a></div><div class="ttdeci">int viBufPutTs(ViBuf *f, TimeStamp *ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00560">vibuf.cpp:560</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_data_html_af29511ced4ca1b00b6ca5c1150284f15"><div class="ttname"><a href="../../d9/d00/struct_flx_1_1_vo_data.html#af29511ced4ca1b00b6ca5c1150284f15">Flx::VoData::v</a></div><div class="ttdeci">u_char v[MAX_WIDTH *MAX_HEIGHT *4]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00034">vobuf.h:34</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a89f234133d3efe315836311cbf21c64b"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a89f234133d3efe315836311cbf21c64b">state</a></div><div class="ttdeci">int state</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00005">p_ezcommon.h:5</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a1516758d6238f48f3154100d446d940f"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a1516758d6238f48f3154100d446d940f">Flx::videoDecFlush</a></div><div class="ttdeci">int videoDecFlush(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00194">videodec.cpp:194</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="anamespace_flx_html_a1581d4ded718acc442885f3f95c8f897"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a1581d4ded718acc442885f3f95c8f897">Flx::videoDecSetState</a></div><div class="ttdeci">u_int videoDecSetState(VideoDec *vd, u_int state)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00140">videodec.cpp:140</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_a1e4d18d271a5cac598ea1d4a508fd442"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#a1e4d18d271a5cac598ea1d4a508fd442">Flx::TimeStamp::dts</a></div><div class="ttdeci">long dts</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00029">vibuf.h:29</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a9b586be07b45d70baee3768371198973"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a9b586be07b45d70baee3768371198973">Flx::viBufAddDMA</a></div><div class="ttdeci">int viBufAddDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00233">vibuf.cpp:233</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a566564708bfeb577a82f9c4c74fda286"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a566564708bfeb577a82f9c4c74fda286">Flx::mpegTS</a></div><div class="ttdeci">int mpegTS(sceMpeg *mp, sceMpegCbDataTimeStamp *cbts, void *anyData)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00393">videodec.cpp:393</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html_a173ad11d93249949ed4eb32c16565a3a"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html#a173ad11d93249949ed4eb32c16565a3a">Flx::TimeStamp::len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00031">vibuf.h:31</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_time_stamp_html"><div class="ttname"><a href="../../d7/df4/struct_flx_1_1_time_stamp.html">Flx::TimeStamp</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbe/vibuf_8h_source.html#l00027">vibuf.h:27</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a1c837dffa1fdf5f470193923c993eb1e"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a1c837dffa1fdf5f470193923c993eb1e">Flx::decBs0</a></div><div class="ttdeci">int decBs0(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00268">videodec.cpp:268</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_video_dec_html_add40a751697b308553aef2fae2b3a905"><div class="ttname"><a href="../../d9/d17/struct_flx_1_1_video_dec.html#add40a751697b308553aef2fae2b3a905">Flx::VideoDec::mpeg</a></div><div class="ttdeci">sceMpeg mpeg</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d44/videodec_8h_source.html#l00033">videodec.h:33</a></div></div>
+<div class="ttc" id="anamespace_thread_html_a839e6442fa00236052184eb91586f6be"><div class="ttname"><a href="../../d8/d76/namespace_thread.html#a839e6442fa00236052184eb91586f6be">Thread::dummy</a></div><div class="ttdeci">int dummy</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dff/ngps_2t__thread_8h_source.html#l00051">t_thread.h:51</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ac679b46bf8e2e9d3069effb4d561e7c9"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ac679b46bf8e2e9d3069effb4d561e7c9">Flx::videoDecPutTs</a></div><div class="ttdeci">int videoDecPutTs(VideoDec *vd, long pts_val, long dts_val, u_char *start, int len)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00153">videodec.cpp:153</a></div></div>
+<div class="ttc" id="adefs_8h_html"><div class="ttname"><a href="../../d5/d64/defs_8h.html">defs.h</a></div></div>
+<div class="ttc" id="astruct_flx_1_1_vo_buf_html_adbab58538d83f4dc27a4f1cfe4b14c4c"><div class="ttname"><a href="../../d1/d3f/struct_flx_1_1_vo_buf.html#adbab58538d83f4dc27a4f1cfe4b14c4c">Flx::VoBuf::data</a></div><div class="ttdeci">VoData * data</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d37/vobuf_8h_source.html#l00052">vobuf.h:52</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a4c281505a8d68613a6f491c0fdaad503"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a4c281505a8d68613a6f491c0fdaad503">Flx::viBufReset</a></div><div class="ttdeci">int viBufReset(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00134">vibuf.cpp:134</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a3facf93ad35cb6d836a121441abbf7c1"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a3facf93ad35cb6d836a121441abbf7c1">Flx::ErrMessage</a></div><div class="ttdeci">void ErrMessage(char *message)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d6b/_ngps_2p__movies_8cpp_source.html#l00742">p_movies.cpp:742</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aa5236ce3bf04c37a12a52546595ea4de"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aa5236ce3bf04c37a12a52546595ea4de">Flx::vblankCount</a></div><div class="ttdeci">int vblankCount</div><div class="ttdef"><b>Definition:</b> <a href="../../db/df4/disp_8cpp_source.html#l00017">disp.cpp:17</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a4c8fe7ec9941a0b2468f4e0db8d9dfc0"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a4c8fe7ec9941a0b2468f4e0db8d9dfc0">Flx::videoDecDelete</a></div><div class="ttdeci">int videoDecDelete(VideoDec *vd)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00110">videodec.cpp:110</a></div></div>
+<div class="ttc" id="anamespace_flx_html_a64b90334ba70060c52f8bb97e9349d82"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#a64b90334ba70060c52f8bb97e9349d82">Flx::viBufCreate</a></div><div class="ttdeci">int viBufCreate(ViBuf *f, u_long128 *data, u_long128 *tag, int size, TimeStamp *ts, int n_ts)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00097">vibuf.cpp:97</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ad1475e89668d47e5d0a74580aeaeb310"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ad1475e89668d47e5d0a74580aeaeb310">Flx::viBufRestartDMA</a></div><div class="ttdeci">int viBufRestartDMA(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00365">vibuf.cpp:365</a></div></div>
+<div class="ttc" id="anamespace_flx_html_ab3868bcaf7958b22242c8ca3cd46bbc2"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#ab3868bcaf7958b22242c8ca3cd46bbc2">Flx::cpy2area</a></div><div class="ttdeci">static int cpy2area(u_char *pd0, int d0, u_char *pd1, int d1, u_char *ps0, int s0, u_char *ps1, int s1)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00407">videodec.cpp:407</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aeb37df64f3a9870c4c6d7c2fd8733c66"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aeb37df64f3a9870c4c6d7c2fd8733c66">Flx::viBufCount</a></div><div class="ttdeci">int viBufCount(ViBuf *f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/dd7/vibuf_8cpp_source.html#l00484">vibuf.cpp:484</a></div></div>
+<div class="ttc" id="anamespace_flx_html_aa5af285eade1e6f641df245764292bc2"><div class="ttname"><a href="../../d8/dbb/namespace_flx.html#aa5af285eade1e6f641df245764292bc2">Flx::videoDecEndPut</a></div><div class="ttdeci">void videoDecEndPut(VideoDec *vd, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/df4/videodec_8cpp_source.html#l00092">videodec.cpp:92</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_2aa0b3620c38bf368798da486fae478f.html">Movies</a></li><li class="navelem"><a class="el" href="../../dir_9a63d79f396880ca497198963fb39e59.html">Ngps</a></li><li class="navelem"><a class="el" href="../../df/df4/videodec_8cpp.html">videodec.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:23. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

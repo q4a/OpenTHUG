@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/vu1context.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/d4b/vu1context_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">vu1context.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/d4b/vu1context_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment.                          **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 2000 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        THPS4                                                   **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         vu1context                                              **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      vu1context.h                                            **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     00/00/00    -   mrd                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    sends contextual setup data to vu1 float registers      **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __NGPS_NX_VU1CONTEXT_H</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define __NGPS_NX_VU1CONTEXT_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define STD_CTXT_SIZE 5</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define EXT_CTXT_SIZE 16</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">class </span>CVu1Context</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">   47</a></span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ab0c372d1b0f14dbceeedb6c21e63a9">Init</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">InitExtended</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a> &amp;node);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a35fb0d5cbc9cf195978fc58fc2d9a56f">~CVu1Context</a>() {}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0bd7d5d446c2ca6746d474cd70751679">StandardSetup</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> &amp;localToWorld);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a5c3c0adc3c33ca9b568e25adc98a2af6">HierarchicalSetup</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> &amp;localToParent);</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a35fb0d5cbc9cf195978fc58fc2d9a56f">   55</a></span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a98dde3ca3d9bbf9b006d541546cee83a">SetupAsSky</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1603c59e6937c84c57aeb4ea6870bf78">AddZPush</a>(<span class="keywordtype">float</span> zPush);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aa5f2bfc3dc7e9cc811f52b30e37a9120">WibbleUVs</a>(<span class="keywordtype">float</span> *<a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> Explicit);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0e154c2c593e2f2afefaad0e020a6bd7">SetShadowVecs</a>(<span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe3fcdeb5aa62c7608d668b636e1c3eb">SetColour</a>(<a class="code" href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">CGeomNode</a> *pNode);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a6909ada5d1d68eea9b35fd4e0f0c3b2c">SetAmbient</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a44dbb09929eab2511019aa32f55e8ae4">SetLights</a>(<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a> *pLightGroup);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a014ea56ddb060b5fa99ec304ac128cff">SetReflectionVecs</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a> uScale, <a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a> vScale);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">SetExtended</a>(<span class="keywordtype">bool</span> yes);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8e2d3ceb5a4c76f54879afb6a276c3f5">Localise</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0930394ed3b1057660507ed15a9f5130">LocaliseExtend</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aad72c65da7132e9f66601fd175d5e343">GetMatrix</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac6408e83c24c165ca36704c9f7bbf24f">GetTranslation</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span>             <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a73ba0fad23a8cf85550b356eef4feb70">GetDma</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#af42b635bde15e622f6de976f93866769">GetColour</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a>     *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aaf281099f21dc596755cc6f46c788aea">GetLights</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">update_lights</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// non-dma data</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// dma data... don&#39;t rearrange this part!</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">   84</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">   85</a></span>&#160;    <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a> *   <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad267d0139cf1508a9273b40ec32a3726">m_stcycl</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9e26f864329373a541f5c00fb391cd44">m_unpack</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">   88</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a>         <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ae20adcebfb57511d95753eb2dfca3dec">m_giftag</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">   89</a></span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad267d0139cf1508a9273b40ec32a3726">   90</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9e26f864329373a541f5c00fb391cd44">   91</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a2ae5445db83a80d3838b16a295b92f60">m_reflVecsX</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ae20adcebfb57511d95753eb2dfca3dec">   92</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afb1187d74309cac317cc91f0440c1fd3">m_reflVecsY</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">   93</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a19f7382e3deb0d33898779b831a5664b">m_reflVecsZ</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">   94</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">m_lightVecsX</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a2ae5445db83a80d3838b16a295b92f60">   95</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a033783ee17db9d762af16b8cfef8f963">m_lightVecsY</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afb1187d74309cac317cc91f0440c1fd3">   96</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ab2540825e652a0378d4b063a751b9425">m_lightVecsZ</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a19f7382e3deb0d33898779b831a5664b">   97</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">m_ambientColour</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">   98</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">m_lightColour0</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a033783ee17db9d762af16b8cfef8f963">   99</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">m_lightColour1</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ab2540825e652a0378d4b063a751b9425">  100</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">m_lightColour2</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">  101</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">  102</a></span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">  103</a></span>&#160;    <span class="comment">// keep the size a whole number of a quadwords</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">  104</a></span>&#160;};</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">  105</a></span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keyword">inline</span> <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aad72c65da7132e9f66601fd175d5e343">CVu1Context::GetMatrix</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aad72c65da7132e9f66601fd175d5e343">  111</a></span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="keyword">inline</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac6408e83c24c165ca36704c9f7bbf24f">CVu1Context::GetTranslation</a>()</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac6408e83c24c165ca36704c9f7bbf24f">  117</a></span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a73ba0fad23a8cf85550b356eef4feb70">CVu1Context::GetDma</a>()</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a73ba0fad23a8cf85550b356eef4feb70">  122</a></span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keyword">inline</span> <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a> *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aaf281099f21dc596755cc6f46c788aea">CVu1Context::GetLights</a>()</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aaf281099f21dc596755cc6f46c788aea">  127</a></span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">CVu1Context::SetExtended</a>(<span class="keywordtype">bool</span> yes)</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> (yes)</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    {</div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">  158</a></span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a> |= 1;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a> &amp;= ~1;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">CVu1Context::IsExtended</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a> &amp; 1) ? true : <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;}</div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">  171</a></span>&#160;                                        </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;                                        </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;} <span class="comment">// namespace NxPs2</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#endif  // __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">#endif  // __NGPS_NX_VU1CONTEXT_H</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a5c3c0adc3c33ca9b568e25adc98a2af6"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a5c3c0adc3c33ca9b568e25adc98a2af6">NxPs2::CVu1Context::HierarchicalSetup</a></div><div class="ttdeci">void HierarchicalSetup(Mth::Matrix &amp;localToParent)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00258">vu1context.cpp:258</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0930394ed3b1057660507ed15a9f5130"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0930394ed3b1057660507ed15a9f5130">NxPs2::CVu1Context::LocaliseExtend</a></div><div class="ttdeci">CVu1Context * LocaliseExtend()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00236">vu1context.cpp:236</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a98dde3ca3d9bbf9b006d541546cee83a"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a98dde3ca3d9bbf9b006d541546cee83a">NxPs2::CVu1Context::SetupAsSky</a></div><div class="ttdeci">void SetupAsSky()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00341">vu1context.cpp:341</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ae20adcebfb57511d95753eb2dfca3dec"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ae20adcebfb57511d95753eb2dfca3dec">NxPs2::CVu1Context::m_giftag</a></div><div class="ttdeci">uint128 m_giftag</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00092">vu1context.h:92</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8e2d3ceb5a4c76f54879afb6a276c3f5"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8e2d3ceb5a4c76f54879afb6a276c3f5">NxPs2::CVu1Context::Localise</a></div><div class="ttdeci">CVu1Context * Localise()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00213">vu1context.cpp:213</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_aaf281099f21dc596755cc6f46c788aea"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aaf281099f21dc596755cc6f46c788aea">NxPs2::CVu1Context::GetLights</a></div><div class="ttdeci">CLightGroup * GetLights()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00127">vu1context.h:127</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a79a2abc60e8f50416506020950101ce2"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a79a2abc60e8f50416506020950101ce2">uint128</a></div><div class="ttdeci">u_long128 uint128</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00163">Defines.h:163</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_afac6e468b8fb58fb4c22354eae566de3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">NxPs2::CVu1Context::m_translation</a></div><div class="ttdeci">Mth::Vector m_translation</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00085">vu1context.h:85</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a9e26f864329373a541f5c00fb391cd44"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9e26f864329373a541f5c00fb391cd44">NxPs2::CVu1Context::m_unpack</a></div><div class="ttdeci">uint32 m_unpack</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00091">vu1context.h:91</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7da41dd1224967e6ea262ec3a4fa3a92"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">NxPs2::CVu1Context::CVu1Context</a></div><div class="ttdeci">CVu1Context()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00101">vu1context.cpp:101</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a1158f6dd26a789f4cd10a46775487868"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">NxPs2::CVu1Context::m_texOffset</a></div><div class="ttdeci">Mth::Vector m_texOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00105">vu1context.h:105</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">NxPs2::CLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00037">light.h:37</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_geom_node_html"><div class="ttname"><a href="../../d6/da9/class_nx_ps2_1_1_c_geom_node.html">NxPs2::CGeomNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d06/_n_g_p_s_2_n_x_2geomnode_8h_source.html#l00128">geomnode.h:128</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7aa660fc488adbe1e1c294c87173c299"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">NxPs2::CVu1Context::InitExtended</a></div><div class="ttdeci">void InitExtended()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00129">vu1context.cpp:129</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a1603c59e6937c84c57aeb4ea6870bf78"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1603c59e6937c84c57aeb4ea6870bf78">NxPs2::CVu1Context::AddZPush</a></div><div class="ttdeci">void AddZPush(float zPush)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00362">vu1context.cpp:362</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a3228a4ae95ab934aa1b031854e4dd9c7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">NxPs2::CVu1Context::SetExtended</a></div><div class="ttdeci">void SetExtended(bool yes)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00158">vu1context.h:158</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ad87d81e8b12cfe109b1b641f91425ab4"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">NxPs2::CVu1Context::m_stmask</a></div><div class="ttdeci">uint32 m_stmask</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00088">vu1context.h:88</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a6988192c60fcb4f0f6a78f6a1e1c138f"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">NxNgc::pData</a></div><div class="ttdeci">uint8 * pData</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d4b/import_8cpp_source.html#l00015">import.cpp:15</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a35fb0d5cbc9cf195978fc58fc2d9a56f"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a35fb0d5cbc9cf195978fc58fc2d9a56f">NxPs2::CVu1Context::~CVu1Context</a></div><div class="ttdeci">~CVu1Context()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00055">vu1context.h:55</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8a2de3e8f380ebc4c2533314c09fa266"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">NxPs2::CVu1Context::update_lights</a></div><div class="ttdeci">void update_lights()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00294">vu1context.cpp:294</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a19f7382e3deb0d33898779b831a5664b"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a19f7382e3deb0d33898779b831a5664b">NxPs2::CVu1Context::m_reflVecsZ</a></div><div class="ttdeci">Mth::Vector m_reflVecsZ</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00097">vu1context.h:97</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">NxPs2::CVu1Context</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00047">vu1context.h:47</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_afe3fcdeb5aa62c7608d668b636e1c3eb"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe3fcdeb5aa62c7608d668b636e1c3eb">NxPs2::CVu1Context::SetColour</a></div><div class="ttdeci">void SetColour(CGeomNode *pNode)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00424">vu1context.cpp:424</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_af42b635bde15e622f6de976f93866769"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#af42b635bde15e622f6de976f93866769">NxPs2::CVu1Context::GetColour</a></div><div class="ttdeci">Mth::Vector * GetColour()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00434">vu1context.cpp:434</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ac9c683389fc638b8ca257e9ff94966e7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">NxPs2::CVu1Context::m_lightColour1</a></div><div class="ttdeci">Mth::Vector m_lightColour1</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00103">vu1context.h:103</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a73ba0fad23a8cf85550b356eef4feb70"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a73ba0fad23a8cf85550b356eef4feb70">NxPs2::CVu1Context::GetDma</a></div><div class="ttdeci">int GetDma()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00122">vu1context.h:122</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a6909ada5d1d68eea9b35fd4e0f0c3b2c"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a6909ada5d1d68eea9b35fd4e0f0c3b2c">NxPs2::CVu1Context::SetAmbient</a></div><div class="ttdeci">void SetAmbient(uint32 rgba)</div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0608f0c5415957f939088f352c7f62d3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">NxPs2::CVu1Context::m_localToViewport</a></div><div class="ttdeci">Mth::Matrix m_localToViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00093">vu1context.h:93</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_afb1187d74309cac317cc91f0440c1fd3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afb1187d74309cac317cc91f0440c1fd3">NxPs2::CVu1Context::m_reflVecsY</a></div><div class="ttdeci">Mth::Vector m_reflVecsY</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00096">vu1context.h:96</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ab2540825e652a0378d4b063a751b9425"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ab2540825e652a0378d4b063a751b9425">NxPs2::CVu1Context::m_lightVecsZ</a></div><div class="ttdeci">Mth::Vector m_lightVecsZ</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00100">vu1context.h:100</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ad267d0139cf1508a9273b40ec32a3726"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad267d0139cf1508a9273b40ec32a3726">NxPs2::CVu1Context::m_stcycl</a></div><div class="ttdeci">uint32 m_stcycl</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00090">vu1context.h:90</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a00de626d416ad0bd06babb8a89387a0d"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">NxPs2::CVu1Context::m_lightColour0</a></div><div class="ttdeci">Mth::Vector m_lightColour0</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00102">vu1context.h:102</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_aad72c65da7132e9f66601fd175d5e343"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aad72c65da7132e9f66601fd175d5e343">NxPs2::CVu1Context::GetMatrix</a></div><div class="ttdeci">Mth::Matrix * GetMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00111">vu1context.h:111</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0bd7d5d446c2ca6746d474cd70751679"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0bd7d5d446c2ca6746d474cd70751679">NxPs2::CVu1Context::StandardSetup</a></div><div class="ttdeci">void StandardSetup(Mth::Matrix &amp;localToWorld)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00174">vu1context.cpp:174</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a21fa7ea55fbcd9915a50a315be66e40d"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">NxPs2::CVu1Context::m_lightColour2</a></div><div class="ttdeci">Mth::Vector m_lightColour2</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00104">vu1context.h:104</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a77ec44161b7f667fdebf642ec538ba2f"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">NxPs2::CVu1Context::m_texScale</a></div><div class="ttdeci">Mth::Vector m_texScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00094">vu1context.h:94</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a44dbb09929eab2511019aa32f55e8ae4"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a44dbb09929eab2511019aa32f55e8ae4">NxPs2::CVu1Context::SetLights</a></div><div class="ttdeci">void SetLights(CLightGroup *pLightGroup)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00440">vu1context.cpp:440</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_aa5f2bfc3dc7e9cc811f52b30e37a9120"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aa5f2bfc3dc7e9cc811f52b30e37a9120">NxPs2::CVu1Context::WibbleUVs</a></div><div class="ttdeci">void WibbleUVs(float *pData, uint Explicit)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00371">vu1context.cpp:371</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a2ae5445db83a80d3838b16a295b92f60"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a2ae5445db83a80d3838b16a295b92f60">NxPs2::CVu1Context::m_reflVecsX</a></div><div class="ttdeci">Mth::Vector m_reflVecsX</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00095">vu1context.h:95</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8426a81d60b20b96488a734e21135312"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">NxPs2::CVu1Context::m_lightVecsX</a></div><div class="ttdeci">Mth::Vector m_lightVecsX</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00098">vu1context.h:98</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a014ea56ddb060b5fa99ec304ac128cff"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a014ea56ddb060b5fa99ec304ac128cff">NxPs2::CVu1Context::SetReflectionVecs</a></div><div class="ttdeci">void SetReflectionVecs(sint16 uScale, sint16 vScale)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00447">vu1context.cpp:447</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ac6408e83c24c165ca36704c9f7bbf24f"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac6408e83c24c165ca36704c9f7bbf24f">NxPs2::CVu1Context::GetTranslation</a></div><div class="ttdeci">Mth::Vector * GetTranslation()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00117">vu1context.h:117</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a033783ee17db9d762af16b8cfef8f963"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a033783ee17db9d762af16b8cfef8f963">NxPs2::CVu1Context::m_lightVecsY</a></div><div class="ttdeci">Mth::Vector m_lightVecsY</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00099">vu1context.h:99</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7ab0c372d1b0f14dbceeedb6c21e63a9"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ab0c372d1b0f14dbceeedb6c21e63a9">NxPs2::CVu1Context::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00107">vu1context.cpp:107</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0e154c2c593e2f2afefaad0e020a6bd7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0e154c2c593e2f2afefaad0e020a6bd7">NxPs2::CVu1Context::SetShadowVecs</a></div><div class="ttdeci">void SetShadowVecs(float y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00414">vu1context.cpp:414</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a325faf0e4136296ff3ab7773e69f9ed0"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">NxPs2::CVu1Context::IsExtended</a></div><div class="ttdeci">bool IsExtended() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00171">vu1context.h:171</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a9ae7240b45546d52b43d44491523d817"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">NxPs2::CVu1Context::m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00084">vu1context.h:84</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7ce1937140ab84599bb12d4a5fa49ba3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">NxPs2::CVu1Context::mp_light_group</a></div><div class="ttdeci">CLightGroup * mp_light_group</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00089">vu1context.h:89</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a50abe5d090ab053d3ccf32bc7ca45790"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">NxPs2::CVu1Context::m_ambientColour</a></div><div class="ttdeci">Mth::Vector m_ambientColour</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00101">vu1context.h:101</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a74df79fde3c518e55b29ce6360a9c76e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a></div><div class="ttdeci">signed short sint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00139">Defines.h:139</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../d6/d4b/vu1context_8h.html">vu1context.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

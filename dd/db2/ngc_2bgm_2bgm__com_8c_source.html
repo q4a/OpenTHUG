@@ -1,0 +1,265 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Music/ngc/bgm/bgm_com.c</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dd/db2/ngc_2bgm_2bgm__com_8c_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">bgm_com.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// This code builds an IRX module that handles PCM streaming from</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// the CD to SPU2 Sound Data Input area...</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;kernel.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;sys/types.h&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;sif.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;sifcmd.h&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;sifrpc.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;libsd.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;bgm_i.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a1ba6aeda894f4c37f3bd09d77050111c">   13</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a1ba6aeda894f4c37f3bd09d77050111c">gRpcArg</a>[16];    <span class="comment">//--- Receiving channel for RPC arguments transferred from EE</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span>* <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afc4a91f1568954b137ca0c38b01850d4">bgmFunc</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> fno, <span class="keywordtype">void</span> *<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, <span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#acb3dbfedb496b758a2985e79d92d22ee">BgmInit</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> useCD);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a4f912e23fdff7636f65fb28a7efb13dd">BgmQuit</a>(<span class="keywordtype">int</span> channel, <span class="keywordtype">int</span> status );</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ab519915ffbff22609f877e7e143ca8df">BgmOpen</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">char</span>* filename );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac12d39796d241cf7233eafa4bd8aa7bd">BgmClose</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af70121a226bd630a8fd9d65de45f8b1d">BgmCloseNoWait</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span>  <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a192e85b1e44931692828e4f3c5895deb">BgmPreLoad</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status );</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae8e954c6b42dccde9752dc2cb7237a60">BgmStart</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afb841a176ea4b6ffb5fe8c0af43eebb7">BgmStop</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0b1cb53649ec4c0db149bc9123b899f">BgmSeek</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vol );</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af9461441d4ee0e71b5b1c3c6b399b542">BgmSetVolume</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vol );</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a09cb9b6d777b8d1b5feb971a5160ac1f">BgmRaw2Spu</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> which, <span class="keywordtype">int</span> mode );</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae1bf0923658b72eae7c8d7ad1a782127">BgmSetVolumeDirect</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> vol );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// fuck this you big assbreath.</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//extern void BgmSetMasterVolume( int ch, unsigned int vol );</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0327ea82a6d846097f828a487eb00ce">BgmGetMode</a>( <span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status );</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//extern void BgmSetMode( int ch, u_int mode );</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a74e7de1d2e822c0375ad946247a3b5b3">BgmSdInit</a>(<span class="keywordtype">int</span> ch, <span class="keywordtype">int</span> status );</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* ------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">   Main thread for the ezbgm module.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">   After execution, initialize interrupt environment, register command, and</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">   then wait until there is a request from the EE.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">   ------------------------------------------------------------------------ */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../dd/dd8/_ngps_2_bgm_2bgm__entr_8c.html#a4aed5c7019695e66a85230e9dbfe1e41">   42</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a4aed5c7019695e66a85230e9dbfe1e41">sce_bgm_loop</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    sceSifQueueData qd;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    sceSifServeData sd;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">//-- Initialize interrupt environment in advance.</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    CpuEnableIntr();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    EnableIntr( INUM_DMA_4 );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    EnableIntr( INUM_DMA_7 );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">//--- Register function that is called according to request</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    sceSifInitRpc(0);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    sceSifSetRpcQueue( &amp;qd, GetThreadId() );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    sceSifRegisterRpc( &amp;sd, EZBGM_DEV, <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afc4a91f1568954b137ca0c38b01850d4">bgmFunc</a>, (<span class="keywordtype">void</span>*)<a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a1ba6aeda894f4c37f3bd09d77050111c">gRpcArg</a>, NULL, NULL, &amp;qd );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    PRINTF((<span class="stringliteral">&quot;goto bgm cmd loop\n&quot;</span>));</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">//--- Command-wait loop</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    sceSifRpcLoop(&amp;qd);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/* ------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">   Function that is awakened by a request from the EE.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">   The argument is stored in *data.  The leading four bytes are reserved and are not used.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">   The return value of this function becomes the return value of the EE side&#39;s RPC.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">   When the argument is a structure, it is sent to gRpcData and used.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">   When a structure is returned to the EE, the value is sent to the address of the first argument (on the EE side).</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">   ------------------------------------------------------------------------ */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">   77</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afc4a91f1568954b137ca0c38b01850d4">   79</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span>* <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afc4a91f1568954b137ca0c38b01850d4">bgmFunc</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> command, <span class="keywordtype">void</span> *<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, <span class="keywordtype">int</span> size)</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{ </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span> ch;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//  asm volatile( &quot;break 1&quot;);</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//  PRINTF(( &quot; bgmfunc %x, %x, %x, %x\n&quot;, *((int*)data + 0), </span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//      *((int*)data + 1), *((int*)data + 2),*((int*)data + 3) ));</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    ch = command&amp;0x000F;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">switch</span>( command&amp;0xFFF0 )</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">case</span> EzBGM_INIT:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#acb3dbfedb496b758a2985e79d92d22ee">BgmInit</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">case</span> EzBGM_QUIT:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a4f912e23fdff7636f65fb28a7efb13dd">BgmQuit</a> ( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">case</span> EzBGM_OPEN:</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ab519915ffbff22609f877e7e143ca8df">BgmOpen</a> ( ch, (<span class="keywordtype">char</span>*)((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">case</span> EzBGM_CLOSE:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac12d39796d241cf7233eafa4bd8aa7bd">BgmClose</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">case</span> EzBGM_CLOSE_NO_WAIT:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af70121a226bd630a8fd9d65de45f8b1d">BgmCloseNoWait</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">case</span> EzBGM_PRELOAD:</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a192e85b1e44931692828e4f3c5895deb">BgmPreLoad</a> ( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">case</span> EzBGM_START:</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae8e954c6b42dccde9752dc2cb7237a60">BgmStart</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">case</span> EzBGM_STOP:</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afb841a176ea4b6ffb5fe8c0af43eebb7">BgmStop</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordflow">case</span> EzBGM_SEEK:</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0b1cb53649ec4c0db149bc9123b899f">BgmSeek</a>( ch, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)*((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">case</span> EzBGM_SETVOL:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af9461441d4ee0e71b5b1c3c6b399b542">BgmSetVolume</a>( ch, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)*((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">case</span> EzBGM_SETVOLDIRECT:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae1bf0923658b72eae7c8d7ad1a782127">BgmSetVolumeDirect</a>( ch, (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)*((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">case</span> EzBGM_GETMODE:</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a> = <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0327ea82a6d846097f828a487eb00ce">BgmGetMode</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">case</span> EzBGM_SDINIT:</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a74e7de1d2e822c0375ad946247a3b5b3">BgmSdInit</a>( ch, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        ERROR((<span class="stringliteral">&quot;EzBGM driver error: unknown command %d \n&quot;</span>, *((<span class="keywordtype">int</span>*)<a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>) ));</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">//  PRINTF(( &quot;return value = %x \n&quot;, ret )); </span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">void</span>*)(&amp;<a class="code" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">/* ----------------------------------------------------------------</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment"> *  End on File</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment"> * ---------------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/* DON&#39;T ADD STUFF AFTER THIS */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ac0327ea82a6d846097f828a487eb00ce"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0327ea82a6d846097f828a487eb00ce">BgmGetMode</a></div><div class="ttdeci">unsigned int BgmGetMode(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00596">bgm_play.c:596</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a6baa346e44f4c2158d2be4f9b77b8203"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a6baa346e44f4c2158d2be4f9b77b8203">ret</a></div><div class="ttdeci">int ret</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00077">bgm_com.c:77</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a74e7de1d2e822c0375ad946247a3b5b3"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a74e7de1d2e822c0375ad946247a3b5b3">BgmSdInit</a></div><div class="ttdeci">void BgmSdInit(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00168">bgm_play.c:168</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ab519915ffbff22609f877e7e143ca8df"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ab519915ffbff22609f877e7e143ca8df">BgmOpen</a></div><div class="ttdeci">int BgmOpen(int ch, char *filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00239">bgm_play.c:239</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a0cc0c255bb5dfdc16b506173bf1f59ee"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">Gfx::data</a></div><div class="ttdeci">short data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01898">BonedAnim.cpp:1898</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_acb3dbfedb496b758a2985e79d92d22ee"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#acb3dbfedb496b758a2985e79d92d22ee">BgmInit</a></div><div class="ttdeci">int BgmInit(int ch, int useCD)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00176">bgm_play.c:176</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a09cb9b6d777b8d1b5feb971a5160ac1f"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a09cb9b6d777b8d1b5feb971a5160ac1f">BgmRaw2Spu</a></div><div class="ttdeci">int BgmRaw2Spu(int ch, int which, int mode)</div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ac12d39796d241cf7233eafa4bd8aa7bd"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac12d39796d241cf7233eafa4bd8aa7bd">BgmClose</a></div><div class="ttdeci">void BgmClose(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00458">bgm_play.c:458</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_afb841a176ea4b6ffb5fe8c0af43eebb7"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afb841a176ea4b6ffb5fe8c0af43eebb7">BgmStop</a></div><div class="ttdeci">void BgmStop(int ch, int status)</div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_af9461441d4ee0e71b5b1c3c6b399b542"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af9461441d4ee0e71b5b1c3c6b399b542">BgmSetVolume</a></div><div class="ttdeci">int BgmSetVolume(int ch, unsigned int vol)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00588">bgm_play.c:588</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_af70121a226bd630a8fd9d65de45f8b1d"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#af70121a226bd630a8fd9d65de45f8b1d">BgmCloseNoWait</a></div><div class="ttdeci">void BgmCloseNoWait(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00432">bgm_play.c:432</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ac0b1cb53649ec4c0db149bc9123b899f"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ac0b1cb53649ec4c0db149bc9123b899f">BgmSeek</a></div><div class="ttdeci">void BgmSeek(int ch, unsigned int vol)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00601">bgm_play.c:601</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a4aed5c7019695e66a85230e9dbfe1e41"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a4aed5c7019695e66a85230e9dbfe1e41">sce_bgm_loop</a></div><div class="ttdeci">int sce_bgm_loop()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00042">bgm_com.c:42</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ae8e954c6b42dccde9752dc2cb7237a60"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae8e954c6b42dccde9752dc2cb7237a60">BgmStart</a></div><div class="ttdeci">void BgmStart(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00402">bgm_play.c:402</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a4f912e23fdff7636f65fb28a7efb13dd"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a4f912e23fdff7636f65fb28a7efb13dd">BgmQuit</a></div><div class="ttdeci">void BgmQuit(int channel, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00210">bgm_play.c:210</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_afc4a91f1568954b137ca0c38b01850d4"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#afc4a91f1568954b137ca0c38b01850d4">bgmFunc</a></div><div class="ttdeci">static void * bgmFunc(unsigned int fno, void *data, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00079">bgm_com.c:79</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_ae1bf0923658b72eae7c8d7ad1a782127"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#ae1bf0923658b72eae7c8d7ad1a782127">BgmSetVolumeDirect</a></div><div class="ttdeci">int BgmSetVolumeDirect(int ch, unsigned int vol)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00159">bgm_play.c:159</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a1ba6aeda894f4c37f3bd09d77050111c"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a1ba6aeda894f4c37f3bd09d77050111c">gRpcArg</a></div><div class="ttdeci">int gRpcArg[16]</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/db2/ngc_2bgm_2bgm__com_8c_source.html#l00013">bgm_com.c:13</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__com_8c_html_a192e85b1e44931692828e4f3c5895deb"><div class="ttname"><a href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html#a192e85b1e44931692828e4f3c5895deb">BgmPreLoad</a></div><div class="ttdeci">int BgmPreLoad(int ch, int status)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df7/ngc_2bgm_2bgm__play_8c_source.html#l00472">bgm_play.c:472</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_e9d4da43962330fc62f75934c483c6e5.html">Music</a></li><li class="navelem"><a class="el" href="../../dir_4101895ee902d282d59c2cec924f324c.html">ngc</a></li><li class="navelem"><a class="el" href="../../dir_0c3dcd0f414a90ef83ae973efc8fb70d.html">bgm</a></li><li class="navelem"><a class="el" href="../../dd/db2/ngc_2bgm_2bgm__com_8c.html">bgm_com.c</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:23. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/AssMan/NodeArrayAsset.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/d33/_node_array_asset_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NodeArrayAsset.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d33/_node_array_asset_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// NodeArrayAsset.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Asset depended code for loading, unloading and reloading a node array</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Dave</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../da/da5/_node_array_asset_8h.html">gel/assman/nodearrayasset.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d4/de1/assettypes_8h.html">gel/assman/assettypes.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d7/d6c/nx_8h.html">gfx/nx.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include    &lt;<a class="code" href="../../d0/de4/gs__file_8h.html">sk/scripting/gs_file.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d1f/namespace_ass.html">Ass</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a33c337bec8dcdcb1a41eda7869010858">   25</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a33c337bec8dcdcb1a41eda7869010858">CNodeArrayAsset::Load</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* p_file, <span class="keywordtype">bool</span> async_load, <span class="keywordtype">bool</span> use_pip, <span class="keywordtype">void</span>* pExtraData , <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pStruct)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">SkateScript::LoadQB</a>( p_file, <a class="code" href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138">Script::ASSERT_IF_DUPLICATE_SYMBOLS</a>);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ad36b066bbc7c08e7cf98c67bef2ee97a">m_qb_checksum</a> = <a class="code" href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a>( p_file );</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">char</span> nodearrayname[128];</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Skip back to the backslash.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p = &amp;p_file[strlen( p_file ) - 1];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">while</span>( *p != <span class="charliteral">&#39;\\&#39;</span> &amp;&amp; *p != <span class="charliteral">&#39;/&#39;</span>) p--;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    p++;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    strcpy( nodearrayname, p );                                             <span class="comment">// nodearrayname is now &quot;name.qb&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">sprintf</a>( &amp;nodearrayname[strlen( nodearrayname ) - 3], <span class="stringliteral">&quot;_nodearray&quot;</span> );   <span class="comment">// nodearrayname is now &quot;name_nodearray&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> = <a class="code" href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a>( nodearrayname );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// Set the array as the data returned when queried,</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../d3/da4/class_ass_1_1_c_asset.html#a3e381c503d5b6cd84a3be033bd19a56d">SetData</a>( <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a>, ( <span class="stringliteral">&quot;Could not find nodearray %s in %s&quot;</span>, nodearrayname, p_file ));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9ccefc8427392cd546c0bfd60db6fe8b">   53</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9ccefc8427392cd546c0bfd60db6fe8b">CNodeArrayAsset::Unload</a>()                     </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Unload the asset.</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">SkateScript::UnloadQB</a>( <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ad36b066bbc7c08e7cf98c67bef2ee97a">m_qb_checksum</a> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac062d540158b11537c7f5f53ad90f01d">   65</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac062d540158b11537c7f5f53ad90f01d">CNodeArrayAsset::Reload</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* p_file )</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Reloading %s&quot;</span>, p_file );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9ccefc8427392cd546c0bfd60db6fe8b">Unload</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">return</span>( <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a33c337bec8dcdcb1a41eda7869010858">Load</a>( p_file, <span class="keyword">false</span>, 0, NULL, NULL ) == 0 );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a577e926a1819af118e37b8fb0696fffc">   79</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a577e926a1819af118e37b8fb0696fffc">CNodeArrayAsset::LoadFinished</a>()</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9c11fa923bc79396726348b4aae6d73e">   89</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9c11fa923bc79396726348b4aae6d73e">CNodeArrayAsset::Name</a>()            </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Printable name, for debugging.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordflow">return</span> <span class="stringliteral">&quot;Node Array&quot;</span>;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac8448925b5fcaff4312645ca9e5a3346">  100</a></span>&#160;<a class="code" href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4">EAssetType</a> <a class="code" href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac8448925b5fcaff4312645ca9e5a3346">CNodeArrayAsset::GetType</a>()         </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// type is hard wired into asset class </span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4a538ed263a9cf9def31a86385c747094e">ASSET_NODEARRAY</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_a33c337bec8dcdcb1a41eda7869010858"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a33c337bec8dcdcb1a41eda7869010858">Ass::CNodeArrayAsset::Load</a></div><div class="ttdeci">virtual int Load(const char *p_file, bool async_load, bool use_pip, void *pExtraData, Script::CStruct *pStruct)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00025">NodeArrayAsset.cpp:25</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a5632acfb30e11749516f7861879407fd"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">Gfx::p_data</a></div><div class="ttdeci">p_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01903">BonedAnim.cpp:1903</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_asset_html_a3e381c503d5b6cd84a3be033bd19a56d"><div class="ttname"><a href="../../d3/da4/class_ass_1_1_c_asset.html#a3e381c503d5b6cd84a3be033bd19a56d">Ass::CAsset::SetData</a></div><div class="ttdeci">virtual void SetData(void *p_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d61/asset_8cpp_source.html#l00079">asset.cpp:79</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_a577e926a1819af118e37b8fb0696fffc"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a577e926a1819af118e37b8fb0696fffc">Ass::CNodeArrayAsset::LoadFinished</a></div><div class="ttdeci">virtual bool LoadFinished()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00079">NodeArrayAsset.cpp:79</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_ad36b066bbc7c08e7cf98c67bef2ee97a"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ad36b066bbc7c08e7cf98c67bef2ee97a">Ass::CNodeArrayAsset::m_qb_checksum</a></div><div class="ttdeci">uint32 m_qb_checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../da/da5/_node_array_asset_8h_source.html#l00029">NodeArrayAsset.h:29</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_ac8448925b5fcaff4312645ca9e5a3346"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac8448925b5fcaff4312645ca9e5a3346">Ass::CNodeArrayAsset::GetType</a></div><div class="ttdeci">virtual EAssetType GetType()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00100">NodeArrayAsset.cpp:100</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_ac062d540158b11537c7f5f53ad90f01d"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#ac062d540158b11537c7f5f53ad90f01d">Ass::CNodeArrayAsset::Reload</a></div><div class="ttdeci">virtual int Reload(const char *p_file)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00065">NodeArrayAsset.cpp:65</a></div></div>
+<div class="ttc" id="ags__file_8h_html"><div class="ttname"><a href="../../d0/de4/gs__file_8h.html">gs_file.h</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a5b5f2e88e034ff29bcf072ebe54c6eda"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a5b5f2e88e034ff29bcf072ebe54c6eda">SkateScript::UnloadQB</a></div><div class="ttdeci">void UnloadQB(uint32 fileNameChecksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00228">gs_file.cpp:228</a></div></div>
+<div class="ttc" id="anamespace_script_html_aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aeee4dbcb8de713befd44ac8b1314e9ffa848c0d582bed431e8e718949a0c07138">Script::ASSERT_IF_DUPLICATE_SYMBOLS</a></div><div class="ttdeci">@ ASSERT_IF_DUPLICATE_SYMBOLS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00022">scriptdefs.h:22</a></div></div>
+<div class="ttc" id="anamespace_ass_html_abbbd5ccba3aa7b59d52707d1312cbca4a538ed263a9cf9def31a86385c747094e"><div class="ttname"><a href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4a538ed263a9cf9def31a86385c747094e">Ass::ASSET_NODEARRAY</a></div><div class="ttdeci">@ ASSET_NODEARRAY</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de1/assettypes_8h_source.html#l00019">assettypes.h:19</a></div></div>
+<div class="ttc" id="aassettypes_8h_html"><div class="ttname"><a href="../../d4/de1/assettypes_8h.html">assettypes.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_a9c11fa923bc79396726348b4aae6d73e"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9c11fa923bc79396726348b4aae6d73e">Ass::CNodeArrayAsset::Name</a></div><div class="ttdeci">virtual const char * Name()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00089">NodeArrayAsset.cpp:89</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_node_array_asset_html_a9ccefc8427392cd546c0bfd60db6fe8b"><div class="ttname"><a href="../../d5/df1/class_ass_1_1_c_node_array_asset.html#a9ccefc8427392cd546c0bfd60db6fe8b">Ass::CNodeArrayAsset::Unload</a></div><div class="ttdeci">virtual int Unload()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d33/_node_array_asset_8cpp_source.html#l00053">NodeArrayAsset.cpp:53</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a6823057ecc0dd3e195ea41c6cf618126"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a6823057ecc0dd3e195ea41c6cf618126">SkateScript::LoadQB</a></div><div class="ttdeci">void LoadQB(const char *p_fileName, EBoolAssertIfDuplicateSymbols assertIfDuplicateSymbols)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00153">gs_file.cpp:153</a></div></div>
+<div class="ttc" id="a_node_array_asset_8h_html"><div class="ttname"><a href="../../da/da5/_node_array_asset_8h.html">NodeArrayAsset.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_aa331360f088c15972ac441ecb8b40cd9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a></div><div class="ttdeci">uint32 GenerateCRC(const char *p_string)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/script_8cpp_source.html#l03521">script.cpp:3521</a></div></div>
+<div class="ttc" id="anamespace_dbg_html_ab406a8cc16de5046c7d9fd09c9de5e22"><div class="ttname"><a href="../../da/d37/namespace_dbg.html#ab406a8cc16de5046c7d9fd09c9de5e22">Dbg::sprintf</a></div><div class="ttdeci">sprintf(tmp1, &quot;FILE:      %s(%d) &quot;, file, line)</div></div>
+<div class="ttc" id="anamespace_ass_html"><div class="ttname"><a href="../../da/d1f/namespace_ass.html">Ass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc9/animasset_8cpp_source.html#l00020">animasset.cpp:20</a></div></div>
+<div class="ttc" id="anamespace_script_html_aacb275494688d5b51c565c932f27f76c"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a></div><div class="ttdeci">CArray * GetArray(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00671">symboltable.cpp:671</a></div></div>
+<div class="ttc" id="anamespace_ass_html_abbbd5ccba3aa7b59d52707d1312cbca4"><div class="ttname"><a href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4">Ass::EAssetType</a></div><div class="ttdeci">EAssetType</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de1/assettypes_8h_source.html#l00009">assettypes.h:9</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_1fce747d72c4872f1659f116a72fb0ff.html">AssMan</a></li><li class="navelem"><a class="el" href="../../de/d33/_node_array_asset_8cpp.html">NodeArrayAsset.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

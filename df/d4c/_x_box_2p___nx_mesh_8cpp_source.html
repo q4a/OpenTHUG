@@ -1,0 +1,418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/p_NxMesh.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/d4c/_x_box_2p___nx_mesh_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxMesh.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxMesh.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  2/15/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d9e/stringutils_8h.html">core/string/stringutils.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d6c/nx_8h.html">gfx/nx.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/da8/_nx_tex_man_8h.html">gfx/nxtexman.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;gfx/xbox/p_nxmesh.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;gfx/xbox/p_nxscene.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;gfx/xbox/nx/scene.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;gfx/xbox/nx/texture.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//extern Nx::CXboxScene *p_skater;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;{</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                        </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a4084f312753e7871107cfbae707ede76">   31</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../d1/d06/namespace_nx.html#a4084f312753e7871107cfbae707ede76">cmp</a>( <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>, <span class="keyword">const</span> <span class="keywordtype">void</span> *<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a> )</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a> *p_casdata1 = (<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a> *p_casdata2 = (<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a>*)<a class="code" href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mesh1 = p_casdata1-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &gt;&gt; 16;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mesh2 = p_casdata2-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &gt;&gt; 16;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span>( mesh1 &gt; mesh2 )</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( mesh1 &lt; mesh2 )</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> indexzero1 = p_casdata1-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &amp; 0xFFFF;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> indexzero2 = p_casdata2-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &amp; 0xFFFF;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">if</span>( indexzero1 &gt; indexzero2 )</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( indexzero1 &lt; indexzero2 )</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af853783c8b67924e73211ea6a389365e">   69</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af853783c8b67924e73211ea6a389365e">CXboxMesh::build_casdata_table</a>( <span class="keyword">const</span> <span class="keywordtype">char</span>* pFileName )</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> *pFile = <a class="code" href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a>( pFileName, <span class="stringliteral">&quot;rb&quot;</span> );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    Dbg_MsgAssert( pFile, ( <span class="stringliteral">&quot;Couldn&#39;t open CAS data file %s\n&quot;</span>, pFileName ));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> version;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;version, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, pFile );</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">if</span>( version &gt;= 2 )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;<a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">m_CASRemovalMask</a>, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, pFile );</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, pFile );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a> &gt; 0 )</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="comment">// CAS flags.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a> = <span class="keyword">new</span> <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a>[<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>];</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 0; i &lt; <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>; ++i )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a>( &amp;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>[i].mask, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ) * 3, 1, pFile );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="comment">// Sort the CAS data based first on mesh, then on the first tri index, lowest to highest. This allows some efficient early-out checking</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="comment">// during the poly removal.</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        qsort( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>, <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>, <span class="keyword">sizeof</span>( <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a> ), <a class="code" href="../../d1/d06/namespace_nx.html#a4084f312753e7871107cfbae707ede76">cmp</a> );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a>( pFile );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a> &gt; 0 );</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#define MemoryRead( dst, size, num, src )   CopyMemory(( dst ), ( src ), (( num ) * ( size ))); \</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">                                            ( src ) += (( num ) * ( size ))</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a2e2b855df05c966bb69c1f110e6d8aff">  113</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a2e2b855df05c966bb69c1f110e6d8aff">CXboxMesh::build_casdata_table_from_memory</a>( <span class="keywordtype">void</span> **pp_mem )</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *<a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>*)( *pp_mem );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> version;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    MemoryRead( &amp;version, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span>( version &gt;= 2 )</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        MemoryRead( &amp;<a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">m_CASRemovalMask</a>, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    MemoryRead( &amp;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">int</span> ), 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a> &gt; 0 )</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="comment">// CAS flags.</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a> = <span class="keyword">new</span> <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a>[<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>];</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 0; i &lt; <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>; ++i )</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            MemoryRead( &amp;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>[i].mask, <span class="keyword">sizeof</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ) * 3, 1, <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a> );</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">// Sort the CAS data based first on mesh, then on the first tri index, lowest to highest. This allows some efficient early-out checking</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="comment">// during the poly removal.</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        qsort( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>, <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>, <span class="keyword">sizeof</span>( <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a> ), <a class="code" href="../../d1/d06/namespace_nx.html#a4084f312753e7871107cfbae707ede76">cmp</a> );</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="comment">// Set the data pointer to the new position on return.</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    *pp_mem = <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a> &gt; 0 );</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">**                              Public Functions                            **</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a24ecc464c02b3188e912244af9afe9d9">  158</a></span>&#160;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a24ecc464c02b3188e912244af9afe9d9">CXboxMesh::CXboxMesh</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#ae7a95dba69fdab511c64512bc2c60048">  168</a></span>&#160;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a24ecc464c02b3188e912244af9afe9d9">CXboxMesh::CXboxMesh</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *pMeshFileName )</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// Only do the CAS flag building for skinned objects.</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span>( strstr( pMeshFileName, <span class="stringliteral">&quot;skin&quot;</span> ))</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordtype">char</span> CASFileName[256];</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        strcpy( CASFileName, pMeshFileName );</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <a class="code" href="../../df/d07/namespace_str.html#aea5a8a6b4937f14ae4969e56ddeaa664">Str::LowerCase</a>( CASFileName );</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordtype">char</span> *pExt = strstr( CASFileName, <span class="stringliteral">&quot;skin.xbx&quot;</span> );</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">if</span>( pExt )</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            Dbg_MsgAssert( pExt, ( <span class="stringliteral">&quot;Couldn&#39;t find skin.xbx extension in %s&quot;</span>, CASFileName ));</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            strcpy( pExt, <span class="stringliteral">&quot;cas.xbx&quot;</span> );</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af853783c8b67924e73211ea6a389365e">build_casdata_table</a>( CASFileName );</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    }</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;}</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af71665a761cc063258dc4dc65e7a1f60">  192</a></span>&#160;<a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af71665a761cc063258dc4dc65e7a1f60">CXboxMesh::~CXboxMesh</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a> )</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keyword">delete</span> [] <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">mp_scene</a> )</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    {</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        <a class="code" href="../../d9/d8c/class_nx_1_1_c_engine.html#ade2afa04f4696b9bfa4640549fba92d2">CEngine::sUnloadScene</a>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">mp_scene</a> );</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aa0f7a5d37cd034a2ee35065ff400f11a">  210</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aa0f7a5d37cd034a2ee35065ff400f11a">CXboxMesh::SetCASData</a>( <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *p_cas_data )</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">if</span>( p_cas_data )</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    {</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a2e2b855df05c966bb69c1f110e6d8aff">build_casdata_table_from_memory</a>((<span class="keywordtype">void</span>**)&amp;p_cas_data );</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;}</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a631413a59ee255bfedf4534b697a5f75">  224</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a631413a59ee255bfedf4534b697a5f75">CXboxMesh::SetScene</a>( <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html">CXboxScene</a> *p_scene )</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;{</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">mp_scene</a> = p_scene;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <span class="comment">// Copy the hierarchy info from the scene so that above the p-line stuff can access it.</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a18850e9b32a2d14e827684bfbb10e3a9">mp_hierarchyObjects</a>     = <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">mp_scene</a>-&gt;<a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">GetEngineScene</a>()-&gt;<a class="code" href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a868291dcad4915a9326a34f41c829e6c">mp_hierarchyObjects</a>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <a class="code" href="../../d8/d86/class_nx_1_1_c_mesh.html#a3e3b310e164961505132dbc0ab4f73cf">m_numHierarchyObjects</a>   = <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">mp_scene</a>-&gt;<a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">GetEngineScene</a>()-&gt;<a class="code" href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a91cf038b863ac04e4ae109b972b761bb">m_numHierarchyObjects</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="comment">// Now that we have a scene attached, resolve any cas flag data into specific indexes in the mesh data.</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a> )</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a> *p_cas_entry = <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">mp_CASData</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> entry = 0; entry &lt; <a class="code" href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">m_numCASData</a>; ++entry, ++p_cas_entry )</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="comment">// Get the mesh this entry references.</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          load_order  = p_cas_entry-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &gt;&gt; 16;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            <a class="code" href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html">NxXbox::sMesh</a>   *p_mesh     = p_scene-&gt;<a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">GetEngineScene</a>()-&gt;<a class="code" href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a606c6a20636943fb59d78b9e6085d542">GetMeshByLoadOrder</a>( load_order );</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            <span class="keywordflow">if</span>( p_mesh )</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="comment">// Get the indices of the poly referenced.</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i0 = p_cas_entry-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">data0</a> &amp; 0xFFFF;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i1 = p_cas_entry-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#ad60486ada25e8260c72345f103753df6">data1</a> &gt;&gt; 16;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i2 = p_cas_entry-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#ad60486ada25e8260c72345f103753df6">data1</a> &amp; 0xFFFF;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="comment">// For every vertex index in this mesh...</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a> *p_indices   = p_mesh-&gt;<a class="code" href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html#a6520d594dad1fb801a4cbcc2ada1bd6d">mp_index_buffer</a>[0];</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> index0       = p_indices[0] &amp; 0x7FFF;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> index1       = p_indices[1] &amp; 0x7FFF;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="keywordflow">for</span>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i = 2; i &lt; p_mesh-&gt;<a class="code" href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html#adfa7e80f05b22cd0b0f49053ad317a07">m_num_indices</a>[0]; ++i )</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                {</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> index2 = p_indices[i] &amp; 0x7FFF;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    <span class="keywordflow">if</span>(( index0 == i0 ) &amp;&amp; ( index1 == i1 ) &amp;&amp; ( index2 == i2 ))</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                        p_cas_entry-&gt;<a class="code" href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#aaa62bb77c4fbb334dd5f6cca416abaab">start_index</a> = i - 2;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                    index0  = index1;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    index1  = index2;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                }</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;            }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_a2e2b855df05c966bb69c1f110e6d8aff"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a2e2b855df05c966bb69c1f110e6d8aff">Nx::CXboxMesh::build_casdata_table_from_memory</a></div><div class="ttdeci">bool build_casdata_table_from_memory(void **pp_mem)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00113">p_NxMesh.cpp:113</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_c_a_s_data_html_ad60486ada25e8260c72345f103753df6"><div class="ttname"><a href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#ad60486ada25e8260c72345f103753df6">NxXbox::sCASData::data1</a></div><div class="ttdeci">uint32 data1</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00016">mesh.h:16</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_a24ecc464c02b3188e912244af9afe9d9"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a24ecc464c02b3188e912244af9afe9d9">Nx::CXboxMesh::CXboxMesh</a></div><div class="ttdeci">CXboxMesh(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00158">p_NxMesh.cpp:158</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_af71665a761cc063258dc4dc65e7a1f60"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af71665a761cc063258dc4dc65e7a1f60">Nx::CXboxMesh::~CXboxMesh</a></div><div class="ttdeci">virtual ~CXboxMesh()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00192">p_NxMesh.cpp:192</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_engine_html_ade2afa04f4696b9bfa4640549fba92d2"><div class="ttname"><a href="../../d9/d8c/class_nx_1_1_c_engine.html#ade2afa04f4696b9bfa4640549fba92d2">Nx::CEngine::sUnloadScene</a></div><div class="ttdeci">static bool sUnloadScene(CScene *p_scene)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d16/nx_8cpp_source.html#l00360">nx.cpp:360</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a5632acfb30e11749516f7861879407fd"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">Gfx::p_data</a></div><div class="ttdeci">p_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01903">BonedAnim.cpp:1903</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_aab3827bb74f36ad96f20765a486507d7"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aab3827bb74f36ad96f20765a486507d7">Nx::CXboxMesh::m_numCASData</a></div><div class="ttdeci">uint32 m_numCASData</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dcf/_x_box_2p___nx_mesh_8h_source.html#l00051">p_NxMesh.h:51</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a987f27df2a5f3c9f3b402784624cfac3"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a987f27df2a5f3c9f3b402784624cfac3">p1</a></div><div class="ttdeci">unsigned char p1</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00038">p_netcnfif.h:38</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a3e3b310e164961505132dbc0ab4f73cf"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a3e3b310e164961505132dbc0ab4f73cf">Nx::CMesh::m_numHierarchyObjects</a></div><div class="ttdeci">int m_numHierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00065">NxMesh.h:65</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_scene_html_a868291dcad4915a9326a34f41c829e6c"><div class="ttname"><a href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a868291dcad4915a9326a34f41c829e6c">NxXbox::sScene::mp_hierarchyObjects</a></div><div class="ttdeci">Nx::CHierarchyObject * mp_hierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db8/_x_box_2_n_x_2scene_8h_source.html#l00073">scene.h:73</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_scene_html_a91cf038b863ac04e4ae109b972b761bb"><div class="ttname"><a href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a91cf038b863ac04e4ae109b972b761bb">NxXbox::sScene::m_numHierarchyObjects</a></div><div class="ttdeci">int m_numHierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db8/_x_box_2_n_x_2scene_8h_source.html#l00074">scene.h:74</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_a631413a59ee255bfedf4534b697a5f75"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a631413a59ee255bfedf4534b697a5f75">Nx::CXboxMesh::SetScene</a></div><div class="ttdeci">void SetScene(CXboxScene *p_scene)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00224">p_NxMesh.cpp:224</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html">Nx::CXboxScene</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6f/_x_box_2p__nxscene_8h_source.html#l00017">p_nxscene.h:17</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_mesh_html_adfa7e80f05b22cd0b0f49053ad317a07"><div class="ttname"><a href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html#adfa7e80f05b22cd0b0f49053ad317a07">NxXbox::sMesh::m_num_indices</a></div><div class="ttdeci">uint16 m_num_indices[MAX_INDEX_BUFFERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00129">mesh.h:129</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a50517a256484b095215edbea30d4e557"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a50517a256484b095215edbea30d4e557">Nx::CMesh::m_CASRemovalMask</a></div><div class="ttdeci">uint32 m_CASRemovalMask</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00061">NxMesh.h:61</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_scene_html_a606c6a20636943fb59d78b9e6085d542"><div class="ttname"><a href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a606c6a20636943fb59d78b9e6085d542">NxXbox::sScene::GetMeshByLoadOrder</a></div><div class="ttdeci">sMesh * GetMeshByLoadOrder(int load_order)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd1/_x_box_2_n_x_2scene_8cpp_source.html#l00302">scene.cpp:302</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_c_a_s_data_html"><div class="ttname"><a href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html">NxXbox::sCASData</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00012">mesh.h:12</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_af853783c8b67924e73211ea6a389365e"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#af853783c8b67924e73211ea6a389365e">Nx::CXboxMesh::build_casdata_table</a></div><div class="ttdeci">bool build_casdata_table(const char *pFileName)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00069">p_NxMesh.cpp:69</a></div></div>
+<div class="ttc" id="anamespace_file_html_a180384dc852ac3b971285fc63b1287cb"><div class="ttname"><a href="../../de/d10/namespace_file.html#a180384dc852ac3b971285fc63b1287cb">File::Open</a></div><div class="ttdeci">void * Open(const char *filename, const char *access)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00391">p_filesys.cpp:391</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a4084f312753e7871107cfbae707ede76"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a4084f312753e7871107cfbae707ede76">Nx::cmp</a></div><div class="ttdeci">static int cmp(const void *p1, const void *p2)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/da1/_n_g_c_2p___nx_mesh_8cpp_source.html#l00031">p_NxMesh.cpp:31</a></div></div>
+<div class="ttc" id="ap__netcnfif_8h_html_a22f7a8363a7f95b437d6df82a4284cd7"><div class="ttname"><a href="../../d7/dbd/p__netcnfif_8h.html#a22f7a8363a7f95b437d6df82a4284cd7">p2</a></div><div class="ttdeci">unsigned char p2</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/dbd/p__netcnfif_8h_source.html#l00039">p_netcnfif.h:39</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_a6e8c6356ab79f37531e44ea1a6af5bb0"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a6e8c6356ab79f37531e44ea1a6af5bb0">Nx::CXboxMesh::mp_CASData</a></div><div class="ttdeci">NxXbox::sCASData * mp_CASData</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dcf/_x_box_2p___nx_mesh_8h_source.html#l00050">p_NxMesh.h:50</a></div></div>
+<div class="ttc" id="astringutils_8h_html"><div class="ttname"><a href="../../d9/d9e/stringutils_8h.html">stringutils.h</a></div></div>
+<div class="ttc" id="anamespace_file_html_af5cd83b01fc5f341f767beb7c0b1130c"><div class="ttname"><a href="../../de/d10/namespace_file.html#af5cd83b01fc5f341f767beb7c0b1130c">File::Close</a></div><div class="ttdeci">int Close(void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00425">p_filesys.cpp:425</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_a8749a377ad994fec9b732d57e029d93f"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#a8749a377ad994fec9b732d57e029d93f">Nx::CXboxMesh::mp_scene</a></div><div class="ttdeci">CXboxScene * mp_scene</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/dcf/_x_box_2p___nx_mesh_8h_source.html#l00054">p_NxMesh.h:54</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_c_a_s_data_html_aaa62bb77c4fbb334dd5f6cca416abaab"><div class="ttname"><a href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#aaa62bb77c4fbb334dd5f6cca416abaab">NxXbox::sCASData::start_index</a></div><div class="ttdeci">uint32 start_index</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00017">mesh.h:17</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_c_a_s_data_html_a9d38e3ee182e26e475b0ebce318f789b"><div class="ttname"><a href="../../d4/dec/struct_nx_xbox_1_1s_c_a_s_data.html#a9d38e3ee182e26e475b0ebce318f789b">NxXbox::sCASData::data0</a></div><div class="ttdeci">uint32 data0</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00015">mesh.h:15</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="anamespace_str_html_aea5a8a6b4937f14ae4969e56ddeaa664"><div class="ttname"><a href="../../df/d07/namespace_str.html#aea5a8a6b4937f14ae4969e56ddeaa664">Str::LowerCase</a></div><div class="ttdeci">void LowerCase(char *p)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dbf/stringutils_8cpp_source.html#l00121">stringutils.cpp:121</a></div></div>
+<div class="ttc" id="a_nx_tex_man_8h_html"><div class="ttname"><a href="../../d0/da8/_nx_tex_man_8h.html">NxTexMan.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_a54c6d3803cc705f2bcd330862bd7bc04"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">Nx::CXboxScene::GetEngineScene</a></div><div class="ttdeci">NxXbox::sScene * GetEngineScene() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6f/_x_box_2p__nxscene_8h_source.html#l00022">p_nxscene.h:22</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_mesh_html_a6520d594dad1fb801a4cbcc2ada1bd6d"><div class="ttname"><a href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html#a6520d594dad1fb801a4cbcc2ada1bd6d">NxXbox::sMesh::mp_index_buffer</a></div><div class="ttdeci">uint16 * mp_index_buffer[MAX_INDEX_BUFFERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00141">mesh.h:141</a></div></div>
+<div class="ttc" id="anamespace_file_html_ae5e5ed0fd4834fc2e0e1c29edc62fc02"><div class="ttname"><a href="../../de/d10/namespace_file.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02">File::Read</a></div><div class="ttdeci">size_t Read(void *addr, size_t size, size_t count, void *pFP)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbe/ngc_2p__filesys_8cpp_source.html#l00443">p_filesys.cpp:443</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a05f6b0ae8f6a6e135b0e290c25fe0e4e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></div><div class="ttdeci">unsigned short uint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00135">Defines.h:135</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_mesh_html"><div class="ttname"><a href="../../d6/d5e/struct_nx_xbox_1_1s_mesh.html">NxXbox::sMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d6e/_x_box_2_n_x_2mesh_8h_source.html#l00039">mesh.h:39</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_mesh_html_aa0f7a5d37cd034a2ee35065ff400f11a"><div class="ttname"><a href="../../de/d7f/class_nx_1_1_c_xbox_mesh.html#aa0f7a5d37cd034a2ee35065ff400f11a">Nx::CXboxMesh::SetCASData</a></div><div class="ttdeci">void SetCASData(uint8 *p_cas_data)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d4c/_x_box_2p___nx_mesh_8cpp_source.html#l00210">p_NxMesh.cpp:210</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_mesh_html_a18850e9b32a2d14e827684bfbb10e3a9"><div class="ttname"><a href="../../d8/d86/class_nx_1_1_c_mesh.html#a18850e9b32a2d14e827684bfbb10e3a9">Nx::CMesh::mp_hierarchyObjects</a></div><div class="ttdeci">CHierarchyObject * mp_hierarchyObjects</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d62/_nx_mesh_8h_source.html#l00064">NxMesh.h:64</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../df/d4c/_x_box_2p___nx_mesh_8cpp.html">p_NxMesh.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:28. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

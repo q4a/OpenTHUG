@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/core/Task/List.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d5b/_task_2_list_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">List.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d5b/_task_2_list_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        Core Library                                            **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Task (TSK_)                                             **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      core/task/list.h                                        **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        05/27/99    -   mjb                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __CORE_TASK_LIST_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __CORE_TASK_LIST_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d1f/_list_8h.html">core/list.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../dc/d2d/_lock_8h.html">core/support/lock.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/da5/namespace_tsk.html">Tsk</a></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">class </span>BaseTask;     <span class="comment">// forward declaration</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">class  </span>List : <span class="keyword">public</span>  <a class="code" href="../../d1/d11/class_spt_1_1_access.html">Spt::Access</a> </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d9/df9/class_tsk_1_1_list.html">   53</a></span>&#160;public :</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                            <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a0bfff667189b233c31f5876329df4bf8">List</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                            <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a5b9fd4aac1628308dd2f36282d193542">~List</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ae3288d03c60b55ed6a4d0fcde836af3a">RemoveAllTasks</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#aab4d1b96c4674e7ab802b979a1ab232a">Process</a> ( <span class="keywordtype">bool</span> time, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> mask );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a0c9371653c2949191721b5494c89b8af">Dump</a> ( <span class="keywordtype">void</span> );      </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a36bf5cae6a78e44ef97b552954c96eaa">AddTask</a> ( <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">BaseTask</a>&amp; task );</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">bool</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">IsEmpty</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#aa1c3a6176ba47cbf028f6ef8aa1f1529">SignalListChange</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;private :</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Lst::Head&lt;BaseTask&gt;     <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ae9e23d2e743c874df326bff4db477144">list</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a71a7bdb99bdba1b8f206415946a90eb7">stamp</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span>                    <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ab8ffeadb78d73ea090614e11188ae202">list_changed</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d9/df9/class_tsk_1_1_list.html#ae9e23d2e743c874df326bff4db477144">   70</a></span>&#160;};</div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d9/df9/class_tsk_1_1_list.html#a71a7bdb99bdba1b8f206415946a90eb7">   71</a></span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d9/df9/class_tsk_1_1_list.html#ab8ffeadb78d73ea090614e11188ae202">   72</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span>         <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">List::IsEmpty</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;{</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">  100</a></span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d9/df9/class_tsk_1_1_list.html#ae9e23d2e743c874df326bff4db477144">list</a>.IsEmpty();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;} <span class="comment">// namespace Tsk</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#endif  // __CORE_TASK_LIST_H</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_tsk_1_1_list_html_aa1c3a6176ba47cbf028f6ef8aa1f1529"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#aa1c3a6176ba47cbf028f6ef8aa1f1529">Tsk::List::SignalListChange</a></div><div class="ttdeci">void SignalListChange(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00303">Tlist.cpp:303</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_access_html"><div class="ttname"><a href="../../d1/d11/class_spt_1_1_access.html">Spt::Access</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d2d/_lock_8h_source.html#l00046">Lock.h:46</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_ae3288d03c60b55ed6a4d0fcde836af3a"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#ae3288d03c60b55ed6a4d0fcde836af3a">Tsk::List::RemoveAllTasks</a></div><div class="ttdeci">void RemoveAllTasks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00279">Tlist.cpp:279</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a0bfff667189b233c31f5876329df4bf8"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a0bfff667189b233c31f5876329df4bf8">Tsk::List::List</a></div><div class="ttdeci">List(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00103">Tlist.cpp:103</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_base_task_html"><div class="ttname"><a href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dfd/_task_2_task_8h_source.html#l00050">Task.h:50</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a5b9fd4aac1628308dd2f36282d193542"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a5b9fd4aac1628308dd2f36282d193542">Tsk::List::~List</a></div><div class="ttdeci">~List(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00115">Tlist.cpp:115</a></div></div>
+<div class="ttc" id="a_lock_8h_html"><div class="ttname"><a href="../../dc/d2d/_lock_8h.html">Lock.h</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_aab4d1b96c4674e7ab802b979a1ab232a"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#aab4d1b96c4674e7ab802b979a1ab232a">Tsk::List::Process</a></div><div class="ttdeci">void Process(bool time, uint mask)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00127">Tlist.cpp:127</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_ae9e23d2e743c874df326bff4db477144"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#ae9e23d2e743c874df326bff4db477144">Tsk::List::list</a></div><div class="ttdeci">Lst::Head&lt; BaseTask &gt; list</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d5b/_task_2_list_8h_source.html#l00070">List.h:70</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a0c9371653c2949191721b5494c89b8af"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a0c9371653c2949191721b5494c89b8af">Tsk::List::Dump</a></div><div class="ttdeci">void Dump(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00211">Tlist.cpp:211</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a085d746cb563e3ef12ee97985c992743"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a085d746cb563e3ef12ee97985c992743">Tsk::List::IsEmpty</a></div><div class="ttdeci">bool IsEmpty(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d5b/_task_2_list_8h_source.html#l00100">List.h:100</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a36bf5cae6a78e44ef97b552954c96eaa"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a36bf5cae6a78e44ef97b552954c96eaa">Tsk::List::AddTask</a></div><div class="ttdeci">void AddTask(BaseTask &amp;task)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/_tlist_8cpp_source.html#l00257">Tlist.cpp:257</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_a71a7bdb99bdba1b8f206415946a90eb7"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#a71a7bdb99bdba1b8f206415946a90eb7">Tsk::List::stamp</a></div><div class="ttdeci">uint stamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d5b/_task_2_list_8h_source.html#l00071">List.h:71</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_list_html_ab8ffeadb78d73ea090614e11188ae202"><div class="ttname"><a href="../../d9/df9/class_tsk_1_1_list.html#ab8ffeadb78d73ea090614e11188ae202">Tsk::List::list_changed</a></div><div class="ttdeci">bool list_changed</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d5b/_task_2_list_8h_source.html#l00072">List.h:72</a></div></div>
+<div class="ttc" id="anamespace_tsk_html"><div class="ttname"><a href="../../dc/da5/namespace_tsk.html">Tsk</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d84/_hook_8h_source.html#l00030">Hook.h:30</a></div></div>
+<div class="ttc" id="a_list_8h_html"><div class="ttname"><a href="../../dc/d1f/_list_8h.html">List.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_aebb8dcc11953d78e620bbef0b9e2183.html">core</a></li><li class="navelem"><a class="el" href="../../dir_dd99984523d4742f03c6fb426ad65e56.html">Task</a></li><li class="navelem"><a class="el" href="../../d1/d5b/_task_2_list_8h.html">List.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:19. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+var p__display_8h =
+[
+    [ "NsDisplay_StartRenderingCallback", "d6/d3b/p__display_8h.html#a676ceee7bbf502cc8c9994c5844aeaaf", null ],
+    [ "NsDisplay_EndRenderingCallback", "d6/d3b/p__display_8h.html#adca223e7761c67774c8b16938747d5b0", null ],
+    [ "init", "d6/d3b/p__display_8h.html#ae5ae2f4ff6f504fd3ae35484e50f2156", null ],
+    [ "begin", "d6/d3b/p__display_8h.html#aa20cc79bb9166a6f565cc4bf438b767f", null ],
+    [ "end", "d6/d3b/p__display_8h.html#a088056127e05c165b101963997dc8a94", null ],
+    [ "setBackgroundColor", "d6/d3b/p__display_8h.html#a5e21764b9e6ca2409f67f089a5620e0f", null ],
+    [ "setRenderStartCallback", "d6/d3b/p__display_8h.html#a72b4ccf3b89f93eebbbfcc76133b68a3", null ],
+    [ "setRenderEndCallback", "d6/d3b/p__display_8h.html#abdc01d3ad3a6684fb98e06d016a8396c", null ],
+    [ "flush", "d6/d3b/p__display_8h.html#af629c47f61a2f8ae8522d0223015fdd1", null ],
+    [ "getCurrentBufferIndex", "d6/d3b/p__display_8h.html#a16eb1e56c4b8a87bfb463811295d7192", null ],
+    [ "shouldReset", "d6/d3b/p__display_8h.html#ae5b621620e1b7e00713dc133f71d05e1", null ],
+    [ "doReset", "d6/d3b/p__display_8h.html#aadbe1b1484329eb623099b72b6c15569", null ],
+    [ "Check480P", "d6/d3b/p__display_8h.html#a5dd4db09ae8a241f93725498d084375a", null ],
+    [ "Check60Hz", "d6/d3b/p__display_8h.html#a929ae894e55828461788b29db5f49d46", null ],
+    [ "display_legal", "d6/d3b/p__display_8h.html#aab96b6a63e4d6605bce9ea2b145d4420", null ],
+    [ "ScriptNgc_BGColor", "d6/d3b/p__display_8h.html#ab43a5d6edf1e0f12fa078e12ad1179d0", null ],
+    [ "ScriptNgc_Message", "d6/d3b/p__display_8h.html#a7ba371e402b18440df5f9c2f78913020", null ],
+    [ "ScriptNgc_Menu", "d6/d3b/p__display_8h.html#af8d87082e14de9b491ba01b74e3d9585", null ],
+    [ "ScriptNgc_Set480P", "d6/d3b/p__display_8h.html#ac991a1cbe5d42588002b5a685329a5df", null ],
+    [ "ScriptNgc_Set480I", "d6/d3b/p__display_8h.html#a7cdd98a809984e4aa5198ce45bdc81c8", null ],
+    [ "ScriptNgc_Set60Hz", "d6/d3b/p__display_8h.html#a8fd3cef992bfc5136bb90bf4cfa3fed1", null ],
+    [ "ScriptNgc_Set50Hz", "d6/d3b/p__display_8h.html#adc4391e6c568bc9f70459d0e5b00025f", null ],
+    [ "ScriptNgc_SetWide", "d6/d3b/p__display_8h.html#a533d266d970cc1b762fcfb476b7c2730", null ],
+    [ "ScriptNgc_SetStandard", "d6/d3b/p__display_8h.html#aa12dda802b3806e492e29a6ed99f2c83", null ],
+    [ "ScriptNgc_ReduceColors", "d6/d3b/p__display_8h.html#afb7094fb8896eae9e40d35d82f6a96c7", null ]
+];

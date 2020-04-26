@@ -1,0 +1,904 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/avoidcomponent.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/d1d/avoidcomponent_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">avoidcomponent.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d1d/avoidcomponent_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       AvoidComponent.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  12/02/02</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/d74/avoidcomponent_8h.html">gel/components/avoidcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                                    </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d8b/animationcomponent_8h.html">gel/components/animationcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d64/motioncomponent_8h.html">gel/components/motioncomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d3a/skeletoncomponent_8h.html">gel/components/skeletoncomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d28/_skeleton_8h.html">gfx/skeleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/da4/_path_ob_8h.html">sk/objects/pathob.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d91/skater_8h.html">sk/objects/skater.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d74/feeler_8h.html">sk/engine/feeler.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a8c1b4496c2969215ec40675481452c35">   38</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="../../d2/d10/namespace_obj.html#a8c1b4496c2969215ec40675481452c35">ped_debug_on</a>()</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a>( CRCD(0x59f8e435,<span class="stringliteral">&quot;ped_debug&quot;</span>), <span class="keyword">false</span> ) );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a81a9aa039d5ba3df7f09a5671f4e0bcd">   48</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="../../d2/d10/namespace_obj.html#a81a9aa039d5ba3df7f09a5671f4e0bcd">get_jump_direction</a>( <span class="keywordtype">float</span> rotAng )</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// split into forward/left/back/right quadrants </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// by shifting the angle by 45 degrees</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    rotAng += <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> / 4.0f;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> ( rotAng &lt; 0 )</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        rotAng += <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> * 2.0f;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">int</span> direction = (int)( rotAng / ( <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> / 2.0f ) );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> direction;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">   69</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">float</span> <a class="code" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">get_jump_distance</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <span class="keywordtype">float</span> rotAng )</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;{</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    Dbg_Assert( pParams );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">int</span> direction = <a class="code" href="../../d2/d10/namespace_obj.html#a81a9aa039d5ba3df7f09a5671f4e0bcd">get_jump_direction</a>( rotAng );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">float</span> distance = 0.0f;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">switch</span> ( direction )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">case</span> 1: <span class="comment">// left</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;distLeft&quot;</span>, &amp;distance, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">case</span> 2: <span class="comment">// backward</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;distBack&quot;</span>, &amp;distance, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">case</span> 3: <span class="comment">// right</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;distRight&quot;</span>, &amp;distance, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">case</span> 0: <span class="comment">// forward</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">case</span> 4:</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;distForward&quot;</span>, &amp;distance, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> distance;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../d2/d10/namespace_obj.html#a01156f07dd0c91dffdb0ab171268eca2">  106</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="../../d2/d10/namespace_obj.html#a01156f07dd0c91dffdb0ab171268eca2">collides_with</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; vec0, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; vec1 )</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="../../dc/d35/class_c_feeler.html">CFeeler</a> feeler;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    feeler.<a class="code" href="../../da/db3/class_mth_1_1_line.html#a4bc5ff046792a776b7b0f9e5ea751200">m_start</a> = vec0;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    feeler.<a class="code" href="../../da/db3/class_mth_1_1_line.html#a5954350641b480cd8048e8aee11a2587">m_end</a> = vec1;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">return</span> feeler.<a class="code" href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">GetCollision</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">void CAvoidComponent::draw_collision_circle( int numPoints, float radius, uint32 rgb0 )</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">    Mth::Vector v1, v2;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">    Mth::Vector fwd( 0.0f, 0.0f, radius );</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">    v1 = m_pos + fwd;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">    for ( int i = 0; i &lt; numPoints; i++ )</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">        fwd.RotateY( 2.0f * Mth::PI / (float)numPoints );</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">        v2 = GetObject()-&gt;m_pos + fwd;</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">        if ( !collides_with( GetObject()-&gt;m_pos, v2 ) )</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">            Gfx::AddDebugLine(v1,v2,rgb0,rgb0,1);</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">        v1 = v2;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">}</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a135b742a8e7cf843538171985a791418">  150</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a135b742a8e7cf843538171985a791418">CAvoidComponent::play_appropriate_jump_anim</a>( <span class="keywordtype">float</span> rotAng, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// split into forward/left/back/right quadrants </span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// by shifting the angle by 45 degrees</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    rotAng += <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> / 4.0f;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span> ( rotAng &lt; 0 )</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        rotAng += <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> * 2.0f;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">int</span> direction = (int)( rotAng / ( <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a> / 2.0f ) );</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="comment">// 0 = forward</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="comment">// 1 = left</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="comment">// 2 = back</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">// 3 = right</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    Dbg_Assert( pParams );</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> animChecksum;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">bool</span> flipped;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">switch</span> ( direction )</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">case</span> ( 0 ): <span class="comment">// JUMP FORWARD</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">case</span> ( 4 ):</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">//          Dbg_Message( &quot;Ped jumps forward to avoid skater&quot; );</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0x4de2c9e8,<span class="stringliteral">&quot;JumpForward&quot;</span>), &amp;animChecksum, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="keywordflow">case</span> ( 1 ): <span class="comment">// JUMP LEFT</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">//              Dbg_Message( &quot;Ped jumps left to avoid skater&quot; );</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                <span class="keywordflow">if</span> ( pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0x733da756,<span class="stringliteral">&quot;JumpLeft&quot;</span>), &amp;animChecksum, <span class="keyword">false</span> ) )</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                    flipped = 0;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;                }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0xa7a0dd72,<span class="stringliteral">&quot;JumpRight&quot;</span>), &amp;animChecksum, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    flipped = 1;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                <a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a>* pAnimationComponent = GetAnimationComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                <span class="keywordflow">if</span> ( pAnimationComponent )</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                    pAnimationComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec9a53aafbc4a7b4bc9ee4ef50316c20">FlipAnimation</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;GetID(), flipped, 0, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">case</span> ( 2 ): <span class="comment">// JUMP BACK</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">//          Dbg_Message( &quot;Ped jumps back to avoid skater&quot; );</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0x64948109,<span class="stringliteral">&quot;JumpBack&quot;</span>), &amp;animChecksum, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keywordflow">case</span> ( 3 ): <span class="comment">// JUMP RIGHT</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="comment">//              Dbg_Message( &quot;Ped jumps right to avoid skater&quot; );</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                <span class="keywordflow">if</span> ( pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0xa7a0dd72,<span class="stringliteral">&quot;JumpRight&quot;</span>), &amp;animChecksum, <span class="keyword">false</span> ) )</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    flipped = 0;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                    pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0x733da756,<span class="stringliteral">&quot;JumpLeft&quot;</span>), &amp;animChecksum, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    flipped = 1;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a>* pAnimationComponent = GetAnimationComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keywordflow">if</span> ( pAnimationComponent )</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                {</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                    pAnimationComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec9a53aafbc4a7b4bc9ee4ef50316c20">FlipAnimation</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;GetID(), flipped, 0, <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                }</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;Ped jumped in unrecognized direction: %d&quot;</span>, direction ) );</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;            </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a>* pAnimationComponent = GetAnimationComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">if</span> ( pAnimationComponent )</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        pAnimationComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#af4b5f35c062d0ef56411555f5605f541">PlaySequence</a>( animChecksum, 0 );</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a1b52611b0adc80a3746c93bd0ea82164">m_jumpTime</a> = pAnimationComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#af8d7bb0da7cae51af98763c8238caa3f">AnimDuration</a>( animChecksum );</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;No animation component&quot;</span> ) );</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                                                 </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aae7153ed354a9c094d357feeb86b8b00">  252</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aae7153ed354a9c094d357feeb86b8b00">CAvoidComponent::get_ideal_heading</a>()</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="../../d6/df1/class_mdl_1_1_skate.html">Mdl::Skate</a>* skate = Mdl::Skate::Instance();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="comment">// assume pedestrians only appear in &quot;1 player&quot; game for now...</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// If this assumption becomes incorrect, cycle through skate-&gt;GetNumSkaters( )</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="comment">// and find the closest.</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html">CSkater</a> *pSkater = skate-&gt;<a class="code" href="../../d6/df1/class_mdl_1_1_skate.html#acea90d23a9d7c62758e7efdbe19c1019">GetLocalSkater</a>();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    Dbg_MsgAssert( pSkater, ( <span class="stringliteral">&quot;Ped avoidance only works in 1-player games.&quot;</span> ) );</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> jumpDir;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// find the 2 directions perpendicular to the skater&#39;s line of motion...</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="comment">// and select the direction that will take us further away from the</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// skater</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    jumpDir = (pSkater-&gt;<a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html#a8bfa837d4502787a74a96689d54df0fb">GetDisplayMatrix</a>())[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1f6853dedc346e614f85bd3ff017c2c2">Mth::AT</a>];   </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    jumpDir[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] = 0.0f;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    jumpDir.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>( );</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    </div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> upVect( 0.0f, 1.0f, 0.0f, 0.0f );</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    jumpDir = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( jumpDir, upVect );</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">// chose the direction that&#39;s farther...</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> posPlus;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> posMinus;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    posPlus = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> + jumpDir;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    posMinus = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> - jumpDir;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/db9/namespace_mth.html#a4829497c960aa6d670291025162364d0">Mth::DistanceSqr</a>( pSkater-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>, posPlus ) &lt; <a class="code" href="../../d5/db9/namespace_mth.html#a4829497c960aa6d670291025162364d0">Mth::DistanceSqr</a>( pSkater-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>, posMinus ) )</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        jumpDir[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] = -jumpDir[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>];</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        jumpDir[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] = -jumpDir[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>];</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d5/db9/namespace_mth.html#ac76db42c879254b5ea1d63baf045f9a5">Mth::RadToDeg</a>( <a class="code" href="../../d5/db9/namespace_mth.html#ab20a7a389d2a6388ef6825d61b3b2322">Mth::GetAngle</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a>, jumpDir ) );</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;}</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="comment">// This static function is what is registered with the component factory </span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="comment">// object, (currently the CCompositeObjectManager) </span></div>
+<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a7e643bbb3842cb35660ad62d1f7f8390">  297</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a7e643bbb3842cb35660ad62d1f7f8390">CAvoidComponent::s_create</a>()</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;{</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <span class="keyword">&gt;</span>( <span class="keyword">new</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a351c74e4ed1294865851385c79c08066">CAvoidComponent</a> );   </div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    </div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a351c74e4ed1294865851385c79c08066">  307</a></span>&#160;<a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a351c74e4ed1294865851385c79c08066">CAvoidComponent::CAvoidComponent</a>() : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>()</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">SetType</a>( CRC_AVOID );</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    </div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ad536c47331ddf364be061e9b4f9ba055">  317</a></span>&#160;<a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ad536c47331ddf364be061e9b4f9ba055">CAvoidComponent::~CAvoidComponent</a>()</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    </div>
+<div class="line"><a name="l00326"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a176afc28b8c8178720cd9bffce5cd401">  326</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a176afc28b8c8178720cd9bffce5cd401">CAvoidComponent::InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;{</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;}</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    </div>
+<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#adcc6afe56bd4b9c32aa1d4507e7872f7">  335</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#adcc6afe56bd4b9c32aa1d4507e7872f7">CAvoidComponent::Update</a>()</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;{</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">#ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">//  if ( ped_debug_on() )</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <span class="comment">//Gfx::AddDebugCircle( m_pos, 20, 15.0f, 0x0000ffff, 1 );</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        <span class="comment">//Gfx::AddDebugCircle( m_stored_pos, 20, 15.0f, 0x00ff00ff, 1 );</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;        <span class="comment">//draw_collision_circle( 100, 50.0f, 0xff0000ff );  </span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment">// Doing nothing, so tell code to do nothing next time around</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">Suspend</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">  355</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">CAvoidComponent::jump</a>( <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; mat0, <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; mat1, <span class="keywordtype">float</span> rotAng, <span class="keywordtype">float</span> jumpDist, <span class="keywordtype">float</span> maxHerdDistance )</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    mat1 = mat0;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    mat1.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#ace8d7c69b9c00aeb26ad301296460364">RotateYLocal</a>( <a class="code" href="../../d5/db9/namespace_mth.html#a5a88e8aff5b7bdd63a88cd62c1485814">Mth::DegToRad</a>(rotAng) );</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160; </div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="comment">// test for an extra 15 units (1.25 feet) radius of clearance </span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="comment">// around the player to account for his actual body</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    <span class="comment">// (need to rotate it slightly up, to account for peds</span></div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    <span class="comment">// that are below ground level...  not sure why this</span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="comment">// happens, but will check it out in THPS5...)</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">float</span> clearanceDist = 15.0f;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> collisionTestPos = mat1.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>( 0.0f, 10.0f, jumpDist + clearanceDist ) );</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">    if ( ped_debug_on() )</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">        Gfx::AddDebugCircle( collisionTestPos, 20, 15.0f, 0x00ff00ff, 10 );</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d2/d10/namespace_obj.html#a01156f07dd0c91dffdb0ab171268eca2">collides_with</a>( mat0.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a269ae2fa628a2a388f98cd852619875e">GetPos</a>(), collisionTestPos ) )</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Collides with something!&quot;</span> );</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    }</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="comment">// build target matrix</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> targetPos = mat1.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>( 0.0f, 0.0f, jumpDist ) );</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;        mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>] = targetPos;</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <a class="code" href="../../d6/df1/class_mdl_1_1_skate.html">Mdl::Skate</a>* skate = Mdl::Skate::Instance();</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html">CSkater</a> *pSkater = skate-&gt;<a class="code" href="../../d6/df1/class_mdl_1_1_skate.html#acea90d23a9d7c62758e7efdbe19c1019">GetLocalSkater</a>();</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        Dbg_MsgAssert( pSkater, ( <span class="stringliteral">&quot;Ped avoidance only works in 1-player games.&quot;</span> ) );</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        </div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> toSkater = targetPos - pSkater-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        <span class="keywordflow">if</span> ( toSkater.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() &lt; 30.0f )</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;        {</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;Too close to skater %f!\n&quot;</span>, toSkater.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() );</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;        }</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;        <span class="comment">// check if we&#39;re going too far from the original point</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="comment">// TODO:  check for distance from the path, not the point</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="comment">// don&#39;t allow going too far from the original path,</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        <span class="comment">// or else you&#39;ll be able to herd them into weird</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        <span class="comment">// positions...</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> totalAvoidVec = targetPos - <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a>;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        totalAvoidVec[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] = 0.0f;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160; </div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="keywordflow">if</span> ( totalAvoidVec.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() &gt;= maxHerdDistance )</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        {</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;            <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Too far from the original avoid point %f&quot;</span>, totalAvoidVec.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() );</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        }</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    }</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160; </div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    </div>
+<div class="line"><a name="l00423"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#abfe466456192af89a9d7285ad94013f6">  423</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">CBaseComponent::EMemberFunctionResult</a> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#abfe466456192af89a9d7285ad94013f6">CAvoidComponent::CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript )</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;{</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordflow">switch</span> (Checksum)</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    {</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        <span class="comment">// @script | Ped_SelectAvoidPoint | Will cause the pedestrian to jump out of</span></div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <span class="comment">// the way of the player.  He will land on a circle, JumpDist away from</span></div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <span class="comment">// the last postition stored in Obj_StorePos.  Once he lands the jump,</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;        <span class="comment">// the LandedEscapeJump exception is triggered. </span></div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        <span class="comment">// @parmopt name | JumpLeft | jumpLeft | name of anim to play when jumping left</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;        <span class="comment">// @parmopt name | JumpRight | jumpRight | name of anim to play when jumping right</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        <span class="comment">// @parmopt name | JumpForward | jumpForward | name of anim to play when jumping forward</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        <span class="comment">// @parmopt name | JumpBack | jumpBack | name of anum to play when jumping back</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;        <span class="comment">// position where the ped jumps to </span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;        <span class="keywordflow">case</span> 0x6157cbc0:    <span class="comment">// Ped_SelectAvoidPoint</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;        {</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;            <span class="comment">// this is the starting point...</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;            <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> mat0;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;            mat0 = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a473dbe37c34403b6a03c9f15963eac62">GetDisplayMatrix</a>();</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;            mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>] = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;            <span class="comment">// this is where we will eventually end up</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> mat1;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;            <span class="keywordtype">float</span> maxHerdDistance = 100.0f;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;            pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;maxHerdDistance&quot;</span>, &amp;maxHerdDistance, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160; </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            <span class="keywordtype">float</span> idealHeading = <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aae7153ed354a9c094d357feeb86b8b00">get_ideal_heading</a>();</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">jump</a>(mat0, mat1, idealHeading, <a class="code" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">get_jump_distance</a>( pParams, idealHeading ), maxHerdDistance ) )</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            {</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;               <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Selecting ideal jump (ang=%f newpos=(%f, %f, %f)&quot;</span>,</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;                            idealHeading,</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;                            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>],</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;                            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>],</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;                            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>][<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );            </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;            }</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;            <span class="comment">// GJ:  Try a few more directions before trying </span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;            <span class="comment">// to jump back to the original point...</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">jump</a>(mat0, mat1, idealHeading + 180.0f, <a class="code" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">get_jump_distance</a>( pParams, idealHeading + 180.0f ), maxHerdDistance) )</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;            {</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                <span class="comment">// jump to the other side was successful!</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;Jumping to the other side...\n&quot;</span> );</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;            }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">jump</a>(mat0, mat1, idealHeading - 90.0f, <a class="code" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">get_jump_distance</a>( pParams, idealHeading - 90.0f ), maxHerdDistance) )</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;            {</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;                <span class="comment">// jump away was successful!</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;Jumping away...\n&quot;</span> );</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;            }</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;            <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;            {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;                <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Jumping back towards original point %f %f %f&quot;</span>,</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;                             <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>],</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;                             <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>],</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;                             <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160; </div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;                <span class="comment">// otherwise, jump back towards original point</span></div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> jumpDir;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;                jumpDir = <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a> - mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>];</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;                <span class="keywordtype">float</span> rotAng;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;                rotAng = <a class="code" href="../../d5/db9/namespace_mth.html#ab20a7a389d2a6388ef6825d61b3b2322">Mth::GetAngle</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a>, jumpDir );</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;                <span class="keywordtype">bool</span> success = <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">jump</a>( mat0, mat1, rotAng, <a class="code" href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">get_jump_distance</a>(pParams, rotAng), maxHerdDistance );</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160; </div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;                <span class="keywordflow">if</span> ( !success )</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;                {</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;                    <span class="comment">// jump in place</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;                    mat1 = mat0;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1">CBaseComponent::MF_FALSE</a>;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;                }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;            }           </div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;            <span class="comment">// don&#39;t actually want to rotate the ped</span></div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;            <span class="comment">// (just translate it)</span></div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a56d801d6c06dea10a9a31e21da362bef">Mth::RIGHT</a>] = mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a56d801d6c06dea10a9a31e21da362bef">Mth::RIGHT</a>];</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1c72868e83d5f2cc4458abe2d81ad352">Mth::UP</a>] = mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1c72868e83d5f2cc4458abe2d81ad352">Mth::UP</a>];</div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;            mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1f6853dedc346e614f85bd3ff017c2c2">Mth::AT</a>] = mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1f6853dedc346e614f85bd3ff017c2c2">Mth::AT</a>];</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a8d857512dd240a3a74e0ed8ad645ae6d">m_avoidInterpolator</a>.<a class="code" href="../../d7/d2a/class_mth_1_1_slerp_interpolator.html#ab6cfedb404190cf2a70c8a9fb4505e2f">setMatrices</a>( &amp;mat0, &amp;mat1 );</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ae3f9625c30c862705c5a8921fd25a8cd">m_avoidAlpha</a> = 0.0f;</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;<span class="preprocessor">#ifdef __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;<span class="comment">            if ( ped_debug_on() )</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;<span class="comment">            {</span></div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">                Gfx::AddDebugCircle( mat0[Mth::POS], 20, 15.0f, 0x00ff00ff, 100 );</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;<span class="comment">                Gfx::AddDebugCircle( mat1[Mth::POS], 20, 15.0f, 0x00ff00ff, 100 );</span></div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160; </div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> jumpDir;</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;            jumpDir = mat1[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>] - mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>];</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160; </div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;            <span class="keywordtype">float</span> rotAng;</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;            rotAng = <a class="code" href="../../d5/db9/namespace_mth.html#ab20a7a389d2a6388ef6825d61b3b2322">Mth::GetAngle</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a>, jumpDir );</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160; </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            <span class="comment">// rotAng of zero means jump forward, so:</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a135b742a8e7cf843538171985a791418">play_appropriate_jump_anim</a>( rotAng, pParams );</div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;        }</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160; </div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        <span class="comment">// @script | Ped_BackOnOriginalPath |</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;        <span class="keywordflow">case</span> 0xd2aa4d2d:    <span class="comment">// Ped_BackOnOriginalPath</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;        {</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;            <span class="keywordtype">float</span> safeDist;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;            safeDist = pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( <span class="stringliteral">&quot;dist&quot;</span>, &amp;safeDist, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a> );</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;            <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a> theBox;</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;            theBox.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#acda36c205e8108a8235ebc91e67af10f">SetMin</a>( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a> - <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>( safeDist, safeDist, safeDist ) );</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;            theBox.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a5949e7e0115753ab3bfd296a19cef118">SetMax</a>( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a> + <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>( safeDist, safeDist, safeDist ) );</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; </div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;            <span class="keywordflow">if</span> ( theBox.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#af7df5d2adde574ccb7f4060ec9733446">Within</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;m_pos ) )</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;            {</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;Intersects!\n&quot;</span> ); </div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;            <span class="comment">//  return CBaseComponent::MF_TRUE;</span></div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            }</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;            {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;Doesn&#39;t intersect!\n&quot;</span> ); </div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1">CBaseComponent::MF_FALSE</a>;</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;            }</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> originalPath;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;            originalPath = <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a> - <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a>;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> upVect( 0.0f, 1.0f, 0.0f, 0.0f );</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160; </div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> normalToOriginalPath;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;            normalToOriginalPath = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( originalPath, upVect );</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            <span class="comment">// is the distance to the original path</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <span class="comment">// choose the direction that&#39;s closer...</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> posPlus;</div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> posMinus;</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;            posPlus = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> + normalToOriginalPath * safeDist;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;            posMinus = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> - normalToOriginalPath * safeDist;</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160; </div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            <a class="code" href="../../da/db3/class_mth_1_1_line.html">Mth::Line</a> originalLine( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a>, <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a> );</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            <a class="code" href="../../da/db3/class_mth_1_1_line.html">Mth::Line</a> currentLine1( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a>, posPlus ); </div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            <a class="code" href="../../da/db3/class_mth_1_1_line.html">Mth::Line</a> currentLine2( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a>, posMinus ); </div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160; </div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> my_pt;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> other_pt;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordtype">float</span> dummyFloat;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160; </div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../d5/db9/namespace_mth.html#a29e38bfae2b181c172b8e4e40834817e">Mth::LineLineIntersect</a>( originalLine, currentLine1, &amp;my_pt, &amp;other_pt, &amp;dummyFloat, &amp;dummyFloat, <span class="keyword">false</span> ))</div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            {</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> difference = my_pt - other_pt;</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;intersects with current line 1: %f\n&quot;</span>, difference.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() );</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;            <span class="comment">//  return CBaseComponent::MF_FALSE;</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;            }</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;            <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( <a class="code" href="../../d5/db9/namespace_mth.html#a29e38bfae2b181c172b8e4e40834817e">Mth::LineLineIntersect</a>( originalLine, currentLine2, &amp;my_pt, &amp;other_pt, &amp;dummyFloat, &amp;dummyFloat, <span class="keyword">false</span> ))</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            {</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> difference = my_pt - other_pt;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;intersects with current line 2: %f\n&quot;</span>, difference.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Length</a>() );</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;            <span class="comment">//  return CBaseComponent::MF_FALSE;</span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;            }</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;            {</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;does not intersect\n&quot;</span> );</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="comment">//      return CBaseComponent::MF_FALSE;</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;            }</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1">CBaseComponent::MF_FALSE</a>;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;        }</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160; </div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;        <span class="comment">// @script | Ped_MoveTowardsAvoidPoint |</span></div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;        <span class="keywordflow">case</span> 0x41226942:    <span class="comment">// Ped_MoveTowardsAvoidPoint</span></div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;        {</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;            <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> mat0;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ae3f9625c30c862705c5a8921fd25a8cd">m_avoidAlpha</a> += ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a1b52611b0adc80a3746c93bd0ea82164">m_jumpTime</a> * ( 1.0f / 60.0f ) * <a class="code" href="../../d1/d0d/namespace_tmr.html#a9b02c80b5609aa14fe0aa8dff72ee989">Tmr::FrameRatio</a>() );</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a8d857512dd240a3a74e0ed8ad645ae6d">m_avoidInterpolator</a>.<a class="code" href="../../d7/d2a/class_mth_1_1_slerp_interpolator.html#a3c719458232ccc1f336ef075a094a03f">getMatrix</a>( &amp;mat0, <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ae3f9625c30c862705c5a8921fd25a8cd">m_avoidAlpha</a> );</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> = mat0[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>];</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">m_matrix</a> = mat0;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;            <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">m_matrix</a>[<a class="code" href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a>] = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(0.0f, 0.0f, 0.0f, 1.0f);</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;        }</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;        <span class="comment">// @script | Ped_AvoidPointReached |</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;        <span class="keywordflow">case</span> 0x3c7f8f3e:    <span class="comment">// Ped_AvoidPointReached</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;        {</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;            Dbg_Assert( GetAnimationComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() ) );</div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;            <span class="keywordflow">return</span> ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ae3f9625c30c862705c5a8921fd25a8cd">m_avoidAlpha</a> &gt;= 1.0f &amp;&amp; GetAnimationComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() )-&gt;IsAnimComplete() ) ? <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a> : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1">CBaseComponent::MF_FALSE</a>;</div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;        }</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;        <span class="keywordflow">case</span> 0x6a4bca91:    <span class="comment">// Ped_RememberCurrentPosition</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">m_avoidOriginalPos</a> = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>;</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160; </div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;        <span class="keywordflow">case</span> 0x3fb422e8:    <span class="comment">// Ped_RememberNextWaypoint</span></div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;        {</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;            <a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a>* pMotionComponent = GetMotionComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;            <span class="keywordflow">if</span> ( pMotionComponent &amp;&amp; pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#ad36251e918d3e3df80be438f3120aa1e">GetPathOb</a>() )</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;            {</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a> = pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#ad36251e918d3e3df80be438f3120aa1e">GetPathOb</a>()-&gt;<a class="code" href="../../db/d5a/class_obj_1_1_c_path_ob.html#a49b18fa88d273770a07d089294ea8f35">m_wp_pos_to</a>;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;            }</div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;            {</div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">m_avoidOriginalTargetPos</a> = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;            }</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;        }</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160; </div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        <span class="keywordflow">case</span> 0x539a32dc:    <span class="comment">// Ped_RememberStickToGround</span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;        {</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;            <a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a>* pMotionComponent = GetMotionComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;            Dbg_Assert( pMotionComponent );</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;            <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aea016580493449e8f8e0c954df3ea2d0">m_avoidOriginalStickToGround</a> = ( pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">m_movingobj_flags</a> |= MOVINGOBJ_FLAG_STICK_TO_GROUND );</div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;        }   </div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        <span class="keywordflow">case</span> 0x53bc3b4e:    <span class="comment">// Ped_RestoreStickToGround</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;        {</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;            <a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a>* pMotionComponent = GetMotionComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;            <span class="keywordflow">if</span> ( pMotionComponent )</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;            {</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;                <span class="keywordflow">if</span> ( <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aea016580493449e8f8e0c954df3ea2d0">m_avoidOriginalStickToGround</a> )</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;                {</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;                    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">m_movingobj_flags</a> |= MOVINGOBJ_FLAG_STICK_TO_GROUND;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;                }</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;                {</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;                    pMotionComponent-&gt;<a class="code" href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">m_movingobj_flags</a> &amp;= ~MOVINGOBJ_FLAG_STICK_TO_GROUND;</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;                }</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;            }</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;        }</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160; </div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">CBaseComponent::MF_NOT_EXECUTED</a>;</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    }</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160; </div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <span class="comment">// the &quot;default&quot; case of the switch statement handles</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <span class="comment">// unrecognized functions;  if we make it down here,</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <span class="comment">// that means that the component already handled it</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;    <span class="comment">// somehow</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a>;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;}</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno"><a class="line" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aac906067d3c5ae638386d61442e2f3ff">  673</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aac906067d3c5ae638386d61442e2f3ff">CAvoidComponent::GetDebugInfo</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* p_info )</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;{</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="preprocessor">#ifdef  __DEBUG_CODE__</span></div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;    Dbg_MsgAssert(p_info,(<span class="stringliteral">&quot;NULL p_info sent to C......Component::GetDebugInfo&quot;</span>));</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160; </div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    <span class="comment">// Add any script components to the p_info structure,</span></div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    <span class="comment">// and they will be displayed in the script debugger (qdebug.exe)</span></div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;    <span class="comment">// you will need to add the names to debugger_names.q, if they are not existing checksums</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160; </div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="comment">    p_info-&gt;AddInteger(&quot;m_never_suspend&quot;,m_never_suspend);</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="comment">    p_info-&gt;AddFloat(&quot;m_suspend_distance&quot;,m_suspend_distance);</span></div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    </div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;    <span class="comment">// we call the base component&#39;s GetDebugInfo, so we can add info from the common base component                                      </span></div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">CBaseComponent::GetDebugInfo</a>( p_info );   </div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="preprocessor">#endif               </span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;}</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160; </div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    </div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a8869a00692e93bff6c25ef08d952d9aa"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">Obj::CCompositeObject::m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00101">compositeobject.h:101</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a1b617ce9442e7fe78cc830537567a305"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">Obj::CBaseComponent::Suspend</a></div><div class="ttdeci">virtual void Suspend(bool suspend)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00079">basecomponent.cpp:79</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a9b02c80b5609aa14fe0aa8dff72ee989"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a9b02c80b5609aa14fe0aa8dff72ee989">Tmr::FrameRatio</a></div><div class="ttdeci">float FrameRatio()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd0/timer_8h_source.html#l00145">timer.h:145</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a8d857512dd240a3a74e0ed8ad645ae6d"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a8d857512dd240a3a74e0ed8ad645ae6d">Obj::CAvoidComponent::m_avoidInterpolator</a></div><div class="ttdeci">Mth::SlerpInterpolator m_avoidInterpolator</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00060">avoidcomponent.h:60</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_ac68fbfe676c95bf1ada686076c00675a"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Mth::Vector::Normalize</a></div><div class="ttdeci">Vector &amp; Normalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00469">vector.inl:469</a></div></div>
+<div class="ttc" id="amotioncomponent_8h_html"><div class="ttname"><a href="../../db/d64/motioncomponent_8h.html">motioncomponent.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_ace8d7c69b9c00aeb26ad301296460364"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#ace8d7c69b9c00aeb26ad301296460364">Mth::Matrix::RotateYLocal</a></div><div class="ttdeci">Matrix &amp; RotateYLocal(const float angle)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00900">matrix.inl:900</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_a88ad2190dc8bba653fc442dfed7c033a"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#a88ad2190dc8bba653fc442dfed7c033a">Mth::Vector::Length</a></div><div class="ttdeci">float Length(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00398">vector.inl:398</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a75150b149fb2f45075cdebc2422afaff"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">Obj::CCompositeObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00099">compositeobject.h:99</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6abcf1143afd4522b3edc277761a8d4ec1">Obj::CBaseComponent::MF_FALSE</a></div><div class="ttdeci">@ MF_FALSE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00040">basecomponent.h:40</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html_a8bfa837d4502787a74a96689d54df0fb"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html#a8bfa837d4502787a74a96689d54df0fb">Obj::CSkater::GetDisplayMatrix</a></div><div class="ttdeci">Mth::Matrix &amp; GetDisplayMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6e/skater_8cpp_source.html#l02464">skater.cpp:2464</a></div></div>
+<div class="ttc" id="askater_8h_html"><div class="ttname"><a href="../../d2/d91/skater_8h.html">skater.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html">Mdl::Skate</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00156">skate.h:156</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a7b9b1c529db03b284ac3fce278234cc2a1c72868e83d5f2cc4458abe2d81ad352"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1c72868e83d5f2cc4458abe2d81ad352">Mth::UP</a></div><div class="ttdeci">@ UP</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00049">matrix.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_path_ob_html_a49b18fa88d273770a07d089294ea8f35"><div class="ttname"><a href="../../db/d5a/class_obj_1_1_c_path_ob.html#a49b18fa88d273770a07d089294ea8f35">Obj::CPathOb::m_wp_pos_to</a></div><div class="ttdeci">Mth::Vector m_wp_pos_to</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/da4/_path_ob_8h_source.html#l00064">PathOb.h:64</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a176afc28b8c8178720cd9bffce5cd401"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a176afc28b8c8178720cd9bffce5cd401">Obj::CAvoidComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00326">avoidcomponent.cpp:326</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_slerp_interpolator_html_ab6cfedb404190cf2a70c8a9fb4505e2f"><div class="ttname"><a href="../../d7/d2a/class_mth_1_1_slerp_interpolator.html#ab6cfedb404190cf2a70c8a9fb4505e2f">Mth::SlerpInterpolator::setMatrices</a></div><div class="ttdeci">void setMatrices(const Matrix *pStart, const Matrix *pEnd)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df7/slerp_8cpp_source.html#l00114">slerp.cpp:114</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a29e38bfae2b181c172b8e4e40834817e"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a29e38bfae2b181c172b8e4e40834817e">Mth::LineLineIntersect</a></div><div class="ttdeci">bool LineLineIntersect(Line &amp;l1, Line &amp;l2, Vector *pa, Vector *pb, float *mua, float *mub, bool clamp)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d59/geometry_8cpp_source.html#l00166">geometry.cpp:166</a></div></div>
+<div class="ttc" id="a_path_ob_8h_html"><div class="ttname"><a href="../../d3/da4/_path_ob_8h.html">PathOb.h</a></div></div>
+<div class="ttc" id="anamespace_mth_html_aaca09fd5728158c602a3970017204614"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a></div><div class="ttdeci">Vector CrossProduct(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01000">vector.inl:1000</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_aea016580493449e8f8e0c954df3ea2d0"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aea016580493449e8f8e0c954df3ea2d0">Obj::CAvoidComponent::m_avoidOriginalStickToGround</a></div><div class="ttdeci">bool m_avoidOriginalStickToGround</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00064">avoidcomponent.h:64</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_aae7153ed354a9c094d357feeb86b8b00"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aae7153ed354a9c094d357feeb86b8b00">Obj::CAvoidComponent::get_ideal_heading</a></div><div class="ttdeci">float get_ideal_heading()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00252">avoidcomponent.cpp:252</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html_aec9a53aafbc4a7b4bc9ee4ef50316c20"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec9a53aafbc4a7b4bc9ee4ef50316c20">Obj::CAnimationComponent::FlipAnimation</a></div><div class="ttdeci">bool FlipAnimation(uint32 objId, bool flip, uint32 time, bool propagate)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2e/animationcomponent_8cpp_source.html#l02107">animationcomponent.cpp:2107</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a7b9b1c529db03b284ac3fce278234cc2a56d801d6c06dea10a9a31e21da362bef"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a56d801d6c06dea10a9a31e21da362bef">Mth::RIGHT</a></div><div class="ttdeci">@ RIGHT</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00049">matrix.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_abfe466456192af89a9d7285ad94013f6"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#abfe466456192af89a9d7285ad94013f6">Obj::CAvoidComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00423">avoidcomponent.cpp:423</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a880a8b9b7ec5b22563c6821ae0f1903e"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">Obj::CBaseComponent::SetType</a></div><div class="ttdeci">void SetType(uint32 type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00077">basecomponent.h:77</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_aac906067d3c5ae638386d61442e2f3ff"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#aac906067d3c5ae638386d61442e2f3ff">Obj::CAvoidComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00673">avoidcomponent.cpp:673</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa39e6fe5fdf1d6c48136ae26a7ad511e"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">Script::CStruct::GetChecksum</a></div><div class="ttdeci">bool GetChecksum(uint32 nameChecksum, uint32 *p_checksum, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01658">struct.cpp:1658</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ab37069f5ecb0bab9cec330d926a9eeb4"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a></div><div class="ttdeci">const float PI</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00440">math.h:440</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a></div><div class="ttdeci">@ NO_ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00015">scriptdefs.h:15</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_slerp_interpolator_html_a3c719458232ccc1f336ef075a094a03f"><div class="ttname"><a href="../../d7/d2a/class_mth_1_1_slerp_interpolator.html#a3c719458232ccc1f336ef075a094a03f">Mth::SlerpInterpolator::getMatrix</a></div><div class="ttdeci">void getMatrix(Matrix *result, float delta)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df7/slerp_8cpp_source.html#l00191">slerp.cpp:191</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a473dbe37c34403b6a03c9f15963eac62"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a473dbe37c34403b6a03c9f15963eac62">Obj::CCompositeObject::GetDisplayMatrix</a></div><div class="ttdeci">Mth::Matrix &amp; GetDisplayMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00094">compositeobject.h:94</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html_acea90d23a9d7c62758e7efdbe19c1019"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html#acea90d23a9d7c62758e7efdbe19c1019">Mdl::Skate::GetLocalSkater</a></div><div class="ttdeci">Obj::CSkater * GetLocalSkater(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dc5/skate_8cpp_source.html#l01567">skate.cpp:1567</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2ac24e7e3a2765335df4beb94d4c728837">Mth::POS</a></div><div class="ttdeci">@ POS</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00049">matrix.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_ae3f9625c30c862705c5a8921fd25a8cd"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ae3f9625c30c862705c5a8921fd25a8cd">Obj::CAvoidComponent::m_avoidAlpha</a></div><div class="ttdeci">float m_avoidAlpha</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00061">avoidcomponent.h:61</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_aacb2be1b98fd3b26fa444a93fde64508"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#aacb2be1b98fd3b26fa444a93fde64508">Obj::CMotionComponent::m_movingobj_flags</a></div><div class="ttdeci">int m_movingobj_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00162">motioncomponent.h:162</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a952f40d99323d28b3ca2f55567edfa85"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">Obj::CBaseComponent::GetObject</a></div><div class="ttdeci">CCompositeObject * GetObject() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00059">basecomponent.h:59</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">Obj::CBaseComponent::MF_NOT_EXECUTED</a></div><div class="ttdeci">@ MF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00042">basecomponent.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html_ad36251e918d3e3df80be438f3120aa1e"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html#ad36251e918d3e3df80be438f3120aa1e">Obj::CMotionComponent::GetPathOb</a></div><div class="ttdeci">CPathOb * GetPathOb()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dc5/motioncomponent_8cpp_source.html#l01046">motioncomponent.cpp:1046</a></div></div>
+<div class="ttc" id="aavoidcomponent_8h_html"><div class="ttname"><a href="../../d5/d74/avoidcomponent_8h.html">avoidcomponent.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a269ae2fa628a2a388f98cd852619875e"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a269ae2fa628a2a388f98cd852619875e">Mth::Matrix::GetPos</a></div><div class="ttdeci">Vector &amp; GetPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00126">matrix.h:126</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="a_skeleton_8h_html"><div class="ttname"><a href="../../d9/d28/_skeleton_8h.html">Skeleton.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html_af8d7bb0da7cae51af98763c8238caa3f"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html#af8d7bb0da7cae51af98763c8238caa3f">Obj::CAnimationComponent::AnimDuration</a></div><div class="ttdeci">float AnimDuration(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2e/animationcomponent_8cpp_source.html#l00812">animationcomponent.cpp:812</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_acae6f1a5a02d406ab56292ec3fcfaefd"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">Script::CStruct::GetFloat</a></div><div class="ttdeci">bool GetFloat(uint32 nameChecksum, float *p_floatValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01503">struct.cpp:1503</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html_af4b5f35c062d0ef56411555f5605f541"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html#af4b5f35c062d0ef56411555f5605f541">Obj::CAnimationComponent::PlaySequence</a></div><div class="ttdeci">void PlaySequence(uint32 checksum, float BlendPeriod=0.3f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2e/animationcomponent_8cpp_source.html#l01065">animationcomponent.cpp:1065</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_af7df5d2adde574ccb7f4060ec9733446"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#af7df5d2adde574ccb7f4060ec9733446">Mth::CBBox::Within</a></div><div class="ttdeci">bool Within(const Vector &amp;point) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00311">geometry.h:311</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_line_html"><div class="ttname"><a href="../../da/db3/class_mth_1_1_line.html">Mth::Line</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00060">geometry.h:60</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="ap__nxparticlenewflat_8h_html_af6ad1a8181ececb75a619331202b7c8e"><div class="ttname"><a href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d43/p__nxparticlenewflat_8h_source.html#l00015">p_nxparticlenewflat.h:15</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="askeletoncomponent_8h_html"><div class="ttname"><a href="../../d9/d3a/skeletoncomponent_8h.html">skeletoncomponent.h</a></div></div>
+<div class="ttc" id="afeeler_8h_html"><div class="ttname"><a href="../../d1/d74/feeler_8h.html">feeler.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="anamespace_script_html_ac722bae4acb2ce23888cb428818f12af"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a></div><div class="ttdeci">int GetInt(uint32 checksum, bool assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00740">symboltable.cpp:740</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00118">geometry.h:118</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a152c6acfd09974cccdef65ef60e325c0"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a152c6acfd09974cccdef65ef60e325c0">Obj::get_jump_distance</a></div><div class="ttdeci">static float get_jump_distance(Script::CStruct *pParams, float rotAng)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00069">avoidcomponent.cpp:69</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a135b742a8e7cf843538171985a791418"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a135b742a8e7cf843538171985a791418">Obj::CAvoidComponent::play_appropriate_jump_anim</a></div><div class="ttdeci">void play_appropriate_jump_anim(float rotAngle, Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00150">avoidcomponent.cpp:150</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a7b9b1c529db03b284ac3fce278234cc2a1f6853dedc346e614f85bd3ff017c2c2"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a7b9b1c529db03b284ac3fce278234cc2a1f6853dedc346e614f85bd3ff017c2c2">Mth::AT</a></div><div class="ttdeci">@ AT</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00049">matrix.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a9cafedd90b8161a1ec356bafde33810a"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a9cafedd90b8161a1ec356bafde33810a">Obj::CAvoidComponent::m_avoidOriginalPos</a></div><div class="ttdeci">Mth::Vector m_avoidOriginalPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00062">avoidcomponent.h:62</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a1b52611b0adc80a3746c93bd0ea82164"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a1b52611b0adc80a3746c93bd0ea82164">Obj::CAvoidComponent::m_jumpTime</a></div><div class="ttdeci">float m_jumpTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00058">avoidcomponent.h:58</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a7e643bbb3842cb35660ad62d1f7f8390"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a7e643bbb3842cb35660ad62d1f7f8390">Obj::CAvoidComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00297">avoidcomponent.cpp:297</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_adcc6afe56bd4b9c32aa1d4507e7872f7"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#adcc6afe56bd4b9c32aa1d4507e7872f7">Obj::CAvoidComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00335">avoidcomponent.cpp:335</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a80b664031826c2cdaddb078404d8e313"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a80b664031826c2cdaddb078404d8e313">Obj::CAvoidComponent::m_avoidOriginalTargetPos</a></div><div class="ttdeci">Mth::Vector m_avoidOriginalTargetPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d74/avoidcomponent_8h_source.html#l00063">avoidcomponent.h:63</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">Obj::CBaseComponent::MF_TRUE</a></div><div class="ttdeci">@ MF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00041">basecomponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_ad536c47331ddf364be061e9b4f9ba055"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ad536c47331ddf364be061e9b4f9ba055">Obj::CAvoidComponent::~CAvoidComponent</a></div><div class="ttdeci">virtual ~CAvoidComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00317">avoidcomponent.cpp:317</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a5949e7e0115753ab3bfd296a19cef118"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a5949e7e0115753ab3bfd296a19cef118">Mth::CBBox::SetMax</a></div><div class="ttdeci">void SetMax(const Vector &amp;max)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00290">geometry.h:290</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_motion_component_html"><div class="ttname"><a href="../../d2/d98/class_obj_1_1_c_motion_component.html">Obj::CMotionComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d64/motioncomponent_8h_source.html#l00085">motioncomponent.h:85</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_ab2229bc091a3a5c4c80b42b97aa1b476"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#ab2229bc091a3a5c4c80b42b97aa1b476">Obj::CAvoidComponent::jump</a></div><div class="ttdeci">bool jump(Mth::Matrix &amp;mat0, Mth::Matrix &amp;mat1, float rotAng, float jumpDist, float maxHerdDistance)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00355">avoidcomponent.cpp:355</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00044">animationcomponent.h:44</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a71fb23705a61063b9866647a420a80a6"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Mth::Matrix::Transform</a></div><div class="ttdeci">Vector Transform(const Vector &amp;src) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00693">matrix.inl:693</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_acb60b78cb120aaaa883df1fd4d4d15bf"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">Obj::CBaseComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00113">basecomponent.cpp:113</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_avoid_component_html_a351c74e4ed1294865851385c79c08066"><div class="ttname"><a href="../../d5/dc9/class_obj_1_1_c_avoid_component.html#a351c74e4ed1294865851385c79c08066">Obj::CAvoidComponent::CAvoidComponent</a></div><div class="ttdeci">CAvoidComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00307">avoidcomponent.cpp:307</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html">CFeeler</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d74/feeler_8h_source.html#l00029">feeler.h:29</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ab20a7a389d2a6388ef6825d61b3b2322"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ab20a7a389d2a6388ef6825d61b3b2322">Mth::GetAngle</a></div><div class="ttdeci">float GetAngle(const Matrix &amp;currentOrientation, const Vector &amp;desiredHeading, int headingAxis, int rotAxis)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/vector_8cpp_source.html#l00279">vector.cpp:279</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_line_html_a4bc5ff046792a776b7b0f9e5ea751200"><div class="ttname"><a href="../../da/db3/class_mth_1_1_line.html#a4bc5ff046792a776b7b0f9e5ea751200">Mth::Line::m_start</a></div><div class="ttdeci">Vector m_start</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00082">geometry.h:82</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_acda36c205e8108a8235ebc91e67af10f"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#acda36c205e8108a8235ebc91e67af10f">Mth::CBBox::SetMin</a></div><div class="ttdeci">void SetMin(const Vector &amp;min)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00285">geometry.h:285</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a97b62c44fa0ff9823c90a7588a9627c0"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Vector</a></div><div class="ttdeci">Vector()</div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_c_feeler_html_aea1151612313752f5457aa1b15eca92b"><div class="ttname"><a href="../../dc/d35/class_c_feeler.html#aea1151612313752f5457aa1b15eca92b">CFeeler::GetCollision</a></div><div class="ttdeci">bool GetCollision(const Mth::Vector &amp;start, const Mth::Vector &amp;end, bool movables=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/df1/feeler_8cpp_source.html#l00366">feeler.cpp:366</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html">Obj::CSkater</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d91/skater_8h_source.html#l00263">skater.h:263</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a></div><div class="ttdeci">@ ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00016">scriptdefs.h:16</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ac76db42c879254b5ea1d63baf045f9a5"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ac76db42c879254b5ea1d63baf045f9a5">Mth::RadToDeg</a></div><div class="ttdeci">float RadToDeg(float radians)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00457">math.h:457</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a4829497c960aa6d670291025162364d0"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a4829497c960aa6d670291025162364d0">Mth::DistanceSqr</a></div><div class="ttdeci">float DistanceSqr(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01059">vector.inl:1059</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a81a9aa039d5ba3df7f09a5671f4e0bcd"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a81a9aa039d5ba3df7f09a5671f4e0bcd">Obj::get_jump_direction</a></div><div class="ttdeci">static int get_jump_direction(float rotAng)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00048">avoidcomponent.cpp:48</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a01156f07dd0c91dffdb0ab171268eca2"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a01156f07dd0c91dffdb0ab171268eca2">Obj::collides_with</a></div><div class="ttdeci">static bool collides_with(Mth::Vector &amp;vec0, Mth::Vector &amp;vec1)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00106">avoidcomponent.cpp:106</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a5a88e8aff5b7bdd63a88cd62c1485814"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a5a88e8aff5b7bdd63a88cd62c1485814">Mth::DegToRad</a></div><div class="ttdeci">float DegToRad(float degrees)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00447">math.h:447</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_line_html_a5954350641b480cd8048e8aee11a2587"><div class="ttname"><a href="../../da/db3/class_mth_1_1_line.html#a5954350641b480cd8048e8aee11a2587">Mth::Line::m_end</a></div><div class="ttdeci">Vector m_end</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00082">geometry.h:82</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a8c1b4496c2969215ec40675481452c35"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a8c1b4496c2969215ec40675481452c35">Obj::ped_debug_on</a></div><div class="ttdeci">bool ped_debug_on()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d1d/avoidcomponent_8cpp_source.html#l00038">avoidcomponent.cpp:38</a></div></div>
+<div class="ttc" id="aanimationcomponent_8h_html"><div class="ttname"><a href="../../dc/d8b/animationcomponent_8h.html">animationcomponent.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../de/d1d/avoidcomponent_8cpp.html">avoidcomponent.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

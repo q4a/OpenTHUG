@@ -1,0 +1,639 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/NX/vu1context.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/dd9/vu1context_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">vu1context.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/dd9/vu1context_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment.                          **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 2000 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        THPS4                                                   **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         vu1context                                              **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      vu1context.cpp                                          **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     00/00/00    -   mrd                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    sends contextual setup data to vu1 float registers      **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;geomnode.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d6/d4b/vu1context_8h.html">vu1context.h</a>&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/d49/vu1code_8h.html">vu1code.h</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;render.h&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d95/dma_8h.html">dma.h</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d4/dde/vif_8h.html">vif.h</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d0/d2a/gif_8h.html">gif.h</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d7/db7/gs_8h.html">gs.h</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;light.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">**                            Private Functions                             **</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">**                            Public Functions                              **</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context::CVu1Context</a>()</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    Dbg_Assert(<span class="stringliteral">&quot;Don&#39;t use this constructor!&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ab0c372d1b0f14dbceeedb6c21e63a9">CVu1Context::Init</a>()</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *dma_ploc = <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">//dma::pLoc = (uint8 *)&amp;m_stmask;</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">vu1::Loc</a> = 0;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// set vifcodes</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#abfd4d5302b919ba203ede96d1d07ca8c">vif::STMASK</a>(0);             <span class="comment">// mp_light_group = NULL; in a very cheeky way</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#acfbb123e2487087243ff386405ec1776">vif::STCYCL</a>(1,1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0,V4_32,STD_CTXT_SIZE+1,REL,UNSIGNED,0);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// set m_giftag</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a3f6f09d37c130d1f679d4848002141c3">gif::Tag1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdaede26d27403c0c3c5c614c82014f0ace">gs::NOP</a>, 1, PACKED, 0, 0, 0, STD_CTXT_SIZE, VU1_ADDR(L_VF12));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">  101</a></span>&#160;    <span class="comment">//SetExtended(false);</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> = dma_ploc;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ab0c372d1b0f14dbceeedb6c21e63a9">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">CVu1Context::InitExtended</a>()</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *dma_ploc = <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">//dma::pLoc = (uint8 *)&amp;m_stmask;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> = (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">m_stmask</a>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">vu1::Loc</a> = 0;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="comment">// set vifcodes</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#abfd4d5302b919ba203ede96d1d07ca8c">vif::STMASK</a>(0);             <span class="comment">// mp_light_group = NULL; in a very cheeky way</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#acfbb123e2487087243ff386405ec1776">vif::STCYCL</a>(1,1);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">vif::UNPACK</a>(0,V4_32,EXT_CTXT_SIZE+1,REL,UNSIGNED,0);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="comment">// set m_giftag</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="../../d5/df5/class_nx_ps2_1_1gif.html#a3f6f09d37c130d1f679d4848002141c3">gif::Tag1</a>(<a class="code" href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdaede26d27403c0c3c5c614c82014f0ace">gs::NOP</a>, 1, PACKED, 0, 0, 0, EXT_CTXT_SIZE, VU1_ADDR(L_VF12));</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">SetExtended</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">update_lights</a>();</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> = dma_ploc;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">  129</a></span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context::CVu1Context</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a> &amp;ctxt)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// Mick: Since this does not contain any pointers, it&#39;s safe to just copy it</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// this cuts down on unwarrented initialization of the various vectors and stuff</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// and should be fast as we are quad word aligned.</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// Garrett: Even though we have a pointer to a light group, it is still OK to</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="comment">// use memcpy() since this class doesn&#39;t manage the instance it points to.</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">if</span> (ctxt.<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>())</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    {</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        memcpy(<span class="keyword">this</span>, &amp;ctxt, (EXT_CTXT_SIZE+7)*16);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="comment">// reduced version</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        memcpy(<span class="keyword">this</span>, &amp;ctxt, (STD_CTXT_SIZE+7)*16);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0bd7d5d446c2ca6746d474cd70751679">CVu1Context::StandardSetup</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> &amp;localToWorld)</div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe1ed52343c10879b565d5863ca4b0e4">  153</a></span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="comment">// get the local to camera matrix</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a> = localToWorld * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#adc1194a2f7c7b26ae59096ca2f944fe8">render::WorldToCamera</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="comment">// get the massaged matrix values</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> inv = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    inv.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#aee1cd9f2c3b72c47b2950a9912d90d12">InvertUniform</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a> = -inv[3] * SUB_INCH_PRECISION;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[0] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[0]));</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[1] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[1]));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[2] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[2]));</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> adjusted_matrix = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">//m_adjustedMatrix = m_matrix;</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    adjusted_matrix[3] = -<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a> * <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a> * RECIPROCAL_SUB_INCH_PRECISION;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// generate the vu1 context data</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">//m_localToFrustum  = m_adjustedMatrix * render::CameraToFrustum;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> temp;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    sceVu0MulMatrix((sceVu0FVECTOR*)&amp;temp,</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    (sceVu0FVECTOR*)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a9d024b75f8c5b58698cb115c19425b47">render::CameraToFrustum</a>,</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0bd7d5d446c2ca6746d474cd70751679">  174</a></span>&#160;                    (sceVu0FVECTOR*)&amp;adjusted_matrix);      </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">//m_localToFrustum = temp;</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">//  m_localToViewport = m_localToFrustum * render::FrustumToViewport;</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    sceVu0MulMatrix((sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>,</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                    (sceVu0FVECTOR*)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a0e3ca227c30a6f3654f0134b692de4a2">render::FrustumToViewport</a>,</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                    (sceVu0FVECTOR*)&amp;temp);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <span class="comment">// Update light directions</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>())</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">update_lights</a>();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;CVu1Context *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8e2d3ceb5a4c76f54879afb6a276c3f5">CVu1Context::Localise</a>()</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#afd2bb91ecd857abb781e3bb205a9dd71">dma::SetList</a>(NULL);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a> *p_new_context = (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>*)<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>())</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        memcpy(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>, <span class="keyword">this</span>, <span class="keyword">sizeof</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>));</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> += <span class="keyword">sizeof</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="comment">// reduced version</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        memcpy(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>, <span class="keyword">this</span>, (STD_CTXT_SIZE+7)*16);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> += (STD_CTXT_SIZE+7)*16;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">return</span> p_new_context;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;}</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8e2d3ceb5a4c76f54879afb6a276c3f5">  213</a></span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a> *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0930394ed3b1057660507ed15a9f5130">CVu1Context::LocaliseExtend</a>()</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#afd2bb91ecd857abb781e3bb205a9dd71">dma::SetList</a>(NULL);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a> *p_new_context = (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a>*)<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>())</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        memcpy(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>, <span class="keyword">this</span>, <span class="keyword">sizeof</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">CVu1Context</a>));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    }</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        memcpy(<a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a>, <span class="keyword">this</span>, (STD_CTXT_SIZE+7)*16);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        p_new_context-&gt;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">InitExtended</a>();</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    <a class="code" href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">dma::pLoc</a> += <span class="keyword">sizeof</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">CVu1Context</a>);</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160; </div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">return</span> p_new_context;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;}</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160; </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0930394ed3b1057660507ed15a9f5130">  236</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a5c3c0adc3c33ca9b568e25adc98a2af6">CVu1Context::HierarchicalSetup</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> &amp;localToParent)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;{</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    <span class="comment">// get the local to camera matrix</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a> = localToParent * <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    <span class="comment">// get the massaged matrix values</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> temp = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a> = -(temp.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#aee1cd9f2c3b72c47b2950a9912d90d12">InvertUniform</a>())[3] * SUB_INCH_PRECISION;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[0] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[0]));</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[1] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[1]));</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[2] = float(<span class="keywordtype">int</span>(<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[2]));</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> adjusted_matrix = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="comment">//m_adjustedMatrix = m_matrix;</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    adjusted_matrix[3] = -<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a> * <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a> * RECIPROCAL_SUB_INCH_PRECISION;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="comment">// generate the vu1 context data</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">//  m_localToFrustum  = m_adjustedMatrix * render::CameraToFrustum;</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    sceVu0MulMatrix((sceVu0FVECTOR*)&amp;temp,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                    (sceVu0FVECTOR*)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a9d024b75f8c5b58698cb115c19425b47">render::CameraToFrustum</a>,</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    (sceVu0FVECTOR*)&amp;adjusted_matrix);      </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">//m_localToFrustum = temp;</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a5c3c0adc3c33ca9b568e25adc98a2af6">  258</a></span>&#160;    </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">//  m_localToViewport = m_localToFrustum * render::FrustumToViewport;</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    sceVu0MulMatrix((sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                    (sceVu0FVECTOR*)&amp;<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a0e3ca227c30a6f3654f0134b692de4a2">render::FrustumToViewport</a>,</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    (sceVu0FVECTOR*)&amp;temp);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="comment">// Update light directions</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">IsExtended</a>())</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">update_lights</a>();</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    }</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">// Mick: This is taking 1.5% of our precious CPU time</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">CVu1Context::update_lights</a>()</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;{</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> temp;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    temp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>].Set(0.0f,0.0f,0.0f,1.0f);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    <span class="comment">// light vectors</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>)</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    {</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        temp[0] = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">GetDirection</a>(0);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        temp[1] = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">GetDirection</a>(1);</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        temp[2] = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">GetDirection</a>(2);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        temp *= <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#adc1194a2f7c7b26ae59096ca2f944fe8">render::WorldToCamera</a>;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        temp.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a6a0b46cb753a00a8943e045163020294">Transpose</a>();</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        sceVu0MulMatrix((sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">m_lightVecsX</a>,</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                        (sceVu0FVECTOR*)&amp;temp,</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                        (sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>);     </div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">m_ambientColour</a> = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">GetAmbientColor</a>() * 1.0f/128.0f;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">m_lightColour0</a>  = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">GetDiffuseColor</a>(0) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">m_lightColour1</a>  = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">GetDiffuseColor</a>(1) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00294"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">  294</a></span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">m_lightColour2</a>  = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a>-&gt;<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">GetDiffuseColor</a>(2) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    }</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        temp[0] = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">CLightGroup::sGetDefaultDirection</a>(0);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        temp[1] = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">CLightGroup::sGetDefaultDirection</a>(1);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        temp[2] = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">CLightGroup::sGetDefaultDirection</a>(2);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        temp *= <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#adc1194a2f7c7b26ae59096ca2f944fe8">render::WorldToCamera</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        temp.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a6a0b46cb753a00a8943e045163020294">Transpose</a>();</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        sceVu0MulMatrix((sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">m_lightVecsX</a>,</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                        (sceVu0FVECTOR*)&amp;temp,</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        (sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>);     </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">m_ambientColour</a> = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">CLightGroup::sGetDefaultAmbientColor</a>() * 1.0f/128.0f;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">m_lightColour0</a>  = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">CLightGroup::sGetDefaultDiffuseColor</a>(0) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">m_lightColour1</a>  = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">CLightGroup::sGetDefaultDiffuseColor</a>(1) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">m_lightColour2</a>  = <a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">CLightGroup::sGetDefaultDiffuseColor</a>(2) * 1.0f/128.0f;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160; </div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a98dde3ca3d9bbf9b006d541546cee83a">CVu1Context::SetupAsSky</a>()</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;{</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    <span class="comment">// get the local to camera matrix</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a> = <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#adc1194a2f7c7b26ae59096ca2f944fe8">render::WorldToCamera</a>;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    <span class="comment">// get the massaged matrix values</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>[3].Set(0,0,0,1);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aeb3fc85704c5e3811b7dd4bebff78b3f">Set</a>(0,0,0,1);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> adjusted_matrix = <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="comment">//m_adjustedMatrix = m_matrix;</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    adjusted_matrix.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a016200b05a3bf81317834f793e2151d9">ScaleLocal</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>(RECIPROCAL_SUB_INCH_PRECISION, RECIPROCAL_SUB_INCH_PRECISION, RECIPROCAL_SUB_INCH_PRECISION, 1.0f));</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="comment">// generate the vu1 context data</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">//m_viewportScale   = render::SkyViewportScale;</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="comment">//m_viewportOffset  = render::SkyViewportOffset;</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <span class="comment">//m_localToFrustum  = adjusted_matrix * render::CameraToFrustum;</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a> = adjusted_matrix * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a9d024b75f8c5b58698cb115c19425b47">render::CameraToFrustum</a> * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#a94c95eefb76c3faa1c209628e8b856a3">render::SkyFrustumToViewport</a>;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1603c59e6937c84c57aeb4ea6870bf78">CVu1Context::AddZPush</a>(<span class="keywordtype">float</span> zPush)</div>
+<div class="line"><a name="l00341"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a98dde3ca3d9bbf9b006d541546cee83a">  341</a></span>&#160;{</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[0][2] += <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[0][3] * zPush * 16.0f * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#ac252bfe9ec9a1703f26f16a5fbdc061f">render::InverseViewportScale</a>[3];</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[1][2] += <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[1][3] * zPush * 16.0f * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#ac252bfe9ec9a1703f26f16a5fbdc061f">render::InverseViewportScale</a>[3];</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[2][2] += <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[2][3] * zPush * 16.0f * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#ac252bfe9ec9a1703f26f16a5fbdc061f">render::InverseViewportScale</a>[3];</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[3][2] += <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">m_localToViewport</a>[3][3] * zPush * 16.0f * <a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#ac252bfe9ec9a1703f26f16a5fbdc061f">render::InverseViewportScale</a>[3];</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aa5f2bfc3dc7e9cc811f52b30e37a9120">CVu1Context::WibbleUVs</a>(<span class="keywordtype">float</span> *<a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>, <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> Explicit)</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;{</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">if</span> (Explicit)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[8];</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[9];</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    {</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;        <span class="comment">// Get number of vblanks, but reduce it to 24 bits so we don&#39;t lose accuracy in the float conversion.</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;        <span class="comment">// This will introduce a glitch every 6 days, but that&#39;s preferrable to the loss of accuracy.</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <span class="keywordtype">int</span> vblanks = <a class="code" href="../../d1/d0d/namespace_tmr.html#a02647926685a8cce77c5cfe39793676c">Tmr::GetVblanks</a>() &amp; 0x00FFFFFF;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1603c59e6937c84c57aeb4ea6870bf78">  362</a></span>&#160;        <span class="comment">// convert to seconds as float</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <span class="keywordtype">float</span> t = (float)vblanks * (1.0f/60.0f);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <span class="keywordtype">float</span> angle;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;        <span class="comment">// u offset</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        angle = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[2] * t + <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[6];</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        angle -= (2.0f*<a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a>) * (<span class="keywordtype">float</span>)(int)(angle * (0.5f/<a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a>));     <span class="comment">// reduce angle mod 2pi</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[0] * t + <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[4] * sinf(angle);</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] += 8.0f;</div>
+<div class="line"><a name="l00371"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aa5f2bfc3dc7e9cc811f52b30e37a9120">  371</a></span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] -= (float)(((<span class="keywordtype">int</span>)<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] &gt;&gt; 4) &lt;&lt; 4);         <span class="comment">// reduce offset mod 16</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] &lt; 0.0f)                                          <span class="comment">// and put it in the range -8 to +8</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] += 8.0f;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[0] -= 8.0f;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        <span class="comment">// v offset</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        angle = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[3] * t + <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[7];</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        angle -= (2.0f*<a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a>) * (<span class="keywordtype">float</span>)(int)(angle * (0.5f/<a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a>));     <span class="comment">// reduce angle mod 2pi</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] = <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[1] * t + <a class="code" href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">pData</a>[5] * sinf(angle);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] += 8.0f;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] -= (float)(((<span class="keywordtype">int</span>)<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] &gt;&gt; 4) &lt;&lt; 4);         <span class="comment">// reduce offset mod 16</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] &lt; 0.0f)                                          <span class="comment">// and put it in the range -8 to +8</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] += 8.0f;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a>[1] -= 8.0f;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    }</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0e154c2c593e2f2afefaad0e020a6bd7">CVu1Context::SetShadowVecs</a>(<span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>)</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;{</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>  = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(0.0078125f, 0.0078125f, 0.0f, 0.0f);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">m_texOffset</a> = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(0.5f-0.0078125f*(<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#af647620d022198b747cb9ab68f77ee5e">render::ShadowCameraPosition</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>]+RECIPROCAL_SUB_INCH_PRECISION*<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>]),</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                              0.5f-0.0078125f*(<a class="code" href="../../df/dae/namespace_nx_ps2_1_1render.html#af647620d022198b747cb9ab68f77ee5e">render::ShadowCameraPosition</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]+RECIPROCAL_SUB_INCH_PRECISION*<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]),</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                              -((<a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>+36.0f)+RECIPROCAL_SUB_INCH_PRECISION*<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">m_translation</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>]),</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;                              0.0f);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160; </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe3fcdeb5aa62c7608d668b636e1c3eb">CVu1Context::SetColour</a>(CGeomNode *pNode)</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;{</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba = pNode-&gt;GetColor();</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] = (float)(rgba     &amp; 0xFF) * 0.0078125f;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] = (float)(rgba&gt;&gt; 8 &amp; 0xFF) * 0.0078125f;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] = (float)(rgba&gt;&gt;16 &amp; 0xFF) * 0.0078125f;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = (float)(rgba&gt;&gt;24       ) * 0.0078125f;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#af42b635bde15e622f6de976f93866769">CVu1Context::GetColour</a>()</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;{</div>
+<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0e154c2c593e2f2afefaad0e020a6bd7">  414</a></span>&#160;    <span class="keywordflow">return</span> &amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">m_texScale</a>;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;}</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160; </div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a44dbb09929eab2511019aa32f55e8ae4">CVu1Context::SetLights</a>(<a class="code" href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">CLightGroup</a> *pLightGroup)</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;{</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">mp_light_group</a> = pLightGroup;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">update_lights</a>();</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;}</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe3fcdeb5aa62c7608d668b636e1c3eb">  424</a></span>&#160; </div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a014ea56ddb060b5fa99ec304ac128cff">CVu1Context::SetReflectionVecs</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a> uScale, <a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a> vScale)</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;{</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> temp;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordtype">float</span> uf,vf;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    uf = float(uScale)*(0.5f/256.0f);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    vf = float(vScale)*(0.5f/256.0f);</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    temp[0] = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(uf, 0,  0,  0);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    temp[1] = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(0,  vf, 0,  0);</div>
+<div class="line"><a name="l00434"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#af42b635bde15e622f6de976f93866769">  434</a></span>&#160;    temp[2] = <a class="code" href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Mth::Vector</a>(0,  0,  1.4,0);</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    temp.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a6a0b46cb753a00a8943e045163020294">Transpose</a>();</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    sceVu0MulMatrix((sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a2ae5445db83a80d3838b16a295b92f60">m_reflVecsX</a>,</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                    (sceVu0FVECTOR*)&amp;temp,</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                    (sceVu0FVECTOR*)&amp;<a class="code" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">m_matrix</a>);     </div>
+<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a44dbb09929eab2511019aa32f55e8ae4">  440</a></span>&#160;}</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160; </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160; </div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="line" href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a014ea56ddb060b5fa99ec304ac128cff">  447</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;} <span class="comment">// namespace NxPs2</span></div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a5c3c0adc3c33ca9b568e25adc98a2af6"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a5c3c0adc3c33ca9b568e25adc98a2af6">NxPs2::CVu1Context::HierarchicalSetup</a></div><div class="ttdeci">void HierarchicalSetup(Mth::Matrix &amp;localToParent)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00258">vu1context.cpp:258</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0930394ed3b1057660507ed15a9f5130"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0930394ed3b1057660507ed15a9f5130">NxPs2::CVu1Context::LocaliseExtend</a></div><div class="ttdeci">CVu1Context * LocaliseExtend()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00236">vu1context.cpp:236</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a98dde3ca3d9bbf9b006d541546cee83a"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a98dde3ca3d9bbf9b006d541546cee83a">NxPs2::CVu1Context::SetupAsSky</a></div><div class="ttdeci">void SetupAsSky()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00341">vu1context.cpp:341</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html">NxPs2</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l00046">CollTriData.cpp:46</a></div></div>
+<div class="ttc" id="avu1context_8h_html"><div class="ttname"><a href="../../d6/d4b/vu1context_8h.html">vu1context.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8e2d3ceb5a4c76f54879afb6a276c3f5"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8e2d3ceb5a4c76f54879afb6a276c3f5">NxPs2::CVu1Context::Localise</a></div><div class="ttdeci">CVu1Context * Localise()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00213">vu1context.cpp:213</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_adc1194a2f7c7b26ae59096ca2f944fe8"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#adc1194a2f7c7b26ae59096ca2f944fe8">NxPs2::render::WorldToCamera</a></div><div class="ttdeci">Mth::Matrix WorldToCamera</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01903">render.cpp:1903</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a0e3ca227c30a6f3654f0134b692de4a2"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a0e3ca227c30a6f3654f0134b692de4a2">NxPs2::render::FrustumToViewport</a></div><div class="ttdeci">Mth::Matrix FrustumToViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01912">render.cpp:1912</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_afac6e468b8fb58fb4c22354eae566de3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afac6e468b8fb58fb4c22354eae566de3">NxPs2::CVu1Context::m_translation</a></div><div class="ttdeci">Mth::Vector m_translation</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00085">vu1context.h:85</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7da41dd1224967e6ea262ec3a4fa3a92"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7da41dd1224967e6ea262ec3a4fa3a92">NxPs2::CVu1Context::CVu1Context</a></div><div class="ttdeci">CVu1Context()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00101">vu1context.cpp:101</a></div></div>
+<div class="ttc" id="avif_8h_html"><div class="ttname"><a href="../../d4/dde/vif_8h.html">vif.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a1158f6dd26a789f4cd10a46775487868"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1158f6dd26a789f4cd10a46775487868">NxPs2::CVu1Context::m_texOffset</a></div><div class="ttdeci">Mth::Vector m_texOffset</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00105">vu1context.h:105</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html">NxPs2::CLightGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00037">light.h:37</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a02647926685a8cce77c5cfe39793676c"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a02647926685a8cce77c5cfe39793676c">Tmr::GetVblanks</a></div><div class="ttdeci">uint64 GetVblanks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00393">p_timer.cpp:393</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gs_html_a04490b223c1ce5d22603a22e36c1b1cdaede26d27403c0c3c5c614c82014f0ace"><div class="ttname"><a href="../../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdaede26d27403c0c3c5c614c82014f0ace">NxPs2::gs::NOP</a></div><div class="ttdeci">@ NOP</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/db7/gs_8h_source.html#l00562">gs.h:562</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a149ce7a79f75181ba06a2afbb306fd94"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a149ce7a79f75181ba06a2afbb306fd94">NxPs2::CLightGroup::sGetDefaultDirection</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDirection(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00345">light.h:345</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7aa660fc488adbe1e1c294c87173c299"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7aa660fc488adbe1e1c294c87173c299">NxPs2::CVu1Context::InitExtended</a></div><div class="ttdeci">void InitExtended()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00129">vu1context.cpp:129</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ab37069f5ecb0bab9cec330d926a9eeb4"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a></div><div class="ttdeci">const float PI</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00440">math.h:440</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1gif_html_a3f6f09d37c130d1f679d4848002141c3"><div class="ttname"><a href="../../d5/df5/class_nx_ps2_1_1gif.html#a3f6f09d37c130d1f679d4848002141c3">NxPs2::gif::Tag1</a></div><div class="ttdeci">static void Tag1(uint32 Regs, uint NReg, uint Flg, uint Prim, uint Pre, uint Eop, uint NLoop, uint Addr)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d5c/gif_8cpp_source.html#l00094">gif.cpp:94</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a016200b05a3bf81317834f793e2151d9"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a016200b05a3bf81317834f793e2151d9">Mth::Matrix::ScaleLocal</a></div><div class="ttdeci">Matrix &amp; ScaleLocal(const Vector &amp;scale)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00975">matrix.inl:975</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a></div><div class="ttdeci">@ W</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a1c53d4835627de1752f435c020bcc396"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a1c53d4835627de1752f435c020bcc396">NxPs2::CLightGroup::GetAmbientColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetAmbientColor() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00176">light.h:176</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a1603c59e6937c84c57aeb4ea6870bf78"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a1603c59e6937c84c57aeb4ea6870bf78">NxPs2::CVu1Context::AddZPush</a></div><div class="ttdeci">void AddZPush(float zPush)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00362">vu1context.cpp:362</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a3228a4ae95ab934aa1b031854e4dd9c7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a3228a4ae95ab934aa1b031854e4dd9c7">NxPs2::CVu1Context::SetExtended</a></div><div class="ttdeci">void SetExtended(bool yes)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00158">vu1context.h:158</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_acfbb123e2487087243ff386405ec1776"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#acfbb123e2487087243ff386405ec1776">NxPs2::vif::STCYCL</a></div><div class="ttdeci">static void STCYCL(uint16 WL, uint16 CL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00303">vif.h:303</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ad87d81e8b12cfe109b1b641f91425ab4"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ad87d81e8b12cfe109b1b641f91425ab4">NxPs2::CVu1Context::m_stmask</a></div><div class="ttdeci">uint32 m_stmask</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00088">vu1context.h:88</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a6988192c60fcb4f0f6a78f6a1e1c138f"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a6988192c60fcb4f0f6a78f6a1e1c138f">NxNgc::pData</a></div><div class="ttdeci">uint8 * pData</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d4b/import_8cpp_source.html#l00015">import.cpp:15</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_aeb3fc85704c5e3811b7dd4bebff78b3f"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#aeb3fc85704c5e3811b7dd4bebff78b3f">Mth::Vector::Set</a></div><div class="ttdeci">Vector &amp; Set(float cx=0.0f, float cy=0.0f, float cz=0.0f, float cw=1.0f)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00368">vector.inl:368</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a32acbe6c1db9a0c540c3dcb6d0bd6ee6"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a32acbe6c1db9a0c540c3dcb6d0bd6ee6">NxPs2::CLightGroup::sGetDefaultAmbientColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultAmbientColor()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00357">light.h:357</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8a2de3e8f380ebc4c2533314c09fa266"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8a2de3e8f380ebc4c2533314c09fa266">NxPs2::CVu1Context::update_lights</a></div><div class="ttdeci">void update_lights()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00294">vu1context.cpp:294</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a660bc0e33bec1286d2b58fa4529736d4"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a660bc0e33bec1286d2b58fa4529736d4">NxPs2::CLightGroup::GetDirection</a></div><div class="ttdeci">const Mth::Vector &amp; GetDirection(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00127">light.h:127</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a94c95eefb76c3faa1c209628e8b856a3"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a94c95eefb76c3faa1c209628e8b856a3">NxPs2::render::SkyFrustumToViewport</a></div><div class="ttdeci">Mth::Matrix SkyFrustumToViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01921">render.cpp:1921</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html">NxPs2::CVu1Context</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00047">vu1context.h:47</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_a925526d7f124f774f6844dd7c4209d92"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#a925526d7f124f774f6844dd7c4209d92">NxPs2::vif::UNPACK</a></div><div class="ttdeci">static void UNPACK(uint8 m, uint8 vnvl, uint8 SIZE, uint16 FLG, uint16 USN, uint16 ADDR)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00359">vif.h:359</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_afe3fcdeb5aa62c7608d668b636e1c3eb"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#afe3fcdeb5aa62c7608d668b636e1c3eb">NxPs2::CVu1Context::SetColour</a></div><div class="ttdeci">void SetColour(CGeomNode *pNode)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00424">vu1context.cpp:424</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_af42b635bde15e622f6de976f93866769"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#af42b635bde15e622f6de976f93866769">NxPs2::CVu1Context::GetColour</a></div><div class="ttdeci">Mth::Vector * GetColour()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00434">vu1context.cpp:434</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_aee1cd9f2c3b72c47b2950a9912d90d12"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#aee1cd9f2c3b72c47b2950a9912d90d12">Mth::Matrix::InvertUniform</a></div><div class="ttdeci">Matrix &amp; InvertUniform(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00588">matrix.inl:588</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_afd2bb91ecd857abb781e3bb205a9dd71"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#afd2bb91ecd857abb781e3bb205a9dd71">NxPs2::dma::SetList</a></div><div class="ttdeci">static void SetList(void *pGroup)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00303">dma.h:303</a></div></div>
+<div class="ttc" id="agif_8h_html"><div class="ttname"><a href="../../d0/d2a/gif_8h.html">gif.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_ac9c683389fc638b8ca257e9ff94966e7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#ac9c683389fc638b8ca257e9ff94966e7">NxPs2::CVu1Context::m_lightColour1</a></div><div class="ttdeci">Mth::Vector m_lightColour1</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00103">vu1context.h:103</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0608f0c5415957f939088f352c7f62d3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0608f0c5415957f939088f352c7f62d3">NxPs2::CVu1Context::m_localToViewport</a></div><div class="ttdeci">Mth::Matrix m_localToViewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00093">vu1context.h:93</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_ad546c56da8ad8fa7ad1f01dddd548c81"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#ad546c56da8ad8fa7ad1f01dddd548c81">NxPs2::CLightGroup::sGetDefaultDiffuseColor</a></div><div class="ttdeci">static const Mth::Vector &amp; sGetDefaultDiffuseColor(int idx)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00367">light.h:367</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_light_group_html_a0e7de1e9d1ce1ef84b862d953d946a6c"><div class="ttname"><a href="../../de/d2f/class_nx_ps2_1_1_c_light_group.html#a0e7de1e9d1ce1ef84b862d953d946a6c">NxPs2::CLightGroup::GetDiffuseColor</a></div><div class="ttdeci">const Mth::Vector &amp; GetDiffuseColor(int idx) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/de3/_n_g_p_s_2_n_x_2light_8h_source.html#l00191">light.h:191</a></div></div>
+<div class="ttc" id="ags_8h_html"><div class="ttname"><a href="../../d7/db7/gs_8h.html">gs.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a00de626d416ad0bd06babb8a89387a0d"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a00de626d416ad0bd06babb8a89387a0d">NxPs2::CVu1Context::m_lightColour0</a></div><div class="ttdeci">Mth::Vector m_lightColour0</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00102">vu1context.h:102</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0bd7d5d446c2ca6746d474cd70751679"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0bd7d5d446c2ca6746d474cd70751679">NxPs2::CVu1Context::StandardSetup</a></div><div class="ttdeci">void StandardSetup(Mth::Matrix &amp;localToWorld)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00174">vu1context.cpp:174</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_ac252bfe9ec9a1703f26f16a5fbdc061f"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#ac252bfe9ec9a1703f26f16a5fbdc061f">NxPs2::render::InverseViewportScale</a></div><div class="ttdeci">Mth::Vector InverseViewportScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01927">render.cpp:1927</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a21fa7ea55fbcd9915a50a315be66e40d"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a21fa7ea55fbcd9915a50a315be66e40d">NxPs2::CVu1Context::m_lightColour2</a></div><div class="ttdeci">Mth::Vector m_lightColour2</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00104">vu1context.h:104</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a77ec44161b7f667fdebf642ec538ba2f"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a77ec44161b7f667fdebf642ec538ba2f">NxPs2::CVu1Context::m_texScale</a></div><div class="ttdeci">Mth::Vector m_texScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00094">vu1context.h:94</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a44dbb09929eab2511019aa32f55e8ae4"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a44dbb09929eab2511019aa32f55e8ae4">NxPs2::CVu1Context::SetLights</a></div><div class="ttdeci">void SetLights(CLightGroup *pLightGroup)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00440">vu1context.cpp:440</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_a9d024b75f8c5b58698cb115c19425b47"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#a9d024b75f8c5b58698cb115c19425b47">NxPs2::render::CameraToFrustum</a></div><div class="ttdeci">Mth::Matrix CameraToFrustum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01910">render.cpp:1910</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_aa5f2bfc3dc7e9cc811f52b30e37a9120"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#aa5f2bfc3dc7e9cc811f52b30e37a9120">NxPs2::CVu1Context::WibbleUVs</a></div><div class="ttdeci">void WibbleUVs(float *pData, uint Explicit)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00371">vu1context.cpp:371</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a2ae5445db83a80d3838b16a295b92f60"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a2ae5445db83a80d3838b16a295b92f60">NxPs2::CVu1Context::m_reflVecsX</a></div><div class="ttdeci">Mth::Vector m_reflVecsX</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00095">vu1context.h:95</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a8426a81d60b20b96488a734e21135312"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a8426a81d60b20b96488a734e21135312">NxPs2::CVu1Context::m_lightVecsX</a></div><div class="ttdeci">Mth::Vector m_lightVecsX</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00098">vu1context.h:98</a></div></div>
+<div class="ttc" id="avector_8h_html_a97b62c44fa0ff9823c90a7588a9627c0"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a97b62c44fa0ff9823c90a7588a9627c0">Vector</a></div><div class="ttdeci">Vector()</div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a014ea56ddb060b5fa99ec304ac128cff"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a014ea56ddb060b5fa99ec304ac128cff">NxPs2::CVu1Context::SetReflectionVecs</a></div><div class="ttdeci">void SetReflectionVecs(sint16 uScale, sint16 vScale)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00447">vu1context.cpp:447</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_1_1render_html_af647620d022198b747cb9ab68f77ee5e"><div class="ttname"><a href="../../df/dae/namespace_nx_ps2_1_1render.html#af647620d022198b747cb9ab68f77ee5e">NxPs2::render::ShadowCameraPosition</a></div><div class="ttdeci">Mth::Vector ShadowCameraPosition</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d65/_n_g_p_s_2_n_x_2render_8cpp_source.html#l01939">render.cpp:1939</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1dma_html_a3c9e76265e24c90c6972d0f4a70ea38f"><div class="ttname"><a href="../../d7/d08/class_nx_ps2_1_1dma.html#a3c9e76265e24c90c6972d0f4a70ea38f">NxPs2::dma::pLoc</a></div><div class="ttdeci">static uint8 * pLoc</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d95/dma_8h_source.html#l00104">dma.h:104</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7ab0c372d1b0f14dbceeedb6c21e63a9"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ab0c372d1b0f14dbceeedb6c21e63a9">NxPs2::CVu1Context::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00107">vu1context.cpp:107</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vif_html_abfd4d5302b919ba203ede96d1d07ca8c"><div class="ttname"><a href="../../d5/db1/class_nx_ps2_1_1vif.html#abfd4d5302b919ba203ede96d1d07ca8c">NxPs2::vif::STMASK</a></div><div class="ttdeci">static void STMASK(uint32 MASK)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/vif_8h_source.html#l00325">vif.h:325</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a0e154c2c593e2f2afefaad0e020a6bd7"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a0e154c2c593e2f2afefaad0e020a6bd7">NxPs2::CVu1Context::SetShadowVecs</a></div><div class="ttdeci">void SetShadowVecs(float y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dd9/vu1context_8cpp_source.html#l00414">vu1context.cpp:414</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a325faf0e4136296ff3ab7773e69f9ed0"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a325faf0e4136296ff3ab7773e69f9ed0">NxPs2::CVu1Context::IsExtended</a></div><div class="ttdeci">bool IsExtended() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00171">vu1context.h:171</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a9ae7240b45546d52b43d44491523d817"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a9ae7240b45546d52b43d44491523d817">NxPs2::CVu1Context::m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00084">vu1context.h:84</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a7ce1937140ab84599bb12d4a5fa49ba3"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a7ce1937140ab84599bb12d4a5fa49ba3">NxPs2::CVu1Context::mp_light_group</a></div><div class="ttdeci">CLightGroup * mp_light_group</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00089">vu1context.h:89</a></div></div>
+<div class="ttc" id="avu1code_8h_html"><div class="ttname"><a href="../../d4/d49/vu1code_8h.html">vu1code.h</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1vu1_html_a107c8ecad53ae5b5974fb40164781698"><div class="ttname"><a href="../../da/d39/class_nx_ps2_1_1vu1.html#a107c8ecad53ae5b5974fb40164781698">NxPs2::vu1::Loc</a></div><div class="ttdeci">static uint Loc</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d0f/vu1_8h_source.html#l00045">vu1.h:45</a></div></div>
+<div class="ttc" id="aclass_nx_ps2_1_1_c_vu1_context_html_a50abe5d090ab053d3ccf32bc7ca45790"><div class="ttname"><a href="../../d9/d43/class_nx_ps2_1_1_c_vu1_context.html#a50abe5d090ab053d3ccf32bc7ca45790">NxPs2::CVu1Context::m_ambientColour</a></div><div class="ttdeci">Mth::Vector m_ambientColour</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d4b/vu1context_8h_source.html#l00101">vu1context.h:101</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a74df79fde3c518e55b29ce6360a9c76e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a></div><div class="ttdeci">signed short sint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00139">Defines.h:139</a></div></div>
+<div class="ttc" id="adma_8h_html"><div class="ttname"><a href="../../d9/d95/dma_8h.html">dma.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a6a0b46cb753a00a8943e045163020294"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a6a0b46cb753a00a8943e045163020294">Mth::Matrix::Transpose</a></div><div class="ttdeci">Matrix &amp; Transpose(const Matrix &amp;src)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00659">matrix.inl:659</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../dir_d36232a09c8cca242d43edff5844a1f7.html">NX</a></li><li class="navelem"><a class="el" href="../../d4/dd9/vu1context_8cpp.html">vu1context.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

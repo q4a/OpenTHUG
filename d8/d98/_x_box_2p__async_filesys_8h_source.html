@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/File/XBox/p_AsyncFilesys.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d8/d98/_x_box_2p__async_filesys_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_AsyncFilesys.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d98/_x_box_2p__async_filesys_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        Sys Library                                             **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         File                                                    **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  Created:        10/11/02    -   grj                                     **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  File name:      core/sys/p_AsyncFilesys.h                                   **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __SYS_FILE_P_ASYNC_FILESYS_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __SYS_FILE_P_ASYNC_FILESYS_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d6c/_async_filesys_8h.html">sys/file/AsyncFilesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d10/namespace_file.html">File</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">**                               Type Defines                               **</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">class </span>CXboxAsyncFileHandle : <span class="keyword">public</span> CAsyncFileHandle</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html">   61</a></span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae34df3c4690f1a62f64dd5dd54bf5dd9">CXboxAsyncFileHandle</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">virtual</span>                 <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#adea13575b63bdf07a51cc677a57bcdef">~CXboxAsyncFileHandle</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> VOID CALLBACK    <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae10f64929c8700226c80e009d37a9072">sAsyncFileReadTimerAPCProc</a>( LPVOID lpArgToCompletionRoutine, DWORD dwTimerLowValue, DWORD dwTimerHighValue );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Constants</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac424102ccd8c4c37436033a225f0cf85a29777860cf09ff28c56b11556b1d60de">NUM_REQUESTS</a> = 8</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    };</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">// Request data</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">struct </span>SRequest</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">int</span>                 <a class="code" href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#ae83241efc08f210638277f557465ad2a">m_request_id</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">EAsyncFunctionType</a>  <a class="code" href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#aabeca7328f73141ea4ddfac6a8cd3fdc">m_function</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    };</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// Callback functions</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>        <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a9ae940e7320b662d8a831d221338406d">io_callback</a>(<a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">EAsyncFunctionType</a> <span class="keyword">function</span>, <span class="keywordtype">int</span> result, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// Open requests</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    SRequest            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#afadc5407a842be9b2d68f2c68a714fad">m_open_requests</a>[<a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac424102ccd8c4c37436033a225f0cf85a29777860cf09ff28c56b11556b1d60de">NUM_REQUESTS</a>];</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">volatile</span> <span class="keywordtype">int</span>        <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a0246beee78a725df0a4157d23e91e50a">m_num_open_requests</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// Non-aligned buffer IO</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac424102ccd8c4c37436033a225f0cf85a29777860cf09ff28c56b11556b1d60de">   90</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *             <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3ac9403bb7661e1b0ee6ea59c223da21">mp_non_aligned_buffer</a>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *             <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae247c385ee0e9cc946f9ee88a7f4e5c2">mp_temp_aligned_buffer</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="comment">// Xbox-specific file handle.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html">   94</a></span>&#160;    HANDLE              <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#aab2007f2b5e1eaead7624390b1733ddd">mh_file</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    OVERLAPPED          <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a19edfad9e874a1587601cd0b7c8cae06">m_overlapped</a>;   <span class="comment">// OVERLAPPED structure required for async reading on Xbox</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#ae83241efc08f210638277f557465ad2a">   96</a></span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#aabeca7328f73141ea4ddfac6a8cd3fdc">   97</a></span>&#160;    <span class="keywordtype">bool</span>                <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3d79fe263d0adc27d8676bb10c825c64">add_request_id</a>( <span class="keywordtype">int</span> request_id, <a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">EAsyncFunctionType</a> <span class="keyword">function</span> );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">EAsyncFunctionType</a>  <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#aac7e248d599255d048c81645938fc2a0">get_request_function</a>( <span class="keywordtype">int</span> request_id ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">bool</span>                <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#af394b9613cfb417b263e4959129314d6">clear_request_id</a>( <span class="keywordtype">int</span> request_id );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="comment">// platform-specific calls</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ab453a6182aa9c04dcf159e6f761f0781">plat_init</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#afadc5407a842be9b2d68f2c68a714fad">  104</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a138dc592b4864055e959b0bce929432e">plat_open</a>( <span class="keyword">const</span> <span class="keywordtype">char</span> *filename );</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a0246beee78a725df0a4157d23e91e50a">  105</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a311555f1ab905d8673061b05ef603dcc">plat_close</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">volatile</span> <span class="keywordtype">bool</span>   <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a4518d5f78c41dbcecf71f4095a8a5bd8">plat_is_done</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3ac9403bb7661e1b0ee6ea59c223da21">  108</a></span>&#160;    <span class="keyword">virtual</span> <span class="keyword">volatile</span> <span class="keywordtype">bool</span>   <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a8d471c2f3977d2d634cbb8a368048fb3">plat_is_busy</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae247c385ee0e9cc946f9ee88a7f4e5c2">  109</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac4527fc3c97e55f6f66d560cfe543730">plat_is_eof</a>( <span class="keywordtype">void</span> ) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3b3961d6ff36ac71c18ceb95fd935fce">plat_set_priority</a>( <span class="keywordtype">int</span> priority );</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#aab2007f2b5e1eaead7624390b1733ddd">  112</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a55bfccd0e51d479a0100ba0f4882c8cc">plat_set_stream</a>( <span class="keywordtype">bool</span> stream );</div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a19edfad9e874a1587601cd0b7c8cae06">  113</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a19f147574a866c4cdb473f922d0b7219">plat_set_destination</a>( <a class="code" href="../../de/d10/namespace_file.html#a25fd2b35826e3a7a9fb0ce491be55159">EAsyncMemoryType</a> destination );</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#affce23e7b3f24aff8f2d1344e46fcf6d">plat_set_buffer_size</a>( <span class="keywordtype">size_t</span> buffer_size );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>            <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a96653c6de47a80dd6579462001ed4098">plat_set_blocking</a>( <span class="keywordtype">bool</span> block );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">size_t</span>          <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a7c64928d9517fe3e4aaa3214941ae7e4">plat_load</a>( <span class="keywordtype">void</span> *<a class="code" href="../../d7/d43/cfuncs_8cpp.html#a9dd945543a1ee4d3d9f18c9fc748b66c">p_buffer</a> );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">size_t</span>          <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a7ac51daa94790d81d24e9483f3720170">plat_read</a>( <span class="keywordtype">void</span> *<a class="code" href="../../d7/d43/cfuncs_8cpp.html#a9dd945543a1ee4d3d9f18c9fc748b66c">p_buffer</a>, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> count );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">size_t</span>          <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a32428bdce9f34e385bcedd8a0d86ee15">plat_write</a>( <span class="keywordtype">void</span> *<a class="code" href="../../d7/d43/cfuncs_8cpp.html#a9dd945543a1ee4d3d9f18c9fc748b66c">p_buffer</a>, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> count );</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">char</span> *          <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#af61a5f8569d65bcedb62392363c3c2e8">plat_get_s</a>( <span class="keywordtype">char</span> *<a class="code" href="../../d7/d43/cfuncs_8cpp.html#a9dd945543a1ee4d3d9f18c9fc748b66c">p_buffer</a>, <span class="keywordtype">int</span> maxlen );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">int</span>             <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a35177e1c014acf5b9e10048e898dbb5f">plat_seek</a>( <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> origin );</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Friends</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">friend</span> <a class="code" href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a928b8aa8562db58f6a9d05fb5349a001">CAsyncFileLoader</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;};</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;} <span class="comment">// namespace File</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#endif  // __SYS_FILE_P_ASYNC_FILESYS_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a3d79fe263d0adc27d8676bb10c825c64"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3d79fe263d0adc27d8676bb10c825c64">File::CXboxAsyncFileHandle::add_request_id</a></div><div class="ttdeci">bool add_request_id(int request_id, EAsyncFunctionType function)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00216">p_AsyncFilesys.cpp:216</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ac424102ccd8c4c37436033a225f0cf85a29777860cf09ff28c56b11556b1d60de"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac424102ccd8c4c37436033a225f0cf85a29777860cf09ff28c56b11556b1d60de">File::CXboxAsyncFileHandle::NUM_REQUESTS</a></div><div class="ttdeci">@ NUM_REQUESTS</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00090">p_AsyncFilesys.h:90</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a7c64928d9517fe3e4aaa3214941ae7e4"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a7c64928d9517fe3e4aaa3214941ae7e4">File::CXboxAsyncFileHandle::plat_load</a></div><div class="ttdeci">virtual size_t plat_load(void *p_buffer)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00414">p_AsyncFilesys.cpp:414</a></div></div>
+<div class="ttc" id="astruct_file_1_1_c_xbox_async_file_handle_1_1_s_request_html_ae83241efc08f210638277f557465ad2a"><div class="ttname"><a href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#ae83241efc08f210638277f557465ad2a">File::CXboxAsyncFileHandle::SRequest::m_request_id</a></div><div class="ttdeci">int m_request_id</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00096">p_AsyncFilesys.h:96</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a55bfccd0e51d479a0100ba0f4882c8cc"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a55bfccd0e51d479a0100ba0f4882c8cc">File::CXboxAsyncFileHandle::plat_set_stream</a></div><div class="ttdeci">virtual void plat_set_stream(bool stream)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00374">p_AsyncFilesys.cpp:374</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a0cc0c255bb5dfdc16b506173bf1f59ee"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">Gfx::data</a></div><div class="ttdeci">short data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01898">BonedAnim.cpp:1898</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a19f147574a866c4cdb473f922d0b7219"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a19f147574a866c4cdb473f922d0b7219">File::CXboxAsyncFileHandle::plat_set_destination</a></div><div class="ttdeci">virtual void plat_set_destination(EAsyncMemoryType destination)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00384">p_AsyncFilesys.cpp:384</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a19edfad9e874a1587601cd0b7c8cae06"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a19edfad9e874a1587601cd0b7c8cae06">File::CXboxAsyncFileHandle::m_overlapped</a></div><div class="ttdeci">OVERLAPPED m_overlapped</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00113">p_AsyncFilesys.h:113</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_afadc5407a842be9b2d68f2c68a714fad"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#afadc5407a842be9b2d68f2c68a714fad">File::CXboxAsyncFileHandle::m_open_requests</a></div><div class="ttdeci">SRequest m_open_requests[NUM_REQUESTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00104">p_AsyncFilesys.h:104</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a7ac51daa94790d81d24e9483f3720170"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a7ac51daa94790d81d24e9483f3720170">File::CXboxAsyncFileHandle::plat_read</a></div><div class="ttdeci">virtual size_t plat_read(void *p_buffer, size_t size, size_t count)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00432">p_AsyncFilesys.cpp:432</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_affce23e7b3f24aff8f2d1344e46fcf6d"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#affce23e7b3f24aff8f2d1344e46fcf6d">File::CXboxAsyncFileHandle::plat_set_buffer_size</a></div><div class="ttdeci">virtual void plat_set_buffer_size(size_t buffer_size)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00394">p_AsyncFilesys.cpp:394</a></div></div>
+<div class="ttc" id="anamespace_file_html_ab5b6cd44b0c40aae5dac864d95f792c2"><div class="ttname"><a href="../../de/d10/namespace_file.html#ab5b6cd44b0c40aae5dac864d95f792c2">File::EAsyncFunctionType</a></div><div class="ttdeci">EAsyncFunctionType</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d27/_async_types_8h_source.html#l00057">AsyncTypes.h:57</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a9ae940e7320b662d8a831d221338406d"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a9ae940e7320b662d8a831d221338406d">File::CXboxAsyncFileHandle::io_callback</a></div><div class="ttdeci">virtual void io_callback(EAsyncFunctionType function, int result, uint32 data)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00141">p_AsyncFilesys.cpp:141</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a32428bdce9f34e385bcedd8a0d86ee15"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a32428bdce9f34e385bcedd8a0d86ee15">File::CXboxAsyncFileHandle::plat_write</a></div><div class="ttdeci">virtual size_t plat_write(void *p_buffer, size_t size, size_t count)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00478">p_AsyncFilesys.cpp:478</a></div></div>
+<div class="ttc" id="anamespace_file_html_a25fd2b35826e3a7a9fb0ce491be55159"><div class="ttname"><a href="../../de/d10/namespace_file.html#a25fd2b35826e3a7a9fb0ce491be55159">File::EAsyncMemoryType</a></div><div class="ttdeci">EAsyncMemoryType</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d27/_async_types_8h_source.html#l00040">AsyncTypes.h:40</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ae34df3c4690f1a62f64dd5dd54bf5dd9"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae34df3c4690f1a62f64dd5dd54bf5dd9">File::CXboxAsyncFileHandle::CXboxAsyncFileHandle</a></div><div class="ttdeci">CXboxAsyncFileHandle()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00032">p_AsyncFilesys.cpp:32</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a3ac9403bb7661e1b0ee6ea59c223da21"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3ac9403bb7661e1b0ee6ea59c223da21">File::CXboxAsyncFileHandle::mp_non_aligned_buffer</a></div><div class="ttdeci">uint8 * mp_non_aligned_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00108">p_AsyncFilesys.h:108</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_aac7e248d599255d048c81645938fc2a0"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#aac7e248d599255d048c81645938fc2a0">File::CXboxAsyncFileHandle::get_request_function</a></div><div class="ttdeci">EAsyncFunctionType get_request_function(int request_id) const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00238">p_AsyncFilesys.cpp:238</a></div></div>
+<div class="ttc" id="acfuncs_8cpp_html_a9dd945543a1ee4d3d9f18c9fc748b66c"><div class="ttname"><a href="../../d7/d43/cfuncs_8cpp.html#a9dd945543a1ee4d3d9f18c9fc748b66c">p_buffer</a></div><div class="ttdeci">static char p_buffer[1024]</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d43/cfuncs_8cpp_source.html#l00202">cfuncs.cpp:202</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a35177e1c014acf5b9e10048e898dbb5f"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a35177e1c014acf5b9e10048e898dbb5f">File::CXboxAsyncFileHandle::plat_seek</a></div><div class="ttdeci">virtual int plat_seek(long offset, int origin)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00502">p_AsyncFilesys.cpp:502</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ae247c385ee0e9cc946f9ee88a7f4e5c2"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae247c385ee0e9cc946f9ee88a7f4e5c2">File::CXboxAsyncFileHandle::mp_temp_aligned_buffer</a></div><div class="ttdeci">uint8 * mp_temp_aligned_buffer</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00109">p_AsyncFilesys.h:109</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_af61a5f8569d65bcedb62392363c3c2e8"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#af61a5f8569d65bcedb62392363c3c2e8">File::CXboxAsyncFileHandle::plat_get_s</a></div><div class="ttdeci">virtual char * plat_get_s(char *p_buffer, int maxlen)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00490">p_AsyncFilesys.cpp:490</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_adea13575b63bdf07a51cc677a57bcdef"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#adea13575b63bdf07a51cc677a57bcdef">File::CXboxAsyncFileHandle::~CXboxAsyncFileHandle</a></div><div class="ttdeci">virtual ~CXboxAsyncFileHandle()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00046">p_AsyncFilesys.cpp:46</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ab453a6182aa9c04dcf159e6f761f0781"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ab453a6182aa9c04dcf159e6f761f0781">File::CXboxAsyncFileHandle::plat_init</a></div><div class="ttdeci">virtual void plat_init(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00291">p_AsyncFilesys.cpp:291</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a3b3961d6ff36ac71c18ceb95fd935fce"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a3b3961d6ff36ac71c18ceb95fd935fce">File::CXboxAsyncFileHandle::plat_set_priority</a></div><div class="ttdeci">virtual void plat_set_priority(int priority)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00364">p_AsyncFilesys.cpp:364</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a928b8aa8562db58f6a9d05fb5349a001"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a928b8aa8562db58f6a9d05fb5349a001">File::CXboxAsyncFileHandle::CAsyncFileLoader</a></div><div class="ttdeci">friend CAsyncFileLoader</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00142">p_AsyncFilesys.h:142</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_aab2007f2b5e1eaead7624390b1733ddd"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#aab2007f2b5e1eaead7624390b1733ddd">File::CXboxAsyncFileHandle::mh_file</a></div><div class="ttdeci">HANDLE mh_file</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00112">p_AsyncFilesys.h:112</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a4518d5f78c41dbcecf71f4095a8a5bd8"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a4518d5f78c41dbcecf71f4095a8a5bd8">File::CXboxAsyncFileHandle::plat_is_done</a></div><div class="ttdeci">virtual volatile bool plat_is_done(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00309">p_AsyncFilesys.cpp:309</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a8d471c2f3977d2d634cbb8a368048fb3"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a8d471c2f3977d2d634cbb8a368048fb3">File::CXboxAsyncFileHandle::plat_is_busy</a></div><div class="ttdeci">virtual volatile bool plat_is_busy(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00342">p_AsyncFilesys.cpp:342</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a138dc592b4864055e959b0bce929432e"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a138dc592b4864055e959b0bce929432e">File::CXboxAsyncFileHandle::plat_open</a></div><div class="ttdeci">virtual bool plat_open(const char *filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00057">p_AsyncFilesys.cpp:57</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a311555f1ab905d8673061b05ef603dcc"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a311555f1ab905d8673061b05ef603dcc">File::CXboxAsyncFileHandle::plat_close</a></div><div class="ttdeci">virtual bool plat_close(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00514">p_AsyncFilesys.cpp:514</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_af394b9613cfb417b263e4959129314d6"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#af394b9613cfb417b263e4959129314d6">File::CXboxAsyncFileHandle::clear_request_id</a></div><div class="ttdeci">bool clear_request_id(int request_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00260">p_AsyncFilesys.cpp:260</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ac4527fc3c97e55f6f66d560cfe543730"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ac4527fc3c97e55f6f66d560cfe543730">File::CXboxAsyncFileHandle::plat_is_eof</a></div><div class="ttdeci">virtual bool plat_is_eof(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00353">p_AsyncFilesys.cpp:353</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_ae10f64929c8700226c80e009d37a9072"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#ae10f64929c8700226c80e009d37a9072">File::CXboxAsyncFileHandle::sAsyncFileReadTimerAPCProc</a></div><div class="ttdeci">static VOID CALLBACK sAsyncFileReadTimerAPCProc(LPVOID lpArgToCompletionRoutine, DWORD dwTimerLowValue, DWORD dwTimerHighValue)</div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a0246beee78a725df0a4157d23e91e50a"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a0246beee78a725df0a4157d23e91e50a">File::CXboxAsyncFileHandle::m_num_open_requests</a></div><div class="ttdeci">volatile int m_num_open_requests</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00105">p_AsyncFilesys.h:105</a></div></div>
+<div class="ttc" id="astruct_file_1_1_c_xbox_async_file_handle_1_1_s_request_html_aabeca7328f73141ea4ddfac6a8cd3fdc"><div class="ttname"><a href="../../d1/d12/struct_file_1_1_c_xbox_async_file_handle_1_1_s_request.html#aabeca7328f73141ea4ddfac6a8cd3fdc">File::CXboxAsyncFileHandle::SRequest::m_function</a></div><div class="ttdeci">EAsyncFunctionType m_function</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d98/_x_box_2p__async_filesys_8h_source.html#l00097">p_AsyncFilesys.h:97</a></div></div>
+<div class="ttc" id="anamespace_file_html"><div class="ttname"><a href="../../de/d10/namespace_file.html">File</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d7c/_ngps_2p__music_8h_source.html#l00008">p_music.h:8</a></div></div>
+<div class="ttc" id="aclass_file_1_1_c_xbox_async_file_handle_html_a96653c6de47a80dd6579462001ed4098"><div class="ttname"><a href="../../d4/d24/class_file_1_1_c_xbox_async_file_handle.html#a96653c6de47a80dd6579462001ed4098">File::CXboxAsyncFileHandle::plat_set_blocking</a></div><div class="ttdeci">virtual void plat_set_blocking(bool block)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d39/_x_box_2p___async_filesys_8cpp_source.html#l00404">p_AsyncFilesys.cpp:404</a></div></div>
+<div class="ttc" id="a_async_filesys_8h_html"><div class="ttname"><a href="../../d4/d6c/_async_filesys_8h.html">AsyncFilesys.h</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_890777e0b941d77bc493513bfd7bcafd.html">File</a></li><li class="navelem"><a class="el" href="../../dir_990a574abaae52cab43e397dac2be35c.html">XBox</a></li><li class="navelem"><a class="el" href="../../d8/d98/_x_box_2p__async_filesys_8h.html">p_AsyncFilesys.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:37. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

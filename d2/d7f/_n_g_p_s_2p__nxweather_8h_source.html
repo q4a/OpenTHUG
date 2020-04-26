@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGPS/p_nxweather.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxweather.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       p_nxParticle.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Paul Robinson</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  3/27/2002</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GFX_P_NX_WEATHER_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GFX_P_NX_WEATHER_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;    </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/dbd/nxweather_8h.html">gfx/nxweather.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//#define WEATHER_GRID_W 65</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//#define WEATHER_GRID_H 65</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//#define WEATHER_CEL_W 32</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//#define WEATHER_CEL_H 32</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define WEATHER_CEL_SIZE 128</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define WEATHER_CEL_SIZE_SHIFT 7</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define HEIGHT_TOLERANCE (sint32)( 30.0f * SUB_INCH_PRECISION )</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#define DROP_SIZE 16</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define DROP_SIZE_SHIFT 4</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#define DROP_LAYERS 4</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define NUM_SPLASH_ACTIVE 32</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span> index;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} sRowEntry;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html">CPs2Weather</a> : <span class="keyword">public</span> <a class="code" href="../../d4/dc8/class_nx_1_1_c_weather.html">CWeather</a></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;{</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                            <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a61d6657d0a6c4bdd36132dcb5af7b23d">CPs2Weather</a>();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">virtual</span>                 <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a68e31e4441c4bdcdd99f1d6e37105311">~CPs2Weather</a>();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">private</span>:                    <span class="comment">// It&#39;s all private, as it is machine specific</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a175658c8699c9218970088ad6969ce07">plat_update_grid</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a40e2bb708174a843b2a7e555f80201c4">plat_process</a>( <span class="keywordtype">float</span> delta_time );</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af1e0955788dfcad72be3f194d26b5a8e">plat_render</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8d2e3887ca26122d3fadbdc4861e056c">plat_set_rain_blend_mode</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix );</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a76fd80269717235b29d4520624d732bc">plat_set_splash_blend_mode</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a50a751cf2c3a58aa2a7538aeab733ae7">plat_set_snow_blend_mode</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a090ea1ca1fbcbfc54289bd59df4c96a4">plat_render_splashes</a>( <span class="keywordtype">float</span> skx, <span class="keywordtype">float</span> skz );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af2cbd397ea736685571022c18c42cb65">plat_render_rain</a>( <span class="keywordtype">float</span> skx, <span class="keywordtype">float</span> skz );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span>                    <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af32fd6222aab5c68680c869ccb929d84">plat_render_snow</a>( <span class="keywordtype">float</span> skx, <span class="keywordtype">float</span> skz );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a443e87ac34914d759742840c6d8eaf43">   56</a></span>&#160;    <a class="code" href="../../d8/d5f/struct_nx_ps2_1_1_s_single_texture.html">NxPs2::SSingleTexture</a>*  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a443e87ac34914d759742840c6d8eaf43">mp_rain_texture</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e17e2cfda29df10f8620bf201cbbd5b">   57</a></span>&#160;    <a class="code" href="../../d8/d5f/struct_nx_ps2_1_1_s_single_texture.html">NxPs2::SSingleTexture</a>*  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e17e2cfda29df10f8620bf201cbbd5b">mp_snow_texture</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e2081db41a4d70365bddda06b2e4c8a">   59</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *         <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e2081db41a4d70365bddda06b2e4c8a">mp_roof_height_index</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a422b0dc6ffc9c800c12f0d8d14b1fc2f">   60</a></span>&#160;    <a class="code" href="../../d4/d46/struct_nx_1_1s_row_entry.html">sRowEntry</a> *             <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a422b0dc6ffc9c800c12f0d8d14b1fc2f">mp_roof_row</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0ac530f57019a5ff1c0e2fe004c52dd0">   61</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a>                  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0ac530f57019a5ff1c0e2fe004c52dd0">m_roof_height</a>[256];</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a18b9688d0f1f7b97445e47c3eb6f468f">   62</a></span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a18b9688d0f1f7b97445e47c3eb6f468f">m_width</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0f3fe4f633f2c1571073fefff11676d2">   63</a></span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0f3fe4f633f2c1571073fefff11676d2">m_height</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a6cb07461dc9accb45063829c65a0bdb6">   65</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a6cb07461dc9accb45063829c65a0bdb6">m_min_x</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0b305478a13f4b9fd34becf073a27a12">   66</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0b305478a13f4b9fd34becf073a27a12">m_min_z</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a01e69f1a24eaac1b5467ef50c1169820">   68</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a01e69f1a24eaac1b5467ef50c1169820">m_rain_rate</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9d4e7947b5690a5099d590e37538ef48">   69</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9d4e7947b5690a5099d590e37538ef48">m_splash_rate</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a784a8e2da74d6d5c8d1ae47ccf471f">   70</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a784a8e2da74d6d5c8d1ae47ccf471f">m_snow_rate</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9c34991b2fa91deec2de12322e1270e1">   72</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9c34991b2fa91deec2de12322e1270e1">m_grid_base</a>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a666039c8bae513d71156f0b5b89ec30f">   74</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>           <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a666039c8bae513d71156f0b5b89ec30f">m_drop_time</a>[DROP_SIZE*DROP_SIZE*DROP_LAYERS];</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a5e6b4732981faa5d6db6ef2ab37d8ec3">   75</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>           <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a5e6b4732981faa5d6db6ef2ab37d8ec3">m_x_offset</a>[DROP_SIZE*DROP_SIZE*DROP_LAYERS];</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ad8f0f595e0e6d688b06605cfc2a1cba4">   76</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>           <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ad8f0f595e0e6d688b06605cfc2a1cba4">m_z_offset</a>[DROP_SIZE*DROP_SIZE*DROP_LAYERS];</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a47ffec88afd0a309337f5326137850d8">   78</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a47ffec88afd0a309337f5326137850d8">m_seq</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a464a26d595981c12c0d9a2acd5e5e4ee">   80</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>                  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a464a26d595981c12c0d9a2acd5e5e4ee">m_rain_blend</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a8ab376d4a7e28c2893287173041beb">   81</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>                  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a8ab376d4a7e28c2893287173041beb">m_splash_blend</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aad2402ae84eba87ae3fcdf5d8fefb756">   82</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a>                  <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aad2402ae84eba87ae3fcdf5d8fefb756">m_snow_blend</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aa2e2c98336da23557e7df3161ba5c127">   84</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aa2e2c98336da23557e7df3161ba5c127">m_splash_x</a>[NUM_SPLASH_ACTIVE];</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a4a19b434c7eb325025e8a8c624757434">   85</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a4a19b434c7eb325025e8a8c624757434">m_splash_y</a>[NUM_SPLASH_ACTIVE];</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a2dc005000b4a5be72637b043d8dcaf33">   86</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a2dc005000b4a5be72637b043d8dcaf33">m_splash_z</a>[NUM_SPLASH_ACTIVE];</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ac62e8441e77790139fdd1924f24f00c1">   87</a></span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ac62e8441e77790139fdd1924f24f00c1">m_splash_current_life</a>[NUM_SPLASH_ACTIVE]; </div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a997acdc7109ad5635ba331f5aeace93f">   88</a></span>&#160;    <span class="keywordtype">int</span>                     <a class="code" href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a997acdc7109ad5635ba331f5aeace93f">m_current_splash</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a50a751cf2c3a58aa2a7538aeab733ae7"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a50a751cf2c3a58aa2a7538aeab733ae7">Nx::CPs2Weather::plat_set_snow_blend_mode</a></div><div class="ttdeci">void plat_set_snow_blend_mode(uint32 blendmode_checksum, int fix)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l01180">p_nxweather.cpp:1180</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a2dc005000b4a5be72637b043d8dcaf33"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a2dc005000b4a5be72637b043d8dcaf33">Nx::CPs2Weather::m_splash_z</a></div><div class="ttdeci">float m_splash_z[NUM_SPLASH_ACTIVE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00086">p_nxweather.h:86</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__entr_8c_html_ac92d3b835636641550b12b0f93daf21d"><div class="ttname"><a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a></div><div class="ttdeci">int start()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c_source.html#l00016">bgm_entr.c:16</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_ad8f0f595e0e6d688b06605cfc2a1cba4"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ad8f0f595e0e6d688b06605cfc2a1cba4">Nx::CPs2Weather::m_z_offset</a></div><div class="ttdeci">unsigned char m_z_offset[DROP_SIZE *DROP_SIZE *DROP_LAYERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00076">p_nxweather.h:76</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a01e69f1a24eaac1b5467ef50c1169820"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a01e69f1a24eaac1b5467ef50c1169820">Nx::CPs2Weather::m_rain_rate</a></div><div class="ttdeci">float m_rain_rate</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00068">p_nxweather.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html">Nx::CPs2Weather</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00038">p_nxweather.h:38</a></div></div>
+<div class="ttc" id="astruct_nx_ps2_1_1_s_single_texture_html"><div class="ttname"><a href="../../d8/d5f/struct_nx_ps2_1_1_s_single_texture.html">NxPs2::SSingleTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/_n_g_p_s_2_n_x_2sprite_8h_source.html#l00013">sprite.h:13</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a0e2081db41a4d70365bddda06b2e4c8a"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e2081db41a4d70365bddda06b2e4c8a">Nx::CPs2Weather::mp_roof_height_index</a></div><div class="ttdeci">unsigned char * mp_roof_height_index</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00059">p_nxweather.h:59</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a6cb07461dc9accb45063829c65a0bdb6"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a6cb07461dc9accb45063829c65a0bdb6">Nx::CPs2Weather::m_min_x</a></div><div class="ttdeci">float m_min_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00065">p_nxweather.h:65</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a0b305478a13f4b9fd34becf073a27a12"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0b305478a13f4b9fd34becf073a27a12">Nx::CPs2Weather::m_min_z</a></div><div class="ttdeci">float m_min_z</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00066">p_nxweather.h:66</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a29940ae63ec06c9998bba873e25407ad"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a29940ae63ec06c9998bba873e25407ad">uint64</a></div><div class="ttdeci">unsigned __int64 uint64</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00150">Defines.h:150</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a0573de65958b4fda3a0460ed417dafb8"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a0573de65958b4fda3a0460ed417dafb8">sint32</a></div><div class="ttdeci">signed long sint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00148">Defines.h:148</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_af1e0955788dfcad72be3f194d26b5a8e"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af1e0955788dfcad72be3f194d26b5a8e">Nx::CPs2Weather::plat_render</a></div><div class="ttdeci">void plat_render(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l01114">p_nxweather.cpp:1114</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a47ffec88afd0a309337f5326137850d8"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a47ffec88afd0a309337f5326137850d8">Nx::CPs2Weather::m_seq</a></div><div class="ttdeci">uint32 m_seq</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00078">p_nxweather.h:78</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_af2cbd397ea736685571022c18c42cb65"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af2cbd397ea736685571022c18c42cb65">Nx::CPs2Weather::plat_render_rain</a></div><div class="ttdeci">void plat_render_rain(float skx, float skz)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00710">p_nxweather.cpp:710</a></div></div>
+<div class="ttc" id="anxweather_8h_html"><div class="ttname"><a href="../../d9/dbd/nxweather_8h.html">nxweather.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_af32fd6222aab5c68680c869ccb929d84"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#af32fd6222aab5c68680c869ccb929d84">Nx::CPs2Weather::plat_render_snow</a></div><div class="ttdeci">void plat_render_snow(float skx, float skz)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00491">p_nxweather.cpp:491</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a18b9688d0f1f7b97445e47c3eb6f468f"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a18b9688d0f1f7b97445e47c3eb6f468f">Nx::CPs2Weather::m_width</a></div><div class="ttdeci">int m_width</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00062">p_nxweather.h:62</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a68e31e4441c4bdcdd99f1d6e37105311"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a68e31e4441c4bdcdd99f1d6e37105311">Nx::CPs2Weather::~CPs2Weather</a></div><div class="ttdeci">virtual ~CPs2Weather()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00142">p_nxweather.cpp:142</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a5e6b4732981faa5d6db6ef2ab37d8ec3"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a5e6b4732981faa5d6db6ef2ab37d8ec3">Nx::CPs2Weather::m_x_offset</a></div><div class="ttdeci">unsigned char m_x_offset[DROP_SIZE *DROP_SIZE *DROP_LAYERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00075">p_nxweather.h:75</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a443e87ac34914d759742840c6d8eaf43"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a443e87ac34914d759742840c6d8eaf43">Nx::CPs2Weather::mp_rain_texture</a></div><div class="ttdeci">NxPs2::SSingleTexture * mp_rain_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00056">p_nxweather.h:56</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a8a784a8e2da74d6d5c8d1ae47ccf471f"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a784a8e2da74d6d5c8d1ae47ccf471f">Nx::CPs2Weather::m_snow_rate</a></div><div class="ttdeci">float m_snow_rate</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00070">p_nxweather.h:70</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a40e2bb708174a843b2a7e555f80201c4"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a40e2bb708174a843b2a7e555f80201c4">Nx::CPs2Weather::plat_process</a></div><div class="ttdeci">void plat_process(float delta_time)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00394">p_nxweather.cpp:394</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a76fd80269717235b29d4520624d732bc"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a76fd80269717235b29d4520624d732bc">Nx::CPs2Weather::plat_set_splash_blend_mode</a></div><div class="ttdeci">void plat_set_splash_blend_mode(uint32 blendmode_checksum, int fix)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l01171">p_nxweather.cpp:1171</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="astruct_nx_1_1s_row_entry_html"><div class="ttname"><a href="../../d4/d46/struct_nx_1_1s_row_entry.html">Nx::sRowEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da7/_n_g_c_2p__nxweather_8h_source.html#l00031">p_nxweather.h:31</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a0f3fe4f633f2c1571073fefff11676d2"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0f3fe4f633f2c1571073fefff11676d2">Nx::CPs2Weather::m_height</a></div><div class="ttdeci">int m_height</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00063">p_nxweather.h:63</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a422b0dc6ffc9c800c12f0d8d14b1fc2f"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a422b0dc6ffc9c800c12f0d8d14b1fc2f">Nx::CPs2Weather::mp_roof_row</a></div><div class="ttdeci">sRowEntry * mp_roof_row</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00060">p_nxweather.h:60</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a0ac530f57019a5ff1c0e2fe004c52dd0"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0ac530f57019a5ff1c0e2fe004c52dd0">Nx::CPs2Weather::m_roof_height</a></div><div class="ttdeci">sint32 m_roof_height[256]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00061">p_nxweather.h:61</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_ac62e8441e77790139fdd1924f24f00c1"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#ac62e8441e77790139fdd1924f24f00c1">Nx::CPs2Weather::m_splash_current_life</a></div><div class="ttdeci">int m_splash_current_life[NUM_SPLASH_ACTIVE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00087">p_nxweather.h:87</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_aa2e2c98336da23557e7df3161ba5c127"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aa2e2c98336da23557e7df3161ba5c127">Nx::CPs2Weather::m_splash_x</a></div><div class="ttdeci">float m_splash_x[NUM_SPLASH_ACTIVE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00084">p_nxweather.h:84</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a997acdc7109ad5635ba331f5aeace93f"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a997acdc7109ad5635ba331f5aeace93f">Nx::CPs2Weather::m_current_splash</a></div><div class="ttdeci">int m_current_splash</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00088">p_nxweather.h:88</a></div></div>
+<div class="ttc" id="anamespace_ns_buffer_html_a64facb0dbc4b9270fda55cc47e273931"><div class="ttname"><a href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">NsBuffer::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdoc">‍********************************************************************************</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5d/p__buffer_8cpp_source.html#l00132">p_buffer.cpp:132</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a464a26d595981c12c0d9a2acd5e5e4ee"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a464a26d595981c12c0d9a2acd5e5e4ee">Nx::CPs2Weather::m_rain_blend</a></div><div class="ttdeci">uint64 m_rain_blend</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00080">p_nxweather.h:80</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_weather_html"><div class="ttname"><a href="../../d4/dc8/class_nx_1_1_c_weather.html">Nx::CWeather</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dbd/nxweather_8h_source.html#l00018">nxweather.h:18</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a090ea1ca1fbcbfc54289bd59df4c96a4"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a090ea1ca1fbcbfc54289bd59df4c96a4">Nx::CPs2Weather::plat_render_splashes</a></div><div class="ttdeci">void plat_render_splashes(float skx, float skz)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00945">p_nxweather.cpp:945</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a175658c8699c9218970088ad6969ce07"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a175658c8699c9218970088ad6969ce07">Nx::CPs2Weather::plat_update_grid</a></div><div class="ttdeci">void plat_update_grid(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00151">p_nxweather.cpp:151</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a4a19b434c7eb325025e8a8c624757434"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a4a19b434c7eb325025e8a8c624757434">Nx::CPs2Weather::m_splash_y</a></div><div class="ttdeci">float m_splash_y[NUM_SPLASH_ACTIVE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00085">p_nxweather.h:85</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a8a8ab376d4a7e28c2893287173041beb"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8a8ab376d4a7e28c2893287173041beb">Nx::CPs2Weather::m_splash_blend</a></div><div class="ttdeci">uint64 m_splash_blend</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00081">p_nxweather.h:81</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a666039c8bae513d71156f0b5b89ec30f"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a666039c8bae513d71156f0b5b89ec30f">Nx::CPs2Weather::m_drop_time</a></div><div class="ttdeci">unsigned char m_drop_time[DROP_SIZE *DROP_SIZE *DROP_LAYERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00074">p_nxweather.h:74</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a0e17e2cfda29df10f8620bf201cbbd5b"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a0e17e2cfda29df10f8620bf201cbbd5b">Nx::CPs2Weather::mp_snow_texture</a></div><div class="ttdeci">NxPs2::SSingleTexture * mp_snow_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00057">p_nxweather.h:57</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a9d4e7947b5690a5099d590e37538ef48"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9d4e7947b5690a5099d590e37538ef48">Nx::CPs2Weather::m_splash_rate</a></div><div class="ttdeci">float m_splash_rate</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00069">p_nxweather.h:69</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_aad2402ae84eba87ae3fcdf5d8fefb756"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#aad2402ae84eba87ae3fcdf5d8fefb756">Nx::CPs2Weather::m_snow_blend</a></div><div class="ttdeci">uint64 m_snow_blend</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00082">p_nxweather.h:82</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a61d6657d0a6c4bdd36132dcb5af7b23d"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a61d6657d0a6c4bdd36132dcb5af7b23d">Nx::CPs2Weather::CPs2Weather</a></div><div class="ttdeci">CPs2Weather()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l00124">p_nxweather.cpp:124</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a9c34991b2fa91deec2de12322e1270e1"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a9c34991b2fa91deec2de12322e1270e1">Nx::CPs2Weather::m_grid_base</a></div><div class="ttdeci">Mth::Vector m_grid_base</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h_source.html#l00072">p_nxweather.h:72</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_ps2_weather_html_a8d2e3887ca26122d3fadbdc4861e056c"><div class="ttname"><a href="../../d2/dc7/class_nx_1_1_c_ps2_weather.html#a8d2e3887ca26122d3fadbdc4861e056c">Nx::CPs2Weather::plat_set_rain_blend_mode</a></div><div class="ttdeci">void plat_set_rain_blend_mode(uint32 blendmode_checksum, int fix)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4e/_n_g_p_s_2p__nxweather_8cpp_source.html#l01162">p_nxweather.cpp:1162</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_bc1160221093ac821c1e6b4a18736c2b.html">NGPS</a></li><li class="navelem"><a class="el" href="../../d2/d7f/_n_g_p_s_2p__nxweather_8h.html">p_nxweather.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

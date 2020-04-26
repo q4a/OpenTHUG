@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Scripting/gs_init.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d0/d06/gs__init_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">gs_init.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/d06/gs__init_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">// gs_init.cpp      KSH 7 Nov 2001</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">// Game-specific script system initialisation.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">// Also calls the non-game-specific script initialisation.</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dbe/gs__init_8h.html">sk/scripting/gs_init.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/de4/gs__file_8h.html">sk/scripting/gs_file.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d47/nodearray_8h.html">sk/scripting/nodearray.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d82/ftables_8h.html">sk/scripting/ftables.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/dc0/init_8h.html">gel/scripting/init.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d2b/parse_8h.html">gel/scripting/parse.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/dd2/namespace_skate_script.html">SkateScript</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Called once on startup.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#aefa79dba766fba7f87d55bc72ea2d189">   23</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#aefa79dba766fba7f87d55bc72ea2d189">Init</a>()</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">// Do the non-game-specific script system initialisation</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a>(<span class="stringliteral">&quot;Script::AllocatePools&quot;</span>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a4c513075f553567c250a2809a177c9f5">Script::AllocatePools</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a>();</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// Now do the game-specific script system initialisation</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a>(<span class="stringliteral">&quot;InitNodeNameHashTable&quot;</span>);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a3b44fa6c04da3cb64cd388b10a9cee1a">InitNodeNameHashTable</a>();</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a>();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a>(<span class="stringliteral">&quot;Registering script functions&quot;</span>);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#ae6b92b459b8aa34fb45915dd68d30bc6">Script::RegisterCFunctions</a>(<a class="code" href="../../d1/d54/namespace_script.html#a674e22299d205182d5a16e5650f617a0">CFunctionLookupTable</a>,<a class="code" href="../../d1/d54/namespace_script.html#a5bb2ad2f817a41df03d2032f864406c8">GetCFunctionLookupTableSize</a>());</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d1/d54/namespace_script.html#a869cfea5dd19280ce927cfd758a20364">Script::RegisterMemberFunctions</a>(<a class="code" href="../../d1/d54/namespace_script.html#a95682d77629572bf08257009bf6b71b1">ppMemberFunctionNames</a>,<a class="code" href="../../d1/d54/namespace_script.html#accd75c8359daf249cd0b1ca6ecc795b9">GetNumMemberFunctions</a>());</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../de/dd2/namespace_skate_script.html#a93d1a92c9a67596f9fe25dafd66b47a1">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dd2/namespace_skate_script.html#a93d1a92c9a67596f9fe25dafd66b47a1">Preload</a>()</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a7076d5e485f4461d13ff2bb16cd93776">LoadAllStartupQBFiles</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">    #ifdef COUNT_USAGE</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">CSymbolTableEntry</a> *p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">while</span> (p_sym)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a589ae41120e7bb814402a3cbf02cd8ad">ESYMBOLTYPE_QSCRIPT</a>)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="comment">//printf(&quot;%s\n&quot;,Script::FindChecksumName(p_sym-&gt;mNameChecksum));</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> *p_token=p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a6243dd7fec81fecedf2be7e0f46edcd6">mpScript</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="comment">// Skip over the 4-byte contents checksum.</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            p_token+=4;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">while</span> (*p_token!=<a class="code" href="../../d1/d54/namespace_script.html#a6d5eb97aeda23e7cc7ae412bb24bc629a0cd8bc859702746f09695aca794bfb87">ESCRIPTTOKEN_KEYWORD_ENDSCRIPT</a>) </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                <span class="keywordflow">switch</span> (*p_token)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                    <span class="keywordflow">case</span> <a class="code" href="../../d1/d54/namespace_script.html#a6d5eb97aeda23e7cc7ae412bb24bc629a72a89bb3e43afb4de31c26e999a722ba">ESCRIPTTOKEN_NAME</a>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                    {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        ++p_token;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> name_checksum=<a class="code" href="../../d1/d54/namespace_script.html#a13f53c2ad11266b0280c0c1937902bb9">Read4Bytes</a>(p_token).<a class="code" href="../../db/da0/struct_script_1_1_s4_bytes.html#a3a85fcf38ecf9e84e54cb0e7b23067e3">mChecksum</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                        </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                        p_token+=4;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                        <span class="comment">// Look up the name to see if it is a cfunction or member function.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                        <a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">CSymbolTableEntry</a> *p_entry=<a class="code" href="../../d1/d54/namespace_script.html#a43181580ea5d38e4bf1aa19ccd5e9e85">Resolve</a>(name_checksum);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                        <span class="keywordflow">if</span> (p_entry)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                            <span class="comment">//if (name_checksum==0xb0bcbaec)</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                            <span class="comment">//printf(&quot;(%s) Type=%s\n&quot;,Script::FindChecksumName(name_checksum),Script::GetTypeName(p_entry-&gt;mType));</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                        </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                            <span class="keywordflow">if</span> (p_entry-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a9815a9a3a15d75ad0572d762aba0d1ea">ESYMBOLTYPE_CFUNCTION</a>)</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                            {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                                ++p_entry-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#ae88924d3effb0ef92721423f7c722e24">mUsage</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                                <span class="comment">//printf(&quot;%s: %s\n&quot;,Script::FindChecksumName(p_sym-&gt;mNameChecksum),Script::FindChecksumName(name_checksum));</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                            }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (p_entry-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a08c212c4c8ce8381cac3bda5f59159f9">ESYMBOLTYPE_MEMBERFUNCTION</a>)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                            {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                                ++p_entry-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#ae88924d3effb0ef92721423f7c722e24">mUsage</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                            }   </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                        }       </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                    }   </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;                        p_token=<a class="code" href="../../d6/d07/skiptoken_8cpp.html#a3e23e70f2b63aa23c34420f5f72d9c01">SkipToken</a>(p_token);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }   </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>(p_sym);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }       </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">while</span> (p_sym)</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    {</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#ae88924d3effb0ef92721423f7c722e24">mUsage</a>==0)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            <span class="keywordflow">if</span> (p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a9815a9a3a15d75ad0572d762aba0d1ea">ESYMBOLTYPE_CFUNCTION</a>)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>(<span class="stringliteral">&quot;CFunc %s: Usage=%d\n&quot;</span>,<a class="code" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a>(p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a546f3bd1693e9e6e950f0b42bbb7faf7">mNameChecksum</a>),p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#ae88924d3effb0ef92721423f7c722e24">mUsage</a>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> (p_sym-&gt;<a class="code" href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">mType</a>==<a class="code" href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a08c212c4c8ce8381cac3bda5f59159f9">ESYMBOLTYPE_MEMBERFUNCTION</a>)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;                <span class="comment">//printf(&quot;MemberFunc %s: Usage=%d\n&quot;,Script::FindChecksumName(p_sym-&gt;mNameChecksum),p_sym-&gt;mUsage);</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }   </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        p_sym=<a class="code" href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">GetNextSymbolTableEntry</a>(p_sym);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }       </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>(<span class="stringliteral">&quot;Finished\n&quot;</span>);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">while</span> (1);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">    #endif // #ifdef COUNT_USAGE</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="comment">// Now that all the qb&#39;s are loaded, pre-process all the scripts.</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="comment">//PreProcessScripts();</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;} <span class="comment">// namespace SkateScript</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html">Script::CSymbolTableEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00039">symboltable.h:39</a></div></div>
+<div class="ttc" id="anamespace_script_html_a869cfea5dd19280ce927cfd758a20364"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a869cfea5dd19280ce927cfd758a20364">Script::RegisterMemberFunctions</a></div><div class="ttdeci">void RegisterMemberFunctions(const char **pp_memberFunctions, uint32 numFunctions)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc9/init_8cpp_source.html#l00163">init.cpp:163</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_script_html_accd75c8359daf249cd0b1ca6ecc795b9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#accd75c8359daf249cd0b1ca6ecc795b9">Script::GetNumMemberFunctions</a></div><div class="ttdeci">int GetNumMemberFunctions()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d87/ftables_8cpp_source.html#l02200">ftables.cpp:2200</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a546f3bd1693e9e6e950f0b42bbb7faf7"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a546f3bd1693e9e6e950f0b42bbb7faf7">Script::CSymbolTableEntry::mNameChecksum</a></div><div class="ttdeci">uint32 mNameChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00080">symboltable.h:80</a></div></div>
+<div class="ttc" id="askiptoken_8cpp_html_a3e23e70f2b63aa23c34420f5f72d9c01"><div class="ttname"><a href="../../d6/d07/skiptoken_8cpp.html#a3e23e70f2b63aa23c34420f5f72d9c01">SkipToken</a></div><div class="ttdeci">uint8 * SkipToken(uint8 *p_token)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d07/skiptoken_8cpp_source.html#l00017">skiptoken.cpp:17</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a3b44fa6c04da3cb64cd388b10a9cee1a"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a3b44fa6c04da3cb64cd388b10a9cee1a">SkateScript::InitNodeNameHashTable</a></div><div class="ttdeci">void InitNodeNameHashTable()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00037">nodearray.cpp:37</a></div></div>
+<div class="ttc" id="anamespace_script_html_a43181580ea5d38e4bf1aa19ccd5e9e85"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a43181580ea5d38e4bf1aa19ccd5e9e85">Script::Resolve</a></div><div class="ttdeci">CSymbolTableEntry * Resolve(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00211">symboltable.cpp:211</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_aefa79dba766fba7f87d55bc72ea2d189"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#aefa79dba766fba7f87d55bc72ea2d189">SkateScript::Init</a></div><div class="ttdeci">void Init()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d06/gs__init_8cpp_source.html#l00023">gs_init.cpp:23</a></div></div>
+<div class="ttc" id="aparse_8h_html"><div class="ttname"><a href="../../d4/d2b/parse_8h.html">parse.h</a></div></div>
+<div class="ttc" id="aftables_8h_html"><div class="ttname"><a href="../../d0/d82/ftables_8h.html">ftables.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a7dc9d7b79c1006dff9c657bdf615a9b9"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a7dc9d7b79c1006dff9c657bdf615a9b9">Script::CSymbolTableEntry::mType</a></div><div class="ttdeci">uint8 mType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00063">symboltable.h:63</a></div></div>
+<div class="ttc" id="ainit_8h_html"><div class="ttname"><a href="../../d8/dc0/init_8h.html">init.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_a6243dd7fec81fecedf2be7e0f46edcd6"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#a6243dd7fec81fecedf2be7e0f46edcd6">Script::CSymbolTableEntry::mpScript</a></div><div class="ttdeci">uint8 * mpScript</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00101">symboltable.h:101</a></div></div>
+<div class="ttc" id="ags__file_8h_html"><div class="ttname"><a href="../../d0/de4/gs__file_8h.html">gs_file.h</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a93d1a92c9a67596f9fe25dafd66b47a1"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a93d1a92c9a67596f9fe25dafd66b47a1">SkateScript::Preload</a></div><div class="ttdeci">void Preload()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d06/gs__init_8cpp_source.html#l00044">gs_init.cpp:44</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="anamespace_mem_html_ab75373b4fb3b8458eab02cd8021f95e8"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a></div><div class="ttdeci">void PushMemProfile(char *p_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00117">win32functions.cpp:117</a></div></div>
+<div class="ttc" id="ags__init_8h_html"><div class="ttname"><a href="../../d5/dbe/gs__init_8h.html">gs_init.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_a4c513075f553567c250a2809a177c9f5"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a4c513075f553567c250a2809a177c9f5">Script::AllocatePools</a></div><div class="ttdeci">void AllocatePools()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc9/init_8cpp_source.html#l00027">init.cpp:27</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aa2e901a218757867f811cf67fdd953ff"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a></div><div class="ttdeci">void PopMemProfile()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00113">win32functions.cpp:113</a></div></div>
+<div class="ttc" id="anamespace_script_html_a674e22299d205182d5a16e5650f617a0"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a674e22299d205182d5a16e5650f617a0">Script::CFunctionLookupTable</a></div><div class="ttdeci">SCFunction CFunctionLookupTable[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d87/ftables_8cpp_source.html#l00128">ftables.cpp:128</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_a13f53c2ad11266b0280c0c1937902bb9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a13f53c2ad11266b0280c0c1937902bb9">Script::Read4Bytes</a></div><div class="ttdeci">S4Bytes Read4Bytes(const uint8 *p_long)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d09/parse_8cpp_source.html#l01549">parse.cpp:1549</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="anamespace_script_html_a84ac1eedf37ab70be269e8fcbdc6ea21a9815a9a3a15d75ad0572d762aba0d1ea"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a9815a9a3a15d75ad0572d762aba0d1ea">Script::ESYMBOLTYPE_CFUNCTION</a></div><div class="ttdeci">@ ESYMBOLTYPE_CFUNCTION</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dc0/symboltype_8h_source.html#l00017">symboltype.h:17</a></div></div>
+<div class="ttc" id="anamespace_script_html_a6d5eb97aeda23e7cc7ae412bb24bc629a72a89bb3e43afb4de31c26e999a722ba"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a6d5eb97aeda23e7cc7ae412bb24bc629a72a89bb3e43afb4de31c26e999a722ba">Script::ESCRIPTTOKEN_NAME</a></div><div class="ttdeci">@ ESCRIPTTOKEN_NAME</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da2/tokens_8h_source.html#l00055">tokens.h:55</a></div></div>
+<div class="ttc" id="anamespace_script_html_ae6b92b459b8aa34fb45915dd68d30bc6"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae6b92b459b8aa34fb45915dd68d30bc6">Script::RegisterCFunctions</a></div><div class="ttdeci">void RegisterCFunctions(SCFunction *p_cFunctions, uint32 numFunctions)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dc9/init_8cpp_source.html#l00132">init.cpp:132</a></div></div>
+<div class="ttc" id="anamespace_script_html_a6d5eb97aeda23e7cc7ae412bb24bc629a0cd8bc859702746f09695aca794bfb87"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a6d5eb97aeda23e7cc7ae412bb24bc629a0cd8bc859702746f09695aca794bfb87">Script::ESCRIPTTOKEN_KEYWORD_ENDSCRIPT</a></div><div class="ttdeci">@ ESCRIPTTOKEN_KEYWORD_ENDSCRIPT</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/da2/tokens_8h_source.html#l00071">tokens.h:71</a></div></div>
+<div class="ttc" id="anamespace_script_html_a95682d77629572bf08257009bf6b71b1"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a95682d77629572bf08257009bf6b71b1">Script::ppMemberFunctionNames</a></div><div class="ttdeci">const char * ppMemberFunctionNames[]</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d87/ftables_8cpp_source.html#l01472">ftables.cpp:1472</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="anodearray_8h_html"><div class="ttname"><a href="../../df/d47/nodearray_8h.html">nodearray.h</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1ad624092ed31eb694b94cebab42d470"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1ad624092ed31eb694b94cebab42d470">Script::GetNextSymbolTableEntry</a></div><div class="ttdeci">CSymbolTableEntry * GetNextSymbolTableEntry(CSymbolTableEntry *p_sym)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00405">symboltable.cpp:405</a></div></div>
+<div class="ttc" id="astruct_script_1_1_s4_bytes_html_a3a85fcf38ecf9e84e54cb0e7b23067e3"><div class="ttname"><a href="../../db/da0/struct_script_1_1_s4_bytes.html#a3a85fcf38ecf9e84e54cb0e7b23067e3">Script::S4Bytes::mChecksum</a></div><div class="ttdeci">uint32 mChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2b/parse_8h_source.html#l00040">parse.h:40</a></div></div>
+<div class="ttc" id="anamespace_script_html_a84ac1eedf37ab70be269e8fcbdc6ea21a589ae41120e7bb814402a3cbf02cd8ad"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a589ae41120e7bb814402a3cbf02cd8ad">Script::ESYMBOLTYPE_QSCRIPT</a></div><div class="ttdeci">@ ESYMBOLTYPE_QSCRIPT</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dc0/symboltype_8h_source.html#l00016">symboltype.h:16</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a7076d5e485f4461d13ff2bb16cd93776"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a7076d5e485f4461d13ff2bb16cd93776">SkateScript::LoadAllStartupQBFiles</a></div><div class="ttdeci">void LoadAllStartupQBFiles()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00048">gs_file.cpp:48</a></div></div>
+<div class="ttc" id="anamespace_script_html_ae80ed69ea4edcbcbbbd4985a6efdcd6e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a></div><div class="ttdeci">const char * FindChecksumName(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00252">checksum.cpp:252</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_symbol_table_entry_html_ae88924d3effb0ef92721423f7c722e24"><div class="ttname"><a href="../../db/d00/class_script_1_1_c_symbol_table_entry.html#ae88924d3effb0ef92721423f7c722e24">Script::CSymbolTableEntry::mUsage</a></div><div class="ttdeci">uint32 mUsage</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d98/symboltable_8h_source.html#l00066">symboltable.h:66</a></div></div>
+<div class="ttc" id="anamespace_script_html_a84ac1eedf37ab70be269e8fcbdc6ea21a08c212c4c8ce8381cac3bda5f59159f9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a84ac1eedf37ab70be269e8fcbdc6ea21a08c212c4c8ce8381cac3bda5f59159f9">Script::ESYMBOLTYPE_MEMBERFUNCTION</a></div><div class="ttdeci">@ ESYMBOLTYPE_MEMBERFUNCTION</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dc0/symboltype_8h_source.html#l00018">symboltype.h:18</a></div></div>
+<div class="ttc" id="anamespace_script_html_a5bb2ad2f817a41df03d2032f864406c8"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a5bb2ad2f817a41df03d2032f864406c8">Script::GetCFunctionLookupTableSize</a></div><div class="ttdeci">int GetCFunctionLookupTableSize()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d87/ftables_8cpp_source.html#l02190">ftables.cpp:2190</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html">SkateScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d3d/gs__file_8cpp_source.html#l00038">gs_file.cpp:38</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_5a435ad098a1c5bf157792cc61889963.html">Scripting</a></li><li class="navelem"><a class="el" href="../../d0/d06/gs__init_8cpp.html">gs_init.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:36. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

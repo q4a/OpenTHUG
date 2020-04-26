@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/ngc/p_matrix.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d3/d55/p__matrix_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_matrix.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d55/p__matrix_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> *                                                                              *</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> *  Module:                                                                     *</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *              NsMatrix                                                        *</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *  Description:                                                                *</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> *              Matrix functionality.                                           *</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *  Written by:                                                                 *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *              Paul Robinson                                                   *</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *  Copyright:                                                                  *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> *              2001 Neversoft Entertainment - All rights reserved.             *</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *                                                                              *</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * Includes.                                                                    *</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d66/string_8h.html">string.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d55/p__frame_8h.html">p_frame.h</a>&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d5/d3b/p__matrix_8h.html">p_matrix.h</a>&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;core/math/math.h&gt;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Defines.                                                                     *</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * Structures.                                                                  *</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * Local variables.                                                             *</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * Forward references.                                                          *</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/********************************************************************************</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * Externs.                                                                     *</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> ********************************************************************************/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a0416fae9820c224bea5adccf155af1a8">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a0416fae9820c224bea5adccf155af1a8">NsMatrix::translate</a> ( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * v, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            MTXTrans( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            MTXTrans( temp, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            MTXTrans( temp, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a84670271911c7cc7b3f327b90dfd4d04">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a84670271911c7cc7b3f327b90dfd4d04">NsMatrix::rotate</a> ( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * axis, <span class="keywordtype">float</span> angle, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            MTXRotAxisDeg( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)axis, angle );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            MTXRotAxisDeg( temp, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)axis, angle );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            MTXRotAxisDeg( temp, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)axis, angle );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#adbf1bb6761a61a460a7b22078054e8b4">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#adbf1bb6761a61a460a7b22078054e8b4">NsMatrix::rotateX</a>( <span class="keywordtype">float</span> degrees, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            MTXRotDeg(<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <span class="charliteral">&#39;x&#39;</span>, degrees );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;x&#39;</span>, degrees );</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;x&#39;</span>, degrees );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#af304ee5a5bfc2bc43af9045c68db86ba">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#af304ee5a5bfc2bc43af9045c68db86ba">NsMatrix::rotateY</a>( <span class="keywordtype">float</span> degrees, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            MTXRotDeg(<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <span class="charliteral">&#39;y&#39;</span>, degrees );</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;y&#39;</span>, degrees );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;y&#39;</span>, degrees );</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a6fe3d5a534a24875332742d7de671902">  127</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a6fe3d5a534a24875332742d7de671902">NsMatrix::rotateZ</a>( <span class="keywordtype">float</span> degrees, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;{</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            MTXRotDeg(<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <span class="charliteral">&#39;z&#39;</span>, degrees );</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;z&#39;</span>, degrees );</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            MTXRotDeg(temp, <span class="charliteral">&#39;z&#39;</span>, degrees );</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a5d56957d8367e4a9e18e3a976b1ca8e8">  148</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a5d56957d8367e4a9e18e3a976b1ca8e8">NsMatrix::scale</a> ( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * v, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    Mtx temp;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;            MTXScale( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            MTXScale( temp, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            MTXScale( temp, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>, v-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> );</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            MTXConcat( temp, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a81b2f8167efe2db32dae9c7258a0b03d">  168</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a81b2f8167efe2db32dae9c7258a0b03d">NsMatrix::identity</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    MTXIdentity( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a290afc614b8a41f1e5f13c9e60418f02">  173</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a290afc614b8a41f1e5f13c9e60418f02">NsMatrix::getRotation</a>( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * axis, <span class="keywordtype">float</span> * angle, <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * center )</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;{</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="keywordtype">float</span>       nTwoSinTheta, nTwoCosTheta;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a>    vTwoSinThetaAxis;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">float</span>       nRadians;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">//    Mtx       mISubMat;</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">//    Mtx       mISubMatInverse;</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    nTwoCosTheta = <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> - 1.0f;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="comment">//  Dave 08/07/01 - Unsure as to exactly why the negation of the axis fixes the slerping problem</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// (getRotation() is called from NsSlerp::SetMatrices(), but it does. Investigate further at some point...</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">//  vTwoSinThetaAxis.x = getUp()-&gt;z - getAt()-&gt;y;</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">//  vTwoSinThetaAxis.y = getAt()-&gt;x - getRight()-&gt;z;</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">//  vTwoSinThetaAxis.z = getRight()-&gt;y - getUp()-&gt;x;</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> - <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> - <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> - <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    nTwoSinTheta = vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7a48ae1071d74db6e20dc0891d8adc67">length</a>();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (nTwoSinTheta &gt; 0.0f)</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordtype">float</span>  recipLength = (1.0f / (nTwoSinTheta));</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        axis-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a3081cf51948a34ae1f5360258cdb474a">scale</a>( vTwoSinThetaAxis, recipLength );</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        axis-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#ad66288c3423328047f613571a22ad6ec">set</a>( 0.0f, 0.0f, 0.0f );</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    nRadians = <a class="code" href="../../df/db1/math_8h.html#a9afae4258d91fd27600a1bfb482f6969">atan2</a>(nTwoSinTheta, nTwoCosTheta);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    (*angle) = nRadians * (((float) 180) / ((float) <a class="code" href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a>));</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">if</span> ((nTwoSinTheta &lt;= 0.01f) &amp;&amp; (nTwoCosTheta &lt;= 0.0f))</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="comment">         * sin theta is 0; cos theta is -1; theta is 180 degrees</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="comment">         * vTwoSinThetaAxis was degenerate</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;<span class="comment">         * axis will have to be found another way.</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a>    vTwoSinThetaAxis;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">         * Matrix is:</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">         * [ [ 2 a_x^2 - 1,  2 a_x a_y,   2 a_x a_z,  0 ]</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">         *   [  2 a_x a_y,  2 a_y^2 - 1,  2 a_y a_z,  0 ]</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">         *   [  2 a_x a_z,   2 a_y a_z,  2 a_z^2 - 1, 0 ]</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">         *   [      0,           0,           0,      1 ] ]</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">         * Build axis scaled by 4 * component of maximum absolute value</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> &gt; <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>)</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> &gt; <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>)</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            {</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = 1.0f + <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> + vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = 1.0f + <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> + vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        {</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a> &gt; <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;z)</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = 1.0f + <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> + vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a>;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            }</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = 1.0f + <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> = (vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a> + vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">x</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">getRight</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                vTwoSinThetaAxis.<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> = <a class="code" href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">getAt</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">y</a> + <a class="code" href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">getUp</a>()-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">z</a>;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;            }</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160; </div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <span class="comment">/*</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="comment">         * and normalize the axis</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        axis-&gt;<a class="code" href="../../db/dd6/class_ns_vector.html#a0eb7f2cfc05cb88363232cc4c60f327b">normalize</a>( vTwoSinThetaAxis );</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">//    /*</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">//     * Find center of line of rotation:</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">//     * [ v - c ] * R + c   = v * R + s</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">//     * -&gt; v * R + c - c *  R = v * R + s</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">//     * -&gt; c * [ I - R ]      = s</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">//     * -&gt; c                  = s * [ I - R ] ^ -1</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">//    MtxSetIdentity(&amp;mISubMat);</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="comment">//    /*</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">//     * Find [ I - R ] ^ -1</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">//    VecSubMacro(&amp;mISubMat.right, &amp;mISubMat.right, &amp;matrix-&gt;right);</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">//    VecSubMacro(&amp;mISubMat.up, &amp;mISubMat.up, &amp;matrix-&gt;up);</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">//    VecSubMacro(&amp;mISubMat.at, &amp;mISubMat.at, &amp;matrix-&gt;at);</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">//    MtxSetFlags(&amp;mISubMat, GENERIC_FLAGS(&amp;mISubMatInverse));</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">//    MtxSetFlags(&amp;mISubMatInverse, GENERIC_FLAGS(&amp;mISubMatInverse));</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">//    /* MatrixInvertOrthoNormalized(&amp;mISubMatInverse, &amp;mISubMat); */</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">//    MatrixInvertGeneric(&amp;mISubMatInverse, &amp;mISubMat);</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">//    /*</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">//     * Find s * [ I - R ] ^ -1</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">//    *center = mISubMatInverse.pos;</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">//    VecIncrementScaledMacro(center, &amp;mISubMatInverse.right, m[0][3]);</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="comment">//    VecIncrementScaledMacro(center, &amp;mISubMatInverse.up, m[1][3]);</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="comment">//    VecIncrementScaledMacro(center, &amp;mISubMatInverse.at, m[2][3]);</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">//    RWRETURN(matrix);</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;}</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#ab0450ab5c53dca1bcda81961c7a5c43f">  296</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#ab0450ab5c53dca1bcda81961c7a5c43f">NsMatrix::transform</a> ( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>&amp; a, <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a> c )</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;{</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordflow">switch</span> (c) {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a>:</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <a class="code" href="../../de/d1b/class_ns_matrix.html#a6181c0a0b5a4f6efd91476bab62ec500">copy</a>( a );</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a>:</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            MTXConcat( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, a.<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a>:</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            MTXConcat( a.<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00313"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#aa221000cd7ee92df22ee9b7c537bbe3c">  313</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#aa221000cd7ee92df22ee9b7c537bbe3c">NsMatrix::cat</a> ( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>&amp; a, <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>&amp; b )</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;{</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    MTXConcat( a.<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, b.<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;}</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#ae43a84ffa9e6c2969e530b05be544246">  318</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#ae43a84ffa9e6c2969e530b05be544246">NsMatrix::invert</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;{</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    MTXInverse( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a5df50a055e75e9080a7cb33fd0a9eade">  323</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#ae43a84ffa9e6c2969e530b05be544246">NsMatrix::invert</a>( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>&amp; source )</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;{</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    MTXInverse( source.<a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a> );</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a6181c0a0b5a4f6efd91476bab62ec500">  328</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a6181c0a0b5a4f6efd91476bab62ec500">NsMatrix::copy</a>( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>&amp; source )</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    memcpy( <span class="keyword">this</span>, &amp;source, <span class="keyword">sizeof</span>( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a> ) );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#a2c0205c45081a3dcd767d1b3055e656e">  333</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#a2c0205c45081a3dcd767d1b3055e656e">NsMatrix::lookAt</a> ( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pPos, <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pUp, <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pTarget )</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;{</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    MTXLookAt( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pPos, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pUp, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pTarget );</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">//void NsMatrix::fromQuat ( NsQuat * pQuat )</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">//{</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">//  MTXQuat ( m_matrix, &amp;pQuat-&gt;m_quat );</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="comment">//}</span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#ae355c8f5cca703b3abe91d651ecadaf1">  343</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#ae355c8f5cca703b3abe91d651ecadaf1">NsMatrix::multiply</a>( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pSourceBase, <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pDestBase )</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;{</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    MTXMultVec( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pSourceBase, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pDestBase );</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="../../de/d1b/class_ns_matrix.html#abaaf9b436d6cdeee79bbf9d7f61b9275">  348</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/d1b/class_ns_matrix.html#ae355c8f5cca703b3abe91d651ecadaf1">NsMatrix::multiply</a>( <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pSourceBase, <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a> * pDestBase, <span class="keywordtype">int</span> count )</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;{</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    MTXMultVecArray( <a class="code" href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">m_matrix</a>, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pSourceBase, (<a class="code" href="../../db/d16/struct_vec.html">Vec</a>*)pDestBase, count );</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_ns_matrix_html_ae43a84ffa9e6c2969e530b05be544246"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#ae43a84ffa9e6c2969e530b05be544246">NsMatrix::invert</a></div><div class="ttdeci">void invert(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00318">p_matrix.cpp:318</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html">NsMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00016">p_matrix.h:16</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a6181c0a0b5a4f6efd91476bab62ec500"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a6181c0a0b5a4f6efd91476bab62ec500">NsMatrix::copy</a></div><div class="ttdeci">void copy(NsMatrix &amp;source)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00328">p_matrix.cpp:328</a></div></div>
+<div class="ttc" id="astring_8h_html"><div class="ttname"><a href="../../da/d66/string_8h.html">string.h</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a7a48ae1071d74db6e20dc0891d8adc67"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a7a48ae1071d74db6e20dc0891d8adc67">NsVector::length</a></div><div class="ttdeci">float length(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d8b/p__vector_8cpp_source.html#l00071">p_vector.cpp:71</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a290afc614b8a41f1e5f13c9e60418f02"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a290afc614b8a41f1e5f13c9e60418f02">NsMatrix::getRotation</a></div><div class="ttdeci">void getRotation(NsVector *axis, float *angle, NsVector *center)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00173">p_matrix.cpp:173</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a1538fcb69cc735d8cc0510f1f2fbf4f3"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a1538fcb69cc735d8cc0510f1f2fbf4f3">NsMatrix::getRight</a></div><div class="ttdeci">NsVector * getRight(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00046">p_matrix.h:46</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a3081cf51948a34ae1f5360258cdb474a"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a3081cf51948a34ae1f5360258cdb474a">NsVector::scale</a></div><div class="ttdeci">void scale(float scale)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d8b/p__vector_8cpp_source.html#l00106">p_vector.cpp:106</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html">NsVector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00006">p_vector.h:6</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ab37069f5ecb0bab9cec330d926a9eeb4"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ab37069f5ecb0bab9cec330d926a9eeb4">Mth::PI</a></div><div class="ttdeci">const float PI</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00440">math.h:440</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a2c0205c45081a3dcd767d1b3055e656e"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a2c0205c45081a3dcd767d1b3055e656e">NsMatrix::lookAt</a></div><div class="ttdeci">void lookAt(NsVector *pPos, NsVector *pUp, NsVector *pTarget)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00333">p_matrix.cpp:333</a></div></div>
+<div class="ttc" id="ap__matrix_8h_html_a65ad7a800dfd61ea53f7afdf1e17792f"><div class="ttname"><a href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792f">NsMatrix_Combine</a></div><div class="ttdeci">NsMatrix_Combine</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00008">p_matrix.h:8</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a6fe3d5a534a24875332742d7de671902"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a6fe3d5a534a24875332742d7de671902">NsMatrix::rotateZ</a></div><div class="ttdeci">void rotateZ(float degrees, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00127">p_matrix.cpp:127</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a674a605b635bb0a9617957fc3ae0114c"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a674a605b635bb0a9617957fc3ae0114c">NsVector::y</a></div><div class="ttdeci">float y</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00010">p_vector.h:10</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a5d56957d8367e4a9e18e3a976b1ca8e8"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a5d56957d8367e4a9e18e3a976b1ca8e8">NsMatrix::scale</a></div><div class="ttdeci">void scale(NsVector *v, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00148">p_matrix.cpp:148</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_ad66288c3423328047f613571a22ad6ec"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#ad66288c3423328047f613571a22ad6ec">NsVector::set</a></div><div class="ttdeci">void set(float sx, float sy, float sz)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00033">p_vector.h:33</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a81b2f8167efe2db32dae9c7258a0b03d"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a81b2f8167efe2db32dae9c7258a0b03d">NsMatrix::identity</a></div><div class="ttdeci">void identity(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00168">p_matrix.cpp:168</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a7f2cfbda4f288c80a7987fd64ef55044"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044">NsVector::x</a></div><div class="ttdeci">float x</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00009">p_vector.h:9</a></div></div>
+<div class="ttc" id="ap__matrix_8h_html"><div class="ttname"><a href="../../d5/d3b/p__matrix_8h.html">p_matrix.h</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_ab0450ab5c53dca1bcda81961c7a5c43f"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#ab0450ab5c53dca1bcda81961c7a5c43f">NsMatrix::transform</a></div><div class="ttdeci">void transform(NsMatrix &amp;a, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00296">p_matrix.cpp:296</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_af304ee5a5bfc2bc43af9045c68db86ba"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#af304ee5a5bfc2bc43af9045c68db86ba">NsMatrix::rotateY</a></div><div class="ttdeci">void rotateY(float degrees, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00106">p_matrix.cpp:106</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a0eb7f2cfc05cb88363232cc4c60f327b"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a0eb7f2cfc05cb88363232cc4c60f327b">NsVector::normalize</a></div><div class="ttdeci">void normalize(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d8b/p__vector_8cpp_source.html#l00086">p_vector.cpp:86</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a5a7e3f0dd8cbff51fad26bfef961667a"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a5a7e3f0dd8cbff51fad26bfef961667a">NsMatrix::m_matrix</a></div><div class="ttdeci">Mtx m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00018">p_matrix.h:18</a></div></div>
+<div class="ttc" id="amath_8h_html_a9afae4258d91fd27600a1bfb482f6969"><div class="ttname"><a href="../../df/db1/math_8h.html#a9afae4258d91fd27600a1bfb482f6969">atan2</a></div><div class="ttdeci">float atan2(float x, float y)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/db1/math_8h_source.html#l00038">math.h:38</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a0416fae9820c224bea5adccf155af1a8"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a0416fae9820c224bea5adccf155af1a8">NsMatrix::translate</a></div><div class="ttdeci">void translate(NsVector *v, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00044">p_matrix.cpp:44</a></div></div>
+<div class="ttc" id="astruct_vec_html"><div class="ttname"><a href="../../db/d16/struct_vec.html">Vec</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00011">p_gx.h:11</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_adbf1bb6761a61a460a7b22078054e8b4"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#adbf1bb6761a61a460a7b22078054e8b4">NsMatrix::rotateX</a></div><div class="ttdeci">void rotateX(float degrees, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00085">p_matrix.cpp:85</a></div></div>
+<div class="ttc" id="ap__frame_8h_html"><div class="ttname"><a href="../../de/d55/p__frame_8h.html">p_frame.h</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_aca4cec02a2570c1c4d2c585be8e08e3a"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#aca4cec02a2570c1c4d2c585be8e08e3a">NsMatrix::getUp</a></div><div class="ttdeci">NsVector * getUp(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00047">p_matrix.h:47</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a06b61aa2a0b195efde9c94dce59d418b"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a06b61aa2a0b195efde9c94dce59d418b">NsMatrix::getAt</a></div><div class="ttdeci">NsVector * getAt(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00048">p_matrix.h:48</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_aa221000cd7ee92df22ee9b7c537bbe3c"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#aa221000cd7ee92df22ee9b7c537bbe3c">NsMatrix::cat</a></div><div class="ttdeci">void cat(NsMatrix &amp;a, NsMatrix &amp;b)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00313">p_matrix.cpp:313</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html_a376193aeb129e6771abdd6a126020668"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html#a376193aeb129e6771abdd6a126020668">NsVector::z</a></div><div class="ttdeci">float z</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00011">p_vector.h:11</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_ae355c8f5cca703b3abe91d651ecadaf1"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#ae355c8f5cca703b3abe91d651ecadaf1">NsMatrix::multiply</a></div><div class="ttdeci">void multiply(NsVector *pSourceBase, NsVector *pDestBase)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00343">p_matrix.cpp:343</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="ap__matrix_8h_html_a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33"><div class="ttname"><a href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4483eecc2b87b933e3a7d1df7f453e33">NsMatrix_Combine_Post</a></div><div class="ttdeci">@ NsMatrix_Combine_Post</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00011">p_matrix.h:11</a></div></div>
+<div class="ttc" id="ap__matrix_8h_html_a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da"><div class="ttname"><a href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa2d70d7bec31740e00853d24ffada44da">NsMatrix_Combine_Replace</a></div><div class="ttdeci">@ NsMatrix_Combine_Replace</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00009">p_matrix.h:9</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html_a84670271911c7cc7b3f327b90dfd4d04"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html#a84670271911c7cc7b3f327b90dfd4d04">NsMatrix::rotate</a></div><div class="ttdeci">void rotate(NsVector *axis, float angle, NsMatrix_Combine c)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d55/p__matrix_8cpp_source.html#l00064">p_matrix.cpp:64</a></div></div>
+<div class="ttc" id="ap__matrix_8h_html_a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1"><div class="ttname"><a href="../../d5/d3b/p__matrix_8h.html#a65ad7a800dfd61ea53f7afdf1e17792fa4cf8968f382fd460f304fe2cc78c45d1">NsMatrix_Combine_Pre</a></div><div class="ttdeci">@ NsMatrix_Combine_Pre</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00010">p_matrix.h:10</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_896d666de209fbbe6b042c1a9920af6c.html">ngc</a></li><li class="navelem"><a class="el" href="../../d3/d55/p__matrix_8cpp.html">p_matrix.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

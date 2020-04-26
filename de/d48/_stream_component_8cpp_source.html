@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/StreamComponent.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/d48/_stream_component_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">StreamComponent.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d48/_stream_component_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       StreamComponent.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          ???</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  ???</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">// The CStreamComponent class is an skeletal version of a component</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// It is intended that you use this as the basis for creating new</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// components.  </span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// To create a new component called &quot;Watch&quot;, (CWatchComponent):</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">//  - copy streamcomponent.cpp/.h to watchcomponent.cpp/.h</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//  - in both files, search and replace &quot;Stream&quot; with &quot;Watch&quot;, preserving the case</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">//  - in WatchComponent.h, update the CRCD value of CRC_WATCH</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//  - in CompositeObjectManager.cpp, in the CCompositeObjectManager constructor, add:</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//          RegisterComponent(CRC_WATCH,            CWatchComponent::s_create); </span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">//  - and add the include of the header</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//          #include &lt;gel/components/watchcomponent.h&gt; </span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//  - Add it to build\gel.mkf, like:</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//          $(NGEL)/components/WatchComponent.cpp\</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//  - Fill in the OWNER (yourself) and the CREATION DATE (today&#39;s date) in the .cpp and the .h files</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  - Insert code as needed and remove generic comments</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//  - remove these comments</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//  - add comments specfic to the component, explaining its usage</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d97/_stream_component_8h.html">gel/components/streamcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d10/music_8h.html">gel/music/music.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/df6/camera_8h.html">gfx/camera.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// TODO:  Refactor this - </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d7f/emitter_8h.html">sk/objects/emitter.h</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dbc/proxim_8h.html">sk/objects/proxim.h</a>&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">// s_create is what is registered with the component factory </span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">// object, (currently the CCompositeObjectManager) </span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">// s_create returns a CBaseComponent*, as it is to be used</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">// by factor creation schemes that do not care what type of</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">// component is being created</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">// **  after you&#39;ve finished creating this component, be sure to</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// **  add it to the list of registered functions in the</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">// **  CCompositeObjectManager constructor  </span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a6c092406e6e7c921896290317f782c32">   59</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a6c092406e6e7c921896290317f782c32">CStreamComponent::s_create</a>()</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <span class="keyword">&gt;</span>( <span class="keyword">new</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a58eb6ab5213a035119303a7aead73643">CStreamComponent</a> );  </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">// All components set their type, which is a unique 32-bit number</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">// (the CRC of their name), which is used to identify the component </span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a58eb6ab5213a035119303a7aead73643">   71</a></span>&#160;<a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a58eb6ab5213a035119303a7aead73643">CStreamComponent::CStreamComponent</a>() : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>()</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">SetType</a>( CRC_STREAM );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">mp_emitter</a> = NULL;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#abacabf9734fca3d6c54f3d3ee50eff39">mp_proxim_node</a> = NULL;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a808139fb2fb7a2225f7015cfc4295211">   83</a></span>&#160;<a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a808139fb2fb7a2225f7015cfc4295211">CStreamComponent::~CStreamComponent</a>()</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// If there is a streaming sound attached, remove it.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">for</span>( i = 0; i &lt; MAX_STREAMS_PER_OBJECT; i++ )</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">if</span>( <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[i] )</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <a class="code" href="../../de/d3e/namespace_pcm.html#a659c4738c99389e5d9e7bd68e66149dc">Pcm::StopStreamFromID</a>( <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[i] );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// InitFromStructure is passed a Script::CStruct that contains a</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">// number of parameters to initialize this component</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">// this currently is the contents of a node</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">// but you can pass in anything you like.   </span></div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#ab133e540ff0c68df1a7ce848f4cc13f5">  106</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#ab133e540ff0c68df1a7ce848f4cc13f5">CStreamComponent::InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> proxim_node_checksum;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>(<span class="stringliteral">&quot;ProximNode&quot;</span>, &amp;proxim_node_checksum))</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="comment">//Dbg_Message(&quot;StreamComponent: Looking for ProximNode %s&quot;, Script::FindChecksumName(proxim_node_checksum));</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#abacabf9734fca3d6c54f3d3ee50eff39">mp_proxim_node</a> = <a class="code" href="../../d1/db6/class_obj_1_1_c_proxim_manager.html#ae10df33df9eadb09bd9c81200f314e7e">CProximManager::sGetNode</a>(proxim_node_checksum);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">//if (mp_proxim_node)</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="comment">//{</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">//  Dbg_Message(&quot;Found ProximNode %s&quot;, Script::FindChecksumName(mp_proxim_node-&gt;m_name));</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="comment">//}</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">// RefreshFromStructure is passed a Script::CStruct that contains a</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// number of parameters to initialize this component</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">// this currently is the contents of a node</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">// but you can pass in anything you like.   </span></div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a47c9592f4272c2ae55bda6658842eb57">  130</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a47c9592f4272c2ae55bda6658842eb57">CStreamComponent::RefreshFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;{</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Default to just calline InitFromStructure()</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="comment">// but if that does not handle it, then will need to write a specific </span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="comment">// function here. </span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="comment">// The user might only want to update a single field in the structure</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="comment">// and we don&#39;t want to be asserting becasue everything is missing </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#ab133e540ff0c68df1a7ce848f4cc13f5">InitFromStructure</a>(pParams);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;}</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">// The component&#39;s Update() function is called from the CCompositeObject&#39;s </span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">// Update() function.  That is called every game frame by the CCompositeObjectManager</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// from the s_logic_code function that the CCompositeObjectManager registers</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">// with the task manger.</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a2849353808107d3140be47e1ad075503">  153</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a2849353808107d3140be47e1ad075503">CStreamComponent::Update</a>()</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="comment">// Doing nothing, so tell code to do nothing next time around</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">Suspend</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">// Given the &quot;Checksum&quot; of a script command, then possibly handle it</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">// if it&#39;s a command that this component will handle    </span></div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a45ef7fd335db15016da79ac720ba9584">  166</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">CBaseComponent::EMemberFunctionResult</a> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a45ef7fd335db15016da79ac720ba9584">CStreamComponent::CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript )</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">switch</span> ( Checksum )</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">case</span> 0xdb05a233:  <span class="comment">// Obj_PlayStream</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af47894c0c58e41d219310537d218256e">PlayStream</a>( pParams, pScript );</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">case</span> 0xa738aeb8:  <span class="comment">// Obj_StopStream</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <span class="comment">// eventually want to be able to specify channel on here...</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">for</span> ( i = 0; i &lt; MAX_STREAMS_PER_OBJECT; i++ )</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                <span class="keywordflow">if</span> ( <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[ i ] )</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                    <a class="code" href="../../de/d3e/namespace_pcm.html#a659c4738c99389e5d9e7bd68e66149dc">Pcm::StopStreamFromID</a>( <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[ i ] );</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                    <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[ i ] = 0;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">CBaseComponent::MF_NOT_EXECUTED</a>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">// the &quot;default&quot; case of the switch statement handles</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// unrecognized functions;  if we make it down here,</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="comment">// that means that the component already handled it</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// somehow</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;}</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a8e9ddbeeb6ed6ac6316b99ca056bb61f">  207</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a8e9ddbeeb6ed6ac6316b99ca056bb61f">CStreamComponent::GetDebugInfo</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_info)</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="preprocessor">#ifdef  __DEBUG_CODE__</span></div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    Dbg_MsgAssert(p_info,(<span class="stringliteral">&quot;NULL p_info sent to C......Component::GetDebugInfo&quot;</span>));</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="comment">// Add any script components to the p_info structure,</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="comment">// and they will be displayed in the script debugger (qdebug.exe)</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <span class="comment">// you will need to add the names to debugger_names.q, if they are not existing checksums</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">/*  Example:</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">    p_info-&gt;AddInteger(&quot;m_never_suspend&quot;,m_never_suspend);</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">    p_info-&gt;AddFloat(&quot;m_suspend_distance&quot;,m_suspend_distance);</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">// we call the base component&#39;s GetDebugInfo, so we can add info from the common base component                                      </span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">CBaseComponent::GetDebugInfo</a>(p_info);     </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="preprocessor">#endif               </span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0718afc882999e7f28085e229d2e61a9">  231</a></span>&#160;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0718afc882999e7f28085e229d2e61a9">CStreamComponent::GetClosestEmitterPos</a>( <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a> *pCamera )</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;{</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">mp_emitter</a> &amp;&amp; pCamera)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">mp_emitter</a>-&gt;<a class="code" href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ae09df29f5fd8c1c3688443b797a91a45">GetClosestPoint</a>(pCamera-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">GetPos</a>());</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0feaf96a33b38a299c8a6b53b4c0664a">  248</a></span>&#160;<span class="keywordtype">bool</span>        <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0feaf96a33b38a299c8a6b53b4c0664a">CStreamComponent::GetClosestDropoffPos</a>( <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a> *pCamera, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp; dropoff_pos )</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;{</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="keywordflow">if</span> (pCamera &amp;&amp; <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#abacabf9734fca3d6c54f3d3ee50eff39">mp_proxim_node</a>)</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        dropoff_pos = <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#abacabf9734fca3d6c54f3d3ee50eff39">mp_proxim_node</a>-&gt;<a class="code" href="../../d2/d33/class_obj_1_1_c_proxim_node.html#a4819dd9f1b8539f0b2e7f985f1c0f736">GetClosestIntersectionPoint</a>(pCamera-&gt;<a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">GetPos</a>());</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">// Returns 0 if no stream slots empty, or the index + 1</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af24d39d1e0ffcf4b2c91a6bb8002f7e7">  268</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af24d39d1e0ffcf4b2c91a6bb8002f7e7">CStreamComponent::StreamSlotEmpty</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;{</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordtype">int</span> j;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <span class="keywordflow">for</span> ( j = 0; j &lt; MAX_STREAMS_PER_OBJECT; j++ )</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    {</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        <span class="keywordflow">if</span> ( !<a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">mStreamingID</a>[ j ] )</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        {</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="keywordflow">return</span> ( j + 1 );</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        }</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> ( 0 );</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno"><a class="line" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af47894c0c58e41d219310537d218256e">  282</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af47894c0c58e41d219310537d218256e">CStreamComponent::PlayStream</a>( Script::CScriptStructure *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript )</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;{</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#af24d39d1e0ffcf4b2c91a6bb8002f7e7">StreamSlotEmpty</a>( ) )</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="preprocessor">        #ifdef  __NOPT_ASSERT__</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;Playing too many streams on object\n&quot;</span>);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                                          </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">return</span> ( <span class="keyword">false</span> ); <span class="comment">// can only play 3 stream on each object max!!!</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> streamChecksum;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> emitterChecksum;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> dropoffFuncChecksum;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> <span class="keywordtype">id</span> = 0;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    <span class="keywordtype">float</span> dropoff = 0.0f;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordtype">float</span> volume = 100.0f;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    <span class="keywordtype">float</span> pitch = 100.0f;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <span class="keywordtype">int</span> priority = STREAM_DEFAULT_PRIORITY;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <a class="code" href="../../d2/d00/soundfx_8h.html#aa353aa07442af82949943fb5e2261443">EDropoffFunc</a> dropoffFunction = <a class="code" href="../../d2/d00/soundfx_8h.html#aa353aa07442af82949943fb5e2261443a7508098b210debd4ff3997bf472ade49">DROPOFF_FUNC_STANDARD</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    pParams-&gt;GetFloat( 0xf6a36814, &amp;volume ); <span class="comment">// &quot;vol&quot;</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    pParams-&gt;GetFloat( 0xd8604126, &amp;pitch ); <span class="comment">// &quot;pitch&quot;</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    pParams-&gt;GetInteger( 0x9d5923d8, &amp;priority ); <span class="comment">// priority</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    pParams-&gt;GetChecksum( 0x40c698af, &amp;<span class="keywordtype">id</span> ); <span class="comment">// id</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">if</span> ( pParams-&gt;GetFloat( 0xff2020ec, &amp;dropoff ) ) <span class="comment">// &quot;dropoff&quot;</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    {</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        dropoff = FEET_TO_INCHES( dropoff );</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">if</span> ( pParams-&gt;GetChecksum( 0xc6ac50a, &amp;dropoffFuncChecksum ) ) <span class="comment">// &quot;dropoff_function&quot;</span></div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        dropoffFunction = <a class="code" href="../../de/d43/namespace_sfx.html#a4e241087efc6075f9d8e446d91779085">Sfx::GetDropoffFunctionFromChecksum</a>( dropoffFuncChecksum );</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    }</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;GetChecksum( 0x8a7132ce, &amp;emitterChecksum ) ) <span class="comment">// &quot;emitter&quot;</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">mp_emitter</a> = <a class="code" href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a4850a7fae54682547c006a242946b603">CEmitterManager::sGetEmitter</a>(emitterChecksum);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    {</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <a class="code" href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">mp_emitter</a> = NULL;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    }</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    <span class="keywordflow">if</span> ( pParams-&gt;GetChecksum( NONAME, &amp;streamChecksum ) )</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        <span class="keywordtype">int</span> use_pos_info = 1;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;        pParams-&gt;GetInteger( <span class="stringliteral">&quot;use_pos_info&quot;</span>, &amp;use_pos_info, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        <span class="comment">//printf (&quot;Playing stream 0x%x on object %s\n&quot;,streamChecksum,Script::FindChecksumName(GetObject()-&gt;GetID()));</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        <span class="keywordflow">return</span> ( <a class="code" href="../../de/d3e/namespace_pcm.html#a4d8fdb6c0afecf9a5955620cea7866a0">Pcm::PlayStreamFromObject</a>( <span class="keyword">this</span>, streamChecksum, dropoff, volume, pitch, priority, use_pos_info, dropoffFunction, <span class="keywordtype">id</span> ) );</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keywordflow">return</span> ( <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a1b617ce9442e7fe78cc830537567a305"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a1b617ce9442e7fe78cc830537567a305">Obj::CBaseComponent::Suspend</a></div><div class="ttdeci">virtual void Suspend(bool suspend)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00079">basecomponent.cpp:79</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a47c9592f4272c2ae55bda6658842eb57"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a47c9592f4272c2ae55bda6658842eb57">Obj::CStreamComponent::RefreshFromStructure</a></div><div class="ttdeci">virtual void RefreshFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00130">StreamComponent.cpp:130</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a75150b149fb2f45075cdebc2422afaff"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">Obj::CCompositeObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00099">compositeobject.h:99</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="asoundfx_8h_html_aa353aa07442af82949943fb5e2261443a7508098b210debd4ff3997bf472ade49"><div class="ttname"><a href="../../d2/d00/soundfx_8h.html#aa353aa07442af82949943fb5e2261443a7508098b210debd4ff3997bf472ade49">DROPOFF_FUNC_STANDARD</a></div><div class="ttdeci">@ DROPOFF_FUNC_STANDARD</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d00/soundfx_8h_source.html#l00109">soundfx.h:109</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a2849353808107d3140be47e1ad075503"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a2849353808107d3140be47e1ad075503">Obj::CStreamComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00153">StreamComponent.cpp:153</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_manager_html_ae10df33df9eadb09bd9c81200f314e7e"><div class="ttname"><a href="../../d1/db6/class_obj_1_1_c_proxim_manager.html#ae10df33df9eadb09bd9c81200f314e7e">Obj::CProximManager::sGetNode</a></div><div class="ttdeci">static CProximNode * sGetNode(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d21/proxim_8cpp_source.html#l00204">proxim.cpp:204</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_manager_html_a4850a7fae54682547c006a242946b603"><div class="ttname"><a href="../../df/d02/class_obj_1_1_c_emitter_manager.html#a4850a7fae54682547c006a242946b603">Obj::CEmitterManager::sGetEmitter</a></div><div class="ttdeci">static CEmitterObject * sGetEmitter(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00147">emitter.cpp:147</a></div></div>
+<div class="ttc" id="a_stream_component_8h_html"><div class="ttname"><a href="../../de/d97/_stream_component_8h.html">StreamComponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a880a8b9b7ec5b22563c6821ae0f1903e"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">Obj::CBaseComponent::SetType</a></div><div class="ttdeci">void SetType(uint32 type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00077">basecomponent.h:77</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa39e6fe5fdf1d6c48136ae26a7ad511e"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">Script::CStruct::GetChecksum</a></div><div class="ttdeci">bool GetChecksum(uint32 nameChecksum, uint32 *p_checksum, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01658">struct.cpp:1658</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a></div><div class="ttdeci">@ NO_ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00015">scriptdefs.h:15</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a0718afc882999e7f28085e229d2e61a9"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0718afc882999e7f28085e229d2e61a9">Obj::CStreamComponent::GetClosestEmitterPos</a></div><div class="ttdeci">Mth::Vector GetClosestEmitterPos(Gfx::Camera *pCamera)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00231">StreamComponent.cpp:231</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_af24d39d1e0ffcf4b2c91a6bb8002f7e7"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#af24d39d1e0ffcf4b2c91a6bb8002f7e7">Obj::CStreamComponent::StreamSlotEmpty</a></div><div class="ttdeci">int StreamSlotEmpty()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00268">StreamComponent.cpp:268</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a952f40d99323d28b3ca2f55567edfa85"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">Obj::CBaseComponent::GetObject</a></div><div class="ttdeci">CCompositeObject * GetObject() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00059">basecomponent.h:59</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a808139fb2fb7a2225f7015cfc4295211"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a808139fb2fb7a2225f7015cfc4295211">Obj::CStreamComponent::~CStreamComponent</a></div><div class="ttdeci">virtual ~CStreamComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00083">StreamComponent.cpp:83</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a45ef7fd335db15016da79ac720ba9584"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a45ef7fd335db15016da79ac720ba9584">Obj::CStreamComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00166">StreamComponent.cpp:166</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a0feaf96a33b38a299c8a6b53b4c0664a"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0feaf96a33b38a299c8a6b53b4c0664a">Obj::CStreamComponent::GetClosestDropoffPos</a></div><div class="ttdeci">bool GetClosestDropoffPos(Gfx::Camera *pCamera, Mth::Vector &amp;dropoff_pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00248">StreamComponent.cpp:248</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">Obj::CBaseComponent::MF_NOT_EXECUTED</a></div><div class="ttdeci">@ MF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00042">basecomponent.h:42</a></div></div>
+<div class="ttc" id="aproxim_8h_html"><div class="ttname"><a href="../../df/dbc/proxim_8h.html">proxim.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="anamespace_pcm_html_a4d8fdb6c0afecf9a5955620cea7866a0"><div class="ttname"><a href="../../de/d3e/namespace_pcm.html#a4d8fdb6c0afecf9a5955620cea7866a0">Pcm::PlayStreamFromObject</a></div><div class="ttdeci">uint32 PlayStreamFromObject(Obj::CStreamComponent *pComponent, uint32 streamNameChecksum, float dropoff, float volume, float pitch, int priority, int use_pos_info, EDropoffFunc dropoffFunc, uint32 controlID)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8a/music_8cpp_source.html#l00760">music.cpp:760</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_abacabf9734fca3d6c54f3d3ee50eff39"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#abacabf9734fca3d6c54f3d3ee50eff39">Obj::CStreamComponent::mp_proxim_node</a></div><div class="ttdeci">CProximNode * mp_proxim_node</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d97/_stream_component_8h_source.html#l00076">StreamComponent.h:76</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00043">camera.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a349e60e595f2ad691478d2eea4dbb57c"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a349e60e595f2ad691478d2eea4dbb57c">Obj::CStreamComponent::mp_emitter</a></div><div class="ttdeci">CEmitterObject * mp_emitter</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d97/_stream_component_8h_source.html#l00075">StreamComponent.h:75</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_ab133e540ff0c68df1a7ce848f4cc13f5"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#ab133e540ff0c68df1a7ce848f4cc13f5">Obj::CStreamComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00106">StreamComponent.cpp:106</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae2af213dc0845ab5e04de4a7f6afa138"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">Gfx::Camera::GetPos</a></div><div class="ttdeci">Mth::Vector &amp; GetPos()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00280">camera.cpp:280</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="anamespace_sfx_html_a4e241087efc6075f9d8e446d91779085"><div class="ttname"><a href="../../de/d43/namespace_sfx.html#a4e241087efc6075f9d8e446d91779085">Sfx::GetDropoffFunctionFromChecksum</a></div><div class="ttdeci">EDropoffFunc GetDropoffFunctionFromChecksum(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/dbd/soundfx_8cpp_source.html#l00100">soundfx.cpp:100</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_emitter_object_html_ae09df29f5fd8c1c3688443b797a91a45"><div class="ttname"><a href="../../d7/d0f/class_obj_1_1_c_emitter_object.html#ae09df29f5fd8c1c3688443b797a91a45">Obj::CEmitterObject::GetClosestPoint</a></div><div class="ttdeci">Mth::Vector GetClosestPoint(const Mth::Vector &amp;object_pos) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d1b/emitter_8cpp_source.html#l00387">emitter.cpp:387</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">Obj::CBaseComponent::MF_TRUE</a></div><div class="ttdeci">@ MF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00041">basecomponent.h:41</a></div></div>
+<div class="ttc" id="acamera_8h_html"><div class="ttname"><a href="../../d7/df6/camera_8h.html">camera.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a6c092406e6e7c921896290317f782c32"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a6c092406e6e7c921896290317f782c32">Obj::CStreamComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00059">StreamComponent.cpp:59</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_acb60b78cb120aaaa883df1fd4d4d15bf"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">Obj::CBaseComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00113">basecomponent.cpp:113</a></div></div>
+<div class="ttc" id="asoundfx_8h_html_aa353aa07442af82949943fb5e2261443"><div class="ttname"><a href="../../d2/d00/soundfx_8h.html#aa353aa07442af82949943fb5e2261443">EDropoffFunc</a></div><div class="ttdeci">EDropoffFunc</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d00/soundfx_8h_source.html#l00107">soundfx.h:107</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_af47894c0c58e41d219310537d218256e"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#af47894c0c58e41d219310537d218256e">Obj::CStreamComponent::PlayStream</a></div><div class="ttdeci">bool PlayStream(Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00282">StreamComponent.cpp:282</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a8e9ddbeeb6ed6ac6316b99ca056bb61f"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a8e9ddbeeb6ed6ac6316b99ca056bb61f">Obj::CStreamComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00207">StreamComponent.cpp:207</a></div></div>
+<div class="ttc" id="amusic_8h_html"><div class="ttname"><a href="../../db/d10/music_8h.html">music.h</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a0108371dc47ea5f5a0da20e047449b90"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a0108371dc47ea5f5a0da20e047449b90">Obj::CStreamComponent::mStreamingID</a></div><div class="ttdeci">uint32 mStreamingID[MAX_STREAMS_PER_OBJECT]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d97/_stream_component_8h_source.html#l00065">StreamComponent.h:65</a></div></div>
+<div class="ttc" id="anamespace_pcm_html_a659c4738c99389e5d9e7bd68e66149dc"><div class="ttname"><a href="../../de/d3e/namespace_pcm.html#a659c4738c99389e5d9e7bd68e66149dc">Pcm::StopStreamFromID</a></div><div class="ttdeci">void StopStreamFromID(uint32 streamID)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d8a/music_8cpp_source.html#l00236">music.cpp:236</a></div></div>
+<div class="ttc" id="aemitter_8h_html"><div class="ttname"><a href="../../dd/d7f/emitter_8h.html">emitter.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stream_component_html_a58eb6ab5213a035119303a7aead73643"><div class="ttname"><a href="../../d2/db8/class_obj_1_1_c_stream_component.html#a58eb6ab5213a035119303a7aead73643">Obj::CStreamComponent::CStreamComponent</a></div><div class="ttdeci">CStreamComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d48/_stream_component_8cpp_source.html#l00071">StreamComponent.cpp:71</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_node_html_a4819dd9f1b8539f0b2e7f985f1c0f736"><div class="ttname"><a href="../../d2/d33/class_obj_1_1_c_proxim_node.html#a4819dd9f1b8539f0b2e7f985f1c0f736">Obj::CProximNode::GetClosestIntersectionPoint</a></div><div class="ttdeci">Mth::Vector GetClosestIntersectionPoint(const Mth::Vector &amp;object_pos) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d21/proxim_8cpp_source.html#l00570">proxim.cpp:570</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../de/d48/_stream_component_8cpp.html">StreamComponent.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:22. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

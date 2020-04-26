@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/shadow.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/dbe/shadow_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">shadow.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/dbe/shadow_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 2001 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        GFX (Graphics Library)                                  **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Shadow  (GFX)                                           **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      gfx/shadow.h                                            **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        01/25/01    -   dc                                      **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __GFX_SHADOW_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __GFX_SHADOW_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;{</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">class </span>CModel;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">class </span>CTexture;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">class </span>CTextured3dPoly;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;                             </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                             </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">enum</span> <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">EShadowType</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">   49</a></span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16a04730b6ebe8a8c4066f794859e467e9a">vUNDEFINED_SHADOW</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">vDETAILED_SHADOW</a>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">vSIMPLE_SHADOW</a></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16a04730b6ebe8a8c4066f794859e467e9a">   53</a></span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">   54</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">   55</a></span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">class   </span><a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html">CShadow</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html">   78</a></span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">EShadowType</a> <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#aff2126363ca0a53359b75fe283f1a18d">m_type</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#ab332434e564bae5ca856010d8ed22cb8">CShadow</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">virtual</span>                     <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#ae7dc6e7b8d6b51021297278df23866c4">~CShadow</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">UpdatePosition</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> pos) {}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">UpdatePosition</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; parentPos, <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; parentMatrix, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> normal) {}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a48dff06aed9c63a4e9da6d95566ce127">UpdateDirection</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; dir ) {}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#acc456cf3749b71633198f95c8d7271b7">Hide</a>() {}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">UnHide</a>() {}</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">EShadowType</a>                 <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">GetShadowType</a>() {<span class="keywordflow">return</span> <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#aff2126363ca0a53359b75fe283f1a18d">m_type</a>;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#aff2126363ca0a53359b75fe283f1a18d">   91</a></span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="keyword">class   </span><a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">CSimpleShadow</a> : <span class="keyword">public</span> <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html">CShadow</a></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">   94</a></span>&#160;    <span class="comment">//Nx::CTextured3dPoly *mp_poly;</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>  *<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a5818c1dd483b09fc540daa720fb72541">mp_model</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">   96</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a3f384dd08f83da7ca54f3430e3231298">m_scale</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a003b32cf4cfacb5441d88338763048fb">   97</a></span>&#160;    <span class="keywordtype">float</span> <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ab6644f2e216847d1a3de3f6527e3a910">m_offset</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a48dff06aed9c63a4e9da6d95566ce127">   98</a></span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ab6644f2e216847d1a3de3f6527e3a910">   99</a></span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">  100</a></span>&#160;                                <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#abe49f1b2e9c398bec9dbf7e743bac354">CSimpleShadow</a>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">  101</a></span>&#160;                                <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#acff5d69fbc541439bffac003fefa093c">~CSimpleShadow</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">SetScale</a>(<span class="keywordtype">float</span> scale) {<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a3f384dd08f83da7ca54f3430e3231298">m_scale</a>=scale;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a8a7de75492172d24d3e6b093f6d05b32">SetOffset</a>(<span class="keywordtype">float</span> offset) {<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ab6644f2e216847d1a3de3f6527e3a910">m_offset</a>=offset;}</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">  104</a></span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a306c266c3e8f069f445aece853b424b9">SetModel</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_model_name);</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a8a7de75492172d24d3e6b093f6d05b32">  105</a></span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a4e66b2836a0a620fcc3bcc948057e837">UpdatePosition</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; parentPos, <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; parentMatrix, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> normal);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ada9ff2df360ae2a06e761a997015f02e">Hide</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a056a776316c3c2f8751fd9d03bd8f0a9">UnHide</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">class   </span><a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Camera</a>;              </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keyword">class   </span><a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html">CDetailedShadow</a> : <span class="keyword">public</span> <a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html">CShadow</a></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html">  114</a></span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;                                <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a029134b050e63f57c87e2bc0d0d53876">CDetailedShadow</a>(<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a> *p_model, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> camera_direction = <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>(0.0f,-1.0f,0.0f), <span class="keywordtype">float</span> camera_distance = 72.0f);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                                <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#ae1adacb3260eb5858467a6c6bcff8020">~CDetailedShadow</a>();</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a0c50f9139340e2880ca2ff9ab728d505">UpdatePosition</a>(<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>  pos);       <span class="comment">// the position of the target</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a470e1c7bd3ce9f482e10538dd2ef0825">UpdateDirection</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; dir );      <span class="comment">// the direction in which the camera points</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Camera</a>*                     <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#af994164f4ed338413ab39796e5a493e2">mp_camera</a>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="../../da/df1/class_nx_1_1_c_texture.html">Nx::CTexture</a>*               <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a7363a3582504ddde2a2fd8d2e75c0038">mp_texture</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#af994164f4ed338413ab39796e5a493e2">  123</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                 <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a27e017ba482b2bb7c70247b3ddabfb35">m_direction</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a7363a3582504ddde2a2fd8d2e75c0038">  124</a></span>&#160;    <span class="keywordtype">float</span>                       <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#ae976e7ad12d788c974a24fb5e477b06a">m_distance</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a27e017ba482b2bb7c70247b3ddabfb35">  125</a></span>&#160;};</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#ae976e7ad12d788c974a24fb5e477b06a">  126</a></span>&#160;       </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;} <span class="comment">// namespace Gfx</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif  // __GFX_SHADOW_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a44ae9cad0f2d3e5032fbf6371645dd99"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">Gfx::CShadow::UnHide</a></div><div class="ttdeci">virtual void UnHide()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00100">shadow.h:100</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_ab6644f2e216847d1a3de3f6527e3a910"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ab6644f2e216847d1a3de3f6527e3a910">Gfx::CSimpleShadow::m_offset</a></div><div class="ttdeci">float m_offset</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00099">shadow.h:99</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">Gfx::EShadowType</a></div><div class="ttdeci">EShadowType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00049">shadow.h:49</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a3f384dd08f83da7ca54f3430e3231298"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a3f384dd08f83da7ca54f3430e3231298">Gfx::CSimpleShadow::m_scale</a></div><div class="ttdeci">float m_scale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00098">shadow.h:98</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a48dff06aed9c63a4e9da6d95566ce127"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a48dff06aed9c63a4e9da6d95566ce127">Gfx::CShadow::UpdateDirection</a></div><div class="ttdeci">virtual void UpdateDirection(const Mth::Vector &amp;dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00098">shadow.h:98</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_abe49f1b2e9c398bec9dbf7e743bac354"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#abe49f1b2e9c398bec9dbf7e743bac354">Gfx::CSimpleShadow::CSimpleShadow</a></div><div class="ttdeci">CSimpleShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00149">shadow.cpp:149</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_ae7dc6e7b8d6b51021297278df23866c4"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#ae7dc6e7b8d6b51021297278df23866c4">Gfx::CShadow::~CShadow</a></div><div class="ttdeci">virtual ~CShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00049">shadow.cpp:49</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_acff5d69fbc541439bffac003fefa093c"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#acff5d69fbc541439bffac003fefa093c">Gfx::CSimpleShadow::~CSimpleShadow</a></div><div class="ttdeci">~CSimpleShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00162">shadow.cpp:162</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_acc456cf3749b71633198f95c8d7271b7"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#acc456cf3749b71633198f95c8d7271b7">Gfx::CShadow::Hide</a></div><div class="ttdeci">virtual void Hide()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00099">shadow.h:99</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a306c266c3e8f069f445aece853b424b9"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a306c266c3e8f069f445aece853b424b9">Gfx::CSimpleShadow::SetModel</a></div><div class="ttdeci">void SetModel(const char *p_model_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00176">shadow.cpp:176</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_ae1adacb3260eb5858467a6c6bcff8020"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#ae1adacb3260eb5858467a6c6bcff8020">Gfx::CDetailedShadow::~CDetailedShadow</a></div><div class="ttdeci">~CDetailedShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00091">shadow.cpp:91</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_a470e1c7bd3ce9f482e10538dd2ef0825"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a470e1c7bd3ce9f482e10538dd2ef0825">Gfx::CDetailedShadow::UpdateDirection</a></div><div class="ttdeci">void UpdateDirection(const Mth::Vector &amp;dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00114">shadow.cpp:114</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a056a776316c3c2f8751fd9d03bd8f0a9"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a056a776316c3c2f8751fd9d03bd8f0a9">Gfx::CSimpleShadow::UnHide</a></div><div class="ttdeci">void UnHide()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00227">shadow.cpp:227</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_ae976e7ad12d788c974a24fb5e477b06a"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#ae976e7ad12d788c974a24fb5e477b06a">Gfx::CDetailedShadow::m_distance</a></div><div class="ttdeci">float m_distance</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00126">shadow.h:126</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html">Gfx::CShadow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00078">shadow.h:78</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a7c337c45ed373c49ea7de0f78866aeb4"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">Gfx::CShadow::UpdatePosition</a></div><div class="ttdeci">virtual void UpdatePosition(Mth::Vector pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00096">shadow.h:96</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00055">NxModel.h:55</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00043">camera.h:43</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a5818c1dd483b09fc540daa720fb72541"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a5818c1dd483b09fc540daa720fb72541">Gfx::CSimpleShadow::mp_model</a></div><div class="ttdeci">Nx::CModel * mp_model</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00097">shadow.h:97</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16a04730b6ebe8a8c4066f794859e467e9a"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16a04730b6ebe8a8c4066f794859e467e9a">Gfx::vUNDEFINED_SHADOW</a></div><div class="ttdeci">@ vUNDEFINED_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00053">shadow.h:53</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_a7363a3582504ddde2a2fd8d2e75c0038"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a7363a3582504ddde2a2fd8d2e75c0038">Gfx::CDetailedShadow::mp_texture</a></div><div class="ttdeci">Nx::CTexture * mp_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00124">shadow.h:124</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a6281914f3ca75fcab6f176d7334ade0e"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">Gfx::CSimpleShadow::SetScale</a></div><div class="ttdeci">void SetScale(float scale)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00104">shadow.h:104</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_ab332434e564bae5ca856010d8ed22cb8"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#ab332434e564bae5ca856010d8ed22cb8">Gfx::CShadow::CShadow</a></div><div class="ttdeci">CShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00044">shadow.cpp:44</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a></div><div class="ttdeci">@ vSIMPLE_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00055">shadow.h:55</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_af994164f4ed338413ab39796e5a493e2"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#af994164f4ed338413ab39796e5a493e2">Gfx::CDetailedShadow::mp_camera</a></div><div class="ttdeci">Camera * mp_camera</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00123">shadow.h:123</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a8a7de75492172d24d3e6b093f6d05b32"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a8a7de75492172d24d3e6b093f6d05b32">Gfx::CSimpleShadow::SetOffset</a></div><div class="ttdeci">void SetOffset(float offset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00105">shadow.h:105</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a></div><div class="ttdeci">@ vDETAILED_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00054">shadow.h:54</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_a0c50f9139340e2880ca2ff9ab728d505"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a0c50f9139340e2880ca2ff9ab728d505">Gfx::CDetailedShadow::UpdatePosition</a></div><div class="ttdeci">void UpdatePosition(Mth::Vector pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00105">shadow.cpp:105</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_ada9ff2df360ae2a06e761a997015f02e"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#ada9ff2df360ae2a06e761a997015f02e">Gfx::CSimpleShadow::Hide</a></div><div class="ttdeci">void Hide()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00218">shadow.cpp:218</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_texture_html"><div class="ttname"><a href="../../da/df1/class_nx_1_1_c_texture.html">Nx::CTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcf/_nx_texture_8h_source.html#l00023">NxTexture.h:23</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_a029134b050e63f57c87e2bc0d0d53876"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a029134b050e63f57c87e2bc0d0d53876">Gfx::CDetailedShadow::CDetailedShadow</a></div><div class="ttdeci">CDetailedShadow(Nx::CModel *p_model, Mth::Vector camera_direction=Mth::Vector(0.0f,-1.0f, 0.0f), float camera_distance=72.0f)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00053">shadow.cpp:53</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html_a27e017ba482b2bb7c70247b3ddabfb35"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html#a27e017ba482b2bb7c70247b3ddabfb35">Gfx::CDetailedShadow::m_direction</a></div><div class="ttdeci">Mth::Vector m_direction</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00125">shadow.h:125</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_aff2126363ca0a53359b75fe283f1a18d"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#aff2126363ca0a53359b75fe283f1a18d">Gfx::CShadow::m_type</a></div><div class="ttdeci">EShadowType m_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00091">shadow.h:91</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a4e66b2836a0a620fcc3bcc948057e837"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a4e66b2836a0a620fcc3bcc948057e837">Gfx::CSimpleShadow::UpdatePosition</a></div><div class="ttdeci">void UpdatePosition(Mth::Vector &amp;parentPos, Mth::Matrix &amp;parentMatrix, Mth::Vector normal)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00192">shadow.cpp:192</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00094">shadow.h:94</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html">Gfx::CDetailedShadow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00114">shadow.h:114</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a2d65939d0e6e732a9b62df82389b31a6"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">Gfx::CShadow::GetShadowType</a></div><div class="ttdeci">EShadowType GetShadowType()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00101">shadow.h:101</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d6/dbe/shadow_8h.html">shadow.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:31. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

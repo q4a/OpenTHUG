@@ -1,0 +1,28 @@
+var struct_aud_simple_player =
+[
+    [ "cbAlloc", "d7/d85/struct_aud_simple_player.html#ae8e1dc1fd7b79fddd3e1541718f26d23", null ],
+    [ "cbFree", "d7/d85/struct_aud_simple_player.html#a20be8956d9bcff7d01fbd2f07927abbc", null ],
+    [ "fileHandle", "d7/d85/struct_aud_simple_player.html#a37a139ee1650beda030fa2671a7cfb9d", null ],
+    [ "fileName", "d7/d85/struct_aud_simple_player.html#af002c525171b255c950b02e804251176", null ],
+    [ "audioInfo", "d7/d85/struct_aud_simple_player.html#a3fbe957b01bd9ae9685fed5a1d7bd121", null ],
+    [ "audioHeaderChunk", "d7/d85/struct_aud_simple_player.html#a59cf8471f3241c220a2beea25c19d39f", null ],
+    [ "open", "d7/d85/struct_aud_simple_player.html#abede466075cbd5e01333f88a1b39053a", null ],
+    [ "error", "d7/d85/struct_aud_simple_player.html#ae497e287befbc13e982d198d65e01229", null ],
+    [ "preFetchState", "d7/d85/struct_aud_simple_player.html#a84ef9d2e1a4fb9f31bc5f38155459ee9", null ],
+    [ "loopMode", "d7/d85/struct_aud_simple_player.html#a569fd55ff12e6b26ea973bbbed823067", null ],
+    [ "asyncDvdRunning", "d7/d85/struct_aud_simple_player.html#a38f8b140eca168466b26397a93c1d324", null ],
+    [ "asyncOpenCallbackStatus", "d7/d85/struct_aud_simple_player.html#aeff1f22faaab3e45eefa5a97c52feb38", null ],
+    [ "decodeComplete", "d7/d85/struct_aud_simple_player.html#a762b65d4ed59f210dbd4b92931bc1fb7", null ],
+    [ "playbackComplete", "d7/d85/struct_aud_simple_player.html#a070ee13bfc2b92d802790163b1b80a7a", null ],
+    [ "nextFrameOffset", "d7/d85/struct_aud_simple_player.html#a3aaef5eb112ca382bd7b298317c802a7", null ],
+    [ "nextFrameSize", "d7/d85/struct_aud_simple_player.html#abcf0bb00e91239afb2b7a21fc2e5402c", null ],
+    [ "currentFrameCount", "d7/d85/struct_aud_simple_player.html#a72a9b8bfb8c0db127ccbe8798de1ef74", null ],
+    [ "lastDecodedFrame", "d7/d85/struct_aud_simple_player.html#a218356c4d70ca95517dada8ae90bf9c5", null ],
+    [ "firstFrameOffset", "d7/d85/struct_aud_simple_player.html#a5c4586b5d9c6b1c6c0ff3acea738100d", null ],
+    [ "firstFrameSize", "d7/d85/struct_aud_simple_player.html#a51ddbd0169866ab2b5ae59874bc2983b", null ],
+    [ "readIndex", "d7/d85/struct_aud_simple_player.html#a126934617a788a5ab70a2180b1f389dc", null ],
+    [ "decodeIndex", "d7/d85/struct_aud_simple_player.html#aada9b24aae0388970ebb327d88d2c7d7", null ],
+    [ "readBuffer", "d7/d85/struct_aud_simple_player.html#ae4719a7877550bd65ec4412846ded7c5", null ],
+    [ "readBufferBaseMem", "d7/d85/struct_aud_simple_player.html#abd1c3e701e3f8350e4b5093f3302ce76", null ],
+    [ "decoder", "d7/d85/struct_aud_simple_player.html#a5a02e3cec1920bc68de1a22ab6158bda", null ]
+];

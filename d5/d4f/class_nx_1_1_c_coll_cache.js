@@ -1,0 +1,27 @@
+var class_nx_1_1_c_coll_cache =
+[
+    [ "MAX_COLLISION_OBJECTS", "d5/d4f/class_nx_1_1_c_coll_cache.html#a15ded34ff07ff0575fff8eb1bd780c07a739ccd5ab6a2d784f6995e8e6efeb46a", null ],
+    [ "CCollCache", "d5/d4f/class_nx_1_1_c_coll_cache.html#ae191177ba82e67675f17d92e35c839a9", null ],
+    [ "~CCollCache", "d5/d4f/class_nx_1_1_c_coll_cache.html#a954de2d8cb5e7474aa4d8bfb7637b0db", null ],
+    [ "Clear", "d5/d4f/class_nx_1_1_c_coll_cache.html#a522da8ef48d4ea9e62fa23446c1e2157", null ],
+    [ "Update", "d5/d4f/class_nx_1_1_c_coll_cache.html#ad1834000d2f81e13ad86003ce63efb8c", null ],
+    [ "Contains", "d5/d4f/class_nx_1_1_c_coll_cache.html#ad699e561d443fcde001b29a9a79f42ac", null ],
+    [ "Contains", "d5/d4f/class_nx_1_1_c_coll_cache.html#ac8439f9a7d54dd736fe5d9fdf773bb4f", null ],
+    [ "GetCollisionArray", "d5/d4f/class_nx_1_1_c_coll_cache.html#a503fc510d482c1e64d2e7310e658b345", null ],
+    [ "GetNumCollisions", "d5/d4f/class_nx_1_1_c_coll_cache.html#a040eb002e601d72c88788570d321ff8e", null ],
+    [ "GetStaticCollisionArray", "d5/d4f/class_nx_1_1_c_coll_cache.html#a4eca9cfa691f03a03966e5cea1562bbb", null ],
+    [ "GetNumStaticCollisions", "d5/d4f/class_nx_1_1_c_coll_cache.html#aea919134157f53bd7338110de24ece8e", null ],
+    [ "GetMovableCollisionArray", "d5/d4f/class_nx_1_1_c_coll_cache.html#a41f9e086fd5a4ff69f0d7c1b581b3c5f", null ],
+    [ "GetNumMovableCollisions", "d5/d4f/class_nx_1_1_c_coll_cache.html#ac345f19fe64293e2309322f7687efd47", null ],
+    [ "add_static_collision", "d5/d4f/class_nx_1_1_c_coll_cache.html#a5bebef295016fefa3801df6a7399efe5", null ],
+    [ "add_movable_collision", "d5/d4f/class_nx_1_1_c_coll_cache.html#a8f3e036030dc7471f1f375773e8c3b5d", null ],
+    [ "delete_static_collision", "d5/d4f/class_nx_1_1_c_coll_cache.html#a1dbc49758e3acb27e8dda2b889c76a5c", null ],
+    [ "delete_movable_collision", "d5/d4f/class_nx_1_1_c_coll_cache.html#a751e656d56489e5c2b249d9c08884186", null ],
+    [ "delete_collision", "d5/d4f/class_nx_1_1_c_coll_cache.html#a24bcfcd83a49ff9df31009a78bcf6796", null ],
+    [ "m_bbox", "d5/d4f/class_nx_1_1_c_coll_cache.html#a50be1de6805a1f01ec2a679a46dae9de", null ],
+    [ "m_collision_array", "d5/d4f/class_nx_1_1_c_coll_cache.html#a4789dd436def168e3c6094aa006d2354", null ],
+    [ "m_array_size", "d5/d4f/class_nx_1_1_c_coll_cache.html#a28fccd654badda9c0d422296d331b679", null ],
+    [ "m_num_static_coll", "d5/d4f/class_nx_1_1_c_coll_cache.html#a31f9f50217f65bcd1eca09b8415de18e", null ],
+    [ "m_num_movable_coll", "d5/d4f/class_nx_1_1_c_coll_cache.html#aa0e5ffe5248a87c5d7c36bdb50289774", null ],
+    [ "CCollCacheManager", "d5/d4f/class_nx_1_1_c_coll_cache.html#a47c3cff615690fafbfe6e4d349c5050f", null ]
+];

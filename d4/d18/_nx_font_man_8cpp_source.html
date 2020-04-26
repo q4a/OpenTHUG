@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NxFontMan.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/d18/_nx_font_man_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NxFontMan.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d18/_nx_font_man_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d9e/stringutils_8h.html">core/String/stringutils.h</a>&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/de3/_nx_font_man_8h.html">gfx/NxFontMan.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/Scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d63/array_8h.html">gel/scripting/array.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;CFontManager::FontEntry                 <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">CFontManager::s_font_tab</a>[vMAX_FONT_ENTRIES];</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;CFontManager::FontEntry&gt;</a> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">CFontManager::s_font_lookup</a>(4);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keywordtype">char</span>                                    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a6bdb2b2114177f94dc33a3868b32e891">CFontManager::s_meta_button_map</a>[NUM_META_BUTTON_ENTRIES];</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keywordtype">bool</span>                                    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a5dd4d787ef4e410e989a6e2cb7aaa711">CFontManager::s_meta_button_map_initialized</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#a2156eb6788500c079239466e0721375e">   19</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a2156eb6788500c079239466e0721375e">CFontManager::sLoadFont</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pName, <span class="keywordtype">int</span> charSpacing, <span class="keywordtype">int</span> spaceSpacing, <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *pColorTab, <span class="keywordtype">bool</span> isButtonFont)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    Dbg_Assert(strlen(pName) &lt; <a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a7c06ba274d864dd91152e04087279e4bae8b5f408f20d0b51c9d43043c39e8b54">FontEntry::vMAX_NAME_SIZE</a>);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// See if this font is already loaded.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">sGetFont</a>( pName ) )</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">sGetFont</a>( pName )-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#a3eeb94463a82700aa55461c6481134e4">SetSpacings</a>(charSpacing, spaceSpacing); </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keywordflow">if</span> (pColorTab) <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">sGetFont</a>( pName )-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#a35081f30df298ea947a1f1b7faf14eb4">SetRGBATable</a>(pColorTab); </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">sGetFont</a>( pName )-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#aa4fdbbd180f83db2e10235cf47dd1611">MarkAsButtonFont</a>(isButtonFont); </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a7005bc6d9087c2a366b41597c87ec99aa2efaea55c9b22b1a90b74f8cf83a2f82">vMAX_FONT_ENTRIES</a>; i++)</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].mp_font)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a> = <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#aeb65ddd38e3a9b2f16ac0294ac524904">s_plat_load_font</a>(pName);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a>-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#a3eeb94463a82700aa55461c6481134e4">SetSpacings</a>(charSpacing, spaceSpacing);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="keywordflow">if</span> (pColorTab)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;                <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a>-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#a35081f30df298ea947a1f1b7faf14eb4">SetRGBATable</a>(pColorTab);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a>-&gt;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html#aa4fdbbd180f83db2e10235cf47dd1611">MarkAsButtonFont</a>(isButtonFont);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;                        </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            strcpy(<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].mName, pName);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">s_font_lookup</a>.PutItem(<a class="code" href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a>(pName), &amp;<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i]);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a5dd4d787ef4e410e989a6e2cb7aaa711">s_meta_button_map_initialized</a>)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">        #ifdef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *p_array = <a class="code" href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a>(<span class="stringliteral">&quot;meta_button_map_xbox&quot;</span>, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="preprocessor">        #ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *p_array = <a class="code" href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a>(<span class="stringliteral">&quot;meta_button_map_gamecube&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *p_array = <a class="code" href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a>(<span class="stringliteral">&quot;meta_button_map_ps2&quot;</span>, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">if</span> ( p_array )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">for</span> (<a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> i = 0; i &lt; <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a7005bc6d9087c2a366b41597c87ec99aaaa600397333038dba1140553720bf616">NUM_META_BUTTON_ENTRIES</a>; i++)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordtype">int</span> index = (i &lt; p_array-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>()) ? p_array-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a401ddc0041f9b5af8ad78c2343d4157a">GetInteger</a>(i) : 0;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="keywordflow">if</span> (index &lt;= 9)</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a6bdb2b2114177f94dc33a3868b32e891">s_meta_button_map</a>[i] = <span class="charliteral">&#39;0&#39;</span> + index;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a6bdb2b2114177f94dc33a3868b32e891">s_meta_button_map</a>[i] = <span class="charliteral">&#39;a&#39;</span> + index - 10;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a5dd4d787ef4e410e989a6e2cb7aaa711">s_meta_button_map_initialized</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;}</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#af7595b8bfe2c95476153a65f75e6b24a">   80</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#af7595b8bfe2c95476153a65f75e6b24a">CFontManager::sUnloadFont</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pName)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a7005bc6d9087c2a366b41597c87ec99aa2efaea55c9b22b1a90b74f8cf83a2f82">vMAX_FONT_ENTRIES</a>; i++)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">if</span> (strcmp(<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].mName, pName) == 0)</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">s_font_lookup</a>.FlushItem(<a class="code" href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a>(pName));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#ad3b0347fa007a9e06f50d8165d3b3d49">s_plat_unload_font</a>(<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].mp_font);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">s_font_tab</a>[i].<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a> = NULL;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">// returns pointer to font if loaded, NULL if not</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#a739e02bef7a31fc7154197b14f3350b9">   98</a></span>&#160;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html">Nx::CFont</a> *<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">CFontManager::sGetFont</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html">FontEntry</a> *p_entry = <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">s_font_lookup</a>.GetItem(checksum);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span> (p_entry)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> p_entry-&gt;<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">mp_font</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">// returns pointer to font if loaded, NULL if not</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">  108</a></span>&#160;<a class="code" href="../../dd/d29/class_nx_1_1_c_font.html">Nx::CFont</a> *<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">CFontManager::sGetFont</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pName)</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">sGetFont</a>(<a class="code" href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a>(pName));</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">// returns pointer to name if loaded, NULL if not</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#a1be02c77e90882f30f078ac1fa5898f0">  114</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a1be02c77e90882f30f078ac1fa5898f0">CFontManager::sTestFontLoaded</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html">FontEntry</a> *p_entry = <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">s_font_lookup</a>.GetItem(checksum);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">if</span> (p_entry)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> p_entry-&gt;<a class="code" href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a56531747e289f8dba24fa5ab6cb86322">mName</a>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../df/d77/class_nx_1_1_c_font_manager.html#aa0c75c585bb20bb0a42c06e160e040ab">  126</a></span>&#160;<span class="keywordtype">char</span> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#aa0c75c585bb20bb0a42c06e160e040ab">CFontManager::sMapMetaCharacterToButton</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pMetaChar)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a5dd4d787ef4e410e989a6e2cb7aaa711">s_meta_button_map_initialized</a>, (<span class="stringliteral">&quot;meta button character table not initialized&quot;</span>));</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a6bdb2b2114177f94dc33a3868b32e891">s_meta_button_map</a>[<a class="code" href="../../df/d07/namespace_str.html#a187ff352809b73d4140d35a9080aeeb9">Str::DehexifyDigit</a>(pMetaChar)];</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a686c14a1d481bec71fbc6af1ac14f506">  135</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d1/d06/namespace_nx.html#a686c14a1d481bec71fbc6af1ac14f506">ScriptLoadFont</a>(Script::CScriptStructure *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript)</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">bool</span> is_buttons_font = pParams-&gt;ContainsFlag(<span class="stringliteral">&quot;buttons_font&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_name;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">if</span> (!pParams-&gt;GetText(NONAME, &amp;p_name) &amp;&amp; !is_buttons_font)</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        Dbg_MsgAssert(0, (<span class="stringliteral">&quot;no font specified&quot;</span>));</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">if</span> (is_buttons_font)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">        #ifdef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        p_name = <span class="stringliteral">&quot;ButtonsXbox&quot;</span>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">        #else</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">            #ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            p_name = <span class="stringliteral">&quot;ButtonsNgc&quot;</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">            #else</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;            p_name = <span class="stringliteral">&quot;ButtonsPs2&quot;</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">            #endif</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a>((<span class="keywordtype">char</span>*)p_name);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">float</span> char_spacing = 0;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    pParams-&gt;GetFloat(<span class="stringliteral">&quot;char_spacing&quot;</span>, &amp;char_spacing);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordtype">float</span> space_spacing = 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    pParams-&gt;GetFloat(<span class="stringliteral">&quot;space_spacing&quot;</span>, &amp;space_spacing);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *p_script_col_tab;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// 15Jan02 JCB - Make this local to avoid fragmentation when allocating from the heap.</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> rgba_tab[16];</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a>* p_rgba_tab = &amp;rgba_tab[0];</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;GetArray(<span class="stringliteral">&quot;color_tab&quot;</span>, &amp;p_script_col_tab))</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    {</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; (int) p_script_col_tab-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>() &amp;&amp; i &lt; 16; i++)</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *p_entry = p_script_col_tab-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a4645418616142b2a40757bcd8f15e02d">GetArray</a>(i);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> rgba = 0;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordtype">int</span> size = p_entry-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            Dbg_MsgAssert(size &gt;= 3 &amp;&amp; size &lt;= 4, (<span class="stringliteral">&quot;wrong size %d for color array&quot;</span>, size));</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; size; j++) </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            {</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                rgba |= (p_entry-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a401ddc0041f9b5af8ad78c2343d4157a">GetInteger</a>(j) &amp; 255) &lt;&lt; (j*8);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            p_rgba_tab[i] = *((<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *) &amp;rgba);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#a2156eb6788500c079239466e0721375e">Nx::CFontManager::sLoadFont</a>(p_name, (<span class="keywordtype">int</span>) char_spacing, (<span class="keywordtype">int</span>) space_spacing, p_rgba_tab, is_buttons_font);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a>();       </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;}</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="../../d1/d06/namespace_nx.html#a8a476767440abe8d83d347f0275e94e4">  199</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d1/d06/namespace_nx.html#a8a476767440abe8d83d347f0275e94e4">ScriptUnloadFont</a>(Script::CScriptStructure *pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a> *pScript)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;{</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p_name;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">if</span> (!pParams-&gt;GetText(NONAME, &amp;p_name))</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        Dbg_MsgAssert(0, (<span class="stringliteral">&quot;no font specified&quot;</span>));</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="../../df/d77/class_nx_1_1_c_font_manager.html#af7595b8bfe2c95476153a65f75e6b24a">Nx::CFontManager::sUnloadFont</a>(p_name);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;}</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;}</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_font_html_a35081f30df298ea947a1f1b7faf14eb4"><div class="ttname"><a href="../../dd/d29/class_nx_1_1_c_font.html#a35081f30df298ea947a1f1b7faf14eb4">Nx::CFont::SetRGBATable</a></div><div class="ttdeci">void SetRGBATable(Image::RGBA *pTab)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d2d/_nx_font_8cpp_source.html#l00057">NxFont.cpp:57</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_af7595b8bfe2c95476153a65f75e6b24a"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#af7595b8bfe2c95476153a65f75e6b24a">Nx::CFontManager::sUnloadFont</a></div><div class="ttdeci">static void sUnloadFont(const char *pName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00080">NxFontMan.cpp:80</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a1be02c77e90882f30f078ac1fa5898f0"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a1be02c77e90882f30f078ac1fa5898f0">Nx::CFontManager::sTestFontLoaded</a></div><div class="ttdeci">static const char * sTestFontLoaded(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00114">NxFontMan.cpp:114</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a71c761bdce14193b10bf3c88372ba5a0"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">Script::CArray::GetSize</a></div><div class="ttdeci">uint32 GetSize() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00120">array.h:120</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="astruct_nx_1_1_c_font_manager_1_1_font_entry_html_a7c06ba274d864dd91152e04087279e4bae8b5f408f20d0b51c9d43043c39e8b54"><div class="ttname"><a href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a7c06ba274d864dd91152e04087279e4bae8b5f408f20d0b51c9d43043c39e8b54">Nx::CFontManager::FontEntry::vMAX_NAME_SIZE</a></div><div class="ttdeci">@ vMAX_NAME_SIZE</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00042">NxFontMan.h:42</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a686c14a1d481bec71fbc6af1ac14f506"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a686c14a1d481bec71fbc6af1ac14f506">Nx::ScriptLoadFont</a></div><div class="ttdeci">bool ScriptLoadFont(Script::CScriptStructure *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00135">NxFontMan.cpp:135</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_html"><div class="ttname"><a href="../../dd/d29/class_nx_1_1_c_font.html">Nx::CFont</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d6f/_nx_font_8h_source.html#l00027">NxFont.h:27</a></div></div>
+<div class="ttc" id="aarray_8h_html"><div class="ttname"><a href="../../db/d63/array_8h.html">array.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a661f3e450ea21cf1459448be312eb324"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a661f3e450ea21cf1459448be312eb324">Nx::CFontManager::s_font_lookup</a></div><div class="ttdeci">static Lst::HashTable&lt; FontEntry &gt; s_font_lookup</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00052">NxFontMan.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_ad3b0347fa007a9e06f50d8165d3b3d49"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#ad3b0347fa007a9e06f50d8165d3b3d49">Nx::CFontManager::s_plat_unload_font</a></div><div class="ttdeci">static void s_plat_unload_font(Nx::CFont *pFont)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d1a/_n_g_c_2p__nxfontman_8cpp_source.html#l00137">p_nxfontman.cpp:137</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a7005bc6d9087c2a366b41597c87ec99aaaa600397333038dba1140553720bf616"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a7005bc6d9087c2a366b41597c87ec99aaaa600397333038dba1140553720bf616">Nx::CFontManager::NUM_META_BUTTON_ENTRIES</a></div><div class="ttdeci">@ NUM_META_BUTTON_ENTRIES</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00035">NxFontMan.h:35</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_afb34e3390ae90a14da9783475bba1480"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#afb34e3390ae90a14da9783475bba1480">Nx::CFontManager::sGetFont</a></div><div class="ttdeci">static Nx::CFont * sGetFont(const char *pName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00108">NxFontMan.cpp:108</a></div></div>
+<div class="ttc" id="astruct_nx_1_1_c_font_manager_1_1_font_entry_html_a56531747e289f8dba24fa5ab6cb86322"><div class="ttname"><a href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a56531747e289f8dba24fa5ab6cb86322">Nx::CFontManager::FontEntry::mName</a></div><div class="ttdeci">char mName[vMAX_NAME_SIZE]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00047">NxFontMan.h:47</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a7005bc6d9087c2a366b41597c87ec99aa2efaea55c9b22b1a90b74f8cf83a2f82"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a7005bc6d9087c2a366b41597c87ec99aa2efaea55c9b22b1a90b74f8cf83a2f82">Nx::CFontManager::vMAX_FONT_ENTRIES</a></div><div class="ttdeci">@ vMAX_FONT_ENTRIES</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00034">NxFontMan.h:34</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a2156eb6788500c079239466e0721375e"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a2156eb6788500c079239466e0721375e">Nx::CFontManager::sLoadFont</a></div><div class="ttdeci">static void sLoadFont(const char *pName, int charSpacing=0, int spaceSpacing=0, Image::RGBA *pColorTab=NULL, bool isButtonFont=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00019">NxFontMan.cpp:19</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_html_a3eeb94463a82700aa55461c6481134e4"><div class="ttname"><a href="../../dd/d29/class_nx_1_1_c_font.html#a3eeb94463a82700aa55461c6481134e4">Nx::CFont::SetSpacings</a></div><div class="ttdeci">void SetSpacings(int charSpacing, int spaceSpacing)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d2d/_nx_font_8cpp_source.html#l00047">NxFont.cpp:47</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="anamespace_mem_html_ab75373b4fb3b8458eab02cd8021f95e8"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#ab75373b4fb3b8458eab02cd8021f95e8">Mem::PushMemProfile</a></div><div class="ttdeci">void PushMemProfile(char *p_type)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00117">win32functions.cpp:117</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_aeb65ddd38e3a9b2f16ac0294ac524904"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#aeb65ddd38e3a9b2f16ac0294ac524904">Nx::CFontManager::s_plat_load_font</a></div><div class="ttdeci">static Nx::CFont * s_plat_load_font(const char *pName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d1a/_n_g_c_2p__nxfontman_8cpp_source.html#l00124">p_nxfontman.cpp:124</a></div></div>
+<div class="ttc" id="astruct_nx_1_1_c_font_manager_1_1_font_entry_html"><div class="ttname"><a href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html">Nx::CFontManager::FontEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00039">NxFontMan.h:39</a></div></div>
+<div class="ttc" id="anamespace_mem_html_aa2e901a218757867f811cf67fdd953ff"><div class="ttname"><a href="../../db/dc4/namespace_mem.html#aa2e901a218757867f811cf67fdd953ff">Mem::PopMemProfile</a></div><div class="ttdeci">void PopMemProfile()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00113">win32functions.cpp:113</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="astringutils_8h_html"><div class="ttname"><a href="../../d9/d9e/stringutils_8h.html">stringutils.h</a></div></div>
+<div class="ttc" id="astruct_nx_1_1_c_font_manager_1_1_font_entry_html_a5576f3062b1668a9d3dbf509579b9acc"><div class="ttname"><a href="../../d2/dc7/struct_nx_1_1_c_font_manager_1_1_font_entry.html#a5576f3062b1668a9d3dbf509579b9acc">Nx::CFontManager::FontEntry::mp_font</a></div><div class="ttdeci">Nx::CFont * mp_font</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00048">NxFontMan.h:48</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a4645418616142b2a40757bcd8f15e02d"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a4645418616142b2a40757bcd8f15e02d">Script::CArray::GetArray</a></div><div class="ttdeci">CArray * GetArray(uint32 index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2a/array_8cpp_source.html#l00543">array.cpp:543</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a401ddc0041f9b5af8ad78c2343d4157a"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a401ddc0041f9b5af8ad78c2343d4157a">Script::CArray::GetInteger</a></div><div class="ttdeci">int GetInteger(uint32 index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2a/array_8cpp_source.html#l00437">array.cpp:437</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a12106d1472f39c98dcdbe35cbe78cd5c"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a12106d1472f39c98dcdbe35cbe78cd5c">Nx::CFontManager::s_font_tab</a></div><div class="ttdeci">static FontEntry s_font_tab[vMAX_FONT_ENTRIES]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00051">NxFontMan.h:51</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00024">array.h:24</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_html_aa4fdbbd180f83db2e10235cf47dd1611"><div class="ttname"><a href="../../dd/d29/class_nx_1_1_c_font.html#aa4fdbbd180f83db2e10235cf47dd1611">Nx::CFont::MarkAsButtonFont</a></div><div class="ttdeci">void MarkAsButtonFont(bool isButton)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d2d/_nx_font_8cpp_source.html#l00068">NxFont.cpp:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_aa0c75c585bb20bb0a42c06e160e040ab"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#aa0c75c585bb20bb0a42c06e160e040ab">Nx::CFontManager::sMapMetaCharacterToButton</a></div><div class="ttdeci">static char sMapMetaCharacterToButton(const char *pMetaChar)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00126">NxFontMan.cpp:126</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00052">HashTable.h:52</a></div></div>
+<div class="ttc" id="anamespace_script_html_aa331360f088c15972ac441ecb8b40cd9"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aa331360f088c15972ac441ecb8b40cd9">Script::GenerateCRC</a></div><div class="ttdeci">uint32 GenerateCRC(const char *p_string)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/script_8cpp_source.html#l03521">script.cpp:3521</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884ab2e8f3e4dd999c157c1c26dbd463e1a8">Script::ASSERT</a></div><div class="ttdeci">@ ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00016">scriptdefs.h:16</a></div></div>
+<div class="ttc" id="anamespace_str_html_a187ff352809b73d4140d35a9080aeeb9"><div class="ttname"><a href="../../df/d07/namespace_str.html#a187ff352809b73d4140d35a9080aeeb9">Str::DehexifyDigit</a></div><div class="ttdeci">uint DehexifyDigit(const char *pLetter)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dbf/stringutils_8cpp_source.html#l00203">stringutils.cpp:203</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a5dd4d787ef4e410e989a6e2cb7aaa711"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a5dd4d787ef4e410e989a6e2cb7aaa711">Nx::CFontManager::s_meta_button_map_initialized</a></div><div class="ttdeci">static bool s_meta_button_map_initialized</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00055">NxFontMan.h:55</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_font_manager_html_a6bdb2b2114177f94dc33a3868b32e891"><div class="ttname"><a href="../../df/d77/class_nx_1_1_c_font_manager.html#a6bdb2b2114177f94dc33a3868b32e891">Nx::CFontManager::s_meta_button_map</a></div><div class="ttdeci">static char s_meta_button_map[NUM_META_BUTTON_ENTRIES]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de3/_nx_font_man_8h_source.html#l00054">NxFontMan.h:54</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="anamespace_script_html_aacb275494688d5b51c565c932f27f76c"><div class="ttname"><a href="../../d1/d54/namespace_script.html#aacb275494688d5b51c565c932f27f76c">Script::GetArray</a></div><div class="ttdeci">CArray * GetArray(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00671">symboltable.cpp:671</a></div></div>
+<div class="ttc" id="a_nx_font_man_8h_html"><div class="ttname"><a href="../../d4/de3/_nx_font_man_8h.html">NxFontMan.h</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a8a476767440abe8d83d347f0275e94e4"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a8a476767440abe8d83d347f0275e94e4">Nx::ScriptUnloadFont</a></div><div class="ttdeci">bool ScriptUnloadFont(Script::CScriptStructure *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d18/_nx_font_man_8cpp_source.html#l00199">NxFontMan.cpp:199</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d4/d18/_nx_font_man_8cpp.html">NxFontMan.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

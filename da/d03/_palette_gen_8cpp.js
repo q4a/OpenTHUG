@@ -1,0 +1,27 @@
+var _palette_gen_8cpp =
+[
+    [ "OctantMap", "da/d03/_palette_gen_8cpp.html#a582e1ce10d90f0da5b3bd2f704924467", null ],
+    [ "InitLeaf", "da/d03/_palette_gen_8cpp.html#a6be2436c9f4b378027bd060682c4452f", null ],
+    [ "InitBranch", "da/d03/_palette_gen_8cpp.html#a99e59edd9cca82cb1eec673f38fc1464", null ],
+    [ "CreateCube", "da/d03/_palette_gen_8cpp.html#a6daa7bb16b130231349d1a2b61b3cd60", null ],
+    [ "GetOctAdr", "da/d03/_palette_gen_8cpp.html#a3a222e1033efb39a02a469dd702346f7", null ],
+    [ "AllocateToLeaf", "da/d03/_palette_gen_8cpp.html#ae88d295ec6ca05a8af0a84d56395d57a", null ],
+    [ "PalQuantAddImage", "da/d03/_palette_gen_8cpp.html#a9f63ac293f4aa1f781f9bc68deff85ee", null ],
+    [ "assignindex", "da/d03/_palette_gen_8cpp.html#af6253b58ef413f97bd426c4bf938ca43", null ],
+    [ "nAssign", "da/d03/_palette_gen_8cpp.html#a96411358d3ee052f8eb1a9bc0a78c8e2", null ],
+    [ "addvolume", "da/d03/_palette_gen_8cpp.html#a51e50f41c442e9a3aa229819b80688b8", null ],
+    [ "nVol", "da/d03/_palette_gen_8cpp.html#ade83ab2238064fcb2e14b9812ee4e9c4", null ],
+    [ "nVar", "da/d03/_palette_gen_8cpp.html#a23da922450c8fb1a50c78b2f112c7954", null ],
+    [ "nMaximize", "da/d03/_palette_gen_8cpp.html#a6b07c463f462a4726b03c6861d14ab5a", null ],
+    [ "nCut", "da/d03/_palette_gen_8cpp.html#a7a0bee49f9e319d7bc9958be5b385814", null ],
+    [ "CalcNodeWeights", "da/d03/_palette_gen_8cpp.html#a3d490c066d979671c185b760876a68a9", null ],
+    [ "CountLeafs", "da/d03/_palette_gen_8cpp.html#a71b1e206b69478bad5743283d1ac0508", null ],
+    [ "CountNodes", "da/d03/_palette_gen_8cpp.html#a5d7265711206c12b577dd73ae6eb48aa", null ],
+    [ "PalQuantResolvePalette", "da/d03/_palette_gen_8cpp.html#a30d0a5e42383f642c6621e34ba25d1a1", null ],
+    [ "GetIndex", "da/d03/_palette_gen_8cpp.html#abf5b6af4b02a1b960de618519b43dcfb", null ],
+    [ "PalQuantInit", "da/d03/_palette_gen_8cpp.html#a077ae07eaa9fa83fd97a6c56f79004a2", null ],
+    [ "DeleteOctTree", "da/d03/_palette_gen_8cpp.html#a384c246e5b2b24c2828ccb8bb9fb64c4", null ],
+    [ "PalQuantTerm", "da/d03/_palette_gen_8cpp.html#a36bd0f816fefa8159b8042fdf895cb2e", null ],
+    [ "GeneratePalette", "da/d03/_palette_gen_8cpp.html#ae5ea3854160ca7a8cfdeb4b8817cb572", null ],
+    [ "p_splice", "da/d03/_palette_gen_8cpp.html#ad9539a25d6bf545c32e3541664c2dc55", null ]
+];

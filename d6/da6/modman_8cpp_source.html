@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Module/modman.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/da6/modman_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">modman.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/da6/modman_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        GEL (Game Engine Library)                               **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Module (MDL)                                            **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      modman.cpp                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        05/27/99    -   mjb                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Module manager code                                     **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef __NOPT_DEBUG__</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d50/modman_8h.html">gel/modman.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d4/d0a/namespace_mdl.html">Mdl</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<a class="code" href="../../d4/d0a/namespace_mdl.html#aa68a09de416817f1a5a70dfd47c3aaf3">DefineSingletonClass</a>( Manager, <span class="stringliteral">&quot;Module Manager&quot;</span> );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a4e506b72e7c1139a5607e19ec882f745">Manager::Manager</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a7bd4e9d0287e987327bab0d34c219cf4">process_modules_task</a> = <span class="keyword">new</span> Tsk::Task&lt; Manager &gt;( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a775e6c259deec157e3508d9edd78261d">process_modules</a>, *<span class="keyword">this</span>, Tsk::BaseTask::Node::vSYSTEM_TASK_PRIORITY_PROCESS_MODULES );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    Dbg_AssertType( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a7bd4e9d0287e987327bab0d34c219cf4">process_modules_task</a>, Tsk::Task&lt; Manager &gt; );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a4d9bc841e11d2a89d3e731dbf1037dcd">Manager::~Manager</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a9c437773749cea4a760813caa085ff7d">StopAllModules</a>();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    Dbg_AssertType( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a7bd4e9d0287e987327bab0d34c219cf4">process_modules_task</a>, Tsk::Task&lt; Manager &gt; );</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a4e506b72e7c1139a5607e19ec882f745">  101</a></span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a7bd4e9d0287e987327bab0d34c219cf4">process_modules_task</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a>.IsEmpty(),( </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="stringliteral">&quot;%d module%s still registered\n&quot;</span>,</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a>.CountItems(),</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a>.CountItems() &gt; 1 ? <span class="stringliteral">&quot;s&quot;</span> : <span class="stringliteral">&quot;&quot;</span> ));</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a775e6c259deec157e3508d9edd78261d">Manager::process_modules</a>( <span class="keyword">const</span> Tsk::Task&lt; Manager &gt;&amp; task )</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;{</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a4d9bc841e11d2a89d3e731dbf1037dcd">  116</a></span>&#160;    </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="../../dc/de6/class_mdl_1_1_module.html">Module</a>*                 next;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="../../dc/de6/class_mdl_1_1_module.html">Module</a>*                 current;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    Lst::Search&lt; Module &gt;   sh;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html">Manager</a>&amp;    manager = task.GetData();</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordflow">if</span> ( !manager.<a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> )</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">return</span>; <span class="comment">// nothing to do</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    manager.<a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    next = sh.FirstItem( manager.<a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a> );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">while</span> ( next )</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        current = next;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        next = sh.NextItem();           <span class="comment">// get next item before excuting callback</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">switch</span> ( current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#acc339e7e8306067cddf74a29e82771bc">state</a> )</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386">Module::vSTOPPED</a> :</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                <span class="keywordflow">if</span> (( current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a0642bd88386d6b880ca2219199cb7dbd">Module::vSTART</a> ) ||</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                    ( current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aa363f1d15dcfcc4d4a0fcb4a4f645270">Module::vRESTART</a> ))</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor">#ifndef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="preprocessor">#ifdef __NOPT_DEBUG__</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                <a class="code" href="../../df/de2/_messages_8h.html#aa73b766f3c06e99c78d9c143ce16370c">Dbg_Notify</a> ( <span class="stringliteral">&quot;Starting module %s @ %d&quot;</span>, current-&gt;GetName(), </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;                    <a class="code" href="../../d1/d0d/namespace_tmr.html#a73fa70536cd356e6914161cb7737fd65">Tmr::GetTime</a>() ); <span class="comment">// should use Game Clock not system clock</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a3592a40da620f8d9553e62d7da0e15b2">v_start_cb</a>();</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#acc339e7e8306067cddf74a29e82771bc">state</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b">Module::vRUNNING</a>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Module::vNONE</a>;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;            <span class="keywordflow">case</span> <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b">Module::vRUNNING</a> :</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                <span class="keywordflow">if</span> ( current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aef74db83d4a7d0df9c233629117091e8">Module::vSTOP</a> )</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#ifndef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#ifdef __NOPT_DEBUG__</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                    <a class="code" href="../../df/de2/_messages_8h.html#aa73b766f3c06e99c78d9c143ce16370c">Dbg_Notify</a> ( <span class="stringliteral">&quot;Stopping module %s @ %d&quot;</span>, current-&gt;GetName(), </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                         <a class="code" href="../../d1/d0d/namespace_tmr.html#a73fa70536cd356e6914161cb7737fd65">Tmr::GetTime</a>() ); <span class="comment">// should use Game Clock not system clock</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#afeac0466d78cfed1e35712d3e20f31fb">v_stop_cb</a>();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#acc339e7e8306067cddf74a29e82771bc">state</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386">Module::vSTOPPED</a>;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Module::vNONE</a>;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                }</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="keywordflow">else</span> <span class="keywordflow">if</span> ( current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aa363f1d15dcfcc4d4a0fcb4a4f645270">Module::vRESTART</a> ) </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#ifndef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#ifdef __NOPT_DEBUG__</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                    <a class="code" href="../../df/de2/_messages_8h.html#aa73b766f3c06e99c78d9c143ce16370c">Dbg_Notify</a> ( <span class="stringliteral">&quot;Restarting module %s @ %d&quot;</span>, current-&gt;GetName(), </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                        <a class="code" href="../../d1/d0d/namespace_tmr.html#a73fa70536cd356e6914161cb7737fd65">Tmr::GetTime</a>() ); <span class="comment">// should use Game Clock not system clock</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#afeac0466d78cfed1e35712d3e20f31fb">v_stop_cb</a>();</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a3592a40da620f8d9553e62d7da0e15b2">v_start_cb</a>();               </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    current-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Module::vNONE</a>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;            }        </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                Dbg_MsgAssert( <span class="keyword">false</span>,( <span class="stringliteral">&quot;Invalid module control state&quot;</span> ));</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    }</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a3f53ce3bf2b69887d66dd418694045f7">Manager::RegisterModule</a>( <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> &amp;module )</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    Dbg_AssertType ( &amp;module, <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> );</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a>.AddToTail ( module.node );</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a0eb499268b70cf05dc3a3b1dfeca454d">Manager::UnregisterModule</a>( <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> &amp;module )</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    Dbg_AssertType( &amp;module, <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    Dbg_MsgAssert( module.node-&gt;InList(),( <span class="stringliteral">&quot;Module not Registered with Manager&quot;</span> ));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a3f53ce3bf2b69887d66dd418694045f7">  229</a></span>&#160;    module.node-&gt;Remove();</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;}</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160; </div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a150355ad3455c4ae346a17b9a4481b40">Manager::StartModule</a>( <a class="code" href="../../dc/de6/class_mdl_1_1_module.html">Module</a> &amp;module )</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;{</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    Dbg_MsgAssert( module.<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a092ae4a63cff64000c2858f41b80abaa">node</a>-&gt;InList(),( <span class="stringliteral">&quot;Module not Registered with Manager&quot;</span> ));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a0eb499268b70cf05dc3a3b1dfeca454d">  243</a></span>&#160;    <span class="keywordflow">if</span> ( !module.<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#ad3d59747eaaeb11dfd431a970a99b269">Locked</a>() )</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;        module.<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">command</a> = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a0642bd88386d6b880ca2219199cb7dbd">Module::vSTART</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;}</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a78274ab3af26ba2af05fe2f974515de0">Manager::RestartModule</a>( <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> &amp;module )</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;{</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    </div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a150355ad3455c4ae346a17b9a4481b40">  259</a></span>&#160;    Dbg_MsgAssert( module.node-&gt;InList(),( <span class="stringliteral">&quot;Module not Registered with Manager&quot;</span> ));</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">if</span> ( !module.Locked() )</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        module.command = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aa363f1d15dcfcc4d4a0fcb4a4f645270">Module::vRESTART</a>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#abd3cc6005546422cf0468fe245148072">Manager::StopModule</a>( <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a> &amp;module )</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    </div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a78274ab3af26ba2af05fe2f974515de0">  277</a></span>&#160;    <span class="keywordflow">if</span> ( !module.Locked() )</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        module.command = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aef74db83d4a7d0df9c233629117091e8">Module::vSTOP</a>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">control_change</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    }</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;}</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a4e2308ddc86573c07815dca7f5b2c8fb">Manager::StartAllModules</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;{</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a>*                 next;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a>*                 mdl;</div>
+<div class="line"><a name="l00295"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#abd3cc6005546422cf0468fe245148072">  295</a></span>&#160;    Lst::Search&lt; Module &gt;   sh;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;    next = sh.FirstItem( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a> );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    <span class="keywordflow">while</span> ( next )</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        mdl = next;             </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        next = sh.NextItem();   <span class="comment">// get next item before excuting callback</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">if</span> ( !mdl-&gt;Locked() )</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        {</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">if</span> ( mdl-&gt;state == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386">Module::vSTOPPED</a> )</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            {</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                mdl-&gt;v_start_cb();</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                mdl-&gt;command = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Module::vNONE</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                mdl-&gt;state = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b">Module::vRUNNING</a>;</div>
+<div class="line"><a name="l00311"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a4e2308ddc86573c07815dca7f5b2c8fb">  311</a></span>&#160;            }</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        }</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    }</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;}</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; </div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a9c437773749cea4a760813caa085ff7d">Manager::StopAllModules</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;{</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a>*                 next;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a>*                 mdl;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    Lst::Search&lt; Module &gt;   sh;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    next = sh.FirstItem( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a> );</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordflow">while</span> ( next )</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    {</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;        mdl = next;             </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;        next = sh.NextItem();   <span class="comment">// get next item before excuting callback</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                                </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;        <span class="keywordflow">if</span> ( !mdl-&gt;Locked() )</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;            <span class="keywordflow">if</span> ( mdl-&gt;state == <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b">Module::vRUNNING</a> )</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;            {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                mdl-&gt;v_stop_cb();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                mdl-&gt;command = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Module::vNONE</a>;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;                mdl-&gt;state = <a class="code" href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386">Module::vSTOPPED</a>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#a9c437773749cea4a760813caa085ff7d">  343</a></span>&#160;            }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;}</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#ad2a6b0178788d077b2698309b85f8ec3">Manager::LockAllModules</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;{</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a>*                 mdl;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    Lst::Search&lt; Module &gt;   sh;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    mdl = sh.FirstItem( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a> );</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">while</span> ( mdl )</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    {</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        mdl-&gt;Lock();</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;        mdl = sh.NextItem();</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    }</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#a7d1d51f69f44d1febf5bd03e040032fe">Manager::UnlockAllModules</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00375"></a><span class="lineno"><a class="line" href="../../d6/d68/class_mdl_1_1_manager.html#ad2a6b0178788d077b2698309b85f8ec3">  375</a></span>&#160;{</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="../../dc/de6/class_mdl_1_1_module.html">Module</a>*                 mdl;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    Lst::Search&lt; Module &gt;   sh;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    mdl = sh.FirstItem ( <a class="code" href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">module_list</a> );</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    <span class="keywordflow">while</span> ( mdl )</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    {</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        mdl-&gt;<a class="code" href="../../dc/de6/class_mdl_1_1_module.html#ab9fc8b3742fe1b07d08a64a984e96b90">Unlock</a>();</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        mdl = sh.NextItem();</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;}</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;} <span class="comment">// namespace Mdl</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a4d9bc841e11d2a89d3e731dbf1037dcd"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a4d9bc841e11d2a89d3e731dbf1037dcd">Mdl::Manager::~Manager</a></div><div class="ttdeci">~Manager(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00116">modman.cpp:116</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html">Mdl::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d50/modman_8h_source.html#l00049">modman.h:49</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__entr_8c_html_afaddb0b3487a23e3e37ac003c1864151"><div class="ttname"><a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#afaddb0b3487a23e3e37ac003c1864151">Module</a></div><div class="ttdeci">ModuleInfo Module</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c_source.html#l00009">bgm_entr.c:9</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a03f257f13019ff1af31879d4bf5aa021aef74db83d4a7d0df9c233629117091e8"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aef74db83d4a7d0df9c233629117091e8">Mdl::Module::vSTOP</a></div><div class="ttdeci">@ vSTOP</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00083">module.h:83</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a03f257f13019ff1af31879d4bf5aa021a0642bd88386d6b880ca2219199cb7dbd"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a0642bd88386d6b880ca2219199cb7dbd">Mdl::Module::vSTART</a></div><div class="ttdeci">@ vSTART</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00082">module.h:82</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_ad3d59747eaaeb11dfd431a970a99b269"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#ad3d59747eaaeb11dfd431a970a99b269">Mdl::Module::Locked</a></div><div class="ttdeci">bool Locked(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00138">module.h:138</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea3a5d28d1092076be9bb3291ae212036b">Mdl::Module::vRUNNING</a></div><div class="ttdeci">@ vRUNNING</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00076">module.h:76</a></div></div>
+<div class="ttc" id="amodman_8h_html"><div class="ttname"><a href="../../dd/d50/modman_8h.html">modman.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a3592a40da620f8d9553e62d7da0e15b2"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a3592a40da620f8d9553e62d7da0e15b2">Mdl::Module::v_start_cb</a></div><div class="ttdeci">virtual void v_start_cb(void)=0</div></div>
+<div class="ttc" id="anamespace_mdl_html"><div class="ttname"><a href="../../d4/d0a/namespace_mdl.html">Mdl</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d4f/trickcomponent_8h_source.html#l00037">trickcomponent.h:37</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_ab9fc8b3742fe1b07d08a64a984e96b90"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#ab9fc8b3742fe1b07d08a64a984e96b90">Mdl::Module::Unlock</a></div><div class="ttdeci">void Unlock(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00126">module.h:126</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a150355ad3455c4ae346a17b9a4481b40"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a150355ad3455c4ae346a17b9a4481b40">Mdl::Manager::StartModule</a></div><div class="ttdeci">void StartModule(Module &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00259">modman.cpp:259</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a78274ab3af26ba2af05fe2f974515de0"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a78274ab3af26ba2af05fe2f974515de0">Mdl::Manager::RestartModule</a></div><div class="ttdeci">void RestartModule(Module &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00277">modman.cpp:277</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a4e506b72e7c1139a5607e19ec882f745"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a4e506b72e7c1139a5607e19ec882f745">Mdl::Manager::Manager</a></div><div class="ttdeci">Manager(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00101">modman.cpp:101</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_ad2a6b0178788d077b2698309b85f8ec3"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#ad2a6b0178788d077b2698309b85f8ec3">Mdl::Manager::LockAllModules</a></div><div class="ttdeci">void LockAllModules(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00375">modman.cpp:375</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a7bd4e9d0287e987327bab0d34c219cf4"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a7bd4e9d0287e987327bab0d34c219cf4">Mdl::Manager::process_modules_task</a></div><div class="ttdeci">Tsk::Task&lt; Manager &gt; * process_modules_task</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d50/modman_8h_source.html#l00082">modman.h:82</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a7d1d51f69f44d1febf5bd03e040032fe"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a7d1d51f69f44d1febf5bd03e040032fe">Mdl::Manager::UnlockAllModules</a></div><div class="ttdeci">void UnlockAllModules(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00396">modman.cpp:396</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a092ae4a63cff64000c2858f41b80abaa"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a092ae4a63cff64000c2858f41b80abaa">Mdl::Module::node</a></div><div class="ttdeci">Lst::Node&lt; Module &gt; * node</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00092">module.h:92</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021a9463a74e3433abcd37b92ad19340332d">Mdl::Module::vNONE</a></div><div class="ttdeci">@ vNONE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00081">module.h:81</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a775e6c259deec157e3508d9edd78261d"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a775e6c259deec157e3508d9edd78261d">Mdl::Manager::process_modules</a></div><div class="ttdeci">static Tsk::Task&lt; Manager &gt;::Code process_modules</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d50/modman_8h_source.html#l00080">modman.h:80</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_aae8202606716efdd3275d7dc397776c1"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#aae8202606716efdd3275d7dc397776c1">Mdl::Module::command</a></div><div class="ttdeci">Command command</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00090">module.h:90</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_abd3cc6005546422cf0468fe245148072"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#abd3cc6005546422cf0468fe245148072">Mdl::Manager::StopModule</a></div><div class="ttdeci">void StopModule(Module &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00295">modman.cpp:295</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a4e2308ddc86573c07815dca7f5b2c8fb"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a4e2308ddc86573c07815dca7f5b2c8fb">Mdl::Manager::StartAllModules</a></div><div class="ttdeci">void StartAllModules(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00311">modman.cpp:311</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_aa2a95eaed20f342b973c368df452678c"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#aa2a95eaed20f342b973c368df452678c">Mdl::Manager::module_list</a></div><div class="ttdeci">Lst::Head&lt; Module &gt; module_list</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d50/modman_8h_source.html#l00083">modman.h:83</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_afeac0466d78cfed1e35712d3e20f31fb"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#afeac0466d78cfed1e35712d3e20f31fb">Mdl::Module::v_stop_cb</a></div><div class="ttdeci">virtual void v_stop_cb(void)=0</div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html">Mdl::Module</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00046">module.h:46</a></div></div>
+<div class="ttc" id="anamespace_mdl_html_aa68a09de416817f1a5a70dfd47c3aaf3"><div class="ttname"><a href="../../d4/d0a/namespace_mdl.html#aa68a09de416817f1a5a70dfd47c3aaf3">Mdl::DefineSingletonClass</a></div><div class="ttdeci">DefineSingletonClass(Manager, &quot;Module Manager&quot;)</div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a03f257f13019ff1af31879d4bf5aa021aa363f1d15dcfcc4d4a0fcb4a4f645270"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a03f257f13019ff1af31879d4bf5aa021aa363f1d15dcfcc4d4a0fcb4a4f645270">Mdl::Module::vRESTART</a></div><div class="ttdeci">@ vRESTART</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00084">module.h:84</a></div></div>
+<div class="ttc" id="a_messages_8h_html_aa73b766f3c06e99c78d9c143ce16370c"><div class="ttname"><a href="../../df/de2/_messages_8h.html#aa73b766f3c06e99c78d9c143ce16370c">Dbg_Notify</a></div><div class="ttdeci">void Dbg_Notify(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00113">Messages.h:113</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a04faa90c76ae0d0fe4a7fbccaafcbfe0"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a04faa90c76ae0d0fe4a7fbccaafcbfe0">Mdl::Manager::control_change</a></div><div class="ttdeci">bool control_change</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d50/modman_8h_source.html#l00084">modman.h:84</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a0eb499268b70cf05dc3a3b1dfeca454d"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a0eb499268b70cf05dc3a3b1dfeca454d">Mdl::Manager::UnregisterModule</a></div><div class="ttdeci">void UnregisterModule(Module &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00243">modman.cpp:243</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a3f53ce3bf2b69887d66dd418694045f7"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a3f53ce3bf2b69887d66dd418694045f7">Mdl::Manager::RegisterModule</a></div><div class="ttdeci">void RegisterModule(Module &amp;module)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00229">modman.cpp:229</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_manager_html_a9c437773749cea4a760813caa085ff7d"><div class="ttname"><a href="../../d6/d68/class_mdl_1_1_manager.html#a9c437773749cea4a760813caa085ff7d">Mdl::Manager::StopAllModules</a></div><div class="ttdeci">void StopAllModules(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da6/modman_8cpp_source.html#l00343">modman.cpp:343</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a73fa70536cd356e6914161cb7737fd65"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a73fa70536cd356e6914161cb7737fd65">Tmr::GetTime</a></div><div class="ttdeci">Time GetTime(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00546">p_timer.cpp:546</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_acc339e7e8306067cddf74a29e82771bc"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#acc339e7e8306067cddf74a29e82771bc">Mdl::Module::state</a></div><div class="ttdeci">State state</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00089">module.h:89</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_module_html_a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386"><div class="ttname"><a href="../../dc/de6/class_mdl_1_1_module.html#a7d998e2cc60ec6660973a8358a4857dea1e262b18832d21eaaffb3223cd8a9386">Mdl::Module::vSTOPPED</a></div><div class="ttdeci">@ vSTOPPED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d49/gel_2_module_8h_source.html#l00075">module.h:75</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_2fb7b40f1decbf1d32438602b2a2247b.html">Module</a></li><li class="navelem"><a class="el" href="../../d6/da6/modman_8cpp.html">modman.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:23. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

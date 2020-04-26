@@ -1,0 +1,26 @@
+var _n_g_p_s_2p__nxmiscfx_8cpp =
+[
+    [ "sNGPSVert", "d8/d1a/struct_nx_1_1s_n_g_p_s_vert.html", "d8/d1a/struct_nx_1_1s_n_g_p_s_vert" ],
+    [ "sNGPSSplatInstanceDetails", "dc/d05/struct_nx_1_1s_n_g_p_s_splat_instance_details.html", "dc/d05/struct_nx_1_1s_n_g_p_s_splat_instance_details" ],
+    [ "sNGPSShatterInstanceDetails", "d2/dbd/struct_nx_1_1s_n_g_p_s_shatter_instance_details.html", "d2/dbd/struct_nx_1_1s_n_g_p_s_shatter_instance_details" ],
+    [ "getDetailsForTextureSplat", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a3fefb5d87fd42e62a6a4b8ad38a8058f", null ],
+    [ "subdivide_tri_stack", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a046b5021a6478a31b3e61841e04d90e2", null ],
+    [ "same_side", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#ac62fead547c3c44ac10ad56072f343a7", null ],
+    [ "point_in_triangle", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#aa51adaedfa03101e24ae0c57cfaa25ed", null ],
+    [ "line_segment_intersection", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a1517cf568547ef27696f9872af29139f", null ],
+    [ "tri_texture_intersect", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a984cb7dcd8a2d81eb81483c04b6aae41", null ],
+    [ "plat_screen_flash_render", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#af62673c1b360f57efd3adfe84aa6b1c1", null ],
+    [ "plat_texture_splat_initialize", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a5cbe6a582bdf94cae105d109b5cda4d3", null ],
+    [ "plat_texture_splat_cleanup", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a57a58345a4f44646fca38e1e94e2889c", null ],
+    [ "plat_texture_splat_reset_poly", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#aaf07f7613961fa0414f6318067767c54", null ],
+    [ "plat_texture_splat", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#ab74cb89dfc6b1342cf0948f521ad1ce5", null ],
+    [ "plat_texture_splat_render", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a038350c4e2876e234b31dd7eac1f020f", null ],
+    [ "plat_shatter_initialize", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a03d0029834072d28a2a167c303f0c81b", null ],
+    [ "plat_shatter_cleanup", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a3a614cc7214a0557d4d56d70a0a38b4e", null ],
+    [ "find_geom_leaves", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#ad27c00c70ecae6c9572f6d73cefc5042", null ],
+    [ "get_num_extra_shatter_tris", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#aecbfe132d224f5d94586955df2724d37", null ],
+    [ "plat_shatter", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a5e2a5cf88365eaac101aaced554c95f4", null ],
+    [ "plat_shatter_update", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#aeb727f88514dceb592a589b705a76486", null ],
+    [ "plat_shatter_render", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a035b931248e4eab90d94ad0f30ea300b", null ],
+    [ "MAX_GEOM_NODES", "d3/d19/_n_g_p_s_2p__nxmiscfx_8cpp.html#a4936234c5ff0da99646cc3df0f4612d8", null ]
+];

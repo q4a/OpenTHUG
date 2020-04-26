@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/sioman.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('da/d21/sioman_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">sioman.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../da/d21/sioman_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        SYS Library                                             **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         SIO (SIO_)                                              **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  Created:        05/26/2000  -   spg                                     **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  File name:      sys/sioman.h                                            **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifndef __SYS_SIOMAN_H</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define __SYS_SIOMAN_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d1f/_list_8h.html">core/list.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dc5/_task_8h.html">core/task.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/d75/siodev_8h.html">sys/siodev.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/dc1/namespace_s_i_o.html">SIO</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">enum</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#       if defined( __PLAT_XBOX__ )</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">vMAX_PORT</a> = 4,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#       elif defined( __PLAT_NGC__ )</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">vMAX_PORT</a> = 4,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#       else</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">vMAX_PORT</a> = 2,</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#       endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652abf989b7e88dd5c5e338005f2192cb12a">vMAX_SLOT</a> = 1,</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652ae4eb9c18f33dea5a271a5eeae60c0aae">vMAX_DEVICES</a> = ( <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">vMAX_PORT</a> * <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652abf989b7e88dd5c5e338005f2192cb12a">vMAX_SLOT</a> )</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">   53</a></span>&#160;    };   </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652abf989b7e88dd5c5e338005f2192cb12a">   59</a></span>&#160;<span class="keyword">class  </span><a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html">Manager</a>  : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652ae4eb9c18f33dea5a271a5eeae60c0aae">   60</a></span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html">   63</a></span>&#160;    <span class="keyword">typedef</span> Lst::Head&lt; Device &gt;         <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#acaf46db02803fdbe08dd34353ebb7d4a">DeviceList</a>;         </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;public :</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a>&amp;              <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#ad4c1b29e16810c259a15c1e6b95c9db5">GetProcessDevicesTask</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../dc/de6/class_s_i_o_1_1_device.html">Device</a>*                     <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a6df7e51b0194c86afdfa5957817b71fa">GetDeviceByIndex</a>( <span class="keywordtype">int</span> index );</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html#acaf46db02803fdbe08dd34353ebb7d4a">   69</a></span>&#160;    <a class="code" href="../../dc/de6/class_s_i_o_1_1_device.html">Device</a>*                     <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#abda683f4d8cd5c27d7aedc43fe473bd3">GetDevice</a>( <span class="keywordtype">int</span> port, <span class="keywordtype">int</span> slot );</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a0fe99f7c58cadc6b62f23887330f223f">Pause</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a80b4340564feab6a348be00080660332">UnPause</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#   if defined( __PLAT_XBOX__ )</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a2606e3d9e769a039e9e895a3b97b09c5">ProcessDevices</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#   endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;private : </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">virtual</span>                     <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#ac0c39deb1208c9523c3625b051dfc093">~Manager</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                                <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a627432fac4ca64007dacafbb88f6cc40">Manager</a>();                                              </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="../../dc/de6/class_s_i_o_1_1_device.html">Device</a>*                     <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#ada870f22c81238dc3a27d43810d835c0">create_device</a>( <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> port, <span class="keywordtype">int</span> slot );</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">static</span>  Tsk::Task&lt; DeviceList &gt;::Code   <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#ac25f9dd5e6edc94d85a8bbe19e9a67bd">process_devices</a>;    </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#acaf46db02803fdbe08dd34353ebb7d4a">DeviceList</a>                  <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a3e454aa1587b85365a8bd3234f82d1df">m_devices</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Tsk::Task&lt; DeviceList &gt;*    <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a6f13a130365b625bcef45f5368807e26">m_process_devices_task</a>; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html#ac25f9dd5e6edc94d85a8bbe19e9a67bd">   89</a></span>&#160;    <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a463a3a4b12b18fbb4a5ba4427bedb4d6">DeclareSingletonClass</a>( <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html">Manager</a> );</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html#a3e454aa1587b85365a8bd3234f82d1df">   91</a></span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html#a6f13a130365b625bcef45f5368807e26">   93</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">class  </span><a class="code" href="../../db/da1/class_s_i_o_1_1_search.html">Search</a> : <span class="keyword">public</span>  Lst::Search&lt; Device &gt;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../db/da1/class_s_i_o_1_1_search.html">  101</a></span>&#160;public :</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;                    <a class="code" href="../../db/da1/class_s_i_o_1_1_search.html#a9c3a4b439032dc93ac8d542290687ba0">Search</a> (<span class="keywordtype">void</span>) {} </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                    <a class="code" href="../../db/da1/class_s_i_o_1_1_search.html#a6a9253a9446d1bfd2fcb26442564874a">~Search</a> (<span class="keywordtype">void</span>) {} </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;private :</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../db/da1/class_s_i_o_1_1_search.html#a9c3a4b439032dc93ac8d542290687ba0">  106</a></span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../db/da1/class_s_i_o_1_1_search.html#a6a9253a9446d1bfd2fcb26442564874a">  107</a></span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2029ba17e00cc0b7196768b871d2a0a">LoadIRX</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *pName, <span class="keywordtype">int</span> num_args = 0, <span class="keywordtype">char</span>* args = NULL, <span class="keywordtype">bool</span> assert_on_fail = <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">inline</span>  <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a>&amp;  <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#ad4c1b29e16810c259a15c1e6b95c9db5">Manager::GetProcessDevicesTask</a> ( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    </div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../d6/d56/class_s_i_o_1_1_manager.html#ad4c1b29e16810c259a15c1e6b95c9db5">  137</a></span>&#160;    Dbg_AssertType ( <a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a6f13a130365b625bcef45f5368807e26">m_process_devices_task</a>, <a class="code" href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a> );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <span class="keywordflow">return</span> *<a class="code" href="../../d6/d56/class_s_i_o_1_1_manager.html#a6f13a130365b625bcef45f5368807e26">m_process_devices_task</a>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;} <span class="comment">// namespace SIO</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#endif  // __SYS_SIOMAN__H</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_ad4c1b29e16810c259a15c1e6b95c9db5"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#ad4c1b29e16810c259a15c1e6b95c9db5">SIO::Manager::GetProcessDevicesTask</a></div><div class="ttdeci">Tsk::BaseTask &amp; GetProcessDevicesTask(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00137">sioman.h:137</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_ada870f22c81238dc3a27d43810d835c0"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#ada870f22c81238dc3a27d43810d835c0">SIO::Manager::create_device</a></div><div class="ttdeci">Device * create_device(int index, int port, int slot)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00121">sioman.cpp:121</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652a69235366bc22c0f82b3e8f4e8baefcf3">SIO::vMAX_PORT</a></div><div class="ttdeci">@ vMAX_PORT</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00053">sioman.h:53</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html">SIO::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00063">sioman.h:63</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_abda683f4d8cd5c27d7aedc43fe473bd3"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#abda683f4d8cd5c27d7aedc43fe473bd3">SIO::Manager::GetDevice</a></div><div class="ttdeci">Device * GetDevice(int port, int slot)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00226">sioman.cpp:226</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a2606e3d9e769a039e9e895a3b97b09c5"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a2606e3d9e769a039e9e895a3b97b09c5">SIO::Manager::ProcessDevices</a></div><div class="ttdeci">void ProcessDevices()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d33/p__sioman_8cpp_source.html#l00202">p_sioman.cpp:202</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_search_html_a6a9253a9446d1bfd2fcb26442564874a"><div class="ttname"><a href="../../db/da1/class_s_i_o_1_1_search.html#a6a9253a9446d1bfd2fcb26442564874a">SIO::Search::~Search</a></div><div class="ttdeci">~Search(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00107">sioman.h:107</a></div></div>
+<div class="ttc" id="a_task_8h_html"><div class="ttname"><a href="../../d5/dc5/_task_8h.html">Task.h</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_ac0c39deb1208c9523c3625b051dfc093"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#ac0c39deb1208c9523c3625b051dfc093">SIO::Manager::~Manager</a></div><div class="ttdeci">virtual ~Manager()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00198">sioman.cpp:198</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a463a3a4b12b18fbb4a5ba4427bedb4d6"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a463a3a4b12b18fbb4a5ba4427bedb4d6">SIO::Manager::DeclareSingletonClass</a></div><div class="ttdeci">DeclareSingletonClass(Manager)</div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a3e454aa1587b85365a8bd3234f82d1df"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a3e454aa1587b85365a8bd3234f82d1df">SIO::Manager::m_devices</a></div><div class="ttdeci">DeviceList m_devices</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00091">sioman.h:91</a></div></div>
+<div class="ttc" id="asiodev_8h_html"><div class="ttname"><a href="../../d5/d75/siodev_8h.html">siodev.h</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_acaf46db02803fdbe08dd34353ebb7d4a"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#acaf46db02803fdbe08dd34353ebb7d4a">SIO::Manager::DeviceList</a></div><div class="ttdeci">Lst::Head&lt; Device &gt; DeviceList</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00069">sioman.h:69</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a6df7e51b0194c86afdfa5957817b71fa"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a6df7e51b0194c86afdfa5957817b71fa">SIO::Manager::GetDeviceByIndex</a></div><div class="ttdeci">Device * GetDeviceByIndex(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00251">sioman.cpp:251</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_device_html"><div class="ttname"><a href="../../dc/de6/class_s_i_o_1_1_device.html">SIO::Device</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d75/siodev_8h_source.html#l00106">siodev.h:106</a></div></div>
+<div class="ttc" id="aclass_tsk_1_1_base_task_html"><div class="ttname"><a href="../../dd/dd9/class_tsk_1_1_base_task.html">Tsk::BaseTask</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dfd/_task_2_task_8h_source.html#l00050">Task.h:50</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a32bab508d27395c6802ab01cbac2d652ae4eb9c18f33dea5a271a5eeae60c0aae"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652ae4eb9c18f33dea5a271a5eeae60c0aae">SIO::vMAX_DEVICES</a></div><div class="ttdeci">@ vMAX_DEVICES</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00060">sioman.h:60</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_ac25f9dd5e6edc94d85a8bbe19e9a67bd"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#ac25f9dd5e6edc94d85a8bbe19e9a67bd">SIO::Manager::process_devices</a></div><div class="ttdeci">static Tsk::Task&lt; DeviceList &gt;::Code process_devices</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00089">sioman.h:89</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a627432fac4ca64007dacafbb88f6cc40"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a627432fac4ca64007dacafbb88f6cc40">SIO::Manager::Manager</a></div><div class="ttdeci">Manager()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00144">sioman.cpp:144</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a32bab508d27395c6802ab01cbac2d652abf989b7e88dd5c5e338005f2192cb12a"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a32bab508d27395c6802ab01cbac2d652abf989b7e88dd5c5e338005f2192cb12a">SIO::vMAX_SLOT</a></div><div class="ttdeci">@ vMAX_SLOT</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00059">sioman.h:59</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_search_html"><div class="ttname"><a href="../../db/da1/class_s_i_o_1_1_search.html">SIO::Search</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00101">sioman.h:101</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2029ba17e00cc0b7196768b871d2a0a"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2029ba17e00cc0b7196768b871d2a0a">SIO::LoadIRX</a></div><div class="ttdeci">int LoadIRX(const char *pName, int num_args, char *args, bool assert_on_fail)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/db2/sioman_8cpp_source.html#l00283">sioman.cpp:283</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a80b4340564feab6a348be00080660332"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a80b4340564feab6a348be00080660332">SIO::Manager::UnPause</a></div><div class="ttdeci">void UnPause()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00291">sioman.cpp:291</a></div></div>
+<div class="ttc" id="a_list_8h_html"><div class="ttname"><a href="../../dc/d1f/_list_8h.html">List.h</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a0fe99f7c58cadc6b62f23887330f223f"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a0fe99f7c58cadc6b62f23887330f223f">SIO::Manager::Pause</a></div><div class="ttdeci">void Pause()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dd4/ngc_2sioman_8cpp_source.html#l00275">sioman.cpp:275</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html">SIO</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00033">keyboard.h:33</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_manager_html_a6f13a130365b625bcef45f5368807e26"><div class="ttname"><a href="../../d6/d56/class_s_i_o_1_1_manager.html#a6f13a130365b625bcef45f5368807e26">SIO::Manager::m_process_devices_task</a></div><div class="ttdeci">Tsk::Task&lt; DeviceList &gt; * m_process_devices_task</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00093">sioman.h:93</a></div></div>
+<div class="ttc" id="aclass_s_i_o_1_1_search_html_a9c3a4b439032dc93ac8d542290687ba0"><div class="ttname"><a href="../../db/da1/class_s_i_o_1_1_search.html#a9c3a4b439032dc93ac8d542290687ba0">SIO::Search::Search</a></div><div class="ttdeci">Search(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d21/sioman_8h_source.html#l00106">sioman.h:106</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../da/d21/sioman_8h.html">sioman.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+var class_mth_1_1_quat =
+[
+    [ "Quat", "d8/d56/class_mth_1_1_quat.html#a792b272d254e72276c52e93b82f0869f", null ],
+    [ "Quat", "d8/d56/class_mth_1_1_quat.html#a35266a18e296ecba75eb62c1eef972bc", null ],
+    [ "Quat", "d8/d56/class_mth_1_1_quat.html#a958c5a862502f20bbb59c953e485aed4", null ],
+    [ "Invert", "d8/d56/class_mth_1_1_quat.html#a7503cc0988bc439528109c71382a9e9d", null ],
+    [ "Invert", "d8/d56/class_mth_1_1_quat.html#a631d9d8a725c4a5ecf63adf146e1b5d2", null ],
+    [ "Modulus", "d8/d56/class_mth_1_1_quat.html#a6216dd23285af8a0d2606954962b341e", null ],
+    [ "ModulusSqr", "d8/d56/class_mth_1_1_quat.html#a263ab351cd566409360f7334d45245e5", null ],
+    [ "Normalize", "d8/d56/class_mth_1_1_quat.html#a62e71730304d4919e79946e76d266c30", null ],
+    [ "Rotate", "d8/d56/class_mth_1_1_quat.html#a84a25732b1e986c93eccc7fe686cb887", null ],
+    [ "SetScalar", "d8/d56/class_mth_1_1_quat.html#aeac029b1d66b1da7bd8a406f384e13c4", null ],
+    [ "SetVector", "d8/d56/class_mth_1_1_quat.html#aca0df2e4452924aebd6cd6ce41551ca6", null ],
+    [ "SetVector", "d8/d56/class_mth_1_1_quat.html#a17ae55fc9714d1a3210c306c68df2500", null ],
+    [ "GetScalar", "d8/d56/class_mth_1_1_quat.html#a55072e4fd9016460a9ab2784c09ee3f1", null ],
+    [ "GetVector", "d8/d56/class_mth_1_1_quat.html#a8c60e876f162cff13ca2556fff1354e3", null ],
+    [ "GetMatrix", "d8/d56/class_mth_1_1_quat.html#aef2c1c027a01716fb7c273eee12022df", null ],
+    [ "operator=", "d8/d56/class_mth_1_1_quat.html#a05513c5f27c1f9397928a0b067acb1fe", null ],
+    [ "operator+=", "d8/d56/class_mth_1_1_quat.html#a3989f65b1dea434353f4b0e7eb17d700", null ],
+    [ "operator-=", "d8/d56/class_mth_1_1_quat.html#a8d28f13795627bf7aba86e4acbd7222b", null ],
+    [ "operator*=", "d8/d56/class_mth_1_1_quat.html#aef96d6b4425fa207bb02925efe74339d", null ],
+    [ "operator*=", "d8/d56/class_mth_1_1_quat.html#a78f418856621150cd459000013f58df0", null ],
+    [ "operator/=", "d8/d56/class_mth_1_1_quat.html#a54f629823b911d47b5553b4a00f9133a", null ],
+    [ "operator[]", "d8/d56/class_mth_1_1_quat.html#ae4bee418ac4244de58253fd7e890be71", null ],
+    [ "operator[]", "d8/d56/class_mth_1_1_quat.html#a0963d4e6fdcbb175d876719b10bcb402", null ],
+    [ "quat_equal", "d8/d56/class_mth_1_1_quat.html#ae9b2e571e114593d985cafd846ca51f7", null ],
+    [ "quat", "d8/d56/class_mth_1_1_quat.html#a5b39f3fefb0a6b7b092c296dd88b9e2c", null ]
+];

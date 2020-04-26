@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['x_20017',['x',['../d8/d1e/struct_rect.html#a64d1ef14e429e1816539de4c54361e55',1,'Rect::x()'],['../d7/da3/struct_nx_1_1s_ngc_screen_flash_vert.html#acd158a999fdf6e6a3ab386f74542f73d',1,'Nx::sNgcScreenFlashVert::x()'],['../d5/df2/struct_nx_ps2_1_1s_shadow_vertex.html#a46c28b3c2232b6908243c1c59f525400',1,'NxPs2::sShadowVertex::x()'],['../d0/de1/structrect__tag.html#a0fcfd630ee73ade465713c32ec1b3f6a',1,'rect_tag::x()'],['../d8/db9/struct_nx_xbox_1_1s_font_vert.html#a14029709b0f4045b3b66357a00a4fbdb',1,'NxXbox::sFontVert::x()'],['../da/dfe/struct_fuzz_inst.html#a32f0b5a9d74a89d60d4c05c3366c14a6',1,'FuzzInst::x()'],['../d8/d4b/struct_nx_xbox_1_1s_sprite_vert.html#abba2d01eeea2b61873d9c91b923eb38e',1,'NxXbox::sSpriteVert::x()'],['../d7/dfa/struct_nx_1_1s_imposter_poly_vert.html#ac0e95ecb18435ee5d76208afa844cd39',1,'Nx::sImposterPolyVert::x()'],['../d2/dec/struct_nx_1_1s_xbox_screen_flash_vert.html#ac926ab5280c11cf786bed5dd1a00fe4b',1,'Nx::sXboxScreenFlashVert::x()'],['../da/d6e/struct_ed_1_1_c_park_manager_1_1_build_floor_params.html#a118826c5e39b694fe8fd635e28bc5f53',1,'Ed::CParkManager::BuildFloorParams::x()'],['../d7/d30/struct_ed_1_1_c_park_manager_1_1_compressed_gap_old.html#a110fd230231d46b0ed5b7e413acfbf54',1,'Ed::CParkManager::CompressedGapOld::x()'],['../d5/d6b/struct_ed_1_1_c_park_manager_1_1_compressed_gap.html#af8a63e2d8dad6e1528b15ad3ecc19aa1',1,'Ed::CParkManager::CompressedGap::x()'],['../d9/d4c/struct_ed_1_1_map_area.html#a6eab0a6939476dd526cd45b0bbeb296e',1,'Ed::MapArea::x()'],['../db/d16/struct_vec.html#a2329da04868799450765a987a6517e16',1,'Vec::x()'],['../db/dd6/class_ns_vector.html#a7f2cfbda4f288c80a7987fd64ef55044',1,'NsVector::x()'],['../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4',1,'X():&#160;vector.h'],['../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877',1,'Nx::x()'],['../d1/d54/namespace_script.html#a015b2cdb5395be7b138ef4db7acf047f',1,'Script::x()']]],
+  ['x48_20018',['x48',['../d4/d52/struct_gfx_1_1_c_boned_anim_compress_entry.html#ad751663bc79c244ee35235cc21e51e7d',1,'Gfx::CBonedAnimCompressEntry']]],
+  ['xbmemfnt_20019',['xbmemfnt',['../d4/d96/xbmemfnt_8h.html#a49b003e97484546242438909a0043d92',1,'xbmemfnt.h']]],
+  ['xbmemfnt_2eh_20020',['xbmemfnt.h',['../d4/d96/xbmemfnt_8h.html',1,'']]],
+  ['xbox_5fhas_5fvoice_5fdevice_20021',['xbox_has_voice_device',['../db/dc1/class_game_net_1_1_auth_man.html#a6d26d8ddb02f9e95425cec21aeeb77e7',1,'GameNet::AuthMan']]],
+  ['xbox_5fimposter_5fmax_5fu_5ftexture_5fsize_20022',['XBOX_IMPOSTER_MAX_U_TEXTURE_SIZE',['../d1/d06/namespace_nx.html#ad9060e6f6ffaaa754c9c0784e539873b',1,'Nx']]],
+  ['xbox_5fimposter_5fmax_5fv_5ftexture_5fsize_20023',['XBOX_IMPOSTER_MAX_V_TEXTURE_SIZE',['../d1/d06/namespace_nx.html#a43e946f6c09014d4396b45a51125dbe7',1,'Nx']]],
+  ['xbox_5fimposter_5fupdate_5flimit_20024',['XBOX_IMPOSTER_UPDATE_LIMIT',['../d1/d06/namespace_nx.html#a40901726bcc3084de19f81ad827ac423',1,'Nx']]],
+  ['xbutil_5fswizzletexture2d_20025',['XBUtil_SwizzleTexture2D',['../db/d8a/_x_box_2_n_x_2grass_8cpp.html#a72362ad54a50ebaa347fd79015023b2f',1,'grass.cpp']]],
+  ['xbutil_5funswizzletexture2d_20026',['XBUtil_UnswizzleTexture2D',['../db/d8a/_x_box_2_n_x_2grass_8cpp.html#a59f51600bcc410ea93231015e839824e',1,'grass.cpp']]],
+  ['xfblcstart_20027',['xfbLCStart',['../d6/d5b/ngc_2p__movies_8cpp.html#a9104f0acd4f9d0e652de265bb7a899d7',1,'p_movies.cpp']]],
+  ['xrate_20028',['xrate',['../d1/d0d/namespace_tmr.html#a03af9c8913f7b0a6ccb8950fa8d39401',1,'Tmr']]],
+  ['xscevu0mulmatrix_20029',['xsceVu0MulMatrix',['../d5/db9/namespace_mth.html#afa4cb252cc84cfd3dc1df2d8dc2e0eb2',1,'Mth']]],
+  ['xscevu0mulvector_20030',['xsceVu0MulVector',['../d5/db9/namespace_mth.html#a4ff035d5a8fc83d4fce4b064da941ae6',1,'Mth']]],
+  ['xscevu0normalize_20031',['xsceVu0Normalize',['../d5/db9/namespace_mth.html#a513fd341be401142b77c0d25cf05bceb',1,'Mth']]],
+  ['xyoffset_5f1_20032',['XYOFFSET_1',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda989f4bc464d9b540cb697861c9860b40',1,'NxPs2::gs']]],
+  ['xyoffset_5f2_20033',['XYOFFSET_2',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cdae4a259722103a43e0ee2d6531d27c693',1,'NxPs2::gs']]],
+  ['xyz2_20034',['XYZ2',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda5f5851c0fbd9e32943a3d721e74c679d',1,'NxPs2::gs']]],
+  ['xyz3_20035',['XYZ3',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda18eed6d2acca956a8e64ee8905c755a2',1,'NxPs2::gs']]],
+  ['xyzf2_20036',['XYZF2',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda87213180dc8cf32d529bd093e8192e0f',1,'NxPs2::gs']]],
+  ['xyzf3_20037',['XYZF3',['../d3/d7c/class_nx_ps2_1_1gs.html#a04490b223c1ce5d22603a22e36c1b1cda15fd4af18ddfbf25ff8a4d6a5300c2e1',1,'NxPs2::gs']]]
+];

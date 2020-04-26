@@ -1,0 +1,262 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/SuspendComponent.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/d6d/_suspend_component_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">SuspendComponent.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d6d/_suspend_component_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       SuspendComponent.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          ???</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  ??/??/??</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __COMPONENTS_SUSPENDCOMPONENT_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __COMPONENTS_SUSPENDCOMPONENT_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dc5/_task_8h.html">core/task.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d1a/basecomponent_8h.html">gel/object/basecomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define     CRC_SUSPEND CRCD(0xce0ca665,&quot;Suspend&quot;)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define     GetSuspendComponent() ((Obj::CSuspendComponent*)GetComponent(CRC_SUSPEND))</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define     GetSuspendComponentFromObject(pObj) ((Obj::CSuspendComponent*)(pObj)-&gt;GetComponent(CRC_SUSPEND))</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">class </span>CScript;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;              </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">class   </span>CModelComponent;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span>SuspendManager</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">   39</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Manager</a>  : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb43d28af4aad4ce5d563ecc1b83fba4">   41</a></span>&#160;    Tsk::Task&lt; Manager &gt; *<a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb43d28af4aad4ce5d563ecc1b83fba4">mp_task</a>;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#a255f92941242c60e98cda94c160e7444">   42</a></span>&#160;    <span class="keyword">static</span>  Tsk::Task&lt; Manager &gt;::Code  <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#a255f92941242c60e98cda94c160e7444">s_code</a>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb02293e63e388265eb4a2242a138de3">Manager</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ad07415f287681660ded02bc714dc0633">~Manager</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ae0b540f0d031d8774b37b483f4461758">DeclareSingletonClass</a>( <a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Manager</a> );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html">   56</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html">CSuspendComponent</a> : <span class="keyword">public</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a17c085291cecb139222988ba55f08d0f">   58</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">SuspendManager::Manager</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;     </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">CSuspendComponent</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a897ff38a809f5f58cd9d1197df03ff40">~CSuspendComponent</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a536faf3f2be922a85c8e4d3edd60bb0a">Update</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#abe2a27d984e47421bc151ebd394f1545">InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aab2e4657f1777b8e58b41cc193cda017">Finalize</a>(); </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">EMemberFunctionResult</a>   <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a0ec772871c6506939edac1a095287a52">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a10812b13cf3aef632fe050e50929092d">Suspend</a>(<span class="keywordtype">bool</span> suspend);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a35115ef435cbb5b87040c0db02cb5e37">GetDebugInfo</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_info);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">SkipLogic</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">SkipRender</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>*          <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a2885fb317dd0753826e60dc415c9f71c">s_create</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span>                     <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a1f7e66ff6e8534ad828474efb6ef3f34">s_register</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">public</span>:     </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">CheckModelActive</a>();</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">float</span>                           <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a952ff93526fc5c3d5f5e02553a48a3cb">GetDistanceSquaredToCamera</a>();</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">   85</a></span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">m_never_suspend</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">   86</a></span>&#160;    <span class="keywordtype">float</span>                           <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">m_suspend_distance</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">   87</a></span>&#160;    <span class="keywordtype">float</span>                           <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">m_suspend_distance_squared</a>; <span class="comment">// K: For a fast distance-squared check</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">   88</a></span>&#160;    <span class="keywordtype">float</span>                           <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">m_camera_distance_squared</a>;  <span class="comment">// current distance from camera</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">   89</a></span>&#160;    <span class="keywordtype">int</span>                             <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">m_no_suspend_count</a>; <span class="comment">// number of initial frames we cannot suspend in</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">   91</a></span>&#160;    <a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html">CModelComponent</a>*                <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">mp_model_component</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">   93</a></span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">m_skip_logic</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a7bbe432c010ca36455bfe28d1339e188">   94</a></span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a7bbe432c010ca36455bfe28d1339e188">m_skip_render</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">// public during the transition:</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//protected:</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">   99</a></span>&#160;    <span class="keywordtype">float</span>                           <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">m_lod_dist</a>[4];      <span class="comment">// Mick: LOD is in the moving object for now....    </span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">  100</a></span>&#160;    <span class="keywordtype">int</span>                             <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">m_initial_animations</a>;       <span class="comment">// must do at least these initial animations</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">  103</a></span>&#160;    <span class="keywordtype">int</span>                             <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">m_interleave</a>;   <span class="comment">// Mick: counter for interleaving animation at a distance</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">public</span>:  <span class="comment">// just for now    </span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">should_animate</a>( <span class="keywordtype">float</span> *p_dist = NULL );</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a374bbc6f31927ea8e6871fd9d771223a"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a374bbc6f31927ea8e6871fd9d771223a">Obj::CSuspendComponent::m_lod_dist</a></div><div class="ttdeci">float m_lod_dist[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00099">SuspendComponent.h:99</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5522cfd23f5a576aa1641f35666231a5"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5522cfd23f5a576aa1641f35666231a5">Obj::CSuspendComponent::m_initial_animations</a></div><div class="ttdeci">int m_initial_animations</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00100">SuspendComponent.h:100</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a536faf3f2be922a85c8e4d3edd60bb0a"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a536faf3f2be922a85c8e4d3edd60bb0a">Obj::CSuspendComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00191">SuspendComponent.cpp:191</a></div></div>
+<div class="ttc" id="a_task_8h_html"><div class="ttname"><a href="../../d5/dc5/_task_8h.html">Task.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html">Obj::CSuspendComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00056">SuspendComponent.h:56</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a0ec772871c6506939edac1a095287a52"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a0ec772871c6506939edac1a095287a52">Obj::CSuspendComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00202">SuspendComponent.cpp:202</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a7bbe432c010ca36455bfe28d1339e188"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a7bbe432c010ca36455bfe28d1339e188">Obj::CSuspendComponent::m_skip_render</a></div><div class="ttdeci">bool m_skip_render</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00094">SuspendComponent.h:94</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_ad07415f287681660ded02bc714dc0633"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ad07415f287681660ded02bc714dc0633">Obj::SuspendManager::Manager::~Manager</a></div><div class="ttdeci">~Manager()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00504">SuspendComponent.cpp:504</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a952ff93526fc5c3d5f5e02553a48a3cb"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a952ff93526fc5c3d5f5e02553a48a3cb">Obj::CSuspendComponent::GetDistanceSquaredToCamera</a></div><div class="ttdeci">float GetDistanceSquaredToCamera()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00449">SuspendComponent.cpp:449</a></div></div>
+<div class="ttc" id="abasecomponent_8h_html"><div class="ttname"><a href="../../dc/d1a/basecomponent_8h.html">basecomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html">Obj::CModelComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d45/modelcomponent_8h_source.html#l00081">modelcomponent.h:81</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_aeb43d28af4aad4ce5d563ecc1b83fba4"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb43d28af4aad4ce5d563ecc1b83fba4">Obj::SuspendManager::Manager::mp_task</a></div><div class="ttdeci">Tsk::Task&lt; Manager &gt; * mp_task</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00041">SuspendComponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a10812b13cf3aef632fe050e50929092d"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a10812b13cf3aef632fe050e50929092d">Obj::CSuspendComponent::Suspend</a></div><div class="ttdeci">virtual void Suspend(bool suspend)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00222">SuspendComponent.cpp:222</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad0134c955817c1901a2b38268ac723f2"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad0134c955817c1901a2b38268ac723f2">Obj::CSuspendComponent::should_animate</a></div><div class="ttdeci">bool should_animate(float *p_dist=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00292">SuspendComponent.cpp:292</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aca3c7db8a221b31d2b738ad62d683e7b"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aca3c7db8a221b31d2b738ad62d683e7b">Obj::CSuspendComponent::m_interleave</a></div><div class="ttdeci">int m_interleave</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00103">SuspendComponent.h:103</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a06a8df27e7f213d3a8666fc8904b1428"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a06a8df27e7f213d3a8666fc8904b1428">Obj::CSuspendComponent::m_no_suspend_count</a></div><div class="ttdeci">int m_no_suspend_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00089">SuspendComponent.h:89</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a65566869a3e5600ca26bd9fbd9fcd2d8"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a65566869a3e5600ca26bd9fbd9fcd2d8">Obj::CSuspendComponent::m_skip_logic</a></div><div class="ttdeci">bool m_skip_logic</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00093">SuspendComponent.h:93</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a3e89a55e2939f9addff09f8dbf322662"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a3e89a55e2939f9addff09f8dbf322662">Obj::CSuspendComponent::mp_model_component</a></div><div class="ttdeci">CModelComponent * mp_model_component</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00091">SuspendComponent.h:91</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_abe2a27d984e47421bc151ebd394f1545"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#abe2a27d984e47421bc151ebd394f1545">Obj::CSuspendComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00104">SuspendComponent.cpp:104</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad4a4707c3977a769782b5f1840238573"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad4a4707c3977a769782b5f1840238573">Obj::CSuspendComponent::SkipRender</a></div><div class="ttdeci">bool SkipRender()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00248">SuspendComponent.cpp:248</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aa78c853a9a42f92095e0f3483cf2820f"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aa78c853a9a42f92095e0f3483cf2820f">Obj::CSuspendComponent::m_suspend_distance_squared</a></div><div class="ttdeci">float m_suspend_distance_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00087">SuspendComponent.h:87</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5a0ec45719d9b5837bb9355e5c258f23"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5a0ec45719d9b5837bb9355e5c258f23">Obj::CSuspendComponent::CheckModelActive</a></div><div class="ttdeci">void CheckModelActive()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00378">SuspendComponent.cpp:378</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_ae0b540f0d031d8774b37b483f4461758"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#ae0b540f0d031d8774b37b483f4461758">Obj::SuspendManager::Manager::DeclareSingletonClass</a></div><div class="ttdeci">DeclareSingletonClass(Manager)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a35115ef435cbb5b87040c0db02cb5e37"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a35115ef435cbb5b87040c0db02cb5e37">Obj::CSuspendComponent::GetDebugInfo</a></div><div class="ttdeci">void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00267">SuspendComponent.cpp:267</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html">Obj::SuspendManager::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00039">SuspendComponent.h:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a897ff38a809f5f58cd9d1197df03ff40"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a897ff38a809f5f58cd9d1197df03ff40">Obj::CSuspendComponent::~CSuspendComponent</a></div><div class="ttdeci">virtual ~CSuspendComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00095">SuspendComponent.cpp:95</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aef21ad637ff647f116cde480aa8009cc"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aef21ad637ff647f116cde480aa8009cc">Obj::CSuspendComponent::m_never_suspend</a></div><div class="ttdeci">bool m_never_suspend</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00085">SuspendComponent.h:85</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_aeb02293e63e388265eb4a2242a138de3"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#aeb02293e63e388265eb4a2242a138de3">Obj::SuspendManager::Manager::Manager</a></div><div class="ttdeci">Manager()</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_ad3baead48296fd9ae83b73418b2d72f6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#ad3baead48296fd9ae83b73418b2d72f6">Obj::CSuspendComponent::m_camera_distance_squared</a></div><div class="ttdeci">float m_camera_distance_squared</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00088">SuspendComponent.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a597d1baef8e7f38c2124b6fc0e3bc6a6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a597d1baef8e7f38c2124b6fc0e3bc6a6">Obj::CSuspendComponent::m_suspend_distance</a></div><div class="ttdeci">float m_suspend_distance</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00086">SuspendComponent.h:86</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a2885fb317dd0753826e60dc415c9f71c"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a2885fb317dd0753826e60dc415c9f71c">Obj::CSuspendComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00039">SuspendComponent.cpp:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a1f7e66ff6e8534ad828474efb6ef3f34"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a1f7e66ff6e8534ad828474efb6ef3f34">Obj::CSuspendComponent::s_register</a></div><div class="ttdeci">static void s_register()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00051">SuspendComponent.cpp:51</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_suspend_manager_1_1_manager_html_a255f92941242c60e98cda94c160e7444"><div class="ttname"><a href="../../d9/d6b/class_obj_1_1_suspend_manager_1_1_manager.html#a255f92941242c60e98cda94c160e7444">Obj::SuspendManager::Manager::s_code</a></div><div class="ttdeci">static Tsk::Task&lt; Manager &gt;::Code s_code</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d6d/_suspend_component_8h_source.html#l00042">SuspendComponent.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a5fcbbdad35660c62be2355de5a2e2ba6"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a5fcbbdad35660c62be2355de5a2e2ba6">Obj::CSuspendComponent::SkipLogic</a></div><div class="ttdeci">bool SkipLogic()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00235">SuspendComponent.cpp:235</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_aab2e4657f1777b8e58b41cc193cda017"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#aab2e4657f1777b8e58b41cc193cda017">Obj::CSuspendComponent::Finalize</a></div><div class="ttdeci">virtual void Finalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00180">SuspendComponent.cpp:180</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_suspend_component_html_a551a37fa47b03c34a094e867cd46348d"><div class="ttname"><a href="../../df/d70/class_obj_1_1_c_suspend_component.html#a551a37fa47b03c34a094e867cd46348d">Obj::CSuspendComponent::CSuspendComponent</a></div><div class="ttdeci">CSuspendComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d91/_suspend_component_8cpp_source.html#l00064">SuspendComponent.cpp:64</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../d4/d6d/_suspend_component_8h.html">SuspendComponent.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:22. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

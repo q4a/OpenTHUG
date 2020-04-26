@@ -1,0 +1,257 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/p_nxscene.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dd/df3/_x_box_2p__nxscene_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_nxscene.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dd/df3/_x_box_2p__nxscene_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxScene.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;gfx/xbox/p_NxScene.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;gfx/xbox/p_NxSector.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include    &quot;gfx/xbox/p_NxGeom.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;{</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#adf9915cb0e7e3cf58c607391a76ebf70">   16</a></span>&#160;<a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#adf9915cb0e7e3cf58c607391a76ebf70">CXboxScene::CXboxScene</a>( <span class="keywordtype">int</span> sector_table_size ) : <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html">CScene</a>( sector_table_size )</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;}</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#ad1606d7e46fb9e6cde2e87dc1121a86c">   25</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#ad1606d7e46fb9e6cde2e87dc1121a86c">CXboxScene::DestroySectorMeshes</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// Iterate through the list of sectors, removing each one in turn, and requesting the engine to</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// remove the meshes.</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a>* pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">while</span>( pSector )</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="comment">// Access platform dependent data.</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="../../d5/d44/class_nx_1_1_c_xbox_sector.html">CXboxSector</a>* pXboxSector = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d5/d44/class_nx_1_1_c_xbox_sector.html">CXboxSector</a> *<span class="keyword">&gt;</span>(pSector);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="comment">// Remove this mesh array from the engine.</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">//      pXboxSector-&gt;DestroyMeshArray();</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of the CScene</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a0e1abf0e7d017a2e3e8b7912f063f6eb">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a0e1abf0e7d017a2e3e8b7912f063f6eb">CXboxScene::plat_post_load</a>()</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;{</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// Now turn the temporary mesh lists into mesh arrays.</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a>* pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">while</span>( pSector )</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html">CXboxGeom</a> *p_xbox_geom = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html">CXboxGeom</a>*<span class="keyword">&gt;</span>(pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a428b12b33dfef6a164910b8f2b09d206">GetGeom</a>());</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        p_xbox_geom-&gt;<a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html#aeb7180841bf15c9b6a7cd0680a69e4a9">CreateMeshArray</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// First time through we just want to count the meshes,</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        p_xbox_geom-&gt;<a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html#a2b83abbadec3ec6c46e9383b9d6466ad">RegisterMeshArray</a>( <span class="keyword">true</span> );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">// Now we have counted all the meshes, tell the engine to create the arrays to hold them.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">GetEngineScene</a>()-&gt;<a class="code" href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a10a731168dc98f8b223ca084641b2bac">CreateMeshArrays</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="comment">// Now go through and actually add the meshes.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordflow">while</span>( pSector )</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// Access platform dependent data.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html">CXboxGeom</a> *p_xbox_geom = <span class="keyword">static_cast&lt;</span><a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html">CXboxGeom</a>*<span class="keyword">&gt;</span>(pSector-&gt;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html#a428b12b33dfef6a164910b8f2b09d206">GetGeom</a>());</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        p_xbox_geom-&gt;<a class="code" href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html#a2b83abbadec3ec6c46e9383b9d6466ad">RegisterMeshArray</a>( <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        pSector = <a class="code" href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">mp_sector_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Now all meshes are registered, tell the engine to sort them.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">GetEngineScene</a>()-&gt;<a class="code" href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#adbcb2009054c4fde6a2f27929c094a53">SortMeshes</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#add4da34e19fb641867bd08f142fc3908">   95</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#add4da34e19fb641867bd08f142fc3908">CXboxScene::plat_load_textures</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* p_name)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#aef3c2d70212d856651e1d9e5504b2632">  104</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#aef3c2d70212d856651e1d9e5504b2632">CXboxScene::plat_load_collision</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* p_name)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a07acc336db0a24be5507fbdbc1aa20a4">  115</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a07acc336db0a24be5507fbdbc1aa20a4">CXboxScene::plat_unload_add_scene</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="comment">// Not sure what this is supposed to do, but added for now to remove annoying stub output.</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">// Create an empty sector</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a1e1f68a0275804c362cb5a3806e27343">  128</a></span>&#160;<a class="code" href="../../d3/d55/class_nx_1_1_c_sector.html">CSector</a> *<a class="code" href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a1e1f68a0275804c362cb5a3806e27343">CXboxScene::plat_create_sector</a>()</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="../../d5/d44/class_nx_1_1_c_xbox_sector.html">CXboxSector</a> *p_xbox_sector  = <span class="keyword">new</span> <a class="code" href="../../d5/d44/class_nx_1_1_c_xbox_sector.html">CXboxSector</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">return</span> p_xbox_sector;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_nx_xbox_1_1s_scene_html_adbcb2009054c4fde6a2f27929c094a53"><div class="ttname"><a href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#adbcb2009054c4fde6a2f27929c094a53">NxXbox::sScene::SortMeshes</a></div><div class="ttdeci">void SortMeshes(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd1/_x_box_2_n_x_2scene_8cpp_source.html#l00262">scene.cpp:262</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_scene_html_a10a731168dc98f8b223ca084641b2bac"><div class="ttname"><a href="../../d8/d68/struct_nx_xbox_1_1s_scene.html#a10a731168dc98f8b223ca084641b2bac">NxXbox::sScene::CreateMeshArrays</a></div><div class="ttdeci">void CreateMeshArrays(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd1/_x_box_2_n_x_2scene_8cpp_source.html#l00152">scene.cpp:152</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_a0e1abf0e7d017a2e3e8b7912f063f6eb"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a0e1abf0e7d017a2e3e8b7912f063f6eb">Nx::CXboxScene::plat_post_load</a></div><div class="ttdeci">virtual void plat_post_load()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00054">p_nxscene.cpp:54</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_a1e1f68a0275804c362cb5a3806e27343"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a1e1f68a0275804c362cb5a3806e27343">Nx::CXboxScene::plat_create_sector</a></div><div class="ttdeci">virtual CSector * plat_create_sector()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00128">p_nxscene.cpp:128</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_add4da34e19fb641867bd08f142fc3908"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#add4da34e19fb641867bd08f142fc3908">Nx::CXboxScene::plat_load_textures</a></div><div class="ttdeci">virtual bool plat_load_textures(const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00095">p_nxscene.cpp:95</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_geom_html_a2b83abbadec3ec6c46e9383b9d6466ad"><div class="ttname"><a href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html#a2b83abbadec3ec6c46e9383b9d6466ad">Nx::CXboxGeom::RegisterMeshArray</a></div><div class="ttdeci">bool RegisterMeshArray(bool just_count)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d92/_x_box_2p___nx_geom_8cpp_source.html#l00136">p_NxGeom.cpp:136</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html_a428b12b33dfef6a164910b8f2b09d206"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html#a428b12b33dfef6a164910b8f2b09d206">Nx::CSector::GetGeom</a></div><div class="ttdeci">CGeom * GetGeom() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d01/_nx_sector_8cpp_source.html#l00085">NxSector.cpp:85</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sector_html"><div class="ttname"><a href="../../d5/d44/class_nx_1_1_c_xbox_sector.html">Nx::CXboxSector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d16/_x_box_2p__nxsector_8h_source.html#l00019">p_nxsector.h:19</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_aef3c2d70212d856651e1d9e5504b2632"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#aef3c2d70212d856651e1d9e5504b2632">Nx::CXboxScene::plat_load_collision</a></div><div class="ttdeci">virtual bool plat_load_collision(const char *p_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00104">p_nxscene.cpp:104</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html">Nx::CScene</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dca/_nx_scene_8h_source.html#l00036">NxScene.h:36</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_geom_html"><div class="ttname"><a href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html">Nx::CXboxGeom</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d03/_x_box_2p___nx_geom_8h_source.html#l00036">p_NxGeom.h:36</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_scene_html_ade9af942bebed2e555036180139ad53f"><div class="ttname"><a href="../../de/d7a/class_nx_1_1_c_scene.html#ade9af942bebed2e555036180139ad53f">Nx::CScene::mp_sector_table</a></div><div class="ttdeci">Lst::HashTable&lt; CSector &gt; * mp_sector_table</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dca/_nx_scene_8h_source.html#l00129">NxScene.h:129</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_a07acc336db0a24be5507fbdbc1aa20a4"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a07acc336db0a24be5507fbdbc1aa20a4">Nx::CXboxScene::plat_unload_add_scene</a></div><div class="ttdeci">virtual bool plat_unload_add_scene(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00115">p_nxscene.cpp:115</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_adf9915cb0e7e3cf58c607391a76ebf70"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#adf9915cb0e7e3cf58c607391a76ebf70">Nx::CXboxScene::CXboxScene</a></div><div class="ttdeci">CXboxScene(int sector_table_size=10)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00016">p_nxscene.cpp:16</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_a54c6d3803cc705f2bcd330862bd7bc04"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#a54c6d3803cc705f2bcd330862bd7bc04">Nx::CXboxScene::GetEngineScene</a></div><div class="ttdeci">NxXbox::sScene * GetEngineScene() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d6f/_x_box_2p__nxscene_8h_source.html#l00022">p_nxscene.h:22</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sector_html"><div class="ttname"><a href="../../d3/d55/class_nx_1_1_c_sector.html">Nx::CSector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/d4a/_nx_sector_8h_source.html#l00079">NxSector.h:79</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_geom_html_aeb7180841bf15c9b6a7cd0680a69e4a9"><div class="ttname"><a href="../../d6/dbd/class_nx_1_1_c_xbox_geom.html#aeb7180841bf15c9b6a7cd0680a69e4a9">Nx::CXboxGeom::CreateMeshArray</a></div><div class="ttdeci">void CreateMeshArray()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d92/_x_box_2p___nx_geom_8cpp_source.html#l00102">p_NxGeom.cpp:102</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_scene_html_ad1606d7e46fb9e6cde2e87dc1121a86c"><div class="ttname"><a href="../../d6/dfc/class_nx_1_1_c_xbox_scene.html#ad1606d7e46fb9e6cde2e87dc1121a86c">Nx::CXboxScene::DestroySectorMeshes</a></div><div class="ttdeci">void DestroySectorMeshes(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df3/_x_box_2p__nxscene_8cpp_source.html#l00025">p_nxscene.cpp:25</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../dd/df3/_x_box_2p__nxscene_8cpp.html">p_nxscene.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

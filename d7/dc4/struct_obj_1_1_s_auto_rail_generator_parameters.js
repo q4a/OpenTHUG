@@ -1,0 +1,26 @@
+var struct_obj_1_1_s_auto_rail_generator_parameters =
+[
+    [ "min_rail_edge_angle", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ac41e4b579773ec98f648c73086c99817", null ],
+    [ "max_rail_angle_of_assent", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a9fc0fb656c320d6cbe99a5a4b0e25d7a", null ],
+    [ "min_railset_length", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a972cfbf24463e08f1dae1640463bf6f4", null ],
+    [ "min_edge_length", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ac0134d0616590ac3a8efd77e3f9378f2", null ],
+    [ "feeler_increment", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ae8c0b62982a229320c92255964a0a518", null ],
+    [ "max_low_curb_height", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a3d75e554494a35dc51dbab3b96ed7dc4", null ],
+    [ "curb_feeler_angle_of_assent", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a236235c687eb6c061fdff07eff1e08a7", null ],
+    [ "max_corner_in_railset", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ad5b22fc8c99d818fc8b7c52c8cadcd9d", null ],
+    [ "vertical_feeler_length", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a5b8775628fbdf0580008683c13529efc", null ],
+    [ "crossbar_feeler_elevation", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a0dec81126e2d7e7cc0b8a2e37788ede6", null ],
+    [ "half_crossbar_feeler_length", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a0fb7cc32f2172b8bd24cb28c26a13516", null ],
+    [ "farthest_degenerate_rail", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ac44963d5d62a3f202c0c50a7599b5805", null ],
+    [ "max_degenerate_rail_angle", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a5a6391a56f5897445a7dc0761e0ec323", null ],
+    [ "connection_slop", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ac6187e731fa18e2696da6474a777848d", null ],
+    [ "feeler_usage", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#ab475c941743010ff49831f15ab2014a6", null ],
+    [ "sin_max_rail_angle_of_assent", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a8dba4d0ebac588758e731c7049909de8", null ],
+    [ "low_curb_feeler_length", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a18861826dd106923f76d312bd78c3925", null ],
+    [ "cos_min_rail_edge_angle", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a320b7474d5c1afbe162d364abdf7ccd8", null ],
+    [ "cos_max_corner_in_railset", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a61658b75081b4384dc01652ada6e15fd", null ],
+    [ "sin_curb_feeler_angle_of_assent", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a9c3d19627eb3ef4e50065c3ceb504699", null ],
+    [ "cos_curb_feeler_angle_of_assent", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#add668b746fa875a327cb9d09f5e1dab6", null ],
+    [ "cos_max_degenerate_rail_angle", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#a8dca3369214903f78ce2d8a3e5bc815f", null ],
+    [ "remove_old_rails", "d7/dc4/struct_obj_1_1_s_auto_rail_generator_parameters.html#afa61fd5d6e58d2093bb34c3e58f8ff15", null ]
+];

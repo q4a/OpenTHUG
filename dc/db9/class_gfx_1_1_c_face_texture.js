@@ -1,0 +1,26 @@
+var class_gfx_1_1_c_face_texture =
+[
+    [ "vRAW_TEXTURE_SIZE", "dc/db9/class_gfx_1_1_c_face_texture.html#a6c354751636d5645823df1e78cd71b08a09729b67bf90cac18cbca46298364ae9", null ],
+    [ "vMAX_OVERLAY_NAME_SIZE", "dc/db9/class_gfx_1_1_c_face_texture.html#a6c354751636d5645823df1e78cd71b08a08f779be0eb10d5aaa4eaf5a39384d20", null ],
+    [ "vTOTAL_CFACETEXTURE_SIZE", "dc/db9/class_gfx_1_1_c_face_texture.html#a6c354751636d5645823df1e78cd71b08a6ee1ce54d7f41d314b46b731acadd952", null ],
+    [ "CFaceTexture", "dc/db9/class_gfx_1_1_c_face_texture.html#a54ec2a8b8518dfb8ac188144d165a73d", null ],
+    [ "IsValid", "dc/db9/class_gfx_1_1_c_face_texture.html#afa2005ad971dc4ae016f722aa44fb6f2", null ],
+    [ "SetValid", "dc/db9/class_gfx_1_1_c_face_texture.html#a6aff0c40299d9c613a5a3116542af46e", null ],
+    [ "GetTextureData", "dc/db9/class_gfx_1_1_c_face_texture.html#aa17903d5ae11ac4b6eca7d5102fd8f89", null ],
+    [ "GetTextureSize", "dc/db9/class_gfx_1_1_c_face_texture.html#aa677ebe6e2ec45108fa62d9424f5ea88", null ],
+    [ "GetFacePoints", "dc/db9/class_gfx_1_1_c_face_texture.html#a11ed3c005e13e3f0354f0d4cb1a6850c", null ],
+    [ "SetFacePoints", "dc/db9/class_gfx_1_1_c_face_texture.html#a4074379d57633c60f75aee3da3162218", null ],
+    [ "SetOverlayTextureName", "dc/db9/class_gfx_1_1_c_face_texture.html#a70bdeece3c41186b9bbbc90547dd90cf", null ],
+    [ "GetOverlayTextureName", "dc/db9/class_gfx_1_1_c_face_texture.html#a2ade3f09ea0896f66f86b6787118a7f0", null ],
+    [ "LoadFace", "dc/db9/class_gfx_1_1_c_face_texture.html#a691da7f2440d913af17829e893ae5bb7", null ],
+    [ "PrintContents", "dc/db9/class_gfx_1_1_c_face_texture.html#a87e550ecc34575af430780fc718fc2c8", null ],
+    [ "ReadTextureDataFromBuffer", "dc/db9/class_gfx_1_1_c_face_texture.html#a25cdd37c80ea266194040eae5585007a", null ],
+    [ "WriteToBuffer", "dc/db9/class_gfx_1_1_c_face_texture.html#af8368dff9b9b156d4fb62e9d2e394d33", null ],
+    [ "ReadFromBuffer", "dc/db9/class_gfx_1_1_c_face_texture.html#ae7dcb67fcb0abdecc6fe4f9387e3b771", null ],
+    [ "WriteIntoStructure", "dc/db9/class_gfx_1_1_c_face_texture.html#a6f6310b23fa54be65b58651206c6c4d3", null ],
+    [ "ReadFromStructure", "dc/db9/class_gfx_1_1_c_face_texture.html#a74f7199215006225565d2c19f8783f3e", null ],
+    [ "m_isValid", "dc/db9/class_gfx_1_1_c_face_texture.html#ac2ebf201fc0d414bb09b3354b2249fd9", null ],
+    [ "m_points", "dc/db9/class_gfx_1_1_c_face_texture.html#a503f572ad444e7cb664fd65ae06b1712", null ],
+    [ "m_rawData", "dc/db9/class_gfx_1_1_c_face_texture.html#a56500841bf4f9e68d95e4981c8e9ed1c", null ],
+    [ "m_overlayTextureName", "dc/db9/class_gfx_1_1_c_face_texture.html#a82c000be58e5cd668999066ccedc0c18", null ]
+];

@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/camera.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d7/df6/camera_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">camera.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d7/df6/camera_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       camera.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Mark Burton</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  11/11/1999</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GFX_CAMERA_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GFX_CAMERA_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#ifndef __CORE_DEFINES_H</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d9/d12/p__camera_8h.html">sys/ngc/p_camera.h</a>&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#ifndef __GEL_OBJECT_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d10/object_8h.html">gel/object.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../dd/daa/class_gfx_1_1_camera.html">Camera</a> : <span class="keyword">public</span> <a class="code" href="../../df/dde/class_obj_1_1_c_object.html">Obj::CObject</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a441e2fedeea31c8086c942ffbfb1ca4b">vUSE_PIXEL_RATIO</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a441e2fedeea31c8086c942ffbfb1ca4b">   49</a></span>&#160;    <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a0bcbff32b0d49771d11c59def23d93b2">Camera</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#af8d608dca53fd0b582f95373eabde0d7">~Camera</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>: </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a5029eb5db20d069fd77b867cbecc1b52">SetPos</a>(<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; pos);     <span class="comment">// Set the position of the camera</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;   <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">GetPos</a>();                           <span class="comment">// Return the position of the camera</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ac7c16baf54a8f61b038201af88b4b7f1">SetMatrix</a>(<span class="keyword">const</span> <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; mat);  <span class="comment">// Set the orientation matrix</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> &amp;   <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ac553ec618b57421feff839fcaf36bdb3">GetMatrix</a>();                        <span class="comment">// Return the orientation matrix</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#af3c393213106339819f05fa4b711e97f">SetHFOV</a>(<span class="keywordtype">float</span> h_fov);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a92c45c40a801e644299e397ca45d5dd8">GetHFOV</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae67d72bc0716e409d28b4d08af8ca6d1">UpdateAdjustedHFOV</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7fb2c2c237f8f2f3a5e59c5028c154f9">GetAdjustedHFOV</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#afab55490ddfdf530751a3883cc0a9d13">SetFOV</a> ( <span class="keywordtype">float</span> v_fov, <span class="keywordtype">float</span> h_aspect = <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a441e2fedeea31c8086c942ffbfb1ca4b">vUSE_PIXEL_RATIO</a> );</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a553e026f4cd0cd5b0689f851aeb6760b">SetViewPlane</a> ( <span class="keywordtype">float</span> h_fov, <span class="keywordtype">float</span> v_fov );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7169d08af7c9d6d5ca53055fff92fbeb">SetFocalLength</a> ( <span class="keywordtype">float</span> focal_length, <span class="keywordtype">float</span> h_aspect = <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a441e2fedeea31c8086c942ffbfb1ca4b">vUSE_PIXEL_RATIO</a> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#aba0e0f7fae7807e6ee23d8a2fd0faff8">GetFOV</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a291ae925340bfac0ae06fa103bdaaabc">GetFocalLength</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a653006ceb8ec2f21f8e74c08fc3493e7">GetAspectRatio</a> ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a1aa950a67a4f5652a8bc5f9e88373fdc">SetNearFarClipPlanes</a> ( <span class="keywordtype">float</span> nearPlane, <span class="keywordtype">float</span> farPlane );</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a08e491621f5b2d44f100c9391f3b6ea5">SetFogNearPlane</a> ( <span class="keywordtype">float</span> nearPlane );</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7d4632db3b8210495a00379b074bd43a">GetNearClipPlane</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a17718a39f4a0916dc18630b1c7fff054">GetFarClipPlane</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span>  <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a769ac7523c551964a3f9f416af096648">vDEFAULT_NEARZ</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">float</span>  <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a859e03134158c0ca1233bc622e2d65e3">vDEFAULT_FARZ</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a769ac7523c551964a3f9f416af096648">   82</a></span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a859e03134158c0ca1233bc622e2d65e3">   83</a></span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ac6972b4cb363a41ee3409a949e442b48">StoreOldPos</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a6f6801cc24420d6b7d6ef598f6346b35">m_old_pos</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a6f6801cc24420d6b7d6ef598f6346b35">   86</a></span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#af18596f86f7115ce6b2924a64a643a43">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript ); </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">protected</span>:      </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>     <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#af9be989f70de1e1a23460bdf2dee1e39">m_pos</a>;                              <span class="comment">// camera position</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>     <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae2d16f3538e0f49babaeaa566adb709c">m_matrix</a>;                           <span class="comment">// orientation matrix</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#af9be989f70de1e1a23460bdf2dee1e39">   92</a></span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#ae2d16f3538e0f49babaeaa566adb709c">   93</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae1564793d841e78a9c1f167f78664419">m_h_fov</a>;                            <span class="comment">// horizontal field of view angle (degrees)</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a372bdaf3a3bfa01ae0940e2526688dc5">m_adj_h_fov</a>;                        <span class="comment">// screen adjusted horizontal field of view angle (degrees)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#ae1564793d841e78a9c1f167f78664419">   95</a></span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a372bdaf3a3bfa01ae0940e2526688dc5">   96</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a0479cdc86ae3e207ebace964bc11a71b">m_near_clip</a>;                        <span class="comment">// near clip plane</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a98d4414049e57aee7b6d925e2cc6dfeb">m_far_clip</a>;                         <span class="comment">// far clip plane</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a0479cdc86ae3e207ebace964bc11a71b">   98</a></span>&#160;};</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a98d4414049e57aee7b6d925e2cc6dfeb">   99</a></span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*****************************s************************************************</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a92c45c40a801e644299e397ca45d5dd8">  125</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a92c45c40a801e644299e397ca45d5dd8">Camera::GetHFOV</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#ae1564793d841e78a9c1f167f78664419">m_h_fov</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a1aa950a67a4f5652a8bc5f9e88373fdc">  135</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a1aa950a67a4f5652a8bc5f9e88373fdc">Camera::SetNearFarClipPlanes</a> ( <span class="keywordtype">float</span> nearPlane, <span class="keywordtype">float</span> farPlane ) </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    Dbg_MsgAssert( farPlane &gt; 0.0f,( <span class="stringliteral">&quot;Far Plane &lt;= 0&quot;</span> ));</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    Dbg_MsgAssert( nearPlane &gt; 0.0f,( <span class="stringliteral">&quot;Near Plane &lt;= 0&quot;</span> ));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    Dbg_MsgAssert( farPlane &gt; nearPlane,( <span class="stringliteral">&quot;Far Plane &lt;= Near Plane&quot;</span> ));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a98d4414049e57aee7b6d925e2cc6dfeb">m_far_clip</a> = farPlane;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a0479cdc86ae3e207ebace964bc11a71b">m_near_clip</a> = nearPlane;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a08e491621f5b2d44f100c9391f3b6ea5">  150</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a08e491621f5b2d44f100c9391f3b6ea5">Camera::SetFogNearPlane</a> ( <span class="keywordtype">float</span> nearPlane ) </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//  printf (&quot;STUBBED:  SetFogNearPlane\n&quot;);</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a7d4632db3b8210495a00379b074bd43a">  160</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a7d4632db3b8210495a00379b074bd43a">Camera::GetNearClipPlane</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a0479cdc86ae3e207ebace964bc11a71b">m_near_clip</a>;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;}</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="../../dd/daa/class_gfx_1_1_camera.html#a17718a39f4a0916dc18630b1c7fff054">  170</a></span>&#160;<span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a17718a39f4a0916dc18630b1c7fff054">Camera::GetFarClipPlane</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../dd/daa/class_gfx_1_1_camera.html#a98d4414049e57aee7b6d925e2cc6dfeb">m_far_clip</a>;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;}</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;} <span class="comment">// namespace Gfx</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif  // __GFX_CAMERA_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a7d4632db3b8210495a00379b074bd43a"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a7d4632db3b8210495a00379b074bd43a">Gfx::Camera::GetNearClipPlane</a></div><div class="ttdeci">float GetNearClipPlane() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00160">camera.h:160</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_af9be989f70de1e1a23460bdf2dee1e39"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#af9be989f70de1e1a23460bdf2dee1e39">Gfx::Camera::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00092">camera.h:92</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a441e2fedeea31c8086c942ffbfb1ca4b"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a441e2fedeea31c8086c942ffbfb1ca4b">Gfx::Camera::vUSE_PIXEL_RATIO</a></div><div class="ttdeci">static const float vUSE_PIXEL_RATIO</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00049">camera.h:49</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a553e026f4cd0cd5b0689f851aeb6760b"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a553e026f4cd0cd5b0689f851aeb6760b">Gfx::Camera::SetViewPlane</a></div><div class="ttdeci">void SetViewPlane(float h_fov, float v_fov)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00178">camera.cpp:178</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_af8d608dca53fd0b582f95373eabde0d7"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#af8d608dca53fd0b582f95373eabde0d7">Gfx::Camera::~Camera</a></div><div class="ttdeci">virtual ~Camera(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00092">camera.cpp:92</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a92c45c40a801e644299e397ca45d5dd8"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a92c45c40a801e644299e397ca45d5dd8">Gfx::Camera::GetHFOV</a></div><div class="ttdeci">float GetHFOV() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00125">camera.h:125</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a653006ceb8ec2f21f8e74c08fc3493e7"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a653006ceb8ec2f21f8e74c08fc3493e7">Gfx::Camera::GetAspectRatio</a></div><div class="ttdeci">float GetAspectRatio(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00245">camera.cpp:245</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a769ac7523c551964a3f9f416af096648"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a769ac7523c551964a3f9f416af096648">Gfx::Camera::vDEFAULT_NEARZ</a></div><div class="ttdeci">static const float vDEFAULT_NEARZ</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00082">camera.h:82</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a291ae925340bfac0ae06fa103bdaaabc"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a291ae925340bfac0ae06fa103bdaaabc">Gfx::Camera::GetFocalLength</a></div><div class="ttdeci">float GetFocalLength(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00234">camera.cpp:234</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html">Gfx::Camera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00043">camera.h:43</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_afab55490ddfdf530751a3883cc0a9d13"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#afab55490ddfdf530751a3883cc0a9d13">Gfx::Camera::SetFOV</a></div><div class="ttdeci">void SetFOV(float v_fov, float h_aspect=vUSE_PIXEL_RATIO)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00196">camera.cpp:196</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a1aa950a67a4f5652a8bc5f9e88373fdc"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a1aa950a67a4f5652a8bc5f9e88373fdc">Gfx::Camera::SetNearFarClipPlanes</a></div><div class="ttdeci">void SetNearFarClipPlanes(float nearPlane, float farPlane)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00135">camera.h:135</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a372bdaf3a3bfa01ae0940e2526688dc5"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a372bdaf3a3bfa01ae0940e2526688dc5">Gfx::Camera::m_adj_h_fov</a></div><div class="ttdeci">float m_adj_h_fov</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00096">camera.h:96</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_aba0e0f7fae7807e6ee23d8a2fd0faff8"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#aba0e0f7fae7807e6ee23d8a2fd0faff8">Gfx::Camera::GetFOV</a></div><div class="ttdeci">float GetFOV(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00223">camera.cpp:223</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="ap__camera_8h_html"><div class="ttname"><a href="../../d9/d12/p__camera_8h.html">p_camera.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae2af213dc0845ab5e04de4a7f6afa138"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae2af213dc0845ab5e04de4a7f6afa138">Gfx::Camera::GetPos</a></div><div class="ttdeci">Mth::Vector &amp; GetPos()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00280">camera.cpp:280</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a08e491621f5b2d44f100c9391f3b6ea5"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a08e491621f5b2d44f100c9391f3b6ea5">Gfx::Camera::SetFogNearPlane</a></div><div class="ttdeci">void SetFogNearPlane(float nearPlane)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00150">camera.h:150</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ac553ec618b57421feff839fcaf36bdb3"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ac553ec618b57421feff839fcaf36bdb3">Gfx::Camera::GetMatrix</a></div><div class="ttdeci">Mth::Matrix &amp; GetMatrix()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00300">camera.cpp:300</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a5029eb5db20d069fd77b867cbecc1b52"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a5029eb5db20d069fd77b867cbecc1b52">Gfx::Camera::SetPos</a></div><div class="ttdeci">void SetPos(const Mth::Vector &amp;pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00270">camera.cpp:270</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a98d4414049e57aee7b6d925e2cc6dfeb"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a98d4414049e57aee7b6d925e2cc6dfeb">Gfx::Camera::m_far_clip</a></div><div class="ttdeci">float m_far_clip</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00099">camera.h:99</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a17718a39f4a0916dc18630b1c7fff054"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a17718a39f4a0916dc18630b1c7fff054">Gfx::Camera::GetFarClipPlane</a></div><div class="ttdeci">float GetFarClipPlane() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00170">camera.h:170</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a7fb2c2c237f8f2f3a5e59c5028c154f9"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a7fb2c2c237f8f2f3a5e59c5028c154f9">Gfx::Camera::GetAdjustedHFOV</a></div><div class="ttdeci">float GetAdjustedHFOV()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00125">camera.cpp:125</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae67d72bc0716e409d28b4d08af8ca6d1"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae67d72bc0716e409d28b4d08af8ca6d1">Gfx::Camera::UpdateAdjustedHFOV</a></div><div class="ttdeci">void UpdateAdjustedHFOV()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00114">camera.cpp:114</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a6f6801cc24420d6b7d6ef598f6346b35"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a6f6801cc24420d6b7d6ef598f6346b35">Gfx::Camera::m_old_pos</a></div><div class="ttdeci">Mth::Vector m_old_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00086">camera.h:86</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a7169d08af7c9d6d5ca53055fff92fbeb"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a7169d08af7c9d6d5ca53055fff92fbeb">Gfx::Camera::SetFocalLength</a></div><div class="ttdeci">void SetFocalLength(float focal_length, float h_aspect=vUSE_PIXEL_RATIO)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00156">camera.cpp:156</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ac6972b4cb363a41ee3409a949e442b48"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ac6972b4cb363a41ee3409a949e442b48">Gfx::Camera::StoreOldPos</a></div><div class="ttdeci">void StoreOldPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00258">camera.cpp:258</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae2d16f3538e0f49babaeaa566adb709c"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae2d16f3538e0f49babaeaa566adb709c">Gfx::Camera::m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00093">camera.h:93</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a859e03134158c0ca1233bc622e2d65e3"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a859e03134158c0ca1233bc622e2d65e3">Gfx::Camera::vDEFAULT_FARZ</a></div><div class="ttdeci">static const float vDEFAULT_FARZ</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00083">camera.h:83</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ae1564793d841e78a9c1f167f78664419"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ae1564793d841e78a9c1f167f78664419">Gfx::Camera::m_h_fov</a></div><div class="ttdeci">float m_h_fov</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00095">camera.h:95</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a0bcbff32b0d49771d11c59def23d93b2"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a0bcbff32b0d49771d11c59def23d93b2">Gfx::Camera::Camera</a></div><div class="ttdeci">Camera(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00073">camera.cpp:73</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_af18596f86f7115ce6b2924a64a643a43"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#af18596f86f7115ce6b2924a64a643a43">Gfx::Camera::CallMemberFunction</a></div><div class="ttdeci">bool CallMemberFunction(uint32 checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00311">camera.cpp:311</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html">Obj::CObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00110">object.h:110</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_ac7c16baf54a8f61b038201af88b4b7f1"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#ac7c16baf54a8f61b038201af88b4b7f1">Gfx::Camera::SetMatrix</a></div><div class="ttdeci">void SetMatrix(const Mth::Matrix &amp;mat)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00290">camera.cpp:290</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_af3c393213106339819f05fa4b711e97f"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#af3c393213106339819f05fa4b711e97f">Gfx::Camera::SetHFOV</a></div><div class="ttdeci">void SetHFOV(float h_fov)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d6b/camera_8cpp_source.html#l00101">camera.cpp:101</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aobject_8h_html"><div class="ttname"><a href="../../de/d10/object_8h.html">object.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_camera_html_a0479cdc86ae3e207ebace964bc11a71b"><div class="ttname"><a href="../../dd/daa/class_gfx_1_1_camera.html#a0479cdc86ae3e207ebace964bc11a71b">Gfx::Camera::m_near_clip</a></div><div class="ttdeci">float m_near_clip</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df6/camera_8h_source.html#l00098">camera.h:98</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d7/df6/camera_8h.html">camera.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

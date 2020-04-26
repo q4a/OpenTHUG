@@ -1,0 +1,740 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/shadowcomponent.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('db/d43/shadowcomponent_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">shadowcomponent.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d43/shadowcomponent_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       ShadowComponent.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          gj</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  2/06/03</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/dc4/shadowcomponent_8h.html">gel/components/shadowcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d45/modelcomponent_8h.html">gel/components/modelcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d64/motioncomponent_8h.html">gel/components/motioncomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d91/skater_8h.html">sk/objects/skater.h</a>&gt;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d30/cfuncs_8h.html">sk/scripting/cfuncs.h</a>&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d5a/_nx_model_8h.html">gfx/nxmodel.h</a>&gt;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d45/_nx_light_8h.html">gfx/nxlight.h</a>&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/dbe/shadow_8h.html">gfx/shadow.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// This static function is what is registered with the component factory </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">// object, (currently the CCompositeObjectManager) </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#af8444994600eac4ee2d600b6596ea5e2">   37</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#af8444994600eac4ee2d600b6596ea5e2">CShadowComponent::s_create</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <span class="keyword">&gt;</span>( <span class="keyword">new</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab9d235f738609cf8078af6500b8a2729">CShadowComponent</a> );  </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab9d235f738609cf8078af6500b8a2729">   47</a></span>&#160;<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab9d235f738609cf8078af6500b8a2729">CShadowComponent::CShadowComponent</a>() : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>()</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">SetType</a>( CRC_SHADOW );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// no shadow object</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> = NULL;                   </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">m_shadowNormal</a>.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aeb3fc85704c5e3811b7dd4bebff78b3f">Set</a>(0.0f,1.0f,0.0f);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a> = CRCD(0x806fff30,<span class="stringliteral">&quot;none&quot;</span>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">m_shadowPos</a>.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aeb3fc85704c5e3811b7dd4bebff78b3f">Set</a>(0,0,0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7aab0b205aead4a4d169060db7d13c8c">   63</a></span>&#160;<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7aab0b205aead4a4d169060db7d13c8c">CShadowComponent::~CShadowComponent</a>()</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> = NULL;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a88a673458add9e809076b819e3c702de">   77</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a88a673458add9e809076b819e3c702de">CShadowComponent::Finalize</a>()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;{</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">mp_model_component</a> = GetModelComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a898366272c675c9ec4afa6d801a26874">   87</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a898366272c675c9ec4afa6d801a26874">CShadowComponent::Teleport</a>()</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{                                    </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="comment">// GJ:  the shadow component&#39;s Update()</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// function doesn&#39;t really require finalization</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// right now, but having this assert in here</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="comment">// might help catch future errors</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    Dbg_MsgAssert( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;IsFinalized(), ( <span class="stringliteral">&quot;Has not been finalized!  Tell Gary!&quot;</span> ) );</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a08e771885d84bfb22a0085a98ece53bd">Update</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a">  103</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a">CShadowComponent::InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a> = CRCD(0x3e84c2fd,<span class="stringliteral">&quot;simple&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( CRCD(0x9ac24b18,<span class="stringliteral">&quot;ShadowType&quot;</span>), &amp;<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a>, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="comment">// get rid of existing shadow, in case it was the wrong type...</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">SwitchOffShadow</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">switch</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a> )</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">case</span> 0x3e84c2fd:    <span class="comment">// simple</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;                <span class="keywordflow">if</span> ( !<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                {</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">SwitchOnShadow</a>( <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a> );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                <span class="keywordtype">float</span> scale = 1.0f;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>( CRCD(0x6f8cd62f,<span class="stringliteral">&quot;ShadowScale&quot;</span>), &amp;scale, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">char</span> *p_shadow_model_name = <span class="stringliteral">&quot;Ped_Shadow&quot;</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a42a803452add452cf735c191a1816b14">GetString</a>( CRCD(0x545f8172,<span class="stringliteral">&quot;ShadowModel&quot;</span>), &amp;p_shadow_model_name, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                        </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                Dbg_MsgAssert( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>, (<span class="stringliteral">&quot;NULL mp_shadow&quot;</span>) );</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>* pSimpleShadow = (<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>*)<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                pSimpleShadow-&gt;<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">SetScale</a>( scale );</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                pSimpleShadow-&gt;<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a306c266c3e8f069f445aece853b424b9">SetModel</a>( p_shadow_model_name );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;                <span class="comment">// GJ:  need to immediately change the shadow&#39;s position if Obj_ShadowOn gets called</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                <span class="comment">// this is because sometimes the shadow component will be suspended, and so</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="comment">// update_shadow() won&#39;t get called (fixes shadow appearing at the origin in SC2)</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                pSimpleShadow-&gt;<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a4e66b2836a0a620fcc3bcc948057e837">UpdatePosition</a>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">m_shadowPos</a>, <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">m_matrix</a>, <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">m_shadowNormal</a> );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">case</span> 0x76a54cd1:    <span class="comment">// detailed</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;                <span class="keywordflow">if</span> ( !<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;                {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">SwitchOnShadow</a>( <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a> );</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                }</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordflow">case</span> 0x806fff30:    <span class="comment">// none</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            {</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">SwitchOffShadow</a>();</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;            }</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            Dbg_MsgAssert( 0, ( <span class="stringliteral">&quot;Unrecognized shadow type %s&quot;</span>, <a class="code" href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a>(<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a>) ) );</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;}</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160; </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
+<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7141ff760218137cf0fb6198b7738488">  169</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7141ff760218137cf0fb6198b7738488">CShadowComponent::update_shadow</a>()</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">//      Dbg_MsgAssert(mp_shadow-&gt;GetShadowType()!=Gfx::vDETAILED_SHADOW,(&quot;Tried to update a detailed shadow in MovingObj_Update, will need to change code to send a higher-up position&quot;));</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>* pModel = NULL;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">mp_model_component</a> )</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            pModel = <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>();</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="comment">// if we have a model and the model is not active,then don&#39;t need to update the shadwo</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="keywordflow">if</span> (pModel)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            <span class="keywordflow">if</span> (pModel-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#ac9018f528ee094e831e64a76cb41041f">GetActive</a>())</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;                <span class="keywordflow">switch</span>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">GetShadowType</a>() )</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                {</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;                    <span class="keywordflow">case</span> <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a>:</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                    {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="comment">//              Mth::Vector shadow_target_pos = pos + ( matrix.GetUp() * 36.0f );</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> shadow_target_pos = <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a> + ( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">m_matrix</a>.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a20cd2a0264b2acbaea886a0387477a3f">GetUp</a>() * 36.0f );</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">        #ifdef __PLAT_XBOX__</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                        <span class="comment">// K: Moved this in here cos it was giving an unused-variable compile error on PS2</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> ground_dir( 0.2f, -0.8f, 0.3f );</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        <span class="comment">// If lights are active, set the ground direction to be that of the primary light.</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        <span class="keywordflow">if</span>( pModel )</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                        {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                            <a class="code" href="../../d2/d32/class_nx_1_1_c_model_lights.html">Nx::CModelLights</a>* p_lights = pModel-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#a99f6c91e9c8cb1e752d8b9cf251aa49c">GetModelLights</a>();</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                            <span class="keywordflow">if</span>( p_lights )</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                            {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                                ground_dir = p_lights-&gt;<a class="code" href="../../d2/d32/class_nx_1_1_c_model_lights.html#a9ccca2fcf35b39e9a193841f142a2e64">GetLightDirection</a>( 0 ) * -1.0f;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                            }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                        }</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="comment">//              mp_shadow-&gt;UpdateDirection( ground_dir );</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="preprocessor">        #endif  </span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">UpdatePosition</a>( shadow_target_pos );</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                    }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                    <span class="keywordflow">case</span> <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a>:</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                    {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                        <span class="keywordflow">if</span> ( pModel )</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                        {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                            ((<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>*)<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>)-&gt;SetScale( pModel-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#aaa89a219766d23cfe4a817f9845f5531">GetScale</a>().<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">GetX</a>() );</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                        }   </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                        <span class="comment">/*</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">                        TODO:  Commented this section out, because it </span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="comment">                        references m_jump_start_pos, which isn&#39;t accessible</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="comment">                        from the shadow code yet...</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">                        if ( GetMotionComponentFromObject( GetObject() )-&gt;m_movingobj_status &amp; MOVINGOBJ_STATUS_JUMPING )</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">                        {</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">                            // If jumping, use the jump&#39;s start-y so that the shadow stays on the ground.   </span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">                            Mth::Vector p=GetObject()-&gt;m_pos;</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">                            p[Y]=m_jump_start_pos[Y];</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">                            mp_shadow-&gt;UpdatePosition(p,GetObject()-&gt;m_matrix,m_shadowNormal);</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">                        }</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">                        else</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">                        */</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                        {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">UpdatePosition</a>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">m_shadowPos</a>, <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">m_matrix</a>, <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">m_shadowNormal</a> );</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        }</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                    }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                        Dbg_MsgAssert(0,(<span class="stringliteral">&quot;Bad shadow type: %d&quot;</span>,<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">GetShadowType</a>()));</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">UnHide</a>();</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="comment">// model is not active, so we probably don&#39;t want the shadow&#39;s model to be active either</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#acc456cf3749b71633198f95c8d7271b7">Hide</a>();</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }           </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ac7ffe8fe199b77db46c9d5c2b3f4d7aa">  261</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ac7ffe8fe199b77db46c9d5c2b3f4d7aa">CShadowComponent::Hide</a>( <span class="keywordtype">bool</span> shouldHide )</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;{</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a9a2047f29ea5664a5938c6f78a51b383">HideShadow</a>( shouldHide );</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    </div>
+<div class="line"><a name="l00271"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a08e771885d84bfb22a0085a98ece53bd">  271</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a08e771885d84bfb22a0085a98ece53bd">CShadowComponent::Update</a>()</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;{</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="comment">//  m_shadowNormal.Set( 0.0f, 1.0f, 0.0f );</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160; </div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;<span class="comment">    if ( mp_shadow )</span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="comment">        if (mp_shadow-&gt;GetShadowType()==Gfx::vSIMPLE_SHADOW)</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;<span class="comment">            mp_shadow-&gt;UpdatePosition(m_shadow_pos,m_matrix,pShadowComponent-&gt;m_shadownormal);</span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;<span class="comment">        }       </span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="comment">        else</span></div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">            mp_shadow-&gt;UpdatePosition(shadow_target_pos); // at this point m_pos is the same as mp_physics-&gt;m_pos</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;GetID() &gt;= 0 &amp;&amp; <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;GetID() &lt; <a class="code" href="../../d6/df1/class_mdl_1_1_skate.html#a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274">Mdl::Skate::vMAX_SKATERS</a> )</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        <span class="comment">// the skater shadows are handled elsewhere by other components</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="comment">// (CSkaterAdjustPhysicsComponent or CWalkComponent)</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="comment">//      SetShadowPos( GetObject()-&gt;GetPos() );</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        <span class="comment">// the ped shadow is handled here...</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7b1502556bdf7b10ee1096b166636592">SetShadowPos</a>( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a>() );</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160; </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7141ff760218137cf0fb6198b7738488">update_shadow</a>();</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    </div>
+<div class="line"><a name="l00309"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a8c73d257a169e76b2423b4476d824078">  309</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">CBaseComponent::EMemberFunctionResult</a> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a8c73d257a169e76b2423b4476d824078">CShadowComponent::CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript )</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;{</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <span class="keywordflow">switch</span> ( Checksum )</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        <span class="comment">// @script | Obj_ShadowOff | turn off shadow</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        <span class="keywordflow">case</span> ( 0xaaf6e513 ): <span class="comment">// Obj_ShadowOff</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">SwitchOffShadow</a>();</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160; </div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        <span class="comment">// @script | Obj_ShadowOn | turn shadow on</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="comment">// @parmopt float | Offset | 0.2 | The y offset of the shadow, &gt; 0 = up</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <span class="comment">// @parmopt float | ShadowScale | 1.0 | The scale of the shadow.</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="comment">// @parmopt string | ShadowModel | &quot;Ped_Shadow&quot; | The mdl file to use</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="comment">// @parmopt name | shadow_type | Either &quot;detailed&quot; or &quot;simple&quot;</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        <span class="keywordflow">case</span> ( 0xf272c43a ): <span class="comment">// Obj_ShadowOn</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;            <span class="comment">// add a default shadow_type</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;            <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> shadowType;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;            <span class="keywordflow">if</span> ( !pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( <span class="stringliteral">&quot;shadowType&quot;</span>, &amp;shadowType, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> ) )</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;            {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">AddChecksum</a>( <span class="stringliteral">&quot;shadowType&quot;</span>, CRCD(0x3e84c2fd,<span class="stringliteral">&quot;simple&quot;</span>) );</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;            }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;            this-&gt;<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a">InitFromStructure</a>( pParams );</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;            <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;            {</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;                <span class="keywordflow">if</span>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">GetShadowType</a>() == <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a> )</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                    <span class="keywordtype">float</span> offset=0.2f;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">GetFloat</a>(CRCD(0xa6f5352f,<span class="stringliteral">&quot;Offset&quot;</span>),&amp;offset);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                    ((<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>*)<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>)-&gt;SetOffset(offset);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">CBaseComponent::MF_NOT_EXECUTED</a>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    }</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="comment">// the &quot;default&quot; case of the switch statement handles</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="comment">// unrecognized functions;  if we make it down here,</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">// that means that the component already handled it</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="comment">// somehow</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a>;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;}</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">  362</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">CShadowComponent::SwitchOnShadow</a>( <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">Gfx::EShadowType</a> mode )</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;{</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        <span class="comment">// it&#39;s already got a shadow</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    }</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160; </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">// Note we can&#39;t use mp_model_component here, as SwitchOnShaodow is called</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="comment">// from InitFromStructure, which is obviously called before Finalize(); </span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html">CModelComponent</a>* pModelComponent = GetModelComponentFromObject( <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>() );</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>* pModel = NULL;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">if</span> ( pModelComponent )</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        pModel = pModelComponent-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>();</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    <span class="keywordflow">switch</span> (mode)</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    {</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a>:</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        {</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;            Dbg_MsgAssert( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> == NULL, (<span class="stringliteral">&quot;mp_shadow not NULL?&quot;</span>) );</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;            Dbg_MsgAssert( pModel, (<span class="stringliteral">&quot;adding detailed shadow to something with no model?&quot;</span>) );</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> = <span class="keyword">new</span> <a class="code" href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html">Gfx::CDetailedShadow</a>( pModel );</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160; </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a>:</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;        {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;            Dbg_MsgAssert( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> == NULL, (<span class="stringliteral">&quot;mp_shadow not NULL?&quot;</span>) );</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;            Dbg_MsgAssert( pModel, (<span class="stringliteral">&quot;adding simple shadow to something with no model?&quot;</span>) );</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;            </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;            <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>* pSimpleShadow = <span class="keyword">new</span> <a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;            pSimpleShadow-&gt;<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">SetScale</a>( pModel-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#aaa89a219766d23cfe4a817f9845f5531">GetScale</a>().<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">GetX</a>() );</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;            pSimpleShadow-&gt;<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a306c266c3e8f069f445aece853b424b9">SetModel</a>( <span class="stringliteral">&quot;Ped_Shadow&quot;</span> );</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;            </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> = pSimpleShadow;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">UpdatePosition</a>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">m_shadowPos</a>, <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a>, <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">m_shadowNormal</a> );</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        }   </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;            <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Unrecognized shadow mode %d&quot;</span>, mode );</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    }</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160; </div>
+<div class="line"><a name="l00417"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">  417</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">CShadowComponent::SwitchOffShadow</a>()</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;{</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    {</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">mp_model_component</a> )</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        {</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;            <a class="code" href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a>* pModel = <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">mp_model_component</a>-&gt;<a class="code" href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">GetModel</a>();</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;            Dbg_Assert( pModel );</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;            pModel-&gt;<a class="code" href="../../d0/dea/class_nx_1_1_c_model.html#a7be1f7024e1fdb2c7a41d65796a78836">EnableShadow</a>( <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> = NULL;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    }   </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;}</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    </div>
+<div class="line"><a name="l00438"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a9a2047f29ea5664a5938c6f78a51b383">  438</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a9a2047f29ea5664a5938c6f78a51b383">CShadowComponent::HideShadow</a>( <span class="keywordtype">bool</span> should_hide )</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;{</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;        <span class="keywordflow">if</span> ( should_hide )</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;        {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#acc456cf3749b71633198f95c8d7271b7">Hide</a>();</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        }</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;        {</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">UnHide</a>();</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        }</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    </div>
+<div class="line"><a name="l00458"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7b1502556bdf7b10ee1096b166636592">  458</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7b1502556bdf7b10ee1096b166636592">CShadowComponent::SetShadowPos</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; pos )</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;{</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">m_shadowPos</a> = pos;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;}</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160; </div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    </div>
+<div class="line"><a name="l00468"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a27b19bccaaf3c6106c2a1d63cde2e977">  468</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a27b19bccaaf3c6106c2a1d63cde2e977">CShadowComponent::SetShadowNormal</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; normal )</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;{</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">m_shadowNormal</a> = normal;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;}</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160; </div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    </div>
+<div class="line"><a name="l00478"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a4635d6aeb3ec1bedfab68e6c1a4d381e">  478</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a4635d6aeb3ec1bedfab68e6c1a4d381e">CShadowComponent::SetShadowScale</a>( <span class="keywordtype">float</span> scale )</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;{</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">m_shadowType</a> == CRCD(0x3e84c2fd,<span class="stringliteral">&quot;simple&quot;</span>) )</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    {</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        ((<a class="code" href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a>*)<a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>)-&gt;SetScale( scale );</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    }</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;}</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160; </div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    </div>
+<div class="line"><a name="l00491"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbe8aff1e5a5627c64ac3d314e844e28">  491</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbe8aff1e5a5627c64ac3d314e844e28">CShadowComponent::SetShadowDirection</a>( <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; vector )</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;{</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a> )</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">mp_shadow</a>-&gt;<a class="code" href="../../db/d3f/class_gfx_1_1_c_shadow.html#a48dff06aed9c63a4e9da6d95566ce127">UpdateDirection</a>( vector );</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    }</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;}</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160; </div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160; </div>
+<div class="line"><a name="l00504"></a><span class="lineno"><a class="line" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a93837a5bc2c5c01cf25e41569c52dac0">  504</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a93837a5bc2c5c01cf25e41569c52dac0">CShadowComponent::SwitchOnSkaterShadow</a>()</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;{</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="comment">// NOTE: skater specific and should not be here; migrate to somewhere like Mdl::Skate</span></div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    </div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="comment">// only call on shadows attached to skaters</span></div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a66ac6129be0d4e05999499433e9ec590">GetType</a>() == <a class="code" href="../../df/d23/skate_8h.html#abe4eb8a7f480877e96248c1c2b2b96a4ae6d637ed385331869e3810dc8cd50611">SKATE_TYPE_SKATER</a>, (<span class="stringliteral">&quot;CShadowComponent::SwitchOnSkaterShadow called on shadow not attached to skater object&quot;</span>));</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;    </div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    <a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html">CSkater</a>* pSkater = <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html">CSkater</a>* <span class="keyword">&gt;</span>(<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>());</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">Gfx::EShadowType</a> mode = <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a>;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    </div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <span class="comment">// put it on the bottom up heap, because we don&#39;t want to fragment the skater geom heap...</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().SkaterHeap(pSkater-&gt;<a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html#a223a0010c1ce65576f02883b96ad0335">GetHeapIndex</a>()));</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="comment">// In Splitscreen games, shadow type for local player is optional</span></div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../db/d54/namespace_c_funcs.html#acadaaefe5455cc5a52546c40288fcef2">CFuncs::ScriptInSplitScreenGame</a>(NULL, NULL))</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    {</div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;        mode = Mdl::Skate::Instance()-&gt;GetShadowMode();</div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;    }</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160; </div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;    <span class="keywordflow">if</span> (!pSkater-&gt;<a class="code" href="../../d4/d1c/class_obj_1_1_c_skater.html#ae826d6b63d099a7be6794235ab235c84">IsLocalClient</a>())</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    {</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;************************ SWITCHING ON SKATER SHADOW FOR CLIENT\n&quot;</span> );</div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;        mode = <a class="code" href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a>;</div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    }</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    </div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pTempParams = <span class="keyword">new</span> <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    pTempParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">AddFloat</a>(CRCD(0x6f8cd62f, <span class="stringliteral">&quot;ShadowScale&quot;</span>), 1.0f);</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    pTempParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#acda26adf5923c837328ef8089d99463f">AddString</a>(CRCD(0x545f8172, <span class="stringliteral">&quot;ShadowModel&quot;</span>), <span class="stringliteral">&quot;Ped_Shadow&quot;</span>);</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a">InitFromStructure</a>(pTempParams);</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="keyword">delete</span> pTempParams;</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160; </div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">SwitchOffShadow</a>();</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <a class="code" href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">SwitchOnShadow</a>(mode);</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160; </div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;}</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;    </div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a8869a00692e93bff6c25ef08d952d9aa"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a8869a00692e93bff6c25ef08d952d9aa">Obj::CCompositeObject::m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00101">compositeobject.h:101</a></div></div>
+<div class="ttc" id="a_nx_light_8h_html"><div class="ttname"><a href="../../d6/d45/_nx_light_8h.html">NxLight.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_ac7ffe8fe199b77db46c9d5c2b3f4d7aa"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ac7ffe8fe199b77db46c9d5c2b3f4d7aa">Obj::CShadowComponent::Hide</a></div><div class="ttdeci">virtual void Hide(bool should_hide)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00261">shadowcomponent.cpp:261</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a44ae9cad0f2d3e5032fbf6371645dd99"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a44ae9cad0f2d3e5032fbf6371645dd99">Gfx::CShadow::UnHide</a></div><div class="ttdeci">virtual void UnHide()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00100">shadow.h:100</a></div></div>
+<div class="ttc" id="amotioncomponent_8h_html"><div class="ttname"><a href="../../db/d64/motioncomponent_8h.html">motioncomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a75150b149fb2f45075cdebc2422afaff"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">Obj::CCompositeObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00099">compositeobject.h:99</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_a7be1f7024e1fdb2c7a41d65796a78836"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#a7be1f7024e1fdb2c7a41d65796a78836">Nx::CModel::EnableShadow</a></div><div class="ttdeci">void EnableShadow(bool enabled)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d45/_nx_model_8cpp_source.html#l01482">NxModel.cpp:1482</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_ac9018f528ee094e831e64a76cb41041f"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#ac9018f528ee094e831e64a76cb41041f">Nx::CModel::GetActive</a></div><div class="ttdeci">bool GetActive()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00113">NxModel.h:113</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a20cd2a0264b2acbaea886a0387477a3f"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a20cd2a0264b2acbaea886a0387477a3f">Mth::Matrix::GetUp</a></div><div class="ttdeci">Vector &amp; GetUp(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00124">matrix.h:124</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16">Gfx::EShadowType</a></div><div class="ttdeci">EShadowType</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00049">shadow.h:49</a></div></div>
+<div class="ttc" id="askater_8h_html"><div class="ttname"><a href="../../d2/d91/skater_8h.html">skater.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a6c8604539c5a89083ef6b4718c94ad13"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a6c8604539c5a89083ef6b4718c94ad13">Obj::CShadowComponent::m_shadowNormal</a></div><div class="ttdeci">Mth::Vector m_shadowNormal</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc4/shadowcomponent_8h_source.html#l00077">shadowcomponent.h:77</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a48dff06aed9c63a4e9da6d95566ce127"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a48dff06aed9c63a4e9da6d95566ce127">Gfx::CShadow::UpdateDirection</a></div><div class="ttdeci">virtual void UpdateDirection(const Mth::Vector &amp;dir)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00098">shadow.h:98</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html_a8ed12fa8e2a0c911029c771d085f3c92"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html#a8ed12fa8e2a0c911029c771d085f3c92">Obj::CModelComponent::GetModel</a></div><div class="ttdeci">Nx::CModel * GetModel()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d45/modelcomponent_8h_source.html#l00190">modelcomponent.h:190</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_aaff18e1c37c30b31dc09d73a7514efbe"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#aaff18e1c37c30b31dc09d73a7514efbe">Obj::CShadowComponent::mp_model_component</a></div><div class="ttdeci">CModelComponent * mp_model_component</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc4/shadowcomponent_8h_source.html#l00079">shadowcomponent.h:79</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html_a223a0010c1ce65576f02883b96ad0335"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html#a223a0010c1ce65576f02883b96ad0335">Obj::CSkater::GetHeapIndex</a></div><div class="ttdeci">int GetHeapIndex(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d6e/skater_8cpp_source.html#l01044">skater.cpp:1044</a></div></div>
+<div class="ttc" id="amatrix_8h_html_ad393a55b0cd17b6dea798c49863e8de4"><div class="ttname"><a href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a></div><div class="ttdeci">Vector &amp; GetPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00066">matrix.h:66</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a76fcf9640a7f0b97c7425a8e7b7cdec9"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a76fcf9640a7f0b97c7425a8e7b7cdec9">Script::CStruct::AddFloat</a></div><div class="ttdeci">void AddFloat(uint32 nameChecksum, float float_val)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01055">struct.cpp:1055</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_acc456cf3749b71633198f95c8d7271b7"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#acc456cf3749b71633198f95c8d7271b7">Gfx::CShadow::Hide</a></div><div class="ttdeci">virtual void Hide()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00099">shadow.h:99</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a880a8b9b7ec5b22563c6821ae0f1903e"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">Obj::CBaseComponent::SetType</a></div><div class="ttdeci">void SetType(uint32 type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00077">basecomponent.h:77</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa39e6fe5fdf1d6c48136ae26a7ad511e"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">Script::CStruct::GetChecksum</a></div><div class="ttdeci">bool GetChecksum(uint32 nameChecksum, uint32 *p_checksum, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01658">struct.cpp:1658</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a></div><div class="ttdeci">@ NO_ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00015">scriptdefs.h:15</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a306c266c3e8f069f445aece853b424b9"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a306c266c3e8f069f445aece853b424b9">Gfx::CSimpleShadow::SetModel</a></div><div class="ttdeci">void SetModel(const char *p_model_name)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00176">shadow.cpp:176</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a4635d6aeb3ec1bedfab68e6c1a4d381e"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a4635d6aeb3ec1bedfab68e6c1a4d381e">Obj::CShadowComponent::SetShadowScale</a></div><div class="ttdeci">void SetShadowScale(float scale)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00478">shadowcomponent.cpp:478</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_aaa89a219766d23cfe4a817f9845f5531"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#aaa89a219766d23cfe4a817f9845f5531">Nx::CModel::GetScale</a></div><div class="ttdeci">Mth::Vector GetScale()</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00107">NxModel.h:107</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_model_component_html"><div class="ttname"><a href="../../df/d52/class_obj_1_1_c_model_component.html">Obj::CModelComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d45/modelcomponent_8h_source.html#l00081">modelcomponent.h:81</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a66ac6129be0d4e05999499433e9ec590"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a66ac6129be0d4e05999499433e9ec590">Obj::CBaseComponent::GetType</a></div><div class="ttdeci">uint32 GetType() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00063">basecomponent.h:63</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_lights_html_a9ccca2fcf35b39e9a193841f142a2e64"><div class="ttname"><a href="../../d2/d32/class_nx_1_1_c_model_lights.html#a9ccca2fcf35b39e9a193841f142a2e64">Nx::CModelLights::GetLightDirection</a></div><div class="ttdeci">const Mth::Vector &amp; GetLightDirection(int light_index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d43/_nx_light_8cpp_source.html#l00092">NxLight.cpp:92</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a952f40d99323d28b3ca2f55567edfa85"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">Obj::CBaseComponent::GetObject</a></div><div class="ttdeci">CCompositeObject * GetObject() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00059">basecomponent.h:59</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html_ae826d6b63d099a7be6794235ab235c84"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html#ae826d6b63d099a7be6794235ab235c84">Obj::CSkater::IsLocalClient</a></div><div class="ttdeci">bool IsLocalClient()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d91/skater_8h_source.html#l00543">skater.h:543</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a88a673458add9e809076b819e3c702de"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a88a673458add9e809076b819e3c702de">Obj::CShadowComponent::Finalize</a></div><div class="ttdeci">virtual void Finalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00077">shadowcomponent.cpp:77</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_aeb3fc85704c5e3811b7dd4bebff78b3f"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#aeb3fc85704c5e3811b7dd4bebff78b3f">Mth::Vector::Set</a></div><div class="ttdeci">Vector &amp; Set(float cx=0.0f, float cy=0.0f, float cz=0.0f, float cw=1.0f)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00368">vector.inl:368</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">Obj::CBaseComponent::MF_NOT_EXECUTED</a></div><div class="ttdeci">@ MF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00042">basecomponent.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a570499218643b399e6b1370c77956c5c"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a570499218643b399e6b1370c77956c5c">Obj::CShadowComponent::m_shadowType</a></div><div class="ttdeci">uint32 m_shadowType</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc4/shadowcomponent_8h_source.html#l00078">shadowcomponent.h:78</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a7141ff760218137cf0fb6198b7738488"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7141ff760218137cf0fb6198b7738488">Obj::CShadowComponent::update_shadow</a></div><div class="ttdeci">void update_shadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00169">shadowcomponent.cpp:169</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_aa5879c6e3b01b313acdc899265a46247"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#aa5879c6e3b01b313acdc899265a46247">Mth::Vector::GetX</a></div><div class="ttdeci">float GetX(void) const</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00840">vector.inl:840</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_acae6f1a5a02d406ab56292ec3fcfaefd"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#acae6f1a5a02d406ab56292ec3fcfaefd">Script::CStruct::GetFloat</a></div><div class="ttdeci">bool GetFloat(uint32 nameChecksum, float *p_floatValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01503">struct.cpp:1503</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a7c337c45ed373c49ea7de0f78866aeb4"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a7c337c45ed373c49ea7de0f78866aeb4">Gfx::CShadow::UpdatePosition</a></div><div class="ttdeci">virtual void UpdatePosition(Mth::Vector pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00096">shadow.h:96</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_abbe8aff1e5a5627c64ac3d314e844e28"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbe8aff1e5a5627c64ac3d314e844e28">Obj::CShadowComponent::SetShadowDirection</a></div><div class="ttdeci">void SetShadowDirection(const Mth::Vector &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00491">shadowcomponent.cpp:491</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html">Nx::CModel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5a/_nx_model_8h_source.html#l00055">NxModel.h:55</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_ad68c0e03b0d4bed939fbd0f9948d6188"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ad68c0e03b0d4bed939fbd0f9948d6188">Obj::CShadowComponent::m_shadowPos</a></div><div class="ttdeci">Mth::Vector m_shadowPos</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc4/shadowcomponent_8h_source.html#l00076">shadowcomponent.h:76</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="ap__nxparticlenewflat_8h_html_af6ad1a8181ececb75a619331202b7c8e"><div class="ttname"><a href="../../d4/d43/p__nxparticlenewflat_8h.html#af6ad1a8181ececb75a619331202b7c8e">m_matrix</a></div><div class="ttdeci">Mth::Matrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d43/p__nxparticlenewflat_8h_source.html#l00015">p_nxparticlenewflat.h:15</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a6281914f3ca75fcab6f176d7334ade0e"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a6281914f3ca75fcab6f176d7334ade0e">Gfx::CSimpleShadow::SetScale</a></div><div class="ttdeci">void SetScale(float scale)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00104">shadow.h:104</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_acda26adf5923c837328ef8089d99463f"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#acda26adf5923c837328ef8089d99463f">Script::CStruct::AddString</a></div><div class="ttdeci">void AddString(uint32 nameChecksum, const char *p_string)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01007">struct.cpp:1007</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="askate_8h_html_abe4eb8a7f480877e96248c1c2b2b96a4ae6d637ed385331869e3810dc8cd50611"><div class="ttname"><a href="../../df/d23/skate_8h.html#abe4eb8a7f480877e96248c1c2b2b96a4ae6d637ed385331869e3810dc8cd50611">SKATE_TYPE_SKATER</a></div><div class="ttdeci">@ SKATE_TYPE_SKATER</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00046">skate.h:46</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16ab930b362fe08b7e54491925a824aae94">Gfx::vSIMPLE_SHADOW</a></div><div class="ttdeci">@ vSIMPLE_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00055">shadow.h:55</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a27b19bccaaf3c6106c2a1d63cde2e977"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a27b19bccaaf3c6106c2a1d63cde2e977">Obj::CShadowComponent::SetShadowNormal</a></div><div class="ttdeci">void SetShadowNormal(const Mth::Vector &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00468">shadowcomponent.cpp:468</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">Obj::CBaseComponent::MF_TRUE</a></div><div class="ttdeci">@ MF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00041">basecomponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a9a2047f29ea5664a5938c6f78a51b383"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a9a2047f29ea5664a5938c6f78a51b383">Obj::CShadowComponent::HideShadow</a></div><div class="ttdeci">void HideShadow(bool should_hide)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00438">shadowcomponent.cpp:438</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_abbb76689d6e3344170e01a76cc9b55f6"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#abbb76689d6e3344170e01a76cc9b55f6">Obj::CShadowComponent::SwitchOffShadow</a></div><div class="ttdeci">void SwitchOffShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00417">shadowcomponent.cpp:417</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_lights_html"><div class="ttname"><a href="../../d2/d32/class_nx_1_1_c_model_lights.html">Nx::CModelLights</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d45/_nx_light_8h_source.html#l00022">NxLight.h:22</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_ab9d235f738609cf8078af6500b8a2729"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab9d235f738609cf8078af6500b8a2729">Obj::CShadowComponent::CShadowComponent</a></div><div class="ttdeci">CShadowComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00047">shadowcomponent.cpp:47</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#ace1e279567c15ccb80fd714525e08c16abbd041f6d3a8fc840d38affd7d7c7005">Gfx::vDETAILED_SHADOW</a></div><div class="ttdeci">@ vDETAILED_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00054">shadow.h:54</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_skate_html_a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274"><div class="ttname"><a href="../../d6/df1/class_mdl_1_1_skate.html#a9da7294365c3f55eb79dcd9b916d6607a95002857a9d81c41a7b64dc89b536274">Mdl::Skate::vMAX_SKATERS</a></div><div class="ttdeci">@ vMAX_SKATERS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d23/skate_8h_source.html#l00167">skate.h:167</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a898366272c675c9ec4afa6d801a26874"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a898366272c675c9ec4afa6d801a26874">Obj::CShadowComponent::Teleport</a></div><div class="ttdeci">virtual void Teleport()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00087">shadowcomponent.cpp:87</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a1a373e164ca6468fb8052bfc97da8af2"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a1a373e164ca6468fb8052bfc97da8af2">Obj::CShadowComponent::mp_shadow</a></div><div class="ttdeci">Gfx::CShadow * mp_shadow</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dc4/shadowcomponent_8h_source.html#l00075">shadowcomponent.h:75</a></div></div>
+<div class="ttc" id="a_nx_model_8h_html"><div class="ttname"><a href="../../d9/d5a/_nx_model_8h.html">NxModel.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a03fb230ad9263a5f6126da49d67feac0"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a></div><div class="ttdeci">void Dbg_Printf(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00111">Messages.h:111</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_model_html_a99f6c91e9c8cb1e752d8b9cf251aa49c"><div class="ttname"><a href="../../d0/dea/class_nx_1_1_c_model.html#a99f6c91e9c8cb1e752d8b9cf251aa49c">Nx::CModel::GetModelLights</a></div><div class="ttdeci">CModelLights * GetModelLights() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d45/_nx_model_8cpp_source.html#l00725">NxModel.cpp:725</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_af8444994600eac4ee2d600b6596ea5e2"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#af8444994600eac4ee2d600b6596ea5e2">Obj::CShadowComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00037">shadowcomponent.cpp:37</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a148f8f6bc239cff60340c410df449c71"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">Script::CStruct::AddChecksum</a></div><div class="ttdeci">void AddChecksum(uint32 nameChecksum, uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01071">struct.cpp:1071</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="ashadowcomponent_8h_html"><div class="ttname"><a href="../../d4/dc4/shadowcomponent_8h.html">shadowcomponent.h</a></div></div>
+<div class="ttc" id="amodelcomponent_8h_html"><div class="ttname"><a href="../../db/d45/modelcomponent_8h.html">modelcomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a684fd72195cd1c833168c0a3d04acd9a"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a684fd72195cd1c833168c0a3d04acd9a">Obj::CShadowComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00103">shadowcomponent.cpp:103</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a42a803452add452cf735c191a1816b14"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a42a803452add452cf735c191a1816b14">Script::CStruct::GetString</a></div><div class="ttdeci">bool GetString(uint32 nameChecksum, const char **pp_text, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01442">struct.cpp:1442</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="anamespace_c_funcs_html_acadaaefe5455cc5a52546c40288fcef2"><div class="ttname"><a href="../../db/d54/namespace_c_funcs.html#acadaaefe5455cc5a52546c40288fcef2">CFuncs::ScriptInSplitScreenGame</a></div><div class="ttdeci">bool ScriptInSplitScreenGame(Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d43/cfuncs_8cpp_source.html#l10643">cfuncs.cpp:10643</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a7aab0b205aead4a4d169060db7d13c8c"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7aab0b205aead4a4d169060db7d13c8c">Obj::CShadowComponent::~CShadowComponent</a></div><div class="ttdeci">virtual ~CShadowComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00063">shadowcomponent.cpp:63</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a8c73d257a169e76b2423b4476d824078"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a8c73d257a169e76b2423b4476d824078">Obj::CShadowComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00309">shadowcomponent.cpp:309</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html_a4e66b2836a0a620fcc3bcc948057e837"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html#a4e66b2836a0a620fcc3bcc948057e837">Gfx::CSimpleShadow::UpdatePosition</a></div><div class="ttdeci">void UpdatePosition(Mth::Vector &amp;parentPos, Mth::Matrix &amp;parentMatrix, Mth::Vector normal)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d59/shadow_8cpp_source.html#l00192">shadow.cpp:192</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_ab3c46b2704421e670f01b437d403d2e9"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#ab3c46b2704421e670f01b437d403d2e9">Obj::CShadowComponent::SwitchOnShadow</a></div><div class="ttdeci">void SwitchOnShadow(Gfx::EShadowType mode)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00362">shadowcomponent.cpp:362</a></div></div>
+<div class="ttc" id="acfuncs_8h_html"><div class="ttname"><a href="../../d0/d30/cfuncs_8h.html">cfuncs.h</a></div></div>
+<div class="ttc" id="ashadow_8h_html"><div class="ttname"><a href="../../d6/dbe/shadow_8h.html">shadow.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_html"><div class="ttname"><a href="../../d4/d1c/class_obj_1_1_c_skater.html">Obj::CSkater</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d91/skater_8h_source.html#l00263">skater.h:263</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_simple_shadow_html"><div class="ttname"><a href="../../d7/dbb/class_gfx_1_1_c_simple_shadow.html">Gfx::CSimpleShadow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00094">shadow.h:94</a></div></div>
+<div class="ttc" id="anamespace_script_html_ae80ed69ea4edcbcbbbd4985a6efdcd6e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ae80ed69ea4edcbcbbbd4985a6efdcd6e">Script::FindChecksumName</a></div><div class="ttdeci">const char * FindChecksumName(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d13/checksum_8cpp_source.html#l00252">checksum.cpp:252</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a93837a5bc2c5c01cf25e41569c52dac0"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a93837a5bc2c5c01cf25e41569c52dac0">Obj::CShadowComponent::SwitchOnSkaterShadow</a></div><div class="ttdeci">void SwitchOnSkaterShadow()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00504">shadowcomponent.cpp:504</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a7b1502556bdf7b10ee1096b166636592"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a7b1502556bdf7b10ee1096b166636592">Obj::CShadowComponent::SetShadowPos</a></div><div class="ttdeci">void SetShadowPos(const Mth::Vector &amp;vector)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00458">shadowcomponent.cpp:458</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_detailed_shadow_html"><div class="ttname"><a href="../../d1/dff/class_gfx_1_1_c_detailed_shadow.html">Gfx::CDetailedShadow</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00114">shadow.h:114</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_shadow_component_html_a08e771885d84bfb22a0085a98ece53bd"><div class="ttname"><a href="../../dc/dd7/class_obj_1_1_c_shadow_component.html#a08e771885d84bfb22a0085a98ece53bd">Obj::CShadowComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d43/shadowcomponent_8cpp_source.html#l00271">shadowcomponent.cpp:271</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_shadow_html_a2d65939d0e6e732a9b62df82389b31a6"><div class="ttname"><a href="../../db/d3f/class_gfx_1_1_c_shadow.html#a2d65939d0e6e732a9b62df82389b31a6">Gfx::CShadow::GetShadowType</a></div><div class="ttdeci">EShadowType GetShadowType()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dbe/shadow_8h_source.html#l00101">shadow.h:101</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../db/d43/shadowcomponent_8cpp.html">shadowcomponent.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:21. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

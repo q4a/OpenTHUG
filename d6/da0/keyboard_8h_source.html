@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/SIO/keyboard.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/da0/keyboard_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">keyboard.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/da0/keyboard_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        SYS Library                                             **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         SYS (SYS_)                                              **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      keyboard.h                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        03/08/2001  -   gj                                      **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    USB Keyboard interface                                  **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef __SYS_KEYBOARD_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define __SYS_KEYBOARD_H</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html">   33</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/dc1/namespace_s_i_o.html">SIO</a></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;{</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define KEYBOARD_ON (1)</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">enum</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558caef66d742371c906b6bdf03c442ce5b96">vKB_LEFT</a>    = 20,   <span class="comment">// start it high so as not to interfere with button/pad enums </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0adb83173bf7ee7a343726d63e3dfb64">vKB_RIGHT</a>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca85c0eb76ed352c118b21a6df4362957f">vKB_UP</a>,</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca13c8eece2a0529272f2c49234814842b">vKB_DOWN</a>,</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558caef66d742371c906b6bdf03c442ce5b96">   46</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2a97caa072699572411383fca103e3cf">vKB_BACKSPACE</a>,</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0adb83173bf7ee7a343726d63e3dfb64">   47</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8d9e43e32b70930616a3c474bf5a5777">vKB_ENTER</a>,</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca85c0eb76ed352c118b21a6df4362957f">   48</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2929eb3169bdcf0c7b0009d611b5f2ef">vKB_ESCAPE</a>,</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca13c8eece2a0529272f2c49234814842b">   49</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0cf8cd3507ebfa1e6137dc7c62fc08f4">vKB_F1</a>,</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2a97caa072699572411383fca103e3cf">   50</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558cacb3c56c667777b0b680463a36128bb8f">vKB_F2</a>,</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8d9e43e32b70930616a3c474bf5a5777">   51</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca70e5ed8789e3e1fa76b4a1d2b6bae069">vKB_F3</a>,</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2929eb3169bdcf0c7b0009d611b5f2ef">   52</a></span>&#160;    <a class="code" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8afe2f78a5dad2a140e88593d2a9da59">vKB_F4</a></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0cf8cd3507ebfa1e6137dc7c62fc08f4">   53</a></span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558cacb3c56c667777b0b680463a36128bb8f">   54</a></span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca70e5ed8789e3e1fa76b4a1d2b6bae069">   55</a></span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8afe2f78a5dad2a140e88593d2a9da59">   56</a></span>&#160;<span class="comment">**                          Class Definitions                               **</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a1b980ede10427dd73f7a098bbb4ef4c8">KeyboardInit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a6e90340425e70d15bb9c5685d74dfac6">KeyboardDeinit</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a4adfb1ad78c4ebac079124e0779865b5">KeyboardRead</a>( <span class="keywordtype">char</span>* makes );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a5191ff97526f440167547ca997a8c21e">KeyboardClear</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a512b3252d48b470e0474e4f4745c497b">SetKeyboardActive</a>(<span class="keywordtype">bool</span> active);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dc1/namespace_s_i_o.html#a24876da5e48087ab7d796cf6a960eda9">EnableKeyboard</a>( <span class="keywordtype">bool</span> enable );</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// namespace SIO</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif  // __SYS_KEYBOARD__H</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca8d9e43e32b70930616a3c474bf5a5777"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8d9e43e32b70930616a3c474bf5a5777">SIO::vKB_ENTER</a></div><div class="ttdeci">@ vKB_ENTER</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00051">keyboard.h:51</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a512b3252d48b470e0474e4f4745c497b"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a512b3252d48b470e0474e4f4745c497b">SIO::SetKeyboardActive</a></div><div class="ttdeci">void SetKeyboardActive(bool active)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d80/_n_g_p_s_2p__keyboard_8cpp_source.html#l00319">p_keyboard.cpp:319</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca2929eb3169bdcf0c7b0009d611b5f2ef"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2929eb3169bdcf0c7b0009d611b5f2ef">SIO::vKB_ESCAPE</a></div><div class="ttdeci">@ vKB_ESCAPE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00052">keyboard.h:52</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca0cf8cd3507ebfa1e6137dc7c62fc08f4"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0cf8cd3507ebfa1e6137dc7c62fc08f4">SIO::vKB_F1</a></div><div class="ttdeci">@ vKB_F1</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00053">keyboard.h:53</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a5191ff97526f440167547ca997a8c21e"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a5191ff97526f440167547ca997a8c21e">SIO::KeyboardClear</a></div><div class="ttdeci">void KeyboardClear(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/ngc_2p__keyboard_8cpp_source.html#l00244">p_keyboard.cpp:244</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a24876da5e48087ab7d796cf6a960eda9"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a24876da5e48087ab7d796cf6a960eda9">SIO::EnableKeyboard</a></div><div class="ttdeci">void EnableKeyboard(bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d80/_n_g_p_s_2p__keyboard_8cpp_source.html#l00324">p_keyboard.cpp:324</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558caef66d742371c906b6bdf03c442ce5b96"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558caef66d742371c906b6bdf03c442ce5b96">SIO::vKB_LEFT</a></div><div class="ttdeci">@ vKB_LEFT</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00046">keyboard.h:46</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca85c0eb76ed352c118b21a6df4362957f"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca85c0eb76ed352c118b21a6df4362957f">SIO::vKB_UP</a></div><div class="ttdeci">@ vKB_UP</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00048">keyboard.h:48</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca70e5ed8789e3e1fa76b4a1d2b6bae069"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca70e5ed8789e3e1fa76b4a1d2b6bae069">SIO::vKB_F3</a></div><div class="ttdeci">@ vKB_F3</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00055">keyboard.h:55</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca8afe2f78a5dad2a140e88593d2a9da59"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca8afe2f78a5dad2a140e88593d2a9da59">SIO::vKB_F4</a></div><div class="ttdeci">@ vKB_F4</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00056">keyboard.h:56</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a6e90340425e70d15bb9c5685d74dfac6"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a6e90340425e70d15bb9c5685d74dfac6">SIO::KeyboardDeinit</a></div><div class="ttdeci">int KeyboardDeinit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d80/_n_g_p_s_2p__keyboard_8cpp_source.html#l00284">p_keyboard.cpp:284</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a4adfb1ad78c4ebac079124e0779865b5"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a4adfb1ad78c4ebac079124e0779865b5">SIO::KeyboardRead</a></div><div class="ttdeci">int KeyboardRead(char *makes)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/ngc_2p__keyboard_8cpp_source.html#l00166">p_keyboard.cpp:166</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca2a97caa072699572411383fca103e3cf"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca2a97caa072699572411383fca103e3cf">SIO::vKB_BACKSPACE</a></div><div class="ttdeci">@ vKB_BACKSPACE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00050">keyboard.h:50</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_a1b980ede10427dd73f7a098bbb4ef4c8"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#a1b980ede10427dd73f7a098bbb4ef4c8">SIO::KeyboardInit</a></div><div class="ttdeci">int KeyboardInit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7b/ngc_2p__keyboard_8cpp_source.html#l00121">p_keyboard.cpp:121</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html">SIO</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00033">keyboard.h:33</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca0adb83173bf7ee7a343726d63e3dfb64"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca0adb83173bf7ee7a343726d63e3dfb64">SIO::vKB_RIGHT</a></div><div class="ttdeci">@ vKB_RIGHT</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00047">keyboard.h:47</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558cacb3c56c667777b0b680463a36128bb8f"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558cacb3c56c667777b0b680463a36128bb8f">SIO::vKB_F2</a></div><div class="ttdeci">@ vKB_F2</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00054">keyboard.h:54</a></div></div>
+<div class="ttc" id="anamespace_s_i_o_html_ad2867004a2f8c428c8da5356d349558ca13c8eece2a0529272f2c49234814842b"><div class="ttname"><a href="../../dc/dc1/namespace_s_i_o.html#ad2867004a2f8c428c8da5356d349558ca13c8eece2a0529272f2c49234814842b">SIO::vKB_DOWN</a></div><div class="ttdeci">@ vKB_DOWN</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da0/keyboard_8h_source.html#l00049">keyboard.h:49</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_c307fb956f462d0d889666e0a711cfb4.html">SIO</a></li><li class="navelem"><a class="el" href="../../d6/da0/keyboard_8h.html">keyboard.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

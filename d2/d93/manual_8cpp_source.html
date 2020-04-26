@@ -1,0 +1,821 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/manual.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d93/manual_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">manual.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d93/manual_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        PS2                                                     **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Objects (OBJ)                                           **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      manual.cpp                                              **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        01/31/01    -   ksh                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Skater object code                                      **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">//#define       __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d8a/inpman_8h.html">gel/inpman.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de7/mainloop_8h.html">gel/mainloop.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd4/netserv_8h.html">gel/net/server/netserv.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d8b/animationcomponent_8h.html">gel/components/animationcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d1a/_input_component_8h.html">gel/components/inputcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d9d/objtrack_8h.html">gel/objtrack.h</a>&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/daa/_stats_manager_component_8h.html">gel/components/statsmanagercomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dab/manual_8h.html">objects/manual.h</a>&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d33/rail_8h.html">objects/rail.h</a>&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../da/d28/_skater_profile_8h.html">objects/skaterprofile.h</a>&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/ddc/sounds_8h.html">engine/sounds.h</a>&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/df6/camera_8h.html">gfx/camera.h</a>&gt;</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/dbe/shadow_8h.html">gfx/shadow.h</a>&gt;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d83/debuggfx_8h.html">gfx/debuggfx.h</a>&gt;</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d00/soundfx_8h.html">gel/soundfx/soundfx.h</a>&gt;</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span> </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d1c/_game_net_8h.html">sk/gamenet/gamenet.h</a>&gt;</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d7e/_skater_core_physics_component_8h.html">sk/components/skatercorephysicscomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/d68/_skater_balance_trick_component_8h.html">sk/components/skaterbalancetrickcomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d1a/_skater_score_component_8h.html">sk/components/skaterscorecomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">**                              DBG Defines                                 **</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3f12a444d83e97d6d09a6cced916af57">CManual::CManual</a>()</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;{</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a9a7ea07a0bf5e30dbe8c98f1f007bbc4">Reset</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a07befc042b898b17f751c304391426f4">CManual::~CManual</a>()</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a77470f9439c589abaa12e623b960dfb6">CManual::Init</a> ( CCompositeObject *pSkater )</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a> = pSkater;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    Dbg_Assert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a> = GetSkaterBalanceTrickComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    Dbg_Assert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a> = GetSkaterScoreComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Dbg_Assert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aa6bf19e6f53730944e533b962733f7cb">mpInputComponent</a> = GetInputComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    Dbg_Assert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aa6bf19e6f53730944e533b962733f7cb">mpInputComponent</a>);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a9a7ea07a0bf5e30dbe8c98f1f007bbc4">CManual::Reset</a>()</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a3f12a444d83e97d6d09a6cced916af57">  134</a></span>&#160;{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="preprocessor">#ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:   Resetting cheese to 0 in CManual::Reset\n&quot;</span>,__LINE__);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="preprocessor">#endif  </span></div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a07befc042b898b17f751c304391426f4">  139</a></span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>=0.0f;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a>=0.0f;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>=0.0f;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>=0.0f;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>=0.0f;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a77470f9439c589abaa12e623b960dfb6">  144</a></span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#afe43998ed48370965ee0aa2462a47e40">mOldRailNode</a>=-1;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ae13e87ceeee5fa1cd6ed0ea8e76957fc">mWobbleEnabled</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">// a utility function to scale a linear value based on </span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">// the framerate</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">// m_time will be 1/60 when running at 60fps</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">// and 1/50 when running at 50fps (for pal)</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">// So, this 60.0f is correct for PAL</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">// as the adjustment is done to m_time                  </span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">CManual::scale_with_frame_length</a> ( <span class="keywordtype">float</span> frame_length, <span class="keywordtype">float</span> f )</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;{</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">return</span> f * frame_length * 60.0f;      <span class="comment">// Do NOT change this in PAL mode, leave it at 60</span></div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a9a7ea07a0bf5e30dbe8c98f1f007bbc4">  159</a></span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">// clear the record time for this level, only call this at start of a session</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1876e7037e72de89bf0f731b3268dd1c">CManual::ClearMaxTime</a>()</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;{</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a48c1ebe9f3bea16dd57c03e2e243472e">mMaxTime</a>=0.0f;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;}</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a88b8c44b8b8605ab14974cbcf10c6517">CManual::SwitchOffMeters</a>()</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a604e01214b3b1914736999c6d9801959">mNeverShowMeters</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aa66866b81dfc919175555eb125b2b892">CManual::SwitchOnMeters</a>()</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;{</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a604e01214b3b1914736999c6d9801959">mNeverShowMeters</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;}</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">// Switched off the meters and sets the buttons to zero so that calling DoManualPhysics will</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">  181</a></span>&#160;<span class="comment">// have no effect.</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ac71091145752a794c0b9e8b98670da2f">CManual::Stop</a>()</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    </div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// Switch off the meters.</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>())</div>
+<div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a1876e7037e72de89bf0f731b3268dd1c">  187</a></span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>()-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#ae4697e1207b65bfdd0b337b94c41143c">SetBalanceMeter</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>()-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#acf3647ad8b2f640b25e46d2d446038c3">SetManualMeter</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    } </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a>=0;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>=0;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;}</div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a88b8c44b8b8605ab14974cbcf10c6517">  194</a></span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="comment">// Check to see if this is a new record              </span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#af64b60bf572bedfd0dfac0ffdfa1a90c">CManual::UpdateRecord</a>()</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;{</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// Update the longest grind/manual/lip</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#aa66866b81dfc919175555eb125b2b892">  200</a></span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a>&gt;<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a48c1ebe9f3bea16dd57c03e2e243472e">mMaxTime</a>)</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    {</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a48c1ebe9f3bea16dd57c03e2e243472e">mMaxTime</a>=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a> = 0.0f;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#ac71091145752a794c0b9e8b98670da2f">  208</a></span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1cbc9912359527b4df71c4df7d2c8f63">CManual::SetUp</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ButtonAChecksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ButtonBChecksum, <span class="keywordtype">int</span> Tweak, <span class="keywordtype">bool</span> DoFlipCheck, <span class="keywordtype">bool</span> PlayRangeAnimBackwards)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;{</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a> = 0.0f;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a>=ButtonAChecksum;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>=ButtonBChecksum;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a6447d16f985b6d83112200d2c14b2145">mTweak</a>=Tweak;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a94362ff03b9d2c28765f69a7a0a96b5f">mDoFlipCheck</a>=DoFlipCheck;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a14a846c9f98d1aba6398ddeda29f51da">mPlayRangeAnimBackwards</a>=PlayRangeAnimBackwards;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>,(<span class="stringliteral">&quot;NULL mpSkater&quot;</span>));</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160; </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="comment">// Check for whether the skater has re-railed onto the same rail</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#af64b60bf572bedfd0dfac0ffdfa1a90c">  223</a></span>&#160;    <span class="comment">// or a different one.</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>==0x255ed86f || <span class="comment">// Grind</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>==0x8d10119d) <span class="comment">// Slide</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keyword">const</span> <a class="code" href="../../dc/d0c/class_obj_1_1_c_rail_node.html">CRailNode</a>* p_rail_node = GetSkaterCorePhysicsComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>)-&gt;mp_rail_node;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        </div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        Dbg_MsgAssert(p_rail_node,(<span class="stringliteral">&quot;What, NULL mp_rail_node ??&quot;</span>));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        </div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#afe43998ed48370965ee0aa2462a47e40">mOldRailNode</a>==-1)</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="comment">// This is a fresh rail.</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a1cbc9912359527b4df71c4df7d2c8f63">  235</a></span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            <span class="keywordflow">if</span> (p_rail_node-&gt;<a class="code" href="../../dc/d0c/class_obj_1_1_c_rail_node.html#a98f27f34383b089194730053b8e16977">ProbablyOnSameRailAs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#afe43998ed48370965ee0aa2462a47e40">mOldRailNode</a>))</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                <span class="comment">// Jumped and landed on the same rail without ending</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                <span class="comment">// the combo.</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                <span class="comment">// Add some time to make this more difficult.</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>+=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xfbec5b6c, <span class="stringliteral">&quot;Same_Grind_Add_Time&quot;</span>));</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<span class="preprocessor">                #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:  %.2f:  leaving cheese, probably on same rail\n&quot;</span>,__LINE__,<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="preprocessor">                #endif                  </span></div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="comment">// It&#39;s a different rail from the last one, ie jumped from a rail to</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="comment">// another rail without ending the combo.</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                <span class="comment">// Reward the player by subtracting a bit of time to make it easier.</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>-=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xc5e1c8eb,<span class="stringliteral">&quot;New_Grind_Sub_Time&quot;</span>));</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>&lt;0.0f)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>=0.0f;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                }   </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                <span class="comment">// And clear the cheese</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                <span class="comment">// as it&#39;s not cheesey to change rails</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                <span class="comment">// so we don&#39;t to penalize the player for doing so</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">                #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:   Resetting cheese to 0 as it&#39;s a new grind\n&quot;</span>,__LINE__);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">                #endif  </span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> = 0.0f;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            }   </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;        }   </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#afe43998ed48370965ee0aa2462a47e40">mOldRailNode</a>=p_rail_node-&gt;<a class="code" href="../../dc/d0c/class_obj_1_1_c_rail_node.html#ae7d05b09827c50c65ddbc8bc8aac0089">GetNode</a>();</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        </div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <a class="code" href="../../d1/d1e/class_mdl_1_1_score.html">Mdl::Score</a> *pScore=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>();</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordtype">float</span> robot = pScore-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#a5d93d15a4ad718868b909d310d4dfbee">GetRobotRailMult</a>();</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">if</span> ( robot &lt; 0.5f)     <span class="comment">// &lt;0.5 means any time you are on the same rail twice in a combo</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="comment">//          printf (&quot;SHOULD ADJUST BALANCE HERE, AS ON A ROBOT LINE\n&quot;);</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            <span class="comment">// Need to add something to the Manual Time</span></div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a> += <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>(CRCD(0xf54ca12f,<span class="stringliteral">&quot;robot_rail_add_time&quot;</span>) )* 0.5f / robot;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            </div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="comment">// And give him  percentage nudge away from 0</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="comment">// (actually, an absolute value would be better, more consistent</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="comment">// perhaps not even based on the amount, just trigger 20% whenever  </span></div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="comment">// you land on something robotesque</span></div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> += <a class="code" href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a>(CRCD(0x30990680,<span class="stringliteral">&quot;robot_rail_nudge&quot;</span>)) * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>) * 0.5f / robot;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;<span class="comment">//          printf (&quot;Time = %.2f,  Lean = %.2f, dir = %.2f\n&quot;,mManualTime, mManualLean, mManualLeanDir);</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    }</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    <span class="keywordtype">float</span> repeat_min = <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x8f4db5d3,<span class="stringliteral">&quot;Repeat_Min&quot;</span>));</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>) != 0.0f)</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="comment">// first multiplied by the reat multipler</span></div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> = <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> * <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x93dd6a10,<span class="stringliteral">&quot;Repeat_Multiplier&quot;</span>));      </div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="comment">// use the sign of previous balance</span></div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>) &lt; repeat_min)</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;        {</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="comment">//  if too small, then set to minimum</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> = repeat_min * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>);</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        }   </div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        {</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;        }</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    }</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    {</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        <span class="comment">// No previous balance</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;        <span class="comment">// so just set to default minimum</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> = repeat_min;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        <span class="comment">// Adjust the sign of the lean to point in the direction of a bail.</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        <span class="keywordflow">switch</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>)</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        {</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            <span class="keywordflow">case</span> 0xef24413b: <span class="comment">// Manual</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                <span class="comment">// Manuals keep positive sign.</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            <span class="keywordflow">case</span> 0x0ac90769: <span class="comment">// NoseManual  </span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                <span class="comment">// Nosemanuals fall the other way.</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>=-<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;            <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                <span class="comment">// If in a grind, choose a random side to fall towards.</span></div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                <span class="comment">// Hmm, should choose differently for a lip?</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                <span class="keywordflow">if</span> (<a class="code" href="../../d5/db9/namespace_mth.html#ad62429ac906222803b02da8cc801b1bb">Mth::Rnd</a>(2))</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>=-<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;                }</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        }       </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    }</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <span class="comment">// multiply this initial direction by some value based on the time</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">//  mManualLean = Mth::Abs(mManualLean) * Mth::Sgn(mManualLeanDir);     // possibly alter lean to face the bail direction</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> *= <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x6ce10ea4,<span class="stringliteral">&quot;Lean_Repeat_Multiplier&quot;</span>));</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="comment">// add cheese after lean multiply (otherwise, it can be ineffective)                                                                                 </span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="preprocessor">    #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:  %.2f + %.2f = %.2f:  Adding cheese to lean \n&quot;</span>,__LINE__,<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>),<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> += <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>));</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">    #endif                  </span></div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> += <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>);               <span class="comment">// add in the cheese    to the lean</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="keywordtype">float</span> BailAngle=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xf81ab0e9,<span class="stringliteral">&quot;Lean_Bail_Angle&quot;</span>));</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>) &gt; BailAngle)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor">        #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;            <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:  %.2f:  Cheese caused an instant bail!!! \n&quot;</span>,__LINE__,<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">        #endif                  </span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <span class="comment">// The cheese has caused an instant bail, so in order that the meter does become</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;        <span class="comment">// visible, make the lean a wee bit less that the bail angle.</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>=BailAngle*0.9f;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> = <a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>) * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> = <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>) * BailAngle;  <span class="comment">// ensure a bail next frame</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    }</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    </div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="comment">// Reset the cheese.</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x1231ae3c,<span class="stringliteral">&quot;Cheese&quot;</span>));</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">    #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;        <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:  %.2f:  Cheese reset to initial scripted value \n&quot;</span>,__LINE__,<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;<span class="preprocessor">    #endif                  </span></div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="comment">// The programmatic wobble applied to the animation is off initially, so that it does not get applied</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="comment">// to the init anim.</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ae13e87ceeee5fa1cd6ed0ea8e76957fc">mWobbleEnabled</a>=<span class="keyword">false</span>;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a76914ef580177b403dfd8c95ef6a8c18">mStartTime</a>=<a class="code" href="../../d1/d0d/namespace_tmr.html#aeede2bf5e4d84e9aae6110f582389a96">Tmr::ElapsedTime</a>(0);</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="comment">// Gets called by the EnableWobble skater script command.</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ae7633ebcb1902446321e483411dcfbdf">CManual::EnableWobble</a>()</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;{</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ae13e87ceeee5fa1cd6ed0ea8e76957fc">mWobbleEnabled</a>=<span class="keyword">true</span>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160; </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="comment">//static float MaxTime=0;</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a12c2f1467d0788725d4d1851a8811e23">CManual::DoManualPhysics</a>()</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;{</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <span class="keywordtype">float</span> frame_length = <a class="code" href="../../d1/d0d/namespace_tmr.html#a3560bd3134b7b29bed7013950d91ad06">Tmr::FrameLength</a>();</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="comment">// Do nothing if no buttons are specified.</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a> || !<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;        </div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <a class="code" href="../../d2/d8e/class_game_net_1_1_manager.html">GameNet::Manager</a> * gamenet_man = GameNet::Manager::Instance();</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="../../d8/d8b/class_net_1_1_server.html">Net::Server</a>* server;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="../../d3/d76/class_game_net_1_1_player_info.html">GameNet::PlayerInfo</a>* <a class="code" href="../../d6/d5b/ngc_2p__movies_8cpp.html#adee15ed765deb99e8f2e52599a63ef9d">player</a>;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="../../d9/d3a/class_net_1_1_conn.html">Net::Conn</a>* skater_conn;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    Dbg_MsgAssert(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>,(<span class="stringliteral">&quot;NULL mpSkater&quot;</span>));</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    skater_conn = NULL;</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">if</span>(( server = gamenet_man-&gt;<a class="code" href="../../d2/d8e/class_game_net_1_1_manager.html#a26d0eeb7c6348cdc341124e731e21e91">GetServer</a>()))</div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#ae7633ebcb1902446321e483411dcfbdf">  401</a></span>&#160;    {</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;        <span class="keywordflow">if</span>(( <a class="code" href="../../d6/d5b/ngc_2p__movies_8cpp.html#adee15ed765deb99e8f2e52599a63ef9d">player</a> = gamenet_man-&gt;<a class="code" href="../../d2/d8e/class_game_net_1_1_manager.html#acd47a69fd1b7c020c2fd55f8f02aec75">GetPlayerByObjectID</a>( <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>() )))</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;        {</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;            skater_conn = <a class="code" href="../../d6/d5b/ngc_2p__movies_8cpp.html#adee15ed765deb99e8f2e52599a63ef9d">player</a>-&gt;m_Conn;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;        }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    }</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    </div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="../../de/dfb/class_obj_1_1_c_manual.html#a12c2f1467d0788725d4d1851a8811e23">  408</a></span>&#160;    <span class="comment">// decrement the cheese value, which is added to the lean angle when we do the next manual</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="comment">// this is to prevent &quot;cheesing&quot; the manuals (by rapidly doing several manuals that only</span></div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    <span class="comment">// last a frame or two, and don&#39;t give the balancing physics any time to take effect).</span></div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>&gt;0.01f)</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;    {</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> -= <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">scale_with_frame_length</a>(frame_length, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x1231ae3c,<span class="stringliteral">&quot;Cheese&quot;</span>))/<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xa4362662,<span class="stringliteral">&quot;CheeseFrames&quot;</span>)));</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> &lt; 0.0f)</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a> = 0.0f;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">        #ifdef      __DEBUG_CHEESE__</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;            <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a> (<span class="stringliteral">&quot;%d:  %.2f:  Cheese decremented\n&quot;</span>,__LINE__,<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">mManualCheese</a>);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="preprocessor">        #endif                  </span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    }</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">//  printf(Cheese=%f\n&quot;,mManualCheese);</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="comment">// Add in the tweak to the score.</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <a class="code" href="../../d1/d1e/class_mdl_1_1_score.html">Mdl::Score</a> *pScore=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>();</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <span class="comment">//pScore-&gt;TweakTrickRequest(mTweak);</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    pScore-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#acde298e81a7cf542183a7f33deaf77a3">TweakTrick</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a6447d16f985b6d83112200d2c14b2145">mTweak</a>);</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160; </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a>+=frame_length;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a>+=frame_length;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <a class="code" href="../../d1/dff/class_obj_1_1_c_stats_manager_component.html">Obj::CStatsManagerComponent</a>* pStatsManagerComponent = GetStatsManagerComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    Dbg_Assert( pStatsManagerComponent );</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    pStatsManagerComponent-&gt;<a class="code" href="../../d1/dff/class_obj_1_1_c_stats_manager_component.html#a921ef1f0fbff04e3ff46e7375bd4b012">CheckTimedRecord</a>( <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">mActualManualTime</a>, <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordtype">float</span> ManualLeanGravity=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x6851748,<span class="stringliteral">&quot;Lean_Gravity_Stat&quot;</span>));</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    <span class="keywordtype">float</span> ManualInstableRate=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xa9fef5ab,<span class="stringliteral">&quot;Instable_Rate&quot;</span>));</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="keywordtype">float</span> ManualBase = <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xb6a634f3,<span class="stringliteral">&quot;Instable_base&quot;</span>)); </div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="keywordtype">float</span> ManualInstability = ManualBase + (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">mManualTime</a> * ManualInstableRate);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="comment">// the more you lean, the more you lean</span></div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;<span class="comment">//  mManualLean += scale_with_frame_length(mManualLean/ManualLeanGravity * (0.5f + mManualTime/2)/ManualInstableRate);</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;<span class="comment">//  mManualLean += scale_with_frame_length(mManualLeanDir * (0.5f + mManualTime/2)/ManualInstableRate);  // speed of turn</span></div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    </div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> += <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">scale_with_frame_length</a>(frame_length, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> * ManualLeanGravity * ManualInstability);</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> += <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">scale_with_frame_length</a>(frame_length, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> * ManualInstability);       </div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160; </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160; </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <a class="code" href="../../da/dd9/class_c_skater_button.html">CSkaterButton</a> *pButt=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aa6bf19e6f53730944e533b962733f7cb">mpInputComponent</a>-&gt;<a class="code" href="../../db/d0b/class_obj_1_1_c_input_component.html#a74e410efa46e9592d9f39c84ee85adf1">GetControlPad</a>().<a class="code" href="../../de/d49/class_c_skater_pad.html#a45e53b1b096ddf3cbb6af6bf3569d4b3">GetButton</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a>);</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    <span class="keywordtype">bool</span> APressed=pButt-&gt;<a class="code" href="../../da/dd9/class_c_skater_button.html#ad17c4ebd394f8e5966f6291af1477baa">GetPressed</a>();</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    </div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    pButt=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aa6bf19e6f53730944e533b962733f7cb">mpInputComponent</a>-&gt;<a class="code" href="../../db/d0b/class_obj_1_1_c_input_component.html#a74e410efa46e9592d9f39c84ee85adf1">GetControlPad</a>().<a class="code" href="../../de/d49/class_c_skater_pad.html#a45e53b1b096ddf3cbb6af6bf3569d4b3">GetButton</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>);</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordtype">bool</span> BPressed=pButt-&gt;<a class="code" href="../../da/dd9/class_c_skater_button.html#ad17c4ebd394f8e5966f6291af1477baa">GetPressed</a>();</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="comment">// The released flag stays false until they let go of the buttons. This is so that if the player</span></div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="comment">// was holding one of the control buttons at the instant the balance trick started, as they probably</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="comment">// will be if doing a manual, then the button won&#39;t have any effect on the balance, so as not to</span></div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    <span class="comment">// unbalance them straight away.</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    <span class="keywordflow">if</span> (!APressed &amp;&amp; !BPressed)</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    }</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    </div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>   safe_period = (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)<a class="code" href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a>(CRCD(0x8cc8f176,<span class="stringliteral">&quot;BalanceSafeButtonPeriod&quot;</span>));</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>   elapsed_time = <a class="code" href="../../d1/d0d/namespace_tmr.html#aeede2bf5e4d84e9aae6110f582389a96">Tmr::ElapsedTime</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a76914ef580177b403dfd8c95ef6a8c18">mStartTime</a>);</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="comment">// If the buttons have not technically been released, but have been held for longer than a certain</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="comment">// amount of time, then assume that the player does want the button to have an effect after all.</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a> &amp;&amp; elapsed_time&gt;(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)<a class="code" href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a>(CRCD(0x7da1621,<span class="stringliteral">&quot;BalanceIgnoreButtonPeriod&quot;</span>)))</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    {</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    }</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    </div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordflow">if</span> (APressed &amp;&amp; <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a>)</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="comment">// this ramping up of the accleration for a few hundred miliseconds</span></div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="comment">// will prevent us from overcompensating</span></div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;        <span class="comment">// due to the button being held down</span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;        <span class="comment">// and will actually make it easier to &quot;Stick&quot; the mManualLeanDir</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;        <span class="comment">// the ramping is only in effect if you press in the direction opposite </span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;        <span class="comment">// from what you need to get more upright</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        <span class="comment">// so it prevents you from becoming more unbalanced</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keywordtype">float</span> mult = 1.0f;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> &lt; 0.0f &amp;&amp; elapsed_time &lt; safe_period)</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        {</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;            mult =  elapsed_time / safe_period; </div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;        }</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;        </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> -= <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">scale_with_frame_length</a>(frame_length, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x61ad5596,<span class="stringliteral">&quot;Lean_Acc&quot;</span>))) * mult;</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    }</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (BPressed &amp;&amp; <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">mManualReleased</a>)</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;    {</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;        <span class="keywordtype">float</span> mult = 1.0f;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a> &gt; 0.0f &amp;&amp; elapsed_time &lt; safe_period)</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;        {</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;            mult =  elapsed_time / safe_period; </div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;        }</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> += <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">scale_with_frame_length</a>(frame_length, <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x61ad5596,<span class="stringliteral">&quot;Lean_Acc&quot;</span>))) * mult;</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    }</div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;    {</div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>) &lt; <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xef27e8ff,<span class="stringliteral">&quot;Lean_Min_Speed&quot;</span>)))</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;        {</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;            <span class="keywordtype">int</span> r=(int)<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0x32eb3308,<span class="stringliteral">&quot;Lean_Rnd_Speed&quot;</span>));</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;            r|=1;</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;<span class="comment">//          mManualLeanDir = Mth::Rnd(r)-r/2;</span></div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> = <a class="code" href="../../d5/db9/namespace_mth.html#ad62429ac906222803b02da8cc801b1bb">Mth::Rnd</a>(r)*<a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>);</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;        }</div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;        {</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;            <span class="comment">// always add some randomness to it, to make sure we don&#39;t ever get stuck</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a> += (<a class="code" href="../../d5/db9/namespace_mth.html#ad62429ac906222803b02da8cc801b1bb">Mth::Rnd</a>(50))/100.0f * <a class="code" href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">mManualLeanDir</a>);</div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;        }</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    }</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160; </div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;    </div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;    <span class="comment">/*</span></div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;<span class="comment">    HUD::PanelMgr* panelMgr = HUD::PanelMgr::Instance();</span></div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;<span class="comment">    HUD::Panel *pPanel=panelMgr-&gt;GetPanelBySkaterId(mpSkater-&gt;GetID());</span></div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;<span class="comment">    char pBuf[100];</span></div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="comment">    sprintf(pBuf,&quot;Record %.2f&quot;,mMaxTime);</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;<span class="comment">    panelMgr-&gt;SendConsoleMessage(pBuf, 2);</span></div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;<span class="comment">    sprintf(pBuf,&quot;Time %.2f&quot;,mActualManualTime);</span></div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;<span class="comment">    panelMgr-&gt;SendConsoleMessage(pBuf, 3);</span></div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;<span class="comment">    */</span></div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160; </div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a5be071ed601c321ee8e086bcf88e363b">GetScript</a>())</div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    {</div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a3a7da9dd891a2215e97c03421632a666">SetScript</a>(<span class="keyword">new</span> <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>);</div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    }</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160; </div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a>(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>)&gt;<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">GetBalanceStat</a>(CRCD(0xf81ab0e9,<span class="stringliteral">&quot;Lean_Bail_Angle&quot;</span>)))</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    {</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>&gt;0)</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;        {</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a4eb63ba2d07ba494d8bbaf4729f2fc68">SelfEvent</a>(CRCD(0xd77b6ff9,<span class="stringliteral">&quot;OffMeterTop&quot;</span>));</div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        }</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        <span class="keywordflow">else</span>    </div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;        {</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#a4eb63ba2d07ba494d8bbaf4729f2fc68">SelfEvent</a>(CRCD(0x47d44b84,<span class="stringliteral">&quot;OffMeterBottom&quot;</span>));</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;        }</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160; </div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>=0;</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;        <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>=0;</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    }   </div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160; </div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#ae13e87ceeee5fa1cd6ed0ea8e76957fc">mWobbleEnabled</a>)</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;    {</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        <span class="keywordtype">bool</span> flip=<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a14a846c9f98d1aba6398ddeda29f51da">mPlayRangeAnimBackwards</a>;</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a94362ff03b9d2c28765f69a7a0a96b5f">mDoFlipCheck</a> &amp;&amp; GetSkaterCorePhysicsComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>)-&gt;GetFlag(<a class="code" href="../../d2/d10/namespace_obj.html#a530363576c74127375c590d986b835e9a9bd8a8e0500ef5961adaea6c44c6e4a7">FLIPPED</a>))</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        {</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            flip=!flip;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;        }   </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;        <span class="comment">// Update the anim frame.</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        <a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a>* pAnimComponent = GetAnimationComponentFromObject(<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">mpSkater</a>);</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keywordflow">if</span> ( pAnimComponent )</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="keywordflow">if</span> (flip)</div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            {</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;                pAnimComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec5fcf6e4180c17487dd95af8e5e5c4b">SetWobbleTarget</a>((-<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>+4096)/8192, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            }</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            {</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;                pAnimComponent-&gt;<a class="code" href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec5fcf6e4180c17487dd95af8e5e5c4b">SetWobbleTarget</a>((<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>+4096)/8192, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            }       </div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        }</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;    }   </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160; </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;    <span class="comment">// Update the balance meter.</span></div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;    <a class="code" href="../../df/d07/class_game_net_1_1_msg_byte_info.html">GameNet::MsgByteInfo</a> msg;</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;    <span class="keywordtype">float</span> final_val = -<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">mManualLean</a>/4096;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    </div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;    <span class="keywordflow">if</span>( server &amp;&amp; skater_conn )</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    {</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        msg.<a class="code" href="../../df/d07/class_game_net_1_1_msg_byte_info.html#a5487b1f56e57038a1f43d4b9a8c06ae7">m_Data</a> = (char) ( final_val * 127.0f );</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        <span class="comment">/*server-&gt;EnqueueMessage( skater_conn-&gt;GetHandle(), GameNet::MSG_ID_SET_MANUAL_METER, </span></div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="comment">                                sizeof(GameNet::MsgByteInfo), &amp;msg );*/</span></div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;    }</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;    </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;    <span class="comment">// Need to also check we are still doing a balance trick, since exceptions</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;    <span class="comment">// that we fired above (offmetertop/bottom) might have canceled it</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a604e01214b3b1914736999c6d9801959">mNeverShowMeters</a> &amp;&amp; <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">mpSkaterBalanceTrickComponent</a>-&gt;<a class="code" href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">mBalanceTrickType</a>)</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;    {</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <span class="keywordflow">if</span> ((<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a>==0xbc6b118f<span class="comment">/*Up*/</span> || <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">mButtonAChecksum</a>==0xe3006fc4<span class="comment">/*Down*/</span>) &amp;&amp;</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;            (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>==0xbc6b118f<span class="comment">/*Up*/</span> || <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">mButtonBChecksum</a>==0xe3006fc4<span class="comment">/*Down*/</span>))</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;        {</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>())</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;            {</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>()-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#acf3647ad8b2f640b25e46d2d446038c3">SetManualMeter</a>( <span class="keyword">true</span>, final_val );</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;            }</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;        }</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;        {</div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>())</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;            {</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;                <a class="code" href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">mpSkaterScoreComponent</a>-&gt;<a class="code" href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">GetScore</a>()-&gt;<a class="code" href="../../d1/d1e/class_mdl_1_1_score.html#ae4697e1207b65bfdd0b337b94c41143c">SetBalanceMeter</a>( <span class="keyword">true</span>, final_val );</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;            }</div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;        }</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;    }    </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;}</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160; </div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160; </div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;} <span class="comment">// namespace Obj</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160; </div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a88b8c44b8b8605ab14974cbcf10c6517"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a88b8c44b8b8605ab14974cbcf10c6517">Obj::CManual::SwitchOffMeters</a></div><div class="ttdeci">void SwitchOffMeters()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00194">manual.cpp:194</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a5e6e501fff68bcb8d05b9354f379709e"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a5e6e501fff68bcb8d05b9354f379709e">Obj::CManual::mManualLean</a></div><div class="ttdeci">float mManualLean</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00077">manual.h:77</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a1a797526534fb91ceaf5afeff280bcd3"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a1a797526534fb91ceaf5afeff280bcd3">Obj::CManual::mManualTime</a></div><div class="ttdeci">float mManualTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00074">manual.h:74</a></div></div>
+<div class="ttc" id="asoundfx_8h_html"><div class="ttname"><a href="../../d2/d00/soundfx_8h.html">soundfx.h</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_manager_html"><div class="ttname"><a href="../../d2/d8e/class_game_net_1_1_manager.html">GameNet::Manager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d1c/_game_net_8h_source.html#l00519">GameNet.h:519</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_manager_html_acd47a69fd1b7c020c2fd55f8f02aec75"><div class="ttname"><a href="../../d2/d8e/class_game_net_1_1_manager.html#acd47a69fd1b7c020c2fd55f8f02aec75">GameNet::Manager::GetPlayerByObjectID</a></div><div class="ttdeci">PlayerInfo * GetPlayerByObjectID(unsigned short obj_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/_game_net_8cpp_source.html#l04060">GameNet.cpp:4060</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a48c1ebe9f3bea16dd57c03e2e243472e"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a48c1ebe9f3bea16dd57c03e2e243472e">Obj::CManual::mMaxTime</a></div><div class="ttdeci">float mMaxTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00075">manual.h:75</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_score_component_html_ab4f3cd23c156528b891626ffe0c6efa3"><div class="ttname"><a href="../../d2/d2f/class_obj_1_1_c_skater_score_component.html#ab4f3cd23c156528b891626ffe0c6efa3">Obj::CSkaterScoreComponent::GetScore</a></div><div class="ttdeci">Mdl::Score * GetScore()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d1a/_skater_score_component_8h_source.html#l00049">SkaterScoreComponent.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_af64b60bf572bedfd0dfac0ffdfa1a90c"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#af64b60bf572bedfd0dfac0ffdfa1a90c">Obj::CManual::UpdateRecord</a></div><div class="ttdeci">void UpdateRecord()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00223">manual.cpp:223</a></div></div>
+<div class="ttc" id="angc_2p__movies_8cpp_html_adee15ed765deb99e8f2e52599a63ef9d"><div class="ttname"><a href="../../d6/d5b/ngc_2p__movies_8cpp.html#adee15ed765deb99e8f2e52599a63ef9d">player</a></div><div class="ttdeci">VidSimplePlayer player</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d5b/ngc_2p__movies_8cpp_source.html#l00101">p_movies.cpp:101</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a3560bd3134b7b29bed7013950d91ad06"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a3560bd3134b7b29bed7013950d91ad06">Tmr::FrameLength</a></div><div class="ttdeci">float FrameLength()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00430">p_timer.cpp:430</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_aa6bf19e6f53730944e533b962733f7cb"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#aa6bf19e6f53730944e533b962733f7cb">Obj::CManual::mpInputComponent</a></div><div class="ttdeci">CInputComponent * mpInputComponent</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00070">manual.h:70</a></div></div>
+<div class="ttc" id="adebuggfx_8h_html"><div class="ttname"><a href="../../d3/d83/debuggfx_8h.html">debuggfx.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="a_skater_profile_8h_html"><div class="ttname"><a href="../../da/d28/_skater_profile_8h.html">SkaterProfile.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stats_manager_component_html_a921ef1f0fbff04e3ff46e7375bd4b012"><div class="ttname"><a href="../../d1/dff/class_obj_1_1_c_stats_manager_component.html#a921ef1f0fbff04e3ff46e7375bd4b012">Obj::CStatsManagerComponent::CheckTimedRecord</a></div><div class="ttdeci">void CheckTimedRecord(uint32 checksum, float time, bool final)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d79/_stats_manager_component_8cpp_source.html#l00938">StatsManagerComponent.cpp:938</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1ef6ac6b15ddd2fcff21e6a3dd6e5938"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1ef6ac6b15ddd2fcff21e6a3dd6e5938">Script::GetFloat</a></div><div class="ttdeci">float GetFloat(uint32 checksum, EAssertType assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00483">symboltable.cpp:483</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_balance_trick_component_html_ac534e151e34f6e3ddf09ad8182d1ebfd"><div class="ttname"><a href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#ac534e151e34f6e3ddf09ad8182d1ebfd">Obj::CSkaterBalanceTrickComponent::GetBalanceStat</a></div><div class="ttdeci">float GetBalanceStat(uint32 Checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d26/_skater_balance_trick_component_8cpp_source.html#l00456">SkaterBalanceTrickComponent.cpp:456</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_rail_node_html_ae7d05b09827c50c65ddbc8bc8aac0089"><div class="ttname"><a href="../../dc/d0c/class_obj_1_1_c_rail_node.html#ae7d05b09827c50c65ddbc8bc8aac0089">Obj::CRailNode::GetNode</a></div><div class="ttdeci">const sint16 GetNode() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d33/rail_8h_source.html#l00059">rail.h:59</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a9a7ea07a0bf5e30dbe8c98f1f007bbc4"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a9a7ea07a0bf5e30dbe8c98f1f007bbc4">Obj::CManual::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00159">manual.cpp:159</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a4f89423020f29680f06926d8148442d6"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a4f89423020f29680f06926d8148442d6">Obj::CManual::mpSkaterScoreComponent</a></div><div class="ttdeci">CSkaterScoreComponent * mpSkaterScoreComponent</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00069">manual.h:69</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_input_component_html_a74e410efa46e9592d9f39c84ee85adf1"><div class="ttname"><a href="../../db/d0b/class_obj_1_1_c_input_component.html#a74e410efa46e9592d9f39c84ee85adf1">Obj::CInputComponent::GetControlPad</a></div><div class="ttdeci">CControlPad &amp; GetControlPad()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d1a/_input_component_8h_source.html#l00050">InputComponent.h:50</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_a5d93d15a4ad718868b909d310d4dfbee"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#a5d93d15a4ad718868b909d310d4dfbee">Mdl::Score::GetRobotRailMult</a></div><div class="ttdeci">float GetRobotRailMult()</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/score_8h_source.html#l00188">score.h:188</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_acf3647ad8b2f640b25e46d2d446038c3"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#acf3647ad8b2f640b25e46d2d446038c3">Mdl::Score::SetManualMeter</a></div><div class="ttdeci">void SetManualMeter(bool state, float value=0.0f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3d/score_8cpp_source.html#l01725">score.cpp:1725</a></div></div>
+<div class="ttc" id="aobjtrack_8h_html"><div class="ttname"><a href="../../d2/d9d/objtrack_8h.html">objtrack.h</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_ae4697e1207b65bfdd0b337b94c41143c"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#ae4697e1207b65bfdd0b337b94c41143c">Mdl::Score::SetBalanceMeter</a></div><div class="ttdeci">void SetBalanceMeter(bool state, float value=0.0f)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3d/score_8cpp_source.html#l01715">score.cpp:1715</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a4eb63ba2d07ba494d8bbaf4729f2fc68"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a4eb63ba2d07ba494d8bbaf4729f2fc68">Obj::CObject::SelfEvent</a></div><div class="ttdeci">void SelfEvent(uint32 event, Script::CStruct *pData=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d30/object_8cpp_source.html#l00927">object.cpp:927</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_aef328af300fe96dd258ab87a24148758"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#aef328af300fe96dd258ab87a24148758">Obj::CManual::mManualLeanDir</a></div><div class="ttdeci">float mManualLeanDir</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00078">manual.h:78</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_aeede2bf5e4d84e9aae6110f582389a96"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#aeede2bf5e4d84e9aae6110f582389a96">Tmr::ElapsedTime</a></div><div class="ttdeci">Time ElapsedTime(Time time)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd0/timer_8h_source.html#l00140">timer.h:140</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="a_stats_manager_component_8h_html"><div class="ttname"><a href="../../d5/daa/_stats_manager_component_8h.html">StatsManagerComponent.h</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_manager_html_a26d0eeb7c6348cdc341124e731e21e91"><div class="ttname"><a href="../../d2/d8e/class_game_net_1_1_manager.html#a26d0eeb7c6348cdc341124e731e21e91">GameNet::Manager::GetServer</a></div><div class="ttdeci">Net::Server * GetServer(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d64/_game_net_8cpp_source.html#l03035">GameNet.cpp:3035</a></div></div>
+<div class="ttc" id="amainloop_8h_html"><div class="ttname"><a href="../../d8/de7/mainloop_8h.html">mainloop.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a76914ef580177b403dfd8c95ef6a8c18"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a76914ef580177b403dfd8c95ef6a8c18">Obj::CManual::mStartTime</a></div><div class="ttdeci">uint32 mStartTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00082">manual.h:82</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="amanual_8h_html"><div class="ttname"><a href="../../d9/dab/manual_8h.html">manual.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_rail_node_html"><div class="ttname"><a href="../../dc/d0c/class_obj_1_1_c_rail_node.html">Obj::CRailNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d33/rail_8h_source.html#l00049">rail.h:49</a></div></div>
+<div class="ttc" id="ainpman_8h_html"><div class="ttname"><a href="../../d6/d8a/inpman_8h.html">inpman.h</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a1876e7037e72de89bf0f731b3268dd1c"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a1876e7037e72de89bf0f731b3268dd1c">Obj::CManual::ClearMaxTime</a></div><div class="ttdeci">void ClearMaxTime()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00187">manual.cpp:187</a></div></div>
+<div class="ttc" id="arail_8h_html"><div class="ttname"><a href="../../d9/d33/rail_8h.html">rail.h</a></div></div>
+<div class="ttc" id="aclass_c_skater_button_html_ad17c4ebd394f8e5966f6291af1477baa"><div class="ttname"><a href="../../da/dd9/class_c_skater_button.html#ad17c4ebd394f8e5966f6291af1477baa">CSkaterButton::GetPressed</a></div><div class="ttdeci">bool GetPressed()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d36/_skater_button_8h_source.html#l00027">SkaterButton.h:27</a></div></div>
+<div class="ttc" id="anetserv_8h_html"><div class="ttname"><a href="../../d5/dd4/netserv_8h.html">netserv.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a3e769706137db6c818d365bcd1fe1942"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a3e769706137db6c818d365bcd1fe1942">Obj::CManual::mActualManualTime</a></div><div class="ttdeci">float mActualManualTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00073">manual.h:73</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a94362ff03b9d2c28765f69a7a0a96b5f"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a94362ff03b9d2c28765f69a7a0a96b5f">Obj::CManual::mDoFlipCheck</a></div><div class="ttdeci">bool mDoFlipCheck</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00098">manual.h:98</a></div></div>
+<div class="ttc" id="anamespace_script_html_ac722bae4acb2ce23888cb428818f12af"><div class="ttname"><a href="../../d1/d54/namespace_script.html#ac722bae4acb2ce23888cb428818f12af">Script::GetInt</a></div><div class="ttdeci">int GetInt(uint32 checksum, bool assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d7c/symboltable_8cpp_source.html#l00740">symboltable.cpp:740</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html_acde298e81a7cf542183a7f33deaf77a3"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html#acde298e81a7cf542183a7f33deaf77a3">Mdl::Score::TweakTrick</a></div><div class="ttdeci">void TweakTrick(int tweak_value)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d3d/score_8cpp_source.html#l00932">score.cpp:932</a></div></div>
+<div class="ttc" id="a_game_net_8h_html"><div class="ttname"><a href="../../db/d1c/_game_net_8h.html">GameNet.h</a></div></div>
+<div class="ttc" id="a_skater_score_component_8h_html"><div class="ttname"><a href="../../d0/d1a/_skater_score_component_8h.html">SkaterScoreComponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a6447d16f985b6d83112200d2c14b2145"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a6447d16f985b6d83112200d2c14b2145">Obj::CManual::mTweak</a></div><div class="ttdeci">int mTweak</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00086">manual.h:86</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a530363576c74127375c590d986b835e9a9bd8a8e0500ef5961adaea6c44c6e4a7"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a530363576c74127375c590d986b835e9a9bd8a8e0500ef5961adaea6c44c6e4a7">Obj::FLIPPED</a></div><div class="ttdeci">@ FLIPPED</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d17/skaterflags_8h_source.html#l00016">skaterflags.h:16</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a598749ce08d2710807c67cf2cff68233"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a598749ce08d2710807c67cf2cff68233">Obj::CManual::mButtonAChecksum</a></div><div class="ttdeci">uint32 mButtonAChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00083">manual.h:83</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a604e01214b3b1914736999c6d9801959"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a604e01214b3b1914736999c6d9801959">Obj::CManual::mNeverShowMeters</a></div><div class="ttdeci">bool mNeverShowMeters</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00091">manual.h:91</a></div></div>
+<div class="ttc" id="a_skater_balance_trick_component_8h_html"><div class="ttname"><a href="../../d5/d68/_skater_balance_trick_component_8h.html">SkaterBalanceTrickComponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a1a1938646282f96bb645836fe2cce2fa"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a1a1938646282f96bb645836fe2cce2fa">Obj::CManual::mpSkaterBalanceTrickComponent</a></div><div class="ttdeci">CSkaterBalanceTrickComponent * mpSkaterBalanceTrickComponent</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00068">manual.h:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_aa66866b81dfc919175555eb125b2b892"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#aa66866b81dfc919175555eb125b2b892">Obj::CManual::SwitchOnMeters</a></div><div class="ttdeci">void SwitchOnMeters()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00200">manual.cpp:200</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html_aec5fcf6e4180c17487dd95af8e5e5c4b"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html#aec5fcf6e4180c17487dd95af8e5e5c4b">Obj::CAnimationComponent::SetWobbleTarget</a></div><div class="ttdeci">void SetWobbleTarget(float alpha, bool propagate)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2e/animationcomponent_8cpp_source.html#l01215">animationcomponent.cpp:1215</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_ad2e957d6970efe9ec0e2eb3ed9f7e932"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#ad2e957d6970efe9ec0e2eb3ed9f7e932">Obj::CManual::scale_with_frame_length</a></div><div class="ttdeci">float scale_with_frame_length(float frame_length, float f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00181">manual.cpp:181</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_rail_node_html_a98f27f34383b089194730053b8e16977"><div class="ttname"><a href="../../dc/d0c/class_obj_1_1_c_rail_node.html#a98f27f34383b089194730053b8e16977">Obj::CRailNode::ProbablyOnSameRailAs</a></div><div class="ttdeci">bool ProbablyOnSameRailAs(int SearchNode) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/dfa/rail_8cpp_source.html#l01188">rail.cpp:1188</a></div></div>
+<div class="ttc" id="asounds_8h_html"><div class="ttname"><a href="../../dc/ddc/sounds_8h.html">sounds.h</a></div></div>
+<div class="ttc" id="acamera_8h_html"><div class="ttname"><a href="../../d7/df6/camera_8h.html">camera.h</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_player_info_html"><div class="ttname"><a href="../../d3/d76/class_game_net_1_1_player_info.html">GameNet::PlayerInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d1c/_game_net_8h_source.html#l00324">GameNet.h:324</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a3e1190f70a572cd40e29448f4c635adf"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a3e1190f70a572cd40e29448f4c635adf">Obj::CManual::mManualCheese</a></div><div class="ttdeci">float mManualCheese</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00079">manual.h:79</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a14a846c9f98d1aba6398ddeda29f51da"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a14a846c9f98d1aba6398ddeda29f51da">Obj::CManual::mPlayRangeAnimBackwards</a></div><div class="ttdeci">bool mPlayRangeAnimBackwards</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00102">manual.h:102</a></div></div>
+<div class="ttc" id="anamespace_mth_html_ad62429ac906222803b02da8cc801b1bb"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#ad62429ac906222803b02da8cc801b1bb">Mth::Rnd</a></div><div class="ttdeci">int Rnd(int n)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d2d/math_8cpp_source.html#l00170">math.cpp:170</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a898e831be2aa1325949d55cfde93be5b"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a898e831be2aa1325949d55cfde93be5b">Obj::CManual::mpSkater</a></div><div class="ttdeci">CCompositeObject * mpSkater</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00067">manual.h:67</a></div></div>
+<div class="ttc" id="anamespace_mth_html_a9d5105123d4f824fcab0a8e5b748774a"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a9d5105123d4f824fcab0a8e5b748774a">Mth::Abs</a></div><div class="ttdeci">int Abs(int x)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00115">math.h:115</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a77470f9439c589abaa12e623b960dfb6"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a77470f9439c589abaa12e623b960dfb6">Obj::CManual::Init</a></div><div class="ttdeci">void Init(CCompositeObject *pSkater)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00144">manual.cpp:144</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_animation_component_html"><div class="ttname"><a href="../../d3/d4f/class_obj_1_1_c_animation_component.html">Obj::CAnimationComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00044">animationcomponent.h:44</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_byte_info_html"><div class="ttname"><a href="../../df/d07/class_game_net_1_1_msg_byte_info.html">GameNet::MsgByteInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00685">GameMsg.h:685</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_ad39f6409df17fb6ee459d1071258c645"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">Obj::CObject::GetID</a></div><div class="ttdeci">uint32 GetID() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00130">object.h:130</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a3f12a444d83e97d6d09a6cced916af57"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a3f12a444d83e97d6d09a6cced916af57">Obj::CManual::CManual</a></div><div class="ttdeci">CManual()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00134">manual.cpp:134</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a3a7da9dd891a2215e97c03421632a666"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a3a7da9dd891a2215e97c03421632a666">Obj::CObject::SetScript</a></div><div class="ttdeci">void SetScript(Script::CScript *p_script)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00151">object.h:151</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_ac71091145752a794c0b9e8b98670da2f"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#ac71091145752a794c0b9e8b98670da2f">Obj::CManual::Stop</a></div><div class="ttdeci">void Stop()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00208">manual.cpp:208</a></div></div>
+<div class="ttc" id="aclass_net_1_1_server_html"><div class="ttname"><a href="../../d8/d8b/class_net_1_1_server.html">Net::Server</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd4/netserv_8h_source.html#l00043">netserv.h:43</a></div></div>
+<div class="ttc" id="aclass_game_net_1_1_msg_byte_info_html_a5487b1f56e57038a1f43d4b9a8c06ae7"><div class="ttname"><a href="../../df/d07/class_game_net_1_1_msg_byte_info.html#a5487b1f56e57038a1f43d4b9a8c06ae7">GameNet::MsgByteInfo::m_Data</a></div><div class="ttdeci">char m_Data</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d96/_game_msg_8h_source.html#l00688">GameMsg.h:688</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a1cbc9912359527b4df71c4df7d2c8f63"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a1cbc9912359527b4df71c4df7d2c8f63">Obj::CManual::SetUp</a></div><div class="ttdeci">void SetUp(uint32 ButtonAChecksum, uint32 ButtonBChecksum, int Tweak, bool DoFlipCheck, bool PlayRangeAnimBackwards)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00235">manual.cpp:235</a></div></div>
+<div class="ttc" id="aclass_c_skater_button_html"><div class="ttname"><a href="../../da/dd9/class_c_skater_button.html">CSkaterButton</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d36/_skater_button_8h_source.html#l00017">SkaterButton.h:17</a></div></div>
+<div class="ttc" id="aclass_mdl_1_1_score_html"><div class="ttname"><a href="../../d1/d1e/class_mdl_1_1_score.html">Mdl::Score</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df8/score_8h_source.html#l00083">score.h:83</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_stats_manager_component_html"><div class="ttname"><a href="../../d1/dff/class_obj_1_1_c_stats_manager_component.html">Obj::CStatsManagerComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/daa/_stats_manager_component_8h_source.html#l00054">StatsManagerComponent.h:54</a></div></div>
+<div class="ttc" id="a_input_component_8h_html"><div class="ttname"><a href="../../d1/d1a/_input_component_8h.html">InputComponent.h</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="a_skater_core_physics_component_8h_html"><div class="ttname"><a href="../../d7/d7e/_skater_core_physics_component_8h.html">SkaterCorePhysicsComponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_ae13e87ceeee5fa1cd6ed0ea8e76957fc"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#ae13e87ceeee5fa1cd6ed0ea8e76957fc">Obj::CManual::mWobbleEnabled</a></div><div class="ttdeci">bool mWobbleEnabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00090">manual.h:90</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_skater_balance_trick_component_html_a8f75e5069a552742360f3ea803ab0d1a"><div class="ttname"><a href="../../d4/d75/class_obj_1_1_c_skater_balance_trick_component.html#a8f75e5069a552742360f3ea803ab0d1a">Obj::CSkaterBalanceTrickComponent::mBalanceTrickType</a></div><div class="ttdeci">uint32 mBalanceTrickType</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d68/_skater_balance_trick_component_8h_source.html#l00081">SkaterBalanceTrickComponent.h:81</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a12c2f1467d0788725d4d1851a8811e23"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a12c2f1467d0788725d4d1851a8811e23">Obj::CManual::DoManualPhysics</a></div><div class="ttdeci">void DoManualPhysics()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00408">manual.cpp:408</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a63b4cfe4e4b96e3b3aa405b6c5503120"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a63b4cfe4e4b96e3b3aa405b6c5503120">Obj::CManual::mButtonBChecksum</a></div><div class="ttdeci">uint32 mButtonBChecksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00084">manual.h:84</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_a07befc042b898b17f751c304391426f4"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#a07befc042b898b17f751c304391426f4">Obj::CManual::~CManual</a></div><div class="ttdeci">virtual ~CManual()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00139">manual.cpp:139</a></div></div>
+<div class="ttc" id="aclass_c_skater_pad_html_a45e53b1b096ddf3cbb6af6bf3569d4b3"><div class="ttname"><a href="../../de/d49/class_c_skater_pad.html#a45e53b1b096ddf3cbb6af6bf3569d4b3">CSkaterPad::GetButton</a></div><div class="ttdeci">CSkaterButton * GetButton(uint32 NameChecksum)</div></div>
+<div class="ttc" id="ashadow_8h_html"><div class="ttname"><a href="../../d6/dbe/shadow_8h.html">shadow.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_ab6c864b9d1db43582dc66ee66f572ab9"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#ab6c864b9d1db43582dc66ee66f572ab9">Obj::CManual::mManualReleased</a></div><div class="ttdeci">bool mManualReleased</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00080">manual.h:80</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_ae7633ebcb1902446321e483411dcfbdf"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#ae7633ebcb1902446321e483411dcfbdf">Obj::CManual::EnableWobble</a></div><div class="ttdeci">void EnableWobble()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d93/manual_8cpp_source.html#l00401">manual.cpp:401</a></div></div>
+<div class="ttc" id="anamespace_mth_html_aa786219703c4a079a33dfada4463bea0"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#aa786219703c4a079a33dfada4463bea0">Mth::Sgn</a></div><div class="ttdeci">float Sgn(float x)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d45/_math_2math_8h_source.html#l00285">math.h:285</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_a5be071ed601c321ee8e086bcf88e363b"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#a5be071ed601c321ee8e086bcf88e363b">Obj::CObject::GetScript</a></div><div class="ttdeci">Script::CScript * GetScript() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00150">object.h:150</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_manual_html_afe43998ed48370965ee0aa2462a47e40"><div class="ttname"><a href="../../de/dfb/class_obj_1_1_c_manual.html#afe43998ed48370965ee0aa2462a47e40">Obj::CManual::mOldRailNode</a></div><div class="ttdeci">int mOldRailNode</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dab/manual_8h_source.html#l00088">manual.h:88</a></div></div>
+<div class="ttc" id="aanimationcomponent_8h_html"><div class="ttname"><a href="../../dc/d8b/animationcomponent_8h.html">animationcomponent.h</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html">Net::Conn</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00645">net.h:645</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../d2/d93/manual_8cpp.html">manual.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

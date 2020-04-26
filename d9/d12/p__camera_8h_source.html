@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/ngc/p_camera.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d12/p__camera_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_camera.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d12/p__camera_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef _CAMERA_H_</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define _CAMERA_H_</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;dolphin.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d55/p__frame_8h.html">p_frame.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html">    7</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../df/d2c/class_ns_camera.html">NsCamera</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a012a4b764d027861d6c30b3534efb330">    9</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a08bbaaa70298e2a3c8da756da01455ff">   11</a></span>&#160;    <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>            <a class="code" href="../../df/d2c/class_ns_camera.html#a08bbaaa70298e2a3c8da756da01455ff">m_matrix</a>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a4b4d231777ce9a2a10e8662fad8d845f">   12</a></span>&#160;    <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a>            <a class="code" href="../../df/d2c/class_ns_camera.html#a4b4d231777ce9a2a10e8662fad8d845f">m_up</a>;</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a440eda314dcc2227916b0ef334300917">   13</a></span>&#160;    <a class="code" href="../../db/dd6/class_ns_vector.html">NsVector</a>            <a class="code" href="../../df/d2c/class_ns_camera.html#a440eda314dcc2227916b0ef334300917">m_camera</a>;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a1e83765b16c5cf928bfecac0f6f8fed5">   14</a></span>&#160;    <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>            <a class="code" href="../../df/d2c/class_ns_camera.html#a1e83765b16c5cf928bfecac0f6f8fed5">m_current</a>;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a40d83f99080ef35956137c9005404df1">   16</a></span>&#160;    <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>            <a class="code" href="../../df/d2c/class_ns_camera.html#a40d83f99080ef35956137c9005404df1">m_view</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a959bee9d1f2f7dfd34e0fd47a2abcb51">   18</a></span>&#160;    <a class="code" href="../../df/d98/class_ns_frame.html">NsFrame</a>           * <a class="code" href="../../df/d2c/class_ns_camera.html#a959bee9d1f2f7dfd34e0fd47a2abcb51">m_pFrame</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a3562bc7c63d6bd70ed5ecc0673f8b70f">   20</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../df/d2c/class_ns_camera.html#a885158593338b2eea359812a22e179dc">viewx</a>, <a class="code" href="../../df/d2c/class_ns_camera.html#a3562bc7c63d6bd70ed5ecc0673f8b70f">viewy</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a67deebaae3ff6711c964ef2264bb730e">   21</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../df/d2c/class_ns_camera.html#aa82a49c018479dd4587c4baf2168530e">view1x</a>, <a class="code" href="../../df/d2c/class_ns_camera.html#a67deebaae3ff6711c964ef2264bb730e">view1y</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="comment">// Previously in viewport.</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#ac8f0e10bc8d0e6d0e4df2f531353fb21">   24</a></span>&#160;    GXProjectionType    <a class="code" href="../../df/d2c/class_ns_camera.html#ac8f0e10bc8d0e6d0e4df2f531353fb21">m_type</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a127bbf3b4635acbea5ce27684e65c138">   25</a></span>&#160;    Mtx44               <a class="code" href="../../df/d2c/class_ns_camera.html#a127bbf3b4635acbea5ce27684e65c138">m_viewmatrix</a>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#ac4b69f9f9b00e193661c8c3a8877bfcf">   26</a></span>&#160;    u32                 <a class="code" href="../../df/d2c/class_ns_camera.html#af36e56218dac9898ae709a74656e4f73">m_clip_x</a>, <a class="code" href="../../df/d2c/class_ns_camera.html#ac4b69f9f9b00e193661c8c3a8877bfcf">m_clip_y</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a1202464d38bc1fb5128dfc45680b7204">   27</a></span>&#160;    u32                 <a class="code" href="../../df/d2c/class_ns_camera.html#a1202464d38bc1fb5128dfc45680b7204">m_clip_w</a>, <a class="code" href="../../df/d2c/class_ns_camera.html#a2c135a4083934acccdbc93b6110a428e">m_clip_h</a>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a02b0685d51d6e70a9c4fb3bd35e036ce">_setCurrent</a> ( <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a> * <span class="keywordtype">object</span> );</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;                <a class="code" href="../../df/d2c/class_ns_camera.html#a29576286e78227d18cefda793847ded8">NsCamera</a>        ();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;                <a class="code" href="../../df/d2c/class_ns_camera.html#a74a6aa3043a8abf1b68705804f3d4f5a">~NsCamera</a>       ();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a2eda1deb54f996354bda6c242967c0b4">pos</a>             ( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a546a5415e1b0a3df3a1fc71da9d1a489">up</a>              ( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#aa9100080538902574ac6446870126f80">lookAt</a>          ( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a13f6903c21710be5a0ee123565f02400">begin</a>           ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a30d302da5fadd15920125c71158f5cee">end</a>             ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#ab368e25d8ec0199b3c699e58ef123403">offset</a>          ( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a3a3685a92af4c3c45e82cbb175e6ff21">   42</a></span>&#160;    <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>  * <a class="code" href="../../df/d2c/class_ns_camera.html#a3a3685a92af4c3c45e82cbb175e6ff21">getCurrent</a>      ( <span class="keywordtype">void</span> ) { <span class="keywordflow">return</span> &amp;<a class="code" href="../../df/d2c/class_ns_camera.html#a1e83765b16c5cf928bfecac0f6f8fed5">m_current</a>; };</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../de/d1b/class_ns_matrix.html">NsMatrix</a>  * <a class="code" href="../../df/d2c/class_ns_camera.html#ab3dba9d9555f1dcce0f772c655940556">getViewMatrix</a>   ( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a1fd5c3799df72470cf13e56bca14e096">   45</a></span>&#160;    <a class="code" href="../../df/d98/class_ns_frame.html">NsFrame</a>   * <a class="code" href="../../df/d2c/class_ns_camera.html#a1fd5c3799df72470cf13e56bca14e096">getFrame</a>        ( <span class="keywordtype">void</span> ) { <span class="keywordflow">return</span> <a class="code" href="../../df/d2c/class_ns_camera.html#a959bee9d1f2f7dfd34e0fd47a2abcb51">m_pFrame</a>; };</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a788044bc93e2fc0b03a847399d9c5440">   46</a></span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a788044bc93e2fc0b03a847399d9c5440">setFrame</a>        ( <a class="code" href="../../df/d98/class_ns_frame.html">NsFrame</a> * p ) { <a class="code" href="../../df/d2c/class_ns_camera.html#a959bee9d1f2f7dfd34e0fd47a2abcb51">m_pFrame</a> = p; };</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// Previously in viewport.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">   49</a></span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">perspective</a>     ( <span class="keywordtype">void</span> ) { <a class="code" href="../../df/d2c/class_ns_camera.html#ac8f0e10bc8d0e6d0e4df2f531353fb21">m_type</a> = GX_PERSPECTIVE; };</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">perspective</a>     ( u32 <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, u32 <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, u32 width, u32 height );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">perspective</a>     ( <span class="keywordtype">float</span> width, <span class="keywordtype">float</span> height, <span class="keywordtype">float</span> znear, <span class="keywordtype">float</span> zfar );</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">perspective</a>     ( <span class="keywordtype">float</span> fovy, <span class="keywordtype">float</span> aspect );</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">   53</a></span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">orthographic</a>    ( <span class="keywordtype">void</span> ) { <a class="code" href="../../df/d2c/class_ns_camera.html#ac8f0e10bc8d0e6d0e4df2f531353fb21">m_type</a> = GX_ORTHOGRAPHIC; };</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">orthographic</a>    ( u32 <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, u32 <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, u32 width, u32 height );</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#aa5872f7d4a9fa220333a925329a3facc">setViewWindow</a>   ( <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a43261f5b5ac45fe8131277c3876f29be">clip</a>            ( u32 <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, u32 <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, u32 width, u32 height );</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#af54860a6e5013cc5067895406b6a4ab9">   60</a></span>&#160;    <span class="keywordtype">float</span>       <a class="code" href="../../df/d2c/class_ns_camera.html#af54860a6e5013cc5067895406b6a4ab9">GetViewMatrix</a>   ( <span class="keywordtype">int</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">int</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a> ) { <span class="keywordflow">return</span> <a class="code" href="../../df/d2c/class_ns_camera.html#a127bbf3b4635acbea5ce27684e65c138">m_viewmatrix</a>[<a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>][<a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>]; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../df/d2c/class_ns_camera.html#a9036fcc1bf00121bd0ce3e0d943d010d">   61</a></span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../df/d2c/class_ns_camera.html#a9036fcc1bf00121bd0ce3e0d943d010d">SetViewMatrix</a>   ( <span class="keywordtype">int</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">int</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> v ) { <a class="code" href="../../df/d2c/class_ns_camera.html#a127bbf3b4635acbea5ce27684e65c138">m_viewmatrix</a>[<a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>][<a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>] = v; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#endif      // _CAMERA_H_</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_ns_camera_html_a3562bc7c63d6bd70ed5ecc0673f8b70f"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a3562bc7c63d6bd70ed5ecc0673f8b70f">NsCamera::viewy</a></div><div class="ttdeci">float viewy</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00020">p_camera.h:20</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a02b0685d51d6e70a9c4fb3bd35e036ce"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a02b0685d51d6e70a9c4fb3bd35e036ce">NsCamera::_setCurrent</a></div><div class="ttdeci">void _setCurrent(NsMatrix *object)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00151">p_camera.cpp:151</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a4b4d231777ce9a2a10e8662fad8d845f"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a4b4d231777ce9a2a10e8662fad8d845f">NsCamera::m_up</a></div><div class="ttdeci">NsVector m_up</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00012">p_camera.h:12</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html">NsCamera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00007">p_camera.h:7</a></div></div>
+<div class="ttc" id="aclass_ns_matrix_html"><div class="ttname"><a href="../../de/d1b/class_ns_matrix.html">NsMatrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3b/p__matrix_8h_source.html#l00016">p_matrix.h:16</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_ab368e25d8ec0199b3c699e58ef123403"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#ab368e25d8ec0199b3c699e58ef123403">NsCamera::offset</a></div><div class="ttdeci">void offset(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00260">p_camera.cpp:260</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a43261f5b5ac45fe8131277c3876f29be"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a43261f5b5ac45fe8131277c3876f29be">NsCamera::clip</a></div><div class="ttdeci">void clip(u32 x, u32 y, u32 width, u32 height)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00345">p_camera.cpp:345</a></div></div>
+<div class="ttc" id="aclass_ns_frame_html"><div class="ttname"><a href="../../df/d98/class_ns_frame.html">NsFrame</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d55/p__frame_8h_source.html#l00008">p_frame.h:8</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a40d83f99080ef35956137c9005404df1"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a40d83f99080ef35956137c9005404df1">NsCamera::m_view</a></div><div class="ttdeci">NsMatrix m_view</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00016">p_camera.h:16</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a1259e13ef8d26af2c316179afc51de15"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">NsCamera::orthographic</a></div><div class="ttdeci">void orthographic(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00053">p_camera.h:53</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_aa82a49c018479dd4587c4baf2168530e"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#aa82a49c018479dd4587c4baf2168530e">NsCamera::view1x</a></div><div class="ttdeci">float view1x</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00021">p_camera.h:21</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_ac8f0e10bc8d0e6d0e4df2f531353fb21"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#ac8f0e10bc8d0e6d0e4df2f531353fb21">NsCamera::m_type</a></div><div class="ttdeci">GXProjectionType m_type</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00024">p_camera.h:24</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a29576286e78227d18cefda793847ded8"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a29576286e78227d18cefda793847ded8">NsCamera::NsCamera</a></div><div class="ttdeci">NsCamera()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00081">p_camera.cpp:81</a></div></div>
+<div class="ttc" id="aclass_ns_vector_html"><div class="ttname"><a href="../../db/dd6/class_ns_vector.html">NsVector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d71/p__vector_8h_source.html#l00006">p_vector.h:6</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a1e83765b16c5cf928bfecac0f6f8fed5"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a1e83765b16c5cf928bfecac0f6f8fed5">NsCamera::m_current</a></div><div class="ttdeci">NsMatrix m_current</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00014">p_camera.h:14</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a2c135a4083934acccdbc93b6110a428e"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a2c135a4083934acccdbc93b6110a428e">NsCamera::m_clip_h</a></div><div class="ttdeci">u32 m_clip_h</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00027">p_camera.h:27</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a127bbf3b4635acbea5ce27684e65c138"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a127bbf3b4635acbea5ce27684e65c138">NsCamera::m_viewmatrix</a></div><div class="ttdeci">Mtx44 m_viewmatrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00025">p_camera.h:25</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a546a5415e1b0a3df3a1fc71da9d1a489"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a546a5415e1b0a3df3a1fc71da9d1a489">NsCamera::up</a></div><div class="ttdeci">void up(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00118">p_camera.cpp:118</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a959bee9d1f2f7dfd34e0fd47a2abcb51"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a959bee9d1f2f7dfd34e0fd47a2abcb51">NsCamera::m_pFrame</a></div><div class="ttdeci">NsFrame * m_pFrame</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00018">p_camera.h:18</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a788044bc93e2fc0b03a847399d9c5440"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a788044bc93e2fc0b03a847399d9c5440">NsCamera::setFrame</a></div><div class="ttdeci">void setFrame(NsFrame *p)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00046">p_camera.h:46</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a74a6aa3043a8abf1b68705804f3d4f5a"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a74a6aa3043a8abf1b68705804f3d4f5a">NsCamera::~NsCamera</a></div><div class="ttdeci">~NsCamera()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00108">p_camera.cpp:108</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a1fd5c3799df72470cf13e56bca14e096"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a1fd5c3799df72470cf13e56bca14e096">NsCamera::getFrame</a></div><div class="ttdeci">NsFrame * getFrame(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00045">p_camera.h:45</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_aa9100080538902574ac6446870126f80"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#aa9100080538902574ac6446870126f80">NsCamera::lookAt</a></div><div class="ttdeci">void lookAt(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00123">p_camera.cpp:123</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a08bbaaa70298e2a3c8da756da01455ff"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a08bbaaa70298e2a3c8da756da01455ff">NsCamera::m_matrix</a></div><div class="ttdeci">NsMatrix m_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00011">p_camera.h:11</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_af54860a6e5013cc5067895406b6a4ab9"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#af54860a6e5013cc5067895406b6a4ab9">NsCamera::GetViewMatrix</a></div><div class="ttdeci">float GetViewMatrix(int x, int y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00060">p_camera.h:60</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a30d302da5fadd15920125c71158f5cee"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a30d302da5fadd15920125c71158f5cee">NsCamera::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00270">p_camera.cpp:270</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a9036fcc1bf00121bd0ce3e0d943d010d"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a9036fcc1bf00121bd0ce3e0d943d010d">NsCamera::SetViewMatrix</a></div><div class="ttdeci">void SetViewMatrix(int x, int y, float v)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00061">p_camera.h:61</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_af36e56218dac9898ae709a74656e4f73"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#af36e56218dac9898ae709a74656e4f73">NsCamera::m_clip_x</a></div><div class="ttdeci">u32 m_clip_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00026">p_camera.h:26</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a885158593338b2eea359812a22e179dc"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a885158593338b2eea359812a22e179dc">NsCamera::viewx</a></div><div class="ttdeci">float viewx</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00020">p_camera.h:20</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_ac4b69f9f9b00e193661c8c3a8877bfcf"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#ac4b69f9f9b00e193661c8c3a8877bfcf">NsCamera::m_clip_y</a></div><div class="ttdeci">u32 m_clip_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00026">p_camera.h:26</a></div></div>
+<div class="ttc" id="ap__frame_8h_html"><div class="ttname"><a href="../../de/d55/p__frame_8h.html">p_frame.h</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a13f6903c21710be5a0ee123565f02400"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a13f6903c21710be5a0ee123565f02400">NsCamera::begin</a></div><div class="ttdeci">void begin(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00249">p_camera.cpp:249</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a3a3685a92af4c3c45e82cbb175e6ff21"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a3a3685a92af4c3c45e82cbb175e6ff21">NsCamera::getCurrent</a></div><div class="ttdeci">NsMatrix * getCurrent(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00042">p_camera.h:42</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a1202464d38bc1fb5128dfc45680b7204"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a1202464d38bc1fb5128dfc45680b7204">NsCamera::m_clip_w</a></div><div class="ttdeci">u32 m_clip_w</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00027">p_camera.h:27</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a440eda314dcc2227916b0ef334300917"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a440eda314dcc2227916b0ef334300917">NsCamera::m_camera</a></div><div class="ttdeci">NsVector m_camera</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00013">p_camera.h:13</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_aa5872f7d4a9fa220333a925329a3facc"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#aa5872f7d4a9fa220333a925329a3facc">NsCamera::setViewWindow</a></div><div class="ttdeci">void setViewWindow(float x, float y)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00353">p_camera.cpp:353</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a6a17d6914fc4d83136bd326e196a9877"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">Nx::x</a></div><div class="ttdeci">static Mth::Vector x</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01913">CollTriData.cpp:1913</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a2c4208d20b2f4135da401794d4ef398e"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a2c4208d20b2f4135da401794d4ef398e">NsCamera::perspective</a></div><div class="ttdeci">void perspective(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00049">p_camera.h:49</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a67deebaae3ff6711c964ef2264bb730e"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a67deebaae3ff6711c964ef2264bb730e">NsCamera::view1y</a></div><div class="ttdeci">float view1y</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00021">p_camera.h:21</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a2eda1deb54f996354bda6c242967c0b4"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a2eda1deb54f996354bda6c242967c0b4">NsCamera::pos</a></div><div class="ttdeci">void pos(float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00113">p_camera.cpp:113</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_ab3dba9d9555f1dcce0f772c655940556"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#ab3dba9d9555f1dcce0f772c655940556">NsCamera::getViewMatrix</a></div><div class="ttdeci">NsMatrix * getViewMatrix(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00380">p_camera.cpp:380</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_896d666de209fbbe6b042c1a9920af6c.html">ngc</a></li><li class="navelem"><a class="el" href="../../d9/d12/p__camera_8h.html">p_camera.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:37. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

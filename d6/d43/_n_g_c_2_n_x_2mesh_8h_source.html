@@ -1,0 +1,353 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NGC/NX/mesh.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">mesh.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef __MESH_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define __MESH_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core\math.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/geometry_8h.html">core\math\geometry.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d6c/nx_8h.html">gfx\nx.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;material.h&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/df0/p__gx_8h.html">sys\ngc\p_gx.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">// Comment in for 16 bit vertices.</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">//#define SHORT_VERT</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">struct </span>sDLHeader;   <span class="comment">// Forward reference.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//#define MESHFLAG_TEXTURE     (1&lt;&lt;0)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//#define MESHFLAG_COLOURS     (1&lt;&lt;1)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">//#define MESHFLAG_NORMALS     (1&lt;&lt;2)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//#define OBJFLAG_TEXTURE      (1&lt;&lt;0)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//#define OBJFLAG_COLOURS      (1&lt;&lt;1)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//#define OBJFLAG_NORMALS      (1&lt;&lt;2)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//#define OBJFLAG_TRANSPARENT    (1&lt;&lt;3)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html">   27</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html">sCASData</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#abcc4230c49c8dc49d57e647d9e5143fb">   29</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  <a class="code" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#abcc4230c49c8dc49d57e647d9e5143fb">mask</a>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a980fc6591eadffbd642a39f21e9eccb2">   30</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  <a class="code" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a980fc6591eadffbd642a39f21e9eccb2">data0</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a58303dd3aef3c31c12d20f4713acf556">   31</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  <a class="code" href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a58303dd3aef3c31c12d20f4713acf556">data1</a>;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;};</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// Starting to turn this into a class, but since engine is still</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">// C-style, I&#39;m keeping everything public.  Garrett</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html">   36</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html">sMesh</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10">   39</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10">EMeshFlags</a></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a5bcf2b7d6e7d4372c97aa7051dc78bfb">   41</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a5bcf2b7d6e7d4372c97aa7051dc78bfb">MESH_FLAG_IS_INSTANCE</a>               = (1&lt;&lt;0),</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8">   42</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8">MESH_FLAG_ACTIVE</a>                    = (1&lt;&lt;1),</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a4a403a1bb2b93f1e1122b17b1fd1dcf4">   43</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a4a403a1bb2b93f1e1122b17b1fd1dcf4">MESH_FLAG_IS_CLONED</a>                 = (1&lt;&lt;2),</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a2bd7d267c8ccdcd5e91ac19103bd80ba">   44</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a2bd7d267c8ccdcd5e91ac19103bd80ba">MESH_FLAG_VISIBLE</a>                   = (1&lt;&lt;3),       <span class="comment">// Used for batch culling.</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a624e7abcb051b542a58751733d1c3bd0">   45</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a624e7abcb051b542a58751733d1c3bd0">MESH_FLAG_CLONED_POS</a>                = (1&lt;&lt;4),</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a9d403016e0ce8a52b797db925b1eabba">   46</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a9d403016e0ce8a52b797db925b1eabba">MESH_FLAG_CLONED_COL</a>                = (1&lt;&lt;5),</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10ac2e3e3fae84a2e815b4c50ecc8b9815d">   47</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10ac2e3e3fae84a2e815b4c50ecc8b9815d">MESH_FLAG_INDEX_COUNT_SET</a>           = (1&lt;&lt;6),</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10aeb9ebcbfd81197c6b43f0d88b771c8fe">   48</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10aeb9ebcbfd81197c6b43f0d88b771c8fe">MESH_FLAG_NO_SKATER_SHADOW</a>          = (1&lt;&lt;7),</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10af0313d429a3420527d390c3fa0970ba8">   49</a></span>&#160;        <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10af0313d429a3420527d390c3fa0970ba8">MESH_FLAG_CLONED_DL</a>                 = (1&lt;&lt;8),</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    };</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                    <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a61a5f895ddae1c14d486c7b0112b58c9">sMesh</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                    <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#abe6e96c7f2a0a5ad8fd3df9780f59394">~sMesh</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Functions</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#adf1bb638f088ccb683119a3794051bab">wibble_vc</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2265c74cef9d80038e551fa73bfc548c">wibble_normals</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a62eddc29c0e22d346d0a073f9d738333">   58</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a62eddc29c0e22d346d0a073f9d738333">GetChecksum</a>()<span class="keyword">   const </span>{ <span class="keywordflow">return</span> <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ab5c1bf0f8b7c3c9a8b9a2023169a790b">Checksum</a>; }</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a0155f3bdafe0eb94e529b0a7d34d89cf">   59</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a0155f3bdafe0eb94e529b0a7d34d89cf">GetFlags</a>()<span class="keyword">      const           </span>{ <span class="keywordflow">return</span> <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">m_flags</a>; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#acda1570fbd95c0efa82365c276a8f643">   61</a></span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#acda1570fbd95c0efa82365c276a8f643">SetActive</a>( <span class="keywordtype">bool</span> active )        { <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">m_flags</a> = ( <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">m_flags</a> &amp; ~<a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8">MESH_FLAG_ACTIVE</a> ) | ( active ? <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8">MESH_FLAG_ACTIVE</a> : 0 ); }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#aa3c024b9d980bed3d2c0171b0dc6a004">SetPosition</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;pos );</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a93f2a384f530c0e3454b0ed4dd97bf98">GetPosition</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> *<a class="code" href="../../d7/d43/cfuncs_8cpp.html#aa3edcb35ddaa706b45aadff3a48aafdd">p_pos</a> );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a720d9af24f4791ace4da1c85ca845456">SetYRotation</a>( <a class="code" href="../../d5/db9/namespace_mth.html#a97bb408ad8a8dfef08bcd81001073139">Mth::ERot90</a> <a class="code" href="../../d1/d06/namespace_nx.html#ad462be29622bab9de7f93615354778d1">rot</a> );</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#af6d834ff1c1b5bfd0dbcfaeb990a2381">   65</a></span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#af6d834ff1c1b5bfd0dbcfaeb990a2381">SetVisibility</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> mask )    { <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1">m_visibility_mask</a> = mask; }</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ac55a2c2148ade413d5f3400904cfacb1">   66</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ac55a2c2148ade413d5f3400904cfacb1">GetVisibility</a>( <span class="keywordtype">void</span> )           { <span class="keywordflow">return</span> <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1">m_visibility_mask</a>; }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html">sMesh</a>           *<a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#abc35b06bcaf1b42e40b7635ac2b1eba2">Clone</a>( <span class="keywordtype">bool</span> instance = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//  void            Initialize( int num_vertices,</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//                              float* p_positions,</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//#ifdef SHORT_VERT</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//                              s16* p_positions16,</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//                              int shift,</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//                              float off_x,</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">//                              float off_y,</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">//                              float off_z,</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//#endif        // SHORT_VERT</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">//                              s16* p_normals,</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">//                              float* p_tex_coords,</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//                              float* p_env_buffer,</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//                              int num_tc_sets,</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//                              uint32* p_colors,</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//                              int num_indices,</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//                              uint16* p_pos_indices,</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//                              uint16* p_col_indices,</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//                              uint16* p_uv_indices,</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//                              unsigned long material_checksum,</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//                              void *p_scene,</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//                              int num_double,</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//                              uint32* p_double,</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//                              int num_single,</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">//                              int localMeshIndex,</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//                              GXPrimitive primitive_type,</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//                              int bone_idx,</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//                              char *p_vc_wibble_anims  = NULL );</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2833308792d69084007c7b4dbd93b4ad">Build</a>( <span class="keywordtype">int</span> num_indices, <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>* p_pos_indices, <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>* p_col_indices, <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>* p_uv_indices, <span class="keywordtype">bool</span> rebuild = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a09c26dcd4068b13830bbc4e990d34279">Rebuild</a>( <span class="keywordtype">int</span> num_indices, <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>* p_indices );</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// Note: localMeshIndex is the nth instance of a mesh in a sector.</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a7da6628762f3ee279a671c04c9cc3ce2">Submit</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Members</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ab5c1bf0f8b7c3c9a8b9a2023169a790b">  103</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ab5c1bf0f8b7c3c9a8b9a2023169a790b">Checksum</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">  104</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a>                  <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">m_flags</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ae16d513eb8a5fc5f2fe089c75f7f6a35">  105</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a4355d16fcf9f644c9ac84293f0b1801f">int16</a>                   <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ae16d513eb8a5fc5f2fe089c75f7f6a35">m_bone_idx</a>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1">  106</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1">m_visibility_mask</a>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a88e68b6e0160feb7bd792caa04c67913">  107</a></span>&#160;    <span class="keywordtype">float</span>                   <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a88e68b6e0160feb7bd792caa04c67913">m_bottom_y</a>; <span class="comment">// Use this to cull meshes above the skater for shadows.</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">//  sMaterial*              mp_material;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">//  </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">//  uint16                  m_num_indices;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">//  uint16                  m_num_vertex;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//  uint8                   m_vertex_stride;</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">//  uint8                   m_num_uv_sets;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">//  uint16                  m_display_list_size;</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">//  uint8                   m_primitive_type;</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">//  uint8                   m_vertex_format;</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">//  uint16                  m_localMeshIndex;</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">//  uint16*                 mp_index_buffer;</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">//#ifdef SHORT_VERT</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">//  s16*                    mp_posBuffer;</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">//#else</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">//  float*                  mp_posBuffer;</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">//#endif        // SHORT_VERT</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">//  float                   m_offset_x;</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">//  float                   m_offset_y;</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">//  float                   m_offset_z;</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">//  s16*                    mp_normBuffer;</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">//  float*                  mp_uvBuffer;</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">//  float*                  mp_envBuffer;</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="comment">//  uint32*                 mp_colBuffer;</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">//  uint8*                  mp_display_list;</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">//  Mth::CBBox              m_bbox;</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">//  float                   m_sphere[4];</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="comment">//  uint16                  m_numDouble;</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="comment">//  uint16                  m_numSingle;</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="comment">//  uint32*                 mp_doubleWeight;</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">//  char                    *mp_vc_wibble_data;</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">//  GXColor                 m_material_color_override;</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">//  Mth::Vector             m_sphere;</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#aa64f869a674d17d1ea92e446ce4362ed">  150</a></span>&#160;    <a class="code" href="../../d4/d9e/struct_nx_ngc_1_1s_d_l_header.html">sDLHeader</a>*              <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#aa64f869a674d17d1ea92e446ce4362ed">mp_dl</a>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">//  void *                  mp_texture_dl;</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">//  uint32                  m_texture_dl_size;</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="comment">//  bool                    dl_owner;</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a4dc62b6a2d5067c5d14eb0a0fac70a3b">  156</a></span>&#160;    GXColor                 <a class="code" href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a4dc62b6a2d5067c5d14eb0a0fac70a3b">m_base_color</a>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;};</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">// Starting to turn this into a class, but since engine is still</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">// C-style, I&#39;m keeping everything public.  Garrett</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">struct sGroup</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">{</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">public:</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">    // Functions</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="comment">    sMesh*          GetMeshArray(); </span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="comment">    uint            GetNumMeshes() const { return NumMeshes; }</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">    // Members</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">    uint32 ID;</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">    uint8 *pUpload[2];</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">    uint8 *pRender[2];</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">    uint FirstMeshIndex;</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">    uint NumMeshes;</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment">};</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">sGroup*         NewMeshGroup(uint32 group_ID, uint32 num_meshes);</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">sGroup*         LoadMeshGroup(void *p_FH);</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="comment">void            LoadVertices(void *p_FH, sMesh *pMesh, sMaterial *pMat);</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="comment">extern sMesh *Meshes;</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">extern uint NumMeshes, NumMeshGroups;</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">extern uint NumMeshesInGroup[32];</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">extern int TotalNumVertices;</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a27f29d6a538e0a5207fab97dca5c4042">SetMeshScalingParameters</a>( <a class="code" href="../../db/d9f/struct_nx_1_1_s_mesh_scaling_parameters.html">Nx::SMeshScalingParameters</a>* pParams );</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a255e6464b4778c664f83cad23353b679">DisableMeshScaling</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d63/namespace_nx_ngc.html#a366de671128be06feec07973e2047086">ApplyMeshScaling</a>( <a class="code" href="../../d9/de2/struct_nx_ngc_1_1s_object_header.html">NxNgc::sObjectHeader</a> * p_object );</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;} <span class="comment">// namespace NxNgc</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">#endif // __MESH_H</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_mth_html_a97bb408ad8a8dfef08bcd81001073139"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#a97bb408ad8a8dfef08bcd81001073139">Mth::ERot90</a></div><div class="ttdeci">ERot90</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d40/rot90_8h_source.html#l00012">rot90.h:12</a></div></div>
+<div class="ttc" id="ap__gx_8h_html"><div class="ttname"><a href="../../dd/df0/p__gx_8h.html">p_gx.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a09c26dcd4068b13830bbc4e990d34279"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a09c26dcd4068b13830bbc4e990d34279">NxNgc::sMesh::Rebuild</a></div><div class="ttdeci">void Rebuild(int num_indices, uint16 *p_indices)</div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a7da6628762f3ee279a671c04c9cc3ce2"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a7da6628762f3ee279a671c04c9cc3ce2">NxNgc::sMesh::Submit</a></div><div class="ttdeci">void Submit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00491">mesh.cpp:491</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_d_l_header_html"><div class="ttname"><a href="../../d4/d9e/struct_nx_ngc_1_1s_d_l_header.html">NxNgc::sDLHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00838">p_gx.h:838</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a366de671128be06feec07973e2047086"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a366de671128be06feec07973e2047086">NxNgc::ApplyMeshScaling</a></div><div class="ttdeci">void ApplyMeshScaling(NxNgc::sObjectHeader *p_object)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00143">mesh.cpp:143</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a0155f3bdafe0eb94e529b0a7d34d89cf"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a0155f3bdafe0eb94e529b0a7d34d89cf">NxNgc::sMesh::GetFlags</a></div><div class="ttdeci">uint32 GetFlags() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00059">mesh.h:59</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a255e6464b4778c664f83cad23353b679"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a255e6464b4778c664f83cad23353b679">NxNgc::DisableMeshScaling</a></div><div class="ttdeci">void DisableMeshScaling(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00058">mesh.cpp:58</a></div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="../../d4/d67/geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_ab5c1bf0f8b7c3c9a8b9a2023169a790b"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ab5c1bf0f8b7c3c9a8b9a2023169a790b">NxNgc::sMesh::Checksum</a></div><div class="ttdeci">uint32 Checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00103">mesh.h:103</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_c_a_s_data_html_a980fc6591eadffbd642a39f21e9eccb2"><div class="ttname"><a href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a980fc6591eadffbd642a39f21e9eccb2">NxNgc::sCASData::data0</a></div><div class="ttdeci">uint32 data0</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00030">mesh.h:30</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a1db016226129a6aea1f054129f7303e1"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a1db016226129a6aea1f054129f7303e1">NxNgc::sMesh::m_visibility_mask</a></div><div class="ttdeci">uint32 m_visibility_mask</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00106">mesh.h:106</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a2bd7d267c8ccdcd5e91ac19103bd80ba"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a2bd7d267c8ccdcd5e91ac19103bd80ba">NxNgc::sMesh::MESH_FLAG_VISIBLE</a></div><div class="ttdeci">@ MESH_FLAG_VISIBLE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00044">mesh.h:44</a></div></div>
+<div class="ttc" id="astruct_nx_1_1_s_mesh_scaling_parameters_html"><div class="ttname"><a href="../../db/d9f/struct_nx_1_1_s_mesh_scaling_parameters.html">Nx::SMeshScalingParameters</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d6c/nx_8h_source.html#l00050">nx.h:50</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10">NxNgc::sMesh::EMeshFlags</a></div><div class="ttdeci">EMeshFlags</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00039">mesh.h:39</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_c_a_s_data_html"><div class="ttname"><a href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html">NxNgc::sCASData</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00027">mesh.h:27</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_c_a_s_data_html_abcc4230c49c8dc49d57e647d9e5143fb"><div class="ttname"><a href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#abcc4230c49c8dc49d57e647d9e5143fb">NxNgc::sCASData::mask</a></div><div class="ttdeci">uint32 mask</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00029">mesh.h:29</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html">NxNgc::sMesh</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00036">mesh.h:36</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_aa3c024b9d980bed3d2c0171b0dc6a004"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#aa3c024b9d980bed3d2c0171b0dc6a004">NxNgc::sMesh::SetPosition</a></div><div class="ttdeci">void SetPosition(Mth::Vector &amp;pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l01198">mesh.cpp:1198</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_ae16d513eb8a5fc5f2fe089c75f7f6a35"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ae16d513eb8a5fc5f2fe089c75f7f6a35">NxNgc::sMesh::m_bone_idx</a></div><div class="ttdeci">int16 m_bone_idx</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00105">mesh.h:105</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_adf1bb638f088ccb683119a3794051bab"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#adf1bb638f088ccb683119a3794051bab">NxNgc::sMesh::wibble_vc</a></div><div class="ttdeci">void wibble_vc(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00462">mesh.cpp:462</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10aeb9ebcbfd81197c6b43f0d88b771c8fe"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10aeb9ebcbfd81197c6b43f0d88b771c8fe">NxNgc::sMesh::MESH_FLAG_NO_SKATER_SHADOW</a></div><div class="ttdeci">@ MESH_FLAG_NO_SKATER_SHADOW</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00048">mesh.h:48</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a25ae5e3f04edec7d51c01286c9ef1fd8">NxNgc::sMesh::MESH_FLAG_ACTIVE</a></div><div class="ttdeci">@ MESH_FLAG_ACTIVE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00042">mesh.h:42</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2265c74cef9d80038e551fa73bfc548c"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2265c74cef9d80038e551fa73bfc548c">NxNgc::sMesh::wibble_normals</a></div><div class="ttdeci">void wibble_normals(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00418">mesh.cpp:418</a></div></div>
+<div class="ttc" id="anamespace_nx_html_ad462be29622bab9de7f93615354778d1"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#ad462be29622bab9de7f93615354778d1">Nx::rot</a></div><div class="ttdeci">void rot(Mth::Vector &amp;v)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01916">CollTriData.cpp:1916</a></div></div>
+<div class="ttc" id="anx_8h_html"><div class="ttname"><a href="../../d7/d6c/nx_8h.html">nx.h</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a172e87a3116b5e5edde4b0f0267ec91f"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a172e87a3116b5e5edde4b0f0267ec91f">NxNgc::sMesh::m_flags</a></div><div class="ttdeci">uint16 m_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00104">mesh.h:104</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_abc35b06bcaf1b42e40b7635ac2b1eba2"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#abc35b06bcaf1b42e40b7635ac2b1eba2">NxNgc::sMesh::Clone</a></div><div class="ttdeci">sMesh * Clone(bool instance=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00521">mesh.cpp:521</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a62eddc29c0e22d346d0a073f9d738333"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a62eddc29c0e22d346d0a073f9d738333">NxNgc::sMesh::GetChecksum</a></div><div class="ttdeci">uint32 GetChecksum() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00058">mesh.h:58</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_object_header_html"><div class="ttname"><a href="../../d9/de2/struct_nx_ngc_1_1s_object_header.html">NxNgc::sObjectHeader</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df0/p__gx_8h_source.html#l00815">p_gx.h:815</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a4dc62b6a2d5067c5d14eb0a0fac70a3b"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a4dc62b6a2d5067c5d14eb0a0fac70a3b">NxNgc::sMesh::m_base_color</a></div><div class="ttdeci">GXColor m_base_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00156">mesh.h:156</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a93f2a384f530c0e3454b0ed4dd97bf98"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a93f2a384f530c0e3454b0ed4dd97bf98">NxNgc::sMesh::GetPosition</a></div><div class="ttdeci">void GetPosition(Mth::Vector *p_pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l01238">mesh.cpp:1238</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_acda1570fbd95c0efa82365c276a8f643"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#acda1570fbd95c0efa82365c276a8f643">NxNgc::sMesh::SetActive</a></div><div class="ttdeci">void SetActive(bool active)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00061">mesh.h:61</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10ac2e3e3fae84a2e815b4c50ecc8b9815d"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10ac2e3e3fae84a2e815b4c50ecc8b9815d">NxNgc::sMesh::MESH_FLAG_INDEX_COUNT_SET</a></div><div class="ttdeci">@ MESH_FLAG_INDEX_COUNT_SET</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00047">mesh.h:47</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2833308792d69084007c7b4dbd93b4ad"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2833308792d69084007c7b4dbd93b4ad">NxNgc::sMesh::Build</a></div><div class="ttdeci">void Build(int num_indices, uint16 *p_pos_indices, uint16 *p_col_indices, uint16 *p_uv_indices, bool rebuild=false)</div></div>
+<div class="ttc" id="anamespace_nx_ngc_html"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html">NxNgc</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d88/_n_g_c_2_n_x_2anim_8cpp_source.html#l00016">anim.cpp:16</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10af0313d429a3420527d390c3fa0970ba8"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10af0313d429a3420527d390c3fa0970ba8">NxNgc::sMesh::MESH_FLAG_CLONED_DL</a></div><div class="ttdeci">@ MESH_FLAG_CLONED_DL</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00049">mesh.h:49</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_af6d834ff1c1b5bfd0dbcfaeb990a2381"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#af6d834ff1c1b5bfd0dbcfaeb990a2381">NxNgc::sMesh::SetVisibility</a></div><div class="ttdeci">void SetVisibility(uint32 mask)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00065">mesh.h:65</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a4a403a1bb2b93f1e1122b17b1fd1dcf4"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a4a403a1bb2b93f1e1122b17b1fd1dcf4">NxNgc::sMesh::MESH_FLAG_IS_CLONED</a></div><div class="ttdeci">@ MESH_FLAG_IS_CLONED</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00043">mesh.h:43</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a9d403016e0ce8a52b797db925b1eabba"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a9d403016e0ce8a52b797db925b1eabba">NxNgc::sMesh::MESH_FLAG_CLONED_COL</a></div><div class="ttdeci">@ MESH_FLAG_CLONED_COL</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00046">mesh.h:46</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_abe6e96c7f2a0a5ad8fd3df9780f59394"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#abe6e96c7f2a0a5ad8fd3df9780f59394">NxNgc::sMesh::~sMesh</a></div><div class="ttdeci">~sMesh(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00325">mesh.cpp:325</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a61a5f895ddae1c14d486c7b0112b58c9"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a61a5f895ddae1c14d486c7b0112b58c9">NxNgc::sMesh::sMesh</a></div><div class="ttdeci">sMesh(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00291">mesh.cpp:291</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a5bcf2b7d6e7d4372c97aa7051dc78bfb"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a5bcf2b7d6e7d4372c97aa7051dc78bfb">NxNgc::sMesh::MESH_FLAG_IS_INSTANCE</a></div><div class="ttdeci">@ MESH_FLAG_IS_INSTANCE</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00041">mesh.h:41</a></div></div>
+<div class="ttc" id="acfuncs_8cpp_html_aa3edcb35ddaa706b45aadff3a48aafdd"><div class="ttname"><a href="../../d7/d43/cfuncs_8cpp.html#aa3edcb35ddaa706b45aadff3a48aafdd">p_pos</a></div><div class="ttdeci">static char * p_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d43/cfuncs_8cpp_source.html#l00203">cfuncs.cpp:203</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a88e68b6e0160feb7bd792caa04c67913"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a88e68b6e0160feb7bd792caa04c67913">NxNgc::sMesh::m_bottom_y</a></div><div class="ttdeci">float m_bottom_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00107">mesh.h:107</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a720d9af24f4791ace4da1c85ca845456"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a720d9af24f4791ace4da1c85ca845456">NxNgc::sMesh::SetYRotation</a></div><div class="ttdeci">void SetYRotation(Mth::ERot90 rot)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l01247">mesh.cpp:1247</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_aa64f869a674d17d1ea92e446ce4362ed"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#aa64f869a674d17d1ea92e446ce4362ed">NxNgc::sMesh::mp_dl</a></div><div class="ttdeci">sDLHeader * mp_dl</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00150">mesh.h:150</a></div></div>
+<div class="ttc" id="anamespace_nx_ngc_html_a27f29d6a538e0a5207fab97dca5c4042"><div class="ttname"><a href="../../da/d63/namespace_nx_ngc.html#a27f29d6a538e0a5207fab97dca5c4042">NxNgc::SetMeshScalingParameters</a></div><div class="ttdeci">void SetMeshScalingParameters(Nx::SMeshScalingParameters *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d65/_n_g_c_2_n_x_2mesh_8cpp_source.html#l00040">mesh.cpp:40</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_c_a_s_data_html_a58303dd3aef3c31c12d20f4713acf556"><div class="ttname"><a href="../../da/d47/struct_nx_ngc_1_1s_c_a_s_data.html#a58303dd3aef3c31c12d20f4713acf556">NxNgc::sCASData::data1</a></div><div class="ttdeci">uint32 data1</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00031">mesh.h:31</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_a2a7a964ed79cc1c9a51c7b44ca072b10a624e7abcb051b542a58751733d1c3bd0"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#a2a7a964ed79cc1c9a51c7b44ca072b10a624e7abcb051b542a58751733d1c3bd0">NxNgc::sMesh::MESH_FLAG_CLONED_POS</a></div><div class="ttdeci">@ MESH_FLAG_CLONED_POS</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00045">mesh.h:45</a></div></div>
+<div class="ttc" id="astruct_nx_ngc_1_1s_mesh_html_ac55a2c2148ade413d5f3400904cfacb1"><div class="ttname"><a href="../../df/d4e/struct_nx_ngc_1_1s_mesh.html#ac55a2c2148ade413d5f3400904cfacb1">NxNgc::sMesh::GetVisibility</a></div><div class="ttdeci">uint32 GetVisibility(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h_source.html#l00066">mesh.h:66</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a05f6b0ae8f6a6e135b0e290c25fe0e4e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a05f6b0ae8f6a6e135b0e290c25fe0e4e">uint16</a></div><div class="ttdeci">unsigned short uint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00135">Defines.h:135</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a4355d16fcf9f644c9ac84293f0b1801f"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a4355d16fcf9f644c9ac84293f0b1801f">int16</a></div><div class="ttdeci">short int16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00131">Defines.h:131</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_fc598ce00690b1053355ea44bbe38731.html">NGC</a></li><li class="navelem"><a class="el" href="../../dir_73de6e80b2aaf5bdccd3aa1409a233c3.html">NX</a></li><li class="navelem"><a class="el" href="../../d6/d43/_n_g_c_2_n_x_2mesh_8h.html">mesh.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

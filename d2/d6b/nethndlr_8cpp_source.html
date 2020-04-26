@@ -1,0 +1,908 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Net/Handler/nethndlr.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d6b/nethndlr_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">nethndlr.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d6b/nethndlr_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        GEL (Game Engine Library)                               **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Net (OBJ)                                               **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      net.cpp                                                 **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created:        01/29/01    -   spg                                     **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Network Manager code                                    **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d97/net_8h.html">gel/net/net.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd4/netserv_8h.html">gel/net/server/netserv.h</a>&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d20/netclnt_8h.html">gel/net/client/netclnt.h</a>&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">//#define DEBUG_MESSAGES</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">**                              DBG Defines                                 **</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d7/d50/namespace_net.html">Net</a></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">**                              Private Types                               **</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">**                             Private Functions                            **</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/* Ack important messages                                         */</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d7/d50/namespace_net.html#ad8b0f213ec8c6cce2194db6ba89e8175">handle_ack</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;{</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    MsgImpLink *msg_imp_link, *next_imp;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    MsgSeqLink *msg_seq_link, *next_seq;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    Lst::Search&lt; MsgImpLink &gt; imp_sh;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    Lst::Search&lt; MsgSeqLink &gt; seq_sh;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> *ack_msg;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    QueuedMsg* msg;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    QueuedMsgSeq* msg_seq;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> send_time;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    ack_msg = (<a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a>*) context-&gt;m_Msg;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    send_time = 0;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;#ifdef DEBUG_MESSAGES</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;IsRemote())</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;(%d) Conn %d: (%d) Got Ack for Packetstamp %d\n&quot;</span>, </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            context-&gt;m_App-&gt;m_FrameCounter, </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            context-&gt;m_Conn-&gt;GetHandle(),</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            context-&gt;m_App-&gt;m_Timestamp, </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            ack_msg-&gt;m_Packetstamp );</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../d7/d50/namespace_net.html#ad8b0f213ec8c6cce2194db6ba89e8175">  108</a></span>&#160;    }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#ifdef __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="comment">/*if( context-&gt;m_Conn-&gt;GetHandle() != ack_msg-&gt;m_Handle )</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">        Lst::Search&lt; Conn &gt; sh;</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">        Conn* conn;</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">        for( conn = context-&gt;m_App-&gt;FirstConnection( &amp;sh ); conn; conn = context-&gt;m_App-&gt;NextConnection( &amp;sh ))</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">            Dbg_Printf( &quot;*** Conn %d : %p. Ip: 0x%x Port: %d\n&quot;, conn-&gt;GetHandle(), conn, conn-&gt;GetIP(), conn-&gt;GetPort());</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">    Dbg_MsgAssert( context-&gt;m_Conn-&gt;GetHandle() == ack_msg-&gt;m_Handle, (&quot;*** Different handles! %d %d\n&quot;, context-&gt;m_Conn-&gt;GetHandle(), ack_msg-&gt;m_Handle ));*/</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="comment">// Tell the dispatcher the size of this message because it does not know (optimization)</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    context-&gt;m_MsgLength = <span class="keyword">sizeof</span>( <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> );</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="comment">// Don&#39;t ack foreign acks. We only even handle them because we need to tell the dispatcher</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <span class="comment">// the length of the message</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_PacketFlags &amp; <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c">mHANDLE_FOREIGN</a> )</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">for</span>( msg_imp_link = imp_sh.FirstItem( context-&gt;m_Conn-&gt;m_important_msg_list ); </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            msg_imp_link; msg_imp_link = next_imp )</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    {</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        next_imp = imp_sh.NextItem();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">if</span>( ( ack_msg-&gt;m_Packetstamp == (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) msg_imp_link-&gt;m_Packetstamp ) &amp;&amp;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            ( msg_imp_link-&gt;m_Timestamp != 0 )) <span class="comment">// guard against acking packet stamp of zero where zero is the initialized value</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        {</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            msg = msg_imp_link-&gt;m_QMsg;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            msg-&gt;m_Ref.Release();</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">if</span>( msg-&gt;m_Ref.InUse() == false )</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                <span class="keyword">delete</span> msg;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            send_time = msg_imp_link-&gt;m_Timestamp;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keyword">delete</span> msg_imp_link;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    }   </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">for</span>( msg_seq_link = seq_sh.FirstItem( context-&gt;m_Conn-&gt;m_sequenced_msg_list ); </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;            msg_seq_link; msg_seq_link = next_seq )</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        next_seq = seq_sh.NextItem();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="comment">// ACK the message</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="keywordflow">if</span>( ( ack_msg-&gt;m_Packetstamp == (<span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>) msg_seq_link-&gt;m_Packetstamp ) &amp;&amp;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            ( msg_seq_link-&gt;m_Timestamp != 0 )) <span class="comment">// guard against acking packet stamp of zero where zero is the initialized value</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            msg_seq = msg_seq_link-&gt;m_QMsg;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            msg_seq-&gt;m_Ref.Release();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="comment">// If this message is no longer being referenced, free it</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span>( msg_seq-&gt;m_Ref.InUse() == false )</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                <span class="keyword">delete</span> msg_seq;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            send_time = msg_seq_link-&gt;m_Timestamp;</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;            <span class="keyword">delete</span> msg_seq_link;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// If we can detect that the connection is starting to take longer to ack</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <span class="comment">// our messages then affect his calculated latency so that we don&#39;t expect</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="comment">// acks back so quickly (which prompts resends )</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">if</span>( ( context-&gt;m_Conn-&gt;IsRemote()) &amp;&amp;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        ( context-&gt;m_Conn-&gt;TestStatus( <a class="code" href="../../d9/d3a/class_net_1_1_conn.html#aaf93d92df2ac7bd4cff4524d9968076aa1794f4db5f46ea07cf2d94b4b6a7bb9e">Conn::mSTATUS_READY</a> )) &amp;&amp;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        ( send_time &gt; 0 ))</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    {</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> latency_value;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        latency_value = context-&gt;m_App-&gt;m_Timestamp - send_time;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="keywordflow">if</span>( latency_value &gt; (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) context-&gt;m_Conn-&gt;GetAveLatency())</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        {</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            <span class="keywordflow">if</span>( latency_value &gt; <a class="code" href="../../d5/d7d/class_net_1_1_app.html#ac5684bdf672802935d133acbd576db9d">App::MAX_LATENCY</a> )</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;                latency_value = <a class="code" href="../../d5/d7d/class_net_1_1_app.html#ac5684bdf672802935d133acbd576db9d">App::MAX_LATENCY</a>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            }</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            context-&gt;m_Conn-&gt;m_latency_test.InputLatencyValue( latency_value );</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        }</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="comment">/* Aggregate stream messages                                      */</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/d7d/class_net_1_1_app.html#a4d7df751db654cfec0fa9b0895806198">App::handle_stream_messages</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;{</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().NetworkHeap());</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="comment">//Dbg_Printf( &quot;******** Got Stream Message\n&quot; );</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">switch</span>( context-&gt;m_MsgId )</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    {</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a70139e09be9fa042dd825d1f1e57072d">MSG_ID_STREAM_START</a>:</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;            <span class="comment">//Dbg_Printf( &quot;******** Got Stream Start\n&quot; );</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;            MsgStreamStart* msg;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;            StreamLink* str_link;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;            StreamDesc* new_stream;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            Lst::Search&lt; StreamLink &gt; str_sh;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;            <span class="keywordtype">int</span> packet_len;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;            msg = (MsgStreamStart*) context-&gt;m_Msg;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;            </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;            <span class="keywordflow">for</span>( str_link = str_sh.FirstItem( context-&gt;m_Conn-&gt;m_StreamInList ); str_link; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                    str_link = str_sh.NextItem())</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                StreamDesc* desc;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                desc = str_link-&gt;m_Desc;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <span class="keywordflow">if</span>( desc-&gt;m_StreamId == msg-&gt;m_StreamId )</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            }</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            </div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;            new_stream = <span class="keyword">new</span> StreamDesc;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;            strcpy( new_stream-&gt;m_StreamDesc, msg-&gt;m_StreamDesc );</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;StreamDesc: %s\n&quot;</span>, new_stream-&gt;m_StreamDesc );</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;            new_stream-&gt;m_Size = msg-&gt;m_Size;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            new_stream-&gt;m_StreamId = msg-&gt;m_StreamId;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            new_stream-&gt;m_Checksum = msg-&gt;m_Checksum;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            new_stream-&gt;m_MsgId = msg-&gt;m_MsgId;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            new_stream-&gt;m_Data = <span class="keyword">new</span> <span class="keywordtype">char</span>[ msg-&gt;m_Size ];</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            new_stream-&gt;m_DataPtr = new_stream-&gt;m_Data;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            packet_len = ( msg-&gt;m_Size &lt; MAX_STREAM_CHUNK_LENGTH ) ? msg-&gt;m_Size : MAX_STREAM_CHUNK_LENGTH;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            memcpy( new_stream-&gt;m_Data, msg-&gt;m_Data, packet_len );</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            new_stream-&gt;m_DataPtr += packet_len;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            str_link = <span class="keyword">new</span> StreamLink( new_stream );</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            context-&gt;m_Conn-&gt;m_StreamInList.AddToTail( str_link );</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;            <span class="keywordflow">if</span>(((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_DataPtr - (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_Data ) &gt;= (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_Size )</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                MsgHandlerContext msg_context;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                <span class="keywordtype">int</span> result;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                <span class="comment">// Shouldn&#39;t go over</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                Dbg_Assert( ((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_DataPtr - (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_Data ) == (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) new_stream-&gt;m_Size );</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                msg_context.m_Conn = context-&gt;m_Conn;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                msg_context.m_App = context-&gt;m_App;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                msg_context.m_PacketFlags = 0;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                msg_context.m_MsgId = new_stream-&gt;m_MsgId;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                msg_context.m_MsgLength = new_stream-&gt;m_Size;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                msg_context.m_Msg = <span class="keyword">new</span> <span class="keywordtype">char</span>[new_stream-&gt;m_Size];</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                </div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                memcpy( msg_context.m_Msg, new_stream-&gt;m_Data, new_stream-&gt;m_Size );</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                result = context-&gt;m_App-&gt;m_Dispatcher.DispatchMessage( &amp;msg_context );</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                <span class="keywordflow">if</span>( result != <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa6d92b4b0dc1099879ed6da23fff3a51">HANDLER_MSG_DESTROYED</a> )</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    <span class="keyword">delete</span> str_link-&gt;m_Desc;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    <span class="keyword">delete</span> str_link;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keyword">delete</span> [] msg_context.m_Msg;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            }</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">case</span> <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a53c13dd73e4202c34a0a14185a62b465">MSG_ID_STREAM_DATA</a>:</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            MsgStreamData* msg;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            StreamLink* str_link;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            Lst::Search&lt; StreamLink &gt; str_sh;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            msg = (MsgStreamData*) context-&gt;m_Msg;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="comment">//Dbg_Printf( &quot;******** Got Stream Data\n&quot; );</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            <span class="keywordflow">for</span>( str_link = str_sh.FirstItem( context-&gt;m_Conn-&gt;m_StreamInList ); str_link; </div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                    str_link = str_sh.NextItem())</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                StreamDesc* desc;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                <span class="keywordtype">int</span> packet_len;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                desc = str_link-&gt;m_Desc;</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                <span class="keywordflow">if</span>( desc-&gt;m_StreamId == msg-&gt;m_StreamId )</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                {   </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                    packet_len = context-&gt;m_MsgLength - <span class="keyword">sizeof</span>( int );  <span class="comment">// subtract the size of the stream id</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                    memcpy( desc-&gt;m_DataPtr, msg-&gt;m_Data, packet_len );</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                    desc-&gt;m_DataPtr += packet_len;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;                    <span class="keywordflow">if</span>(((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_DataPtr - (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_Data ) &gt;= (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_Size )</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                    {</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                        MsgHandlerContext msg_context;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                        <span class="keywordtype">int</span> result;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> actual_crc;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160; </div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                        <span class="comment">// Shouldn&#39;t go over</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                        Dbg_Assert( ((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_DataPtr - (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_Data ) == (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>) desc-&gt;m_Size );</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;                        msg_context.m_Conn = context-&gt;m_Conn;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                        msg_context.m_App = context-&gt;m_App;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                        msg_context.m_PacketFlags = 0;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                        msg_context.m_MsgId = desc-&gt;m_MsgId;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                        msg_context.m_MsgLength = desc-&gt;m_Size;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                        msg_context.m_Msg = <span class="keyword">new</span> <span class="keywordtype">char</span>[desc-&gt;m_Size];</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                        </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                        memcpy( msg_context.m_Msg, desc-&gt;m_Data, desc-&gt;m_Size );</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                        actual_crc = <a class="code" href="../../d3/d9b/namespace_crc.html#a60ea952dd05dcbab6d54f8f922f35872">Crc::GenerateCRCCaseSensitive</a>( msg_context.m_Msg, desc-&gt;m_Size );</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                        <span class="keywordflow">if</span>( actual_crc != desc-&gt;m_Checksum )</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                        {</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                            msg_context.m_PacketFlags |= <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a0c0ce28cb697b1455ec0fd3472bf988e">mHANDLE_CRC_MISMATCH</a>;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;                            <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;CRC MISMATCH!!!\n&quot;</span> );</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;                        }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;                        <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;handling stream: %s\n&quot;</span>, desc-&gt;m_StreamDesc );</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;                        result = context-&gt;m_App-&gt;m_Dispatcher.DispatchMessage( &amp;msg_context );</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;                        <span class="keywordflow">if</span>( result != <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa6d92b4b0dc1099879ed6da23fff3a51">HANDLER_MSG_DESTROYED</a> )</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;                        {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;                            <span class="keyword">delete</span> str_link-&gt;m_Desc;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;                            <span class="keyword">delete</span> str_link;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;                        }</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;                        <span class="keyword">delete</span> [] msg_context.m_Msg;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;                        <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;                        <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;                    }</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;            }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;}</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">/* Put sequenced messages in their queue in order in their group  */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/d7d/class_net_1_1_app.html#adbacd4fc3c3cef29afffedbecb5cd317">App::handle_sequenced_messages</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;{</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    MsgSeqLink *msg_link;   </div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">short</span>  msg_len;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    QueuedMsgSeq* queued_msg;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> group_id, msg_id; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> seq_id;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    Lst::Search&lt; MsgHandler &gt; sh;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a> = context-&gt;m_Msg;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    memcpy( &amp;group_id, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">char</span> ));</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a> += <span class="keyword">sizeof</span>( char );</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    memcpy( &amp;seq_id, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ));</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a> += <span class="keyword">sizeof</span> (<span class="keywordtype">unsigned</span> int ); </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        </div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;    <span class="comment">// don&#39;t accept old sequenced messages</span></div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="keywordflow">if</span>( seq_id &lt; context-&gt;m_Conn-&gt;m_WaitingForSequenceId[ group_id ] )</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    {</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    }</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    </div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().NetworkHeap());</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160; </div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    memcpy( &amp;msg_id, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> ));</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a> += <span class="keyword">sizeof</span>( <span class="keywordtype">unsigned</span> char );</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    msg_len = context-&gt;m_MsgLength - <a class="code" href="../../df/d02/class_net_1_1_manager.html#a7fabc26f1dfa307c5b28178ac609230da3d5259b2545932e7dea576fbd8272334">Manager::vMSG_SEQ_HEADER_LENGTH</a>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    queued_msg = <span class="keyword">new</span> QueuedMsgSeq( msg_id, msg_len, <a class="code" href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">data</a>, group_id );</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    msg_link = <span class="keyword">new</span> MsgSeqLink( queued_msg );</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    msg_link-&gt;SetPri( seq_id );</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    msg_link-&gt;m_Timestamp = 0;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    msg_link-&gt;m_Packetstamp = 0;</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    msg_link-&gt;m_GroupId = group_id;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    msg_link-&gt;m_SequenceId = seq_id;</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="comment">// This might be dangerous in some apps, but it makes sense right now.  Don&#39;t add</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="comment">// this message to the sequenced queue if we dont have a handler for it.</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="comment">/*if( sh.FirstItem( context-&gt;m_App-&gt;m_Dispatcher.m_handler_list[msg_id] ) == NULL )</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">        Dbg_MsgAssert( 0, ( &quot;No handler for msg %d\n&quot;, msg_id ));</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="comment">        delete msg_link-&gt;m_QMsg;</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="comment">        delete msg_link;    </span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="comment">        return HANDLER_MSG_DONE;</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="comment">    }*/</span></div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        <span class="comment">// Don&#39;t re-add identical sequenced messages</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;m_SequencedBuffer[group_id].AddUniqueSequence( msg_link ) == <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;    {</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;        <span class="keyword">delete</span> msg_link-&gt;m_QMsg;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;        <span class="keyword">delete</span> msg_link;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;    }</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="comment">/* Ack the packet immediately when we get it                      */</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/d8b/class_net_1_1_server.html#a3e8e5913054c63716b55f38f99b098d0">Server::handle_timestamp</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;{</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    MsgDesc msg_desc;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    MsgPacketStamp *time_msg;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> ack_msg;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    </div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="comment">// Tell the dispatcher the size of this message because it does not know (optimization)</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    context-&gt;m_MsgLength = <span class="keyword">sizeof</span>( MsgPacketStamp );</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="comment">// Don&#39;t ack foreign timestamps. We only even handle them because we need to tell the dispatcher</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    <span class="comment">// the length of the message</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_PacketFlags &amp; <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c">mHANDLE_FOREIGN</a> )</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    }</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    </div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    time_msg = (MsgPacketStamp *) context-&gt;m_Msg;   </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    ack_msg.m_Packetstamp = time_msg-&gt;m_Packetstamp;</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="comment">//ack_msg.m_Handle = time_msg-&gt;m_Handle;</span></div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;#ifdef DEBUG_MESSAGES</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;IsRemote())</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;(%d) Conn %d: (%d) Got Packetstamp %d\n&quot;</span>, </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;            context-&gt;m_App-&gt;m_FrameCounter, </div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;            context-&gt;m_Conn-&gt;GetHandle(),</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;            context-&gt;m_App-&gt;m_Timestamp, </div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;            time_msg-&gt;m_Packetstamp );</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    }</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160; </div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    msg_desc.m_Data = &amp;ack_msg;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    msg_desc.m_Length = <span class="keyword">sizeof</span>( <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> );</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    msg_desc.m_Id = <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a9ce324becc08b39149b793a156185e3e">MSG_ID_ACK</a>;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    context-&gt;m_App-&gt;EnqueueMessage( context-&gt;m_Conn-&gt;GetHandle(), &amp;msg_desc );</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;    </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;}</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160; </div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160; </div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/d8b/class_net_1_1_server.html#aac34be622c1e56a61cf359991f1a5ff9">Server::handle_disconn_req</a>( MsgHandlerContext* context )</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;{</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    MsgDesc msg_desc;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;<span class="preprocessor">#ifdef DEBUG_MESSAGES</span></div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Got disconnection request. Setting connection status to mSTATUS_DISCONNECTING\n&quot;</span> );</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    <span class="comment">// Don&#39;t re-disconnect someone</span></div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;TestStatus( <a class="code" href="../../d9/d3a/class_net_1_1_conn.html#aaf93d92df2ac7bd4cff4524d9968076aa3c096bcff0b0c4b5750b39dd292c1ab6">Conn::mSTATUS_DISCONNECTING</a> ))</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    {</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;    }</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;    <span class="comment">// Enqueue a disconn acceptance message before the cutoff point </span></div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;    <span class="comment">// for enqueuing messages( Conn::mSTATUS_DISCONNECTING )</span></div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;    msg_desc.m_Id = <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1ac426241d6bdce1cf87fd4b7da7abf536">MSG_ID_DISCONN_ACCEPTED</a>;</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;    context-&gt;m_App-&gt;EnqueueMessage( context-&gt;m_Conn-&gt;GetHandle(), &amp;msg_desc );</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    context-&gt;m_Conn-&gt;SetStatus( <a class="code" href="../../d9/d3a/class_net_1_1_conn.html#aaf93d92df2ac7bd4cff4524d9968076aa3c096bcff0b0c4b5750b39dd292c1ab6">Conn::mSTATUS_DISCONNECTING</a> );</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;}</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160; </div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;<span class="comment">/* Handle the timestamp from the server. Check for lost &amp; late    */</span></div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="comment">/* packets                                                        */</span></div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160; </div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../da/de4/class_net_1_1_client.html#ac7d0cf2fa19fabf5a775a5b5e7f793b3">Client::handle_timestamp</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;{</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    MsgPacketStamp *time_msg;</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;    <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> ack_msg;</div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;    MsgDesc msg_desc;</div>
+<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
+<div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160; </div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;    <span class="comment">// Tell the dispatcher the size of this message because it does not know (optimization)</span></div>
+<div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;    context-&gt;m_MsgLength = <span class="keyword">sizeof</span>( MsgPacketStamp );</div>
+<div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160; </div>
+<div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;    <span class="comment">// Don&#39;t ack foreign timestamps. We only even handle them because we need to tell the dispatcher</span></div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;    <span class="comment">// the length of the message</span></div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_PacketFlags &amp; <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c">mHANDLE_FOREIGN</a> )</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;    {</div>
+<div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;    }</div>
+<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160;    </div>
+<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;    time_msg = (MsgPacketStamp *) context-&gt;m_Msg;</div>
+<div class="line"><a name="l00514"></a><span class="lineno">  514</span>&#160;    ack_msg.m_Packetstamp = time_msg-&gt;m_Packetstamp;</div>
+<div class="line"><a name="l00515"></a><span class="lineno">  515</span>&#160;    <span class="comment">//ack_msg.m_Handle = time_msg-&gt;m_Handle;</span></div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160; </div>
+<div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160;#ifdef DEBUG_MESSAGES</div>
+<div class="line"><a name="l00518"></a><span class="lineno">  518</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;IsRemote())</div>
+<div class="line"><a name="l00519"></a><span class="lineno">  519</span>&#160;    {</div>
+<div class="line"><a name="l00520"></a><span class="lineno">  520</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;(%d) Conn %d: (%d) Got Packetstamp %d\n&quot;</span>, </div>
+<div class="line"><a name="l00521"></a><span class="lineno">  521</span>&#160;            context-&gt;m_App-&gt;m_FrameCounter, </div>
+<div class="line"><a name="l00522"></a><span class="lineno">  522</span>&#160;            context-&gt;m_Conn-&gt;GetHandle(),</div>
+<div class="line"><a name="l00523"></a><span class="lineno">  523</span>&#160;            context-&gt;m_App-&gt;m_Timestamp, </div>
+<div class="line"><a name="l00524"></a><span class="lineno">  524</span>&#160;            time_msg-&gt;m_Packetstamp );</div>
+<div class="line"><a name="l00525"></a><span class="lineno">  525</span>&#160;    }</div>
+<div class="line"><a name="l00526"></a><span class="lineno">  526</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160;    </div>
+<div class="line"><a name="l00528"></a><span class="lineno">  528</span>&#160;    msg_desc.m_Data = &amp;ack_msg;</div>
+<div class="line"><a name="l00529"></a><span class="lineno">  529</span>&#160;    msg_desc.m_Length = <span class="keyword">sizeof</span>( <a class="code" href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">MsgAck</a> );</div>
+<div class="line"><a name="l00530"></a><span class="lineno">  530</span>&#160;    msg_desc.m_Id = <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a9ce324becc08b39149b793a156185e3e">MSG_ID_ACK</a>;</div>
+<div class="line"><a name="l00531"></a><span class="lineno">  531</span>&#160;    context-&gt;m_App-&gt;EnqueueMessageToServer( &amp;msg_desc );</div>
+<div class="line"><a name="l00532"></a><span class="lineno">  532</span>&#160; </div>
+<div class="line"><a name="l00533"></a><span class="lineno">  533</span>&#160;    <span class="comment">// Todo : Change this logic as packetstamps DO wraparound</span></div>
+<div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;    <span class="comment">// if == 0, we just connected : accept first timestamp unconditionally</span></div>
+<div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;m_latest_packet_stamp == 0 )</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;    {</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;        context-&gt;m_Conn-&gt;m_latest_packet_stamp = time_msg-&gt;m_Packetstamp;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;    }</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;    {</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;        <span class="comment">// Check for late packets, but also make sure it&#39;s actually late, and not just wraparound</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;        <span class="keywordflow">if</span>( time_msg-&gt;m_Packetstamp &lt; context-&gt;m_Conn-&gt;m_latest_packet_stamp )</div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;        {</div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;            <span class="keywordflow">if</span>(( context-&gt;m_Conn-&gt;m_latest_packet_stamp - time_msg-&gt;m_Packetstamp ) &gt; 5000 )</div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;            {</div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                context-&gt;m_Conn-&gt;m_latest_packet_stamp = time_msg-&gt;m_Packetstamp;</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;            }</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;            {</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;                context-&gt;m_App-&gt;m_LatePackets++;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;                context-&gt;m_App-&gt;m_LostPackets--;</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;                context-&gt;m_PacketFlags |= <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a35e9558e1066a5718fccb173f43645fb">mHANDLE_LATE</a>;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;            }</div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;        }</div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( time_msg-&gt;m_Packetstamp == context-&gt;m_Conn-&gt;m_latest_packet_stamp )</div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;        {</div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;            context-&gt;m_App-&gt;m_DupePackets++;</div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;            <a class="code" href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a>( <span class="stringliteral">&quot;**** Got Duplicate Packet: %d\n&quot;</span>, context-&gt;m_App-&gt;m_DupePackets ); </div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aad2178c2119f7a07b1f7334603270dcec">HANDLER_ERROR</a>;   <span class="comment">// don&#39;t process dupes</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        }</div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>(( time_msg-&gt;m_Packetstamp - context-&gt;m_Conn-&gt;m_latest_packet_stamp ) &gt; 1 )</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        {</div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;            <span class="comment">// Check for lost packets and make sure it&#39;s not just wraparound</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;            <span class="keywordflow">if</span>(( time_msg-&gt;m_Packetstamp - context-&gt;m_Conn-&gt;m_latest_packet_stamp ) &gt; 5000 )</div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;            {</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;                context-&gt;m_App-&gt;m_LatePackets++;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;                context-&gt;m_App-&gt;m_LostPackets--;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;                context-&gt;m_PacketFlags |= <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a35e9558e1066a5718fccb173f43645fb">mHANDLE_LATE</a>;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;            }</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            {</div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;                context-&gt;m_App-&gt;m_LostPackets += </div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;                        (( time_msg-&gt;m_Packetstamp - context-&gt;m_Conn-&gt;m_latest_packet_stamp ) - 1 );</div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;                context-&gt;m_Conn-&gt;m_latest_packet_stamp = time_msg-&gt;m_Packetstamp;  </div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            }</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        }</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        {</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;            context-&gt;m_Conn-&gt;m_latest_packet_stamp = time_msg-&gt;m_Packetstamp;  </div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;        }</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;    }</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160; </div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;}</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160; </div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="comment">/* Respond to ping test                                           */</span></div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160; </div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d7/d50/namespace_net.html#a7cf858d0df3b868ca83208ee67ba9bce">handle_latency_test</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;{</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    MsgDesc msg_desc;</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    MsgTimestamp latency_response_msg;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;    MsgTimestamp *time_msg;</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;    Conn *conn;</div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160; </div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;    </div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;    time_msg = (MsgTimestamp *) context-&gt;m_Msg;</div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;    conn = context-&gt;m_Conn;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;    </div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;    <span class="comment">// &quot;Pong&quot; back to the ping</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;    latency_response_msg.m_Timestamp = time_msg-&gt;m_Timestamp;</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160; </div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;    msg_desc.m_Data = &amp;latency_response_msg;</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;    msg_desc.m_Length = <span class="keyword">sizeof</span>( MsgTimestamp );</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;    msg_desc.m_Id = <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a47a494af90e4493e687ecf150760b425">MSG_ID_PING_RESPONSE</a>;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;    context-&gt;m_App-&gt;EnqueueMessage( conn-&gt;GetHandle(), &amp;msg_desc );   </div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;    </div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;}</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="comment">/* Take note of latency value                                     */</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00617"></a><span class="lineno"><a class="line" href="../../d7/d50/namespace_net.html#a7cf858d0df3b868ca83208ee67ba9bce">  617</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160; </div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d7/d50/namespace_net.html#a1017ba234fa10f9af3832001a1f72b4b">handle_latency_response</a>( <a class="code" href="../../d0/d48/class_net_1_1_msg_handler_context.html">MsgHandlerContext</a> *context )</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;{</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;    <a class="code" href="../../df/da6/class_net_1_1_msg_timestamp.html">MsgTimestamp</a> *time_msg;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;    <a class="code" href="../../d9/d3a/class_net_1_1_conn.html">Conn</a> *conn;</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;    <span class="keywordtype">int</span> cur_time;</div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160; </div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160; </div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;    time_msg = (<a class="code" href="../../df/da6/class_net_1_1_msg_timestamp.html">MsgTimestamp</a> *) context-&gt;<a class="code" href="../../d0/d48/class_net_1_1_msg_handler_context.html#a5671a7ccd8cc1933e01b2651fa15de48">m_Msg</a>;</div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;    conn = context-&gt;<a class="code" href="../../d0/d48/class_net_1_1_msg_handler_context.html#a7f5a1b9bbb8618971ffb967eeb4d1d8c">m_Conn</a>;</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160; </div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;    <span class="keywordflow">if</span>( conn-&gt;<a class="code" href="../../d9/d3a/class_net_1_1_conn.html#a0e8fec8dab2c25392662f5cdf472f322">IsLocal</a>())</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;    {</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;    }</div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;    </div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;    cur_time = context-&gt;<a class="code" href="../../d0/d48/class_net_1_1_msg_handler_context.html#af62e09b9fc2db44a0daabb0c8b4352af">m_App</a>-&gt;<a class="code" href="../../d5/d7d/class_net_1_1_app.html#a4dcb8e2eb1dcfddfe985bb30f621b06b">m_Timestamp</a>;</div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160; </div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;    <span class="comment">// if it&#39;s the one we&#39;re waiting for</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;    <span class="keywordflow">if</span>( time_msg-&gt;<a class="code" href="../../df/da6/class_net_1_1_msg_timestamp.html#a069ba93f7450964afa732d5b90e46108">m_Timestamp</a> == conn-&gt;<a class="code" href="../../d9/d3a/class_net_1_1_conn.html#a940f4e5d66037fc466e9599c345120d3">m_latency_test</a>.<a class="code" href="../../d2/dc6/class_net_1_1_latency_test.html#a6a9e48bdbcbb626a48d1c4ec4faf93a2">m_SendTime</a> )</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;    {   </div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> latency_value;</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160; </div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;        conn-&gt;<a class="code" href="../../d9/d3a/class_net_1_1_conn.html#a940f4e5d66037fc466e9599c345120d3">m_latency_test</a>.<a class="code" href="../../d2/dc6/class_net_1_1_latency_test.html#a2c00f46797592b5c8f80a0de06093d5a">m_ReceiveTime</a> = time_msg-&gt;<a class="code" href="../../df/da6/class_net_1_1_msg_timestamp.html#a069ba93f7450964afa732d5b90e46108">m_Timestamp</a>;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;        latency_value = ( cur_time - time_msg-&gt;<a class="code" href="../../df/da6/class_net_1_1_msg_timestamp.html#a069ba93f7450964afa732d5b90e46108">m_Timestamp</a> );</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;        <span class="keywordflow">if</span>( latency_value &gt; <a class="code" href="../../d5/d7d/class_net_1_1_app.html#ac5684bdf672802935d133acbd576db9d">App::MAX_LATENCY</a> )</div>
+<div class="line"><a name="l00645"></a><span class="lineno"><a class="line" href="../../d7/d50/namespace_net.html#a1017ba234fa10f9af3832001a1f72b4b">  645</a></span>&#160;        {</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;            latency_value = <a class="code" href="../../d5/d7d/class_net_1_1_app.html#ac5684bdf672802935d133acbd576db9d">App::MAX_LATENCY</a>;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;        }</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;        conn-&gt;<a class="code" href="../../d9/d3a/class_net_1_1_conn.html#a940f4e5d66037fc466e9599c345120d3">m_latency_test</a>.<a class="code" href="../../d2/dc6/class_net_1_1_latency_test.html#ac51fd7990909967c6d22e78f5026c0c9">InputLatencyValue</a>( latency_value );        </div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;    }</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160; </div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;}</div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="comment">/* We&#39;ve been accepted to the server                              */</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160; </div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/d7d/class_net_1_1_app.html#ab26a9285631dd62c2432635791af10df">App::handle_connection_accepted</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;{</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    </div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="preprocessor">#ifdef DEBUG_MESSAGES</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Connection was accepted!\n&quot;</span> );</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;}</div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">/* The server rejected our connection request (app_level)         */</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160; </div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../da/de4/class_net_1_1_client.html#aff5aa335ad45eab3fd7a72f266ffe8f5">Client::handle_connection_refusal</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;{</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;    <a class="code" href="../../da/de4/class_net_1_1_client.html#a72db0e7a8ae3b6c140eebb090f78bf00">Client</a> *client;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160; </div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    </div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160; </div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160; </div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    client = (<a class="code" href="../../da/de4/class_net_1_1_client.html#a72db0e7a8ae3b6c140eebb090f78bf00">Client</a> *) context-&gt;m_App;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="comment">// disconnect</span></div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <span class="comment">//client-&gt;ConnectToServer( INADDR_ANY, 0 );</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    client-&gt;TerminateConnection( context-&gt;m_Conn );</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160; </div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa840c79c263fa01d48adbe6b9a17b44aa">HANDLER_HALT</a>;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;}</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160; </div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;<span class="comment">/* Someone is requesting connection (app-level)                   */</span></div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160; </div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d5/d7d/class_net_1_1_app.html#a9f9cb863320a52802a6a58997194cb8c">App::handle_connection_request</a>( MsgHandlerContext *context )</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;{</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    MsgDesc msg_desc;</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160; </div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    Dbg_Assert( context );</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160; </div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;<span class="preprocessor">#ifdef DEBUG_MESSAGES</span></div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>( <span class="stringliteral">&quot;Got Connection Request!\n&quot;</span> );</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160; </div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    <span class="comment">// Redundancy check</span></div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;    <span class="keywordflow">if</span>( context-&gt;m_PacketFlags &amp; <a class="code" href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c">mHANDLE_FOREIGN</a> )</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;        <span class="keywordtype">int</span> ip;</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160; </div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;        <span class="keywordflow">if</span>( context-&gt;m_App-&gt;AcceptsForeignConnections() == <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;        {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;        }</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160; </div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;        ip = context-&gt;m_Conn-&gt;GetIP();</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;        </div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;<span class="preprocessor">#ifndef __PLAT_NGC__</span></div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;        <span class="comment">/*Dbg_Message( &quot;Accepting connection from IP:%s Port:%d\n&quot;, </span></div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;<span class="comment">                     inet_ntoa( *(struct in_addr *) &amp;ip), </span></div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;<span class="comment">                     context-&gt;m_Conn-&gt;GetPort());*/</span></div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="preprocessor">#endif      // __PLAT_NGC__</span></div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;        context-&gt;m_App-&gt;SendMessageTo( <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1af2ab13fef49acbd7bcf65a8172d8fd37">MSG_ID_CONNECTION_ACCEPTED</a>, 0, NULL,</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;                                       context-&gt;m_Conn-&gt;GetIP(), context-&gt;m_Conn-&gt;GetPort(), 0 );</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160; </div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;    }</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>( context-&gt;m_Conn-&gt;IsLocal())</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;    {</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;        msg_desc.m_Id = <a class="code" href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1af2ab13fef49acbd7bcf65a8172d8fd37">MSG_ID_CONNECTION_ACCEPTED</a>;</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;        msg_desc.m_Priority = <a class="code" href="../../d7/d50/namespace_net.html#a9fbc544e9027714f0c90ac8ebb9cef18a8d7f287fdd1327421922f0efabd672e8">HIGHEST_PRIORITY</a>;</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;        msg_desc.m_Queue = <a class="code" href="../../d7/d50/namespace_net.html#a61ae34a00f3f03901dc47f3fc74ceae4a802d1eed3a6d7ca0a2553535e7c4d208">QUEUE_IMPORTANT</a>;</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;        context-&gt;m_App-&gt;EnqueueMessage( context-&gt;m_Conn-&gt;GetHandle(), &amp;msg_desc );</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160; </div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">HANDLER_CONTINUE</a>;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;    }</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;    </div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">HANDLER_MSG_DONE</a>;</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;    </div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;}</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160; </div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160; </div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;}   <span class="comment">// namespace Net</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_net_html"><div class="ttname"><a href="../../d7/d50/namespace_net.html">Net</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d50/netapp_8cpp_source.html#l00061">netapp.cpp:61</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_ab26a9285631dd62c2432635791af10df"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#ab26a9285631dd62c2432635791af10df">Net::App::handle_connection_accepted</a></div><div class="ttdeci">static MsgHandlerCode handle_connection_accepted</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01168">net.h:1168</a></div></div>
+<div class="ttc" id="anamespace_net_html_a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa8f85779ea7d8909d3c98ddbb70df090f">Net::HANDLER_MSG_DONE</a></div><div class="ttdeci">@ HANDLER_MSG_DONE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00291">net.h:291</a></div></div>
+<div class="ttc" id="anamespace_net_html_a26c4d7d7bae6a27bf94c810429c96a6aaa6d92b4b0dc1099879ed6da23fff3a51"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa6d92b4b0dc1099879ed6da23fff3a51">Net::HANDLER_MSG_DESTROYED</a></div><div class="ttdeci">@ HANDLER_MSG_DESTROYED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00292">net.h:292</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1a47a494af90e4493e687ecf150760b425"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a47a494af90e4493e687ecf150760b425">Net::MSG_ID_PING_RESPONSE</a></div><div class="ttdeci">@ MSG_ID_PING_RESPONSE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00219">net.h:219</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_net_1_1_latency_test_html_a6a9e48bdbcbb626a48d1c4ec4faf93a2"><div class="ttname"><a href="../../d2/dc6/class_net_1_1_latency_test.html#a6a9e48bdbcbb626a48d1c4ec4faf93a2">Net::LatencyTest::m_SendTime</a></div><div class="ttdeci">unsigned int m_SendTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00578">net.h:578</a></div></div>
+<div class="ttc" id="aclass_net_1_1_server_html_a3e8e5913054c63716b55f38f99b098d0"><div class="ttname"><a href="../../d8/d8b/class_net_1_1_server.html#a3e8e5913054c63716b55f38f99b098d0">Net::Server::handle_timestamp</a></div><div class="ttdeci">static MsgHandlerCode handle_timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd4/netserv_8h_source.html#l00074">netserv.h:74</a></div></div>
+<div class="ttc" id="aclass_net_1_1_client_html_aff5aa335ad45eab3fd7a72f266ffe8f5"><div class="ttname"><a href="../../da/de4/class_net_1_1_client.html#aff5aa335ad45eab3fd7a72f266ffe8f5">Net::Client::handle_connection_refusal</a></div><div class="ttdeci">static MsgHandlerCode handle_connection_refusal</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/netclnt_8h_source.html#l00076">netclnt.h:76</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a0cc0c255bb5dfdc16b506173bf1f59ee"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a0cc0c255bb5dfdc16b506173bf1f59ee">Gfx::data</a></div><div class="ttdeci">short data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01898">BonedAnim.cpp:1898</a></div></div>
+<div class="ttc" id="aclass_net_1_1_server_html_aac34be622c1e56a61cf359991f1a5ff9"><div class="ttname"><a href="../../d8/d8b/class_net_1_1_server.html#aac34be622c1e56a61cf359991f1a5ff9">Net::Server::handle_disconn_req</a></div><div class="ttdeci">static MsgHandlerCode handle_disconn_req</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd4/netserv_8h_source.html#l00075">netserv.h:75</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_timestamp_html"><div class="ttname"><a href="../../df/da6/class_net_1_1_msg_timestamp.html">Net::MsgTimestamp</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00372">net.h:372</a></div></div>
+<div class="ttc" id="anamespace_net_html_a26c4d7d7bae6a27bf94c810429c96a6aad2178c2119f7a07b1f7334603270dcec"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aad2178c2119f7a07b1f7334603270dcec">Net::HANDLER_ERROR</a></div><div class="ttdeci">@ HANDLER_ERROR</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00288">net.h:288</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_net_1_1_latency_test_html_ac51fd7990909967c6d22e78f5026c0c9"><div class="ttname"><a href="../../d2/dc6/class_net_1_1_latency_test.html#ac51fd7990909967c6d22e78f5026c0c9">Net::LatencyTest::InputLatencyValue</a></div><div class="ttdeci">void InputLatencyValue(int latency)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d50/netapp_8cpp_source.html#l00876">netapp.cpp:876</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_handler_context_html_af62e09b9fc2db44a0daabb0c8b4352af"><div class="ttname"><a href="../../d0/d48/class_net_1_1_msg_handler_context.html#af62e09b9fc2db44a0daabb0c8b4352af">Net::MsgHandlerContext::m_App</a></div><div class="ttdeci">App * m_App</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00537">net.h:537</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_a9f9cb863320a52802a6a58997194cb8c"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#a9f9cb863320a52802a6a58997194cb8c">Net::App::handle_connection_request</a></div><div class="ttdeci">static MsgHandlerCode handle_connection_request</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01167">net.h:1167</a></div></div>
+<div class="ttc" id="anamespace_net_html_a9fbc544e9027714f0c90ac8ebb9cef18a8d7f287fdd1327421922f0efabd672e8"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a9fbc544e9027714f0c90ac8ebb9cef18a8d7f287fdd1327421922f0efabd672e8">Net::HIGHEST_PRIORITY</a></div><div class="ttdeci">@ HIGHEST_PRIORITY</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00275">net.h:275</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1af2ab13fef49acbd7bcf65a8172d8fd37"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1af2ab13fef49acbd7bcf65a8172d8fd37">Net::MSG_ID_CONNECTION_ACCEPTED</a></div><div class="ttdeci">@ MSG_ID_CONNECTION_ACCEPTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00221">net.h:221</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html_aaf93d92df2ac7bd4cff4524d9968076aa3c096bcff0b0c4b5750b39dd292c1ab6"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html#aaf93d92df2ac7bd4cff4524d9968076aa3c096bcff0b0c4b5750b39dd292c1ab6">Net::Conn::mSTATUS_DISCONNECTING</a></div><div class="ttdeci">@ mSTATUS_DISCONNECTING</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00686">net.h:686</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html_aaf93d92df2ac7bd4cff4524d9968076aa1794f4db5f46ea07cf2d94b4b6a7bb9e"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html#aaf93d92df2ac7bd4cff4524d9968076aa1794f4db5f46ea07cf2d94b4b6a7bb9e">Net::Conn::mSTATUS_READY</a></div><div class="ttdeci">@ mSTATUS_READY</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00683">net.h:683</a></div></div>
+<div class="ttc" id="anamespace_net_html_a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aaa050669e4142f9d3ada7c684a31d5338">Net::HANDLER_CONTINUE</a></div><div class="ttdeci">@ HANDLER_CONTINUE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00289">net.h:289</a></div></div>
+<div class="ttc" id="anamespace_net_html_a26c4d7d7bae6a27bf94c810429c96a6aa840c79c263fa01d48adbe6b9a17b44aa"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a26c4d7d7bae6a27bf94c810429c96a6aa840c79c263fa01d48adbe6b9a17b44aa">Net::HANDLER_HALT</a></div><div class="ttdeci">@ HANDLER_HALT</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00290">net.h:290</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1a53c13dd73e4202c34a0a14185a62b465"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a53c13dd73e4202c34a0a14185a62b465">Net::MSG_ID_STREAM_DATA</a></div><div class="ttdeci">@ MSG_ID_STREAM_DATA</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00232">net.h:232</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="anamespace_net_html_af398e2f29bb272b3aea33f91c2bff388a35e9558e1066a5718fccb173f43645fb"><div class="ttname"><a href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a35e9558e1066a5718fccb173f43645fb">Net::mHANDLE_LATE</a></div><div class="ttdeci">@ mHANDLE_LATE</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00282">net.h:282</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1a70139e09be9fa042dd825d1f1e57072d"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a70139e09be9fa042dd825d1f1e57072d">Net::MSG_ID_STREAM_START</a></div><div class="ttdeci">@ MSG_ID_STREAM_START</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00231">net.h:231</a></div></div>
+<div class="ttc" id="anetclnt_8h_html"><div class="ttname"><a href="../../d9/d20/netclnt_8h.html">netclnt.h</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="anamespace_net_html_af398e2f29bb272b3aea33f91c2bff388a0c0ce28cb697b1455ec0fd3472bf988e"><div class="ttname"><a href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a0c0ce28cb697b1455ec0fd3472bf988e">Net::mHANDLE_CRC_MISMATCH</a></div><div class="ttdeci">@ mHANDLE_CRC_MISMATCH</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00283">net.h:283</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_handler_context_html_a7f5a1b9bbb8618971ffb967eeb4d1d8c"><div class="ttname"><a href="../../d0/d48/class_net_1_1_msg_handler_context.html#a7f5a1b9bbb8618971ffb967eeb4d1d8c">Net::MsgHandlerContext::m_Conn</a></div><div class="ttdeci">Conn * m_Conn</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00538">net.h:538</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="anamespace_net_html_a61ae34a00f3f03901dc47f3fc74ceae4a802d1eed3a6d7ca0a2553535e7c4d208"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a61ae34a00f3f03901dc47f3fc74ceae4a802d1eed3a6d7ca0a2553535e7c4d208">Net::QUEUE_IMPORTANT</a></div><div class="ttdeci">@ QUEUE_IMPORTANT</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00298">net.h:298</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_a4d7df751db654cfec0fa9b0895806198"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#a4d7df751db654cfec0fa9b0895806198">Net::App::handle_stream_messages</a></div><div class="ttdeci">static MsgHandlerCode handle_stream_messages</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01169">net.h:1169</a></div></div>
+<div class="ttc" id="anamespace_net_html_a1017ba234fa10f9af3832001a1f72b4b"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a1017ba234fa10f9af3832001a1f72b4b">Net::handle_latency_response</a></div><div class="ttdeci">int handle_latency_response(MsgHandlerContext *context)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6b/nethndlr_8cpp_source.html#l00645">nethndlr.cpp:645</a></div></div>
+<div class="ttc" id="anetserv_8h_html"><div class="ttname"><a href="../../d5/dd4/netserv_8h.html">netserv.h</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_handler_context_html_a5671a7ccd8cc1933e01b2651fa15de48"><div class="ttname"><a href="../../d0/d48/class_net_1_1_msg_handler_context.html#a5671a7ccd8cc1933e01b2651fa15de48">Net::MsgHandlerContext::m_Msg</a></div><div class="ttdeci">char * m_Msg</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00534">net.h:534</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_a4dcb8e2eb1dcfddfe985bb30f621b06b"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#a4dcb8e2eb1dcfddfe985bb30f621b06b">Net::App::m_Timestamp</a></div><div class="ttdeci">unsigned int m_Timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01122">net.h:1122</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_handler_context_html"><div class="ttname"><a href="../../d0/d48/class_net_1_1_msg_handler_context.html">Net::MsgHandlerContext</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00530">net.h:530</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1a9ce324becc08b39149b793a156185e3e"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1a9ce324becc08b39149b793a156185e3e">Net::MSG_ID_ACK</a></div><div class="ttdeci">@ MSG_ID_ACK</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00225">net.h:225</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html_a940f4e5d66037fc466e9599c345120d3"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html#a940f4e5d66037fc466e9599c345120d3">Net::Conn::m_latency_test</a></div><div class="ttdeci">LatencyTest m_latency_test</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00779">net.h:779</a></div></div>
+<div class="ttc" id="anamespace_crc_html_a60ea952dd05dcbab6d54f8f922f35872"><div class="ttname"><a href="../../d3/d9b/namespace_crc.html#a60ea952dd05dcbab6d54f8f922f35872">Crc::GenerateCRCCaseSensitive</a></div><div class="ttdeci">uint32 GenerateCRCCaseSensitive(const char *stream, int size)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dd1/crc_8cpp_source.html#l00171">crc.cpp:171</a></div></div>
+<div class="ttc" id="anamespace_net_html_af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c"><div class="ttname"><a href="../../d7/d50/namespace_net.html#af398e2f29bb272b3aea33f91c2bff388a2f9464ed98f407676d5173453534744c">Net::mHANDLE_FOREIGN</a></div><div class="ttdeci">@ mHANDLE_FOREIGN</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00281">net.h:281</a></div></div>
+<div class="ttc" id="anamespace_net_html_a52bd667071aacc29391e85ac5d6f12a1ac426241d6bdce1cf87fd4b7da7abf536"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a52bd667071aacc29391e85ac5d6f12a1ac426241d6bdce1cf87fd4b7da7abf536">Net::MSG_ID_DISCONN_ACCEPTED</a></div><div class="ttdeci">@ MSG_ID_DISCONN_ACCEPTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00229">net.h:229</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a03fb230ad9263a5f6126da49d67feac0"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a03fb230ad9263a5f6126da49d67feac0">Dbg_Printf</a></div><div class="ttdeci">void Dbg_Printf(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00111">Messages.h:111</a></div></div>
+<div class="ttc" id="aclass_net_1_1_latency_test_html_a2c00f46797592b5c8f80a0de06093d5a"><div class="ttname"><a href="../../d2/dc6/class_net_1_1_latency_test.html#a2c00f46797592b5c8f80a0de06093d5a">Net::LatencyTest::m_ReceiveTime</a></div><div class="ttdeci">unsigned int m_ReceiveTime</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00579">net.h:579</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="aclass_net_1_1_client_html_a72db0e7a8ae3b6c140eebb090f78bf00"><div class="ttname"><a href="../../da/de4/class_net_1_1_client.html#a72db0e7a8ae3b6c140eebb090f78bf00">Net::Client::Client</a></div><div class="ttdeci">Client(int flags=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dfa/netclnt_8cpp_source.html#l00625">netclnt.cpp:625</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_ac5684bdf672802935d133acbd576db9d"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#ac5684bdf672802935d133acbd576db9d">Net::App::MAX_LATENCY</a></div><div class="ttdeci">static const unsigned int MAX_LATENCY</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01051">net.h:1051</a></div></div>
+<div class="ttc" id="aclass_net_1_1_manager_html_a7fabc26f1dfa307c5b28178ac609230da3d5259b2545932e7dea576fbd8272334"><div class="ttname"><a href="../../df/d02/class_net_1_1_manager.html#a7fabc26f1dfa307c5b28178ac609230da3d5259b2545932e7dea576fbd8272334">Net::Manager::vMSG_SEQ_HEADER_LENGTH</a></div><div class="ttdeci">@ vMSG_SEQ_HEADER_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00834">net.h:834</a></div></div>
+<div class="ttc" id="anet_8h_html"><div class="ttname"><a href="../../d7/d97/net_8h.html">net.h</a></div></div>
+<div class="ttc" id="aclass_net_1_1_client_html_ac7d0cf2fa19fabf5a775a5b5e7f793b3"><div class="ttname"><a href="../../da/de4/class_net_1_1_client.html#ac7d0cf2fa19fabf5a775a5b5e7f793b3">Net::Client::handle_timestamp</a></div><div class="ttdeci">static MsgHandlerCode handle_timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d20/netclnt_8h_source.html#l00075">netclnt.h:75</a></div></div>
+<div class="ttc" id="anamespace_net_html_a10641a4b429795359b03add4d79ef034"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a10641a4b429795359b03add4d79ef034">Net::MsgAck</a></div><div class="ttdeci">MsgPacketStamp MsgAck</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00385">net.h:385</a></div></div>
+<div class="ttc" id="anamespace_net_html_ad8b0f213ec8c6cce2194db6ba89e8175"><div class="ttname"><a href="../../d7/d50/namespace_net.html#ad8b0f213ec8c6cce2194db6ba89e8175">Net::handle_ack</a></div><div class="ttdeci">int handle_ack(MsgHandlerContext *context)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6b/nethndlr_8cpp_source.html#l00108">nethndlr.cpp:108</a></div></div>
+<div class="ttc" id="aclass_net_1_1_msg_timestamp_html_a069ba93f7450964afa732d5b90e46108"><div class="ttname"><a href="../../df/da6/class_net_1_1_msg_timestamp.html#a069ba93f7450964afa732d5b90e46108">Net::MsgTimestamp::m_Timestamp</a></div><div class="ttdeci">unsigned int m_Timestamp</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00375">net.h:375</a></div></div>
+<div class="ttc" id="anamespace_net_html_a7cf858d0df3b868ca83208ee67ba9bce"><div class="ttname"><a href="../../d7/d50/namespace_net.html#a7cf858d0df3b868ca83208ee67ba9bce">Net::handle_latency_test</a></div><div class="ttdeci">int handle_latency_test(MsgHandlerContext *context)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d6b/nethndlr_8cpp_source.html#l00617">nethndlr.cpp:617</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html_a0e8fec8dab2c25392662f5cdf472f322"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html#a0e8fec8dab2c25392662f5cdf472f322">Net::Conn::IsLocal</a></div><div class="ttdeci">bool IsLocal(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d55/netconn_8cpp_source.html#l00449">netconn.cpp:449</a></div></div>
+<div class="ttc" id="aclass_net_1_1_app_html_adbacd4fc3c3cef29afffedbecb5cd317"><div class="ttname"><a href="../../d5/d7d/class_net_1_1_app.html#adbacd4fc3c3cef29afffedbecb5cd317">Net::App::handle_sequenced_messages</a></div><div class="ttdeci">static MsgHandlerCode handle_sequenced_messages</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l01166">net.h:1166</a></div></div>
+<div class="ttc" id="aclass_net_1_1_conn_html"><div class="ttname"><a href="../../d9/d3a/class_net_1_1_conn.html">Net::Conn</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d97/net_8h_source.html#l00645">net.h:645</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_36043a05f4833d6d77f3d4f208e7dc77.html">Net</a></li><li class="navelem"><a class="el" href="../../dir_ca1ad48aa5511c38b50361ddf759a46c.html">Handler</a></li><li class="navelem"><a class="el" href="../../d2/d6b/nethndlr_8cpp.html">nethndlr.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:24. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

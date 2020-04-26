@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/AssMan/AssMan.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('de/d49/_ass_man_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">AssMan.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d49/_ass_man_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/AssMan</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       AssMan.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  11/17/2000</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GEL_ASSMAN_H</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GEL_ASSMAN_H</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/def/_hash_table_8h.html">core/hashtable.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/de1/assettypes_8h.html">gel/assman/assettypes.h</a>&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">**                                 Defines                                  **</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d0/dba/namespace_lst.html">Lst</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> _V&gt; <span class="keyword">class </span>HashTable;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;}</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../da/d1f/namespace_ass.html">Ass</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keyword">class </span>CAsset;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">**                               Type Defines                               **</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;   </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d0/d30/class_ass_1_1_c_ass_man.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html">CAssMan</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a> </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{   </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#aa4bdb9725f4e7ed1348c9f92e2ca3fd9">DeclareSingletonClass</a>( <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html">CAssMan</a> );</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a6a132d4b062950f05653a367ba263e1b">CAssMan</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#af2a7a08468f534af3205795617667bc3">~CAssMan</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// New generic functions</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4">EAssetType</a>  <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a2b55e49b10111d7a623c0cdb048f31bc">FindAssetType</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a35868317368902d14453272f4cc80c92">LoadAssetFromStream</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> asset_name, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> asset_type, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>* <a class="code" href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">p_data</a>, <span class="keywordtype">int</span> data_size, <span class="keywordtype">bool</span> permanent, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ac7ec32a4f59fd2c14e9170abac969f8d">LoadAsset</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName, <span class="keywordtype">bool</span> async_load, <span class="keywordtype">bool</span> use_pip = <span class="keyword">false</span>, <span class="keywordtype">bool</span> permanent = <span class="keyword">false</span>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group = 0, <span class="keywordtype">void</span>* pExtraData = NULL, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> * pParams = NULL);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a92abb76b20d5f2a7edb0f2b5af69e2a7">ReloadAsset</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> assetID, <span class="keyword">const</span> <span class="keywordtype">char</span>* pFileName, <span class="keywordtype">bool</span> assertOnFail );</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a7b6692784f69c66688d7dd8ef50147b2">GetAsset</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName, <span class="keywordtype">bool</span> assertOnFail = <span class="keyword">true</span>);    </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a7b6692784f69c66688d7dd8ef50147b2">GetAsset</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> assetID, <span class="keywordtype">bool</span> assertOnFail = <span class="keyword">true</span>); </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a7f3ecbf3d493311c445ac50c5ea1ca6a">LoadOrGetAsset</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName, <span class="keywordtype">bool</span> async_load, <span class="keywordtype">bool</span> use_pip, <span class="keywordtype">bool</span> permanent = <span class="keyword">false</span>, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group = 0, <span class="keywordtype">void</span>* pExtraData = NULL, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *pParams = NULL); </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae61569bfa244135dd0550d2806a01936">AssetAllocated</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>   assetID);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae61569bfa244135dd0550d2806a01936">AssetAllocated</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ab5c60dc7b48fba1f240f4acf15fdd981">AssetLoaded</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  assetID);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ab5c60dc7b48fba1f240f4acf15fdd981">AssetLoaded</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae49290bc564089439782ee5a33ace0af">AddRef</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> asset_id, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ref_id, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group = 0);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae49290bc564089439782ee5a33ace0af">AddRef</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *p_assetName, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> ref_id, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group = 0);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a32de69d53847bb8512f9ab4e2fe9bb11">SetReferenceChecksum</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> reference_checksum);       </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>      <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ab2bbbb257d1ff875b17802c097400652">GetReferenceChecksum</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#af5007e6ead0f1e38f4ba6a55b0a93295">SetDefaultPermanent</a>(<span class="keywordtype">bool</span> permanent);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#ac7d9b9c0d9c99976c4997a100cd925dc">GetDefaultPermanent</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a718295a2e6acc61a1070ca7d687cf584">GetFirstInGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span>*       <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a46cc29dfb44b54a6d0c4be7241d471b7">GetNthInGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a0cb3b946ed569fdd153a35eb41ce732d">GetIndexInGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a9d9ba725bc184c93d9dd177bce82420a">GetGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a0af8cc2902c9f1861c5737c218d88f63">CountGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">int</span>         <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a4b85f32c6ffb9c0ca313d9f9f0daf7a1">CountSameGroup</a>(<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a17fee9f1273677da95eccd4e3efc4425">UnloadAllTables</a>( <span class="keywordtype">bool</span> destroy_permanent = <span class="keyword">false</span> );</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a357ac993dced2bccd535b8ea60bb5160">DestroyReferences</a>( <a class="code" href="../../d3/da4/class_ass_1_1_c_asset.html">CAsset</a>* pAsset );</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a6d164b013b8137d13c9afd70657d5fe3">UnloadAsset</a>( <a class="code" href="../../d3/da4/class_ass_1_1_c_asset.html">CAsset</a>* pAsset );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="../../d3/da4/class_ass_1_1_c_asset.html">CAsset</a>*     <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#aef02c4a3727ac9d660c1a789a593cf7b">GetAssetNode</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> assetID, <span class="keywordtype">bool</span> assertOnFail );</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="comment">// ideally, the LoadAnim function should be made more generic</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span>        <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a5de683fccf8520cec1f35e743616765e">LoadAnim</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* pFileName, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> animName, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> referenceChecksum, <span class="keywordtype">bool</span> async_load, <span class="keywordtype">bool</span> use_pip);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">bool</span>                            <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#aba34c4c587fcf3c80bfe08aff5f63131">m_default_permanent</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                          <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a90c2fa6ee53c6c27be556f81bbc2e3b7">m_reference_checksum</a>;   <span class="comment">// used for anims, bit of a patch</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d0/d30/class_ass_1_1_c_ass_man.html#aba34c4c587fcf3c80bfe08aff5f63131">   97</a></span>&#160;    <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt;Ass::CAsset&gt;</a>*    <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a8103c75715a868f145465d962b79eef3">mp_asset_table</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a90c2fa6ee53c6c27be556f81bbc2e3b7">   98</a></span>&#160;    <a class="code" href="../../d3/da4/class_ass_1_1_c_asset.html">CAsset</a>*                         <a class="code" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a332e90e9cae987c98fefc6fde9a6a104">mp_assetlist_head</a>;         </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a8103c75715a868f145465d962b79eef3">   99</a></span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d0/d30/class_ass_1_1_c_ass_man.html#a332e90e9cae987c98fefc6fde9a6a104">  100</a></span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">**                           Private Declarations                           **</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">**                            Private Prototypes                            **</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">**                            Public Declarations                           **</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">**                             Public Prototypes                            **</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">**                              Inline Functions                            **</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <span class="comment">// namespace Ass</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif  // __GEL_ASSMAN_H</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a17fee9f1273677da95eccd4e3efc4425"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a17fee9f1273677da95eccd4e3efc4425">Ass::CAssMan::UnloadAllTables</a></div><div class="ttdeci">void UnloadAllTables(bool destroy_permanent=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00752">AssMan.cpp:752</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a0af8cc2902c9f1861c5737c218d88f63"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a0af8cc2902c9f1861c5737c218d88f63">Ass::CAssMan::CountGroup</a></div><div class="ttdeci">int CountGroup(uint32 group)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00430">AssMan.cpp:430</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a357ac993dced2bccd535b8ea60bb5160"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a357ac993dced2bccd535b8ea60bb5160">Ass::CAssMan::DestroyReferences</a></div><div class="ttdeci">void DestroyReferences(CAsset *pAsset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00463">AssMan.cpp:463</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a4b85f32c6ffb9c0ca313d9f9f0daf7a1"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a4b85f32c6ffb9c0ca313d9f9f0daf7a1">Ass::CAssMan::CountSameGroup</a></div><div class="ttdeci">int CountSameGroup(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00451">AssMan.cpp:451</a></div></div>
+<div class="ttc" id="anamespace_lst_html"><div class="ttname"><a href="../../d0/dba/namespace_lst.html">Lst</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d3a/_dynamic_table_8cpp_source.html#l00034">DynamicTable.cpp:34</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a5de683fccf8520cec1f35e743616765e"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a5de683fccf8520cec1f35e743616765e">Ass::CAssMan::LoadAnim</a></div><div class="ttdeci">bool LoadAnim(const char *pFileName, uint32 animName, uint32 referenceChecksum, bool async_load, bool use_pip)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00809">AssMan.cpp:809</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_a5632acfb30e11749516f7861879407fd"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#a5632acfb30e11749516f7861879407fd">Gfx::p_data</a></div><div class="ttdeci">p_data</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d76/_boned_anim_8cpp_source.html#l01903">BonedAnim.cpp:1903</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a332e90e9cae987c98fefc6fde9a6a104"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a332e90e9cae987c98fefc6fde9a6a104">Ass::CAssMan::mp_assetlist_head</a></div><div class="ttdeci">CAsset * mp_assetlist_head</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d49/_ass_man_8h_source.html#l00100">AssMan.h:100</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_aa4bdb9725f4e7ed1348c9f92e2ca3fd9"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#aa4bdb9725f4e7ed1348c9f92e2ca3fd9">Ass::CAssMan::DeclareSingletonClass</a></div><div class="ttdeci">DeclareSingletonClass(CAssMan)</div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a6d164b013b8137d13c9afd70657d5fe3"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a6d164b013b8137d13c9afd70657d5fe3">Ass::CAssMan::UnloadAsset</a></div><div class="ttdeci">void UnloadAsset(CAsset *pAsset)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00487">AssMan.cpp:487</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a9d9ba725bc184c93d9dd177bce82420a"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a9d9ba725bc184c93d9dd177bce82420a">Ass::CAssMan::GetGroup</a></div><div class="ttdeci">int GetGroup(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00385">AssMan.cpp:385</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a46cc29dfb44b54a6d0c4be7241d471b7"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a46cc29dfb44b54a6d0c4be7241d471b7">Ass::CAssMan::GetNthInGroup</a></div><div class="ttdeci">void * GetNthInGroup(uint32 group, int n)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00355">AssMan.cpp:355</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_af2a7a08468f534af3205795617667bc3"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#af2a7a08468f534af3205795617667bc3">Ass::CAssMan::~CAssMan</a></div><div class="ttdeci">~CAssMan(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00115">AssMan.cpp:115</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a718295a2e6acc61a1070ca7d687cf584"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a718295a2e6acc61a1070ca7d687cf584">Ass::CAssMan::GetFirstInGroup</a></div><div class="ttdeci">void * GetFirstInGroup(uint32 group)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00342">AssMan.cpp:342</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_aba34c4c587fcf3c80bfe08aff5f63131"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#aba34c4c587fcf3c80bfe08aff5f63131">Ass::CAssMan::m_default_permanent</a></div><div class="ttdeci">bool m_default_permanent</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d49/_ass_man_8h_source.html#l00097">AssMan.h:97</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a8103c75715a868f145465d962b79eef3"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a8103c75715a868f145465d962b79eef3">Ass::CAssMan::mp_asset_table</a></div><div class="ttdeci">Lst::HashTable&lt; Ass::CAsset &gt; * mp_asset_table</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d49/_ass_man_8h_source.html#l00099">AssMan.h:99</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a6a132d4b062950f05653a367ba263e1b"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a6a132d4b062950f05653a367ba263e1b">Ass::CAssMan::CAssMan</a></div><div class="ttdeci">CAssMan(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00098">AssMan.cpp:98</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a7b6692784f69c66688d7dd8ef50147b2"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a7b6692784f69c66688d7dd8ef50147b2">Ass::CAssMan::GetAsset</a></div><div class="ttdeci">void * GetAsset(const char *p_assetName, bool assertOnFail=true)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00599">AssMan.cpp:599</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html">Ass::CAssMan</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d49/_ass_man_8h_source.html#l00043">AssMan.h:43</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a7f3ecbf3d493311c445ac50c5ea1ca6a"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a7f3ecbf3d493311c445ac50c5ea1ca6a">Ass::CAssMan::LoadOrGetAsset</a></div><div class="ttdeci">void * LoadOrGetAsset(const char *p_assetName, bool async_load, bool use_pip, bool permanent=false, uint32 group=0, void *pExtraData=NULL, Script::CStruct *pParams=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00621">AssMan.cpp:621</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a32de69d53847bb8512f9ab4e2fe9bb11"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a32de69d53847bb8512f9ab4e2fe9bb11">Ass::CAssMan::SetReferenceChecksum</a></div><div class="ttdeci">void SetReferenceChecksum(uint32 reference_checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00860">AssMan.cpp:860</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a92abb76b20d5f2a7edb0f2b5af69e2a7"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a92abb76b20d5f2a7edb0f2b5af69e2a7">Ass::CAssMan::ReloadAsset</a></div><div class="ttdeci">bool ReloadAsset(uint32 assetID, const char *pFileName, bool assertOnFail)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00510">AssMan.cpp:510</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_asset_html"><div class="ttname"><a href="../../d3/da4/class_ass_1_1_c_asset.html">Ass::CAsset</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d3e/asset_8h_source.html#l00022">asset.h:22</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ac7d9b9c0d9c99976c4997a100cd925dc"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ac7d9b9c0d9c99976c4997a100cd925dc">Ass::CAssMan::GetDefaultPermanent</a></div><div class="ttdeci">bool GetDefaultPermanent() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00795">AssMan.cpp:795</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a0cb3b946ed569fdd153a35eb41ce732d"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a0cb3b946ed569fdd153a35eb41ce732d">Ass::CAssMan::GetIndexInGroup</a></div><div class="ttdeci">int GetIndexInGroup(uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00397">AssMan.cpp:397</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ab2bbbb257d1ff875b17802c097400652"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ab2bbbb257d1ff875b17802c097400652">Ass::CAssMan::GetReferenceChecksum</a></div><div class="ttdeci">uint32 GetReferenceChecksum() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00872">AssMan.cpp:872</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a2b55e49b10111d7a623c0cdb048f31bc"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a2b55e49b10111d7a623c0cdb048f31bc">Ass::CAssMan::FindAssetType</a></div><div class="ttdeci">EAssetType FindAssetType(const char *p_assetName)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00127">AssMan.cpp:127</a></div></div>
+<div class="ttc" id="a_hash_table_8h_html"><div class="ttname"><a href="../../de/def/_hash_table_8h.html">HashTable.h</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_af5007e6ead0f1e38f4ba6a55b0a93295"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#af5007e6ead0f1e38f4ba6a55b0a93295">Ass::CAssMan::SetDefaultPermanent</a></div><div class="ttdeci">void SetDefaultPermanent(bool permanent)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00782">AssMan.cpp:782</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ac7ec32a4f59fd2c14e9170abac969f8d"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ac7ec32a4f59fd2c14e9170abac969f8d">Ass::CAssMan::LoadAsset</a></div><div class="ttdeci">void * LoadAsset(const char *p_assetName, bool async_load, bool use_pip=false, bool permanent=false, uint32 group=0, void *pExtraData=NULL, Script::CStruct *pParams=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00245">AssMan.cpp:245</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ab5c60dc7b48fba1f240f4acf15fdd981"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ab5c60dc7b48fba1f240f4acf15fdd981">Ass::CAssMan::AssetLoaded</a></div><div class="ttdeci">bool AssetLoaded(uint32 assetID)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00684">AssMan.cpp:684</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a35868317368902d14453272f4cc80c92"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a35868317368902d14453272f4cc80c92">Ass::CAssMan::LoadAssetFromStream</a></div><div class="ttdeci">void * LoadAssetFromStream(uint32 asset_name, uint32 asset_type, uint32 *p_data, int data_size, bool permanent, uint32 group)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00166">AssMan.cpp:166</a></div></div>
+<div class="ttc" id="aassettypes_8h_html"><div class="ttname"><a href="../../d4/de1/assettypes_8h.html">assettypes.h</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_aef02c4a3727ac9d660c1a789a593cf7b"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#aef02c4a3727ac9d660c1a789a593cf7b">Ass::CAssMan::GetAssetNode</a></div><div class="ttdeci">CAsset * GetAssetNode(uint32 assetID, bool assertOnFail)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00533">AssMan.cpp:533</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ae61569bfa244135dd0550d2806a01936"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae61569bfa244135dd0550d2806a01936">Ass::CAssMan::AssetAllocated</a></div><div class="ttdeci">bool AssetAllocated(uint32 assetID)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00660">AssMan.cpp:660</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_ae49290bc564089439782ee5a33ace0af"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#ae49290bc564089439782ee5a33ace0af">Ass::CAssMan::AddRef</a></div><div class="ttdeci">void AddRef(uint32 asset_id, uint32 ref_id, uint32 group=0)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d17/_ass_man_8cpp_source.html#l00716">AssMan.cpp:716</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt; Ass::CAsset &gt;</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="anamespace_ass_html"><div class="ttname"><a href="../../da/d1f/namespace_ass.html">Ass</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/dc9/animasset_8cpp_source.html#l00020">animasset.cpp:20</a></div></div>
+<div class="ttc" id="anamespace_ass_html_abbbd5ccba3aa7b59d52707d1312cbca4"><div class="ttname"><a href="../../da/d1f/namespace_ass.html#abbbd5ccba3aa7b59d52707d1312cbca4">Ass::EAssetType</a></div><div class="ttdeci">EAssetType</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/de1/assettypes_8h_source.html#l00009">assettypes.h:9</a></div></div>
+<div class="ttc" id="aclass_ass_1_1_c_ass_man_html_a90c2fa6ee53c6c27be556f81bbc2e3b7"><div class="ttname"><a href="../../d0/d30/class_ass_1_1_c_ass_man.html#a90c2fa6ee53c6c27be556f81bbc2e3b7">Ass::CAssMan::m_reference_checksum</a></div><div class="ttdeci">uint32 m_reference_checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d49/_ass_man_8h_source.html#l00098">AssMan.h:98</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_1fce747d72c4872f1659f116a72fb0ff.html">AssMan</a></li><li class="navelem"><a class="el" href="../../de/d49/_ass_man_8h.html">AssMan.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:20. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

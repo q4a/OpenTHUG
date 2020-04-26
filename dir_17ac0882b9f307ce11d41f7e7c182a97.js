@@ -1,0 +1,48 @@
+var dir_17ac0882b9f307ce11d41f7e7c182a97 =
+[
+    [ "anim.cpp", "df/dbd/_x_box_2_n_x_2anim_8cpp.html", "df/dbd/_x_box_2_n_x_2anim_8cpp" ],
+    [ "anim.h", "da/dd9/_x_box_2_n_x_2anim_8h.html", "da/dd9/_x_box_2_n_x_2anim_8h" ],
+    [ "anim_vertdefs.h", "de/d5f/anim__vertdefs_8h.html", null ],
+    [ "billboard.cpp", "d5/da7/billboard_8cpp.html", "d5/da7/billboard_8cpp" ],
+    [ "billboard.h", "dc/d68/billboard_8h.html", [
+      [ "sBillboardEntry", "de/d25/struct_nx_xbox_1_1s_billboard_entry.html", "de/d25/struct_nx_xbox_1_1s_billboard_entry" ],
+      [ "sBillboardMaterialBatch", "db/df4/struct_nx_xbox_1_1s_billboard_material_batch.html", "db/df4/struct_nx_xbox_1_1s_billboard_material_batch" ],
+      [ "sBillboardManager", "d4/d03/struct_nx_xbox_1_1s_billboard_manager.html", "d4/d03/struct_nx_xbox_1_1s_billboard_manager" ]
+    ] ],
+    [ "chars.cpp", "d3/d20/_x_box_2_n_x_2chars_8cpp.html", "d3/d20/_x_box_2_n_x_2chars_8cpp" ],
+    [ "chars.h", "d4/ddb/_x_box_2_n_x_2chars_8h.html", "d4/ddb/_x_box_2_n_x_2chars_8h" ],
+    [ "gamma.cpp", "d3/d43/gamma_8cpp.html", "d3/d43/gamma_8cpp" ],
+    [ "gamma.h", "da/d41/gamma_8h.html", "da/d41/gamma_8h" ],
+    [ "grass.cpp", "db/d8a/_x_box_2_n_x_2grass_8cpp.html", "db/d8a/_x_box_2_n_x_2grass_8cpp" ],
+    [ "grass.h", "d6/d47/_x_box_2_n_x_2grass_8h.html", "d6/d47/_x_box_2_n_x_2grass_8h" ],
+    [ "instance.cpp", "d4/d19/_x_box_2_n_x_2instance_8cpp.html", "d4/d19/_x_box_2_n_x_2instance_8cpp" ],
+    [ "instance.h", "d5/db3/_x_box_2_n_x_2instance_8h.html", "d5/db3/_x_box_2_n_x_2instance_8h" ],
+    [ "material.cpp", "d6/dd8/_x_box_2_n_x_2material_8cpp.html", "d6/dd8/_x_box_2_n_x_2material_8cpp" ],
+    [ "material.h", "dc/d9f/_x_box_2_n_x_2material_8h.html", "dc/d9f/_x_box_2_n_x_2material_8h" ],
+    [ "mesh.cpp", "da/d76/_x_box_2_n_x_2mesh_8cpp.html", "da/d76/_x_box_2_n_x_2mesh_8cpp" ],
+    [ "mesh.h", "dc/d6e/_x_box_2_n_x_2mesh_8h.html", "dc/d6e/_x_box_2_n_x_2mesh_8h" ],
+    [ "mipmap.inl", "de/df5/mipmap_8inl.html", "de/df5/mipmap_8inl" ],
+    [ "nx_init.cpp", "d4/d26/_x_box_2_n_x_2nx__init_8cpp.html", "d4/d26/_x_box_2_n_x_2nx__init_8cpp" ],
+    [ "nx_init.h", "d1/df6/_x_box_2_n_x_2nx__init_8h.html", "d1/df6/_x_box_2_n_x_2nx__init_8h" ],
+    [ "occlude.cpp", "de/dbb/_x_box_2_n_x_2occlude_8cpp.html", "de/dbb/_x_box_2_n_x_2occlude_8cpp" ],
+    [ "occlude.h", "da/de4/_x_box_2_n_x_2occlude_8h.html", "da/de4/_x_box_2_n_x_2occlude_8h" ],
+    [ "particles.cpp", "d7/d2d/_x_box_2_n_x_2particles_8cpp.html", null ],
+    [ "particles.h", "dc/d64/_x_box_2_n_x_2particles_8h.html", "dc/d64/_x_box_2_n_x_2particles_8h" ],
+    [ "render.cpp", "d2/dad/_x_box_2_n_x_2render_8cpp.html", "d2/dad/_x_box_2_n_x_2render_8cpp" ],
+    [ "render.h", "d4/d42/_x_box_2_n_x_2render_8h.html", "d4/d42/_x_box_2_n_x_2render_8h" ],
+    [ "scene.cpp", "d5/dd1/_x_box_2_n_x_2scene_8cpp.html", "d5/dd1/_x_box_2_n_x_2scene_8cpp" ],
+    [ "scene.h", "df/db8/_x_box_2_n_x_2scene_8h.html", "df/db8/_x_box_2_n_x_2scene_8h" ],
+    [ "screenfx.cpp", "dc/dcf/screenfx_8cpp.html", "dc/dcf/screenfx_8cpp" ],
+    [ "screenfx.h", "d2/d8b/screenfx_8h.html", "d2/d8b/screenfx_8h" ],
+    [ "sprite.cpp", "df/d72/_x_box_2_n_x_2sprite_8cpp.html", "df/d72/_x_box_2_n_x_2sprite_8cpp" ],
+    [ "sprite.h", "d9/d69/_x_box_2_n_x_2sprite_8h.html", [
+      [ "SDraw2D", "da/db6/struct_nx_xbox_1_1_s_draw2_d.html", "da/db6/struct_nx_xbox_1_1_s_draw2_d" ],
+      [ "sSprite", "d4/df2/struct_nx_xbox_1_1s_sprite.html", "d4/df2/struct_nx_xbox_1_1s_sprite" ]
+    ] ],
+    [ "swizzleformat.h", "da/d48/swizzleformat_8h.html", "da/d48/swizzleformat_8h" ],
+    [ "texture.cpp", "dd/d7a/_x_box_2_n_x_2texture_8cpp.html", "dd/d7a/_x_box_2_n_x_2texture_8cpp" ],
+    [ "texture.h", "d1/d46/_x_box_2_n_x_2texture_8h.html", "d1/d46/_x_box_2_n_x_2texture_8h" ],
+    [ "verlet.cpp", "d3/dcd/verlet_8cpp.html", "d3/dcd/verlet_8cpp" ],
+    [ "verlet.h", "dc/d51/verlet_8h.html", "dc/d51/verlet_8h" ],
+    [ "xbmemfnt.h", "d4/d96/xbmemfnt_8h.html", "d4/d96/xbmemfnt_8h" ]
+];

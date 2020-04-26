@@ -1,0 +1,27 @@
+var class_nx_1_1_c_ps2_sector =
+[
+    [ "CPs2Sector", "d6/da8/class_nx_1_1_c_ps2_sector.html#a336097f4f9055032b253e4aa830c6bd3", null ],
+    [ "~CPs2Sector", "d6/da8/class_nx_1_1_c_ps2_sector.html#a604a41ab0a3894edabe271a2f81718f9", null ],
+    [ "SetEngineObject", "d6/da8/class_nx_1_1_c_ps2_sector.html#a7b66ad453a90d958faa972660dea08a5", null ],
+    [ "GetEngineObject", "d6/da8/class_nx_1_1_c_ps2_sector.html#a48f04a086f0745684c1f6ec5f153c3c2", null ],
+    [ "plat_set_color", "d6/da8/class_nx_1_1_c_ps2_sector.html#a40b4ff03862a7e9f5ddb171e45be09a8", null ],
+    [ "plat_get_color", "d6/da8/class_nx_1_1_c_ps2_sector.html#a24decc40eeff1736c68ea48eed3a3234", null ],
+    [ "plat_clear_color", "d6/da8/class_nx_1_1_c_ps2_sector.html#a9f3aeaf4425cf4a7046f1c14ccc5eb12", null ],
+    [ "plat_set_visibility", "d6/da8/class_nx_1_1_c_ps2_sector.html#ad539c02454eb37515198735181353c09", null ],
+    [ "plat_get_visibility", "d6/da8/class_nx_1_1_c_ps2_sector.html#a3f3ce2bfcbff7131e6949185fe3d9ba2", null ],
+    [ "plat_set_active", "d6/da8/class_nx_1_1_c_ps2_sector.html#a1b747eb7d9da42b5d012f4a416769aca", null ],
+    [ "plat_is_active", "d6/da8/class_nx_1_1_c_ps2_sector.html#aea03e65e4659740b067003423b480333", null ],
+    [ "plat_get_bounding_box", "d6/da8/class_nx_1_1_c_ps2_sector.html#a9e99a6016cb1ff7cbbb50294f8bd7634", null ],
+    [ "plat_set_world_position", "d6/da8/class_nx_1_1_c_ps2_sector.html#a3873b1462b10030ec37f8eca0e755e30", null ],
+    [ "plat_get_world_position", "d6/da8/class_nx_1_1_c_ps2_sector.html#ad849db26446a1848d4e79108525d44d3", null ],
+    [ "plat_set_y_rotation", "d6/da8/class_nx_1_1_c_ps2_sector.html#a39885c7ed2d3423d87711db4403b2418", null ],
+    [ "plat_set_shatter", "d6/da8/class_nx_1_1_c_ps2_sector.html#a93be1bc31916c7ac2586f2bb90202cf4", null ],
+    [ "plat_get_shatter", "d6/da8/class_nx_1_1_c_ps2_sector.html#afe480c6feaf5976bf291f24bb6c9cd10", null ],
+    [ "plat_clone", "d6/da8/class_nx_1_1_c_ps2_sector.html#aae973d485b9ce8253daf6b8cdba3978e", null ],
+    [ "update_engine_matrix", "d6/da8/class_nx_1_1_c_ps2_sector.html#aa3da02ea9654c04bd006412ffb21bd43", null ],
+    [ "mp_plat_object", "d6/da8/class_nx_1_1_c_ps2_sector.html#aa5a41a08ba15aa1f9f82b49ac1bc2cdb", null ],
+    [ "m_world_matrix", "d6/da8/class_nx_1_1_c_ps2_sector.html#af2ac5459f7cff8f9441e13305a0f2af8", null ],
+    [ "m_rgba", "d6/da8/class_nx_1_1_c_ps2_sector.html#a8639f8a1f144fc53665c9e9b0817880d", null ],
+    [ "m_active", "d6/da8/class_nx_1_1_c_ps2_sector.html#a86eed91c0d11381a6424856f43007df1", null ],
+    [ "m_shatter", "d6/da8/class_nx_1_1_c_ps2_sector.html#a143a251c06566b266b029685909a1455", null ]
+];

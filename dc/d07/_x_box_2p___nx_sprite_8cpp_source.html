@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/p_NxSprite.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('dc/d07/_x_box_2p___nx_sprite_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxSprite.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// p_NxSprite.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include    &quot;Gfx/xbox/p_NxSprite.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include    &quot;Gfx/xbox/p_NxTexture.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">// Here&#39;s a machine specific implementation of CSprite</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a91cef5bc8913c73254e8f6112d889bc1">   18</a></span>&#160;<a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a91cef5bc8913c73254e8f6112d889bc1">CXboxSprite::CXboxSprite</a>()</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a> = <span class="keyword">new</span> <a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html">NxXbox::sSprite</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;}</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a071f7d9da1830c4d2a6c7a00a006ed38">   28</a></span>&#160;<a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a071f7d9da1830c4d2a6c7a00a006ed38">CXboxSprite::~CXboxSprite</a>()</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">// Private classes</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#af13a2d6836503904e57bf77886ad574e">   42</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#af13a2d6836503904e57bf77886ad574e">CXboxSprite::plat_initialize</a>()</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;{</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a35c218429a77ad3101066f07ab8f2077">plat_update_engine</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a2a161f6c16fce0bd293154947b26502c">plat_update_priority</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#aceeb446d644cdec1a5dfd2abf160631e">plat_update_hidden</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#aceeb446d644cdec1a5dfd2abf160631e">   53</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#aceeb446d644cdec1a5dfd2abf160631e">CXboxSprite::plat_update_hidden</a>()</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// Take sprite on or off draw list</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../da/db6/struct_nx_xbox_1_1_s_draw2_d.html#ac8f284a265efba02646ed752b4bd7828">SetHidden</a>( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#af11dabfaf4bbcba5571b6a86bcf436f0">m_hidden</a> );</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a35c218429a77ad3101066f07ab8f2077">   65</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a35c218429a77ad3101066f07ab8f2077">CXboxSprite::plat_update_engine</a>()</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a> *p_xbox_texture = <span class="keyword">static_cast&lt;</span><a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html">CXboxTexture</a> *<span class="keyword">&gt;</span>( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#ad5e7e95572961de01cf4c915f14cc329">mp_texture</a> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span>( p_xbox_texture )</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">// Rebuild sprite primitives</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#afd94237476eb3ff3fad742e7d256ecfa">mp_texture</a>  = p_xbox_texture-&gt;<a class="code" href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90d1d3ea80208baa028e95cdec2d405">GetEngineTexture</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#ae98cd7a0c084669bacb4105e1580cf2c">m_xpos</a>      = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#ab4520076557e6a0ef5b872c3fe833a26">m_pos_x</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#ab4e490a0dd74312346862b33545ac178">m_ypos</a>      = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#ac668e86259c56476a414ef5528647859">m_pos_y</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a49558a692599e9de3ed98dc60ee88069">m_width</a>     = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#a5dc5c337c04c1c5b0e29065dda0a929b">m_width</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9e23400d2ca79dbe37222df0c3f488a8">m_height</a>    = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#aecdfd5b976529d733a835d95d4213798">m_height</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a2a2cd323e5b9ffad69ad3e6c35f09de0">m_scale_x</a>   = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#af9afb7dc226b3f47ab4dfde3785fe72b">m_scale_x</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9d6add25a4c846352ef834061aac2fbc">m_scale_y</a>   = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#ad12f75743c380bb83b8c98e5a323a61d">m_scale_y</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#af57589ffc76d98b99b7879f050445686">m_xhot</a>      = (( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#a58d77508a0b75c14defb8f1b23b77693">m_anchor_x</a> + 1.0f ) * 0.5f) * ( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#a5dc5c337c04c1c5b0e29065dda0a929b">m_width</a> );</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9cac056b944f8a3df08f3b2ca891d36f">m_yhot</a>      = (( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#aabd912e4c9091e029ff25bb94027e3e1">m_anchor_y</a> + 1.0f ) * 0.5f) * ( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#aecdfd5b976529d733a835d95d4213798">m_height</a> );</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a54c281be72f5fa79cfac9f34e0e9d698">m_rot</a>       = <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#aa198096931b441043828c6c3da12adc3">m_rotation</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#adc80c106970ffa5a1c39b150556076fe">m_rgba</a>      = *((<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> *) &amp;<a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#a5eb4fdb658b9a47140581e442efea5fa">m_rgba</a>);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;}</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a2a161f6c16fce0bd293154947b26502c">   95</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a2a161f6c16fce0bd293154947b26502c">CXboxSprite::plat_update_priority</a>()</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// Update draw list.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a> )</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">mp_plat_sprite</a>-&gt;<a class="code" href="../../da/db6/struct_nx_xbox_1_1_s_draw2_d.html#a93d26cdfb5cea0822e7c59e5b4d22831">SetPriority</a>( <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#aeb8cf8df66897e18378f97ea1d4769cd">m_priority</a> );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">void</span>                <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#a68a9d6fae38f43ed7628e9059acb7e66">CSprite::plat_enable_constant_z_value</a>(<span class="keywordtype">bool</span> enable)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">//NxPs2::SSprite::EnableConstantZValue(enable);</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keywordtype">void</span>                <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#acac0f08da23a7c8664172f68d9734fe9">CSprite::plat_set_constant_z_value</a>(<a class="code" href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">Nx::ZBufferValue</a> z)</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;{</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="comment">//NxPs2::SSprite::SetConstantZValue(z);</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<a class="code" href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">Nx::ZBufferValue</a>    <a class="code" href="../../d9/dd9/class_nx_1_1_c_sprite.html#ac1910686d463cb0e6edbc08295f434cd">CSprite::plat_get_constant_z_value</a>()</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="comment">//return NxPs2::SSprite::GetConstantZValue();</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;} <span class="comment">// Namespace Nx           </span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_ab4520076557e6a0ef5b872c3fe833a26"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#ab4520076557e6a0ef5b872c3fe833a26">Nx::CSprite::m_pos_x</a></div><div class="ttdeci">float m_pos_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00106">NxSprite.h:106</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_a91cef5bc8913c73254e8f6112d889bc1"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a91cef5bc8913c73254e8f6112d889bc1">Nx::CXboxSprite::CXboxSprite</a></div><div class="ttdeci">CXboxSprite()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00018">p_NxSprite.cpp:18</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_a68a9d6fae38f43ed7628e9059acb7e66"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#a68a9d6fae38f43ed7628e9059acb7e66">Nx::CSprite::plat_enable_constant_z_value</a></div><div class="ttdeci">static void plat_enable_constant_z_value(bool enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d29/_n_g_c_2p___nx_sprite_8cpp_source.html#l00109">p_NxSprite.cpp:109</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_a964354655f047840f4744eebb7394873"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a964354655f047840f4744eebb7394873">Nx::CXboxSprite::mp_plat_sprite</a></div><div class="ttdeci">NxXbox::sSprite * mp_plat_sprite</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d99/_x_box_2p___nx_sprite_8h_source.html#l00031">p_NxSprite.h:31</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html">Nx::CXboxTexture</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00018">p_nxtexture.h:18</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_ac1910686d463cb0e6edbc08295f434cd"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#ac1910686d463cb0e6edbc08295f434cd">Nx::CSprite::plat_get_constant_z_value</a></div><div class="ttdeci">static Nx::ZBufferValue plat_get_constant_z_value()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d29/_n_g_c_2p___nx_sprite_8cpp_source.html#l00129">p_NxSprite.cpp:129</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_a5eb4fdb658b9a47140581e442efea5fa"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#a5eb4fdb658b9a47140581e442efea5fa">Nx::CSprite::m_rgba</a></div><div class="ttdeci">Image::RGBA m_rgba</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00122">NxSprite.h:122</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_adc80c106970ffa5a1c39b150556076fe"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#adc80c106970ffa5a1c39b150556076fe">NxXbox::sSprite::m_rgba</a></div><div class="ttdeci">uint32 m_rgba</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00063">sprite.h:63</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_a58d77508a0b75c14defb8f1b23b77693"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#a58d77508a0b75c14defb8f1b23b77693">Nx::CSprite::m_anchor_x</a></div><div class="ttdeci">float m_anchor_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00110">NxSprite.h:110</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1_s_draw2_d_html_a93d26cdfb5cea0822e7c59e5b4d22831"><div class="ttname"><a href="../../da/db6/struct_nx_xbox_1_1_s_draw2_d.html#a93d26cdfb5cea0822e7c59e5b4d22831">NxXbox::SDraw2D::SetPriority</a></div><div class="ttdeci">void SetPriority(float pri)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_x_box_2_n_x_2sprite_8cpp_source.html#l00065">sprite.cpp:65</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_ac668e86259c56476a414ef5528647859"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#ac668e86259c56476a414ef5528647859">Nx::CSprite::m_pos_y</a></div><div class="ttdeci">float m_pos_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00107">NxSprite.h:107</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_ad5e7e95572961de01cf4c915f14cc329"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#ad5e7e95572961de01cf4c915f14cc329">Nx::CSprite::mp_texture</a></div><div class="ttdeci">CTexture * mp_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00104">NxSprite.h:104</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_aceeb446d644cdec1a5dfd2abf160631e"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#aceeb446d644cdec1a5dfd2abf160631e">Nx::CXboxSprite::plat_update_hidden</a></div><div class="ttdeci">virtual void plat_update_hidden()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00053">p_NxSprite.cpp:53</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_aecdfd5b976529d733a835d95d4213798"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#aecdfd5b976529d733a835d95d4213798">Nx::CSprite::m_height</a></div><div class="ttdeci">uint16 m_height</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00118">NxSprite.h:118</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a9cac056b944f8a3df08f3b2ca891d36f"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9cac056b944f8a3df08f3b2ca891d36f">NxXbox::sSprite::m_yhot</a></div><div class="ttdeci">float m_yhot</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00061">sprite.h:61</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1_s_draw2_d_html_ac8f284a265efba02646ed752b4bd7828"><div class="ttname"><a href="../../da/db6/struct_nx_xbox_1_1_s_draw2_d.html#ac8f284a265efba02646ed752b4bd7828">NxXbox::SDraw2D::SetHidden</a></div><div class="ttdeci">void SetHidden(bool hide)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d72/_x_box_2_n_x_2sprite_8cpp_source.html#l00103">sprite.cpp:103</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_af13a2d6836503904e57bf77886ad574e"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#af13a2d6836503904e57bf77886ad574e">Nx::CXboxSprite::plat_initialize</a></div><div class="ttdeci">virtual void plat_initialize()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00042">p_NxSprite.cpp:42</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_a35c218429a77ad3101066f07ab8f2077"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a35c218429a77ad3101066f07ab8f2077">Nx::CXboxSprite::plat_update_engine</a></div><div class="ttdeci">virtual void plat_update_engine()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00065">p_NxSprite.cpp:65</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_af11dabfaf4bbcba5571b6a86bcf436f0"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#af11dabfaf4bbcba5571b6a86bcf436f0">Nx::CSprite::m_hidden</a></div><div class="ttdeci">bool m_hidden</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00120">NxSprite.h:120</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_texture_html_ab90d1d3ea80208baa028e95cdec2d405"><div class="ttname"><a href="../../de/dea/class_nx_1_1_c_xbox_texture.html#ab90d1d3ea80208baa028e95cdec2d405">Nx::CXboxTexture::GetEngineTexture</a></div><div class="ttdeci">NxXbox::sTexture * GetEngineTexture() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d41/_x_box_2p__nxtexture_8h_source.html#l00052">p_nxtexture.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_aabd912e4c9091e029ff25bb94027e3e1"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#aabd912e4c9091e029ff25bb94027e3e1">Nx::CSprite::m_anchor_y</a></div><div class="ttdeci">float m_anchor_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00111">NxSprite.h:111</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_a071f7d9da1830c4d2a6c7a00a006ed38"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a071f7d9da1830c4d2a6c7a00a006ed38">Nx::CXboxSprite::~CXboxSprite</a></div><div class="ttdeci">virtual ~CXboxSprite()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00028">p_NxSprite.cpp:28</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a9e23400d2ca79dbe37222df0c3f488a8"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9e23400d2ca79dbe37222df0c3f488a8">NxXbox::sSprite::m_height</a></div><div class="ttdeci">uint16 m_height</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00057">sprite.h:57</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_afd94237476eb3ff3fad742e7d256ecfa"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#afd94237476eb3ff3fad742e7d256ecfa">NxXbox::sSprite::mp_texture</a></div><div class="ttdeci">sTexture * mp_texture</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00052">sprite.h:52</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a49558a692599e9de3ed98dc60ee88069"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a49558a692599e9de3ed98dc60ee88069">NxXbox::sSprite::m_width</a></div><div class="ttdeci">uint16 m_width</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00056">sprite.h:56</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_ab4e490a0dd74312346862b33545ac178"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#ab4e490a0dd74312346862b33545ac178">NxXbox::sSprite::m_ypos</a></div><div class="ttdeci">float m_ypos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00055">sprite.h:55</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_sprite_html_a2a161f6c16fce0bd293154947b26502c"><div class="ttname"><a href="../../d3/d50/class_nx_1_1_c_xbox_sprite.html#a2a161f6c16fce0bd293154947b26502c">Nx::CXboxSprite::plat_update_priority</a></div><div class="ttdeci">virtual void plat_update_priority()</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d07/_x_box_2p___nx_sprite_8cpp_source.html#l00095">p_NxSprite.cpp:95</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a2a2cd323e5b9ffad69ad3e6c35f09de0"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a2a2cd323e5b9ffad69ad3e6c35f09de0">NxXbox::sSprite::m_scale_x</a></div><div class="ttdeci">float m_scale_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00058">sprite.h:58</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a54c281be72f5fa79cfac9f34e0e9d698"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a54c281be72f5fa79cfac9f34e0e9d698">NxXbox::sSprite::m_rot</a></div><div class="ttdeci">float m_rot</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00062">sprite.h:62</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_a5dc5c337c04c1c5b0e29065dda0a929b"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#a5dc5c337c04c1c5b0e29065dda0a929b">Nx::CSprite::m_width</a></div><div class="ttdeci">uint16 m_width</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00117">NxSprite.h:117</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_af57589ffc76d98b99b7879f050445686"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#af57589ffc76d98b99b7879f050445686">NxXbox::sSprite::m_xhot</a></div><div class="ttdeci">float m_xhot</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00060">sprite.h:60</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_acac0f08da23a7c8664172f68d9734fe9"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#acac0f08da23a7c8664172f68d9734fe9">Nx::CSprite::plat_set_constant_z_value</a></div><div class="ttdeci">static void plat_set_constant_z_value(Nx::ZBufferValue z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d29/_n_g_c_2p___nx_sprite_8cpp_source.html#l00119">p_NxSprite.cpp:119</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a248e271bcaa0ed2cf8771600c429dff6"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a248e271bcaa0ed2cf8771600c429dff6">Nx::ZBufferValue</a></div><div class="ttdeci">uint32 ZBufferValue</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d4e/_nx_viewport_8h_source.html#l00048">NxViewport.h:48</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_a9d6add25a4c846352ef834061aac2fbc"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#a9d6add25a4c846352ef834061aac2fbc">NxXbox::sSprite::m_scale_y</a></div><div class="ttdeci">float m_scale_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00059">sprite.h:59</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_af9afb7dc226b3f47ab4dfde3785fe72b"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#af9afb7dc226b3f47ab4dfde3785fe72b">Nx::CSprite::m_scale_x</a></div><div class="ttdeci">float m_scale_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00108">NxSprite.h:108</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html_ae98cd7a0c084669bacb4105e1580cf2c"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html#ae98cd7a0c084669bacb4105e1580cf2c">NxXbox::sSprite::m_xpos</a></div><div class="ttdeci">float m_xpos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00054">sprite.h:54</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_aeb8cf8df66897e18378f97ea1d4769cd"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#aeb8cf8df66897e18378f97ea1d4769cd">Nx::CSprite::m_priority</a></div><div class="ttdeci">float m_priority</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00114">NxSprite.h:114</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_aa198096931b441043828c6c3da12adc3"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#aa198096931b441043828c6c3da12adc3">Nx::CSprite::m_rotation</a></div><div class="ttdeci">float m_rotation</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00113">NxSprite.h:113</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_sprite_html"><div class="ttname"><a href="../../d4/df2/struct_nx_xbox_1_1s_sprite.html">NxXbox::sSprite</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d69/_x_box_2_n_x_2sprite_8h_source.html#l00046">sprite.h:46</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_sprite_html_ad12f75743c380bb83b8c98e5a323a61d"><div class="ttname"><a href="../../d9/dd9/class_nx_1_1_c_sprite.html#ad12f75743c380bb83b8c98e5a323a61d">Nx::CSprite::m_scale_y</a></div><div class="ttdeci">float m_scale_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/_nx_sprite_8h_source.html#l00109">NxSprite.h:109</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../dc/d07/_x_box_2p___nx_sprite_8cpp.html">p_NxSprite.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

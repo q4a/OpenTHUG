@@ -1,0 +1,27 @@
+var class_obj_1_1_c_gap_check =
+[
+    [ "CGapCheck", "db/dd6/class_obj_1_1_c_gap_check.html#ad1d5e543dcd1812edd099c2278efbb1f", null ],
+    [ "Got", "db/dd6/class_obj_1_1_c_gap_check.html#a0c7414559fb98b81ce7d3b87991ffc4b", null ],
+    [ "GetGap", "db/dd6/class_obj_1_1_c_gap_check.html#a86d21b8b638758e0ed517d08fa96eb32", null ],
+    [ "GetGapPending", "db/dd6/class_obj_1_1_c_gap_check.html#a078a269a6d8252780e212f3397f863b3", null ],
+    [ "UnGetGapPending", "db/dd6/class_obj_1_1_c_gap_check.html#a29d7c12749201060473cee029209ee9f", null ],
+    [ "GotGapPending", "db/dd6/class_obj_1_1_c_gap_check.html#a55253a789d87ce1ac9862aa64c468ff5", null ],
+    [ "SetInfoForCamera", "db/dd6/class_obj_1_1_c_gap_check.html#ae9263100e5ec9d57248d8b3f63d7fce5", null ],
+    [ "GetSkaterStartPos", "db/dd6/class_obj_1_1_c_gap_check.html#a81668a736e2211bf2f4f12fa463ca3c2", null ],
+    [ "GetSkaterStartDir", "db/dd6/class_obj_1_1_c_gap_check.html#a79bcc229cb7df05e8b1bc4d0d4682381", null ],
+    [ "UnGetGap", "db/dd6/class_obj_1_1_c_gap_check.html#a3cd8e01779a63ea0aa3f5a69abb273fb", null ],
+    [ "GetText", "db/dd6/class_obj_1_1_c_gap_check.html#ac6791e8dc35b7fc8f4552755e77f38af", null ],
+    [ "SetText", "db/dd6/class_obj_1_1_c_gap_check.html#a20012ae433eeb0b0293b6f29db23fe67", null ],
+    [ "SetCount", "db/dd6/class_obj_1_1_c_gap_check.html#a34aff822d1425ee3dddc128e703a8ad0", null ],
+    [ "SetScore", "db/dd6/class_obj_1_1_c_gap_check.html#afb30e4b26a88601c76cb2ed43bd98efb", null ],
+    [ "GetScore", "db/dd6/class_obj_1_1_c_gap_check.html#ae90e7ab1aa7d987747abe6178a11d7c7", null ],
+    [ "SetValid", "db/dd6/class_obj_1_1_c_gap_check.html#ae1916700e16caa26d5b543ac9c327ad1", null ],
+    [ "Reset", "db/dd6/class_obj_1_1_c_gap_check.html#aa57046c90cdc9fbef94a7fa87d171e0c", null ],
+    [ "m_skater_start_pos", "db/dd6/class_obj_1_1_c_gap_check.html#ae5aa94846a8e230000742e9760161d92", null ],
+    [ "m_skater_start_dir", "db/dd6/class_obj_1_1_c_gap_check.html#a91f5e762db3faa61aef94fb099a34ae7", null ],
+    [ "m_got_pending", "db/dd6/class_obj_1_1_c_gap_check.html#aff62138a1290df5cb5ee8cebd9008e06", null ],
+    [ "m_got", "db/dd6/class_obj_1_1_c_gap_check.html#ab63b294b183969bd6ca1cbba45a65ffa", null ],
+    [ "m_score", "db/dd6/class_obj_1_1_c_gap_check.html#ade186e3a6175336e5eb4c8b79460f089", null ],
+    [ "m_valid", "db/dd6/class_obj_1_1_c_gap_check.html#a5fae5dbe2166e61601760af0321a0a77", null ],
+    [ "m_name", "db/dd6/class_obj_1_1_c_gap_check.html#a7cae582a802556eb8c1462fc5eb9ce31", null ]
+];

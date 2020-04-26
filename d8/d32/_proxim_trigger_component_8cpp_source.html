@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/ProximTriggerComponent.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d8/d32/_proxim_trigger_component_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">ProximTriggerComponent.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d32/_proxim_trigger_component_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       ProximTriggerComponent.cpp</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Dan</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  2/28/3</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/df0/_proxim_trigger_component_8h.html">gel/components/proximtriggercomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/dff/compositeobjectmanager_8h.html">gel/object/compositeobjectmanager.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd4/compositeobject_8h.html">gel/object/compositeobject.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d31/checksum_8h.html">gel/scripting/checksum.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dbc/proxim_8h.html">sk/objects/proxim.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#af357a7321b7886d105da15e17c9dbe6a">   27</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#af357a7321b7886d105da15e17c9dbe6a">CProximTriggerComponent::s_create</a>()</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">static_cast&lt;</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>* <span class="keyword">&gt;</span>( <span class="keyword">new</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1ee6f03a31f842a7b4c4da4e7a644263">CProximTriggerComponent</a> );   </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;}</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1ee6f03a31f842a7b4c4da4e7a644263">   37</a></span>&#160;<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1ee6f03a31f842a7b4c4da4e7a644263">CProximTriggerComponent::CProximTriggerComponent</a>() : <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>()</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">SetType</a>( CRC_PROXIMTRIGGER );</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (!Mdl::Skate::Instance()-&gt;mpProximManager)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a>(<span class="stringliteral">&quot;ProximTriggerComponent created before ProximManager; ProximNodes will not work&quot;</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    Dbg_MsgAssert(Mdl::Skate::Instance()-&gt;mpProximManager, (<span class="stringliteral">&quot;ProximTriggerComponent created before ProximManager&quot;</span>));</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#ab7326da0ac32593629cdd98ee7ebfc49">   55</a></span>&#160;<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#ab7326da0ac32593629cdd98ee7ebfc49">CProximTriggerComponent::~CProximTriggerComponent</a>()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;{</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#aed5c6813730150c1d7a06f2e97796939">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#aed5c6813730150c1d7a06f2e97796939">CProximTriggerComponent::InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">if</span> (pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">ContainsComponentNamed</a>(CRCD(0x1313e3c, <span class="stringliteral">&quot;ProximTriggerTarget&quot;</span>)))</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    {</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> script_target_id;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>(CRCD(0x1313e3c, <span class="stringliteral">&quot;ProximTriggerTarget&quot;</span>), &amp;script_target_id);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a> = <span class="keyword">static_cast&lt;</span> <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">CCompositeObject</a>* <span class="keyword">&gt;</span>(CCompositeObjectManager::Instance()-&gt;GetObjectByID(script_target_id));</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        Dbg_MsgAssert(<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a>, (<span class="stringliteral">&quot;ProximTriggerComponent given unidentifiable target object&quot;</span>));</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a3eb7f47f6e5ea21f763ab7765debe0c8">m_active</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2b580d733d9d25d03f656dd8e7727df0">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2b580d733d9d25d03f656dd8e7727df0">CProximTriggerComponent::RefreshFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams )</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#aed5c6813730150c1d7a06f2e97796939">InitFromStructure</a>(pParams);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a326a6624428cdeaa33c4971a11e062c2">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a326a6624428cdeaa33c4971a11e062c2">CProximTriggerComponent::Update</a>()</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a3eb7f47f6e5ea21f763ab7765debe0c8">m_active</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2f23895ef151bae66df57f822dc1af97">ProximUpdate</a>();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2f23895ef151bae66df57f822dc1af97">   99</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2f23895ef151bae66df57f822dc1af97">CProximTriggerComponent::ProximUpdate</a>()</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">    #if 0   </span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    Dbg_Assert(<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a>);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> proxim_trigger_mask = Mdl::Skate::Instance()-&gt;mpProximManager-&gt;GetProximTriggerMask(<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2a4b9f11915b21946d8d4e32fb04e879">m_viewport</a>);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <a class="code" href="../../d2/d10/namespace_obj.html#af98ad8e7f9bcc00bde479bbeff2f58aa">Proxim_Update</a>(proxim_trigger_mask, <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a>, <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">GetObject</a>()-&gt;<a class="code" href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a>());</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a6fb22838f437f65a695ec18f1c51a45c">  117</a></span>&#160;<a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">CBaseComponent::EMemberFunctionResult</a> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a6fb22838f437f65a695ec18f1c51a45c">CProximTriggerComponent::CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript )</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordflow">switch</span> ( Checksum )</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">CBaseComponent::MF_NOT_EXECUTED</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">CBaseComponent::MF_TRUE</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a5b4c549f59e0a9b3a23e720a4c570372">  133</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a5b4c549f59e0a9b3a23e720a4c570372">CProximTriggerComponent::GetDebugInfo</a>(<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_info)</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">#ifdef  __DEBUG_CODE__</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    Dbg_MsgAssert(p_info, (<span class="stringliteral">&quot;NULL p_info sent to CProximTriggerComponent::GetDebugInfo&quot;</span>));</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">AddChecksum</a>(<span class="stringliteral">&quot;mp_script_target_object&quot;</span>, <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a>-&gt;<a class="code" href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">GetID</a>());</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    p_info-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>(<span class="stringliteral">&quot;proxim_trigger_mask&quot;</span>, Mdl::Skate::Instance()-&gt;mpProximManager-&gt;GetProximTriggerMask(<a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2a4b9f11915b21946d8d4e32fb04e879">m_viewport</a>));</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">CBaseComponent::GetDebugInfo</a>(p_info);     </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">#endif               </span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    </div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1443968d8c45c789e7021a890d5d6d57">  150</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1443968d8c45c789e7021a890d5d6d57">CProximTriggerComponent::SetScriptTarget</a> ( <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">CCompositeObject</a>* p_script_target_object )</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;{</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    Dbg_Assert(p_script_target_object);</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <a class="code" href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">mp_script_target_object</a> = p_script_target_object;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="acompositeobjectmanager_8h_html"><div class="ttname"><a href="../../d8/dff/compositeobjectmanager_8h.html">compositeobjectmanager.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a3eb7f47f6e5ea21f763ab7765debe0c8"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a3eb7f47f6e5ea21f763ab7765debe0c8">Obj::CProximTriggerComponent::m_active</a></div><div class="ttdeci">bool m_active</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df0/_proxim_trigger_component_8h_source.html#l00062">ProximTriggerComponent.h:62</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html">Obj::CCompositeObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00024">compositeobject.h:24</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a6fb22838f437f65a695ec18f1c51a45c"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a6fb22838f437f65a695ec18f1c51a45c">Obj::CProximTriggerComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00117">ProximTriggerComponent.cpp:117</a></div></div>
+<div class="ttc" id="amatrix_8h_html_ad393a55b0cd17b6dea798c49863e8de4"><div class="ttname"><a href="../../dd/df4/matrix_8h.html#ad393a55b0cd17b6dea798c49863e8de4">GetPos</a></div><div class="ttdeci">Vector &amp; GetPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00066">matrix.h:66</a></div></div>
+<div class="ttc" id="a_messages_8h_html_a701d7b9cdd94e5f87bc47f4e770492e6"><div class="ttname"><a href="../../df/de2/_messages_8h.html#a701d7b9cdd94e5f87bc47f4e770492e6">Dbg_Message</a></div><div class="ttdeci">void Dbg_Message(const char *A ...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/de2/_messages_8h_source.html#l00112">Messages.h:112</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a880a8b9b7ec5b22563c6821ae0f1903e"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a880a8b9b7ec5b22563c6821ae0f1903e">Obj::CBaseComponent::SetType</a></div><div class="ttdeci">void SetType(uint32 type)</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00077">basecomponent.h:77</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa39e6fe5fdf1d6c48136ae26a7ad511e"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">Script::CStruct::GetChecksum</a></div><div class="ttdeci">bool GetChecksum(uint32 nameChecksum, uint32 *p_checksum, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01658">struct.cpp:1658</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a326a6624428cdeaa33c4971a11e062c2"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a326a6624428cdeaa33c4971a11e062c2">Obj::CProximTriggerComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00093">ProximTriggerComponent.cpp:93</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a7dcfd17247a8d05295a729cb799c61e8"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a7dcfd17247a8d05295a729cb799c61e8">Obj::CProximTriggerComponent::mp_script_target_object</a></div><div class="ttdeci">CObject * mp_script_target_object</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df0/_proxim_trigger_component_8h_source.html#l00059">ProximTriggerComponent.h:59</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_ab6805f805d22e3876bcd47552a663f1a"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">Script::CStruct::AddInteger</a></div><div class="ttdeci">void AddInteger(uint32 nameChecksum, int integer)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01039">struct.cpp:1039</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_a952f40d99323d28b3ca2f55567edfa85"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#a952f40d99323d28b3ca2f55567edfa85">Obj::CBaseComponent::GetObject</a></div><div class="ttdeci">CCompositeObject * GetObject() const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00059">basecomponent.h:59</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_af357a7321b7886d105da15e17c9dbe6a"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#af357a7321b7886d105da15e17c9dbe6a">Obj::CProximTriggerComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00027">ProximTriggerComponent.cpp:27</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a2f23895ef151bae66df57f822dc1af97"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2f23895ef151bae66df57f822dc1af97">Obj::CProximTriggerComponent::ProximUpdate</a></div><div class="ttdeci">void ProximUpdate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00099">ProximTriggerComponent.cpp:99</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a56171927079158674d748a0593274357">Obj::CBaseComponent::MF_NOT_EXECUTED</a></div><div class="ttdeci">@ MF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00042">basecomponent.h:42</a></div></div>
+<div class="ttc" id="aproxim_8h_html"><div class="ttname"><a href="../../df/dbc/proxim_8h.html">proxim.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="a_proxim_trigger_component_8h_html"><div class="ttname"><a href="../../d7/df0/_proxim_trigger_component_8h.html">ProximTriggerComponent.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a847c66d2b9ed99bc36489dca616f1e70"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">Script::CStruct::ContainsComponentNamed</a></div><div class="ttdeci">bool ContainsComponentNamed(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01759">struct.cpp:1759</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a2a4b9f11915b21946d8d4e32fb04e879"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2a4b9f11915b21946d8d4e32fb04e879">Obj::CProximTriggerComponent::m_viewport</a></div><div class="ttdeci">int m_viewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/df0/_proxim_trigger_component_8h_source.html#l00066">ProximTriggerComponent.h:66</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="achecksum_8h_html"><div class="ttname"><a href="../../dc/d31/checksum_8h.html">checksum.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_ab7326da0ac32593629cdd98ee7ebfc49"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#ab7326da0ac32593629cdd98ee7ebfc49">Obj::CProximTriggerComponent::~CProximTriggerComponent</a></div><div class="ttdeci">virtual ~CProximTriggerComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00055">ProximTriggerComponent.cpp:55</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6a44e542d6bb5fb42896e92fcc5e78b056">Obj::CBaseComponent::MF_TRUE</a></div><div class="ttdeci">@ MF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00041">basecomponent.h:41</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a5b4c549f59e0a9b3a23e720a4c570372"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a5b4c549f59e0a9b3a23e720a4c570372">Obj::CProximTriggerComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00133">ProximTriggerComponent.cpp:133</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a1ee6f03a31f842a7b4c4da4e7a644263"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1ee6f03a31f842a7b4c4da4e7a644263">Obj::CProximTriggerComponent::CProximTriggerComponent</a></div><div class="ttdeci">CProximTriggerComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00037">ProximTriggerComponent.cpp:37</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a2b580d733d9d25d03f656dd8e7727df0"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a2b580d733d9d25d03f656dd8e7727df0">Obj::CProximTriggerComponent::RefreshFromStructure</a></div><div class="ttdeci">virtual void RefreshFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00083">ProximTriggerComponent.cpp:83</a></div></div>
+<div class="ttc" id="acompositeobject_8h_html"><div class="ttname"><a href="../../d9/dd4/compositeobject_8h.html">compositeobject.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_acb60b78cb120aaaa883df1fd4d4d15bf"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#acb60b78cb120aaaa883df1fd4d4d15bf">Obj::CBaseComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/dbd/basecomponent_8cpp_source.html#l00113">basecomponent.cpp:113</a></div></div>
+<div class="ttc" id="anamespace_obj_html_af98ad8e7f9bcc00bde479bbeff2f58aa"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#af98ad8e7f9bcc00bde479bbeff2f58aa">Obj::Proxim_Update</a></div><div class="ttdeci">void Proxim_Update(uint32 trigger_mask, CObject *p_script_target, const Mth::Vector &amp;pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d21/proxim_8cpp_source.html#l00224">proxim.cpp:224</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_html_ad39f6409df17fb6ee459d1071258c645"><div class="ttname"><a href="../../df/dde/class_obj_1_1_c_object.html#ad39f6409df17fb6ee459d1071258c645">Obj::CObject::GetID</a></div><div class="ttdeci">uint32 GetID() const</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d10/object_8h_source.html#l00130">object.h:130</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a148f8f6bc239cff60340c410df449c71"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a148f8f6bc239cff60340c410df449c71">Script::CStruct::AddChecksum</a></div><div class="ttdeci">void AddChecksum(uint32 nameChecksum, uint32 checksum)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01071">struct.cpp:1071</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_a1443968d8c45c789e7021a890d5d6d57"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#a1443968d8c45c789e7021a890d5d6d57">Obj::CProximTriggerComponent::SetScriptTarget</a></div><div class="ttdeci">void SetScriptTarget(CCompositeObject *p_script_target_object)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00150">ProximTriggerComponent.cpp:150</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_proxim_trigger_component_html_aed5c6813730150c1d7a06f2e97796939"><div class="ttname"><a href="../../dd/dab/class_obj_1_1_c_proxim_trigger_component.html#aed5c6813730150c1d7a06f2e97796939">Obj::CProximTriggerComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/d32/_proxim_trigger_component_8cpp_source.html#l00064">ProximTriggerComponent.cpp:64</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../d8/d32/_proxim_trigger_component_8cpp.html">ProximTriggerComponent.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:21. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

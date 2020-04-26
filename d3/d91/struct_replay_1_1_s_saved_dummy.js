@@ -1,0 +1,27 @@
+var struct_replay_1_1_s_saved_dummy =
+[
+    [ "m_id", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a64bcc82303f149b5aff5bfdc14d65d89", null ],
+    [ "m_type", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a483a982b867888bf7f0d5eff7924cfbd", null ],
+    [ "mSkeletonName", "d3/d91/struct_replay_1_1_s_saved_dummy.html#ac7d61805d06375c50dfcb73860d945a4", null ],
+    [ "mProfileName", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a7e94655aa2d5c38176ee2725ede9a169", null ],
+    [ "mAnimScriptName", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a1ff543b0cf191e21c011947d231effa7", null ],
+    [ "mSectorName", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a728304007cc1e26f149e7f95aa2b426f", null ],
+    [ "mFlags", "d3/d91/struct_replay_1_1_s_saved_dummy.html#aa3cf590c751c2f576dbe45b372b0fc5b", null ],
+    [ "mScale", "d3/d91/struct_replay_1_1_s_saved_dummy.html#ac71a12c7612f7fbbbeb2b89181ed78e5", null ],
+    [ "m_pos", "d3/d91/struct_replay_1_1_s_saved_dummy.html#afa82bb6445d73b926e7f01838f58e957", null ],
+    [ "m_vel", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a2dd873b0b2013913338d38afffacedb9", null ],
+    [ "m_angles", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a7b30f13054a2427876aaaedfdeae48da", null ],
+    [ "m_ang_vel", "d3/d91/struct_replay_1_1_s_saved_dummy.html#aa6a8a212742310ebad3432973b5b82a9", null ],
+    [ "m_car_rotation_x", "d3/d91/struct_replay_1_1_s_saved_dummy.html#afa4fcc2ddca2483eba83c097618e3104", null ],
+    [ "m_car_rotation_x_vel", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a2b9a566b0eea19ddf337b5d2ca2227e8", null ],
+    [ "m_wheel_rotation_x", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a9d82167ae8291b227201ed1ae2fed11a", null ],
+    [ "m_wheel_rotation_x_vel", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a17e31b1236e7c6773a032b570064ce00", null ],
+    [ "m_wheel_rotation_y", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a505d03ead6899990957e256a829df735", null ],
+    [ "m_wheel_rotation_y_vel", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a72a5686afa510ea60d5878c1b3c5e862", null ],
+    [ "m_primaryController", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a2cea02a7f76b8ae203df6b692f33dc7a", null ],
+    [ "m_degenerateControllers", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a201aec250af85f223715f7ce1ea79388", null ],
+    [ "mAtomicStates", "d3/d91/struct_replay_1_1_s_saved_dummy.html#ae0f4ccb20d34847304729709ad50e8e5", null ],
+    [ "m_looping_sound_checksum", "d3/d91/struct_replay_1_1_s_saved_dummy.html#af29b77f035e1d2a5008be9ed2f986ba9", null ],
+    [ "m_pitch_min", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a93f8c75920736fd412bfab2fc2e24249", null ],
+    [ "m_pitch_max", "d3/d91/struct_replay_1_1_s_saved_dummy.html#a721f3a429dd41b1d2367ebab37d900c7", null ]
+];

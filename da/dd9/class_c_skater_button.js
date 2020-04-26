@@ -1,0 +1,26 @@
+var class_c_skater_button =
+[
+    [ "Update", "da/dd9/class_c_skater_button.html#a9e74ea83b0763cdf5c6eb09db962c8c9", null ],
+    [ "Update", "da/dd9/class_c_skater_button.html#a6383f9bf40fd10253e1a6d6eadef06a5", null ],
+    [ "GetPressed", "da/dd9/class_c_skater_button.html#ad17c4ebd394f8e5966f6291af1477baa", null ],
+    [ "GetTriggered", "da/dd9/class_c_skater_button.html#abb7ba2f7cbeb5c929209152e0200bf4c", null ],
+    [ "SetPressed", "da/dd9/class_c_skater_button.html#a6412e54d2ee561e3181d92dd2a34b887", null ],
+    [ "GetPressure", "da/dd9/class_c_skater_button.html#a4e064c079d971139739ed99ac10330b1", null ],
+    [ "ClearTrigger", "da/dd9/class_c_skater_button.html#a735c5f3324a7d41a78b16892d5093b9d", null ],
+    [ "SetName", "da/dd9/class_c_skater_button.html#a0fa3063539930830fbde35462ba5df97", null ],
+    [ "SetDebounce", "da/dd9/class_c_skater_button.html#a42114cc889bf8238df642f82b58c312d", null ],
+    [ "GetDebounceTime", "da/dd9/class_c_skater_button.html#aef8b072a5887c30df4fe5c53cbd1d52a", null ],
+    [ "GetReleased", "da/dd9/class_c_skater_button.html#aa0571766ffa600e8a49846b3cc822147", null ],
+    [ "ClearRelease", "da/dd9/class_c_skater_button.html#a61b52b36077d564ddebe8d614572e9e2", null ],
+    [ "GetPressedTime", "da/dd9/class_c_skater_button.html#a345702274dac5d99497f6f2ce2616dba", null ],
+    [ "GetReleasedTime", "da/dd9/class_c_skater_button.html#a69c6517fa041eff41e3f339d6c526c02", null ],
+    [ "GetName", "da/dd9/class_c_skater_button.html#a1365a6a16ca9e3b3e35dc5f702ae2589", null ],
+    [ "m_pressed", "da/dd9/class_c_skater_button.html#aa1aaf4f36272b11c488a1e529b26a505", null ],
+    [ "m_pressed_time", "da/dd9/class_c_skater_button.html#aba48686c116898140ad982e83b9ecd98", null ],
+    [ "m_released_time", "da/dd9/class_c_skater_button.html#aa85bbde0534fd1cb52b887a8471e8bef", null ],
+    [ "m_pressure", "da/dd9/class_c_skater_button.html#a196219bce7dbc9fcdd5224f55c1cc30c", null ],
+    [ "m_triggered", "da/dd9/class_c_skater_button.html#a4d0bb11153e11f58bc52cc62113f48ea", null ],
+    [ "m_released", "da/dd9/class_c_skater_button.html#a51ae2e6af032f9dccbac70562e88d69f", null ],
+    [ "m_name_checksum", "da/dd9/class_c_skater_button.html#a209ae5644a46c62d4206a10ee96499a9", null ],
+    [ "m_debounce_time", "da/dd9/class_c_skater_button.html#a2b9ca92d4119aeac328b4cd27f0faece", null ]
+];

@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/ngc/p_ppcwgpipe.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d2f/p__ppcwgpipe_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_ppcwgpipe.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d2f/p__ppcwgpipe_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*---------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">  Project: Write gather pipe definitions</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  File:    PPCWGPipe.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  Copyright 1998, 1999 Nintendo.  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  These coded instructions, statements, and computer programs contain</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">  proprietary information of Nintendo of America Inc. and/or Nintendo</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  Company Ltd., and are protected by Federal copyright law.  They may</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  not be disclosed to third parties or copied or duplicated in any form,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  in whole or in part, without the prior written consent of Nintendo.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">  $Log: /Dolphin/include/dolphin/base/PPCWGPipe.h $</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    2     11/01/00 3:55p Shiki</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    Removed #ifdef EPPC.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">    1     7/14/99 6:59p Yoshya01</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">    Initial version.</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">  $NoKeywords: $</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *---------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#ifndef __PPCWGPIPE_H__</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define __PPCWGPIPE_H__</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifdef  __cplusplus</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span>  <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;dolphin/types.h&gt;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/*---------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">    PPC Write Gather Pipe</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">    Write Gather Pipe is defined as:</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">        PPCWGPipe wgpipe : &lt;Write Gathered Address&gt;;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">    Then, used as:</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">        wgpipe.u8  = 0xff;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">        wgpipe.s16 = -5;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">        wgpipe.f32 = 0.10f;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> *---------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#ifdef __SN__</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#aeb0c68c46d4bfebb91c9a41191d05dc7">   45</a></span>&#160;<span class="keyword">typedef</span>  s8 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aeb0c68c46d4bfebb91c9a41191d05dc7">ts8</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#a2eabd3a9df14441405dcc30abde5bcae">   46</a></span>&#160;<span class="keyword">typedef</span>  s16 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a2eabd3a9df14441405dcc30abde5bcae">ts16</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#aa5c046f79e5c3890edb0ebe6335a2d85">   47</a></span>&#160;<span class="keyword">typedef</span>  s32 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aa5c046f79e5c3890edb0ebe6335a2d85">ts32</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#aef3f1371ef0e077407c29173fdd1725c">   48</a></span>&#160;<span class="keyword">typedef</span>  s64 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aef3f1371ef0e077407c29173fdd1725c">ts64</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#a3043b1d7d84a1af2486c463050284c7f">   49</a></span>&#160;<span class="keyword">typedef</span>  u8 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a3043b1d7d84a1af2486c463050284c7f">tu8</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#a0dc9239b66220b25039ada22a8169276">   50</a></span>&#160;<span class="keyword">typedef</span>  u16 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a0dc9239b66220b25039ada22a8169276">tu16</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#afc2f445733ed7e6f436cbbfc13af8354">   51</a></span>&#160;<span class="keyword">typedef</span>  u32 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#afc2f445733ed7e6f436cbbfc13af8354">tu32</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad676ab01b699e57790cf8e153dedf867">   52</a></span>&#160;<span class="keyword">typedef</span>  u64 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad676ab01b699e57790cf8e153dedf867">tu64</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad070ca64e1f3c351b7b3587220060232">   53</a></span>&#160;<span class="keyword">typedef</span>  f32 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad070ca64e1f3c351b7b3587220060232">tf32</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d1/d2f/p__ppcwgpipe_8h.html#a1270aab06f0688ac5578db6976a04ea5">   54</a></span>&#160;<span class="keyword">typedef</span>  f64 <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a1270aab06f0688ac5578db6976a04ea5">tf64</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html">   56</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">volatile</span> <span class="keyword">union </span><a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html">u_PPCWGPipe</a></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad28663740c3da02d6957d73f0bd43349">   58</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a3043b1d7d84a1af2486c463050284c7f">tu8</a>  <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad28663740c3da02d6957d73f0bd43349">u8</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a4175ff11ff5c88e031f3c535ee0da20a">   59</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a0dc9239b66220b25039ada22a8169276">tu16</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a4175ff11ff5c88e031f3c535ee0da20a">u16</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a57c7409b7d54ecde56b4bbf946043ae6">   60</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#afc2f445733ed7e6f436cbbfc13af8354">tu32</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a57c7409b7d54ecde56b4bbf946043ae6">u32</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad67fbe66a0ff8c73b6b7b7273c351202">   61</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad676ab01b699e57790cf8e153dedf867">tu64</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad67fbe66a0ff8c73b6b7b7273c351202">u64</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a557650ea20ac4bf0d955e75a4f3d1fff">   62</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aeb0c68c46d4bfebb91c9a41191d05dc7">ts8</a>  <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a557650ea20ac4bf0d955e75a4f3d1fff">s8</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a6ce9729666f95eece3d41068ef892015">   63</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a2eabd3a9df14441405dcc30abde5bcae">ts16</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a6ce9729666f95eece3d41068ef892015">s16</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a480e2adc3e6d049941b6f965e3cf9c1c">   64</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aa5c046f79e5c3890edb0ebe6335a2d85">ts32</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a480e2adc3e6d049941b6f965e3cf9c1c">s32</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#abfec317ef4856468c6c79837a32df1ee">   65</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#aef3f1371ef0e077407c29173fdd1725c">ts64</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#abfec317ef4856468c6c79837a32df1ee">s64</a>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a5a6528898b36f48b328e795b571e5fff">   66</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#ad070ca64e1f3c351b7b3587220060232">tf32</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a5a6528898b36f48b328e795b571e5fff">f32</a>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a45043bceb6306f0ff9c876f3fff2ea8c">   67</a></span>&#160;    <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a1270aab06f0688ac5578db6976a04ea5">tf64</a> <a class="code" href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a45043bceb6306f0ff9c876f3fff2ea8c">f64</a>;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;} <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a80ccde1fa585679de8ad32e74fa7196c">PPCWGPipe</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html">   72</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">volatile</span> <span class="keyword">union </span><a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html">PPCWGPipe</a></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;{</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7aa5acde9b7fb458a57784be40de5248">   74</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7aa5acde9b7fb458a57784be40de5248">u8</a>  <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7aa5acde9b7fb458a57784be40de5248">u8</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a54691399b526673acdb012dd9db1b3d1">   75</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a54691399b526673acdb012dd9db1b3d1">u16</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a54691399b526673acdb012dd9db1b3d1">u16</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a36f6c6095ee0cd5b7e1ad444ecd818af">   76</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a36f6c6095ee0cd5b7e1ad444ecd818af">u32</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a36f6c6095ee0cd5b7e1ad444ecd818af">u32</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#ac3ff00b4ceefa784133b0eea80999138">   77</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#ac3ff00b4ceefa784133b0eea80999138">u64</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#ac3ff00b4ceefa784133b0eea80999138">u64</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0c1b77ae5827a61b3492d38f95398c3c">   78</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0c1b77ae5827a61b3492d38f95398c3c">s8</a>  <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0c1b77ae5827a61b3492d38f95398c3c">s8</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a09e2139a731a14f825e9af8f8fa72e01">   79</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a09e2139a731a14f825e9af8f8fa72e01">s16</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a09e2139a731a14f825e9af8f8fa72e01">s16</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a58a2889b556df65e88e5840ff5c41513">   80</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a58a2889b556df65e88e5840ff5c41513">s32</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a58a2889b556df65e88e5840ff5c41513">s32</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7021117c390e023ccf88f7260e0d7552">   81</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7021117c390e023ccf88f7260e0d7552">s64</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7021117c390e023ccf88f7260e0d7552">s64</a>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a2f256c49c22e544d9ba56bcbeed2f31f">   82</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a2f256c49c22e544d9ba56bcbeed2f31f">f32</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a2f256c49c22e544d9ba56bcbeed2f31f">f32</a>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0f9a09f22164fe5b5e66344b1bc13471">   83</a></span>&#160;    <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0f9a09f22164fe5b5e66344b1bc13471">f64</a> <a class="code" href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0f9a09f22164fe5b5e66344b1bc13471">f64</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;} <a class="code" href="../../d1/d2f/p__ppcwgpipe_8h.html#a80ccde1fa585679de8ad32e74fa7196c">PPCWGPipe</a>;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#ifdef  __cplusplus</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif  //__PPCWGPIPE_H__</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_ad67fbe66a0ff8c73b6b7b7273c351202"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad67fbe66a0ff8c73b6b7b7273c351202">u_PPCWGPipe::u64</a></div><div class="ttdeci">tu64 u64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00061">p_ppcwgpipe.h:61</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a45043bceb6306f0ff9c876f3fff2ea8c"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a45043bceb6306f0ff9c876f3fff2ea8c">u_PPCWGPipe::f64</a></div><div class="ttdeci">tf64 f64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00067">p_ppcwgpipe.h:67</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a36f6c6095ee0cd5b7e1ad444ecd818af"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a36f6c6095ee0cd5b7e1ad444ecd818af">PPCWGPipe::u32</a></div><div class="ttdeci">u32 u32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00076">p_ppcwgpipe.h:76</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a54691399b526673acdb012dd9db1b3d1"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a54691399b526673acdb012dd9db1b3d1">PPCWGPipe::u16</a></div><div class="ttdeci">u16 u16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00075">p_ppcwgpipe.h:75</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a7aa5acde9b7fb458a57784be40de5248"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7aa5acde9b7fb458a57784be40de5248">PPCWGPipe::u8</a></div><div class="ttdeci">u8 u8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00074">p_ppcwgpipe.h:74</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_a2eabd3a9df14441405dcc30abde5bcae"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#a2eabd3a9df14441405dcc30abde5bcae">ts16</a></div><div class="ttdeci">s16 ts16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00046">p_ppcwgpipe.h:46</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_ad28663740c3da02d6957d73f0bd43349"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#ad28663740c3da02d6957d73f0bd43349">u_PPCWGPipe::u8</a></div><div class="ttdeci">tu8 u8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00058">p_ppcwgpipe.h:58</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_a80ccde1fa585679de8ad32e74fa7196c"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#a80ccde1fa585679de8ad32e74fa7196c">PPCWGPipe</a></div><div class="ttdeci">volatile union u_PPCWGPipe PPCWGPipe</div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_aa5c046f79e5c3890edb0ebe6335a2d85"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#aa5c046f79e5c3890edb0ebe6335a2d85">ts32</a></div><div class="ttdeci">s32 ts32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00047">p_ppcwgpipe.h:47</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_abfec317ef4856468c6c79837a32df1ee"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#abfec317ef4856468c6c79837a32df1ee">u_PPCWGPipe::s64</a></div><div class="ttdeci">ts64 s64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00065">p_ppcwgpipe.h:65</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a7021117c390e023ccf88f7260e0d7552"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a7021117c390e023ccf88f7260e0d7552">PPCWGPipe::s64</a></div><div class="ttdeci">s64 s64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00081">p_ppcwgpipe.h:81</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a57c7409b7d54ecde56b4bbf946043ae6"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a57c7409b7d54ecde56b4bbf946043ae6">u_PPCWGPipe::u32</a></div><div class="ttdeci">tu32 u32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00060">p_ppcwgpipe.h:60</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_a1270aab06f0688ac5578db6976a04ea5"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#a1270aab06f0688ac5578db6976a04ea5">tf64</a></div><div class="ttdeci">f64 tf64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00054">p_ppcwgpipe.h:54</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a557650ea20ac4bf0d955e75a4f3d1fff"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a557650ea20ac4bf0d955e75a4f3d1fff">u_PPCWGPipe::s8</a></div><div class="ttdeci">ts8 s8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00062">p_ppcwgpipe.h:62</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a58a2889b556df65e88e5840ff5c41513"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a58a2889b556df65e88e5840ff5c41513">PPCWGPipe::s32</a></div><div class="ttdeci">s32 s32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00080">p_ppcwgpipe.h:80</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a6ce9729666f95eece3d41068ef892015"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a6ce9729666f95eece3d41068ef892015">u_PPCWGPipe::s16</a></div><div class="ttdeci">ts16 s16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00063">p_ppcwgpipe.h:63</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a0f9a09f22164fe5b5e66344b1bc13471"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0f9a09f22164fe5b5e66344b1bc13471">PPCWGPipe::f64</a></div><div class="ttdeci">f64 f64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00083">p_ppcwgpipe.h:83</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_aef3f1371ef0e077407c29173fdd1725c"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#aef3f1371ef0e077407c29173fdd1725c">ts64</a></div><div class="ttdeci">s64 ts64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00048">p_ppcwgpipe.h:48</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_afc2f445733ed7e6f436cbbfc13af8354"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#afc2f445733ed7e6f436cbbfc13af8354">tu32</a></div><div class="ttdeci">u32 tu32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00051">p_ppcwgpipe.h:51</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html">PPCWGPipe</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00072">p_ppcwgpipe.h:72</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_a3043b1d7d84a1af2486c463050284c7f"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#a3043b1d7d84a1af2486c463050284c7f">tu8</a></div><div class="ttdeci">u8 tu8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00049">p_ppcwgpipe.h:49</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a09e2139a731a14f825e9af8f8fa72e01"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a09e2139a731a14f825e9af8f8fa72e01">PPCWGPipe::s16</a></div><div class="ttdeci">s16 s16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00079">p_ppcwgpipe.h:79</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_ad676ab01b699e57790cf8e153dedf867"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#ad676ab01b699e57790cf8e153dedf867">tu64</a></div><div class="ttdeci">u64 tu64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00052">p_ppcwgpipe.h:52</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a0c1b77ae5827a61b3492d38f95398c3c"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a0c1b77ae5827a61b3492d38f95398c3c">PPCWGPipe::s8</a></div><div class="ttdeci">s8 s8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00078">p_ppcwgpipe.h:78</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a5a6528898b36f48b328e795b571e5fff"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a5a6528898b36f48b328e795b571e5fff">u_PPCWGPipe::f32</a></div><div class="ttdeci">tf32 f32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00066">p_ppcwgpipe.h:66</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_a0dc9239b66220b25039ada22a8169276"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#a0dc9239b66220b25039ada22a8169276">tu16</a></div><div class="ttdeci">u16 tu16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00050">p_ppcwgpipe.h:50</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_ad070ca64e1f3c351b7b3587220060232"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#ad070ca64e1f3c351b7b3587220060232">tf32</a></div><div class="ttdeci">f32 tf32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00053">p_ppcwgpipe.h:53</a></div></div>
+<div class="ttc" id="ap__ppcwgpipe_8h_html_aeb0c68c46d4bfebb91c9a41191d05dc7"><div class="ttname"><a href="../../d1/d2f/p__ppcwgpipe_8h.html#aeb0c68c46d4bfebb91c9a41191d05dc7">ts8</a></div><div class="ttdeci">s8 ts8</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00045">p_ppcwgpipe.h:45</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a480e2adc3e6d049941b6f965e3cf9c1c"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a480e2adc3e6d049941b6f965e3cf9c1c">u_PPCWGPipe::s32</a></div><div class="ttdeci">ts32 s32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00064">p_ppcwgpipe.h:64</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_a2f256c49c22e544d9ba56bcbeed2f31f"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#a2f256c49c22e544d9ba56bcbeed2f31f">PPCWGPipe::f32</a></div><div class="ttdeci">f32 f32</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00082">p_ppcwgpipe.h:82</a></div></div>
+<div class="ttc" id="aunion_p_p_c_w_g_pipe_html_ac3ff00b4ceefa784133b0eea80999138"><div class="ttname"><a href="../../d6/d7f/union_p_p_c_w_g_pipe.html#ac3ff00b4ceefa784133b0eea80999138">PPCWGPipe::u64</a></div><div class="ttdeci">u64 u64</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00077">p_ppcwgpipe.h:77</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html">u_PPCWGPipe</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00056">p_ppcwgpipe.h:56</a></div></div>
+<div class="ttc" id="aunionu___p_p_c_w_g_pipe_html_a4175ff11ff5c88e031f3c535ee0da20a"><div class="ttname"><a href="../../d7/d27/unionu___p_p_c_w_g_pipe.html#a4175ff11ff5c88e031f3c535ee0da20a">u_PPCWGPipe::u16</a></div><div class="ttdeci">tu16 u16</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d2f/p__ppcwgpipe_8h_source.html#l00059">p_ppcwgpipe.h:59</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_896d666de209fbbe6b042c1a9920af6c.html">ngc</a></li><li class="navelem"><a class="el" href="../../d1/d2f/p__ppcwgpipe_8h.html">p_ppcwgpipe.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

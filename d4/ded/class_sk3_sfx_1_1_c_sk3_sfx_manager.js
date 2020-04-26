@@ -1,0 +1,26 @@
+var class_sk3_sfx_1_1_c_sk3_sfx_manager =
+[
+    [ "vTABLE_WHEELROLL", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaf30358af810f4efb3e25e5c792ca437b", null ],
+    [ "vTABLE_GRIND", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6cd64037c4c119d731a99c99d62c0444", null ],
+    [ "vTABLE_JUMP", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaabf69f20ed8befc2f6b90f8ba30fbf3e", null ],
+    [ "vTABLE_LAND", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea35b7ab40ee9537fec654007bb739271b", null ],
+    [ "vTABLE_BONK", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea1a1b5a1085dad6adc37a5d1e61f76bcc", null ],
+    [ "vTABLE_GRINDJUMP", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea45566890e1cc11590762e8e8c2d74331", null ],
+    [ "vTABLE_GRINDLAND", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea6a0c12a2bc488c55509b7f6b7526dc68", null ],
+    [ "vTABLE_SLIDE", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaa467d5f8264150163dcc73c287fd9fb5", null ],
+    [ "vTABLE_SLIDEJUMP", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827eaae00beef3a1a7b5b08e9956266731f97", null ],
+    [ "vTABLE_SLIDELAND", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea7abe3f0f4e96ca1b6f33300aef3b4514", null ],
+    [ "vTABLE_CESS", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea392c7e913db5c7e0c05dc5c8b8d9fa9e", null ],
+    [ "vNUM_SOUND_TYPES", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a118a3100b04cedc5211db26fe526827ea2dffbfeafd2d49b9101006bd920fd945", null ],
+    [ "vMAX_NUM_ENTRIES", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a859b61a5934a90c80c2a4fe22438636ea068522f7616e6e3a73ad02735c776fdf", null ],
+    [ "CSk3SfxManager::~CSk3SfxManager", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0557bfa56883dab4a68417e8d964d926", null ],
+    [ "DeclareSingletonClass", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf0a9d5530762738cec38a26eeaa8da6", null ],
+    [ "CSk3SfxManager::CSk3SfxManager", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#af6305c48c756af197c7f2b7af51d039b", null ],
+    [ "Reset", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#adfe4c3b89f56542e63cb2959f217c290", null ],
+    [ "SetSkaterSoundInfo", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#afaff40a13dc89c3d1525921d9f9a6375", null ],
+    [ "GetSkaterSoundInfo", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a6fdd5fd1f47f24f4dd1d3d0a5bffc58b", null ],
+    [ "GetVolPercent", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#a0f0973986b8dec1ee7a220eabb6b273c", null ],
+    [ "PlaySound", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#acf1f245ea6daf6bc1c275c24fa6b41a8", null ],
+    [ "mNumEntries", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#aa31071d7a1362b5df91935d0dcd9269a", null ],
+    [ "mSoundArray", "d4/ded/class_sk3_sfx_1_1_c_sk3_sfx_manager.html#ab1f2b1c46a60ebdbd883d88428d6b74f", null ]
+];

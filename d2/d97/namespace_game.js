@@ -1,0 +1,27 @@
+var namespace_game =
+[
+    [ "CBestComboVictoryCondition", "d2/d19/class_game_1_1_c_best_combo_victory_condition.html", "d2/d19/class_game_1_1_c_best_combo_victory_condition" ],
+    [ "CBettingGuy", "d9/d10/class_game_1_1_c_betting_guy.html", "d9/d10/class_game_1_1_c_betting_guy" ],
+    [ "CCatGoal", "d8/d30/class_game_1_1_c_cat_goal.html", "d8/d30/class_game_1_1_c_cat_goal" ],
+    [ "CCompetitionGoal", "df/de3/class_game_1_1_c_competition_goal.html", "df/de3/class_game_1_1_c_competition_goal" ],
+    [ "CCreateATrick", "d2/dc6/class_game_1_1_c_create_a_trick.html", "d2/dc6/class_game_1_1_c_create_a_trick" ],
+    [ "CFilmGoal", "d1/d80/class_game_1_1_c_film_goal.html", "d1/d80/class_game_1_1_c_film_goal" ],
+    [ "CFindGapsGoal", "de/d46/class_game_1_1_c_find_gaps_goal.html", "de/d46/class_game_1_1_c_find_gaps_goal" ],
+    [ "CGameMode", "d0/d21/class_game_1_1_c_game_mode.html", "d0/d21/class_game_1_1_c_game_mode" ],
+    [ "CGoal", "d1/d04/class_game_1_1_c_goal.html", "d1/d04/class_game_1_1_c_goal" ],
+    [ "CGoalLink", "de/daf/class_game_1_1_c_goal_link.html", "de/daf/class_game_1_1_c_goal_link" ],
+    [ "CGoalManager", "d9/dda/class_game_1_1_c_goal_manager.html", "d9/dda/class_game_1_1_c_goal_manager" ],
+    [ "CGoalPed", "d4/d07/class_game_1_1_c_goal_ped.html", "d4/d07/class_game_1_1_c_goal_ped" ],
+    [ "CGoalsCompletedVictoryCondition", "dd/df3/class_game_1_1_c_goals_completed_victory_condition.html", "dd/df3/class_game_1_1_c_goals_completed_victory_condition" ],
+    [ "CHighestScoreVictoryCondition", "d3/dca/class_game_1_1_c_highest_score_victory_condition.html", "d3/dca/class_game_1_1_c_highest_score_victory_condition" ],
+    [ "CHorseGoal", "dd/dfc/class_game_1_1_c_horse_goal.html", "dd/dfc/class_game_1_1_c_horse_goal" ],
+    [ "CLastManStandingVictoryCondition", "d8/d09/class_game_1_1_c_last_man_standing_victory_condition.html", "d8/d09/class_game_1_1_c_last_man_standing_victory_condition" ],
+    [ "CMinigame", "d8/de7/class_game_1_1_c_minigame.html", "d8/de7/class_game_1_1_c_minigame" ],
+    [ "CNetGoal", "d3/d2b/class_game_1_1_c_net_goal.html", "d3/d2b/class_game_1_1_c_net_goal" ],
+    [ "CRaceGoal", "d0/da5/class_game_1_1_c_race_goal.html", "d0/da5/class_game_1_1_c_race_goal" ],
+    [ "CScoreReachedVictoryCondition", "df/d24/class_game_1_1_c_score_reached_victory_condition.html", "df/d24/class_game_1_1_c_score_reached_victory_condition" ],
+    [ "CSkatetrisGoal", "de/dfc/class_game_1_1_c_skatetris_goal.html", "de/dfc/class_game_1_1_c_skatetris_goal" ],
+    [ "CVictoryCondition", "d4/d57/class_game_1_1_c_victory_condition.html", "d4/d57/class_game_1_1_c_victory_condition" ],
+    [ "SRanking", "d1/d39/struct_game_1_1_s_ranking.html", "d1/d39/struct_game_1_1_s_ranking" ],
+    [ "tetrisTrick", "da/dd6/struct_game_1_1tetris_trick.html", "da/dd6/struct_game_1_1tetris_trick" ]
+];

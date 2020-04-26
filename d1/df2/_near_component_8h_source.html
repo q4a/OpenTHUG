@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gel/Components/NearComponent.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/df2/_near_component_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NearComponent.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/df2/_near_component_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#if 0</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* MODULE:         Gel/Components</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* FILENAME:       NearComponent.h</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* OWNER:          ???</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//* CREATION DATE:  ??/??/??</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#ifndef __COMPONENTS_NEARCOMPONENT_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#define __COMPONENTS_NEARCOMPONENT_H__</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/geometry_8h.html">core/math/geometry.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dc/d1a/basecomponent_8h.html">gel/object/basecomponent.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">// Replace this with the CRCD of the component you are adding</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define     CRC_NEAR                            CRCD( 0x89b3e3ee, &quot;near&quot; )</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">//  Standard accessor macros for getting the component either from within an object, or given an object.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define     GetNearComponent()                  ((Obj::CNearComponent*)GetComponent(CRC_NEAR))</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#define     GetNearComponentFromObject( pObj )  ((Obj::CNearComponent*)(pObj)-&gt;GetComponent(CRC_NEAR))</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#define     MAX_SWEEP_PRUNE_ENTRIES_PER_AXIS    512</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">class </span>CScript;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;}</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;              </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">class </span>CNearComponent;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html">sSweepPruneEntry</a></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a6cb5cbd4811c2182ac7ddaaa0f9b5943">   45</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>              <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a6cb5cbd4811c2182ac7ddaaa0f9b5943">m_min_max</a>;          <span class="comment">// 0 for min, 1 for max</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#af155b0dc927c820c2e509c74e4147f70">   46</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#af155b0dc927c820c2e509c74e4147f70">m_value</a>[3];         <span class="comment">// This proves much quicker than dereferencing the component and reading the bounding box.</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a4b08b2ec71c0beb5631bc89a187fa9e6">   47</a></span>&#160;    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a>      *<a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a4b08b2ec71c0beb5631bc89a187fa9e6">mp_component</a>;      <span class="comment">// Pointer to the actual component.</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a09e9a383b6fa793b923caba031d9d9c0">   49</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">float</span>        <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a09e9a383b6fa793b923caba031d9d9c0">GetValue</a>( <span class="keywordtype">int</span> axis )    { <span class="keywordflow">return</span> <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#af155b0dc927c820c2e509c74e4147f70">m_value</a>[axis]; }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#ad85bb05462f22a3586bd144b6c1f3020">SetValues</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html">   59</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html">sSweepPruneArray</a></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;{</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a81d4ad508f44c04653b2df30342200f2">   62</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a81d4ad508f44c04653b2df30342200f2">m_axis</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a2a81d43a2354f3b1c9625f207ea4b4c3">   63</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a2a81d43a2354f3b1c9625f207ea4b4c3">m_num_entries</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a9436baed8807508db8e56cfd0dcc8a9c">   64</a></span>&#160;    <a class="code" href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html">sSweepPruneEntry</a>    <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a9436baed8807508db8e56cfd0dcc8a9c">m_array</a>[MAX_SWEEP_PRUNE_ENTRIES_PER_AXIS];</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                        <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#ac767c739db70de999d8487b9c5f11046">sSweepPruneArray</a>( <span class="keywordtype">int</span> axis );</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                        <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#abf39627de7156b641702d14aa19336b2">~sSweepPruneArray</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#afa6c8d58026ae00ea5e11dbd4c386a75">BinarySearchFirstBigger</a>( <span class="keywordtype">float</span> value );</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a1f95ef19c7ccea505fa23ba298ca4f64">BinarySearchLastSmaller</a>( <span class="keywordtype">float</span> value );</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a932c556b407c4d14ef229e40b3660c6f">ResortComponent</a>( <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a> *p_component );</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#aabfc2b61078d36b61d33915d6df30cad">InsertComponent</a>( <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a> *p_component );</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#af8c2b242198daa15d3a14b369a4f96cb">RemoveComponent</a>( <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a> *p_component );</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span>          <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a4f6fee7da2a758211fd6924ff790abde">BuildCompositeIntersectingArray</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#abb8c4eeb28d4a7668f8ee23a813d8ae0">PushUp</a>( <span class="keywordtype">int</span> index );</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#aa71421eaca22e118505ce33c424862e2">PullDown</a>( <span class="keywordtype">int</span> index );</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html">   87</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a> : <span class="keyword">public</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#ac6916b17354014bb60fa7aa102310f4f">CNearComponent</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a2e202b85b1ab3c1df086fe5d659991af">~CNearComponent</a>();</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a42f5d3c5f57ab5be03fcc7cfec564234">Update</a>();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#ae139f0250789ec618f71d3ca8201db0d">InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#ac335125ad3c285eba65be3832ab408b6">RefreshFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">EMemberFunctionResult</a>   <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#ae214cf2b09fae1c43886f2a10d64b73f">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript );</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#afc8b5b209d6968ac3c5974e8a35ed20c">GetDebugInfo</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* p_info );</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a19457ba8654f13c1fb5d30f2e5dd7cc4">  101</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                     <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a19457ba8654f13c1fb5d30f2e5dd7cc4">GetMin</a>( <span class="keywordtype">void</span> )  { <span class="keywordflow">return</span> <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a869f76443ab4e12a8b04237a0724cde2">m_transformed_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>(); }</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html#aaadca50f9d90c0e84c6db1e2cd843abb">  102</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>                     <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#aaadca50f9d90c0e84c6db1e2cd843abb">GetMax</a>( <span class="keywordtype">void</span> )  { <span class="keywordflow">return</span> <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a869f76443ab4e12a8b04237a0724cde2">m_transformed_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>(); }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a>**                <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a0260fe3acfce212855d7bda76f282166">GetIntersectingNearComponents</a>( <span class="keywordtype">int</span> *p_num_intersecting );</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html">CNearComponent</a>**                <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a0260fe3acfce212855d7bda76f282166">GetIntersectingNearComponents</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;bbmin, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> &amp;bbmax, <span class="keywordtype">int</span> *p_num_intersecting );</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <span class="keyword">static</span> <a class="code" href="../../d0/d7e/class_obj_1_1_c_base_component.html">CBaseComponent</a>*          <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#af4a1559dc48d912b8fdb9d27b5d9b012">s_create</a>();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a65e61a7230d684ca656c821cfdc61ad9">  110</a></span>&#160;    <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a>                      <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a65e61a7230d684ca656c821cfdc61ad9">m_untransformed_bbox</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a869f76443ab4e12a8b04237a0724cde2">  111</a></span>&#160;    <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a>                      <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a869f76443ab4e12a8b04237a0724cde2">m_transformed_bbox</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a55c34b68ebee009c7200b12d1ba2773f">  112</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html">sSweepPruneArray</a>         <a class="code" href="../../d7/dbd/class_obj_1_1_c_near_component.html#a55c34b68ebee009c7200b12d1ba2773f">m_sweep_prune_array</a>[3];</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">#endif</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a2e202b85b1ab3c1df086fe5d659991af"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a2e202b85b1ab3c1df086fe5d659991af">Obj::CNearComponent::~CNearComponent</a></div><div class="ttdeci">virtual ~CNearComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00049">NearComponent.cpp:49</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a1f95ef19c7ccea505fa23ba298ca4f64"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a1f95ef19c7ccea505fa23ba298ca4f64">Obj::sSweepPruneArray::BinarySearchLastSmaller</a></div><div class="ttdeci">int BinarySearchLastSmaller(float value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00236">NearComponent.cpp:236</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a4f6fee7da2a758211fd6924ff790abde"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a4f6fee7da2a758211fd6924ff790abde">Obj::sSweepPruneArray::BuildCompositeIntersectingArray</a></div><div class="ttdeci">static int BuildCompositeIntersectingArray(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00265">NearComponent.cpp:265</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a81d4ad508f44c04653b2df30342200f2"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a81d4ad508f44c04653b2df30342200f2">Obj::sSweepPruneArray::m_axis</a></div><div class="ttdeci">int m_axis</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00062">NearComponent.h:62</a></div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="../../d4/d67/geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a869f76443ab4e12a8b04237a0724cde2"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a869f76443ab4e12a8b04237a0724cde2">Obj::CNearComponent::m_transformed_bbox</a></div><div class="ttdeci">Mth::CBBox m_transformed_bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00111">NearComponent.h:111</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_af8c2b242198daa15d3a14b369a4f96cb"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#af8c2b242198daa15d3a14b369a4f96cb">Obj::sSweepPruneArray::RemoveComponent</a></div><div class="ttdeci">void RemoveComponent(CNearComponent *p_component)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00666">NearComponent.cpp:666</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a42f5d3c5f57ab5be03fcc7cfec564234"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a42f5d3c5f57ab5be03fcc7cfec564234">Obj::CNearComponent::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00112">NearComponent.cpp:112</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_aa71421eaca22e118505ce33c424862e2"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#aa71421eaca22e118505ce33c424862e2">Obj::sSweepPruneArray::PullDown</a></div><div class="ttdeci">void PullDown(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00522">NearComponent.cpp:522</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a4f19672b5daca22e37a30ffe412a9dbc"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">Mth::CBBox::GetMin</a></div><div class="ttdeci">const Vector &amp; GetMin() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00275">geometry.h:275</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_ae214cf2b09fae1c43886f2a10d64b73f"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#ae214cf2b09fae1c43886f2a10d64b73f">Obj::CNearComponent::CallMemberFunction</a></div><div class="ttdeci">virtual EMemberFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00139">NearComponent.cpp:139</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html">Obj::CNearComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00087">NearComponent.h:87</a></div></div>
+<div class="ttc" id="abasecomponent_8h_html"><div class="ttname"><a href="../../dc/d1a/basecomponent_8h.html">basecomponent.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a0260fe3acfce212855d7bda76f282166"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a0260fe3acfce212855d7bda76f282166">Obj::CNearComponent::GetIntersectingNearComponents</a></div><div class="ttdeci">CNearComponent ** GetIntersectingNearComponents(int *p_num_intersecting)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00419">NearComponent.cpp:419</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a9436baed8807508db8e56cfd0dcc8a9c"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a9436baed8807508db8e56cfd0dcc8a9c">Obj::sSweepPruneArray::m_array</a></div><div class="ttdeci">sSweepPruneEntry m_array[MAX_SWEEP_PRUNE_ENTRIES_PER_AXIS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00064">NearComponent.h:64</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_abf39627de7156b641702d14aa19336b2"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#abf39627de7156b641702d14aa19336b2">Obj::sSweepPruneArray::~sSweepPruneArray</a></div><div class="ttdeci">~sSweepPruneArray(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00494">NearComponent.cpp:494</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_ac335125ad3c285eba65be3832ab408b6"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#ac335125ad3c285eba65be3832ab408b6">Obj::CNearComponent::RefreshFromStructure</a></div><div class="ttdeci">virtual void RefreshFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00095">NearComponent.cpp:95</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a2a81d43a2354f3b1c9625f207ea4b4c3"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a2a81d43a2354f3b1c9625f207ea4b4c3">Obj::sSweepPruneArray::m_num_entries</a></div><div class="ttdeci">int m_num_entries</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00063">NearComponent.h:63</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a19457ba8654f13c1fb5d30f2e5dd7cc4"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a19457ba8654f13c1fb5d30f2e5dd7cc4">Obj::CNearComponent::GetMin</a></div><div class="ttdeci">Mth::Vector GetMin(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00101">NearComponent.h:101</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html_a6cb5cbd4811c2182ac7ddaaa0f9b5943"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a6cb5cbd4811c2182ac7ddaaa0f9b5943">Obj::sSweepPruneEntry::m_min_max</a></div><div class="ttdeci">uint32 m_min_max</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00045">NearComponent.h:45</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html_af155b0dc927c820c2e509c74e4147f70"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#af155b0dc927c820c2e509c74e4147f70">Obj::sSweepPruneEntry::m_value</a></div><div class="ttdeci">float m_value[3]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00046">NearComponent.h:46</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html">Obj::CBaseComponent</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00026">basecomponent.h:26</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_af4a1559dc48d912b8fdb9d27b5d9b012"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#af4a1559dc48d912b8fdb9d27b5d9b012">Obj::CNearComponent::s_create</a></div><div class="ttdeci">static CBaseComponent * s_create()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00027">NearComponent.cpp:27</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00118">geometry.h:118</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html">Obj::sSweepPruneEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00043">NearComponent.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_afc8b5b209d6968ac3c5974e8a35ed20c"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#afc8b5b209d6968ac3c5974e8a35ed20c">Obj::CNearComponent::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00174">NearComponent.cpp:174</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html_a09e9a383b6fa793b923caba031d9d9c0"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a09e9a383b6fa793b923caba031d9d9c0">Obj::sSweepPruneEntry::GetValue</a></div><div class="ttdeci">float GetValue(int axis)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00049">NearComponent.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_aaadca50f9d90c0e84c6db1e2cd843abb"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#aaadca50f9d90c0e84c6db1e2cd843abb">Obj::CNearComponent::GetMax</a></div><div class="ttdeci">Mth::Vector GetMax(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00102">NearComponent.h:102</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_ac6916b17354014bb60fa7aa102310f4f"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#ac6916b17354014bb60fa7aa102310f4f">Obj::CNearComponent::CNearComponent</a></div><div class="ttdeci">CNearComponent()</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00038">NearComponent.cpp:38</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_afa6c8d58026ae00ea5e11dbd4c386a75"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#afa6c8d58026ae00ea5e11dbd4c386a75">Obj::sSweepPruneArray::BinarySearchFirstBigger</a></div><div class="ttdeci">int BinarySearchFirstBigger(float value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00207">NearComponent.cpp:207</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_aabfc2b61078d36b61d33915d6df30cad"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#aabfc2b61078d36b61d33915d6df30cad">Obj::sSweepPruneArray::InsertComponent</a></div><div class="ttdeci">void InsertComponent(CNearComponent *p_component)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00622">NearComponent.cpp:622</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_base_component_html_aa8c2bbc27a0427b6a123d66f308c77b6"><div class="ttname"><a href="../../d0/d7e/class_obj_1_1_c_base_component.html#aa8c2bbc27a0427b6a123d66f308c77b6">Obj::CBaseComponent::EMemberFunctionResult</a></div><div class="ttdeci">EMemberFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d1a/basecomponent_8h_source.html#l00038">basecomponent.h:38</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html_ad85bb05462f22a3586bd144b6c1f3020"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#ad85bb05462f22a3586bd144b6c1f3020">Obj::sSweepPruneEntry::SetValues</a></div><div class="ttdeci">void SetValues(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00468">NearComponent.cpp:468</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_ac767c739db70de999d8487b9c5f11046"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#ac767c739db70de999d8487b9c5f11046">Obj::sSweepPruneArray::sSweepPruneArray</a></div><div class="ttdeci">sSweepPruneArray(int axis)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00482">NearComponent.cpp:482</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_ae139f0250789ec618f71d3ca8201db0d"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#ae139f0250789ec618f71d3ca8201db0d">Obj::CNearComponent::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00064">NearComponent.cpp:64</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_a932c556b407c4d14ef229e40b3660c6f"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#a932c556b407c4d14ef229e40b3660c6f">Obj::sSweepPruneArray::ResortComponent</a></div><div class="ttdeci">void ResortComponent(CNearComponent *p_component)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00540">NearComponent.cpp:540</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a91d19a0389990abf57b98b323f982303"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">Mth::CBBox::GetMax</a></div><div class="ttdeci">const Vector &amp; GetMax() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00280">geometry.h:280</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_entry_html_a4b08b2ec71c0beb5631bc89a187fa9e6"><div class="ttname"><a href="../../d6/d68/struct_obj_1_1s_sweep_prune_entry.html#a4b08b2ec71c0beb5631bc89a187fa9e6">Obj::sSweepPruneEntry::mp_component</a></div><div class="ttdeci">CNearComponent * mp_component</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00047">NearComponent.h:47</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a65e61a7230d684ca656c821cfdc61ad9"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a65e61a7230d684ca656c821cfdc61ad9">Obj::CNearComponent::m_untransformed_bbox</a></div><div class="ttdeci">Mth::CBBox m_untransformed_bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00110">NearComponent.h:110</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_near_component_html_a55c34b68ebee009c7200b12d1ba2773f"><div class="ttname"><a href="../../d7/dbd/class_obj_1_1_c_near_component.html#a55c34b68ebee009c7200b12d1ba2773f">Obj::CNearComponent::m_sweep_prune_array</a></div><div class="ttdeci">static sSweepPruneArray m_sweep_prune_array[3]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00112">NearComponent.h:112</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html">Obj::sSweepPruneArray</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df2/_near_component_8h_source.html#l00059">NearComponent.h:59</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_sweep_prune_array_html_abb8c4eeb28d4a7668f8ee23a813d8ae0"><div class="ttname"><a href="../../db/da4/struct_obj_1_1s_sweep_prune_array.html#abb8c4eeb28d4a7668f8ee23a813d8ae0">Obj::sSweepPruneArray::PushUp</a></div><div class="ttdeci">void PushUp(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/de7/_near_component_8cpp_source.html#l00504">NearComponent.cpp:504</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_3601fabbe3429c936523f20d8da3f5fe.html">gel</a></li><li class="navelem"><a class="el" href="../../dir_3d1fd9c12e3f852b89cc53aecfa8f035.html">Components</a></li><li class="navelem"><a class="el" href="../../d1/df2/_near_component_8h.html">NearComponent.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:21. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

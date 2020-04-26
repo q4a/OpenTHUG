@@ -1,0 +1,27 @@
+var class_file_1_1_pre_file =
+[
+    [ "_File", "d3/ddf/struct_file_1_1_pre_file_1_1___file.html", "d3/ddf/struct_file_1_1_pre_file_1_1___file" ],
+    [ "FileHandle", "d9/d43/class_file_1_1_pre_file.html#af2e7c6c4e4da587847c3b700aa9e8472", null ],
+    [ "PreFile", "d9/d43/class_file_1_1_pre_file.html#a8ec9efed8ed297b9766eed5334522b16", null ],
+    [ "~PreFile", "d9/d43/class_file_1_1_pre_file.html#ab4d02e97b1341085d76e4e87183dd2c0", null ],
+    [ "FileExists", "d9/d43/class_file_1_1_pre_file.html#aaeb51459facc5cff61d58ad07885e079", null ],
+    [ "LoadContainedFile", "d9/d43/class_file_1_1_pre_file.html#a2a77dc7c47b231a172ece30f411573f0", null ],
+    [ "GetContainedFile", "d9/d43/class_file_1_1_pre_file.html#ac25598cab137ade4168e7b7df3059b90", null ],
+    [ "GetContainedFileByHandle", "d9/d43/class_file_1_1_pre_file.html#a8f0fb9cef4cb0862b8c18c7c8f0cc5cd", null ],
+    [ "Reset", "d9/d43/class_file_1_1_pre_file.html#aaf35c401319ef48fd1ddf0e65c88341a", null ],
+    [ "Read", "d9/d43/class_file_1_1_pre_file.html#ae3574df027d59cacd004971da3c0ff4c", null ],
+    [ "Eof", "d9/d43/class_file_1_1_pre_file.html#ae2de02345ea70db11e4b396f7ba8fca0", null ],
+    [ "Open", "d9/d43/class_file_1_1_pre_file.html#aac1584b064955dabd28d15101d25df32", null ],
+    [ "Close", "d9/d43/class_file_1_1_pre_file.html#a052df3992c328974ee07603b9f5f7056", null ],
+    [ "Seek", "d9/d43/class_file_1_1_pre_file.html#a43d83bc24725a95814cffc025ab23727", null ],
+    [ "TellActive", "d9/d43/class_file_1_1_pre_file.html#ab7dc96b2d53d56e28b741ad3cf3799c6", null ],
+    [ "GetFileSize", "d9/d43/class_file_1_1_pre_file.html#a6f69fcaf42caeb48a41c2d3d16d38d15", null ],
+    [ "GetFilePosition", "d9/d43/class_file_1_1_pre_file.html#aa2c0b79c6835762c375b244fba1b1ad2", null ],
+    [ "s_delete_file", "d9/d43/class_file_1_1_pre_file.html#a94a6254ad90e9ce9ac9cbfe0cfdd630c", null ],
+    [ "mp_buffer", "d9/d43/class_file_1_1_pre_file.html#a7c689196b58590a62521a17b284fd88d", null ],
+    [ "m_numEntries", "d9/d43/class_file_1_1_pre_file.html#a4737bfe423c96676aa981cd36df87068", null ],
+    [ "mp_table", "d9/d43/class_file_1_1_pre_file.html#a3c48c618c080dda0240f68040199b1b4", null ],
+    [ "mp_activeFile", "d9/d43/class_file_1_1_pre_file.html#a86a3a3b4eeb40737e7c87ed38ddbbb86", null ],
+    [ "m_numOpenAsyncFiles", "d9/d43/class_file_1_1_pre_file.html#ab16f9e4c99109cdf8c6ef910bb3725c7", null ],
+    [ "m_use_bottom_up_heap", "d9/d43/class_file_1_1_pre_file.html#a78d5f52cd049a2aa7459d0c5278bad47", null ]
+];

@@ -1,0 +1,28 @@
+var class_gfx_1_1_c_model_appearance =
+[
+    [ "CModelAppearance", "d1/d92/class_gfx_1_1_c_model_appearance.html#afd06c9bb1a9ceb6fb987603dadd7a93d", null ],
+    [ "CModelAppearance", "d1/d92/class_gfx_1_1_c_model_appearance.html#adaf0d74841f0111715e294c98564638d", null ],
+    [ "~CModelAppearance", "d1/d92/class_gfx_1_1_c_model_appearance.html#a4b97bbed22de1042ce5446c8fc835aa9", null ],
+    [ "operator=", "d1/d92/class_gfx_1_1_c_model_appearance.html#ad5acc265bed079f81cc2d50c54a9e8bc", null ],
+    [ "CallMemberFunction", "d1/d92/class_gfx_1_1_c_model_appearance.html#a0c4544e0b2492fffd30d8207153b7dc6", null ],
+    [ "Init", "d1/d92/class_gfx_1_1_c_model_appearance.html#a40474e272ed0c93a3ff14d3c62dec91f", null ],
+    [ "Load", "d1/d92/class_gfx_1_1_c_model_appearance.html#af8f975284e9903c9b52a850f9c152f17", null ],
+    [ "Load", "d1/d92/class_gfx_1_1_c_model_appearance.html#a68e69c5dc803e860dd8b637498da6cd5", null ],
+    [ "WriteToBuffer", "d1/d92/class_gfx_1_1_c_model_appearance.html#a6f0720619576881ab163c5ed69b7ea70", null ],
+    [ "ReadFromBuffer", "d1/d92/class_gfx_1_1_c_model_appearance.html#a66594235671ce74ea44c890a5dcd12c5", null ],
+    [ "PrintContents", "d1/d92/class_gfx_1_1_c_model_appearance.html#a857ae02e03acaf24d360ad4c0614ce3a", null ],
+    [ "GetActualDescStructure", "d1/d92/class_gfx_1_1_c_model_appearance.html#a6aa2346087f3f810ffbee9e5649dfd5d", null ],
+    [ "GetVirtualDescStructure", "d1/d92/class_gfx_1_1_c_model_appearance.html#ac394e1fd4e8a65b7fdb72b9815f0a53d", null ],
+    [ "GetStructure", "d1/d92/class_gfx_1_1_c_model_appearance.html#af4004e3b345f09397dddbdf6ef4d9816", null ],
+    [ "GetFaceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#aaa865479062a52a8d6396f7dc2ed4a04", null ],
+    [ "CreateFaceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#a2c250da55b79da5a92992ca5f6d058a8", null ],
+    [ "DestroyFaceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#ab71955d225c17e81926ede6290a39cdc", null ],
+    [ "resolve_randomized_desc_ids", "d1/d92/class_gfx_1_1_c_model_appearance.html#a690b2de6017776f4b6eed06857232085", null ],
+    [ "set_part", "d1/d92/class_gfx_1_1_c_model_appearance.html#acf1690ed889d374ed89c95f896994f65", null ],
+    [ "clear_part", "d1/d92/class_gfx_1_1_c_model_appearance.html#a3962c718a63017b85b3c60312ac0ca71", null ],
+    [ "set_checksum", "d1/d92/class_gfx_1_1_c_model_appearance.html#a40ad1142038ee458974c4aecb9cd8d29", null ],
+    [ "WillEventuallyHaveFaceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#aed38abe22d7cad145a083b0630feaf8a", null ],
+    [ "m_appearance", "d1/d92/class_gfx_1_1_c_model_appearance.html#aac3c38d6c4c9bd834818bfc939e8643d", null ],
+    [ "mp_faceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#afdf331695db5d2594d5926be69045ff9", null ],
+    [ "m_willEventuallyHaveFaceTexture", "d1/d92/class_gfx_1_1_c_model_appearance.html#abe880b949ec559ffdd50f0a95e794834", null ]
+];

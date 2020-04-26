@@ -1,0 +1,28 @@
+var ngc_2p__filesys_8cpp =
+[
+    [ "skyFile", "d9/dfe/struct_file_1_1sky_file.html", "d9/dfe/struct_file_1_1sky_file" ],
+    [ "lock_skyfile", "d8/dbe/ngc_2p__filesys_8cpp.html#aa3269ac09ac61e8b27f39eeae93d120d", null ],
+    [ "unlock_skyfile", "d8/dbe/ngc_2p__filesys_8cpp.html#ad12d0adc16246217b4ea114be20b4b0a", null ],
+    [ "GetFileSize", "d8/dbe/ngc_2p__filesys_8cpp.html#a42faef384ac438a449656a07258cdbec", null ],
+    [ "GetFilePosition", "d8/dbe/ngc_2p__filesys_8cpp.html#a65f0d84632937f813faa602875549e17", null ],
+    [ "InstallFileSystem", "d8/dbe/ngc_2p__filesys_8cpp.html#a42890d7e3ee119c6960519ff3e0f49a4", null ],
+    [ "InitQuickFileSystem", "d8/dbe/ngc_2p__filesys_8cpp.html#ada78bd81ab5c7581b7a82421d0266292", null ],
+    [ "CanFileBeLoadedQuickly", "d8/dbe/ngc_2p__filesys_8cpp.html#ac6844fea70c9b3e01f64185c189e7c65", null ],
+    [ "LoadFileQuicklyPlease", "d8/dbe/ngc_2p__filesys_8cpp.html#abe7f50922fc903be4e6a9254f8526fa6", null ],
+    [ "StopStreaming", "d8/dbe/ngc_2p__filesys_8cpp.html#a8e901686535d27c6ee4c53bbdf327414", null ],
+    [ "UninstallFileSystem", "d8/dbe/ngc_2p__filesys_8cpp.html#a573a7fef9626839237d20d7d46284825", null ],
+    [ "Exist", "d8/dbe/ngc_2p__filesys_8cpp.html#aa96cd298a4b7c22dfdfc764452d6f4f0", null ],
+    [ "Open", "d8/dbe/ngc_2p__filesys_8cpp.html#a180384dc852ac3b971285fc63b1287cb", null ],
+    [ "Close", "d8/dbe/ngc_2p__filesys_8cpp.html#af5cd83b01fc5f341f767beb7c0b1130c", null ],
+    [ "Read", "d8/dbe/ngc_2p__filesys_8cpp.html#ae5e5ed0fd4834fc2e0e1c29edc62fc02", null ],
+    [ "ReadInt", "d8/dbe/ngc_2p__filesys_8cpp.html#af390c316e9d3fa4af755a229491ca17a", null ],
+    [ "Write", "d8/dbe/ngc_2p__filesys_8cpp.html#ae1a2fc14e6df2b782caad192a3123bd5", null ],
+    [ "GetS", "d8/dbe/ngc_2p__filesys_8cpp.html#a796302d1e3bf57f26bcbd454f9530472", null ],
+    [ "PutS", "d8/dbe/ngc_2p__filesys_8cpp.html#a64595d7fb4c4f80aa9c96500d47a125d", null ],
+    [ "Eof", "d8/dbe/ngc_2p__filesys_8cpp.html#aa93bc651dc377f8c47dac084cdf0e19d", null ],
+    [ "Seek", "d8/dbe/ngc_2p__filesys_8cpp.html#ae5e4e62706b375a8fbca95dac6a98fec", null ],
+    [ "Tell", "d8/dbe/ngc_2p__filesys_8cpp.html#ae2ff3392a77d51580c484b825b13b330", null ],
+    [ "Flush", "d8/dbe/ngc_2p__filesys_8cpp.html#a5f9fa1dad6ba7d0c019f81c45e011bbd", null ],
+    [ "MAXOPENFILES", "d8/dbe/ngc_2p__filesys_8cpp.html#a873e185f9a9586a30b7f91a885d2eefb", null ],
+    [ "g_skyFile", "d8/dbe/ngc_2p__filesys_8cpp.html#ae85aa2d5c4574b843fdf22113b4bb178", null ]
+];

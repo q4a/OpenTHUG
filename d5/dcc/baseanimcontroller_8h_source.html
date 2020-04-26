@@ -1,0 +1,319 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/baseanimcontroller.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d5/dcc/baseanimcontroller_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">baseanimcontroller.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d5/dcc/baseanimcontroller_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">//* MODULE:         Gfx</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">//* FILENAME:       BaseAnimController.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">//* OWNER:          Gary Jesdanun</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">//* CREATION DATE:  2/6/2003</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">//****************************************************************************</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef __GFX_BASEANIMCONTROLLER_H__</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define __GFX_BASEANIMCONTROLLER_H__</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d87/support_8h.html">core/support.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">// for procedural bones, which will be moved to another file...</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">class </span>CCompositeObject;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">class </span>CScript;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">class </span>CStruct;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;}</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../de/d47/namespace_gfx.html">Gfx</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">class </span>CBlendChannel;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">class </span>CPose;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">class </span>CSkeleton;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">// (If the order of these change, then please also</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">// change Obj::CBaseComponent::EMemberFunctionResult)</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaa">   41</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaa">EAnimFunctionResult</a></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaac4798fd7d763ba0e190dca7d1bcd4cef">   43</a></span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaac4798fd7d763ba0e190dca7d1bcd4cef">AF_FALSE</a>        = 0,</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaa00d9dc038d9bcefb1698af6a3509bf00">   44</a></span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaa00d9dc038d9bcefb1698af6a3509bf00">AF_TRUE</a>         = 1,</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaadff38af4c198486ef7c0836a1ccc88f3">   45</a></span>&#160;    <a class="code" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaadff38af4c198486ef7c0836a1ccc88f3">AF_NOT_EXECUTED</a> = 2</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">// maybe anim controllers should subclass from Obj::CBaseComponent</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">// so that they can access to the same CallMemberFunction interface?</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">// TODO:  Move this to some generic animcontrollertypes.h</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html">   58</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html">SWobbleDetails</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#ab43dd3f012f05931e723ed3b92b760bc">   60</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#ab43dd3f012f05931e723ed3b92b760bc">wobbleAmpA</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a738603dbbd0157c7c78e0e91158b7415">   61</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a738603dbbd0157c7c78e0e91158b7415">wobbleAmpB</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a5561e330ca7a440a4727ec32689bbb93">   62</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a5561e330ca7a440a4727ec32689bbb93">wobbleK1</a>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7c403ed5655aa52acf2e33009020985a">   63</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7c403ed5655aa52acf2e33009020985a">wobbleK2</a>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7dbdf5add99e97ec902bfff29dd6b637">   64</a></span>&#160;    <span class="keywordtype">float</span>               <a class="code" href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7dbdf5add99e97ec902bfff29dd6b637">spazFactor</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">// TODO:  Move this to some generic procanim.h</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html">   74</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html">CProceduralBone</a></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af0fb44708a3dd3c0e96f72c3bafa731d">   77</a></span>&#160;    <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af0fb44708a3dd3c0e96f72c3bafa731d">CProceduralBone</a>()</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#affd16c85dd387e1988e5972c9f7bee63">m_name</a> = 0;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#affd16c85dd387e1988e5972c9f7bee63">   83</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                  <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#affd16c85dd387e1988e5972c9f7bee63">m_name</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a9f568206429b8832f3e4599aa735c98d">   85</a></span>&#160;    <span class="keywordtype">bool</span>                    <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a9f568206429b8832f3e4599aa735c98d">transEnabled</a>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a40a2746d102e1ad768f563aec79e7178">   86</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a40a2746d102e1ad768f563aec79e7178">trans0</a>;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a33d45254cd297f115e8d4d3048fb20aa">   87</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a33d45254cd297f115e8d4d3048fb20aa">trans1</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a4d1824ba13dbd9f7e2a79e61f218af7a">   88</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a4d1824ba13dbd9f7e2a79e61f218af7a">deltaTrans</a>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a527a0c7db8f74aa5f2feedf6593c2bca">   89</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a527a0c7db8f74aa5f2feedf6593c2bca">currentTrans</a>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#acb89e01f9a8faed0e69baef7c82041a8">   91</a></span>&#160;    <span class="keywordtype">bool</span>                    <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#acb89e01f9a8faed0e69baef7c82041a8">rotEnabled</a>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af4051ca01cb74036f2eee68b4657fe1d">   92</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af4051ca01cb74036f2eee68b4657fe1d">rot0</a>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ab4ce82cfe253b2abe79b4eb8993bbea0">   93</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ab4ce82cfe253b2abe79b4eb8993bbea0">rot1</a>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a47fda7ffae54468bab6fa0c2b2ffc958">   94</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a47fda7ffae54468bab6fa0c2b2ffc958">deltaRot</a>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac922be5ab053c06ebeb05f1ce9462ab1">   95</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac922be5ab053c06ebeb05f1ce9462ab1">currentRot</a>;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a8b1d7148365e062c357782376a030a21">   97</a></span>&#160;    <span class="keywordtype">bool</span>                    <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a8b1d7148365e062c357782376a030a21">scaleEnabled</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#aef3f5f3120dfdcc83d93b3258cbe9255">   98</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#aef3f5f3120dfdcc83d93b3258cbe9255">scale0</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a067f76d6a3df71fc7e26bc09a6dbf7c0">   99</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a067f76d6a3df71fc7e26bc09a6dbf7c0">scale1</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac168b2f8af1b099391415305adf93e43">  100</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac168b2f8af1b099391415305adf93e43">deltaScale</a>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a6ec6eb0748dccd4da82a275faec328a4">  101</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>             <a class="code" href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a6ec6eb0748dccd4da82a275faec328a4">currentScale</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html">  109</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html">CBaseAnimController</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;                                <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aceb89d7be8688f2f5b8e16743697dca4">CBaseAnimController</a>( <a class="code" href="../../d1/d8d/class_gfx_1_1_c_blend_channel.html">CBlendChannel</a>* pBlendChannel );</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keyword">virtual</span>                     <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a468602ef5722777746f772aba8889b46">~CBaseAnimController</a>();</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span>                <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a7904fdeda38fd5fea415fc2d9958360c">GetPose</a>( <a class="code" href="../../d5/d84/class_gfx_1_1_c_pose.html">Gfx::CPose</a>* pResultPose );</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#abd9f2c0ec26a6fd482c924cea70051b9">GetDebugInfo</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* p_info );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaa">EAnimFunctionResult</a> <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a47411db8382247eda10725332e56e92a">CallMemberFunction</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> Checksum, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams, <a class="code" href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a>* pScript );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a07b78eefcb18fb6e493f5105e3d79739">InitFromStructure</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span>                <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a73ecbf1a3fea890fe451a94697b47303">Update</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a374002550eabbd3e34583f5d189a68ab">  123</a></span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a374002550eabbd3e34583f5d189a68ab">GetPriority</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aa709d7eb0a12f846634b0f68d4be7358">m_priority</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a4079b9b52141084e97307a49fbdfab78">  128</a></span>&#160;    <span class="keywordtype">void</span>                        <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a4079b9b52141084e97307a49fbdfab78">SetPriority</a>( <span class="keywordtype">int</span> priority )</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aa709d7eb0a12f846634b0f68d4be7358">m_priority</a> = priority;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#ac7a0d7f8b29eabcc07b130ec38eca172">  133</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#ac7a0d7f8b29eabcc07b130ec38eca172">GetID</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a32f5ff383fe8d9494b2b51c1ddb0d89c">m_name</a>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">Obj::CCompositeObject</a>*      <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a221e76e3ca00d74f6b1fe6839d8e727b">GetObject</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <a class="code" href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a>*             <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#ab9ed9bb85ce902b55ad2e95eaabca02c">GetSkeleton</a>();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a1efe99db1713e1ab1fedbec4c0c2a004">  143</a></span>&#160;    <a class="code" href="../../d1/d8d/class_gfx_1_1_c_blend_channel.html">CBlendChannel</a>*              <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a1efe99db1713e1ab1fedbec4c0c2a004">mp_blendChannel</a>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a59de20881bdeb8e766212f76013971e6">  144</a></span>&#160;    <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html">Obj::CCompositeObject</a>*      <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a59de20881bdeb8e766212f76013971e6">mp_object</a>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aa709d7eb0a12f846634b0f68d4be7358">  145</a></span>&#160;    <span class="keywordtype">int</span>                         <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aa709d7eb0a12f846634b0f68d4be7358">m_priority</a>;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a32f5ff383fe8d9494b2b51c1ddb0d89c">  146</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>                      <a class="code" href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a32f5ff383fe8d9494b2b51c1ddb0d89c">m_name</a>;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_gfx_1_1_c_blend_channel_html"><div class="ttname"><a href="../../d1/d8d/class_gfx_1_1_c_blend_channel.html">Gfx::CBlendChannel</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/dce/blendchannel_8h_source.html#l00048">blendchannel.h:48</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_affd16c85dd387e1988e5972c9f7bee63"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#affd16c85dd387e1988e5972c9f7bee63">Gfx::CProceduralBone::m_name</a></div><div class="ttdeci">uint32 m_name</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00083">baseanimcontroller.h:83</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html_ab43dd3f012f05931e723ed3b92b760bc"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#ab43dd3f012f05931e723ed3b92b760bc">Gfx::SWobbleDetails::wobbleAmpA</a></div><div class="ttdeci">float wobbleAmpA</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00060">baseanimcontroller.h:60</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a468602ef5722777746f772aba8889b46"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a468602ef5722777746f772aba8889b46">Gfx::CBaseAnimController::~CBaseAnimController</a></div><div class="ttdeci">virtual ~CBaseAnimController()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00037">baseanimcontroller.cpp:37</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a067f76d6a3df71fc7e26bc09a6dbf7c0"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a067f76d6a3df71fc7e26bc09a6dbf7c0">Gfx::CProceduralBone::scale1</a></div><div class="ttdeci">Mth::Vector scale1</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00099">baseanimcontroller.h:99</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_ab9ed9bb85ce902b55ad2e95eaabca02c"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#ab9ed9bb85ce902b55ad2e95eaabca02c">Gfx::CBaseAnimController::GetSkeleton</a></div><div class="ttdeci">Gfx::CSkeleton * GetSkeleton()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00106">baseanimcontroller.cpp:106</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html">Obj::CCompositeObject</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00024">compositeobject.h:24</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_af0fb44708a3dd3c0e96f72c3bafa731d"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af0fb44708a3dd3c0e96f72c3bafa731d">Gfx::CProceduralBone::CProceduralBone</a></div><div class="ttdeci">CProceduralBone()</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00077">baseanimcontroller.h:77</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a40a2746d102e1ad768f563aec79e7178"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a40a2746d102e1ad768f563aec79e7178">Gfx::CProceduralBone::trans0</a></div><div class="ttdeci">Mth::Vector trans0</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00086">baseanimcontroller.h:86</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a4079b9b52141084e97307a49fbdfab78"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a4079b9b52141084e97307a49fbdfab78">Gfx::CBaseAnimController::SetPriority</a></div><div class="ttdeci">void SetPriority(int priority)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00128">baseanimcontroller.h:128</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a59de20881bdeb8e766212f76013971e6"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a59de20881bdeb8e766212f76013971e6">Gfx::CBaseAnimController::mp_object</a></div><div class="ttdeci">Obj::CCompositeObject * mp_object</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00144">baseanimcontroller.h:144</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html">Gfx::CBaseAnimController</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00109">baseanimcontroller.h:109</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_af27e0594a0921ffedc79b432d8c70eaaa00d9dc038d9bcefb1698af6a3509bf00"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaa00d9dc038d9bcefb1698af6a3509bf00">Gfx::AF_TRUE</a></div><div class="ttdeci">@ AF_TRUE</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00044">baseanimcontroller.h:44</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_ac922be5ab053c06ebeb05f1ce9462ab1"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac922be5ab053c06ebeb05f1ce9462ab1">Gfx::CProceduralBone::currentRot</a></div><div class="ttdeci">Mth::Vector currentRot</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00095">baseanimcontroller.h:95</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a9f568206429b8832f3e4599aa735c98d"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a9f568206429b8832f3e4599aa735c98d">Gfx::CProceduralBone::transEnabled</a></div><div class="ttdeci">bool transEnabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00085">baseanimcontroller.h:85</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_acb89e01f9a8faed0e69baef7c82041a8"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#acb89e01f9a8faed0e69baef7c82041a8">Gfx::CProceduralBone::rotEnabled</a></div><div class="ttdeci">bool rotEnabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00091">baseanimcontroller.h:91</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html">Gfx::CProceduralBone</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00074">baseanimcontroller.h:74</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a47411db8382247eda10725332e56e92a"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a47411db8382247eda10725332e56e92a">Gfx::CBaseAnimController::CallMemberFunction</a></div><div class="ttdeci">virtual EAnimFunctionResult CallMemberFunction(uint32 Checksum, Script::CStruct *pParams, Script::CScript *pScript)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00086">baseanimcontroller.cpp:86</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_af27e0594a0921ffedc79b432d8c70eaa"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaa">Gfx::EAnimFunctionResult</a></div><div class="ttdeci">EAnimFunctionResult</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00041">baseanimcontroller.h:41</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a73ecbf1a3fea890fe451a94697b47303"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a73ecbf1a3fea890fe451a94697b47303">Gfx::CBaseAnimController::Update</a></div><div class="ttdeci">virtual void Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00056">baseanimcontroller.cpp:56</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a1efe99db1713e1ab1fedbec4c0c2a004"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a1efe99db1713e1ab1fedbec4c0c2a004">Gfx::CBaseAnimController::mp_blendChannel</a></div><div class="ttdeci">CBlendChannel * mp_blendChannel</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00143">baseanimcontroller.h:143</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_aef3f5f3120dfdcc83d93b3258cbe9255"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#aef3f5f3120dfdcc83d93b3258cbe9255">Gfx::CProceduralBone::scale0</a></div><div class="ttdeci">Mth::Vector scale0</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00098">baseanimcontroller.h:98</a></div></div>
+<div class="ttc" id="asupport_8h_html"><div class="ttname"><a href="../../dd/d87/support_8h.html">support.h</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html_a738603dbbd0157c7c78e0e91158b7415"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a738603dbbd0157c7c78e0e91158b7415">Gfx::SWobbleDetails::wobbleAmpB</a></div><div class="ttdeci">float wobbleAmpB</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00061">baseanimcontroller.h:61</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a7904fdeda38fd5fea415fc2d9958360c"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a7904fdeda38fd5fea415fc2d9958360c">Gfx::CBaseAnimController::GetPose</a></div><div class="ttdeci">virtual bool GetPose(Gfx::CPose *pResultPose)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00066">baseanimcontroller.cpp:66</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_ac168b2f8af1b099391415305adf93e43"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ac168b2f8af1b099391415305adf93e43">Gfx::CProceduralBone::deltaScale</a></div><div class="ttdeci">Mth::Vector deltaScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00100">baseanimcontroller.h:100</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a47fda7ffae54468bab6fa0c2b2ffc958"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a47fda7ffae54468bab6fa0c2b2ffc958">Gfx::CProceduralBone::deltaRot</a></div><div class="ttdeci">Mth::Vector deltaRot</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00094">baseanimcontroller.h:94</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html_a7c403ed5655aa52acf2e33009020985a"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7c403ed5655aa52acf2e33009020985a">Gfx::SWobbleDetails::wobbleK2</a></div><div class="ttdeci">float wobbleK2</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00063">baseanimcontroller.h:63</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a33d45254cd297f115e8d4d3048fb20aa"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a33d45254cd297f115e8d4d3048fb20aa">Gfx::CProceduralBone::trans1</a></div><div class="ttdeci">Mth::Vector trans1</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00087">baseanimcontroller.h:87</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_aa709d7eb0a12f846634b0f68d4be7358"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aa709d7eb0a12f846634b0f68d4be7358">Gfx::CBaseAnimController::m_priority</a></div><div class="ttdeci">int m_priority</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00145">baseanimcontroller.h:145</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_ac7a0d7f8b29eabcc07b130ec38eca172"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#ac7a0d7f8b29eabcc07b130ec38eca172">Gfx::CBaseAnimController::GetID</a></div><div class="ttdeci">uint32 GetID() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00133">baseanimcontroller.h:133</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_ab4ce82cfe253b2abe79b4eb8993bbea0"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#ab4ce82cfe253b2abe79b4eb8993bbea0">Gfx::CProceduralBone::rot1</a></div><div class="ttdeci">Mth::Vector rot1</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00093">baseanimcontroller.h:93</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_af4051ca01cb74036f2eee68b4657fe1d"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#af4051ca01cb74036f2eee68b4657fe1d">Gfx::CProceduralBone::rot0</a></div><div class="ttdeci">Mth::Vector rot0</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00092">baseanimcontroller.h:92</a></div></div>
+<div class="ttc" id="anamespace_gfx_html"><div class="ttname"><a href="../../de/d47/namespace_gfx.html">Gfx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8b/animationcomponent_8h_source.html#l00025">animationcomponent.h:25</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a32f5ff383fe8d9494b2b51c1ddb0d89c"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a32f5ff383fe8d9494b2b51c1ddb0d89c">Gfx::CBaseAnimController::m_name</a></div><div class="ttdeci">uint32 m_name</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00146">baseanimcontroller.h:146</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_skeleton_html"><div class="ttname"><a href="../../da/d19/class_gfx_1_1_c_skeleton.html">Gfx::CSkeleton</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d28/_skeleton_8h_source.html#l00094">Skeleton.h:94</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_af27e0594a0921ffedc79b432d8c70eaaac4798fd7d763ba0e190dca7d1bcd4cef"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaac4798fd7d763ba0e190dca7d1bcd4cef">Gfx::AF_FALSE</a></div><div class="ttdeci">@ AF_FALSE</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00043">baseanimcontroller.h:43</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html_a5561e330ca7a440a4727ec32689bbb93"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a5561e330ca7a440a4727ec32689bbb93">Gfx::SWobbleDetails::wobbleK1</a></div><div class="ttdeci">float wobbleK1</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00062">baseanimcontroller.h:62</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a527a0c7db8f74aa5f2feedf6593c2bca"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a527a0c7db8f74aa5f2feedf6593c2bca">Gfx::CProceduralBone::currentTrans</a></div><div class="ttdeci">Mth::Vector currentTrans</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00089">baseanimcontroller.h:89</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a07b78eefcb18fb6e493f5105e3d79739"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a07b78eefcb18fb6e493f5105e3d79739">Gfx::CBaseAnimController::InitFromStructure</a></div><div class="ttdeci">virtual void InitFromStructure(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00046">baseanimcontroller.cpp:46</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a221e76e3ca00d74f6b1fe6839d8e727b"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a221e76e3ca00d74f6b1fe6839d8e727b">Gfx::CBaseAnimController::GetObject</a></div><div class="ttdeci">Obj::CCompositeObject * GetObject()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00096">baseanimcontroller.cpp:96</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a6ec6eb0748dccd4da82a275faec328a4"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a6ec6eb0748dccd4da82a275faec328a4">Gfx::CProceduralBone::currentScale</a></div><div class="ttdeci">Mth::Vector currentScale</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00101">baseanimcontroller.h:101</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_aceb89d7be8688f2f5b8e16743697dca4"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#aceb89d7be8688f2f5b8e16743697dca4">Gfx::CBaseAnimController::CBaseAnimController</a></div><div class="ttdeci">CBaseAnimController(CBlendChannel *pBlendChannel)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00027">baseanimcontroller.cpp:27</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a8b1d7148365e062c357782376a030a21"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a8b1d7148365e062c357782376a030a21">Gfx::CProceduralBone::scaleEnabled</a></div><div class="ttdeci">bool scaleEnabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00097">baseanimcontroller.h:97</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_pose_html"><div class="ttname"><a href="../../d5/d84/class_gfx_1_1_c_pose.html">Gfx::CPose</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d22/_pose_8h_source.html#l00045">Pose.h:45</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_abd9f2c0ec26a6fd482c924cea70051b9"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#abd9f2c0ec26a6fd482c924cea70051b9">Gfx::CBaseAnimController::GetDebugInfo</a></div><div class="ttdeci">virtual void GetDebugInfo(Script::CStruct *p_info)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/daa/baseanimcontroller_8cpp_source.html#l00077">baseanimcontroller.cpp:77</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_base_anim_controller_html_a374002550eabbd3e34583f5d189a68ab"><div class="ttname"><a href="../../d3/d6e/class_gfx_1_1_c_base_anim_controller.html#a374002550eabbd3e34583f5d189a68ab">Gfx::CBaseAnimController::GetPriority</a></div><div class="ttdeci">int GetPriority() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00123">baseanimcontroller.h:123</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html_a7dbdf5add99e97ec902bfff29dd6b637"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html#a7dbdf5add99e97ec902bfff29dd6b637">Gfx::SWobbleDetails::spazFactor</a></div><div class="ttdeci">float spazFactor</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00064">baseanimcontroller.h:64</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_script_html"><div class="ttname"><a href="../../db/df2/class_script_1_1_c_script.html">Script::CScript</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/d7f/script_8h_source.html#l00146">script.h:146</a></div></div>
+<div class="ttc" id="astruct_gfx_1_1_s_wobble_details_html"><div class="ttname"><a href="../../db/d55/struct_gfx_1_1_s_wobble_details.html">Gfx::SWobbleDetails</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00058">baseanimcontroller.h:58</a></div></div>
+<div class="ttc" id="aclass_gfx_1_1_c_procedural_bone_html_a4d1824ba13dbd9f7e2a79e61f218af7a"><div class="ttname"><a href="../../d0/dc4/class_gfx_1_1_c_procedural_bone.html#a4d1824ba13dbd9f7e2a79e61f218af7a">Gfx::CProceduralBone::deltaTrans</a></div><div class="ttdeci">Mth::Vector deltaTrans</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00088">baseanimcontroller.h:88</a></div></div>
+<div class="ttc" id="anamespace_gfx_html_af27e0594a0921ffedc79b432d8c70eaaadff38af4c198486ef7c0836a1ccc88f3"><div class="ttname"><a href="../../de/d47/namespace_gfx.html#af27e0594a0921ffedc79b432d8c70eaaadff38af4c198486ef7c0836a1ccc88f3">Gfx::AF_NOT_EXECUTED</a></div><div class="ttdeci">@ AF_NOT_EXECUTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dcc/baseanimcontroller_8h_source.html#l00045">baseanimcontroller.h:45</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d5/dcc/baseanimcontroller_8h.html">baseanimcontroller.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:25. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

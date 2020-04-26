@@ -1,0 +1,426 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Modules/Skate/Minigame.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/d78/_minigame_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Minigame.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d78/_minigame_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/df8/_minigame_8h.html">sk/modules/skate/Minigame.h</a>&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d88/_goal_manager_8h.html">sk/modules/skate/goalmanager.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d30/cfuncs_8h.html">sk/scripting/cfuncs.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/dac/skfuncs_8h.html">sk/scripting/skfuncs.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d47/nodearray_8h.html">sk/scripting/Nodearray.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d34/_screen_elem_man_8h.html">gfx/2D/ScreenElemMan.h</a>&gt;</span>       <span class="comment">// for minigame timer</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/dd5/_screen_element2_8h.html">gfx/2D/ScreenElement2.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d9e/_text_element_8h.html">gfx/2D/TextElement.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d97/namespace_game.html">Game</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#af51568a01a83e660dbb4a158230765bd">   22</a></span>&#160;<a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#af51568a01a83e660dbb4a158230765bd">CMinigame::CMinigame</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pParams ) : <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html">CGoal</a>( pParams )</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> *pGeomArray;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="comment">// Create the associated pieces of geometry</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> ( pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#af0638a7b3a0ea5a15b3f4ee0536869c9">GetArray</a>( <span class="stringliteral">&quot;create_geometry&quot;</span>, &amp;pGeomArray ) )</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i, geometry;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">for</span>( i = 0; i &lt; pGeomArray-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>(); i++ )</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            geometry = pGeomArray-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a5fbc2c9d1db2c87fb4633333ef989559">GetChecksum</a>( i );</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="../../db/d54/namespace_c_funcs.html#aa03c8c2f789cc655d61393e37bbb5746">CFuncs::ScriptCreateFromNodeIndex</a>( <a class="code" href="../../de/dd2/namespace_skate_script.html#acd33f71672324e281bbe2ed96cd4c82d">SkateScript::FindNamedNode</a>( geometry ));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">m_record</a> = 0;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    pParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>( <span class="stringliteral">&quot;cash_limit&quot;</span>, &amp;<a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a>, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;}</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#aeda1a4fcf8f2e16ac17b883a50c8d55a">   49</a></span>&#160;<a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#aeda1a4fcf8f2e16ac17b883a50c8d55a">CMinigame::~CMinigame</a>()</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#affe63d74cc049001d93af20b83615d2b">   58</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#affe63d74cc049001d93af20b83615d2b">CMinigame::Activate</a>()</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordflow">if</span> ( !<a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a153f6147480c39e9fededbd72b0ab743">IsActive</a>() &amp;&amp; <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">ShouldUseTimer</a>() )</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="../../d9/dda/class_game_1_1_c_goal_manager.html">CGoalManager</a>* pGoalManager = <a class="code" href="../../d2/d97/namespace_game.html#ae5106e88e5082c716b56a2111a888616">Game::GetGoalManager</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        Dbg_Assert( pGoalManager );</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        pGoalManager-&gt;<a class="code" href="../../d9/dda/class_game_1_1_c_goal_manager.html#a77346fde438be212b534056738799a30">DeactivateMinigamesWithTimer</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a6c4770e488735a21adfe31c14e1b6a4b">CGoal::Activate</a>();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;}</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a9b95db9e757472728fb633d7a8a80a00">   74</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a9b95db9e757472728fb633d7a8a80a00">CMinigame::Update</a>()</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a153f6147480c39e9fededbd72b0ab743">IsActive</a>() &amp;&amp; <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">ShouldUseTimer</a>() )</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a64ce63945210ca1457cb7713fddab583">UpdateMinigameTimer</a>();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a9b98438d7e3d2c3d2812bf545a4e4b1a">CGoal::Update</a>();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">   89</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">CMinigame::ShouldUseTimer</a>()</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">ContainsComponentNamed</a>( <span class="stringliteral">&quot;time&quot;</span> ) );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">// this is used for minigames that have their own timer.</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a64ce63945210ca1457cb7713fddab583">  101</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a64ce63945210ca1457cb7713fddab583">CMinigame::UpdateMinigameTimer</a>()</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*  </span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">    Front::CScreenElementManager* p_screen_elem_man = Front::CScreenElementManager::Instance();</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">    Tmr::Time time_left = m_timeLeft / 1000;        </span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">    if( time_left &lt; 1 )</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">        time_left = 0;</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">    int seconds = time_left % 60;</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">    int minutes = time_left / 60;</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">    Front::CScreenElementPtr p_element = p_screen_elem_man-&gt;GetElement( CRCD( 0xcd9671b4, &quot;minigame_timer&quot;) );</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">    if (p_element)</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">    {</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">        Dbg_MsgAssert(p_element-&gt;GetType() == CRCD(0x5200dfb6, &quot;TextElement&quot;), (&quot;type is 0x%x&quot;, p_element-&gt;GetType()));</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">        Front::CTextElement *p_time_element = (Front::CTextElement *) p_element.Convert();</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">        char time_text[128];</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">        sprintf(time_text, &quot;%2d:%.2d&quot;, minutes, seconds);</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">        </span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">        // get the description if there is one</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">        const char* timer_description;</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">        if ( mp_params-&gt;GetString( CRCD( 0xe1fc4f74, &quot;timer_description&quot; ), &amp;timer_description, Script::NO_ASSERT ) )</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">        {</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">            strcat( time_text, &quot; &quot; );</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">            strcat( time_text, timer_description );</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">        }</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">        p_time_element-&gt;SetText(time_text);</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">    }</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a568fb6514b7704d7a38755f14fbc1abb">  140</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a568fb6514b7704d7a38755f14fbc1abb">CMinigame::IsExpired</a>()</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <span class="keywordflow">return</span> ( <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">ShouldUseTimer</a>() &amp;&amp; ( (<span class="keywordtype">int</span>)<a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#ae9ed411c2dcdc1c7ac2f7055a1181300">m_timeLeft</a> &lt;= 0 ) );</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    </div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#ac5b2e32044c6e721c2cdc783915e6c2a">  151</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#ac5b2e32044c6e721c2cdc783915e6c2a">CMinigame::CheckRecord</a>( <span class="keywordtype">int</span> value )</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">if</span> ( value &gt; <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">m_record</a> )</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">m_record</a> = value;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    </div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#ac30fed2a70f2e94eeb0697b8e149a34c">  166</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#ac30fed2a70f2e94eeb0697b8e149a34c">CMinigame::AddTime</a>( <span class="keywordtype">int</span> amount )</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;{</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a153f6147480c39e9fededbd72b0ab743">IsActive</a>() )</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#ae9ed411c2dcdc1c7ac2f7055a1181300">m_timeLeft</a> += (<a class="code" href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a>)( amount * 1000 );</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    </div>
+<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a0d99d27efee6ff7a8d4324eb8e2dbe47">  181</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a0d99d27efee6ff7a8d4324eb8e2dbe47">CMinigame::GetRecord</a>()</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;{</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">mp_params</a>-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( <span class="stringliteral">&quot;minigame_record&quot;</span>, <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">m_record</a> );</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">m_record</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a31e402a39e1d3d515a03f258e215f81e">  193</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a31e402a39e1d3d515a03f258e215f81e">CMinigame::CanRetry</a>()</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="comment">// you cannot retry minigames - ie, they don&#39;t show up </span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="comment">// on the pause menu as &quot;Retry last goal&quot;</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;}</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a474c376e831431ebb3c771a430172820">  206</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a474c376e831431ebb3c771a430172820">CMinigame::LoadSaveData</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>*  pFlags )</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="comment">// minigame record</span></div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordtype">int</span> minigame_record;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    pFlags-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>( <span class="stringliteral">&quot;minigame_record&quot;</span>, &amp;minigame_record, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> );</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> ( minigame_record != -1 )</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="comment">// this will check and set the record</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a24b7e085359115235ecf2b40fa8c93e7">CheckMinigameRecord</a>( minigame_record );</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    }</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordtype">int</span> cash_limit;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">if</span> ( pFlags-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">GetInteger</a>( <span class="stringliteral">&quot;cash_limit&quot;</span>, &amp;cash_limit, <a class="code" href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a> ) )</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> = cash_limit;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#ab2dd942e54ca85f1ed6e68502440eb76">CGoal::LoadSaveData</a>( pFlags );</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;}</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#a6430aaf77b8683b9b15209e22da9d4d3">  229</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a6430aaf77b8683b9b15209e22da9d4d3">CMinigame::GetSaveData</a>( <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pFlags )</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;{</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordtype">int</span> minigame_record = <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a62aab39708c53e24a61ca07560362b7b">GetMinigameRecord</a>();</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    pFlags-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( <span class="stringliteral">&quot;minigame_record&quot;</span>, minigame_record );</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    pFlags-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( <span class="stringliteral">&quot;cash_limit&quot;</span>, <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <a class="code" href="../../d1/d04/class_game_1_1_c_goal.html#a29703b5742c4f0edd3bd22811f13c296">CGoal::GetSaveData</a>( pFlags );</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;}</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160; </div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="../../d8/de7/class_game_1_1_c_minigame.html#ad5d83c83aaa47433bf5627ffcf0df1e0">  242</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#ad5d83c83aaa47433bf5627ffcf0df1e0">CMinigame::AwardCash</a>( <span class="keywordtype">int</span> amount )</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;{</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> &lt;= 0 )</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    {</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( <span class="stringliteral">&quot;minigame_cash_depleted&quot;</span> );</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    }</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160; </div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    <span class="comment">// clamp it</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">if</span> ( amount &gt; <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> )</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        amount = <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160; </div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <a class="code" href="../../d9/dda/class_game_1_1_c_goal_manager.html">CGoalManager</a>* pGoalManager = <a class="code" href="../../d2/d97/namespace_game.html#ae5106e88e5082c716b56a2111a888616">GetGoalManager</a>();</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    Dbg_Assert( pGoalManager );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">if</span> ( pGoalManager )</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    {</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        pGoalManager-&gt;<a class="code" href="../../d9/dda/class_game_1_1_c_goal_manager.html#a7009e76e1c40a9af3282de778ac3923c">AddCash</a>( amount );</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        <a class="code" href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">m_cashLimit</a> -= amount;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>* pScriptParams = <span class="keyword">new</span> <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a>();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        pScriptParams-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">AddInteger</a>( <span class="stringliteral">&quot;amount&quot;</span>, amount );</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <a class="code" href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a>( <span class="stringliteral">&quot;minigame_got_cash&quot;</span>, pScriptParams );</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        <span class="keyword">delete</span> pScriptParams;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_text_element_8h_html"><div class="ttname"><a href="../../d6/d9e/_text_element_8h.html">TextElement.h</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_ae9ed411c2dcdc1c7ac2f7055a1181300"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#ae9ed411c2dcdc1c7ac2f7055a1181300">Game::CGoal::m_timeLeft</a></div><div class="ttdeci">Tmr::Time m_timeLeft</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dcf/_goal_8h_source.html#l00240">Goal.h:240</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a71c761bdce14193b10bf3c88372ba5a0"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">Script::CArray::GetSize</a></div><div class="ttdeci">uint32 GetSize() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00120">array.h:120</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a50be6f0b0f6cc99949aef978978a9d9e"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a50be6f0b0f6cc99949aef978978a9d9e">Tmr::Time</a></div><div class="ttdeci">uint32 Time</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd0/timer_8h_source.html#l00060">timer.h:60</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_ac5b2e32044c6e721c2cdc783915e6c2a"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#ac5b2e32044c6e721c2cdc783915e6c2a">Game::CMinigame::CheckRecord</a></div><div class="ttdeci">bool CheckRecord(int value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00151">Minigame.cpp:151</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_ad5d83c83aaa47433bf5627ffcf0df1e0"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#ad5d83c83aaa47433bf5627ffcf0df1e0">Game::CMinigame::AwardCash</a></div><div class="ttdeci">bool AwardCash(int amount)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00242">Minigame.cpp:242</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_aeda1a4fcf8f2e16ac17b883a50c8d55a"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#aeda1a4fcf8f2e16ac17b883a50c8d55a">Game::CMinigame::~CMinigame</a></div><div class="ttdeci">virtual ~CMinigame()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00049">Minigame.cpp:49</a></div></div>
+<div class="ttc" id="anamespace_script_html_af49b12363c52ae6f00363d582c3bdc7e"><div class="ttname"><a href="../../d1/d54/namespace_script.html#af49b12363c52ae6f00363d582c3bdc7e">Script::RunScript</a></div><div class="ttdeci">void RunScript(uint32 scriptChecksum, CStruct *p_params, Obj::CObject *p_object, bool netScript, const char *p_scriptName)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d0f/script_8cpp_source.html#l02995">script.cpp:2995</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a64ce63945210ca1457cb7713fddab583"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a64ce63945210ca1457cb7713fddab583">Game::CMinigame::UpdateMinigameTimer</a></div><div class="ttdeci">void UpdateMinigameTimer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00101">Minigame.cpp:101</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a5fbc2c9d1db2c87fb4633333ef989559"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a5fbc2c9d1db2c87fb4633333ef989559">Script::CArray::GetChecksum</a></div><div class="ttdeci">uint32 GetChecksum(uint32 index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2a/array_8cpp_source.html#l00483">array.cpp:483</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a6430aaf77b8683b9b15209e22da9d4d3"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a6430aaf77b8683b9b15209e22da9d4d3">Game::CMinigame::GetSaveData</a></div><div class="ttdeci">void GetSaveData(Script::CStruct *pFlags)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00229">Minigame.cpp:229</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_acd33f71672324e281bbe2ed96cd4c82d"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#acd33f71672324e281bbe2ed96cd4c82d">SkateScript::FindNamedNode</a></div><div class="ttdeci">int FindNamedNode(uint32 checksum, bool assert)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00087">nodearray.cpp:87</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_ab6805f805d22e3876bcd47552a663f1a"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#ab6805f805d22e3876bcd47552a663f1a">Script::CStruct::AddInteger</a></div><div class="ttdeci">void AddInteger(uint32 nameChecksum, int integer)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01039">struct.cpp:1039</a></div></div>
+<div class="ttc" id="anamespace_script_html_a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711"><div class="ttname"><a href="../../d1/d54/namespace_script.html#a1dbce4b634727b78b34e4f40ad1ba884a60f92b942056af24643ab6005de82711">Script::NO_ASSERT</a></div><div class="ttdeci">@ NO_ASSERT</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d49/scriptdefs_8h_source.html#l00015">scriptdefs.h:15</a></div></div>
+<div class="ttc" id="a_minigame_8h_html"><div class="ttname"><a href="../../d2/df8/_minigame_8h.html">Minigame.h</a></div></div>
+<div class="ttc" id="anamespace_game_html_ae5106e88e5082c716b56a2111a888616"><div class="ttname"><a href="../../d2/d97/namespace_game.html#ae5106e88e5082c716b56a2111a888616">Game::GetGoalManager</a></div><div class="ttdeci">CGoalManager * GetGoalManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d82/_goal_manager_8cpp_source.html#l03816">GoalManager.cpp:3816</a></div></div>
+<div class="ttc" id="anamespace_c_funcs_html_aa03c8c2f789cc655d61393e37bbb5746"><div class="ttname"><a href="../../db/d54/namespace_c_funcs.html#aa03c8c2f789cc655d61393e37bbb5746">CFuncs::ScriptCreateFromNodeIndex</a></div><div class="ttdeci">bool ScriptCreateFromNodeIndex(int nodeIndex)</div><div class="ttdef"><b>Definition:</b> <a href="../../d7/d43/cfuncs_8cpp_source.html#l05587">cfuncs.cpp:5587</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a62aab39708c53e24a61ca07560362b7b"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a62aab39708c53e24a61ca07560362b7b">Game::CGoal::GetMinigameRecord</a></div><div class="ttdeci">int GetMinigameRecord()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l02161">Goal.cpp:2161</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_aca4cf5808a2200b1af6e0c7df0353409"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#aca4cf5808a2200b1af6e0c7df0353409">Game::CMinigame::ShouldUseTimer</a></div><div class="ttdeci">bool ShouldUseTimer()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00089">Minigame.cpp:89</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_manager_html_a7009e76e1c40a9af3282de778ac3923c"><div class="ttname"><a href="../../d9/dda/class_game_1_1_c_goal_manager.html#a7009e76e1c40a9af3282de778ac3923c">Game::CGoalManager::AddCash</a></div><div class="ttdeci">void AddCash(int amount)</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d82/_goal_manager_8cpp_source.html#l01617">GoalManager.cpp:1617</a></div></div>
+<div class="ttc" id="anamespace_game_html"><div class="ttname"><a href="../../d2/d97/namespace_game.html">Game</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/ddf/_betting_guy_8cpp_source.html#l00024">BettingGuy.cpp:24</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_ab2dd942e54ca85f1ed6e68502440eb76"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#ab2dd942e54ca85f1ed6e68502440eb76">Game::CGoal::LoadSaveData</a></div><div class="ttdeci">virtual void LoadSaveData(Script::CStruct *pFlags)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l02829">Goal.cpp:2829</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a5660f2c2545166dfa2bdc93e519e21f3"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a5660f2c2545166dfa2bdc93e519e21f3">Game::CMinigame::m_cashLimit</a></div><div class="ttdeci">int m_cashLimit</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/df8/_minigame_8h_source.html#l00043">Minigame.h:43</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a847c66d2b9ed99bc36489dca616f1e70"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a847c66d2b9ed99bc36489dca616f1e70">Script::CStruct::ContainsComponentNamed</a></div><div class="ttdeci">bool ContainsComponentNamed(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01759">struct.cpp:1759</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_af51568a01a83e660dbb4a158230765bd"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#af51568a01a83e660dbb4a158230765bd">Game::CMinigame::CMinigame</a></div><div class="ttdeci">CMinigame(Script::CStruct *pParams)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00022">Minigame.cpp:22</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a6464d2f6d3a7a0621ba7532fbb1abf5b"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a6464d2f6d3a7a0621ba7532fbb1abf5b">Game::CMinigame::m_record</a></div><div class="ttdeci">int m_record</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/df8/_minigame_8h_source.html#l00042">Minigame.h:42</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a4194edfd404d1599074084eb954840f5"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a4194edfd404d1599074084eb954840f5">Game::CGoal::mp_params</a></div><div class="ttdeci">Script::CStruct * mp_params</div><div class="ttdef"><b>Definition:</b> <a href="../../da/dcf/_goal_8h_source.html#l00223">Goal.h:223</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html">Game::CGoal</a></div><div class="ttdef"><b>Definition:</b> <a href="../../da/dcf/_goal_8h_source.html#l00054">Goal.h:54</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_manager_html_a77346fde438be212b534056738799a30"><div class="ttname"><a href="../../d9/dda/class_game_1_1_c_goal_manager.html#a77346fde438be212b534056738799a30">Game::CGoalManager::DeactivateMinigamesWithTimer</a></div><div class="ttdeci">void DeactivateMinigamesWithTimer()</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d82/_goal_manager_8cpp_source.html#l02693">GoalManager.cpp:2693</a></div></div>
+<div class="ttc" id="askfuncs_8h_html"><div class="ttname"><a href="../../d6/dac/skfuncs_8h.html">skfuncs.h</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a568fb6514b7704d7a38755f14fbc1abb"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a568fb6514b7704d7a38755f14fbc1abb">Game::CMinigame::IsExpired</a></div><div class="ttdeci">bool IsExpired()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00140">Minigame.cpp:140</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_ac30fed2a70f2e94eeb0697b8e149a34c"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#ac30fed2a70f2e94eeb0697b8e149a34c">Game::CMinigame::AddTime</a></div><div class="ttdeci">bool AddTime(int amount)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00166">Minigame.cpp:166</a></div></div>
+<div class="ttc" id="a_screen_elem_man_8h_html"><div class="ttname"><a href="../../db/d34/_screen_elem_man_8h.html">ScreenElemMan.h</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a9b98438d7e3d2c3d2812bf545a4e4b1a"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a9b98438d7e3d2c3d2812bf545a4e4b1a">Game::CGoal::Update</a></div><div class="ttdeci">virtual bool Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l01102">Goal.cpp:1102</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00024">array.h:24</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_af0638a7b3a0ea5a15b3f4ee0536869c9"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#af0638a7b3a0ea5a15b3f4ee0536869c9">Script::CStruct::GetArray</a></div><div class="ttdeci">bool GetArray(uint32 nameChecksum, CArray **pp_array, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01609">struct.cpp:1609</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a9b95db9e757472728fb633d7a8a80a00"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a9b95db9e757472728fb633d7a8a80a00">Game::CMinigame::Update</a></div><div class="ttdeci">bool Update()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00074">Minigame.cpp:74</a></div></div>
+<div class="ttc" id="a_goal_manager_8h_html"><div class="ttname"><a href="../../d3/d88/_goal_manager_8h.html">GoalManager.h</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="anodearray_8h_html"><div class="ttname"><a href="../../df/d47/nodearray_8h.html">nodearray.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_a1e85eee5e600de8358db26f6c777e42d"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#a1e85eee5e600de8358db26f6c777e42d">Script::CStruct::GetInteger</a></div><div class="ttdeci">bool GetInteger(uint32 nameChecksum, int *p_integerValue, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01480">struct.cpp:1480</a></div></div>
+<div class="ttc" id="acfuncs_8h_html"><div class="ttname"><a href="../../d0/d30/cfuncs_8h.html">cfuncs.h</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a474c376e831431ebb3c771a430172820"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a474c376e831431ebb3c771a430172820">Game::CMinigame::LoadSaveData</a></div><div class="ttdeci">void LoadSaveData(Script::CStruct *pFlags)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00206">Minigame.cpp:206</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a24b7e085359115235ecf2b40fa8c93e7"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a24b7e085359115235ecf2b40fa8c93e7">Game::CGoal::CheckMinigameRecord</a></div><div class="ttdeci">bool CheckMinigameRecord(int value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l02142">Goal.cpp:2142</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a153f6147480c39e9fededbd72b0ab743"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a153f6147480c39e9fededbd72b0ab743">Game::CGoal::IsActive</a></div><div class="ttdeci">virtual bool IsActive()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l01191">Goal.cpp:1191</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a31e402a39e1d3d515a03f258e215f81e"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a31e402a39e1d3d515a03f258e215f81e">Game::CMinigame::CanRetry</a></div><div class="ttdeci">bool CanRetry()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00193">Minigame.cpp:193</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_a0d99d27efee6ff7a8d4324eb8e2dbe47"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#a0d99d27efee6ff7a8d4324eb8e2dbe47">Game::CMinigame::GetRecord</a></div><div class="ttdeci">int GetRecord()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00181">Minigame.cpp:181</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_manager_html"><div class="ttname"><a href="../../d9/dda/class_game_1_1_c_goal_manager.html">Game::CGoalManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d88/_goal_manager_8h_source.html#l00094">GoalManager.h:94</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_minigame_html_affe63d74cc049001d93af20b83615d2b"><div class="ttname"><a href="../../d8/de7/class_game_1_1_c_minigame.html#affe63d74cc049001d93af20b83615d2b">Game::CMinigame::Activate</a></div><div class="ttdeci">bool Activate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d78/_minigame_8cpp_source.html#l00058">Minigame.cpp:58</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a6c4770e488735a21adfe31c14e1b6a4b"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a6c4770e488735a21adfe31c14e1b6a4b">Game::CGoal::Activate</a></div><div class="ttdeci">virtual bool Activate()</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l00514">Goal.cpp:514</a></div></div>
+<div class="ttc" id="a_screen_element2_8h_html"><div class="ttname"><a href="../../d9/dd5/_screen_element2_8h.html">ScreenElement2.h</a></div></div>
+<div class="ttc" id="aclass_game_1_1_c_goal_html_a29703b5742c4f0edd3bd22811f13c296"><div class="ttname"><a href="../../d1/d04/class_game_1_1_c_goal.html#a29703b5742c4f0edd3bd22811f13c296">Game::CGoal::GetSaveData</a></div><div class="ttdeci">virtual void GetSaveData(Script::CStruct *pFlags)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d21/_goal_8cpp_source.html#l02888">Goal.cpp:2888</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_8a1f0fe72cf15c8f12a4a305167e3d4d.html">Modules</a></li><li class="navelem"><a class="el" href="../../dir_54d7426c14152959ec57b87c06ed0b17.html">Skate</a></li><li class="navelem"><a class="el" href="../../d4/d78/_minigame_8cpp.html">Minigame.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

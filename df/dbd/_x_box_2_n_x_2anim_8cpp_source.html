@@ -1,0 +1,651 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/NX/anim.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('df/dbd/_x_box_2_n_x_2anim_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">anim.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;xtl.h&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/d4b/_debug_8h.html">core/debug.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/def/_hash_table_8h.html">core/HashTable.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/geometry_8h.html">core/math/geometry.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/ddd/filesys_8h.html">sys/file/filesys.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;nx_init.h&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;mesh.h&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;scene.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;anim.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../de/d5f/anim__vertdefs_8h.html">anim_vertdefs.h</a>&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_1Weight.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_2Weight.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_3Weight.h&quot;</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_Specular_1Weight.h&quot;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_Specular_2Weight.h&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_Specular_3Weight.h&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_1Weight_UVTransform.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_2Weight_UVTransform.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_3Weight_UVTransform.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_1Weight_SBPassThru.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_2Weight_SBPassThru.h&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVS_VXC_3Weight_SBPassThru.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;WeightedMeshVertexShader_SBWrite.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ShadowBufferStaticGeomVS.h&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;BillboardScreenAlignedVS.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;ParticleFlatVS.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &quot;ParticleNewFlatVS.h&quot;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &quot;ParticleNewFlatPointSpriteVS.h&quot;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a1d2462a15786553fa77791368bba253f">   43</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a1d2462a15786553fa77791368bba253f">WeightedMeshVS_VXC_1Weight</a>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#ac5e7dc241351e483fad6056c8a92aedb">   44</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ac5e7dc241351e483fad6056c8a92aedb">WeightedMeshVS_VXC_2Weight</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a3135fe474fe037d79a8f8aec82b821a9">   45</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3135fe474fe037d79a8f8aec82b821a9">WeightedMeshVS_VXC_3Weight</a>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#ad76ed24b02f2201fe7b2f6bfe458f33a">   46</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad76ed24b02f2201fe7b2f6bfe458f33a">WeightedMeshVS_VXC_Specular_1Weight</a>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a88d92011d056439b7de12577f787e27a">   47</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a88d92011d056439b7de12577f787e27a">WeightedMeshVS_VXC_Specular_2Weight</a>;</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#acfb71ffcdca0afbcbce459f0b028b1e3">   48</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#acfb71ffcdca0afbcbce459f0b028b1e3">WeightedMeshVS_VXC_Specular_3Weight</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#aa847e04dafb23b89de4f817af909f495">   49</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aa847e04dafb23b89de4f817af909f495">WeightedMeshVS_VXC_1Weight_UVTransform</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#afa785034898e6c626fdbfe5d2b18094d">   50</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#afa785034898e6c626fdbfe5d2b18094d">WeightedMeshVS_VXC_2Weight_UVTransform</a>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a187370ff8a7a102f87d29d2a1cf04a3b">   51</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a187370ff8a7a102f87d29d2a1cf04a3b">WeightedMeshVS_VXC_3Weight_UVTransform</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#ad2ab4bdb61c8f0f00039d14ed45644f5">   52</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad2ab4bdb61c8f0f00039d14ed45644f5">WeightedMeshVertexShader_SBWrite</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a4274b62ba49181cfa2714c64c2459850">   53</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4274b62ba49181cfa2714c64c2459850">WeightedMeshVS_VXC_1Weight_SBPassThru</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#ae70dcaf5276679e8c417aff141604cdb">   54</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae70dcaf5276679e8c417aff141604cdb">WeightedMeshVS_VXC_2Weight_SBPassThru</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a3d8adada4894450d9bc781db82151026">   55</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3d8adada4894450d9bc781db82151026">WeightedMeshVS_VXC_3Weight_SBPassThru</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae751c9655832e4d1753e1c2954a11cbf">   56</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae751c9655832e4d1753e1c2954a11cbf">WeightedMeshVertexShader_VXC_SBPassThru</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#abb651f6712545bbe18396b59f5fdde0b">   57</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#abb651f6712545bbe18396b59f5fdde0b">BillboardScreenAlignedVS</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a3660548fcf781a76a82e8c40378e687d">   58</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3660548fcf781a76a82e8c40378e687d">ParticleFlatVS</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#aba6d83c0b0f41a7e663eab62cba6e7f3">   59</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aba6d83c0b0f41a7e663eab62cba6e7f3">ParticleNewFlatVS</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../da/dd9/_x_box_2_n_x_2anim_8h.html#a4e4af9ac2782a2c11173ff02e276afcb">   60</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4e4af9ac2782a2c11173ff02e276afcb">ParticleNewFlatPointSpriteVS</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d2/dad/_x_box_2_n_x_2render_8cpp.html#a734fff43e89d4842364259045a7c8ed8">   61</a></span>&#160;DWORD <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a734fff43e89d4842364259045a7c8ed8">ShadowBufferStaticGeomVS</a>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html">   63</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d4/ddf/namespace_nx_xbox.html">NxXbox</a></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="comment">// Vertex color attenuation, 4 sets of tex coords.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">   66</a></span>&#160;    <span class="keyword">static</span> DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>[] = {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    D3DVSD_STREAM( 0 ),</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    D3DVSD_REG( VSD_REG_POS,        D3DVSDT_FLOAT3 ),       <span class="comment">// Position.</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    D3DVSD_REG( VSD_REG_WEIGHTS,    D3DVSDT_NORMPACKED3 ),  <span class="comment">// Weights.</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    D3DVSD_REG( VSD_REG_INDICES,    D3DVSDT_SHORT4 ),       <span class="comment">// Indices.</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    D3DVSD_REG( VSD_REG_NORMAL,     D3DVSDT_NORMPACKED3 ),  <span class="comment">// Normals.</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    D3DVSD_REG( VSD_REG_COLOR,      D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color.</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    D3DVSD_REG( VSD_REG_TEXCOORDS0, D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 0.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    D3DVSD_REG( VSD_REG_TEXCOORDS1, D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 1.</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    D3DVSD_REG( VSD_REG_TEXCOORDS2, D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 2.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    D3DVSD_REG( VSD_REG_TEXCOORDS3, D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 3.</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    D3DVSD_END() };</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// Billboards.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#ac2f3ef06e0598cbc4247f61a042478e3">   80</a></span>&#160;    <span class="keyword">static</span> DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#ac2f3ef06e0598cbc4247f61a042478e3">BillboardVSDecl</a>[] = {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    D3DVSD_STREAM( 0 ),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    D3DVSD_REG( 0,  D3DVSDT_FLOAT3 ),       <span class="comment">// Position (actually pivot position).</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    D3DVSD_REG( 1,  D3DVSDT_FLOAT3 ),       <span class="comment">// Normal (actually position of point relative to pivot).</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    D3DVSD_REG( 2,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color.</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    D3DVSD_REG( 3,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 0.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    D3DVSD_REG( 4,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 1.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    D3DVSD_REG( 5,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 2.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    D3DVSD_REG( 6,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 3.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    D3DVSD_END() };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Particles.</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#adedcc34e520a6278a12322cf7a8648ab">   92</a></span>&#160;    <span class="keyword">static</span> DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#adedcc34e520a6278a12322cf7a8648ab">ParticleFlatVSDecl</a>[] = {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    D3DVSD_STREAM( 0 ),</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    D3DVSD_REG( 0,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color (start)</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    D3DVSD_REG( 1,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color (end)</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    D3DVSD_REG( 2,  D3DVSDT_SHORT2 ),       <span class="comment">// Indices.</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    D3DVSD_END() };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="comment">// New, Ps2 style particles using PointSprites.</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#afe0d0af310675e86397500a904f3bf00">  100</a></span>&#160;    <span class="keyword">static</span> DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#afe0d0af310675e86397500a904f3bf00">NewParticleFlatVSDecl</a>[] = {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    D3DVSD_STREAM( 0 ),</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    D3DVSD_REG( 0,  D3DVSDT_FLOAT4 ),       <span class="comment">// Random 4-element &#39;R&#39; vector.</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    D3DVSD_REG( 1,  D3DVSDT_FLOAT2 ),       <span class="comment">// Time and color interpolator.</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    D3DVSD_REG( 2,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color (start)</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    D3DVSD_REG( 3,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color (end)</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    D3DVSD_END() };</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="comment">// Shadow buffer, static geom.</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a5ac7bbd2d8c51d9312704adf944d0bea">  109</a></span>&#160;    <span class="keyword">static</span> DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a5ac7bbd2d8c51d9312704adf944d0bea">ShadowBufferStaticGeomVSDecl</a>[] = {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    D3DVSD_STREAM( 0 ),</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    D3DVSD_REG( 0,  D3DVSDT_FLOAT3 ),       <span class="comment">// Position.</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    D3DVSD_REG( 1,  D3DVSDT_D3DCOLOR ),     <span class="comment">// Diffuse color.</span></div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    D3DVSD_REG( 2,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 0.</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    D3DVSD_REG( 3,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 1.</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    D3DVSD_REG( 4,  D3DVSDT_FLOAT2 ),       <span class="comment">// Texture coordinates 2.</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    D3DVSD_END() };</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a77f9af4686fb32625004ee3f2acdf2f4">  122</a></span>&#160;DWORD <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a77f9af4686fb32625004ee3f2acdf2f4">GetVertexShader</a>( <span class="keywordtype">bool</span> vertex_colors, <span class="keywordtype">bool</span> specular, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> max_weights_used )</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    Dbg_Assert( max_weights_used &gt; 0 );</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">if</span>( vertex_colors )</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">if</span>( max_weights_used == 1 )</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">return</span> ( specular ) ? <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad76ed24b02f2201fe7b2f6bfe458f33a">WeightedMeshVS_VXC_Specular_1Weight</a> : <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a1d2462a15786553fa77791368bba253f">WeightedMeshVS_VXC_1Weight</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( max_weights_used == 2 )</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">return</span> ( specular ) ? <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a88d92011d056439b7de12577f787e27a">WeightedMeshVS_VXC_Specular_2Weight</a> : <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ac5e7dc241351e483fad6056c8a92aedb">WeightedMeshVS_VXC_2Weight</a>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span>( max_weights_used == 3 )</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> ( specular ) ? <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#acfb71ffcdca0afbcbce459f0b028b1e3">WeightedMeshVS_VXC_Specular_3Weight</a> : <a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3135fe474fe037d79a8f8aec82b821a9">WeightedMeshVS_VXC_3Weight</a>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    Dbg_Assert( 0 );</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a1253919e68002c380d8b4432d095db86">  152</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a1253919e68002c380d8b4432d095db86">CreateWeightedMeshVertexShaders</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> created_shaders = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">if</span>( !created_shaders )</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    {</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        created_shaders = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                                                    dwWeightedMeshVS_VXC_1WeightVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a1d2462a15786553fa77791368bba253f">WeightedMeshVS_VXC_1Weight</a>,</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        {</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        }</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                                                    dwWeightedMeshVS_VXC_2WeightVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ac5e7dc241351e483fad6056c8a92aedb">WeightedMeshVS_VXC_2Weight</a>,</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        }</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                                    dwWeightedMeshVS_VXC_3WeightVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3135fe474fe037d79a8f8aec82b821a9">WeightedMeshVS_VXC_3Weight</a>,</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                                                    dwWeightedMeshVS_VXC_Specular_1WeightVertexShader,  <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad76ed24b02f2201fe7b2f6bfe458f33a">WeightedMeshVS_VXC_Specular_1Weight</a>,</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        {</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                                                    dwWeightedMeshVS_VXC_Specular_2WeightVertexShader,  <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a88d92011d056439b7de12577f787e27a">WeightedMeshVS_VXC_Specular_2Weight</a>,</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        {</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                                                    dwWeightedMeshVS_VXC_Specular_3WeightVertexShader,  <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#acfb71ffcdca0afbcbce459f0b028b1e3">WeightedMeshVS_VXC_Specular_3Weight</a>,</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                                                    dwWeightedMeshVS_VXC_1Weight_UVTransformVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aa847e04dafb23b89de4f817af909f495">WeightedMeshVS_VXC_1Weight_UVTransform</a>,</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        {</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                                                    dwWeightedMeshVS_VXC_2Weight_UVTransformVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#afa785034898e6c626fdbfe5d2b18094d">WeightedMeshVS_VXC_2Weight_UVTransform</a>,</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        }</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160; </div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                                                    dwWeightedMeshVS_VXC_3Weight_UVTransformVertexShader,   <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a187370ff8a7a102f87d29d2a1cf04a3b">WeightedMeshVS_VXC_3Weight_UVTransform</a>,</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        {</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        }</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                                                    dwWeightedMeshVertexShader_SBWriteVertexShader, <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad2ab4bdb61c8f0f00039d14ed45644f5">WeightedMeshVertexShader_SBWrite</a>,</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        {</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                                                    dwWeightedMeshVS_VXC_1Weight_SBPassThruVertexShader,    <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4274b62ba49181cfa2714c64c2459850">WeightedMeshVS_VXC_1Weight_SBPassThru</a>,</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        {</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;        }</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                                                    dwWeightedMeshVS_VXC_2Weight_SBPassThruVertexShader,    <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae70dcaf5276679e8c417aff141604cdb">WeightedMeshVS_VXC_2Weight_SBPassThru</a>,</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        }</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">WeightedMeshVertexShaderVertColUV4Decl</a>,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                                    dwWeightedMeshVS_VXC_3Weight_SBPassThruVertexShader,    <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3d8adada4894450d9bc781db82151026">WeightedMeshVS_VXC_3Weight_SBPassThru</a>,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#ac2f3ef06e0598cbc4247f61a042478e3">BillboardVSDecl</a>,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                                    dwBillboardScreenAlignedVSVertexShader,                 <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#abb651f6712545bbe18396b59f5fdde0b">BillboardScreenAlignedVS</a>,</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        {</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; </div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#adedcc34e520a6278a12322cf7a8648ab">ParticleFlatVSDecl</a>,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                                    dwParticleFlatVSVertexShader,                           <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3660548fcf781a76a82e8c40378e687d">ParticleFlatVS</a>,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        {</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        }</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#adedcc34e520a6278a12322cf7a8648ab">ParticleFlatVSDecl</a>,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                                    dwParticleNewFlatVSVertexShader,                        <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aba6d83c0b0f41a7e663eab62cba6e7f3">ParticleNewFlatVS</a>,</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160; </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#afe0d0af310675e86397500a904f3bf00">NewParticleFlatVSDecl</a>,</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                                                    dwParticleNewFlatPointSpriteVSVertexShader,             <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4e4af9ac2782a2c11173ff02e276afcb">ParticleNewFlatPointSpriteVS</a>,</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;        }</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">if</span>( D3D_OK != D3DDevice_CreateVertexShader( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a5ac7bbd2d8c51d9312704adf944d0bea">ShadowBufferStaticGeomVSDecl</a>,</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                                                    dwShadowBufferStaticGeomVSVertexShader,                 <span class="comment">// Defined in the header file from xsasm.</span></div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;                                                    &amp;<a class="code" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a734fff43e89d4842364259045a7c8ed8">ShadowBufferStaticGeomVS</a>,</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                                                    0 ))</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        {</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            exit( 0 );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        }</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    }</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160; </div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a8a8933b9aa8ad3f8ddbbd2ed59329fd2">  308</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a8a8933b9aa8ad3f8ddbbd2ed59329fd2">setup_weighted_mesh_vertex_shader</a>( <span class="keywordtype">void</span> *p_root_matrix, <span class="keywordtype">void</span> *p_bone_matrices, <span class="keywordtype">int</span> num_bone_matrices )</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    XGMATRIX    dest_matrix;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    XGMATRIX    inverse_view_matrix;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    XGMATRIX    temp_matrix;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    XGMATRIX    projMatrix;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    XGMATRIX    viewMatrix;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    XGMATRIX    worldMatrix;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    <span class="comment">// Projection matrix.</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    XGMatrixTranspose( &amp;projMatrix, &amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a143c6a1c0bdfdb0ceeefe4095c0908f4">projection_matrix</a> );</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    </div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="comment">// View matrix.</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;    XGMatrixTranspose( &amp;viewMatrix, &amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a975b08cd2e626ded4704cf7fc141659f">view_matrix</a> );</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    viewMatrix.m[3][0] = 0.0f;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    viewMatrix.m[3][1] = 0.0f;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    viewMatrix.m[3][2] = 0.0f;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    viewMatrix.m[3][3] = 1.0f;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    <span class="comment">// World space transformation matrix. (3x3 rotation plus 3 element translation component).</span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    worldMatrix.m[0][0] = ((<span class="keywordtype">float</span>*)p_root_matrix )[0];</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    worldMatrix.m[0][1] = ((<span class="keywordtype">float</span>*)p_root_matrix )[1];</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    worldMatrix.m[0][2] = ((<span class="keywordtype">float</span>*)p_root_matrix )[2];</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    worldMatrix.m[0][3] = ((<span class="keywordtype">float</span>*)p_root_matrix )[3];</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    worldMatrix.m[1][0] = ((<span class="keywordtype">float</span>*)p_root_matrix )[4];</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    worldMatrix.m[1][1] = ((<span class="keywordtype">float</span>*)p_root_matrix )[5];</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    worldMatrix.m[1][2] = ((<span class="keywordtype">float</span>*)p_root_matrix )[6];</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    worldMatrix.m[1][3] = ((<span class="keywordtype">float</span>*)p_root_matrix )[7];</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    worldMatrix.m[2][0] = ((<span class="keywordtype">float</span>*)p_root_matrix )[8];</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    worldMatrix.m[2][1] = ((<span class="keywordtype">float</span>*)p_root_matrix )[9];</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    worldMatrix.m[2][2] = ((<span class="keywordtype">float</span>*)p_root_matrix )[10];</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    worldMatrix.m[2][3] = ((<span class="keywordtype">float</span>*)p_root_matrix )[11];</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    worldMatrix.m[3][0] = 0.0f;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    worldMatrix.m[3][1] = 0.0f;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    worldMatrix.m[3][2] = 0.0f;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    worldMatrix.m[3][3] = 1.0f;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; </div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;    <span class="comment">// Calculate composite world-&gt;view-&gt;projection matrix.</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;    XGMatrixMultiply( &amp;temp_matrix, &amp;viewMatrix, &amp;worldMatrix );</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    XGMatrixMultiply( &amp;dest_matrix, &amp;projMatrix, &amp;temp_matrix );</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="comment">// Switch to 192 constant mode, removing the lock on the reserved constants c-38 and c-37.</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">//  D3DDevice_SetShaderConstantMode( D3DSCM_192CONSTANTS | D3DSCM_NORESERVEDCONSTANTS );</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160; </div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="comment">// Load up the combined world, camera &amp; projection matrix.</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    D3DDevice_SetVertexShaderConstantFast( VSCONST_REG_TRANSFORM_OFFSET, (<span class="keywordtype">void</span>*)&amp;dest_matrix, VSCONST_REG_TRANSFORM_SIZE );</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    D3DDevice_SetVertexShaderConstantFast( VSCONST_REG_WORLD_TRANSFORM_OFFSET,  (<span class="keywordtype">void</span>*)&amp;worldMatrix, VSCONST_REG_WORLD_TRANSFORM_SIZE );</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160; </div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    <span class="comment">// We want to transform the light directions by the inverse of the world transform - this means we don&#39;t have to transform</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;    <span class="comment">// the normal by the world transform for every vertex in the vertex shader. However, the function D3DXVec3TransformNormal</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    <span class="comment">// (used below) does the inverse transform for us, so need to actually figure the inverse...</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="comment">//  XGMATRIX inverse_world_transform = worldMatrix;</span></div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">//  D3DXMatrixInverse( &amp;inverse_world_transform, NULL, &amp;worldMatrix );</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; </div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordtype">float</span> directional_light_color[24];</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;    CopyMemory( directional_light_color, <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a09eb33a6d319e414581ccd470af6d1a1">directional_light_color</a>, <span class="keyword">sizeof</span>( <span class="keywordtype">float</span> ) * 24 );</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;    </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    XGVec3TransformNormal((XGVECTOR3*)&amp;directional_light_color[0],  (XGVECTOR3*)&amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a09eb33a6d319e414581ccd470af6d1a1">directional_light_color</a>[0], &amp;worldMatrix );</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;    XGVec3TransformNormal((XGVECTOR3*)&amp;directional_light_color[8],  (XGVECTOR3*)&amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a09eb33a6d319e414581ccd470af6d1a1">directional_light_color</a>[8], &amp;worldMatrix );</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    XGVec3TransformNormal((XGVECTOR3*)&amp;directional_light_color[16], (XGVECTOR3*)&amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a09eb33a6d319e414581ccd470af6d1a1">directional_light_color</a>[16], &amp;worldMatrix );</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    XGVec3Normalize((XGVECTOR3*)&amp;directional_light_color[0], (XGVECTOR3*)&amp;directional_light_color[0] ); </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    XGVec3Normalize((XGVECTOR3*)&amp;directional_light_color[8], (XGVECTOR3*)&amp;directional_light_color[8] ); </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    XGVec3Normalize((XGVECTOR3*)&amp;directional_light_color[16], (XGVECTOR3*)&amp;directional_light_color[16] ); </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160; </div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <span class="comment">// Load up the directional light data.</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    D3DDevice_SetVertexShaderConstantFast( VSCONST_REG_DIR_LIGHT_OFFSET, (<span class="keywordtype">void</span>*)directional_light_color, 6 );</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    <span class="comment">// Load up the ambient light color.</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    D3DDevice_SetVertexShaderConstantFast( VSCONST_REG_AMB_LIGHT_OFFSET, (<span class="keywordtype">void</span>*)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a35a143572a74a014525185af4a7759e6">ambient_light_color</a>, 1 );</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    </div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="comment">// Calculate and load up the model-relative camera position.</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a> = XGVECTOR3( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a8b8810bf61e9567bc4c961c8e6985759">cam_position</a>.x - worldMatrix.m[0][3],</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;                                                           <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a8b8810bf61e9567bc4c961c8e6985759">cam_position</a>.y - worldMatrix.m[1][3],</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;                                                           <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a8b8810bf61e9567bc4c961c8e6985759">cam_position</a>.z - worldMatrix.m[2][3] );</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    XGVec3TransformNormal( &amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a>, &amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a>, &amp;worldMatrix );</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    <span class="keywordtype">float</span> specular_attribs[4] = { <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a>.x,</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                                  <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a>.y,</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                  <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">model_relative_cam_position</a>.z,</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                                  0.0f };</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    D3DDevice_SetVertexShaderConstantFast( VSCONST_REG_CAM_POS_OFFSET, (<span class="keywordtype">void</span>*)&amp;specular_attribs, 1 );</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160; </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="comment">// Safety check here to limit number of bones to that available.</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordflow">if</span>( num_bone_matrices &gt; 55 )</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    {</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;        num_bone_matrices = 55;</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160; </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    DWORD*  p_bone_element  = (DWORD*)p_bone_matrices;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    <span class="comment">// Begin state block to set vertex shader constants for bone transforms.</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    DWORD *p_push;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a25cb5191cba4b0603957408f1d5fa3ba">p_Device</a>-&gt;BeginState(( num_bone_matrices * ( 12 + 1 )) + 3, &amp;p_push );</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="comment">// 1 here isn&#39;t the parameter for SET_TRANSFORM_CONSTANT_LOAD; rather, it&#39;s the number of dwords written to that register.</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    p_push[0] = D3DPUSH_ENCODE( D3DPUSH_SET_TRANSFORM_CONSTANT_LOAD, 1 ); </div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <span class="comment">// Here is the actual parameter for SET_TRANSFORM_CONSTANT_LOAD. Always add 96 to the constant register.</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    p_push[1] = VSCONST_REG_MATRIX_OFFSET + 96;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160; </div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;    p_push += 2;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    <span class="keywordflow">while</span>( num_bone_matrices &gt; 0 )</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;    {</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;        <span class="comment">// A 3x4 matrix is 12 dwords. You can encode a maximum of 32 dwords to D3DPUSH_SET_TRANSFORM_CONSTANT before needing another D3DPUSH_ENCODE.</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;        p_push[0]       = D3DPUSH_ENCODE( D3DPUSH_SET_TRANSFORM_CONSTANT, 12 );</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;        p_push[1]       = p_bone_element[0];</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;        p_push[2]       = p_bone_element[4];</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;        p_push[3]       = p_bone_element[8];</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;        p_push[4]       = p_bone_element[12];</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        p_push[5]       = p_bone_element[1];</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;        p_push[6]       = p_bone_element[5];</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;        p_push[7]       = p_bone_element[9];</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;        p_push[8]       = p_bone_element[13];</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;        p_push[9]       = p_bone_element[2];</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;        p_push[10]      = p_bone_element[6];</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;        p_push[11]      = p_bone_element[10];</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;        p_push[12]      = p_bone_element[14];</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;        --num_bone_matrices;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;        p_bone_element  += 16;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;        p_push          += 13;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    }</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160; </div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a25cb5191cba4b0603957408f1d5fa3ba">p_Device</a>-&gt;EndState( p_push );</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160; </div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="comment">// Load up the replacement registers for c-38 and c-37</span></div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    <span class="comment">// The z value is 2^24 - to take 1.0f to the max z buffer value for a 24bit z buffer.</span></div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">float</span> homogenous_to_screen_reg[8] = { 320.0f, -240.0f, 1.6777215e7f, 0.0f, 320.53125f, 240.53125f, 0.0f, 0.0f };</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;    </div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a1f09c4f751ddfe13fefdb5140c296544">is_orthographic</a> )</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    {</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;        homogenous_to_screen_reg[0] = 128.0f;</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;        homogenous_to_screen_reg[1] = -128.0f;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160; </div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;        homogenous_to_screen_reg[2] = 1.6777215e7f;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;        </div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        homogenous_to_screen_reg[4] = 128.53125f;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        homogenous_to_screen_reg[5] = 128.53125f;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    }</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        homogenous_to_screen_reg[0] = (float)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#acb68263c1b4fa14b87d6d902c1012b50">viewport</a>.Width * 0.5f;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;        homogenous_to_screen_reg[1] = (<span class="keywordtype">float</span>)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#acb68263c1b4fa14b87d6d902c1012b50">viewport</a>.Height * -0.5f;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        homogenous_to_screen_reg[2] = ( <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aa70d7fa4086e98a61ff02cf404f1ffca">zstencil_depth</a> == 16 ) ? 65535.0f : 1.6777215e7f;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160; </div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        homogenous_to_screen_reg[4] = (float)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a>.viewport.X + ((<span class="keywordtype">float</span>)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#acb68263c1b4fa14b87d6d902c1012b50">viewport</a>.Width * 0.5f ) + 0.53125f;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;        homogenous_to_screen_reg[5] = (float)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a>.viewport.Y + ((<span class="keywordtype">float</span>)<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#acb68263c1b4fa14b87d6d902c1012b50">viewport</a>.Height * 0.5f ) + 0.53125f;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    D3DDevice_SetVertexShaderConstantFast( 94, (<span class="keywordtype">void</span>*)homogenous_to_screen_reg, 2 );</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;}</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160; </div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160; </div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00473"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a36bff70689365d305755ca6bec7639cc">  473</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a36bff70689365d305755ca6bec7639cc">startup_weighted_mesh_vertex_shader</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;{</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="comment">// Switch to 192 constant mode, removing the lock on the reserved constants c-38 and c-37.</span></div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;    D3DDevice_SetShaderConstantMode( D3DSCM_192CONSTANTS | D3DSCM_NORESERVEDCONSTANTS );</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160; </div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="comment">// Flag the custom pipeline is in operation.</span></div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a7c640b885c26246332f445ff8899e245">custom_pipeline_enabled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;}</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160; </div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160; </div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160; </div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00488"></a><span class="lineno"><a class="line" href="../../d4/ddf/namespace_nx_xbox.html#a1c1e2d7613565b14cd823f7640682fdb">  488</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a1c1e2d7613565b14cd823f7640682fdb">shutdown_weighted_mesh_vertex_shader</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;{</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    <span class="comment">// Switch back to 96 constant mode.</span></div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;    D3DDevice_SetShaderConstantMode( D3DSCM_96CONSTANTS );</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160; </div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    <span class="comment">// Flag the custom pipeline is no longer in operation.</span></div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">EngineGlobals</a>.<a class="code" href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a7c640b885c26246332f445ff8899e245">custom_pipeline_enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;}</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160; </div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;} <span class="comment">// namespace NxXbox</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_ad76ed24b02f2201fe7b2f6bfe458f33a"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad76ed24b02f2201fe7b2f6bfe458f33a">WeightedMeshVS_VXC_Specular_1Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_Specular_1Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00046">anim.cpp:46</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_aa847e04dafb23b89de4f817af909f495"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aa847e04dafb23b89de4f817af909f495">WeightedMeshVS_VXC_1Weight_UVTransform</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_1Weight_UVTransform</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00049">anim.cpp:49</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_adedcc34e520a6278a12322cf7a8648ab"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#adedcc34e520a6278a12322cf7a8648ab">NxXbox::ParticleFlatVSDecl</a></div><div class="ttdeci">static DWORD ParticleFlatVSDecl[]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00092">anim.cpp:92</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a36bff70689365d305755ca6bec7639cc"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a36bff70689365d305755ca6bec7639cc">NxXbox::startup_weighted_mesh_vertex_shader</a></div><div class="ttdeci">void startup_weighted_mesh_vertex_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00473">anim.cpp:473</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a734fff43e89d4842364259045a7c8ed8"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a734fff43e89d4842364259045a7c8ed8">ShadowBufferStaticGeomVS</a></div><div class="ttdeci">DWORD ShadowBufferStaticGeomVS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00061">anim.cpp:61</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_ae751c9655832e4d1753e1c2954a11cbf"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae751c9655832e4d1753e1c2954a11cbf">WeightedMeshVertexShader_VXC_SBPassThru</a></div><div class="ttdeci">DWORD WeightedMeshVertexShader_VXC_SBPassThru</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00056">anim.cpp:56</a></div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="../../d4/d67/geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a7c640b885c26246332f445ff8899e245"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a7c640b885c26246332f445ff8899e245">NxXbox::sEngineGlobals::custom_pipeline_enabled</a></div><div class="ttdeci">bool custom_pipeline_enabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00090">nx_init.h:90</a></div></div>
+<div class="ttc" id="afilesys_8h_html"><div class="ttname"><a href="../../dd/ddd/filesys_8h.html">filesys.h</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a3135fe474fe037d79a8f8aec82b821a9"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3135fe474fe037d79a8f8aec82b821a9">WeightedMeshVS_VXC_3Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_3Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00045">anim.cpp:45</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a1d2462a15786553fa77791368bba253f"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a1d2462a15786553fa77791368bba253f">WeightedMeshVS_VXC_1Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_1Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00043">anim.cpp:43</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a3660548fcf781a76a82e8c40378e687d"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3660548fcf781a76a82e8c40378e687d">ParticleFlatVS</a></div><div class="ttdeci">DWORD ParticleFlatVS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00058">anim.cpp:58</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a25cb5191cba4b0603957408f1d5fa3ba"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a25cb5191cba4b0603957408f1d5fa3ba">NxXbox::sEngineGlobals::p_Device</a></div><div class="ttdeci">IDirect3DDevice8 * p_Device</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00042">nx_init.h:42</a></div></div>
+<div class="ttc" id="a_debug_8h_html"><div class="ttname"><a href="../../d0/d4b/_debug_8h.html">Debug.h</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_ac2f3ef06e0598cbc4247f61a042478e3"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#ac2f3ef06e0598cbc4247f61a042478e3">NxXbox::BillboardVSDecl</a></div><div class="ttdeci">static DWORD BillboardVSDecl[]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00080">anim.cpp:80</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_af12b2fc84e5f1f5aea8e7f512c4ca02a"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a></div><div class="ttdeci">sEngineGlobals EngineGlobals</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d26/_x_box_2_n_x_2nx__init_8cpp_source.html#l00020">nx_init.cpp:20</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html">NxXbox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00063">anim.cpp:63</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_ad2ab4bdb61c8f0f00039d14ed45644f5"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ad2ab4bdb61c8f0f00039d14ed45644f5">WeightedMeshVertexShader_SBWrite</a></div><div class="ttdeci">DWORD WeightedMeshVertexShader_SBWrite</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00052">anim.cpp:52</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a1c1e2d7613565b14cd823f7640682fdb"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a1c1e2d7613565b14cd823f7640682fdb">NxXbox::shutdown_weighted_mesh_vertex_shader</a></div><div class="ttdeci">void shutdown_weighted_mesh_vertex_shader(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00488">anim.cpp:488</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_afe0d0af310675e86397500a904f3bf00"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#afe0d0af310675e86397500a904f3bf00">NxXbox::NewParticleFlatVSDecl</a></div><div class="ttdeci">static DWORD NewParticleFlatVSDecl[]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00100">anim.cpp:100</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a8a8933b9aa8ad3f8ddbbd2ed59329fd2"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a8a8933b9aa8ad3f8ddbbd2ed59329fd2">NxXbox::setup_weighted_mesh_vertex_shader</a></div><div class="ttdeci">void setup_weighted_mesh_vertex_shader(void *p_root_matrix, void *p_bone_matrices, int num_bone_matrices)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00308">anim.cpp:308</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_abb651f6712545bbe18396b59f5fdde0b"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#abb651f6712545bbe18396b59f5fdde0b">BillboardScreenAlignedVS</a></div><div class="ttdeci">DWORD BillboardScreenAlignedVS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00057">anim.cpp:57</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a187370ff8a7a102f87d29d2a1cf04a3b"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a187370ff8a7a102f87d29d2a1cf04a3b">WeightedMeshVS_VXC_3Weight_UVTransform</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_3Weight_UVTransform</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00051">anim.cpp:51</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a5ac7bbd2d8c51d9312704adf944d0bea"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a5ac7bbd2d8c51d9312704adf944d0bea">NxXbox::ShadowBufferStaticGeomVSDecl</a></div><div class="ttdeci">static DWORD ShadowBufferStaticGeomVSDecl[]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00109">anim.cpp:109</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_afa785034898e6c626fdbfe5d2b18094d"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#afa785034898e6c626fdbfe5d2b18094d">WeightedMeshVS_VXC_2Weight_UVTransform</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_2Weight_UVTransform</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00050">anim.cpp:50</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_ac5e7dc241351e483fad6056c8a92aedb"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ac5e7dc241351e483fad6056c8a92aedb">WeightedMeshVS_VXC_2Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_2Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00044">anim.cpp:44</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a4274b62ba49181cfa2714c64c2459850"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4274b62ba49181cfa2714c64c2459850">WeightedMeshVS_VXC_1Weight_SBPassThru</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_1Weight_SBPassThru</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00053">anim.cpp:53</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_acfb71ffcdca0afbcbce459f0b028b1e3"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#acfb71ffcdca0afbcbce459f0b028b1e3">WeightedMeshVS_VXC_Specular_3Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_Specular_3Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00048">anim.cpp:48</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a09eb33a6d319e414581ccd470af6d1a1"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a09eb33a6d319e414581ccd470af6d1a1">NxXbox::sEngineGlobals::directional_light_color</a></div><div class="ttdeci">float directional_light_color[24]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00103">nx_init.h:103</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a3d8adada4894450d9bc781db82151026"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a3d8adada4894450d9bc781db82151026">WeightedMeshVS_VXC_3Weight_SBPassThru</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_3Weight_SBPassThru</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00055">anim.cpp:55</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_acb68263c1b4fa14b87d6d902c1012b50"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#acb68263c1b4fa14b87d6d902c1012b50">NxXbox::sEngineGlobals::viewport</a></div><div class="ttdeci">D3DVIEWPORT8 viewport</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00021">nx_init.h:21</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_aba6d83c0b0f41a7e663eab62cba6e7f3"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#aba6d83c0b0f41a7e663eab62cba6e7f3">ParticleNewFlatVS</a></div><div class="ttdeci">DWORD ParticleNewFlatVS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00059">anim.cpp:59</a></div></div>
+<div class="ttc" id="a_hash_table_8h_html"><div class="ttname"><a href="../../de/def/_hash_table_8h.html">HashTable.h</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a545f4c23e94a1a2609a0612196cef0b1"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a545f4c23e94a1a2609a0612196cef0b1">NxXbox::WeightedMeshVertexShaderVertColUV4Decl</a></div><div class="ttdeci">static DWORD WeightedMeshVertexShaderVertColUV4Decl[]</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00066">anim.cpp:66</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a1253919e68002c380d8b4432d095db86"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a1253919e68002c380d8b4432d095db86">NxXbox::CreateWeightedMeshVertexShaders</a></div><div class="ttdeci">void CreateWeightedMeshVertexShaders(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00152">anim.cpp:152</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a143c6a1c0bdfdb0ceeefe4095c0908f4"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a143c6a1c0bdfdb0ceeefe4095c0908f4">NxXbox::sEngineGlobals::projection_matrix</a></div><div class="ttdeci">XGMATRIX projection_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00017">nx_init.h:17</a></div></div>
+<div class="ttc" id="aanim__vertdefs_8h_html"><div class="ttname"><a href="../../de/d5f/anim__vertdefs_8h.html">anim_vertdefs.h</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a8b8810bf61e9567bc4c961c8e6985759"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a8b8810bf61e9567bc4c961c8e6985759">NxXbox::sEngineGlobals::cam_position</a></div><div class="ttdeci">XGVECTOR3 cam_position</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00031">nx_init.h:31</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_aef09eaeef04bc64b6f86ca8702f89d9c"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aef09eaeef04bc64b6f86ca8702f89d9c">NxXbox::sEngineGlobals::model_relative_cam_position</a></div><div class="ttdeci">XGVECTOR3 model_relative_cam_position</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00032">nx_init.h:32</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a4e4af9ac2782a2c11173ff02e276afcb"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a4e4af9ac2782a2c11173ff02e276afcb">ParticleNewFlatPointSpriteVS</a></div><div class="ttdeci">DWORD ParticleNewFlatPointSpriteVS</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00060">anim.cpp:60</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a77f9af4686fb32625004ee3f2acdf2f4"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a77f9af4686fb32625004ee3f2acdf2f4">NxXbox::GetVertexShader</a></div><div class="ttdeci">DWORD GetVertexShader(bool vertex_colors, bool specular, uint32 max_weights_used)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00122">anim.cpp:122</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a975b08cd2e626ded4704cf7fc141659f"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a975b08cd2e626ded4704cf7fc141659f">NxXbox::sEngineGlobals::view_matrix</a></div><div class="ttdeci">XGMATRIX view_matrix</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00016">nx_init.h:16</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_aa70d7fa4086e98a61ff02cf404f1ffca"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#aa70d7fa4086e98a61ff02cf404f1ffca">NxXbox::sEngineGlobals::zstencil_depth</a></div><div class="ttdeci">int zstencil_depth</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00051">nx_init.h:51</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a1f09c4f751ddfe13fefdb5140c296544"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a1f09c4f751ddfe13fefdb5140c296544">NxXbox::sEngineGlobals::is_orthographic</a></div><div class="ttdeci">bool is_orthographic</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00027">nx_init.h:27</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_a88d92011d056439b7de12577f787e27a"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#a88d92011d056439b7de12577f787e27a">WeightedMeshVS_VXC_Specular_2Weight</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_Specular_2Weight</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00047">anim.cpp:47</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_engine_globals_html_a35a143572a74a014525185af4a7759e6"><div class="ttname"><a href="../../da/db8/struct_nx_xbox_1_1s_engine_globals.html#a35a143572a74a014525185af4a7759e6">NxXbox::sEngineGlobals::ambient_light_color</a></div><div class="ttdeci">float ambient_light_color[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/df6/_x_box_2_n_x_2nx__init_8h_source.html#l00102">nx_init.h:102</a></div></div>
+<div class="ttc" id="a_x_box_2_n_x_2anim_8cpp_html_ae70dcaf5276679e8c417aff141604cdb"><div class="ttname"><a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html#ae70dcaf5276679e8c417aff141604cdb">WeightedMeshVS_VXC_2Weight_SBPassThru</a></div><div class="ttdeci">DWORD WeightedMeshVS_VXC_2Weight_SBPassThru</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dbd/_x_box_2_n_x_2anim_8cpp_source.html#l00054">anim.cpp:54</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../dir_17ac0882b9f307ce11d41f7e7c182a97.html">NX</a></li><li class="navelem"><a class="el" href="../../df/dbd/_x_box_2_n_x_2anim_8cpp.html">anim.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:26. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/ngc/p_hwpad.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d9/d6b/p__hwpad_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_hwpad.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d6b/p__hwpad_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*---------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">  Project:  Dolphin hw library</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  File:     hwPad.h</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  Copyright 1998-2001 Nintendo.  All rights reserved.</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  These coded instructions, statements, and computer programs contain</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">  proprietary information of Nintendo of America Inc. and/or Nintendo</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  Company Ltd., and are protected by Federal copyright law.  They may</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  not be disclosed to third parties or copied or duplicated in any form,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  in whole or in part, without the prior written consent of Nintendo.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">  $Log: /Dolphin/include/hw/hwPad.h $</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">    1     5/09/01 9:37p Hirose</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">    separated from hw.h</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">    </span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">  $NoKeywords: $</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> *---------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#ifndef __hwPAD_H__</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#define __hwPAD_H__</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*---------------------------------------------------------------------------*</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">    hwPad.c</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"> *---------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// used to detect which direction is the stick(s) pointing</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#define hw_STICK_THRESHOLD      48</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#define hw_STICK_UP             0x1000</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define hw_STICK_DOWN           0x2000</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define hw_STICK_LEFT           0x4000</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define hw_STICK_RIGHT          0x8000</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define hw_SUBSTICK_UP          0x0100</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#define hw_SUBSTICK_DOWN        0x0200</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define hw_SUBSTICK_LEFT        0x0400</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define hw_SUBSTICK_RIGHT       0x0800</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">// extended pad status structure</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html">   45</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// contains PADStatus structure</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">   48</a></span>&#160;    PADStatus   <a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// extended field</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a5a665cdd2b4e6f450815e449552df9da">   51</a></span>&#160;    u16         <a class="code" href="../../da/def/structhw_pad_status.html#a5a665cdd2b4e6f450815e449552df9da">buttonDown</a>;</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a5e09b7cfcf69eeb7ae38201d657d696c">   52</a></span>&#160;    u16         <a class="code" href="../../da/def/structhw_pad_status.html#a5e09b7cfcf69eeb7ae38201d657d696c">buttonUp</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a9bba5a0581f5bf8036a68a2b7d3e64b9">   53</a></span>&#160;    u16         <a class="code" href="../../da/def/structhw_pad_status.html#a9bba5a0581f5bf8036a68a2b7d3e64b9">dirs</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#ab9569b169226fb67e333b5cffa053672">   54</a></span>&#160;    u16         <a class="code" href="../../da/def/structhw_pad_status.html#ab9569b169226fb67e333b5cffa053672">dirsNew</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#ad4f5e333f9caa3da2b5748265dde7bb5">   55</a></span>&#160;    u16         <a class="code" href="../../da/def/structhw_pad_status.html#ad4f5e333f9caa3da2b5748265dde7bb5">dirsReleased</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a8c0cd945004bdddc7f90604e6fd174e8">   56</a></span>&#160;    s16         <a class="code" href="../../da/def/structhw_pad_status.html#a8c0cd945004bdddc7f90604e6fd174e8">stickDeltaX</a>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a30e9afdf2a96e85202459c481dcb51e1">   57</a></span>&#160;    s16         <a class="code" href="../../da/def/structhw_pad_status.html#a30e9afdf2a96e85202459c481dcb51e1">stickDeltaY</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#aec092f3f5307de514ec5685171808fd3">   58</a></span>&#160;    s16         <a class="code" href="../../da/def/structhw_pad_status.html#aec092f3f5307de514ec5685171808fd3">substickDeltaX</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="../../da/def/structhw_pad_status.html#a4076b9c00da94403f19ed11508e2c888">   59</a></span>&#160;    s16         <a class="code" href="../../da/def/structhw_pad_status.html#a4076b9c00da94403f19ed11508e2c888">substickDeltaY</a>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;} <a class="code" href="../../da/def/structhw_pad_status.html">hwPadStatus</a>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">// the entity which keeps current pad status</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">extern</span> <a class="code" href="../../da/def/structhw_pad_status.html">hwPadStatus</a>    <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[PAD_MAX_CONTROLLERS];</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">extern</span> u32              <a class="code" href="../../d9/d6b/p__hwpad_8h.html#ae052f3d00b3ff40d4197acd07cf72316">hwNumValidPads</a>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">// main function prototypes</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span>     <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a9d7069e204da91cf97bb8e77dde6f1fd">hwPadInit</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span>     <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a9748677f91d24fd9bd2d9af3ac5b7dba">hwPadRead</a>( <span class="keywordtype">void</span> );</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">// inline functions for getting each component</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a01e02e5571f95428fbacfc576e08c5cc">   71</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a01e02e5571f95428fbacfc576e08c5cc">hwPadGetButton</a>(u32 i)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.button; }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#ac3cfdc2cf5af916ff5e17c9c2def97eb">   74</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#ac3cfdc2cf5af916ff5e17c9c2def97eb">hwPadGetButtonUp</a>(u32 i)</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a5e09b7cfcf69eeb7ae38201d657d696c">buttonUp</a>; }</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a6e657b766f7102c8d63433ae596e7581">   77</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a6e657b766f7102c8d63433ae596e7581">hwPadGetButtonDown</a>(u32 i)</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a5a665cdd2b4e6f450815e449552df9da">buttonDown</a>; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a68bbf1b8992427b6a84382b7c88e0a02">   80</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a68bbf1b8992427b6a84382b7c88e0a02">hwPadGetDirs</a>(u32 i)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a9bba5a0581f5bf8036a68a2b7d3e64b9">dirs</a>; }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a2bf8c699069ff2af4e02aa6522676f03">   83</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a2bf8c699069ff2af4e02aa6522676f03">hwPadGetDirsNew</a>(u32 i)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#ab9569b169226fb67e333b5cffa053672">dirsNew</a>; }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a22aa3814be2dc1772106f310ede8e6fd">   86</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u16 <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a22aa3814be2dc1772106f310ede8e6fd">hwPadGetDirsReleased</a>(u32 i)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#ad4f5e333f9caa3da2b5748265dde7bb5">dirsReleased</a>; }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#ae61f1851a7e0bb34745bee1161c68ba8">   89</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> s8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#ae61f1851a7e0bb34745bee1161c68ba8">hwPadGetStickX</a>(u32 i)</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.stickX; }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#affaa355f3b8f2fe3c97ecf11e14f464a">   92</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> s8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#affaa355f3b8f2fe3c97ecf11e14f464a">hwPadGetStickY</a>(u32 i)</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.stickY; }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a6badd6e97bfca0b5d22d3b75e9d3e93f">   95</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> s8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a6badd6e97bfca0b5d22d3b75e9d3e93f">hwPadGetSubStickX</a>(u32 i)</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.substickX; }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a438cbf0afbf91ad09cfbc25a7f40ae95">   98</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> s8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a438cbf0afbf91ad09cfbc25a7f40ae95">hwPadGetSubStickY</a>(u32 i)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.substickY; }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a5ccb6482a1cd74ebe307cd3181752c3d">  101</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a5ccb6482a1cd74ebe307cd3181752c3d">hwPadGetTriggerL</a>(u32 i)</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.triggerLeft; }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#a175504b01782fd492a66a7633f8e35cd">  104</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a175504b01782fd492a66a7633f8e35cd">hwPadGetTriggerR</a>(u32 i)</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.triggerRight; }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#ae472463965c4550c45bfb260cf6908b6">  107</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#ae472463965c4550c45bfb260cf6908b6">hwPadGetAnalogA</a>(u32 i)</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.analogA; }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#afafdc1c3a30d8ce097b2cd829f7620eb">  110</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> u8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#afafdc1c3a30d8ce097b2cd829f7620eb">hwPadGetAnalogB</a>(u32 i)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.analogB; }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../d9/d6b/p__hwpad_8h.html#aeae8facbfb75a49053e40794300c5dce">  113</a></span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> s8  <a class="code" href="../../d9/d6b/p__hwpad_8h.html#aeae8facbfb75a49053e40794300c5dce">hwPadGetErr</a>(u32 i)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    { <span class="keywordflow">return</span> <a class="code" href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a>[i].<a class="code" href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">pst</a>.err; }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">/*---------------------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif // __hwPAD_H__</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">/*===========================================================================*/</span></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="ap__hwpad_8h_html_a5ccb6482a1cd74ebe307cd3181752c3d"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a5ccb6482a1cd74ebe307cd3181752c3d">hwPadGetTriggerL</a></div><div class="ttdeci">static u8 hwPadGetTriggerL(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00101">p_hwpad.h:101</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a5e09b7cfcf69eeb7ae38201d657d696c"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a5e09b7cfcf69eeb7ae38201d657d696c">hwPadStatus::buttonUp</a></div><div class="ttdeci">u16 buttonUp</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00052">p_hwpad.h:52</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a6e657b766f7102c8d63433ae596e7581"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a6e657b766f7102c8d63433ae596e7581">hwPadGetButtonDown</a></div><div class="ttdeci">static u16 hwPadGetButtonDown(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00077">p_hwpad.h:77</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a22aa3814be2dc1772106f310ede8e6fd"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a22aa3814be2dc1772106f310ede8e6fd">hwPadGetDirsReleased</a></div><div class="ttdeci">static u16 hwPadGetDirsReleased(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00086">p_hwpad.h:86</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_aec092f3f5307de514ec5685171808fd3"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#aec092f3f5307de514ec5685171808fd3">hwPadStatus::substickDeltaX</a></div><div class="ttdeci">s16 substickDeltaX</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00058">p_hwpad.h:58</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a4076b9c00da94403f19ed11508e2c888"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a4076b9c00da94403f19ed11508e2c888">hwPadStatus::substickDeltaY</a></div><div class="ttdeci">s16 substickDeltaY</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00059">p_hwpad.h:59</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_ae472463965c4550c45bfb260cf6908b6"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#ae472463965c4550c45bfb260cf6908b6">hwPadGetAnalogA</a></div><div class="ttdeci">static u8 hwPadGetAnalogA(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00107">p_hwpad.h:107</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a2bf8c699069ff2af4e02aa6522676f03"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a2bf8c699069ff2af4e02aa6522676f03">hwPadGetDirsNew</a></div><div class="ttdeci">static u16 hwPadGetDirsNew(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00083">p_hwpad.h:83</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a8d59aeb5f75bd5df013c5e83b95134fa"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a8d59aeb5f75bd5df013c5e83b95134fa">hwPadStatus::pst</a></div><div class="ttdeci">PADStatus pst</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00048">p_hwpad.h:48</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_ac3cfdc2cf5af916ff5e17c9c2def97eb"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#ac3cfdc2cf5af916ff5e17c9c2def97eb">hwPadGetButtonUp</a></div><div class="ttdeci">static u16 hwPadGetButtonUp(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00074">p_hwpad.h:74</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a30e9afdf2a96e85202459c481dcb51e1"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a30e9afdf2a96e85202459c481dcb51e1">hwPadStatus::stickDeltaY</a></div><div class="ttdeci">s16 stickDeltaY</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00057">p_hwpad.h:57</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a9d7069e204da91cf97bb8e77dde6f1fd"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a9d7069e204da91cf97bb8e77dde6f1fd">hwPadInit</a></div><div class="ttdeci">void hwPadInit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de8/p__hwpad_8cpp_source.html#l00207">p_hwpad.cpp:207</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_aeae8facbfb75a49053e40794300c5dce"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#aeae8facbfb75a49053e40794300c5dce">hwPadGetErr</a></div><div class="ttdeci">static s8 hwPadGetErr(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00113">p_hwpad.h:113</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a9bba5a0581f5bf8036a68a2b7d3e64b9"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a9bba5a0581f5bf8036a68a2b7d3e64b9">hwPadStatus::dirs</a></div><div class="ttdeci">u16 dirs</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00053">p_hwpad.h:53</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_ae052f3d00b3ff40d4197acd07cf72316"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#ae052f3d00b3ff40d4197acd07cf72316">hwNumValidPads</a></div><div class="ttdeci">u32 hwNumValidPads</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de8/p__hwpad_8cpp_source.html#l00058">p_hwpad.cpp:58</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a68bbf1b8992427b6a84382b7c88e0a02"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a68bbf1b8992427b6a84382b7c88e0a02">hwPadGetDirs</a></div><div class="ttdeci">static u16 hwPadGetDirs(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00080">p_hwpad.h:80</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a01e02e5571f95428fbacfc576e08c5cc"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a01e02e5571f95428fbacfc576e08c5cc">hwPadGetButton</a></div><div class="ttdeci">static u16 hwPadGetButton(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00071">p_hwpad.h:71</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a0a608e7512712ddada1265bf471bed49"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a0a608e7512712ddada1265bf471bed49">hwPad</a></div><div class="ttdeci">hwPadStatus hwPad[PAD_MAX_CONTROLLERS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de8/p__hwpad_8cpp_source.html#l00057">p_hwpad.cpp:57</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_affaa355f3b8f2fe3c97ecf11e14f464a"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#affaa355f3b8f2fe3c97ecf11e14f464a">hwPadGetStickY</a></div><div class="ttdeci">static s8 hwPadGetStickY(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00092">p_hwpad.h:92</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html"><div class="ttname"><a href="../../da/def/structhw_pad_status.html">hwPadStatus</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00045">p_hwpad.h:45</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_ab9569b169226fb67e333b5cffa053672"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#ab9569b169226fb67e333b5cffa053672">hwPadStatus::dirsNew</a></div><div class="ttdeci">u16 dirsNew</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00054">p_hwpad.h:54</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_ad4f5e333f9caa3da2b5748265dde7bb5"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#ad4f5e333f9caa3da2b5748265dde7bb5">hwPadStatus::dirsReleased</a></div><div class="ttdeci">u16 dirsReleased</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00055">p_hwpad.h:55</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a438cbf0afbf91ad09cfbc25a7f40ae95"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a438cbf0afbf91ad09cfbc25a7f40ae95">hwPadGetSubStickY</a></div><div class="ttdeci">static s8 hwPadGetSubStickY(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00098">p_hwpad.h:98</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_ae61f1851a7e0bb34745bee1161c68ba8"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#ae61f1851a7e0bb34745bee1161c68ba8">hwPadGetStickX</a></div><div class="ttdeci">static s8 hwPadGetStickX(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00089">p_hwpad.h:89</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a5a665cdd2b4e6f450815e449552df9da"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a5a665cdd2b4e6f450815e449552df9da">hwPadStatus::buttonDown</a></div><div class="ttdeci">u16 buttonDown</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00051">p_hwpad.h:51</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_afafdc1c3a30d8ce097b2cd829f7620eb"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#afafdc1c3a30d8ce097b2cd829f7620eb">hwPadGetAnalogB</a></div><div class="ttdeci">static u8 hwPadGetAnalogB(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00110">p_hwpad.h:110</a></div></div>
+<div class="ttc" id="astructhw_pad_status_html_a8c0cd945004bdddc7f90604e6fd174e8"><div class="ttname"><a href="../../da/def/structhw_pad_status.html#a8c0cd945004bdddc7f90604e6fd174e8">hwPadStatus::stickDeltaX</a></div><div class="ttdeci">s16 stickDeltaX</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00056">p_hwpad.h:56</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a175504b01782fd492a66a7633f8e35cd"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a175504b01782fd492a66a7633f8e35cd">hwPadGetTriggerR</a></div><div class="ttdeci">static u8 hwPadGetTriggerR(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00104">p_hwpad.h:104</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a6badd6e97bfca0b5d22d3b75e9d3e93f"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a6badd6e97bfca0b5d22d3b75e9d3e93f">hwPadGetSubStickX</a></div><div class="ttdeci">static s8 hwPadGetSubStickX(u32 i)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d6b/p__hwpad_8h_source.html#l00095">p_hwpad.h:95</a></div></div>
+<div class="ttc" id="ap__hwpad_8h_html_a9748677f91d24fd9bd2d9af3ac5b7dba"><div class="ttname"><a href="../../d9/d6b/p__hwpad_8h.html#a9748677f91d24fd9bd2d9af3ac5b7dba">hwPadRead</a></div><div class="ttdeci">void hwPadRead(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/de8/p__hwpad_8cpp_source.html#l00159">p_hwpad.cpp:159</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../dir_896d666de209fbbe6b042c1a9920af6c.html">ngc</a></li><li class="navelem"><a class="el" href="../../d9/d6b/p__hwpad_8h.html">p_hwpad.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

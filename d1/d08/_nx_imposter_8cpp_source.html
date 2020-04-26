@@ -1,0 +1,599 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/NxImposter.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d08/_nx_imposter_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">NxImposter.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d08/_nx_imposter_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment.                          **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 1999 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:                                                                **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Nx Imposter                                             **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      gfx/NxImposter.cpp                                      **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Created by:     03/13/03    -   dc                                      **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">**  Description:    Imposter and Imposter Management code                   **</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// start autoduck documentation</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// @DOC nximposter</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// @module nximposter | None</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// @subindex Scripting Database</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// @index script | nximposter</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/dda/_nx_imposter_8h.html">gfx/NxImposter.h</a>&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1814beb3472778c4d48fbb008607556c">CImposterManager::CImposterManager</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>                      = <span class="keyword">new</span> <a class="code" href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable&lt; CImposterGroup &gt;</a>( 8 );</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a30f92da006724c8281f67d2717dca8a1">m_max_imposters_to_redraw_per_frame</a> = 1;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1fbd896a6e4122cfe9bc26d6cc2502f7">CImposterManager::~CImposterManager</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;}</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1814beb3472778c4d48fbb008607556c">   61</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6900e13dc0b2738864c2fc5fd031919a">CImposterManager::Cleanup</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;{</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Goes through and removes all imposter groups.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">CImposterGroup</a> *p_imposter_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">while</span>( p_imposter_group )</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">CImposterGroup</a> *p_next  = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">delete</span> p_imposter_group;</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1fbd896a6e4122cfe9bc26d6cc2502f7">   73</a></span>&#160;        p_imposter_group        = p_next;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;FlushAllItems();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6900e13dc0b2738864c2fc5fd031919a">   84</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a048b79d444465954800ffc8e3878811f">CImposterManager::AddGeomToImposter</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group_checksum, <a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html">Nx::CGeom</a> *p_geom )</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;{</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// See if this imposter group exists already, create it if not.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">CImposterGroup</a> *p_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;GetItem( group_checksum );</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">if</span>( p_group == NULL )</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        p_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ad6ecf74a1677685256c24968e8fe602e">plat_create_imposter_group</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;PutItem( group_checksum, p_group );</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="comment">// Set the bounding box to be that of the &#39;founding&#39; CGeom.</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        p_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a37adbcd80dadefe7d1e5a3b4e6f13ee7">SetCompositeBoundingBox</a>( p_geom-&gt;<a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html#aec691205a247fdf5e911430e413b6294">GetBoundingBox</a>());</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="comment">// Add the bounding box details of this CGeom.</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        p_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a2af48f8aa7da8e837a226bd64d549a64">AddBoundingBox</a>( p_geom-&gt;<a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html#aec691205a247fdf5e911430e413b6294">GetBoundingBox</a>());</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="comment">// Add the specified CGeom to the CImposterGroup&#39;s list.</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    p_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa4941a9328ceb9b0040c41920ff486ec">AddGeom</a>( p_geom );</div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a048b79d444465954800ffc8e3878811f">  104</a></span>&#160;}</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#af62e6d6b4fd4548c5a7fa4b7a8460bf0">CImposterManager::RemoveGeomFromImposter</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> group_checksum, <a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html">Nx::CGeom</a> *p_geom )</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;{</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">CImposterGroup</a> *p_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;GetItem( group_checksum );</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordflow">if</span>( p_group )</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        p_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ae48da6f5409c3c4d62d8eb3cec096384">RemoveGeom</a>( p_geom );</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a433483f614b3c23948e016b89fd963a6">CImposterManager::ProcessImposters</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordtype">int</span> imposters_drawn = 0;</div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#af62e6d6b4fd4548c5a7fa4b7a8460bf0">  132</a></span>&#160; </div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">CImposterGroup</a> *p_imposter_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">while</span>( p_imposter_group )</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="comment">// Once per frame process function, for platform-specific tasks.</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a76f439a124d56ca63b573ddf4aafc714">Process</a>();</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="comment">// Determine whether this imposter is no longer visible, or is outside the switch distance.</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordtype">float</span> d = p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a24eeb025754763ed46b4b004a330e210">CheckDistance</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">if</span>( d &lt;= p_imposter_group-&gt;GetSwitchDistance())</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        {</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="comment">// This imposter is no longer outside the switch distance, or is not visible. Remove the imposter polygon if it exists.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac9acd777a951afe00b00fde116c2aba5">RemoveImposterPolygon</a>();</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        }</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a433483f614b3c23948e016b89fd963a6">  149</a></span>&#160;        {</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="comment">// This imposter is outside the switch distance. Create the imposter polygon if it doesn&#39;t exist...</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;            <span class="keywordflow">if</span>( p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ab0a32d74ef11777ba20181be78363b90">ImposterPolygonExists</a>() == <span class="keyword">false</span> )</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;                <span class="keywordflow">if</span>( imposters_drawn &lt; <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a30f92da006724c8281f67d2717dca8a1">m_max_imposters_to_redraw_per_frame</a> )</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;                {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;                    p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac3e9bb2a92ac08df4f0dee2f70197192">CreateImposterPolygon</a>();</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;                    ++imposters_drawn;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;                }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;            }</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;            {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;                <span class="comment">// ...Otherwise determine whether the imposter polygon requires updating.</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;                <span class="keywordflow">if</span>( imposters_drawn &lt; <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a30f92da006724c8281f67d2717dca8a1">m_max_imposters_to_redraw_per_frame</a> )</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;                    <span class="keywordtype">bool</span> drawn = p_imposter_group-&gt;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3ccbee3562303dac0392f29169867cc7">UpdateImposterPolygon</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;                    <span class="keywordflow">if</span>( drawn )</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;                        ++imposters_drawn;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;            }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        p_imposter_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    }</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6539d6b908120bd3414b40000c683217">CImposterManager::DrawImposters</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ac42feeceeaaae858cc5a6cd333dd2dd5">plat_pre_render_imposters</a>();</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateStart();</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    CImposterGroup *p_imposter_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="keywordflow">while</span>( p_imposter_group )</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        <span class="keywordflow">if</span>( p_imposter_group-&gt;ImposterPolygonExists())</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        {</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;            p_imposter_group-&gt;DrawImposterPolygon();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        }</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        p_imposter_group = <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">mp_group_table</a>-&gt;IterateNext();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <a class="code" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ae46a1302bbba04d7e1fc60775acc8c77">plat_post_render_imposters</a>();</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
+<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6539d6b908120bd3414b40000c683217">  200</a></span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160; </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160; </div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1efc851f2d28f4b3c6dec81092d32775">CImposterGroup::CImposterGroup</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aad81092b29fe5b0d280707f5d68985d0">m_switch_distance</a>           = 960.0f;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">mp_geom_list</a>                = <span class="keyword">new</span> Lst::Head &lt; Nx::CGeom &gt;;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a8108e2b8981c0f8bc00dbd5dfbe3932f">m_imposter_polygon_exists</a>   = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;}</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160; </div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160; </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160; </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa40519bc721675afe1d40cf286d5e7bb">CImposterGroup::~CImposterGroup</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="comment">// Remove all nodes from the table.</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    Lst::Node&lt;Nx::CGeom&gt; *p_node, *p_next;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <span class="keywordflow">for</span>( p_node = <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">mp_geom_list</a>-&gt;GetNext(); p_node; p_node = p_next )</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        p_next = p_node-&gt;GetNext();</div>
+<div class="line"><a name="l00239"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1efc851f2d28f4b3c6dec81092d32775">  239</a></span>&#160;        <span class="keyword">delete</span> p_node;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    <span class="comment">// Remove the table itself.</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">mp_geom_list</a>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160; </div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160; </div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa40519bc721675afe1d40cf286d5e7bb">  252</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa4941a9328ceb9b0040c41920ff486ec">CImposterGroup::AddGeom</a>( <a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html">CGeom</a> *p_geom )</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;{</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// Create a new node.</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    Lst::Node&lt;Nx::CGeom&gt; *p_new_node = <span class="keyword">new</span> Lst::Node&lt;Nx::CGeom&gt;( p_geom );</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// Link in the new node.</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">mp_geom_list</a>-&gt;AddToTail( p_new_node );</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ae48da6f5409c3c4d62d8eb3cec096384">CImposterGroup::RemoveGeom</a>( <a class="code" href="../../d8/dd6/class_nx_1_1_c_geom.html">CGeom</a> *p_geom )</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;{</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    Lst::Node&lt;Nx::CGeom&gt; *p_node, *p_next;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">for</span>( p_node = <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">mp_geom_list</a>-&gt;GetNext(); p_node; p_node = p_next )</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    {</div>
+<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa4941a9328ceb9b0040c41920ff486ec">  272</a></span>&#160;        p_next = p_node-&gt;GetNext();</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">if</span>( p_node-&gt;GetData() == p_geom )</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keyword">delete</span> p_node;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;}</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160; </div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00287"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ae48da6f5409c3c4d62d8eb3cec096384">  287</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a37adbcd80dadefe7d1e5a3b4e6f13ee7">CImposterGroup::SetCompositeBoundingBox</a>( <span class="keyword">const</span> <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a> &amp; bbox )</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;{</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>            = bbox;</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#acdcb62affc893d57c4f5b94875586cd2">m_composite_bbox_mid</a>        = <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>() + ( 0.5f * ( <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>() - <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>()));</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a8b2247b01358f4c443d00de9686f528c">m_composite_bsphere_radius</a>  = ( <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>() - <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#acdcb62affc893d57c4f5b94875586cd2">m_composite_bbox_mid</a> ).<a class="code" href="../../d6/d68/vector_8h.html#acba8a32be5bd69e759a1c8cec8cea5f4">Length</a>();</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;}</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a2af48f8aa7da8e837a226bd64d549a64">CImposterGroup::AddBoundingBox</a>( <span class="keyword">const</span> <a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a> &amp; bbox )</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;{</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a03f8bd7ec55359e4d38402578b1ba22a">AddPoint</a>( bbox.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>());</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a03f8bd7ec55359e4d38402578b1ba22a">AddPoint</a>( bbox.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>());</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160; </div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#acdcb62affc893d57c4f5b94875586cd2">m_composite_bbox_mid</a>        = <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>() + ( 0.5f * ( <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>() - <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">GetMin</a>()));</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a8b2247b01358f4c443d00de9686f528c">m_composite_bsphere_radius</a>  = ( <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">m_composite_bbox</a>.<a class="code" href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">GetMax</a>() - <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#acdcb62affc893d57c4f5b94875586cd2">m_composite_bbox_mid</a> ).<a class="code" href="../../d6/d68/vector_8h.html#acba8a32be5bd69e759a1c8cec8cea5f4">Length</a>();</div>
+<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a37adbcd80dadefe7d1e5a3b4e6f13ee7">  308</a></span>&#160;}</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a76f439a124d56ca63b573ddf4aafc714">CImposterGroup::Process</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;{</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3a9282337f4bd2c623354f5fe07886dd">plat_process</a>();</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;}</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a2af48f8aa7da8e837a226bd64d549a64">  321</a></span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160; </div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a24eeb025754763ed46b4b004a330e210">CImposterGroup::CheckDistance</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;{</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa8ddb9177c56eafbd6c83ee45fa9da01">plat_check_distance</a>();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;}</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; </div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a76f439a124d56ca63b573ddf4aafc714">  336</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac3e9bb2a92ac08df4f0dee2f70197192">CImposterGroup::CreateImposterPolygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;{</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a34866f63aa245ccd9767bc32346693d3">plat_create_imposter_polygon</a>();</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;}</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a24eeb025754763ed46b4b004a330e210">  347</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac9acd777a951afe00b00fde116c2aba5">CImposterGroup::RemoveImposterPolygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;{</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#af3d41e15184ac41ebcde6d68285378ec">plat_remove_imposter_polygon</a>();</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160; </div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00358"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac3e9bb2a92ac08df4f0dee2f70197192">  358</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3ccbee3562303dac0392f29169867cc7">CImposterGroup::UpdateImposterPolygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;{</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    ++<a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a65a35da2c1e6ab802f52c45b8820dba8">m_update_count</a>;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1cb3e11df0bd06d418b0f81433ad4e40">plat_update_imposter_polygon</a>();</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac9acd777a951afe00b00fde116c2aba5">  368</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#abf7ab47c13302f05046a40b46d2b11f5">CImposterGroup::DrawImposterPolygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;{</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#afa42deda50860b2dd1c287acffebc2fa">plat_draw_imposter_polygon</a>();</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160; </div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160; </div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160; </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3ccbee3562303dac0392f29169867cc7">  379</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a34866f63aa245ccd9767bc32346693d3">CImposterGroup::plat_create_imposter_polygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;{</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_create_imposter_polygon\n&quot;</span>);</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160; </div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160; </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#abf7ab47c13302f05046a40b46d2b11f5">  391</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#af3d41e15184ac41ebcde6d68285378ec">CImposterGroup::plat_remove_imposter_polygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;{</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_remove_imposter_polygon\n&quot;</span>);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; </div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a34866f63aa245ccd9767bc32346693d3">  402</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1cb3e11df0bd06d418b0f81433ad4e40">CImposterGroup::plat_update_imposter_polygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;{</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_update_imposter_polygon\n&quot;</span>);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160; </div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#af3d41e15184ac41ebcde6d68285378ec">  413</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#afa42deda50860b2dd1c287acffebc2fa">CImposterGroup::plat_draw_imposter_polygon</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;{</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_draw_imposter_polygon\n&quot;</span>);</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;}</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160; </div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160; </div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160; </div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00424"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1cb3e11df0bd06d418b0f81433ad4e40">  424</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="keywordtype">float</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa8ddb9177c56eafbd6c83ee45fa9da01">CImposterGroup::plat_check_distance</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;{</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_check_distance\n&quot;</span>);</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;}</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160; </div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00436"></a><span class="lineno"><a class="line" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#afa42deda50860b2dd1c287acffebc2fa">  436</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3a9282337f4bd2c623354f5fe07886dd">CImposterGroup::plat_process</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;{</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;    <a class="code" href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a>( <span class="stringliteral">&quot;STUB: plat_process\n&quot;</span>);</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;}</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;}</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_ae46a1302bbba04d7e1fc60775acc8c77"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ae46a1302bbba04d7e1fc60775acc8c77">Nx::CImposterManager::plat_post_render_imposters</a></div><div class="ttdeci">void plat_post_render_imposters(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dec/_n_g_c_2p___nx_imposter_8cpp_source.html#l00036">p_NxImposter.cpp:36</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a5376f320633562f62331b378e4be28c8"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a5376f320633562f62331b378e4be28c8">Nx::CImposterGroup::mp_geom_list</a></div><div class="ttdeci">Lst::Head&lt; Nx::CGeom &gt; * mp_geom_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00054">NxImposter.h:54</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a1fbd896a6e4122cfe9bc26d6cc2502f7"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1fbd896a6e4122cfe9bc26d6cc2502f7">Nx::CImposterManager::~CImposterManager</a></div><div class="ttdeci">~CImposterManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00073">NxImposter.cpp:73</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="avector_8h_html_acba8a32be5bd69e759a1c8cec8cea5f4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#acba8a32be5bd69e759a1c8cec8cea5f4">Length</a></div><div class="ttdeci">float Length(void) const</div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a58b384c2824bd5743e9b4d78aacb09dc"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a58b384c2824bd5743e9b4d78aacb09dc">Nx::CImposterGroup::m_composite_bbox</a></div><div class="ttdeci">Mth::CBBox m_composite_bbox</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00051">NxImposter.h:51</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_aa4941a9328ceb9b0040c41920ff486ec"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa4941a9328ceb9b0040c41920ff486ec">Nx::CImposterGroup::AddGeom</a></div><div class="ttdeci">void AddGeom(CGeom *p_geom)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00272">NxImposter.cpp:272</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_ac42feeceeaaae858cc5a6cd333dd2dd5"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ac42feeceeaaae858cc5a6cd333dd2dd5">Nx::CImposterManager::plat_pre_render_imposters</a></div><div class="ttdeci">void plat_pre_render_imposters(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dec/_n_g_c_2p___nx_imposter_8cpp_source.html#l00026">p_NxImposter.cpp:26</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a3ccbee3562303dac0392f29169867cc7"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3ccbee3562303dac0392f29169867cc7">Nx::CImposterGroup::UpdateImposterPolygon</a></div><div class="ttdeci">bool UpdateImposterPolygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00379">NxImposter.cpp:379</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a76f439a124d56ca63b573ddf4aafc714"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a76f439a124d56ca63b573ddf4aafc714">Nx::CImposterGroup::Process</a></div><div class="ttdeci">void Process(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00336">NxImposter.cpp:336</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_ab0a32d74ef11777ba20181be78363b90"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ab0a32d74ef11777ba20181be78363b90">Nx::CImposterGroup::ImposterPolygonExists</a></div><div class="ttdeci">bool ImposterPolygonExists(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00046">NxImposter.h:46</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a4f19672b5daca22e37a30ffe412a9dbc"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a4f19672b5daca22e37a30ffe412a9dbc">Mth::CBBox::GetMin</a></div><div class="ttdeci">const Vector &amp; GetMin() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00275">geometry.h:275</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a37adbcd80dadefe7d1e5a3b4e6f13ee7"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a37adbcd80dadefe7d1e5a3b4e6f13ee7">Nx::CImposterGroup::SetCompositeBoundingBox</a></div><div class="ttdeci">void SetCompositeBoundingBox(const Mth::CBBox &amp;bbox)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00308">NxImposter.cpp:308</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_aa40519bc721675afe1d40cf286d5e7bb"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa40519bc721675afe1d40cf286d5e7bb">Nx::CImposterGroup::~CImposterGroup</a></div><div class="ttdeci">virtual ~CImposterGroup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00252">NxImposter.cpp:252</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_af62e6d6b4fd4548c5a7fa4b7a8460bf0"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#af62e6d6b4fd4548c5a7fa4b7a8460bf0">Nx::CImposterManager::RemoveGeomFromImposter</a></div><div class="ttdeci">void RemoveGeomFromImposter(uint32 group_checksum, Nx::CGeom *p_geom)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00132">NxImposter.cpp:132</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_abf7ab47c13302f05046a40b46d2b11f5"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#abf7ab47c13302f05046a40b46d2b11f5">Nx::CImposterGroup::DrawImposterPolygon</a></div><div class="ttdeci">void DrawImposterPolygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00391">NxImposter.cpp:391</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a34866f63aa245ccd9767bc32346693d3"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a34866f63aa245ccd9767bc32346693d3">Nx::CImposterGroup::plat_create_imposter_polygon</a></div><div class="ttdeci">virtual void plat_create_imposter_polygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00402">NxImposter.cpp:402</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a65a35da2c1e6ab802f52c45b8820dba8"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a65a35da2c1e6ab802f52c45b8820dba8">Nx::CImposterGroup::m_update_count</a></div><div class="ttdeci">int m_update_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00057">NxImposter.h:57</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_geom_html_aec691205a247fdf5e911430e413b6294"><div class="ttname"><a href="../../d8/dd6/class_nx_1_1_c_geom.html#aec691205a247fdf5e911430e413b6294">Nx::CGeom::GetBoundingBox</a></div><div class="ttdeci">const Mth::CBBox &amp; GetBoundingBox() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d5c/_nx_geom_8cpp_source.html#l00743">NxGeom.cpp:743</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_afa42deda50860b2dd1c287acffebc2fa"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#afa42deda50860b2dd1c287acffebc2fa">Nx::CImposterGroup::plat_draw_imposter_polygon</a></div><div class="ttdeci">virtual void plat_draw_imposter_polygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00436">NxImposter.cpp:436</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a1cb3e11df0bd06d418b0f81433ad4e40"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1cb3e11df0bd06d418b0f81433ad4e40">Nx::CImposterGroup::plat_update_imposter_polygon</a></div><div class="ttdeci">virtual bool plat_update_imposter_polygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00424">NxImposter.cpp:424</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a048b79d444465954800ffc8e3878811f"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a048b79d444465954800ffc8e3878811f">Nx::CImposterManager::AddGeomToImposter</a></div><div class="ttdeci">void AddGeomToImposter(uint32 group_checksum, Nx::CGeom *p_geom)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00104">NxImposter.cpp:104</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a3a9282337f4bd2c623354f5fe07886dd"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a3a9282337f4bd2c623354f5fe07886dd">Nx::CImposterGroup::plat_process</a></div><div class="ttdeci">virtual void plat_process(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00459">NxImposter.cpp:459</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a1814beb3472778c4d48fbb008607556c"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a1814beb3472778c4d48fbb008607556c">Nx::CImposterManager::CImposterManager</a></div><div class="ttdeci">CImposterManager(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00061">NxImposter.cpp:61</a></div></div>
+<div class="ttc" id="a_nx_imposter_8h_html"><div class="ttname"><a href="../../d6/dda/_nx_imposter_8h.html">NxImposter.h</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a1efc851f2d28f4b3c6dec81092d32775"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a1efc851f2d28f4b3c6dec81092d32775">Nx::CImposterGroup::CImposterGroup</a></div><div class="ttdeci">CImposterGroup(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00239">NxImposter.cpp:239</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html">Nx::CImposterGroup</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00025">NxImposter.h:25</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_ae48da6f5409c3c4d62d8eb3cec096384"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ae48da6f5409c3c4d62d8eb3cec096384">Nx::CImposterGroup::RemoveGeom</a></div><div class="ttdeci">void RemoveGeom(CGeom *p_geom)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00287">NxImposter.cpp:287</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html">Mth::CBBox</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00118">geometry.h:118</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a24eeb025754763ed46b4b004a330e210"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a24eeb025754763ed46b4b004a330e210">Nx::CImposterGroup::CheckDistance</a></div><div class="ttdeci">float CheckDistance(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00347">NxImposter.cpp:347</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_aa8ddb9177c56eafbd6c83ee45fa9da01"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aa8ddb9177c56eafbd6c83ee45fa9da01">Nx::CImposterGroup::plat_check_distance</a></div><div class="ttdeci">virtual float plat_check_distance(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00447">NxImposter.cpp:447</a></div></div>
+<div class="ttc" id="astandard_8cpp_html_a5fc8fd1788f18ada61dfda9f171c5a1a"><div class="ttname"><a href="../../df/d92/standard_8cpp.html#a5fc8fd1788f18ada61dfda9f171c5a1a">printf</a></div><div class="ttdeci">printf(&quot;%c\n&quot;, *p_itemsInList)</div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_ab67554fa38b377519df197fa2d364016"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ab67554fa38b377519df197fa2d364016">Nx::CImposterManager::mp_group_table</a></div><div class="ttdeci">Lst::HashTable&lt; CImposterGroup &gt; * mp_group_table</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00097">NxImposter.h:97</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a6900e13dc0b2738864c2fc5fd031919a"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6900e13dc0b2738864c2fc5fd031919a">Nx::CImposterManager::Cleanup</a></div><div class="ttdeci">void Cleanup(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00084">NxImposter.cpp:84</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_ad6ecf74a1677685256c24968e8fe602e"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#ad6ecf74a1677685256c24968e8fe602e">Nx::CImposterManager::plat_create_imposter_group</a></div><div class="ttdeci">CImposterGroup * plat_create_imposter_group(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dec/_n_g_c_2p___nx_imposter_8cpp_source.html#l00015">p_NxImposter.cpp:15</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a03f8bd7ec55359e4d38402578b1ba22a"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a03f8bd7ec55359e4d38402578b1ba22a">Mth::CBBox::AddPoint</a></div><div class="ttdeci">void AddPoint(const Vector &amp;point)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d59/geometry_8cpp_source.html#l00239">geometry.cpp:239</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a8b2247b01358f4c443d00de9686f528c"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a8b2247b01358f4c443d00de9686f528c">Nx::CImposterGroup::m_composite_bsphere_radius</a></div><div class="ttdeci">float m_composite_bsphere_radius</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00053">NxImposter.h:53</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a433483f614b3c23948e016b89fd963a6"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a433483f614b3c23948e016b89fd963a6">Nx::CImposterManager::ProcessImposters</a></div><div class="ttdeci">void ProcessImposters(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00149">NxImposter.cpp:149</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_acdcb62affc893d57c4f5b94875586cd2"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#acdcb62affc893d57c4f5b94875586cd2">Nx::CImposterGroup::m_composite_bbox_mid</a></div><div class="ttdeci">Mth::Vector m_composite_bbox_mid</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00052">NxImposter.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a2af48f8aa7da8e837a226bd64d549a64"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a2af48f8aa7da8e837a226bd64d549a64">Nx::CImposterGroup::AddBoundingBox</a></div><div class="ttdeci">void AddBoundingBox(const Mth::CBBox &amp;bbox)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00321">NxImposter.cpp:321</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a30f92da006724c8281f67d2717dca8a1"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a30f92da006724c8281f67d2717dca8a1">Nx::CImposterManager::m_max_imposters_to_redraw_per_frame</a></div><div class="ttdeci">int m_max_imposters_to_redraw_per_frame</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00098">NxImposter.h:98</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_manager_html_a6539d6b908120bd3414b40000c683217"><div class="ttname"><a href="../../df/d47/class_nx_1_1_c_imposter_manager.html#a6539d6b908120bd3414b40000c683217">Nx::CImposterManager::DrawImposters</a></div><div class="ttdeci">void DrawImposters(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00200">NxImposter.cpp:200</a></div></div>
+<div class="ttc" id="aclass_lst_1_1_hash_table_html"><div class="ttname"><a href="../../db/d67/class_lst_1_1_hash_table.html">Lst::HashTable</a></div><div class="ttdef"><b>Definition:</b> <a href="../../de/def/_hash_table_8h_source.html#l00052">HashTable.h:52</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_ac9acd777a951afe00b00fde116c2aba5"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac9acd777a951afe00b00fde116c2aba5">Nx::CImposterGroup::RemoveImposterPolygon</a></div><div class="ttdeci">void RemoveImposterPolygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00368">NxImposter.cpp:368</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_c_b_box_html_a91d19a0389990abf57b98b323f982303"><div class="ttname"><a href="../../dc/d50/class_mth_1_1_c_b_box.html#a91d19a0389990abf57b98b323f982303">Mth::CBBox::GetMax</a></div><div class="ttdeci">const Vector &amp; GetMax() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d67/geometry_8h_source.html#l00280">geometry.h:280</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_ac3e9bb2a92ac08df4f0dee2f70197192"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#ac3e9bb2a92ac08df4f0dee2f70197192">Nx::CImposterGroup::CreateImposterPolygon</a></div><div class="ttdeci">void CreateImposterPolygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00358">NxImposter.cpp:358</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_aad81092b29fe5b0d280707f5d68985d0"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#aad81092b29fe5b0d280707f5d68985d0">Nx::CImposterGroup::m_switch_distance</a></div><div class="ttdeci">float m_switch_distance</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00050">NxImposter.h:50</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_a8108e2b8981c0f8bc00dbd5dfbe3932f"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#a8108e2b8981c0f8bc00dbd5dfbe3932f">Nx::CImposterGroup::m_imposter_polygon_exists</a></div><div class="ttdeci">bool m_imposter_polygon_exists</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dda/_nx_imposter_8h_source.html#l00058">NxImposter.h:58</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_imposter_group_html_af3d41e15184ac41ebcde6d68285378ec"><div class="ttname"><a href="../../d3/d0c/class_nx_1_1_c_imposter_group.html#af3d41e15184ac41ebcde6d68285378ec">Nx::CImposterGroup::plat_remove_imposter_polygon</a></div><div class="ttdeci">virtual void plat_remove_imposter_polygon(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d08/_nx_imposter_8cpp_source.html#l00413">NxImposter.cpp:413</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_geom_html"><div class="ttname"><a href="../../d8/dd6/class_nx_1_1_c_geom.html">Nx::CGeom</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d1/dfb/_nx_geom_8h_source.html#l00043">NxGeom.h:43</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../d1/d08/_nx_imposter_8cpp.html">NxImposter.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:30. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

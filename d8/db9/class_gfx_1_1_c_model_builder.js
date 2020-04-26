@@ -1,0 +1,26 @@
+var class_gfx_1_1_c_model_builder =
+[
+    [ "CModelBuilder", "d8/db9/class_gfx_1_1_c_model_builder.html#a440768424c335ec91ae967051c9e2dfd", null ],
+    [ "BuildModel", "d8/db9/class_gfx_1_1_c_model_builder.html#ad0d64726fbfbaca54c9a321c07a39239", null ],
+    [ "CallMemberFunction", "d8/db9/class_gfx_1_1_c_model_builder.html#a83489401b4585e3da3b65e81ee9fae96", null ],
+    [ "model_add_geom", "d8/db9/class_gfx_1_1_c_model_builder.html#a54920947972502f2b2c07bc7a81ae388", null ],
+    [ "model_clear_geom", "d8/db9/class_gfx_1_1_c_model_builder.html#a46f14a8277bd96c857cf21995f6f935e", null ],
+    [ "model_hide_geom", "d8/db9/class_gfx_1_1_c_model_builder.html#aba1a339c3ee77b222cbd9534069fe55a", null ],
+    [ "geom_modulate_color", "d8/db9/class_gfx_1_1_c_model_builder.html#a12f36996da2fba541befff0eecf2593e", null ],
+    [ "geom_set_uv_offset", "d8/db9/class_gfx_1_1_c_model_builder.html#a94890221d5492b499b18fd0367395dc6", null ],
+    [ "geom_allocate_uv_matrix_params", "d8/db9/class_gfx_1_1_c_model_builder.html#afeeafb0ebdc1937b9232920d5720a6ff", null ],
+    [ "geom_replace_texture", "d8/db9/class_gfx_1_1_c_model_builder.html#a6dcd89ce347d0c3956ecf963ee17ee39", null ],
+    [ "model_clear_all_geoms", "d8/db9/class_gfx_1_1_c_model_builder.html#a210fa0205b3ed66471c856d2b3893f8f", null ],
+    [ "model_remove_polys", "d8/db9/class_gfx_1_1_c_model_builder.html#ad6cc486c78b783a1a7e4962f06dac781", null ],
+    [ "model_reset_scale", "d8/db9/class_gfx_1_1_c_model_builder.html#a61121dafe8411bf2d2d9c5dafc36cbc0", null ],
+    [ "model_apply_body_shape", "d8/db9/class_gfx_1_1_c_model_builder.html#a9cda4e07b526063016bdd9c95eda417e", null ],
+    [ "model_apply_bone_scale", "d8/db9/class_gfx_1_1_c_model_builder.html#ac185bf881f1dca410b46b7d101a3759c", null ],
+    [ "model_apply_object_scale", "d8/db9/class_gfx_1_1_c_model_builder.html#a5ef41dbbbe9f4d74ad1502a9789d6694", null ],
+    [ "model_finalize", "d8/db9/class_gfx_1_1_c_model_builder.html#ac7fb87ef297578efa43509450c379df8", null ],
+    [ "model_run_script", "d8/db9/class_gfx_1_1_c_model_builder.html#abebde55ebdbb95f21e220c0877c6f323", null ],
+    [ "mp_model", "d8/db9/class_gfx_1_1_c_model_builder.html#adefd7d869cac5fa9cbe24cf163128a3a", null ],
+    [ "mp_skeleton", "d8/db9/class_gfx_1_1_c_model_builder.html#a8bb0e0fad3a676bfe03c0138c7698175", null ],
+    [ "mp_appearance", "d8/db9/class_gfx_1_1_c_model_builder.html#addc7d1d5787b938ba738af3376fa8c48", null ],
+    [ "m_useAssetManager", "d8/db9/class_gfx_1_1_c_model_builder.html#a26f1dd7e9e721e80478c45d296ee21c9", null ],
+    [ "m_texDictOffset", "d8/db9/class_gfx_1_1_c_model_builder.html#adc7f68dddaf3990889aae616014b0607", null ]
+];

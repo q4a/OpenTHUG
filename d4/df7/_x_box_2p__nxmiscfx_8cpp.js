@@ -1,0 +1,25 @@
+var _x_box_2p__nxmiscfx_8cpp =
+[
+    [ "sXboxScreenFlashVert", "d2/dec/struct_nx_1_1s_xbox_screen_flash_vert.html", "d2/dec/struct_nx_1_1s_xbox_screen_flash_vert" ],
+    [ "sXboxSplatVert", "d4/d29/struct_nx_1_1s_xbox_splat_vert.html", "d4/d29/struct_nx_1_1s_xbox_splat_vert" ],
+    [ "sXboxSplatInstanceDetails", "db/d6b/struct_nx_1_1s_xbox_splat_instance_details.html", "db/d6b/struct_nx_1_1s_xbox_splat_instance_details" ],
+    [ "sXboxShatterInstanceDetails", "da/d94/struct_nx_1_1s_xbox_shatter_instance_details.html", "da/d94/struct_nx_1_1s_xbox_shatter_instance_details" ],
+    [ "getDetailsForTextureSplat", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#afddff2dd10f257c4e4a354a23b97ee0e", null ],
+    [ "subdivide_tri_stack", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a00f232c47f68047e5120da47f27bd269", null ],
+    [ "plat_screen_flash_render", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#af62673c1b360f57efd3adfe84aa6b1c1", null ],
+    [ "plat_texture_splat_initialize", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a5cbe6a582bdf94cae105d109b5cda4d3", null ],
+    [ "plat_texture_splat_cleanup", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a57a58345a4f44646fca38e1e94e2889c", null ],
+    [ "plat_texture_splat_reset_poly", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#aaf07f7613961fa0414f6318067767c54", null ],
+    [ "CrossProduct2D", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a3dcb9ccf5a3d32fb954d726e56bd52d1", null ],
+    [ "same_side", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#ac62fead547c3c44ac10ad56072f343a7", null ],
+    [ "point_in_triangle", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#aa51adaedfa03101e24ae0c57cfaa25ed", null ],
+    [ "line_segment_intersection", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a1517cf568547ef27696f9872af29139f", null ],
+    [ "tri_texture_intersect", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a984cb7dcd8a2d81eb81483c04b6aae41", null ],
+    [ "plat_texture_splat", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#ab74cb89dfc6b1342cf0948f521ad1ce5", null ],
+    [ "plat_texture_splat_render", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a038350c4e2876e234b31dd7eac1f020f", null ],
+    [ "plat_shatter_initialize", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a03d0029834072d28a2a167c303f0c81b", null ],
+    [ "plat_shatter_cleanup", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a3a614cc7214a0557d4d56d70a0a38b4e", null ],
+    [ "plat_shatter", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a5e2a5cf88365eaac101aaced554c95f4", null ],
+    [ "plat_shatter_update", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#aeb727f88514dceb592a589b705a76486", null ],
+    [ "plat_shatter_render", "d4/df7/_x_box_2p__nxmiscfx_8cpp.html#a035b931248e4eab90d94ad0f30ea300b", null ]
+];

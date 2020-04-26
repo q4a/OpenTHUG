@@ -1,0 +1,357 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/objecthook.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d2/d4e/objecthook_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">objecthook.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d4e/objecthook_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// ObjectHook.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d0b/singleton_8h.html">core/singleton.h</a>&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d2/d63/objecthook_8h.html">sk/objects/ObjectHook.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/dec/struct_8h.html">gel/scripting/struct.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../de/d7f/script_8h.html">gel/scripting/script.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../db/d63/array_8h.html">gel/scripting/array.h</a>&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/d98/symboltable_8h.html">gel/scripting/symboltable.h</a>&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d47/nodearray_8h.html">sk/scripting/nodearray.h</a>&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d3/d83/debuggfx_8h.html">gfx/debuggfx.h</a>&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/d23/skate_8h.html">sk/modules/skate/skate.h</a>&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d50/modman_8h.html">gel/modman.h</a>&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d4/d67/geometry_8h.html">core/math/geometry.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d1/d74/feeler_8h.html">engine/feeler.h</a>&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__   </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/line.h&gt;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ae84fe5342aecbbfb8abaf3e8a513f800">   31</a></span>&#160;<a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ae84fe5342aecbbfb8abaf3e8a513f800">CObjectHookManager::CObjectHookManager</a>()</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a> = NULL;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aa63e201db27c9f6b38585f67e87d04b7">m_is_transformed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a04ec1528e68e6712633670b6b2849682">mp_node_array</a> = NULL;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;}</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7ecdc3528a75168db3886d39e68500b">   39</a></span>&#160;<a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7ecdc3528a75168db3886d39e68500b">CObjectHookManager::~CObjectHookManager</a>()</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{    </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aadbc3e81d7198e82a8e4b7b9b49232db">Cleanup</a>();  </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aadbc3e81d7198e82a8e4b7b9b49232db">   44</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aadbc3e81d7198e82a8e4b7b9b49232db">CObjectHookManager::Cleanup</a>()</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">while</span> (<a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>)</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html">CObjectHookNode</a> *pNext = <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a42e9ca8f566075337f8bca2455cf2252">m_pNext</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">delete</span> <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a> = pNext;          </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }    </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aa63e201db27c9f6b38585f67e87d04b7">m_is_transformed</a> = <span class="keyword">false</span>;   </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Unhook from node array</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a04ec1528e68e6712633670b6b2849682">mp_node_array</a> = NULL;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7c18cc4fa18df231a3217899939c6d">   58</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7c18cc4fa18df231a3217899939c6d">CObjectHookManager::AddObjectHookNode</a>(<span class="keywordtype">int</span> node_number, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_node_struct)</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// create a new ObjectHook node                                        </span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html">CObjectHookNode</a> *pObjectHookNode = <span class="keyword">new</span> <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html">CObjectHookNode</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// Link into the head of the ObjectHook manager </span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// Note, this must be done before we attempt to link up with other nodes                                   </span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a42e9ca8f566075337f8bca2455cf2252">m_pNext</a> = <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>;                             </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a> = pObjectHookNode;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a60e430caf1ba7c369734ad4dd5ac180c">m_node</a> = node_number;          <span class="comment">// The node_number is use primarily for calculating links</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a4ee4885e40c8f6288fc9134e6db24a2f">m_active</a> = p_node_struct-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">ContainsFlag</a>( 0x7c2552b9 <span class="comment">/*&quot;CreatedAtStart&quot;*/</span> ); <span class="comment">// created at start or not?</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a79b93fb647c6e12f37ba8d1825d4b7e0">m_flags</a> = 0;                       <span class="comment">// all flags off by default</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="../../de/dd2/namespace_skate_script.html#a5638e95247d626e24d46bfc5c7d7d068">SkateScript::GetPosition</a>(p_node_struct,&amp;pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a50cf74597291dbe275a2716ee41a6c21">m_pos</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a61f7d6f6a1e78a905f61cfa9ae94c0d7">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a61f7d6f6a1e78a905f61cfa9ae94c0d7">CObjectHookManager::UpdateTransform</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a>&amp; transform)</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aa63e201db27c9f6b38585f67e87d04b7">m_is_transformed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7459740a299e9b719994a7715c5519">m_transform</a> = transform;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7c8ece55f7f4ab51ab0efc49903043b">   85</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7c8ece55f7f4ab51ab0efc49903043b">CObjectHookManager::DebugRender</a>(<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a> *p_transform)</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="preprocessor">    #ifdef  __PLAT_NGPS__</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> up(0.0f,1.0f,0.0f); </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>  rgb = 0x0000ff;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> current = 12345678;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html">CObjectHookNode</a> *pObjectHookNode;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    pObjectHookNode = <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">int</span> count = 0;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="comment">// then draw the node positions as litle red lines  </span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    pObjectHookNode = <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">mp_first_node</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">while</span> (pObjectHookNode)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    {</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        count++;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">if</span> (pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a4ee4885e40c8f6288fc9134e6db24a2f">m_active</a>)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            rgb = 0xff0000;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            rgb = 0x00ff00;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="comment">// check for context changes</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">if</span> (current != rgb)</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">if</span> ( current != 12345678)</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            {</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">NxPs2::EndLines3D</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            current = rgb;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a599fa70d638561851fd4aeab050a1183">NxPs2::BeginLines3D</a>(0x80000000 + (0x00ffffff &amp; rgb));</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> v0, v1;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        v0 = pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a50cf74597291dbe275a2716ee41a6c21">m_pos</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        v1 = v0 + up * 24.0f;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        v0[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 1.0f;       <span class="comment">// Make homgeneous</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        v1[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a>] = 1.0f;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">if</span> (p_transform)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            v0 = p_transform-&gt;<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>(v0);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            v1 = p_transform-&gt;<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>(v1);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a1967c8a81f66a13bdb03d2105159b3b0">NxPs2::DrawLine3D</a>(v0[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>],v0[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>],v0[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>],v1[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>],v1[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>],v1[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>]);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        </div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        pObjectHookNode = pObjectHookNode-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a42e9ca8f566075337f8bca2455cf2252">m_pNext</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">// only if we actually drew some</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <span class="keywordflow">if</span> ( current != 12345678)</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">NxPs2::EndLines3D</a>();</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;<span class="preprocessor">    #endif</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ab3aef7dc8960ce912d24e13b9bdfa612">  160</a></span>&#160;<span class="keywordtype">void</span>    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ab3aef7dc8960ce912d24e13b9bdfa612">CObjectHookManager::AddObjectHooksFromNodeArray</a>(<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> * p_nodearray)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;{</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    Dbg_MsgAssert(!<a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a04ec1528e68e6712633670b6b2849682">mp_node_array</a>,(<span class="stringliteral">&quot;Setting two node arrays in ObjectHook manager&quot;</span>));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a04ec1528e68e6712633670b6b2849682">mp_node_array</a> = p_nodearray;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> i;    </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">for</span> (i=0; i&lt;p_nodearray-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">GetSize</a>(); ++i)</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    {</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_node_struct=p_nodearray-&gt;<a class="code" href="../../d0/d0b/class_script_1_1_c_array.html#af335b83cb06ac2934f891089c295bdf9">GetStructure</a>(i);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        Dbg_MsgAssert(p_node_struct,(<span class="stringliteral">&quot;Error getting node from node array for ObjectHook generation&quot;</span>));</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> class_checksum = 0;      </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        p_node_struct-&gt;<a class="code" href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">GetChecksum</a>( 0x12b4e660 <span class="comment">/*&quot;Class&quot;*/</span>, &amp;class_checksum );</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">if</span> (class_checksum == 0xd18719d5)         <span class="comment">// checksum &#39;ObjectHook&#39;</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        {</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;            <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7c18cc4fa18df231a3217899939c6d">AddObjectHookNode</a>( i, p_node_struct);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        }</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160; </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#afddc2cd998b66e11cde6e87c1326652c">  182</a></span>&#160;<span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp;  <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#afddc2cd998b66e11cde6e87c1326652c">CObjectHookNode::GetPos</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a50cf74597291dbe275a2716ee41a6c21">m_pos</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno"><a class="line" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a03c728e860707f8233867626fe1468fb">  188</a></span>&#160;<a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a03c728e860707f8233867626fe1468fb">CObjectHookManager::GetPos</a>(<span class="keyword">const</span> <a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html">CObjectHookNode</a> *p_node)<span class="keyword">   const</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aa63e201db27c9f6b38585f67e87d04b7">m_is_transformed</a>)</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    {</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="keywordflow">return</span> p_node-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#afddc2cd998b66e11cde6e87c1326652c">GetPos</a>();</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> v = <a class="code" href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7459740a299e9b719994a7715c5519">m_transform</a>.<a class="code" href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Transform</a>(p_node-&gt;<a class="code" href="../../de/d46/class_obj_1_1_c_object_hook_node.html#afddc2cd998b66e11cde6e87c1326652c">GetPos</a>());</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;}</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;               </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_af7ecdc3528a75168db3886d39e68500b"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7ecdc3528a75168db3886d39e68500b">Obj::CObjectHookManager::~CObjectHookManager</a></div><div class="ttdeci">~CObjectHookManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00039">objecthook.cpp:39</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_a60e430caf1ba7c369734ad4dd5ac180c"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a60e430caf1ba7c369734ad4dd5ac180c">Obj::CObjectHookNode::m_node</a></div><div class="ttdeci">sint16 m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00044">objecthook.h:44</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html">Obj::CObjectHookNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00025">objecthook.h:25</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_a71c761bdce14193b10bf3c88372ba5a0"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#a71c761bdce14193b10bf3c88372ba5a0">Script::CArray::GetSize</a></div><div class="ttdeci">uint32 GetSize() const</div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00120">array.h:120</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_ae84fe5342aecbbfb8abaf3e8a513f800"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ae84fe5342aecbbfb8abaf3e8a513f800">Obj::CObjectHookManager::CObjectHookManager</a></div><div class="ttdeci">CObjectHookManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00031">objecthook.cpp:31</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_a42e9ca8f566075337f8bca2455cf2252"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a42e9ca8f566075337f8bca2455cf2252">Obj::CObjectHookNode::m_pNext</a></div><div class="ttdeci">CObjectHookNode * m_pNext</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00043">objecthook.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_aadbc3e81d7198e82a8e4b7b9b49232db"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aadbc3e81d7198e82a8e4b7b9b49232db">Obj::CObjectHookManager::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00044">objecthook.cpp:44</a></div></div>
+<div class="ttc" id="ageometry_8h_html"><div class="ttname"><a href="../../d4/d67/geometry_8h.html">geometry.h</a></div></div>
+<div class="ttc" id="adebuggfx_8h_html"><div class="ttname"><a href="../../d3/d83/debuggfx_8h.html">debuggfx.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa27bdd009eb62b22c75dac7b9398a902"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa27bdd009eb62b22c75dac7b9398a902">Script::CStruct::ContainsFlag</a></div><div class="ttdeci">bool ContainsFlag(uint32 checksum) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01846">struct.cpp:1846</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html_af335b83cb06ac2934f891089c295bdf9"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html#af335b83cb06ac2934f891089c295bdf9">Script::CArray::GetStructure</a></div><div class="ttdeci">CStruct * GetStructure(uint32 index) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d2a/array_8cpp_source.html#l00528">array.cpp:528</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_af7c8ece55f7f4ab51ab0efc49903043b"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#af7c8ece55f7f4ab51ab0efc49903043b">Obj::CObjectHookManager::DebugRender</a></div><div class="ttdeci">void DebugRender(Mth::Matrix *p_transform=NULL)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00085">objecthook.cpp:85</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_a03c728e860707f8233867626fe1468fb"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a03c728e860707f8233867626fe1468fb">Obj::CObjectHookManager::GetPos</a></div><div class="ttdeci">Mth::Vector GetPos(const CObjectHookNode *p_node) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00188">objecthook.cpp:188</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_a04ec1528e68e6712633670b6b2849682"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a04ec1528e68e6712633670b6b2849682">Obj::CObjectHookManager::mp_node_array</a></div><div class="ttdeci">Script::CArray * mp_node_array</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00097">objecthook.h:97</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html_aa39e6fe5fdf1d6c48136ae26a7ad511e"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html#aa39e6fe5fdf1d6c48136ae26a7ad511e">Script::CStruct::GetChecksum</a></div><div class="ttdeci">bool GetChecksum(uint32 nameChecksum, uint32 *p_checksum, EAssertType assert=NO_ASSERT) const</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d98/struct_8cpp_source.html#l01658">struct.cpp:1658</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635ab722ceeb601c72cd78fbd35f3581fdf7">W</a></div><div class="ttdeci">@ W</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="asingleton_8h_html"><div class="ttname"><a href="../../d4/d0b/singleton_8h.html">singleton.h</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a1967c8a81f66a13bdb03d2105159b3b0"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a1967c8a81f66a13bdb03d2105159b3b0">NxPs2::DrawLine3D</a></div><div class="ttdeci">void DrawLine3D(float x0, float y0, float z0, float x1, float y1, float z1)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00095">line.cpp:95</a></div></div>
+<div class="ttc" id="amodman_8h_html"><div class="ttname"><a href="../../dd/d50/modman_8h.html">modman.h</a></div></div>
+<div class="ttc" id="aarray_8h_html"><div class="ttname"><a href="../../db/d63/array_8h.html">array.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_a79b93fb647c6e12f37ba8d1825d4b7e0"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a79b93fb647c6e12f37ba8d1825d4b7e0">Obj::CObjectHookNode::m_flags</a></div><div class="ttdeci">char m_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00046">objecthook.h:46</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_aba7459740a299e9b719994a7715c5519"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7459740a299e9b719994a7715c5519">Obj::CObjectHookManager::m_transform</a></div><div class="ttdeci">Mth::Matrix m_transform</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00096">objecthook.h:96</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aobjecthook_8h_html"><div class="ttname"><a href="../../d2/d63/objecthook_8h.html">objecthook.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_a4ee4885e40c8f6288fc9134e6db24a2f"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a4ee4885e40c8f6288fc9134e6db24a2f">Obj::CObjectHookNode::m_active</a></div><div class="ttdeci">char m_active</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00045">objecthook.h:45</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_aa63e201db27c9f6b38585f67e87d04b7"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aa63e201db27c9f6b38585f67e87d04b7">Obj::CObjectHookManager::m_is_transformed</a></div><div class="ttdeci">bool m_is_transformed</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00095">objecthook.h:95</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="afeeler_8h_html"><div class="ttname"><a href="../../d1/d74/feeler_8h.html">feeler.h</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html">Mth::Matrix</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dd/df4/matrix_8h_source.html#l00060">matrix.h:60</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_a61f7d6f6a1e78a905f61cfa9ae94c0d7"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a61f7d6f6a1e78a905f61cfa9ae94c0d7">Obj::CObjectHookManager::UpdateTransform</a></div><div class="ttdeci">void UpdateTransform(Mth::Matrix &amp;transform)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00076">objecthook.cpp:76</a></div></div>
+<div class="ttc" id="asymboltable_8h_html"><div class="ttname"><a href="../../d6/d98/symboltable_8h.html">symboltable.h</a></div></div>
+<div class="ttc" id="anamespace_skate_script_html_a5638e95247d626e24d46bfc5c7d7d068"><div class="ttname"><a href="../../de/dd2/namespace_skate_script.html#a5638e95247d626e24d46bfc5c7d7d068">SkateScript::GetPosition</a></div><div class="ttdeci">void GetPosition(CStruct *p_node, Mth::Vector *p_vector)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d8d/nodearray_8cpp_source.html#l00877">nodearray.cpp:877</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_matrix_html_a71fb23705a61063b9866647a420a80a6"><div class="ttname"><a href="../../d9/d37/class_mth_1_1_matrix.html#a71fb23705a61063b9866647a420a80a6">Mth::Matrix::Transform</a></div><div class="ttdeci">Vector Transform(const Vector &amp;src) const</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d28/matrix_8inl_source.html#l00693">matrix.inl:693</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="askate_8h_html"><div class="ttname"><a href="../../df/d23/skate_8h.html">skate.h</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00024">array.h:24</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_afddc2cd998b66e11cde6e87c1326652c"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#afddc2cd998b66e11cde6e87c1326652c">Obj::CObjectHookNode::GetPos</a></div><div class="ttdeci">const Mth::Vector &amp; GetPos() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00182">objecthook.cpp:182</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a599fa70d638561851fd4aeab050a1183"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a599fa70d638561851fd4aeab050a1183">NxPs2::BeginLines3D</a></div><div class="ttdeci">void BeginLines3D(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00060">line.cpp:60</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_node_html_a50cf74597291dbe275a2716ee41a6c21"><div class="ttname"><a href="../../de/d46/class_obj_1_1_c_object_hook_node.html#a50cf74597291dbe275a2716ee41a6c21">Obj::CObjectHookNode::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00042">objecthook.h:42</a></div></div>
+<div class="ttc" id="astruct_8h_html"><div class="ttname"><a href="../../df/dec/struct_8h.html">struct.h</a></div></div>
+<div class="ttc" id="anodearray_8h_html"><div class="ttname"><a href="../../df/d47/nodearray_8h.html">nodearray.h</a></div></div>
+<div class="ttc" id="ascript_8h_html"><div class="ttname"><a href="../../de/d7f/script_8h.html">script.h</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_aba7c18cc4fa18df231a3217899939c6d"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#aba7c18cc4fa18df231a3217899939c6d">Obj::CObjectHookManager::AddObjectHookNode</a></div><div class="ttdeci">void AddObjectHookNode(int node_number, Script::CStruct *p_node_struct)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00058">objecthook.cpp:58</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ac11151839ab407a9588ccec23c1c3caa"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ac11151839ab407a9588ccec23c1c3caa">NxPs2::EndLines3D</a></div><div class="ttdeci">void EndLines3D(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00115">line.cpp:115</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_ab3aef7dc8960ce912d24e13b9bdfa612"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#ab3aef7dc8960ce912d24e13b9bdfa612">Obj::CObjectHookManager::AddObjectHooksFromNodeArray</a></div><div class="ttdeci">void AddObjectHooksFromNodeArray(Script::CArray *p_node_array)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d4e/objecthook_8cpp_source.html#l00160">objecthook.cpp:160</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_object_hook_manager_html_a010e20ff087a0b8743e0f0453e64e0eb"><div class="ttname"><a href="../../d8/df8/class_obj_1_1_c_object_hook_manager.html#a010e20ff087a0b8743e0f0453e64e0eb">Obj::CObjectHookManager::mp_first_node</a></div><div class="ttdeci">CObjectHookNode * mp_first_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d63/objecthook_8h_source.html#l00094">objecthook.h:94</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../d2/d4e/objecthook_8cpp.html">objecthook.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

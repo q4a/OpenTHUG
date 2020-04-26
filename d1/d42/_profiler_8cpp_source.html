@@ -1,0 +1,622 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sys/Profiler.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d1/d42/_profiler_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">Profiler.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d42/_profiler_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">**                        Neversoft Entertainment                           **</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">**                 Copyright (C) 2002 - All Rights Reserved                 **</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">******************************************************************************</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">**  Project:        SysLib (System Library)                                 **</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">**  Module:         Sys                                                     **</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">**  File name:      profiler.cpp                                            **</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">**  Description:    Profiler class                                          **</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">**                                                                          **</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">**                                Includes                                  **</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d87/sys_8h.html">sys/sys.h</a>&gt;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d5/dd0/timer_8h.html">sys/timer.h</a>&gt;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d6/df1/_profiler_8h.html">sys/profiler.h</a>&gt;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#ifndef __PLAT_WN32__</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d0/de1/gfxman_8h.html">gfx/gfxman.h</a>&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#endif // __PLAT_WN32__</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__   </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;gfx/ngps/nx/line.h&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/df0/p__gx_8h.html">sys\ngc\p_gx.h</a>&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../dd/d59/p__prim_8h.html">sys\ngc\p_prim.h</a>&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d9/d12/p__camera_8h.html">sys\ngc\p_camera.h</a>&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#ifdef      __USE_PROFILER__</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">**                                Externals                                 **</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">**                              DBG Information                             **</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../dc/de6/namespace_sys.html">Sys</a></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;{</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">**                               Private Data                               **</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<a class="code" href="../../d1/d0d/namespace_tmr.html#a32827e45d99f7b1e8cb130d60fc82fcb">Tmr::MicroSeconds</a>   <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a7cc7733bc5f0108afbeffb16b8ae76f9">Profiler::s_base_time</a>[ 2 ];</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>              <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ad4daacf96b75867c36a04cf71d9fb6f1">Profiler::s_default_color</a> = 0x00ff0000;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">int</span>                 <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">Profiler::s_flip</a> = 0;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">bool</span>                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">Profiler::s_enabled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">bool</span>                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">Profiler::s_active</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">bool</span>                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">Profiler::s_enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keywordtype">bool</span>                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">Profiler::s_active</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a>                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">Profiler::s_vblanks</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">float</span>               <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">Profiler::s_width</a>;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">float</span>               <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">Profiler::s_height</a>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">float</span>               <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a42f131fbe42952234c53af90b6803f02">Profiler::s_scale</a>;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">float</span>               <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">Profiler::s_left_x</a>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">**                               Public Data                                **</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;Profiler* <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a>;        </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;Profiler* <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a>;         </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;Profiler* <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a>;        </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">**                          Private Functions                               **</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">Profiler::Profiler</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">line</a> )</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;{</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a46564a0e9d3a47afa60222d6d300b01d">m_top_y</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">s_height</a> * <a class="code" href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">line</a>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">start_new_frame</a>();          <span class="comment">// just ensure everything points to something reasonable</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a761b8c76283dc7e6f226125393e9b7bd">Profiler::~Profiler</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">  108</a></span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">  109</a></span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">  110</a></span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">box</a>(<span class="keywordtype">int</span> x0,<span class="keywordtype">int</span> y0, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color)</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__   </span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ab97b55c0761495dde024c54c3730c41b">NxPs2::BeginLines2D</a>(0x80000000 + color);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a>(x0,y0,0, x1,y0,0);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a>(x1,y0,0, x1,y1,0);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a>(x1,y1,0, x0,y1,0);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a>(x0,y1,0, x0,y0,0);</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">  119</a></span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aa20c52391b4d0cb6502966cbb1aa5a4d">NxPs2::EndLines2D</a>();</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">//  NsPrim::line ( (float)x0, (float)y0, (float)x1, (float)y0, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">//  NsPrim::line ( (float)x1, (float)y0, (float)x1, (float)y1, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a761b8c76283dc7e6f226125393e9b7bd">  127</a></span>&#160;<span class="comment">//  NsPrim::line ( (float)x1, (float)y1, (float)x0, (float)y1, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">//  NsPrim::line ( (float)x0, (float)y1, (float)x0, (float)y0, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#ab8cc96716da738d965eef63ab4eba246">GX::SetChanAmbColor</a>( GX_COLOR0A0, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="comment">// Send coordinates.</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">  133</a></span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#a54dc0f5188e2ce2817a5bd755be88111">GX::Begin</a>( GX_LINESTRIP, GX_VTXFMT0, 5 ); </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x0, (<span class="keywordtype">float</span>)y0, -1.0f );</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x1, (<span class="keywordtype">float</span>)y0, -1.0f );</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x1, (<span class="keywordtype">float</span>)y1, -1.0f );</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x0, (<span class="keywordtype">float</span>)y1, -1.0f );</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x0, (<span class="keywordtype">float</span>)y0, -1.0f );</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#a40e0da8c9e9725024d38f31c846e2f1d">GX::End</a>();</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">line</a>(<span class="keywordtype">int</span> x0,<span class="keywordtype">int</span> y0, <span class="keywordtype">int</span> x1, <span class="keywordtype">int</span> y1, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color)</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGPS__   </span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#ab97b55c0761495dde024c54c3730c41b">NxPs2::BeginLines2D</a>(0x80000000 + color);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a>(x0,y0,0, x1,y1,0);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <a class="code" href="../../d8/d79/namespace_nx_ps2.html#aa20c52391b4d0cb6502966cbb1aa5a4d">NxPs2::EndLines2D</a>();</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="comment">//  NsPrim::line ( (float)x0, (float)y0, (float)x1, (float)y1, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#ab8cc96716da738d965eef63ab4eba246">GX::SetChanAmbColor</a>( GX_COLOR0A0, (GXColor){(color&gt;&gt;0)&amp;0xff,(color&gt;&gt;8)&amp;0xff,(color&gt;&gt;16)&amp;0xff,255} );</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="comment">// Send coordinates.</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#a54dc0f5188e2ce2817a5bd755be88111">GX::Begin</a>( GX_LINES, GX_VTXFMT0, 2 ); </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x0, (<span class="keywordtype">float</span>)y0, -1.0f );</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a>( (<span class="keywordtype">float</span>)x1, (<span class="keywordtype">float</span>)y1, -1.0f );</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <a class="code" href="../../d6/d63/namespace_g_x.html#a40e0da8c9e9725024d38f31c846e2f1d">GX::End</a>();</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160; </div>
+<div class="line"><a name="l00168"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">  168</a></span>&#160;}</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">void</span>            <a class="code" href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">box</a>(<span class="keywordtype">float</span> x0,<span class="keywordtype">float</span> y0, <span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color)</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;{</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">box</a> ((<span class="keywordtype">int</span>)x0,(<span class="keywordtype">int</span>)y0,(<span class="keywordtype">int</span>)x1,(<span class="keywordtype">int</span>)y1, color);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">Profiler::start_new_frame</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;{</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acf129d9dc2476470e0579b5b38527cf2">mp_current_context_list</a>     = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a93ceabf9637052f54265322c9f68c88b">m_context_list</a>[ <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ];</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a1d1f74d2f939893820a6d967037ae7e3">mpp_current_context_stack</a>   = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ae6d46be0a4d053ed502452204a6af3e9">m_context_stack</a>[ <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ];</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>          = NULL;                             <span class="comment">// nothing has been pushed yet</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a028417ca88ae657731521a2281b21f9d">mp_current_context_count</a>    = &amp;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8c4418bda07a6df01b7edda8358b8a82">m_context_count</a>[ <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ];</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a>       = 0;                                <span class="comment">// nothing on stack</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ae62e4651b5c58b9ab04d29a349233e60">m_next_context</a>              = 0;                                <span class="comment">// start of list (index into mp_current_context_list)</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa839105678842b0a00c765f190081fa3">m_acc</a>                       = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9c45bf5bc9ba70ee2e638db015bde660">mp_acc_context</a>              = NULL;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;}</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
+<div class="line"><a name="l00194"></a><span class="lineno"><a class="line" href="../../dc/de6/namespace_sys.html#a083546e6a8a8576870c1e7338807ab7a">  194</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">Profiler::render</a>()</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    <span class="keywordflow">if</span> ( <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> )</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    {</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        <span class="comment">/* We draw from the buffer that&#39;s not being updated this frame */</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordtype">int</span> drawFlip = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ^ 1;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html">SProfileContext</a> *p_context = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a93ceabf9637052f54265322c9f68c88b">m_context_list</a>[ drawFlip ];</div>
+<div class="line"><a name="l00202"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">  202</a></span>&#160;        <a class="code" href="../../d1/d0d/namespace_tmr.html#a32827e45d99f7b1e8cb130d60fc82fcb">Tmr::MicroSeconds</a>   base_time = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a7cc7733bc5f0108afbeffb16b8ae76f9">s_base_time</a>[ drawFlip ];</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keywordtype">int</span> n = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8c4418bda07a6df01b7edda8358b8a82">m_context_count</a>[ drawFlip ];</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keywordflow">while</span> ( n--)</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="keywordtype">float</span> startx    = ( (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)(p_context-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a5f261fa0ee7367f22b62d98bc0ac6829">m_start_time</a> - base_time) ) * <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a42f131fbe42952234c53af90b6803f02">s_scale</a>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="keywordtype">float</span> endx      = ( (<a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>)(p_context-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a7fdf4bea4a8c7cea8f464ef29a131226">m_end_time</a> - base_time) ) * <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a42f131fbe42952234c53af90b6803f02">s_scale</a>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            <span class="keywordtype">float</span> top_y     = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a46564a0e9d3a47afa60222d6d300b01d">m_top_y</a> +( p_context-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#acd70341e622ecb7c7a8b1f6a101785c7">m_depth</a>)* (<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">s_height</a>+2);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            <a class="code" href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">box</a>((<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">s_left_x</a>+startx),(top_y),  (<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">s_left_x</a>+endx),( top_y + <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">s_height</a>) , p_context-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a6fbd5bf9a952e4cc2e4a47284c753c93">m_color</a>);   </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            p_context++;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;}</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160; </div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">/*****************************************************************************</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">  216</a></span>&#160;<span class="comment">**                             Public Functions                             **</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">*****************************************************************************/</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a465bd1eebac4ba1e45cdb2bce604d67a">Profiler::PushContext</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color, <span class="keywordtype">bool</span> acc )</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;{</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    </div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> )</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    {</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">if</span> ( acc &amp;&amp; <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9c45bf5bc9ba70ee2e638db015bde660">mp_acc_context</a> )</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="comment">// Want to accumulate to last context.</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8c00cc9f657e63977c332e16b264b7e5">m_acc_time</a> = <a class="code" href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a>(); </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a829a1f009276373995505c888131dc16">m_acc_first</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        }</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        {</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            <span class="comment">// if we have a current context, then push it</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>)</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;            {</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                Dbg_MsgAssert(<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a> &lt; PROF_MAX_LEVELS,(<span class="stringliteral">&quot;Context stack overflow&quot;</span>));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a1d1f74d2f939893820a6d967037ae7e3">mpp_current_context_stack</a>[<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a>++] = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            }</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="comment">// get a new context from the list</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;            Dbg_MsgAssert(<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ae62e4651b5c58b9ab04d29a349233e60">m_next_context</a> &lt; PROF_MAX_CONTEXTS,(<span class="stringliteral">&quot;Context heap overflow&quot;</span>));</div>
+<div class="line"><a name="l00241"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a3fd12b801b86b7dc574fcb3c9aab1908">  241</a></span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a> = &amp;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acf129d9dc2476470e0579b5b38527cf2">mp_current_context_list</a>[<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ae62e4651b5c58b9ab04d29a349233e60">m_next_context</a>++];</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;            <span class="comment">// and fill it in with the start time, depth and color</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;            <span class="comment">// (the end time is filled in by the Pop) </span></div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a5f261fa0ee7367f22b62d98bc0ac6829">m_start_time</a> = <a class="code" href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a>();</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#acd70341e622ecb7c7a8b1f6a101785c7">m_depth</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a>;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a6fbd5bf9a952e4cc2e4a47284c753c93">m_color</a> = color;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;            <span class="keywordflow">if</span> ( acc )</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            {</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9c45bf5bc9ba70ee2e638db015bde660">mp_acc_context</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a829a1f009276373995505c888131dc16">m_acc_first</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa839105678842b0a00c765f190081fa3">m_acc</a> = acc;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a465bd1eebac4ba1e45cdb2bce604d67a">Profiler::PushContext</a>( <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> r, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> g, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> b, <span class="keywordtype">bool</span> acc )</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> color = (b&lt;&lt;16)+(g&lt;&lt;8)+(r);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a465bd1eebac4ba1e45cdb2bce604d67a">PushContext</a>(color, acc);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a6251971d921454ca6bbeab5d685a8d97">Profiler::PopContext</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;{</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a>)</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    {</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">if</span> ( <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa839105678842b0a00c765f190081fa3">m_acc</a> &amp;&amp; !<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a829a1f009276373995505c888131dc16">m_acc_first</a> )</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9c45bf5bc9ba70ee2e638db015bde660">mp_acc_context</a>-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a7fdf4bea4a8c7cea8f464ef29a131226">m_end_time</a> += <a class="code" href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a>() - <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8c00cc9f657e63977c332e16b264b7e5">m_acc_time</a>;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;        }</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="comment">// set time on the current context      </span></div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            Dbg_MsgAssert(<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>,(<span class="stringliteral">&quot;Popped one more profiler context than we pushed&quot;</span>));</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a>-&gt;<a class="code" href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a7fdf4bea4a8c7cea8f464ef29a131226">m_end_time</a> = <a class="code" href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a>();</div>
+<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a465bd1eebac4ba1e45cdb2bce604d67a">  280</a></span>&#160; </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            <span class="keywordflow">if</span> ( ! <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a>)</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                <span class="comment">// nothing left on stack, so set current context to NULL</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a> = NULL;</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;                <span class="comment">// update the count of valid contexts</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                *<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a028417ca88ae657731521a2281b21f9d">mp_current_context_count</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ae62e4651b5c58b9ab04d29a349233e60">m_next_context</a>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            }</div>
+<div class="line"><a name="l00288"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a6251971d921454ca6bbeab5d685a8d97">  288</a></span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            {</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                <span class="comment">// get the last context pushed on the stack</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">mp_current_context</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a1d1f74d2f939893820a6d967037ae7e3">mpp_current_context_stack</a>[--<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">m_context_stack_depth</a>]; </div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            }</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        }</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a927ddab88037d6cd28a5292566134207">Profiler::sSetUp</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> vblanks )</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;{</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">PushContext</a>(<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().ProfilerHeap());</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">s_width</a> = 640 * 0.8;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">s_height</a> = 448 * 0.01;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">s_left_x</a> = 640 * 0.1;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">s_vblanks</a> = vblanks;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a42f131fbe42952234c53af90b6803f02">s_scale</a> = ( <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">s_width</a> * 60 ) / ( 1000000 * <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">s_vblanks</a> );</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a>  =  <span class="keyword">new</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">Profiler</a>( 84 );</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a> =  <span class="keyword">new</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">Profiler</a>( 86 );</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a> =  <span class="keyword">new</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">Profiler</a>( 88 );</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;    </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a927ddab88037d6cd28a5292566134207">  321</a></span>&#160;    </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a>().<a class="code" href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">PopContext</a>();</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a17e2b0a6862eae3c7dad90584600a2be">Profiler::sCloseDown</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a>;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a>;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a> = NULL;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a> = NULL;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a> = NULL;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    </div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa3e9e5518d95add4b93ee73249d8a0e5">Profiler::sRender</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;{</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> &amp;&amp; <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a>)</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        <a class="code" href="../../df/d2c/class_ns_camera.html">NsCamera</a> cam;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;        cam.<a class="code" href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">orthographic</a>( 0, 0, 640, 448 );</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;        cam.<a class="code" href="../../df/d2c/class_ns_camera.html#a13f6903c21710be5a0ee123565f02400">begin</a>();</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a64876acdb8dc7f5e0545caa258a0a3da">GX::SetZMode</a>( GX_FALSE, GX_ALWAYS, GX_TRUE );</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a17e2b0a6862eae3c7dad90584600a2be">  350</a></span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a86b209369f1d51d8239e2b82ee0708af">GX::SetTexChanTevIndCull</a>( 0, 1, 1, 0, GX_CULL_NONE );</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a0bd2f208b56be392ea6b390bd39452ee">GX::SetTevOrder</a>(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP_NULL, GX_COLOR0A0, GX_TEXCOORD0, GX_TEXMAP_NULL, GX_COLOR_NULL);</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160; </div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a85ddc3d0b886c7b87663bdddf9eff415">GX::SetTevAlphaInOpSwap</a>( GX_TEVSTAGE0, GX_CA_ZERO, GX_CA_ZERO, GX_CA_ZERO, GX_CA_RASA,</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;                                               GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, GX_ENABLE, GX_TEVPREV,</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;                                               GX_TEV_SWAP0, GX_TEV_SWAP0 );</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a99c2bc41e04110c86fafc4601758dcc4">GX::SetTevColorInOp</a>( GX_TEVSTAGE0, GX_CC_ZERO, GX_CC_ZERO, GX_CC_ZERO, GX_CC_RASC,</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;                                           GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, GX_ENABLE, GX_TEVPREV );</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a1432d8ecbd6fbff67582e46a4020916c">GX::SetBlendMode</a> ( GX_BM_NONE, GX_BL_ONE, GX_BL_ONE, GX_LO_CLEAR, GX_TRUE, GX_FALSE, GX_FALSE );</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a1ac67d663b8f5655d7e767c50b522af4">GX::SetChanCtrl</a>( GX_COLOR0A0, GX_ENABLE, GX_SRC_REG, GX_SRC_REG, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE );</div>
+<div class="line"><a name="l00362"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#aa3e9e5518d95add4b93ee73249d8a0e5">  362</a></span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a1565d5475be365c0876292bc7c2c8858">GX::SetChanMatColor</a>( GX_COLOR0A0, (GXColor){255,255,255,255} );</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160; </div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;        <a class="code" href="../../d6/d63/namespace_g_x.html#a3715a59c0bf67f9de75b1cdd99570f1f">GX::SetVtxDesc</a>( 1, GX_VA_POS, GX_DIRECT );</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#endif  // __PLAT_NGC__ </span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;        <span class="keywordflow">for</span> (<a class="code" href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> = 0; <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>&lt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">s_vblanks</a>+1;<a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>++)</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        {</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;            <a class="code" href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">line</a>((<span class="keywordtype">int</span>)(<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">s_left_x</a> + <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> * <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">s_width</a> / <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">s_vblanks</a>), 370,   </div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;                 (<span class="keywordtype">int</span>)(<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">s_left_x</a> + <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> * <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">s_width</a> / <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">s_vblanks</a>), 410, 0x800080);   </div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;            </div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        }</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    </div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">render</a>();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">render</a>();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">render</a>();</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#ifdef  __PLAT_NGC__    </span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        cam.<a class="code" href="../../df/d2c/class_ns_camera.html#a30d302da5fadd15920125c71158f5cee">end</a>();</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">#endif  // __PLAT_NGC__ </span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    }</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;}</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160; </div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a1eb6e9309cec5b8b2618b41dd245635a">Profiler::sStartFrame</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    </div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160; </div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">s_active</a> = <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a>;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ^= 1;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a7cc7733bc5f0108afbeffb16b8ae76f9">s_base_time</a>[ <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">s_flip</a> ] = <a class="code" href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a>();</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">CPUProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">start_new_frame</a>();</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">VUProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">start_new_frame</a>();</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <a class="code" href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">DMAProfiler</a>-&gt;<a class="code" href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">start_new_frame</a>();</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;}</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160; </div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a62ff7ecec6582f3d5f40425c46328614">Profiler::sEndFrame</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;{</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160; </div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160; </div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a69a7b9d0b18d10d656f0d8e30252bc5b">Profiler::sEnable</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;{</div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a1eb6e9309cec5b8b2618b41dd245635a">  408</a></span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;}</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160; </div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160; </div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160; </div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a62183c521b7a5d85c792491e8024a823">Profiler::sDisable</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;{</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">s_enabled</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;}</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00421"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a62ff7ecec6582f3d5f40425c46328614">  421</a></span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="keywordtype">void</span>        <a class="code" href="../../dc/de6/namespace_sys.html#aee98e42adc07ae54816e144ddef98a72">Render_Profiler</a>()           <span class="comment">// easy function to allow it to be rendered from simpler code </span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;{</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;    <a class="code" href="../../da/d21/class_sys_1_1_profiler.html#aa3e9e5518d95add4b93ee73249d8a0e5">Profiler::sRender</a>();</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;}</div>
+<div class="line"><a name="l00428"></a><span class="lineno"><a class="line" href="../../da/d21/class_sys_1_1_profiler.html#a69a7b9d0b18d10d656f0d8e30252bc5b">  428</a></span>&#160;    </div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;} <span class="comment">// namespace Sys</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                  </div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160; </div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#endif  //      __USE_PROFILER__</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_g_x_html_a85ddc3d0b886c7b87663bdddf9eff415"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a85ddc3d0b886c7b87663bdddf9eff415">GX::SetTevAlphaInOpSwap</a></div><div class="ttdeci">void SetTevAlphaInOpSwap(GXTevStageID stage, GXTevAlphaArg a, GXTevAlphaArg b, GXTevAlphaArg c, GXTevAlphaArg d, GXTevOp op, GXTevBias bias, GXTevScale scale, GXBool clamp, GXTevRegID out_reg, GXTevSwapSel ras_sel, GXTevSwapSel tex_sel)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00553">p_gx.cpp:553</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_ad4daacf96b75867c36a04cf71d9fb6f1"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#ad4daacf96b75867c36a04cf71d9fb6f1">Sys::Profiler::s_default_color</a></div><div class="ttdeci">static uint32 s_default_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00152">Profiler.h:152</a></div></div>
+<div class="ttc" id="asys_8h_html"><div class="ttname"><a href="../../d9/d87/sys_8h.html">sys.h</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a9c45bf5bc9ba70ee2e638db015bde660"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a9c45bf5bc9ba70ee2e638db015bde660">Sys::Profiler::mp_acc_context</a></div><div class="ttdeci">SProfileContext * mp_acc_context</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00158">Profiler.h:158</a></div></div>
+<div class="ttc" id="agfxman_8h_html"><div class="ttname"><a href="../../d0/de1/gfxman_8h.html">gfxman.h</a></div></div>
+<div class="ttc" id="anamespace_sys_html_ad707d1792bf33d21240153076072c393"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#ad707d1792bf33d21240153076072c393">Sys::VUProfiler</a></div><div class="ttdeci">Profiler * VUProfiler</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00109">Profiler.cpp:109</a></div></div>
+<div class="ttc" id="ap__gx_8h_html"><div class="ttname"><a href="../../dd/df0/p__gx_8h.html">p_gx.h</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a4372807dfe04dea72c7275b5a54d49c2"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a4372807dfe04dea72c7275b5a54d49c2">Sys::Profiler::s_vblanks</a></div><div class="ttdeci">static uint s_vblanks</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00145">Profiler.h:145</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a266cfd6274e0c204a5fc84bacc9d6dc3"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a266cfd6274e0c204a5fc84bacc9d6dc3">Sys::Profiler::s_height</a></div><div class="ttdeci">static float s_height</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00147">Profiler.h:147</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a465bd1eebac4ba1e45cdb2bce604d67a"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a465bd1eebac4ba1e45cdb2bce604d67a">Sys::Profiler::PushContext</a></div><div class="ttdeci">void PushContext(uint8 r, uint8 g, uint8 b, bool acc=false)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00280">Profiler.cpp:280</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html">NsCamera</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00007">p_camera.h:7</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a62183c521b7a5d85c792491e8024a823"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a62183c521b7a5d85c792491e8024a823">Sys::Profiler::sDisable</a></div><div class="ttdeci">static void sDisable(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00436">Profiler.cpp:436</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a93ceabf9637052f54265322c9f68c88b"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a93ceabf9637052f54265322c9f68c88b">Sys::Profiler::m_context_list</a></div><div class="ttdeci">SProfileContext m_context_list[2][PROF_MAX_CONTEXTS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00124">Profiler.h:124</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a8064d5deb3dc6efcf224038afd44a0c4"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a8064d5deb3dc6efcf224038afd44a0c4">Sys::Profiler::s_width</a></div><div class="ttdeci">static float s_width</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00146">Profiler.h:146</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a7cc7733bc5f0108afbeffb16b8ae76f9"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a7cc7733bc5f0108afbeffb16b8ae76f9">Sys::Profiler::s_base_time</a></div><div class="ttdeci">static Tmr::MicroSeconds s_base_time[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00139">Profiler.h:139</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a69a7b9d0b18d10d656f0d8e30252bc5b"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a69a7b9d0b18d10d656f0d8e30252bc5b">Sys::Profiler::sEnable</a></div><div class="ttdeci">static void sEnable(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00428">Profiler.cpp:428</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a028417ca88ae657731521a2281b21f9d"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a028417ca88ae657731521a2281b21f9d">Sys::Profiler::mp_current_context_count</a></div><div class="ttdeci">int * mp_current_context_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00131">Profiler.h:131</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a54dc0f5188e2ce2817a5bd755be88111"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a54dc0f5188e2ce2817a5bd755be88111">GX::Begin</a></div><div class="ttdeci">void Begin(GXPrimitive type, GXVtxFmt vtxfmt, u16 nverts)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01146">p_gx.cpp:1146</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a1259e13ef8d26af2c316179afc51de15"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a1259e13ef8d26af2c316179afc51de15">NsCamera::orthographic</a></div><div class="ttdeci">void orthographic(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d12/p__camera_8h_source.html#l00053">p_camera.h:53</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_aa3e9e5518d95add4b93ee73249d8a0e5"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#aa3e9e5518d95add4b93ee73249d8a0e5">Sys::Profiler::sRender</a></div><div class="ttdeci">static void sRender(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00362">Profiler.cpp:362</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_aa839105678842b0a00c765f190081fa3"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#aa839105678842b0a00c765f190081fa3">Sys::Profiler::m_acc</a></div><div class="ttdeci">bool m_acc</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00155">Profiler.h:155</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_aefb9085490083b26ca81605b989de83d"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#aefb9085490083b26ca81605b989de83d">Sys::Profiler::s_active</a></div><div class="ttdeci">static bool s_active</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00142">Profiler.h:142</a></div></div>
+<div class="ttc" id="anamespace_sys_html_aee98e42adc07ae54816e144ddef98a72"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#aee98e42adc07ae54816e144ddef98a72">Sys::Render_Profiler</a></div><div class="ttdeci">void Render_Profiler()</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00446">Profiler.cpp:446</a></div></div>
+<div class="ttc" id="anamespace_sys_html_ae02cf0080f342def39ed5441c011fc7b"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#ae02cf0080f342def39ed5441c011fc7b">Sys::line</a></div><div class="ttdeci">void line(int x0, int y0, int x1, int y1, uint32 color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00168">Profiler.cpp:168</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_aa5cd2b5391872ed437ad8f2fdb460a2f"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#aa5cd2b5391872ed437ad8f2fdb460a2f">Sys::Profiler::s_left_x</a></div><div class="ttdeci">static float s_left_x</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00150">Profiler.h:150</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_acb0221df7c3c5358fa224be5562f5352"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#acb0221df7c3c5358fa224be5562f5352">Sys::Profiler::mp_current_context</a></div><div class="ttdeci">SProfileContext * mp_current_context</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00133">Profiler.h:133</a></div></div>
+<div class="ttc" id="ap__prim_8h_html"><div class="ttname"><a href="../../dd/d59/p__prim_8h.html">p_prim.h</a></div></div>
+<div class="ttc" id="astruct_sys_1_1_s_profile_context_html"><div class="ttname"><a href="../../d2/dbe/struct_sys_1_1_s_profile_context.html">Sys::SProfileContext</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00063">Profiler.h:63</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a1432d8ecbd6fbff67582e46a4020916c"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a1432d8ecbd6fbff67582e46a4020916c">GX::SetBlendMode</a></div><div class="ttdeci">void SetBlendMode(GXBlendMode type, GXBlendFactor src_factor, GXBlendFactor dst_factor, GXLogicOp op, GXBool color_update_enable, GXBool alpha_update_enable, GXBool dither_enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00969">p_gx.cpp:969</a></div></div>
+<div class="ttc" id="anamespace_sys_html"><div class="ttname"><a href="../../dc/de6/namespace_sys.html">Sys</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d04/debuggfx_8cpp_source.html#l00040">debuggfx.cpp:40</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a99c2bc41e04110c86fafc4601758dcc4"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a99c2bc41e04110c86fafc4601758dcc4">GX::SetTevColorInOp</a></div><div class="ttdeci">void SetTevColorInOp(GXTevStageID stage, GXTevColorArg a, GXTevColorArg b, GXTevColorArg c, GXTevColorArg d, GXTevOp op, GXTevBias bias, GXTevScale scale, GXBool clamp, GXTevRegID out_reg)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00587">p_gx.cpp:587</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a9281ff8a7805701d07616ee1100d3604"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a9281ff8a7805701d07616ee1100d3604">Sys::Profiler::s_enabled</a></div><div class="ttdeci">static bool s_enabled</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00141">Profiler.h:141</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a40e0da8c9e9725024d38f31c846e2f1d"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a40e0da8c9e9725024d38f31c846e2f1d">GX::End</a></div><div class="ttdeci">void End(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01157">p_gx.cpp:1157</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="astruct_sys_1_1_s_profile_context_html_a6fbd5bf9a952e4cc2e4a47284c753c93"><div class="ttname"><a href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a6fbd5bf9a952e4cc2e4a47284c753c93">Sys::SProfileContext::m_color</a></div><div class="ttdeci">uint32 m_color</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00067">Profiler.h:67</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_ae6d46be0a4d053ed502452204a6af3e9"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#ae6d46be0a4d053ed502452204a6af3e9">Sys::Profiler::m_context_stack</a></div><div class="ttdeci">SProfileContext * m_context_stack[2][PROF_MAX_LEVELS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00127">Profiler.h:127</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_aa20c52391b4d0cb6502966cbb1aa5a4d"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#aa20c52391b4d0cb6502966cbb1aa5a4d">NxPs2::EndLines2D</a></div><div class="ttdeci">void EndLines2D(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00050">line.cpp:50</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a34b0aa8f2e8bd27199be7292e7f9d5df"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a34b0aa8f2e8bd27199be7292e7f9d5df">Sys::Profiler::Profiler</a></div><div class="ttdeci">Profiler(uint line)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00119">Profiler.cpp:119</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a6251971d921454ca6bbeab5d685a8d97"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a6251971d921454ca6bbeab5d685a8d97">Sys::Profiler::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00288">Profiler.cpp:288</a></div></div>
+<div class="ttc" id="anamespace_sys_html_adc50a7605b8797036f4998b083d4ee53"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#adc50a7605b8797036f4998b083d4ee53">Sys::CPUProfiler</a></div><div class="ttdeci">Profiler * CPUProfiler</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00108">Profiler.cpp:108</a></div></div>
+<div class="ttc" id="a_profiler_8h_html"><div class="ttname"><a href="../../d6/df1/_profiler_8h.html">Profiler.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a91ad9478d81a7aaf2593e8d9c3d06a14"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a91ad9478d81a7aaf2593e8d9c3d06a14">uint</a></div><div class="ttdeci">unsigned int uint</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00133">Defines.h:133</a></div></div>
+<div class="ttc" id="astruct_sys_1_1_s_profile_context_html_acd70341e622ecb7c7a8b1f6a101785c7"><div class="ttname"><a href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#acd70341e622ecb7c7a8b1f6a101785c7">Sys::SProfileContext::m_depth</a></div><div class="ttdeci">int m_depth</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00068">Profiler.h:68</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a829a1f009276373995505c888131dc16"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a829a1f009276373995505c888131dc16">Sys::Profiler::m_acc_first</a></div><div class="ttdeci">bool m_acc_first</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00156">Profiler.h:156</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_ab97b55c0761495dde024c54c3730c41b"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#ab97b55c0761495dde024c54c3730c41b">NxPs2::BeginLines2D</a></div><div class="ttdeci">void BeginLines2D(uint32 rgba)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00009">line.cpp:9</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a8c00cc9f657e63977c332e16b264b7e5"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a8c00cc9f657e63977c332e16b264b7e5">Sys::Profiler::m_acc_time</a></div><div class="ttdeci">Tmr::MicroSeconds m_acc_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00157">Profiler.h:157</a></div></div>
+<div class="ttc" id="atimer_8h_html"><div class="ttname"><a href="../../d5/dd0/timer_8h.html">timer.h</a></div></div>
+<div class="ttc" id="anamespace_sys_html_adb97c1bf7a83d86c9513b07342cfad67"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#adb97c1bf7a83d86c9513b07342cfad67">Sys::DMAProfiler</a></div><div class="ttdeci">Profiler * DMAProfiler</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00110">Profiler.cpp:110</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a64876acdb8dc7f5e0545caa258a0a3da"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a64876acdb8dc7f5e0545caa258a0a3da">GX::SetZMode</a></div><div class="ttdeci">void SetZMode(GXBool compare_enable, GXCompare func, GXBool update_enable)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01494">p_gx.cpp:1494</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a3aefd91781b7f41d35e6df6a32d379d0"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a3aefd91781b7f41d35e6df6a32d379d0">Mem::Manager::sHandle</a></div><div class="ttdeci">static Manager &amp; sHandle(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d76/memman_8h_source.html#l00340">memman.h:340</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a1eb6e9309cec5b8b2618b41dd245635a"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a1eb6e9309cec5b8b2618b41dd245635a">Sys::Profiler::sStartFrame</a></div><div class="ttdeci">static void sStartFrame(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00408">Profiler.cpp:408</a></div></div>
+<div class="ttc" id="ap__camera_8h_html"><div class="ttname"><a href="../../d9/d12/p__camera_8h.html">p_camera.h</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a3715a59c0bf67f9de75b1cdd99570f1f"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a3715a59c0bf67f9de75b1cdd99570f1f">GX::SetVtxDesc</a></div><div class="ttdeci">void SetVtxDesc(int items,...)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01504">p_gx.cpp:1504</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a927ddab88037d6cd28a5292566134207"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a927ddab88037d6cd28a5292566134207">Sys::Profiler::sSetUp</a></div><div class="ttdeci">static void sSetUp(uint vblanks)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00321">Profiler.cpp:321</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a30d302da5fadd15920125c71158f5cee"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a30d302da5fadd15920125c71158f5cee">NsCamera::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00270">p_camera.cpp:270</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a6163e1388aae2a02f767bcccbdbd6aa4"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a6163e1388aae2a02f767bcccbdbd6aa4">Tmr::GetTimeInUSeconds</a></div><div class="ttdeci">MicroSeconds GetTimeInUSeconds(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/d41/ngc_2p__timer_8cpp_source.html#l00487">p_timer.cpp:487</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a1ac67d663b8f5655d7e767c50b522af4"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a1ac67d663b8f5655d7e767c50b522af4">GX::SetChanCtrl</a></div><div class="ttdeci">void SetChanCtrl(GXChannelID chan, GXBool enable, GXColorSrc amb_src, GXColorSrc mat_src, u32 light_mask, GXDiffuseFn diff_fn, GXAttnFn attn_fn)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00483">p_gx.cpp:483</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_afe546e419ec4c01d95d3a52212efd72c"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#afe546e419ec4c01d95d3a52212efd72c">Sys::Profiler::start_new_frame</a></div><div class="ttdeci">void start_new_frame(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00202">Profiler.cpp:202</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a8c4418bda07a6df01b7edda8358b8a82"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a8c4418bda07a6df01b7edda8358b8a82">Sys::Profiler::m_context_count</a></div><div class="ttdeci">int m_context_count[2]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00130">Profiler.h:130</a></div></div>
+<div class="ttc" id="anamespace_sys_html_a5831c57b730e68c8fa6106a958f72051"><div class="ttname"><a href="../../dc/de6/namespace_sys.html#a5831c57b730e68c8fa6106a958f72051">Sys::box</a></div><div class="ttdeci">void box(int x0, int y0, int x1, int y1, uint32 color)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00133">Profiler.cpp:133</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a761b8c76283dc7e6f226125393e9b7bd"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a761b8c76283dc7e6f226125393e9b7bd">Sys::Profiler::~Profiler</a></div><div class="ttdeci">~Profiler(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00127">Profiler.cpp:127</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a17e2b0a6862eae3c7dad90584600a2be"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a17e2b0a6862eae3c7dad90584600a2be">Sys::Profiler::sCloseDown</a></div><div class="ttdeci">static void sCloseDown(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00350">Profiler.cpp:350</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a0bd2f208b56be392ea6b390bd39452ee"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a0bd2f208b56be392ea6b390bd39452ee">GX::SetTevOrder</a></div><div class="ttdeci">void SetTevOrder(GXTevStageID evenStage, GXTexCoordID coord0, GXTexMapID map0, GXChannelID color0, GXTexCoordID coord1, GXTexMapID map1, GXChannelID color1)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00511">p_gx.cpp:511</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_aaf8e36abc36eecabe46bf2582035192a"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#aaf8e36abc36eecabe46bf2582035192a">Mem::Manager::PushContext</a></div><div class="ttdeci">void PushContext(Allocator *alloc)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00071">win32functions.cpp:71</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_ab1fc93692aa8c7d2eeb8b78879122254"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#ab1fc93692aa8c7d2eeb8b78879122254">Sys::Profiler::s_flip</a></div><div class="ttdeci">static int s_flip</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00140">Profiler.h:140</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_ab8cc96716da738d965eef63ab4eba246"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#ab8cc96716da738d965eef63ab4eba246">GX::SetChanAmbColor</a></div><div class="ttdeci">void SetChanAmbColor(GXChannelID chan, GXColor color)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01012">p_gx.cpp:1012</a></div></div>
+<div class="ttc" id="anamespace_tmr_html_a32827e45d99f7b1e8cb130d60fc82fcb"><div class="ttname"><a href="../../d1/d0d/namespace_tmr.html#a32827e45d99f7b1e8cb130d60fc82fcb">Tmr::MicroSeconds</a></div><div class="ttdeci">uint32 MicroSeconds</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/dd0/timer_8h_source.html#l00063">timer.h:63</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a46564a0e9d3a47afa60222d6d300b01d"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a46564a0e9d3a47afa60222d6d300b01d">Sys::Profiler::m_top_y</a></div><div class="ttdeci">float m_top_y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00137">Profiler.h:137</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a264d82751a1a9359ef64fb52966502c5"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a264d82751a1a9359ef64fb52966502c5">Sys::Profiler::m_context_stack_depth</a></div><div class="ttdeci">int m_context_stack_depth</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00134">Profiler.h:134</a></div></div>
+<div class="ttc" id="aclass_ns_camera_html_a13f6903c21710be5a0ee123565f02400"><div class="ttname"><a href="../../df/d2c/class_ns_camera.html#a13f6903c21710be5a0ee123565f02400">NsCamera::begin</a></div><div class="ttdeci">void begin(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/db2/p__camera_8cpp_source.html#l00249">p_camera.cpp:249</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a948da085f7ca4a29baf4510041ca26b5"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a948da085f7ca4a29baf4510041ca26b5">GX::Position3f32</a></div><div class="ttdeci">void Position3f32(f32 x, f32 y, f32 z)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01164">p_gx.cpp:1164</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a1565d5475be365c0876292bc7c2c8858"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a1565d5475be365c0876292bc7c2c8858">GX::SetChanMatColor</a></div><div class="ttdeci">void SetChanMatColor(GXChannelID chan, GXColor color)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l01025">p_gx.cpp:1025</a></div></div>
+<div class="ttc" id="aclass_mem_1_1_manager_html_a7c4cba14870f002aee0243e16114f443"><div class="ttname"><a href="../../d2/d0a/class_mem_1_1_manager.html#a7c4cba14870f002aee0243e16114f443">Mem::Manager::PopContext</a></div><div class="ttdeci">void PopContext(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dda/win32functions_8cpp_source.html#l00075">win32functions.cpp:75</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a6a17d6914fc4d83136bd326e196a9877"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">Nx::x</a></div><div class="ttdeci">static Mth::Vector x</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01913">CollTriData.cpp:1913</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_ab996ec3e6b75a11ad28f398f66407db2"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#ab996ec3e6b75a11ad28f398f66407db2">Sys::Profiler::render</a></div><div class="ttdeci">void render(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00216">Profiler.cpp:216</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="anamespace_g_x_html_a86b209369f1d51d8239e2b82ee0708af"><div class="ttname"><a href="../../d6/d63/namespace_g_x.html#a86b209369f1d51d8239e2b82ee0708af">GX::SetTexChanTevIndCull</a></div><div class="ttdeci">void SetTexChanTevIndCull(u8 nTexGens, u8 nChans, u8 nTevs, u8 nInds, GXCullMode cm)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/dc7/p__gx_8cpp_source.html#l00995">p_gx.cpp:995</a></div></div>
+<div class="ttc" id="anamespace_nx_ps2_html_a56c4ce6f6a8d961e40400f27b721b654"><div class="ttname"><a href="../../d8/d79/namespace_nx_ps2.html#a56c4ce6f6a8d961e40400f27b721b654">NxPs2::DrawLine2D</a></div><div class="ttdeci">void DrawLine2D(float x0, float y0, float z0, float x1, float y1, float z1)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d5c/_n_g_c_2_n_x_2line_8cpp_source.html#l00032">line.cpp:32</a></div></div>
+<div class="ttc" id="astruct_sys_1_1_s_profile_context_html_a7fdf4bea4a8c7cea8f464ef29a131226"><div class="ttname"><a href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a7fdf4bea4a8c7cea8f464ef29a131226">Sys::SProfileContext::m_end_time</a></div><div class="ttdeci">Tmr::MicroSeconds m_end_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00070">Profiler.h:70</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_acf129d9dc2476470e0579b5b38527cf2"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#acf129d9dc2476470e0579b5b38527cf2">Sys::Profiler::mp_current_context_list</a></div><div class="ttdeci">SProfileContext * mp_current_context_list</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00125">Profiler.h:125</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_ae62e4651b5c58b9ab04d29a349233e60"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#ae62e4651b5c58b9ab04d29a349233e60">Sys::Profiler::m_next_context</a></div><div class="ttdeci">int m_next_context</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00135">Profiler.h:135</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a1d1f74d2f939893820a6d967037ae7e3"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a1d1f74d2f939893820a6d967037ae7e3">Sys::Profiler::mpp_current_context_stack</a></div><div class="ttdeci">SProfileContext ** mpp_current_context_stack</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00128">Profiler.h:128</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a62ff7ecec6582f3d5f40425c46328614"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a62ff7ecec6582f3d5f40425c46328614">Sys::Profiler::sEndFrame</a></div><div class="ttdeci">static void sEndFrame(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d1/d42/_profiler_8cpp_source.html#l00421">Profiler.cpp:421</a></div></div>
+<div class="ttc" id="aclass_sys_1_1_profiler_html_a42f131fbe42952234c53af90b6803f02"><div class="ttname"><a href="../../da/d21/class_sys_1_1_profiler.html#a42f131fbe42952234c53af90b6803f02">Sys::Profiler::s_scale</a></div><div class="ttdeci">static float s_scale</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00148">Profiler.h:148</a></div></div>
+<div class="ttc" id="astruct_sys_1_1_s_profile_context_html_a5f261fa0ee7367f22b62d98bc0ac6829"><div class="ttname"><a href="../../d2/dbe/struct_sys_1_1_s_profile_context.html#a5f261fa0ee7367f22b62d98bc0ac6829">Sys::SProfileContext::m_start_time</a></div><div class="ttdeci">Tmr::MicroSeconds m_start_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/df1/_profiler_8h_source.html#l00069">Profiler.h:69</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_220d2bd384b446346a1cdcf02b1b2295.html">sys</a></li><li class="navelem"><a class="el" href="../../d1/d42/_profiler_8cpp.html">Profiler.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:38. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

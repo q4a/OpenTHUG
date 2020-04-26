@@ -1,0 +1,306 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/sk/Objects/navigation.h</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d4/d9d/navigation_8h_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">navigation.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d4/d9d/navigation_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// navigation.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#ifndef __OBJECTS_NAVIGATION_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define __OBJECTS_NAVIGATION_H</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;                        </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../df/db1/math_8h.html">core/math.h</a>&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d7/d2f/nxflags_8h.html">gfx/nxflags.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                           </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d54/namespace_script.html">Script</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">class   </span>CArray;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">class   </span>CStruct;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define MAX_NAV_LINKS 12</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d2/d10/namespace_obj.html">Obj</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">class   </span>CNavManager;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//class CWalkComponent;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">//struct    SHangNavData;</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//struct    SLadderNavData;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//enum ENavNodeFlag</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//{ </span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//  LIP_OVERRIDE,       // always do a lip trick on this</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">//  DEFAULT_LINE,</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//  ACTIVE,</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//  CLIMBING,</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">//  LADDER</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">//};</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">// Forward declaration.</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">class </span>CNavNode;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html">   45</a></span>&#160;<span class="keyword">struct </span><a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html">sAStarNode</a></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637">   47</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637">EAStarNodeFlag</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    {</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a45387d720bbd5e3695bc4c478c0479f8">   49</a></span>&#160;        <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a45387d720bbd5e3695bc4c478c0479f8">IN_OPEN</a>     = 0x01,</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a3cf06c6da8bbc128cedff8956cdae520">   50</a></span>&#160;        <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a3cf06c6da8bbc128cedff8956cdae520">IN_CLOSED</a>   = 0x02</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    };</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a8724e628c779a32d7d45fffeea2e7371">   53</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a>          <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a8724e628c779a32d7d45fffeea2e7371">m_flags</a>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae294afbc6a50ac64d3905e58c1b64255">   54</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae294afbc6a50ac64d3905e58c1b64255">m_cost_from_start</a>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ac7253700fdf523d388bd0e9d192d7235">   55</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ac7253700fdf523d388bd0e9d192d7235">m_cost_to_goal</a>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a0778ac8252a57e1d2f67362bad442b1f">   56</a></span>&#160;    <span class="keywordtype">float</span>           <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a0778ac8252a57e1d2f67362bad442b1f">m_total_cost</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a23c71b0f1c68d1ec6e2b9cb20dc0a911">   57</a></span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*       <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a23c71b0f1c68d1ec6e2b9cb20dc0a911">mp_parent</a>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a651db8f36658f069d26bb915540fd038">   60</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a651db8f36658f069d26bb915540fd038">InOpen</a>( <span class="keywordtype">void</span> )      { <span class="keywordflow">return</span> <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a8724e628c779a32d7d45fffeea2e7371">m_flags</a> &amp; <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a45387d720bbd5e3695bc4c478c0479f8">IN_OPEN</a>; }</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ad34d3d1cf37e74f50d589c9beb528bc5">   61</a></span>&#160;    <span class="keywordtype">bool</span>            <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ad34d3d1cf37e74f50d589c9beb528bc5">InClosed</a>( <span class="keywordtype">void</span> )    { <span class="keywordflow">return</span> <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a8724e628c779a32d7d45fffeea2e7371">m_flags</a> &amp; <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a3cf06c6da8bbc128cedff8956cdae520">IN_CLOSED</a>; }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span>            <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a06b6c6c3d6a7d158ac01c8a7128c5d94">Reset</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">   71</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a4e1c8bb6837d31dac3679922c6e3f50d">   73</a></span>&#160;    <span class="keyword">friend</span> <span class="keyword">class        </span><a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html">CNavManager</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">public</span>:                       </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    </div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a79c6c1f6d23611e7a554b03a35632fe7">   77</a></span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a>        <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a79c6c1f6d23611e7a554b03a35632fe7">GetNode</a>()<span class="keyword"> const             </span>{ <span class="keywordflow">return</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a703051f29c790e0d43ae49716d504a88">m_node</a>; }</div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a233bea1ee6c7b5ce3678fdfeaf683bdd">   78</a></span>&#160;    <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html">sAStarNode</a>*         <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a233bea1ee6c7b5ce3678fdfeaf683bdd">GetAStarNode</a>( <span class="keywordtype">void</span> )        { <span class="keywordflow">return</span> &amp;<a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a2a6a72758b6af348feaede926cbb32d4">m_astar_node</a>; }</div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aba9197fbf158ed2680f8ab74747321fb">   79</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp;        <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aba9197fbf158ed2680f8ab74747321fb">GetPos</a>( <span class="keywordtype">void</span> )              { <span class="keywordflow">return</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a6e8805874c34dbf8cbd904e44a7d3781">m_pos</a>; }</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aee6be2f8f48cf7f7e154fa9c1ee97e0c">   80</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aee6be2f8f48cf7f7e154fa9c1ee97e0c">GetNumLinks</a>( <span class="keywordtype">void</span> )         { <span class="keywordflow">return</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a69a97aed9a00965d9ced6ef98792d82d">m_num_links</a>; }</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a1d81a70026ab00ce350ab6b829926902">   81</a></span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*           <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a1d81a70026ab00ce350ab6b829926902">GetLink</a>( <span class="keywordtype">int</span> l )            { <span class="keywordflow">return</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a24599bfe397fa07e2b443996497bac45">mp_links</a>[l]; }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a6e8805874c34dbf8cbd904e44a7d3781">   85</a></span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>         <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a6e8805874c34dbf8cbd904e44a7d3781">m_pos</a>;                      <span class="comment">// Position of the node.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a24599bfe397fa07e2b443996497bac45">   86</a></span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*           <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a24599bfe397fa07e2b443996497bac45">mp_links</a>[MAX_NAV_LINKS];</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a69a97aed9a00965d9ced6ef98792d82d">   87</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a>              <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a69a97aed9a00965d9ced6ef98792d82d">m_num_links</a>;</div>
+<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a703051f29c790e0d43ae49716d504a88">   88</a></span>&#160;    <a class="code" href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a>              <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a703051f29c790e0d43ae49716d504a88">m_node</a>;                     <span class="comment">// Number of the node in the trigger array.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a2a6a72758b6af348feaede926cbb32d4">   89</a></span>&#160;    <a class="code" href="../../d8/d31/struct_obj_1_1s_a_star_node.html">sAStarNode</a>          <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a2a6a72758b6af348feaede926cbb32d4">m_astar_node</a>;               <span class="comment">// Used during the A* pathfinding routine.</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp;  <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aba9197fbf158ed2680f8ab74747321fb">GetPos</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html">  101</a></span>&#160;<span class="keyword">class </span><a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html">CNavManager</a> : <span class="keyword">public</span> <a class="code" href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                        <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a085c16ab7a4b65301a2d27b1714e35fe">CNavManager</a>();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                        <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a7a3a378ee07b7485557bf21d6650a27f">~CNavManager</a>(); </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a9f7472e1bf301574df18c9c3a1f459cc">Cleanup</a>();</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                                     </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a1213508c3ceaf31ae4b01449e296f3a7">AddNavsFromNodeArray</a>( <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a> * p_node_array );</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a7ec846b8cc551105f57b085b856846d9">AddNavNode</a>( <span class="keywordtype">int</span> node_number, <a class="code" href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a> *p_node_struct );</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#ad4ec099ff9901effa39d3e73a22162af">  113</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#ad4ec099ff9901effa39d3e73a22162af">GetNumNodes</a>()                                   { <span class="keywordflow">return</span> <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af1ed0990945168e86ca5cdb6b87f48f1">m_num_nodes</a>; }</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aceabd4c2ba99bbec8fa3e542c01ea7fc">  114</a></span>&#160;    <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a>*     <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aceabd4c2ba99bbec8fa3e542c01ea7fc">GetNodeArray</a>()                                  { <span class="keywordflow">return</span> <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4c9d0dd2bc9687804a8d8308919c7ee4">mp_node_array</a>; }</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aeed46051dbd32b20bbfef47237c5bee3">  115</a></span>&#160;    <span class="keywordtype">void</span>                <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aeed46051dbd32b20bbfef47237c5bee3">SetNodeArray</a>( <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a>* p_nodeArray )     { <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4c9d0dd2bc9687804a8d8308919c7ee4">mp_node_array</a> = p_nodeArray; }</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#afd7b5b49603a5844c1097bdc16da10ee">  117</a></span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*           <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#afd7b5b49603a5844c1097bdc16da10ee">GetNavNodeByIndex</a>( <span class="keywordtype">int</span> index )                  { <span class="keywordflow">return</span> <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4f8efdfc04b528815f25bd0f05a31820">mp_nodes</a> + index; }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*           <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#ae4193423facb60d639113224f008f79b">GetNavNodeByNodeNumber</a>( <span class="keywordtype">int</span> node_num );</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>         <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af660e0410874a31e226016af62123817">GetPos</a>( <span class="keyword">const</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a> *p_node ) <span class="keyword">const</span>;  </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4f8efdfc04b528815f25bd0f05a31820">  124</a></span>&#160;    <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>*           <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4f8efdfc04b528815f25bd0f05a31820">mp_nodes</a>;               <span class="comment">// pointer to array of nodes</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4c9d0dd2bc9687804a8d8308919c7ee4">  125</a></span>&#160;    <a class="code" href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a>*     <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4c9d0dd2bc9687804a8d8308919c7ee4">mp_node_array</a>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af1ed0990945168e86ca5cdb6b87f48f1">  126</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af1ed0990945168e86ca5cdb6b87f48f1">m_num_nodes</a>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a746ab41863732f4c8dca9c9a7c554a07">  127</a></span>&#160;    <span class="keywordtype">int</span>                 <a class="code" href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a746ab41863732f4c8dca9c9a7c554a07">m_current_node</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html">CNavNode</a>* <a class="code" href="../../d2/d10/namespace_obj.html#a3430ebf12318e73c4b34efabd5307370">CalculateNodePath</a>( <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> pos, <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> target_pos );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a>&amp; <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aba9197fbf158ed2680f8ab74747321fb">CNavNode::GetPos</a>()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a6e8805874c34dbf8cbd904e44a7d3781">m_pos</a>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;}</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;} </div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif          // #ifndef __OBJECTS_RAIL_H</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;            </div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ae2f2382780a29a114a1d97d56e9be637a3cf06c6da8bbc128cedff8956cdae520"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a3cf06c6da8bbc128cedff8956cdae520">Obj::sAStarNode::IN_CLOSED</a></div><div class="ttdeci">@ IN_CLOSED</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00050">navigation.h:50</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a69a97aed9a00965d9ced6ef98792d82d"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a69a97aed9a00965d9ced6ef98792d82d">Obj::CNavNode::m_num_links</a></div><div class="ttdeci">sint16 m_num_links</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00087">navigation.h:87</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_a06b6c6c3d6a7d158ac01c8a7128c5d94"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a06b6c6c3d6a7d158ac01c8a7128c5d94">Obj::sAStarNode::Reset</a></div><div class="ttdeci">void Reset()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00091">navigation.cpp:91</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a24599bfe397fa07e2b443996497bac45"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a24599bfe397fa07e2b443996497bac45">Obj::CNavNode::mp_links</a></div><div class="ttdeci">CNavNode * mp_links[MAX_NAV_LINKS]</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00086">navigation.h:86</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a085c16ab7a4b65301a2d27b1714e35fe"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a085c16ab7a4b65301a2d27b1714e35fe">Obj::CNavManager::CNavManager</a></div><div class="ttdeci">CNavManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00556">navigation.cpp:556</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html">Obj::CNavNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00071">navigation.h:71</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_a651db8f36658f069d26bb915540fd038"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a651db8f36658f069d26bb915540fd038">Obj::sAStarNode::InOpen</a></div><div class="ttdeci">bool InOpen(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00060">navigation.h:60</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a7ec846b8cc551105f57b085b856846d9"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a7ec846b8cc551105f57b085b856846d9">Obj::CNavManager::AddNavNode</a></div><div class="ttdeci">void AddNavNode(int node_number, Script::CStruct *p_node_struct)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00595">navigation.cpp:595</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_a23c71b0f1c68d1ec6e2b9cb20dc0a911"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a23c71b0f1c68d1ec6e2b9cb20dc0a911">Obj::sAStarNode::mp_parent</a></div><div class="ttdeci">CNavNode * mp_parent</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00057">navigation.h:57</a></div></div>
+<div class="ttc" id="anxflags_8h_html"><div class="ttname"><a href="../../d7/d2f/nxflags_8h.html">nxflags.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a79c6c1f6d23611e7a554b03a35632fe7"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a79c6c1f6d23611e7a554b03a35632fe7">Obj::CNavNode::GetNode</a></div><div class="ttdeci">const sint16 GetNode() const</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00077">navigation.h:77</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_ae4193423facb60d639113224f008f79b"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#ae4193423facb60d639113224f008f79b">Obj::CNavManager::GetNavNodeByNodeNumber</a></div><div class="ttdeci">CNavNode * GetNavNodeByNodeNumber(int node_num)</div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a9f7472e1bf301574df18c9c3a1f459cc"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a9f7472e1bf301574df18c9c3a1f459cc">Obj::CNavManager::Cleanup</a></div><div class="ttdeci">void Cleanup()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00580">navigation.cpp:580</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a703051f29c790e0d43ae49716d504a88"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a703051f29c790e0d43ae49716d504a88">Obj::CNavNode::m_node</a></div><div class="ttdeci">sint16 m_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00088">navigation.h:88</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_a8724e628c779a32d7d45fffeea2e7371"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a8724e628c779a32d7d45fffeea2e7371">Obj::sAStarNode::m_flags</a></div><div class="ttdeci">uint32 m_flags</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00053">navigation.h:53</a></div></div>
+<div class="ttc" id="amath_8h_html"><div class="ttname"><a href="../../df/db1/math_8h.html">math.h</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a4c9d0dd2bc9687804a8d8308919c7ee4"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4c9d0dd2bc9687804a8d8308919c7ee4">Obj::CNavManager::mp_node_array</a></div><div class="ttdeci">Script::CArray * mp_node_array</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00125">navigation.h:125</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_struct_html"><div class="ttname"><a href="../../d2/df7/class_script_1_1_c_struct.html">Script::CStruct</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/dec/struct_8h_source.html#l00052">struct.h:52</a></div></div>
+<div class="ttc" id="aclass_spt_1_1_class_html"><div class="ttname"><a href="../../d3/dee/class_spt_1_1_class.html">Spt::Class</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/de3/class_8h_source.html#l00043">class.h:43</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_aba9197fbf158ed2680f8ab74747321fb"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aba9197fbf158ed2680f8ab74747321fb">Obj::CNavNode::GetPos</a></div><div class="ttdeci">Mth::Vector &amp; GetPos(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00079">navigation.h:79</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ae2f2382780a29a114a1d97d56e9be637a45387d720bbd5e3695bc4c478c0479f8"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637a45387d720bbd5e3695bc4c478c0479f8">Obj::sAStarNode::IN_OPEN</a></div><div class="ttdeci">@ IN_OPEN</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00049">navigation.h:49</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a2a6a72758b6af348feaede926cbb32d4"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a2a6a72758b6af348feaede926cbb32d4">Obj::CNavNode::m_astar_node</a></div><div class="ttdeci">sAStarNode m_astar_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00089">navigation.h:89</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ac7253700fdf523d388bd0e9d192d7235"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ac7253700fdf523d388bd0e9d192d7235">Obj::sAStarNode::m_cost_to_goal</a></div><div class="ttdeci">float m_cost_to_goal</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00055">navigation.h:55</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a746ab41863732f4c8dca9c9a7c554a07"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a746ab41863732f4c8dca9c9a7c554a07">Obj::CNavManager::m_current_node</a></div><div class="ttdeci">int m_current_node</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00127">navigation.h:127</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_aeed46051dbd32b20bbfef47237c5bee3"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aeed46051dbd32b20bbfef47237c5bee3">Obj::CNavManager::SetNodeArray</a></div><div class="ttdeci">void SetNodeArray(Script::CArray *p_nodeArray)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00115">navigation.h:115</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a1d81a70026ab00ce350ab6b829926902"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a1d81a70026ab00ce350ab6b829926902">Obj::CNavNode::GetLink</a></div><div class="ttdeci">CNavNode * GetLink(int l)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00081">navigation.h:81</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_af660e0410874a31e226016af62123817"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af660e0410874a31e226016af62123817">Obj::CNavManager::GetPos</a></div><div class="ttdeci">Mth::Vector GetPos(const CNavNode *p_node) const</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00747">navigation.cpp:747</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_afd7b5b49603a5844c1097bdc16da10ee"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#afd7b5b49603a5844c1097bdc16da10ee">Obj::CNavManager::GetNavNodeByIndex</a></div><div class="ttdeci">CNavNode * GetNavNodeByIndex(int index)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00117">navigation.h:117</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a6e8805874c34dbf8cbd904e44a7d3781"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a6e8805874c34dbf8cbd904e44a7d3781">Obj::CNavNode::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00085">navigation.h:85</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html">Obj::sAStarNode</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00045">navigation.h:45</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_aceabd4c2ba99bbec8fa3e542c01ea7fc"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#aceabd4c2ba99bbec8fa3e542c01ea7fc">Obj::CNavManager::GetNodeArray</a></div><div class="ttdeci">Script::CArray * GetNodeArray()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00114">navigation.h:114</a></div></div>
+<div class="ttc" id="anamespace_obj_html"><div class="ttname"><a href="../../d2/d10/namespace_obj.html">Obj</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d87/_collision_8h_source.html#l00042">Collision.h:42</a></div></div>
+<div class="ttc" id="anamespace_obj_html_a3430ebf12318e73c4b34efabd5307370"><div class="ttname"><a href="../../d2/d10/namespace_obj.html#a3430ebf12318e73c4b34efabd5307370">Obj::CalculateNodePath</a></div><div class="ttdeci">CNavNode * CalculateNodePath(Mth::Vector pos, Mth::Vector target_pos)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00227">navigation.cpp:227</a></div></div>
+<div class="ttc" id="aclass_script_1_1_c_array_html"><div class="ttname"><a href="../../d0/d0b/class_script_1_1_c_array.html">Script::CArray</a></div><div class="ttdef"><b>Definition:</b> <a href="../../db/d63/array_8h_source.html#l00024">array.h:24</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ae294afbc6a50ac64d3905e58c1b64255"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae294afbc6a50ac64d3905e58c1b64255">Obj::sAStarNode::m_cost_from_start</a></div><div class="ttdeci">float m_cost_from_start</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00054">navigation.h:54</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a1213508c3ceaf31ae4b01449e296f3a7"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a1213508c3ceaf31ae4b01449e296f3a7">Obj::CNavManager::AddNavsFromNodeArray</a></div><div class="ttdeci">void AddNavsFromNodeArray(Script::CArray *p_node_array)</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00644">navigation.cpp:644</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ae2f2382780a29a114a1d97d56e9be637"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ae2f2382780a29a114a1d97d56e9be637">Obj::sAStarNode::EAStarNodeFlag</a></div><div class="ttdeci">EAStarNodeFlag</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00047">navigation.h:47</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_aee6be2f8f48cf7f7e154fa9c1ee97e0c"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#aee6be2f8f48cf7f7e154fa9c1ee97e0c">Obj::CNavNode::GetNumLinks</a></div><div class="ttdeci">int GetNumLinks(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00080">navigation.h:80</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_ad4ec099ff9901effa39d3e73a22162af"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#ad4ec099ff9901effa39d3e73a22162af">Obj::CNavManager::GetNumNodes</a></div><div class="ttdeci">int GetNumNodes()</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00113">navigation.h:113</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_node_html_a233bea1ee6c7b5ce3678fdfeaf683bdd"><div class="ttname"><a href="../../d0/d6d/class_obj_1_1_c_nav_node.html#a233bea1ee6c7b5ce3678fdfeaf683bdd">Obj::CNavNode::GetAStarNode</a></div><div class="ttdeci">sAStarNode * GetAStarNode(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00078">navigation.h:78</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_af1ed0990945168e86ca5cdb6b87f48f1"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#af1ed0990945168e86ca5cdb6b87f48f1">Obj::CNavManager::m_num_nodes</a></div><div class="ttdeci">int m_num_nodes</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00126">navigation.h:126</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_ad34d3d1cf37e74f50d589c9beb528bc5"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#ad34d3d1cf37e74f50d589c9beb528bc5">Obj::sAStarNode::InClosed</a></div><div class="ttdeci">bool InClosed(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00061">navigation.h:61</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a7a3a378ee07b7485557bf21d6650a27f"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a7a3a378ee07b7485557bf21d6650a27f">Obj::CNavManager::~CNavManager</a></div><div class="ttdeci">~CNavManager()</div><div class="ttdef"><b>Definition:</b> <a href="../../da/d7b/navigation_8cpp_source.html#l00569">navigation.cpp:569</a></div></div>
+<div class="ttc" id="astruct_obj_1_1s_a_star_node_html_a0778ac8252a57e1d2f67362bad442b1f"><div class="ttname"><a href="../../d8/d31/struct_obj_1_1s_a_star_node.html#a0778ac8252a57e1d2f67362bad442b1f">Obj::sAStarNode::m_total_cost</a></div><div class="ttdeci">float m_total_cost</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00056">navigation.h:56</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a74df79fde3c518e55b29ce6360a9c76e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a74df79fde3c518e55b29ce6360a9c76e">sint16</a></div><div class="ttdeci">signed short sint16</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00139">Defines.h:139</a></div></div>
+<div class="ttc" id="anamespace_script_html"><div class="ttname"><a href="../../d1/d54/namespace_script.html">Script</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d8a/_string_hash_table_8h_source.html#l00035">StringHashTable.h:35</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html">Obj::CNavManager</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00101">navigation.h:101</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_nav_manager_html_a4f8efdfc04b528815f25bd0f05a31820"><div class="ttname"><a href="../../da/d6a/class_obj_1_1_c_nav_manager.html#a4f8efdfc04b528815f25bd0f05a31820">Obj::CNavManager::mp_nodes</a></div><div class="ttdeci">CNavNode * mp_nodes</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d9d/navigation_8h_source.html#l00124">navigation.h:124</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_cb119f6858e5de5e037b1f81563a60c1.html">sk</a></li><li class="navelem"><a class="el" href="../../dir_2ef9f15df9e83254ed9036c34929627c.html">Objects</a></li><li class="navelem"><a class="el" href="../../d4/d9d/navigation_8h.html">navigation.h</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:34. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>

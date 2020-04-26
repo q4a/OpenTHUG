@@ -1,0 +1,509 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>OpenTHUG: Исходный файл C:/git/thug/src/gfx/XBox/p_NxParticleShaded.cpp</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">OpenTHUG
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">OpenTHUG: let&#39;s port THUG on Linux</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "../../search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('../../',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html','../../'); initResizable(); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">p_NxParticleShaded.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="../../d8/de2/_defines_8h.html">core/defines.h</a>&gt;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;gfx/xbox/nx/render.h&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;gfx/xbox/p_NxParticleShaded.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">extern</span> DWORD <a class="code" href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp.html#a98586099815b492e44f8fb336d9a1ebd">PixelShader0</a>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span><a class="code" href="../../d1/d06/namespace_nx.html">Nx</a></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;{</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a31ce4c9eda4d1f0a220e65baa0214c00">   15</a></span>&#160;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a31ce4c9eda4d1f0a220e65baa0214c00">CXboxParticleShaded::CXboxParticleShaded</a>()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a35903e86c955105525dfebf28652c417">   25</a></span>&#160;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a31ce4c9eda4d1f0a220e65baa0214c00">CXboxParticleShaded::CXboxParticleShaded</a>( <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> checksum, <span class="keywordtype">int</span> max_particles, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> texture_checksum, <a class="code" href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a> blendmode_checksum, <span class="keywordtype">int</span> fix )</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#ae4d487cc395b5ae6c5a568d351c29f71">m_checksum</a>      = checksum;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a31fb6553e6fe42388745dc2ff041f384">m_max_particles</a> = max_particles;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a9b1f233d0962fbaf563c53cecdb08239">m_num_particles</a> = 0;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a>      = -1.0f;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7ce5dc2bf60e932b08dd6363d9a568f3">mp_particle_array</a> = <span class="keyword">new</span> <a class="code" href="../../d8/d0a/class_nx_1_1_c_particle_entry.html">CParticleEntry</a>[max_particles];</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">// Allocate vertex buffer.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>     = <span class="keyword">new</span> <span class="keywordtype">float</span>[max_particles * 3];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Create the engine representation.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8f6da5b8ddced9a2d473a55487d79901">mp_engine_particle</a> = <span class="keyword">new</span> <a class="code" href="../../d0/d3a/struct_nx_xbox_1_1s_particle_system.html">NxXbox::sParticleSystem</a>( max_particles, <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a9204cc2b004c5b58941e558a8504ee4ea8f9a212bc629ebdd9473ca12cd71b991">NxXbox::PARTICLE_TYPE_SHADED</a>, texture_checksum, blendmode_checksum, fix );</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Default color.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">for</span>( <span class="keywordtype">int</span> c = 0; c &lt; 4; ++c )</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = 128;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = 128;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = 128;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = 255;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = 128;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = 128;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = 128;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = 255;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = 128;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = 128;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = 128;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = 255;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa604739c960739c3caee4ad958ddc308">   66</a></span>&#160;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa604739c960739c3caee4ad958ddc308">CXboxParticleShaded::~CXboxParticleShaded</a>()</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">delete</span> [] <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7ce5dc2bf60e932b08dd6363d9a568f3">mp_particle_array</a>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">delete</span> [] <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keyword">delete</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8f6da5b8ddced9a2d473a55487d79901">mp_engine_particle</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a42521a59c6911cc62de19caca828cb4e">   79</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a42521a59c6911cc62de19caca828cb4e">CXboxParticleShaded::plat_get_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> * <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> * <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> * z )</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">float</span>* p_v = &amp;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>[entry*3];</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    *<a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a> = p_v[0];</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    *<a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a> = p_v[1];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    *z = p_v[2];</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a6417f2d9766637c441f650215c046adb">   93</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a6417f2d9766637c441f650215c046adb">CXboxParticleShaded::plat_set_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z )</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordtype">float</span>* p_v = &amp;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>[entry*3];</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    p_v[0] = <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    p_v[1] = <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    p_v[2] = z;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a589110fa7877e6989d7608c1ff360e87">  107</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a589110fa7877e6989d7608c1ff360e87">CXboxParticleShaded::plat_add_position</a>( <span class="keywordtype">int</span> entry, <span class="keywordtype">int</span> <a class="code" href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>, <span class="keywordtype">float</span> <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>, <span class="keywordtype">float</span> z )</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">float</span>* p_v = &amp;<a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>[entry*3];</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    p_v[0] += <a class="code" href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">x</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    p_v[1] += <a class="code" href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">y</a>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    p_v[2] += z;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a7d984d1d17e48ff08fe92a7d7db4cc55">  121</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a7d984d1d17e48ff08fe92a7d7db4cc55">CXboxParticleShaded::plat_get_num_particle_colors</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> 4;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;}</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8b965bd220103a0e9b76dc222aa4a031">  132</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8b965bd220103a0e9b76dc222aa4a031">CXboxParticleShaded::plat_set_sr</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = value; }</div>
+<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aeeb0c138b99064c47e6b8ffcbc7241d3">  133</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aeeb0c138b99064c47e6b8ffcbc7241d3">CXboxParticleShaded::plat_set_sg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = value; }</div>
+<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aca5aa71ff8f772e1755726e28ca3bb03">  134</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aca5aa71ff8f772e1755726e28ca3bb03">CXboxParticleShaded::plat_set_sb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = value; }</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a3844a32e069d60543077b191657214ac">  135</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a3844a32e069d60543077b191657214ac">CXboxParticleShaded::plat_set_sa</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = value; }</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a189319c967ce50613c26eb2d14e92c98">  136</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a189319c967ce50613c26eb2d14e92c98">CXboxParticleShaded::plat_set_mr</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = value; }</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa513680181fb0dcc042f209871f128f1">  137</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa513680181fb0dcc042f209871f128f1">CXboxParticleShaded::plat_set_mg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = value; }</div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a84ded40f2d75219bea4016726e36630e">  138</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a84ded40f2d75219bea4016726e36630e">CXboxParticleShaded::plat_set_mb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = value; }</div>
+<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a37b56da936712b7e2227a0a58015d693">  139</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a37b56da936712b7e2227a0a58015d693">CXboxParticleShaded::plat_set_ma</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = value; }</div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af7332076a72bb00af271db65bcfa79fd">  140</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af7332076a72bb00af271db65bcfa79fd">CXboxParticleShaded::plat_set_er</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = value; }</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#acf54fda205f2bac2302bbd057ab59e49">  141</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#acf54fda205f2bac2302bbd057ab59e49">CXboxParticleShaded::plat_set_eg</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = value; }</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a18e9591e3000bfd7bc030b0794772b64">  142</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a18e9591e3000bfd7bc030b0794772b64">CXboxParticleShaded::plat_set_eb</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = value; }</div>
+<div class="line"><a name="l00143"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a04255e5b800d633a6fe02f2e0b39dd7a">  143</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a04255e5b800d633a6fe02f2e0b39dd7a">CXboxParticleShaded::plat_set_ea</a>( <span class="keywordtype">int</span> entry, <a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a> value ) { <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>[entry].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = value; }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="comment">/*                                                                */</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="comment">/******************************************************************/</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a99b5c51681df9642aca6b0c06c0dc6bf">  151</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a99b5c51681df9642aca6b0c06c0dc6bf">CXboxParticleShaded::plat_render</a>( <span class="keywordtype">void</span> )</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;{</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// Draw the particles.</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">if</span>( <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a9b1f233d0962fbaf563c53cecdb08239">m_num_particles</a> &gt; 0 )</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="comment">// Used to figure the right and up vectors for creating screen-aligned particle quads.</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        D3DXMATRIX *p_matrix = (D3DXMATRIX*)&amp;<a class="code" href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a>.view_matrix;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        <span class="comment">// Concatenate p_matrix with the emmission angle to create the direction.</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> up( 0.0f, 1.0f, 0.0f );</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment">// Get the &#39;right&#39; vector as the cross product of camera &#39;at and world &#39;up&#39;.</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> at( p_matrix-&gt;m[0][2], p_matrix-&gt;m[1][2], p_matrix-&gt;m[2][2] );</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> screen_right    = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( at, up );</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> screen_up       = <a class="code" href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a>( screen_right, at );</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        screen_right.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        screen_up.<a class="code" href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Normalize</a>();</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="keywordtype">int</span>             lp;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <a class="code" href="../../d8/d0a/class_nx_1_1_c_particle_entry.html">CParticleEntry</a>  *p_particle;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordtype">float</span>           *p_v;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">//      Mth::Vector     min, max;   // For dynamic bounding box calculation.</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="comment">// Obtain push buffer lock.</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        DWORD *p_push; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        DWORD dwords_per_particle   = 24;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        DWORD dword_count           = dwords_per_particle * <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a9b1f233d0962fbaf563c53cecdb08239">m_num_particles</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        <span class="comment">// Submit particle material.</span></div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8f6da5b8ddced9a2d473a55487d79901">mp_engine_particle</a>-&gt;<a class="code" href="../../d0/d3a/struct_nx_xbox_1_1s_particle_system.html#af250f13cbdddb5a6d22913dcf5aa168a">mp_material</a>-&gt;<a class="code" href="../../da/df5/struct_nx_xbox_1_1s_material.html#a52d7aa01448d118b129de37eade53a73">Submit</a>();</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        <span class="comment">// Set up correct vertex and pixel shader.</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a26eda17b0f46b5f5b914f683b8af7e77">NxXbox::set_vertex_shader</a>( D3DFVF_XYZ | D3DFVF_DIFFUSE | D3DFVF_TEX1 | D3DFVF_TEXCOORDSIZE2( 0 ));</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <a class="code" href="../../d4/ddf/namespace_nx_xbox.html#a7ab2d41a1053bd29a3a2c75c04983c56">NxXbox::set_pixel_shader</a>( <a class="code" href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp.html#a98586099815b492e44f8fb336d9a1ebd">PixelShader0</a> );</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="comment">// The additional number (+5 is minimum) is to reserve enough overhead for the encoding parameters. It can safely be more, but no less.</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        p_push = D3DDevice_BeginPush( dword_count + 16 );</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="comment">// Note that p_push is returned as a pointer to write-combined memory. Writes to write-combined memory should be</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        <span class="comment">// consecutive and in increasing order. Reads should be avoided. Additionally, any CPU reads from memory or the</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">// L2 cache can force expensive partial flushes of the 32-byte write-combine cache.</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        p_push[0]   = D3DPUSH_ENCODE( D3DPUSH_SET_BEGIN_END, 1 );</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        p_push[1]   = D3DPT_QUADLIST;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        p_push      += 2;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160; </div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="comment">// Set up loop variables here, since we be potentially enetering the loop more than once.</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        lp          = 0;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        p_particle  = <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7ce5dc2bf60e932b08dd6363d9a568f3">mp_particle_array</a>;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        p_v         = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">mp_vertices</a>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">while</span>( dword_count &gt; 0 )</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        {</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            <span class="keywordtype">int</span> dwords_written = 0;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;            <span class="comment">// NOTE: A maximum of 2047 DWORDs can be specified to D3DPUSH_ENCODE. If there is more than 2047 DWORDs of vertex</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;            <span class="comment">// data, simply split the data into multiple D3DPUSH_ENCODE( D3DPUSH_INLINE_ARRAY ) sections.</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;            p_push[0] = D3DPUSH_ENCODE( D3DPUSH_NOINCREMENT_FLAG | D3DPUSH_INLINE_ARRAY, ( dword_count &gt; 2047 ) ? ((<span class="keywordtype">int</span>)( 2047 / dwords_per_particle )) * dwords_per_particle: dword_count );</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;            ++p_push;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        </div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;            <span class="keywordflow">for</span>( ; lp &lt; <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a9b1f233d0962fbaf563c53cecdb08239">m_num_particles</a>; lp++, p_particle++, p_v += 3 )</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            {</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                <span class="comment">// Check to see if writing another particle will take us over the edge.</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                <span class="keywordflow">if</span>(( dwords_written + dwords_per_particle ) &gt; 2047 )</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                {</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                    <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                }</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                <span class="keywordtype">float</span> terp  = p_particle-&gt;m_time / p_particle-&gt;m_life;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                <span class="keywordtype">float</span> w     = p_particle-&gt;m_sw + ( ( p_particle-&gt;m_ew - p_particle-&gt;m_sw ) * terp );</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                <span class="keywordtype">float</span> h     = p_particle-&gt;m_sh + ( ( p_particle-&gt;m_eh - p_particle-&gt;m_sh ) * terp );</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                <span class="comment">// Todo: Move hook to matrix/emitter code to cut down on per particle calculation.</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> pos( p_v[0] + <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>], p_v[1] + <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>], p_v[2] + <a class="code" href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">m_pos</a>[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> ss_right, ss_up, ss_pos;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                <a class="code" href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a> tmp;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    </div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                <span class="comment">// Dynamic bounding box calculation.</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="comment">//              if( lp == 0 )</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="comment">//              {</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment">//                  min = pos;</span></div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="comment">//                  max = pos;</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="comment">//              }</span></div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="comment">//              else</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="comment">//              {</span></div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">//                  if( pos[X] &lt; min[X] ) min[X] = pos[X]; else if( pos[X] &gt; max[X] ) max[X] = pos[X];</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">//                  if( pos[Y] &lt; min[Y] ) min[Y] = pos[Y]; else if( pos[Y] &gt; max[Y] ) max[Y] = pos[Y];</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">//                  if( pos[Z] &lt; min[Z] ) min[Z] = pos[Z]; else if( pos[Z] &gt; max[Z] ) max[Z] = pos[Z];</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;<span class="comment">//              }</span></div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                ss_right    = screen_right * w;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                ss_up       = screen_up * h;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> color[4];</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *p_col0;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> *p_col1;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;        </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;                <span class="keywordflow">if</span>( <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a> &gt;= 0.0f )</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                    <span class="keywordflow">if</span>( terp &lt; <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a> )</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                    {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                        p_col0 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                        p_col1 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                        <span class="comment">// Adjust interpolation for this half of the color blend.</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                        terp = terp / <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a>;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                    {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                        p_col0 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">m_mid_color</a>;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                        p_col1 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                        <span class="comment">// Adjust interpolation for this half of the color blend.</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                        terp = ( terp - <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a> ) / ( 1.0f - <a class="code" href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">m_mid_time</a> );</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                }</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                    <span class="comment">// No mid color specified.</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                    p_col0 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">m_start_color</a>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                    p_col1 = <a class="code" href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">m_end_color</a>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                }</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                <span class="keywordflow">for</span> ( <span class="keywordtype">int</span> c = 0; c &lt; 4; c++ )</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a> = *p_col0++;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                    <a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a> <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a> = *p_col1++;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                    <span class="comment">// Swap red and blue here.</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                    color[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">b</a> = <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.r + (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)(( ((<span class="keywordtype">float</span>)( <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a>.r - <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.r )) * terp ));</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                    color[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">g</a> = <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.g + (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)(( ((<span class="keywordtype">float</span>)( <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a>.g - <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.g )) * terp ));</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                    color[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">r</a> = <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.b + (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)(( ((<span class="keywordtype">float</span>)( <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a>.b - <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.b )) * terp ));</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                    color[c].<a class="code" href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">a</a> = <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.a + (<a class="code" href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a>)(( ((<span class="keywordtype">float</span>)( <a class="code" href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">end</a>.a - <a class="code" href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a>.a )) * terp ));</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;                tmp         = pos - ss_right + ss_up;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;                p_push[0]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] );</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;                p_push[1]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] );</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;                p_push[2]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;                p_push[3]   = *((DWORD*)&amp;color[0] );</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;                p_push[4]   = 0x00000000UL;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;                p_push[5]   = 0x00000000UL;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;                p_push      += 6;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    </div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;                tmp         = pos + ss_right + ss_up;       </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;                p_push[0]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] );</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;                p_push[1]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] );</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                p_push[2]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;                p_push[3]   = *((DWORD*)&amp;color[1] );</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                p_push[4]   = 0x3F800000UL;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;                p_push[5]   = 0x00000000UL;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                p_push      += 6;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160; </div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;                tmp         = pos + ss_right - ss_up;       </div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;                p_push[0]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] );</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;                p_push[1]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] );</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;                p_push[2]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;                p_push[3]   = *((DWORD*)&amp;color[2] );</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;                p_push[4]   = 0x3F800000UL;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;                p_push[5]   = 0x3F800000UL;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;                p_push      += 6;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        </div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;                tmp         = pos - ss_right - ss_up;       </div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;                p_push[0]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a>] );</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;                p_push[1]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a>] );</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;                p_push[2]   = *((DWORD*)&amp;tmp[<a class="code" href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a>] );</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;                p_push[3]   = *((DWORD*)&amp;color[3] );</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;                p_push[4]   = 0x00000000UL;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;                p_push[5]   = 0x3F800000UL;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                p_push      += 6;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;                dwords_written  += dwords_per_particle;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;                dword_count     -= dwords_per_particle;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;            }</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;        }</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160; </div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        p_push[0] = D3DPUSH_ENCODE( D3DPUSH_SET_BEGIN_END, 1 );</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        p_push[1] = 0;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;        p_push += 2;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;        D3DDevice_EndPush( p_push );</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;        <span class="comment">// Set the mesh bounding box and sphere.</span></div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_bbox.SetMin( min );</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_bbox.SetMax( max );</span></div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_sphere_center = D3DXVECTOR3( min[X] + (( max[X] - min[X] ) * 0.5f ), min[Y] + (( max[Y] - min[Y] ) * 0.5f ), min[Z] + (( max[Z] - min[Z] ) * 0.5f ));</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_sphere_radius = 360.0f;</span></div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;        <span class="comment">// And the scene bounding sphere.</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_sphere_center = mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_sphere_center;</span></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="comment">//      mp_engine_particle-&gt;mp_scene-&gt;m_sphere_radius = mp_engine_particle-&gt;mp_scene-&gt;m_semitransparent_meshes[0]-&gt;m_sphere_radius;</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;    }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;}</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;} <span class="comment">// Nx</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; </div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;                </div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<div class="ttc" id="anamespace_nx_xbox_html_a9204cc2b004c5b58941e558a8504ee4ea8f9a212bc629ebdd9473ca12cd71b991"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a9204cc2b004c5b58941e558a8504ee4ea8f9a212bc629ebdd9473ca12cd71b991">NxXbox::PARTICLE_TYPE_SHADED</a></div><div class="ttdeci">@ PARTICLE_TYPE_SHADED</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d64/_x_box_2_n_x_2particles_8h_source.html#l00014">particles.h:14</a></div></div>
+<div class="ttc" id="angc_2bgm_2bgm__entr_8c_html_ac92d3b835636641550b12b0f93daf21d"><div class="ttname"><a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c.html#ac92d3b835636641550b12b0f93daf21d">start</a></div><div class="ttdeci">int start()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d59/ngc_2bgm_2bgm__entr_8c_source.html#l00016">bgm_entr.c:16</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html_ac68fbfe676c95bf1ada686076c00675a"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html#ac68fbfe676c95bf1ada686076c00675a">Mth::Vector::Normalize</a></div><div class="ttdeci">Vector &amp; Normalize()</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l00469">vector.inl:469</a></div></div>
+<div class="ttc" id="aclass_obj_1_1_c_composite_object_html_a75150b149fb2f45075cdebc2422afaff"><div class="ttname"><a href="../../dd/d7b/class_obj_1_1_c_composite_object.html#a75150b149fb2f45075cdebc2422afaff">Obj::CCompositeObject::m_pos</a></div><div class="ttdeci">Mth::Vector m_pos</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/dd4/compositeobject_8h_source.html#l00099">compositeobject.h:99</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_material_html_a52d7aa01448d118b129de37eade53a73"><div class="ttname"><a href="../../da/df5/struct_nx_xbox_1_1s_material.html#a52d7aa01448d118b129de37eade53a73">NxXbox::sMaterial::Submit</a></div><div class="ttdeci">void Submit(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/dd8/_x_box_2_n_x_2material_8cpp_source.html#l00273">material.cpp:273</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a37b56da936712b7e2227a0a58015d693"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a37b56da936712b7e2227a0a58015d693">Nx::CXboxParticleShaded::plat_set_ma</a></div><div class="ttdeci">void plat_set_ma(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00139">p_NxParticleShaded.cpp:139</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html_a9b1f233d0962fbaf563c53cecdb08239"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html#a9b1f233d0962fbaf563c53cecdb08239">Nx::CParticle::m_num_particles</a></div><div class="ttdeci">int m_num_particles</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00096">nxparticle.h:96</a></div></div>
+<div class="ttc" id="a_defines_8h_html_a1134b580f8da4de94ca6b1de4d37975e"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#a1134b580f8da4de94ca6b1de4d37975e">uint32</a></div><div class="ttdeci">unsigned long uint32</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00147">Defines.h:147</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html_a5e813e66eeb925d174d485bb7cdfd677"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a5e813e66eeb925d174d485bb7cdfd677">Image::RGBA::r</a></div><div class="ttdeci">uint8 r</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00071">ImageBasic.h:71</a></div></div>
+<div class="ttc" id="anamespace_nx_html"><div class="ttname"><a href="../../d1/d06/namespace_nx.html">Nx</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d65/_batch_tri_coll_8cpp_source.html#l00043">BatchTriColl.cpp:43</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html_a7e6b8a387a49933ef67ac9bd0f1764d9"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html#a7e6b8a387a49933ef67ac9bd0f1764d9">Nx::CParticle::m_mid_time</a></div><div class="ttdeci">float m_mid_time</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00130">nxparticle.h:130</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html_a70f83cf3214bd3503ba8c0cc0ed56adc"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a70f83cf3214bd3503ba8c0cc0ed56adc">Image::RGBA::g</a></div><div class="ttdeci">uint8 g</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00072">ImageBasic.h:72</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_particle_system_html"><div class="ttname"><a href="../../d0/d3a/struct_nx_xbox_1_1s_particle_system.html">NxXbox::sParticleSystem</a></div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d64/_x_box_2_n_x_2particles_8h_source.html#l00026">particles.h:26</a></div></div>
+<div class="ttc" id="anamespace_mth_html_aaca09fd5728158c602a3970017204614"><div class="ttname"><a href="../../d5/db9/namespace_mth.html#aaca09fd5728158c602a3970017204614">Mth::CrossProduct</a></div><div class="ttdeci">Vector CrossProduct(const Vector &amp;v1, const Vector &amp;v2)</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d5f/vector_8inl_source.html#l01000">vector.inl:1000</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a8f6da5b8ddced9a2d473a55487d79901"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8f6da5b8ddced9a2d473a55487d79901">Nx::CXboxParticleShaded::mp_engine_particle</a></div><div class="ttdeci">NxXbox::sParticleSystem * mp_engine_particle</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d79/_x_box_2p__nxparticleshaded_8h_source.html#l00050">p_NxParticleShaded.h:50</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_af7332076a72bb00af271db65bcfa79fd"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af7332076a72bb00af271db65bcfa79fd">Nx::CXboxParticleShaded::plat_set_er</a></div><div class="ttdeci">void plat_set_er(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00140">p_NxParticleShaded.cpp:140</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_entry_html"><div class="ttname"><a href="../../d8/d0a/class_nx_1_1_c_particle_entry.html">Nx::CParticleEntry</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00166">nxparticle.h:166</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_af12b2fc84e5f1f5aea8e7f512c4ca02a"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#af12b2fc84e5f1f5aea8e7f512c4ca02a">NxXbox::EngineGlobals</a></div><div class="ttdeci">sEngineGlobals EngineGlobals</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d26/_x_box_2_n_x_2nx__init_8cpp_source.html#l00020">nx_init.cpp:20</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html_a1d037d8129a8ad82812854fdf7c3f70d"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a1d037d8129a8ad82812854fdf7c3f70d">Image::RGBA::b</a></div><div class="ttdeci">uint8 b</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00073">ImageBasic.h:73</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_af2fb3f8bf5da0ad17cf0c4cb0096235c"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#af2fb3f8bf5da0ad17cf0c4cb0096235c">Nx::CXboxParticleShaded::mp_vertices</a></div><div class="ttdeci">float * mp_vertices</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d79/_x_box_2p__nxparticleshaded_8h_source.html#l00049">p_NxParticleShaded.h:49</a></div></div>
+<div class="ttc" id="a_x_box_2p__nxparticleshaded_8cpp_html_a98586099815b492e44f8fb336d9a1ebd"><div class="ttname"><a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp.html#a98586099815b492e44f8fb336d9a1ebd">PixelShader0</a></div><div class="ttdeci">DWORD PixelShader0</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dad/_x_box_2_n_x_2render_8cpp_source.html#l00035">render.cpp:35</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a31ce4c9eda4d1f0a220e65baa0214c00"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a31ce4c9eda4d1f0a220e65baa0214c00">Nx::CXboxParticleShaded::CXboxParticleShaded</a></div><div class="ttdeci">CXboxParticleShaded()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00015">p_NxParticleShaded.cpp:15</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html_a31fb6553e6fe42388745dc2ff041f384"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html#a31fb6553e6fe42388745dc2ff041f384">Nx::CParticle::m_max_particles</a></div><div class="ttdeci">int m_max_particles</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00095">nxparticle.h:95</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a5596231eabd6cf29050967d5ac83ad84">Y</a></div><div class="ttdeci">@ Y</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_aeeb0c138b99064c47e6b8ffcbc7241d3"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aeeb0c138b99064c47e6b8ffcbc7241d3">Nx::CXboxParticleShaded::plat_set_sg</a></div><div class="ttdeci">void plat_set_sg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00133">p_NxParticleShaded.cpp:133</a></div></div>
+<div class="ttc" id="a_defines_8h_html"><div class="ttname"><a href="../../d8/de2/_defines_8h.html">Defines.h</a></div></div>
+<div class="ttc" id="ap__ezcommon_8h_html_a23962ea1e77aa36a3f96b0cdd496e6c4"><div class="ttname"><a href="../../d6/d01/p__ezcommon_8h.html#a23962ea1e77aa36a3f96b0cdd496e6c4">list</a></div><div class="ttdeci">ezNetCnfCombination_t list[kMaxCombinations]</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d01/p__ezcommon_8h_source.html#l00005">p_ezcommon.h:5</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_aaf15aaab24829ad19dbbd9365aad3eca"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aaf15aaab24829ad19dbbd9365aad3eca">Nx::CXboxParticleShaded::m_end_color</a></div><div class="ttdeci">Image::RGBA m_end_color[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d79/_x_box_2p__nxparticleshaded_8h_source.html#l00047">p_NxParticleShaded.h:47</a></div></div>
+<div class="ttc" id="aclass_mth_1_1_vector_html"><div class="ttname"><a href="../../d1/d08/class_mth_1_1_vector.html">Mth::Vector</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00088">vector.h:88</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_acf54fda205f2bac2302bbd057ab59e49"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#acf54fda205f2bac2302bbd057ab59e49">Nx::CXboxParticleShaded::plat_set_eg</a></div><div class="ttdeci">void plat_set_eg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00141">p_NxParticleShaded.cpp:141</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_aca5aa71ff8f772e1755726e28ca3bb03"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aca5aa71ff8f772e1755726e28ca3bb03">Nx::CXboxParticleShaded::plat_set_sb</a></div><div class="ttdeci">void plat_set_sb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00134">p_NxParticleShaded.cpp:134</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a189319c967ce50613c26eb2d14e92c98"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a189319c967ce50613c26eb2d14e92c98">Nx::CXboxParticleShaded::plat_set_mr</a></div><div class="ttdeci">void plat_set_mr(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00136">p_NxParticleShaded.cpp:136</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html_ae4d487cc395b5ae6c5a568d351c29f71"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html#ae4d487cc395b5ae6c5a568d351c29f71">Nx::CParticle::m_checksum</a></div><div class="ttdeci">uint32 m_checksum</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00115">nxparticle.h:115</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_aa513680181fb0dcc042f209871f128f1"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa513680181fb0dcc042f209871f128f1">Nx::CXboxParticleShaded::plat_set_mg</a></div><div class="ttdeci">void plat_set_mg(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00137">p_NxParticleShaded.cpp:137</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_aa604739c960739c3caee4ad958ddc308"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#aa604739c960739c3caee4ad958ddc308">Nx::CXboxParticleShaded::~CXboxParticleShaded</a></div><div class="ttdeci">virtual ~CXboxParticleShaded()</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00066">p_NxParticleShaded.cpp:66</a></div></div>
+<div class="ttc" id="anamespace_ns_buffer_html_a64facb0dbc4b9270fda55cc47e273931"><div class="ttname"><a href="../../d3/dbf/namespace_ns_buffer.html#a64facb0dbc4b9270fda55cc47e273931">NsBuffer::end</a></div><div class="ttdeci">void end(void)</div><div class="ttdoc">‍********************************************************************************</div><div class="ttdef"><b>Definition:</b> <a href="../../d9/d5d/p__buffer_8cpp_source.html#l00132">p_buffer.cpp:132</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a42521a59c6911cc62de19caca828cb4e"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a42521a59c6911cc62de19caca828cb4e">Nx::CXboxParticleShaded::plat_get_position</a></div><div class="ttdeci">virtual void plat_get_position(int entry, int list, float *x, float *y, float *z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00079">p_NxParticleShaded.cpp:79</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a99b5c51681df9642aca6b0c06c0dc6bf"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a99b5c51681df9642aca6b0c06c0dc6bf">Nx::CXboxParticleShaded::plat_render</a></div><div class="ttdeci">virtual void plat_render(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00151">p_NxParticleShaded.cpp:151</a></div></div>
+<div class="ttc" id="astruct_nx_xbox_1_1s_particle_system_html_af250f13cbdddb5a6d22913dcf5aa168a"><div class="ttname"><a href="../../d0/d3a/struct_nx_xbox_1_1s_particle_system.html#af250f13cbdddb5a6d22913dcf5aa168a">NxXbox::sParticleSystem::mp_material</a></div><div class="ttdeci">sMaterial * mp_material</div><div class="ttdef"><b>Definition:</b> <a href="../../dc/d64/_x_box_2_n_x_2particles_8h_source.html#l00032">particles.h:32</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a7ab2d41a1053bd29a3a2c75c04983c56"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a7ab2d41a1053bd29a3a2c75c04983c56">NxXbox::set_pixel_shader</a></div><div class="ttdeci">void set_pixel_shader(uint32 shader_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dad/_x_box_2_n_x_2render_8cpp_source.html#l01369">render.cpp:1369</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_ab3728894357e26cb3a2b0ea9e4ec47c5"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ab3728894357e26cb3a2b0ea9e4ec47c5">Nx::CXboxParticleShaded::m_start_color</a></div><div class="ttdeci">Image::RGBA m_start_color[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d79/_x_box_2p__nxparticleshaded_8h_source.html#l00045">p_NxParticleShaded.h:45</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a04255e5b800d633a6fe02f2e0b39dd7a"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a04255e5b800d633a6fe02f2e0b39dd7a">Nx::CXboxParticleShaded::plat_set_ea</a></div><div class="ttdeci">void plat_set_ea(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00143">p_NxParticleShaded.cpp:143</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a18e9591e3000bfd7bc030b0794772b64"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a18e9591e3000bfd7bc030b0794772b64">Nx::CXboxParticleShaded::plat_set_eb</a></div><div class="ttdeci">void plat_set_eb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00142">p_NxParticleShaded.cpp:142</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a6417f2d9766637c441f650215c046adb"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a6417f2d9766637c441f650215c046adb">Nx::CXboxParticleShaded::plat_set_position</a></div><div class="ttdeci">virtual void plat_set_position(int entry, int list, float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00093">p_NxParticleShaded.cpp:93</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a3844a32e069d60543077b191657214ac"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a3844a32e069d60543077b191657214ac">Nx::CXboxParticleShaded::plat_set_sa</a></div><div class="ttdeci">void plat_set_sa(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00135">p_NxParticleShaded.cpp:135</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html">Image::RGBA</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00059">ImageBasic.h:59</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a6a17d6914fc4d83136bd326e196a9877"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a6a17d6914fc4d83136bd326e196a9877">Nx::x</a></div><div class="ttdeci">static Mth::Vector x</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01913">CollTriData.cpp:1913</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635a58833a3110c570fb05130d40c365d1e4">X</a></div><div class="ttdeci">@ X</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="anamespace_nx_html_a05e83dec9126204c2b3db66d2c6158f0"><div class="ttname"><a href="../../d1/d06/namespace_nx.html#a05e83dec9126204c2b3db66d2c6158f0">Nx::y</a></div><div class="ttdeci">static Mth::Vector y</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/d92/_coll_tri_data_8cpp_source.html#l01914">CollTriData.cpp:1914</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a7d984d1d17e48ff08fe92a7d7db4cc55"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a7d984d1d17e48ff08fe92a7d7db4cc55">Nx::CXboxParticleShaded::plat_get_num_particle_colors</a></div><div class="ttdeci">virtual int plat_get_num_particle_colors(void)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00121">p_NxParticleShaded.cpp:121</a></div></div>
+<div class="ttc" id="a_defines_8h_html_adde6aaee8457bee49c2a92621fe22b79"><div class="ttname"><a href="../../d8/de2/_defines_8h.html#adde6aaee8457bee49c2a92621fe22b79">uint8</a></div><div class="ttdeci">unsigned char uint8</div><div class="ttdef"><b>Definition:</b> <a href="../../d8/de2/_defines_8h_source.html#l00134">Defines.h:134</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a8b965bd220103a0e9b76dc222aa4a031"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a8b965bd220103a0e9b76dc222aa4a031">Nx::CXboxParticleShaded::plat_set_sr</a></div><div class="ttdeci">void plat_set_sr(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00132">p_NxParticleShaded.cpp:132</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_particle_html_a7ce5dc2bf60e932b08dd6363d9a568f3"><div class="ttname"><a href="../../d1/dd7/class_nx_1_1_c_particle.html#a7ce5dc2bf60e932b08dd6363d9a568f3">Nx::CParticle::mp_particle_array</a></div><div class="ttdeci">CParticleEntry * mp_particle_array</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/d90/nxparticle_8h_source.html#l00119">nxparticle.h:119</a></div></div>
+<div class="ttc" id="avector_8h_html_a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355"><div class="ttname"><a href="../../d6/d68/vector_8h.html#a726ca809ffd3d67ab4b8476646f26635aa70478ce277ffc322f8e1e3418e07355">Z</a></div><div class="ttdeci">@ Z</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/d68/vector_8h_source.html#l00068">vector.h:68</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_ad5a8d7256c40460fe236840b4105532d"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#ad5a8d7256c40460fe236840b4105532d">Nx::CXboxParticleShaded::m_mid_color</a></div><div class="ttdeci">Image::RGBA m_mid_color[4]</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d79/_x_box_2p__nxparticleshaded_8h_source.html#l00046">p_NxParticleShaded.h:46</a></div></div>
+<div class="ttc" id="anamespace_nx_xbox_html_a26eda17b0f46b5f5b914f683b8af7e77"><div class="ttname"><a href="../../d4/ddf/namespace_nx_xbox.html#a26eda17b0f46b5f5b914f683b8af7e77">NxXbox::set_vertex_shader</a></div><div class="ttdeci">void set_vertex_shader(DWORD shader_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d2/dad/_x_box_2_n_x_2render_8cpp_source.html#l01350">render.cpp:1350</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a84ded40f2d75219bea4016726e36630e"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a84ded40f2d75219bea4016726e36630e">Nx::CXboxParticleShaded::plat_set_mb</a></div><div class="ttdeci">void plat_set_mb(int entry, uint8 value)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00138">p_NxParticleShaded.cpp:138</a></div></div>
+<div class="ttc" id="aclass_nx_1_1_c_xbox_particle_shaded_html_a589110fa7877e6989d7608c1ff360e87"><div class="ttname"><a href="../../dc/dde/class_nx_1_1_c_xbox_particle_shaded.html#a589110fa7877e6989d7608c1ff360e87">Nx::CXboxParticleShaded::plat_add_position</a></div><div class="ttdeci">virtual void plat_add_position(int entry, int list, float x, float y, float z)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp_source.html#l00107">p_NxParticleShaded.cpp:107</a></div></div>
+<div class="ttc" id="astruct_image_1_1_r_g_b_a_html_a7e2fac1fe19e260ff75ff994ce607d2b"><div class="ttname"><a href="../../da/d6c/struct_image_1_1_r_g_b_a.html#a7e2fac1fe19e260ff75ff994ce607d2b">Image::RGBA::a</a></div><div class="ttdeci">uint8 a</div><div class="ttdef"><b>Definition:</b> <a href="../../d5/d3c/_image_basic_8h_source.html#l00074">ImageBasic.h:74</a></div></div>
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="../../dir_c86603f79b902ad390ffc2674fbc4470.html">gfx</a></li><li class="navelem"><a class="el" href="../../dir_f1e3aad0a8b25f72ef4018f1d1f27bef.html">XBox</a></li><li class="navelem"><a class="el" href="../../d3/d1a/_x_box_2p__nxparticleshaded_8cpp.html">p_NxParticleShaded.cpp</a></li>
+    <li class="footer">Документация по OpenTHUG. Последние изменения: Вс 26 Апр 2020 03:47:29. Создано системой
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="../../doxygen.png" alt="doxygen"/></a> 1.8.17 </li>
+  </ul>
+</div>
+</body>
+</html>
