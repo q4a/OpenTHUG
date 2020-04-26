@@ -1,0 +1,5 @@
+add_subdirectory(core)
+add_subdirectory(gel)
+add_subdirectory(gfx)
+add_subdirectory(sk)
+add_subdirectory(sys)
