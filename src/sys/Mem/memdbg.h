@@ -30,13 +30,8 @@ namespace Mem
 **								   Defines									**
 *****************************************************************************/
 
-#if defined( __PLAT_WN32__ ) || defined( __PLAT_XBOX__ )
-static const uint64 vALLOCATED_BLOCK = 0x0101010101010101i64;
-static const uint64 vFREE_BLOCK 	 = 0x0303030303030303i64;
-#else
 static const uint64 vALLOCATED_BLOCK = 0x0101010101010101LL;
 static const uint64 vFREE_BLOCK 	 = 0x0303030303030303LL;
-#endif	// __PLAT_WN32__
 
 #ifdef __NOPT_MEM_DEBUG__
 	

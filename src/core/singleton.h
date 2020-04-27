@@ -96,16 +96,11 @@ does no addition processing.  It's easier to type as well.
 /*****************************************************************************
 **								   Includes									**
 *****************************************************************************/
-	
-#ifndef __CORE_DEFINES_H
-#include <core/defines.h>
-#endif
-#include <core/support.h>
 
-#ifndef	__SYS_MEM_MEMPTR_H
-#include <sys/mem/memptr.h>
-#endif
-		  
+#include "core/defines.h"
+#include "core/support.h"
+#include "sys/mem/memptr.h"
+
 /*****************************************************************************
 **								   Defines									**
 *****************************************************************************/

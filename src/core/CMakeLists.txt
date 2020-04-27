@@ -1,16 +1,16 @@
 project(core)
 
 list(APPEND DIRS
-    "."
-    "Debug"
-    "Debug/Wn32"
-    "List"
-    "Math"
-    "String"
-    "Support"
-    "Task"
-    "Thread"
-    "Thread/wn32"
+#    "."
+#    "Debug"
+#    "Debug/Wn32"
+#    "List"
+    "math"
+#    "String"
+#    "Support"
+#    "Task"
+#    "Thread"
+#    "Thread/wn32"
     )
 
 add_dir("${DIRS}")

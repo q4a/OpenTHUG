@@ -23,23 +23,16 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#include <core/defines.h>
-#ifdef __PLAT_WN32__
-#include <math.h>
-#endif
-#ifdef __PLAT_XBOX__
-#include <math.h>
-#endif
+#include "core/defines.h"
+#include "core/math/math.h"
 
 /*****************************************************************************
 **							  DBG Information								**
 *****************************************************************************/
 
-#include <core/math/math.h>
-
 #if DEBUGGING_REPLAY_RND
 
-#include <sys\timer.h>
+#include "sys\timer.h"
 
 #include <string.h>
 

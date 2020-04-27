@@ -27,7 +27,7 @@
 
 #ifdef __PLAT_XBOX__
 #include <math.h>		// Required for fabsf().
-#include <core\math\xbox\sse.h>
+#include "core\math\xbox\sse.h"
 #endif
 
 #ifdef __PLAT_WN32__
@@ -331,7 +331,7 @@ inline	bool	Equal ( const float a, const float b, const float perc )
 /*                                                                */
 /******************************************************************/
 
-inline	sint	Max ( sint a, sint b )
+inline	signed int	Max (signed int a, signed int b )
 {
 	return ( a > b ) ? a : b;
 }
@@ -341,7 +341,7 @@ inline	sint	Max ( sint a, sint b )
 /*                                                                */
 /******************************************************************/
 
-inline	sint	Min ( sint a, sint b )
+inline	signed int	Min (signed int a, signed int b )
 {
 	return ( a < b ) ? a : b;
 }

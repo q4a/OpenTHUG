@@ -146,9 +146,18 @@ typedef signed short		sint16;
 typedef long				int32;
 typedef unsigned long		uint32;
 typedef signed long			sint32;
+
+#ifndef __OS_WIN__
+typedef long long			__int64;
+typedef long long			int64;
+typedef unsigned long long	uint64;
+typedef signed long long	sint64;
+#else
 typedef __int64				int64;
 typedef unsigned __int64	uint64;
 typedef signed __int64		sint64;
+#endif // !__OS_WIN__
+
 
 #endif
 

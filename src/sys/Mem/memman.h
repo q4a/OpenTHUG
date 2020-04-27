@@ -23,19 +23,15 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#ifndef __CORE_DEFINES_H
-#include <core/defines.h>
-#endif
-#include <core/singleton.h>
-#include <core/list.h>
-#include <sys\mem\region.h>
+#include "core/defines.h"
+#include "core/singleton.h"
+#include "core/list.h"
+#include "sys/mem/region.h"
 #include "heap.h"
 #include "alloc.h"
-//#ifndef __PLAT_XBOX__
 
-#ifndef	__SYS_MEM_MEMPTR_H
-#	include "memptr.h"
-#endif
+//#ifndef __PLAT_XBOX__
+#include "sys/mem/memptr.h"
 //#endif
 #include "handle.h"
 

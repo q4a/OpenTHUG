@@ -23,12 +23,10 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#ifndef __CORE_DEFINES_H
-#include <core/defines.h>
-#endif
-#include <core/support.h>
-#include <sys\mem\region.h>
-#include <sys/mem/memdbg.h>
+#include "core/defines.h"
+#include "core/support.h"
+#include "sys/mem/region.h"
+#include "sys/mem/memdbg.h"
 
 #ifdef __PLAT_NGC__
 #define __EFFICIENT__		// Comment in for efficient allocation.
@@ -165,7 +163,7 @@ public :
 
 #ifndef __EFFICIENT__
 				uint				mSize;
-#endif
+#endif // __EFFICIENT__
 				uint				mId;
 #ifdef __EFFICIENT__
 #ifdef __NOPT_ASSERT__
@@ -173,7 +171,7 @@ public :
 #endif		// __NOPT_ASSERT__
 #else
 				CMemProfile	*		mp_profile;
-#endif __EFFICIENT__
+#endif // __EFFICIENT__
 
 
 		static const uint			sSize; // Aligned Block Header size

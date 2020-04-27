@@ -30,11 +30,11 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#include <core/defines.h>
-#include <core/math.h>
-#include <core/math/geometry.h>
+#include "core/defines.h"
+#include "core/math.h"
+#include "core/math/geometry.h"
 
-#include <gfx/debuggfx.h>
+#include "gfx/debuggfx.h"
 
 /*****************************************************************************
 **							  DBG Information								**
