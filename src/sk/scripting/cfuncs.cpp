@@ -852,7 +852,7 @@ bool ScriptArrayContains(Script::CStruct *pParams, Script::CScript *pScript)
 				pParams->GetText( "contains", &pDesiredString, true );
 				// Changed to use stricmp instead of GenerateCRC because GenerateCRC sees \ and / as
 				// being the same character.
-				if (stricmp(pDesiredString, pArray->GetString( i )) == 0)
+				if (_stricmp(pDesiredString, pArray->GetString( i )) == 0)
 					return true;
 				break;
 			}

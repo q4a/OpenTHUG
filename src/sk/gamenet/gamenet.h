@@ -30,7 +30,7 @@
 #include <gel/prefs/prefs.h>
 #include <gel/inpman.h>
 
-#include <gamenet/gamemsg.h>
+#include <sk/gamenet/gamemsg.h>
 
 #include <sk/objects/skaterflags.h>
 #include <sk/modules/skate/skate.h>
@@ -1002,7 +1002,8 @@ private:
 	int						m_goals_data_size;
 	uint32					m_goals_level;
 
-#	ifndef __PLAT_XBOX__
+//#	ifndef __PLAT_XBOX__
+#	if 0
 	char					m_net_thread_stack[ vNET_THREAD_STACK_SIZE ]	__attribute__ ((aligned(16)));
 #	else
 #	pragma pack( 16 )

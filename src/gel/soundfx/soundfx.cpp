@@ -38,7 +38,7 @@
 #include <gel/scripting/checksum.h>
 #include <gel/scripting/struct.h>
 
-#include <modules/frontend/frontend.h>  // until gametimer is moved into lower level stuff..
+#include <sk/modules/frontend/frontend.h>  // until gametimer is moved into lower level stuff..
 
 #include <sys/config/config.h>
 #include <sys/replay/replay.h>
