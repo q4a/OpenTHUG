@@ -4,8 +4,6 @@
 // needs to be modified.
 
 // If included in PC code, then uint8 and Dbg_MsgAssert will need to be defined.
-#include <gel/scripting/parse.h>
-#include <gel/scripting/tokens.h>
 
 								   
 // Returns a pointer to the next token after p_token.

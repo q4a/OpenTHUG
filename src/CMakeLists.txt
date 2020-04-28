@@ -10,7 +10,6 @@ list(APPEND DIRS_CORE
 	"core/string"
 	"core/support"
 	"core/task"
-	"core/thread"
 	"core/thread/wn32"
 	)
 add_dir("${DIRS_CORE}" "CORE")
@@ -23,6 +22,9 @@ list(APPEND DIRS_GEL
 	"gel/environment"
 	"gel/input"
 	"gel/mainloop"
+	"gel/module"
+	"gel/movies"
+	"gel/music"
 	"gel/net"
 	"gel/net/app"
 	"gel/net/client"
@@ -32,21 +34,16 @@ list(APPEND DIRS_GEL
 	"gel/object"
 	"gel/prefs"
 	"gel/scripting"
-	"gel/soundfx"
+#	"gel/soundfx"
 	)
 add_dir("${DIRS_GEL}" "GEL")
+# they included skiptoken.cpp ?!
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/scripting/skiptoken.cpp")
 
 list(APPEND DIRS_GFX
 	"gfx"
 	"gfx/2d"
 	"gfx/image"
-	"gfx/list"
-	"gfx/math"
-	"gfx/string"
-	"gfx/support"
-	"gfx/task"
-	"gfx/thread"
-	"gfx/thread/wn32"
 	)
 add_dir("${DIRS_GFX}" "GFX")
 
@@ -61,7 +58,7 @@ list(APPEND DIRS_SK
 	"sk/objects"
 	"sk/parkeditor"
 	"sk/parkeditor2"
-	"sk/scripting"
+#	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
 
