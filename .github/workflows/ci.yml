@@ -20,6 +20,7 @@ jobs:
         mkdir build && cd build
         cmake .. -G "Visual Studio 16 2019" -A Win32
     - name: MSBuild
+      uses: warrenbuckley/Setup-MSBuild@v1
       shell: cmd
       working-directory: build
       run: msbuild /p:Configuration=${{ matrix.Configuration }} /p:Platform=${{ matrix.Platform }} thug.sln
