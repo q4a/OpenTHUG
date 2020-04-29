@@ -15,10 +15,11 @@ jobs:
       with:
         fetch-depth: 0
     - name: Setup
+      shell: cmd
       run: |
         mkdir build && cd build
         cmake .. -G "Visual Studio 16 2019" -A Win32
-      shell: cmd
     - name: MSBuild
+      shell: cmd
       working-directory: build
       run: msbuild /p:Configuration=${{ matrix.Configuration }} /p:Platform=${{ matrix.Platform }} thug.sln
