@@ -79,7 +79,7 @@ extern void test_render();
 #include <sk/scripting/gs_init.h>
 #include <gfx/2D/ScreenElemMan.h>
 #include <sys/mem/PoolManager.h>
-#include <objects/pathman.h>
+#include <sk/objects/pathman.h>
 #include <sys/replay/replay.h>
 #include <gel/object/compositeobjectmanager.h>
 

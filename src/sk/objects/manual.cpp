@@ -37,14 +37,14 @@
 #include <gel/objtrack.h>
 #include <gel/components/statsmanagercomponent.h>
 
-#include <objects/manual.h>
-#include <objects/rail.h>
-#include <objects/skaterprofile.h>
+#include <sk/objects/manual.h>
+#include <sk/objects/rail.h>
+#include <sk/objects/skaterprofile.h>
 
 #include <sys/timer.h>
 
 
-#include <engine/sounds.h>
+#include <sk/engine/sounds.h>
 
 #include <gfx/camera.h>
 #include <gfx/shadow.h>

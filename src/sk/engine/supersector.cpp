@@ -25,7 +25,7 @@
 #include <core/defines.h>
 
 
-#include <engine/SuperSector.h>					
+#include <sk/engine/supersector.h>
 #include <gel/collision/collision.h>
 #include <gel/collision/colltridata.h>
 

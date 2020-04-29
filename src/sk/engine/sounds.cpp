@@ -18,7 +18,7 @@
 #include <gel/net/client/netclnt.h>
 #include <gel/scripting/checksum.h>
 						   
-#include <engine/sounds.h>
+#include <sk/engine/sounds.h>
 #include <sk/gamenet/gamenet.h>
 #include <sys/config/config.h>
 #include <sys/replay/replay.h>

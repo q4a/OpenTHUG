@@ -23,17 +23,17 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#include <scripting/ftables.h>
-#include <scripting/cfuncs.h>
-#include <scripting/skfuncs.h>
-#include <scripting/mcfuncs.h>
+#include <sk/scripting/ftables.h>
+#include <sk/scripting/cfuncs.h>
+#include <sk/scripting/skfuncs.h>
+#include <sk/scripting/mcfuncs.h>
 
 #include <gel/scripting/struct.h>
 
-#include <modules/FrontEnd/FrontEnd.h>
+#include <sk/modules/frontend/frontend.h>
 #include <sk/modules/skate/skate.h>
-#include <modules/Skate/GameMode.h>
-#include <modules/Skate/goalmanager.h>
+#include <sk/modules/skate/gamemode.h>
+#include <sk/modules/skate/goalmanager.h>
 
 #include <sk/objects/pathman.h>
 

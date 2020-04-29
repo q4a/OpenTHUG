@@ -48,15 +48,15 @@
 #include <gel/objtrack.h>
 #include <gel/object/compositeobjectmanager.h>
 
-#include <modules/FrontEnd/FrontEnd.h>
+#include <sk/modules/frontend/frontend.h>
 #include <sk/modules/skate/skate.h>
 
-#include <objects/skaterprofile.h>
+#include <sk/objects/skaterprofile.h>
 
 #include <gel/scripting/array.h>
 #include <gel/scripting/script.h>
 #include <gel/scripting/symboltable.h>
-#include <scripting/cfuncs.h>
+#include <sk/scripting/cfuncs.h>
 
 #include <sk/gamenet/gamenet.h>
 #include <sys/sio/keyboard.h>

@@ -29,7 +29,7 @@
 #include <gel/collision/movcollman.h>
 #include <gel/collision/collcache.h>
 #include <gel/collision/batchtricoll.h>
-#include <engine/SuperSector.h>
+#include <sk/engine/supersector.h>
 
 #include <gel/object/compositeobject.h>
 

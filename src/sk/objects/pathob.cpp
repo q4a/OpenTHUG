@@ -34,7 +34,7 @@
 	case the moving object needs to run a script at the waypoint).
 */
 
-#include <objects/pathob.h>
+#include <sk/objects/pathob.h>
 
 #include <core/debug.h>
 

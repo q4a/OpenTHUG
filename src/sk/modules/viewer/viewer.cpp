@@ -33,15 +33,15 @@
 
 #include <gfx/nxviewman.h>
 
-#include <modules/viewer/viewer.h>
+#include <sk/modules/viewer/viewer.h>
 
 #include <sk/objects/viewerobj.h>
 #include <sk/objects/skater.h>			// just to see if the select button is pressed!!!
 
-#include <gamenet/exportmsg.h>
+#include <sk/gamenet/exportmsg.h>
 #include <sk/gamenet/gamenet.h>
 
-#include <scripting/gs_file.h>
+#include <sk/scripting/gs_file.h>
 #include <gel/scripting/utils.h>
 
 #include <sys/config/config.h>

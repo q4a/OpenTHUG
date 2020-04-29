@@ -24,7 +24,7 @@
 
 #include <core/defines.h>
 #include <core/math/math.h>						 // for Mth::Rnd2()
-#include <modules/skate/competition.h>
+#include <sk/modules/skate/competition.h>
 #include <gel/scripting/script.h>
 #include <gel/scripting/string.h>
 #include <gel/scripting/symboltable.h>

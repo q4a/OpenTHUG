@@ -11,7 +11,7 @@
 // (See geometry.cpp for line operations)
 
 
-#include <engine/feeler.h>
+#include <sk/engine/feeler.h>
 
 #include <core/defines.h>
 #include <core/singleton.h>

@@ -22,8 +22,8 @@
 **							  	  Includes									**
 *****************************************************************************/
 
-#include <objects/skatercareer.h>
-#include <objects/gap.h>
+#include <sk/objects/skatercareer.h>
+#include <sk/objects/gap.h>
 #include <gel/scripting/script.h>
 #include <gel/scripting/symboltable.h>
 #include <gel/scripting/array.h>

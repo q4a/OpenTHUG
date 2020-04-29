@@ -52,13 +52,13 @@
 #include <gel/components/modelcomponent.h>
 #include <gel/environment/terrain.h>
 
-#include <modules/skate/skate.h>
-#include <modules/skate/goalmanager.h>
-#include <modules/skate/gamemode.h>
-#include <modules/frontend/frontend.h>
+#include <sk/modules/skate/skate.h>
+#include <sk/modules/skate/goalmanager.h>
+#include <sk/modules/skate/gamemode.h>
+#include <sk/modules/frontend/frontend.h>
 
-#include <objects/skater.h>
-#include <objects/skaterprofile.h>
+#include <sk/objects/skater.h>
+#include <sk/objects/skaterprofile.h>
 #include <sk/objects/skatercareer.h>
 
 #include <sk/gamenet/gamenet.h>
@@ -69,7 +69,7 @@
 #include <gel/scripting/array.h>
 #include <gel/scripting/symboltable.h>
 #include <gel/scripting/checksum.h>
-#include <scripting/cfuncs.h>
+#include <sk/scripting/cfuncs.h>
 
 
 /*****************************************************************************

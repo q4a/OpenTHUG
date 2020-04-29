@@ -60,7 +60,7 @@
 #include <gel/scripting/utils.h>
 #include <gel/scripting/vecpair.h>
 #include <gel/scripting/checksum.h>
-#include <modules/skate/skate.h>
+#include <sk/modules/skate/skate.h>
 #include <sk/scripting/nodearray.h> // Needed by GetDebugInfo
 #include <sk/engine/feeler.h>
 

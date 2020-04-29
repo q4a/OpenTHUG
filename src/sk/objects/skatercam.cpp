@@ -38,12 +38,12 @@ I need to clean up and comment this code, so it can be modified without fear....
 
 #include <core/math/slerp.h>
 
-#include <objects/skater.h>
-#include <objects/skaterflags.h>
-#include <objects/skatercam.h>
-#include <components/skatercorephysicscomponent.h>
-#include <components/skaterbalancetrickcomponent.h>
-#include <components/skaterstatecomponent.h>
+#include <sk/objects/skater.h>
+#include <sk/objects/skaterflags.h>
+#include <sk/objects/skatercam.h>
+#include <sk/components/skatercorephysicscomponent.h>
+#include <sk/components/skaterbalancetrickcomponent.h>
+#include <sk/components/skaterstatecomponent.h>
 #include <gfx/nxviewman.h>
 #include <gfx/debuggfx.h>
 

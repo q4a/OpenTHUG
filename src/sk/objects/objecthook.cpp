@@ -15,7 +15,7 @@
 #include <gel/modman.h>
 
 #include <core/math/geometry.h>
-#include <engine/feeler.h>
+#include <sk/engine/feeler.h>
 
 #ifdef	__PLAT_NGPS__	
 #include <gfx/ngps/nx/line.h>

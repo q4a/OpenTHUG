@@ -10,7 +10,7 @@
 #include <gel/object/compositeobjectmanager.h>
 #include <gel/scripting/symboltable.h>
 #include <gel/scripting/checksum.h>
-#include <modules/FrontEnd/FrontEnd.h>
+#include <sk/modules/frontend/frontend.h>
 #include <sk/objects/Proxim.h>
 #include <sk/scripting/nodearray.h>
 #include <sk/modules/skate/skate.h>
