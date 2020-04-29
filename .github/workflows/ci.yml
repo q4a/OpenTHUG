@@ -9,14 +9,19 @@ jobs:
       fail-fast: false
       matrix:
         Configuration: [Debug, Release]
-        Platform: [x86]
+        Platform: [Win32]
     steps:
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
-    - name: Build
-      run: |
-        call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars32.bat"
-        cmake -G "NMake Makefiles" . -DCMAKE_BUILD_TYPE=${{ matrix.Configuration }}
-        nmake
+    - name: Setup MSBuild.exe
+      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Setup thug.sln from CMake
       shell: cmd
+      run: |
+        mkdir build && cd build
+        cmake .. -G "Visual Studio 16 2019" -A Win32
+    - name: MSBuild
+      shell: cmd
+      working-directory: build
+      run: msbuild /p:Configuration=${{ matrix.Configuration }} /p:Platform=${{ matrix.Platform }} thug.sln
