@@ -34,7 +34,7 @@ list(APPEND DIRS_GEL
 	"gel/object"
 	"gel/prefs"
 	"gel/scripting"
-#	"gel/soundfx"
+	"gel/soundfx"
 	)
 add_dir("${DIRS_GEL}" "GEL")
 # they included skiptoken.cpp ?!
@@ -58,7 +58,7 @@ list(APPEND DIRS_SK
 	"sk/objects"
 	"sk/parkeditor"
 	"sk/parkeditor2"
-#	"sk/scripting"
+	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
 
