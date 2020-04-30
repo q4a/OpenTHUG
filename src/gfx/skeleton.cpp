@@ -1437,9 +1437,9 @@ void CSkeletonData::InitialiseBoneSkipList( const char* p_fileName )
 	// Stip leading path information and trailing extensions to obtain the name of the skeleton.
 	char skeleton_name[128];
 
-	char *p_copy = strrchr( p_fileName, '/' );
+	char *p_copy = (char*)strrchr( p_fileName, '/' );
 	if( p_copy == NULL )
-		p_copy = strrchr( p_fileName, '\\' );
+		p_copy = (char*)strrchr( p_fileName, '\\' );
 
 	if( p_copy )
 	{
@@ -1451,7 +1451,7 @@ void CSkeletonData::InitialiseBoneSkipList( const char* p_fileName )
 		strcpy( skeleton_name, p_fileName );
 	}
 
-	p_copy = strchr( skeleton_name, '.' );
+	p_copy = (char*)strchr( skeleton_name, '.' );
 	if( p_copy )
 	{
 		*p_copy = '\0';

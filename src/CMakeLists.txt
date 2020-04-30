@@ -47,6 +47,7 @@ list(APPEND DIRS_GFX
 	)
 add_dir("${DIRS_GFX}" "GFX")
 
+#[[
 list(APPEND DIRS_SK
 	"sk"
 	"sk/components"
@@ -61,15 +62,16 @@ list(APPEND DIRS_SK
 #	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
+]]
 
 list(APPEND DIRS_SYS
 	"sys"
 	"sys/config"
 	"sys/config/win32"
-	"sys/file"
-	"sys/mem"
+#	"sys/file"
+#	"sys/mem"
 	"sys/replay"
-	"sys/replay/win32"
+#	"sys/replay/win32"
 #	"sys/sio"
 	"sys/win32"
 	)
@@ -96,7 +98,7 @@ add_executable(thug
 	${CORE_SOURCE} ${CORE_INLINE} ${CORE_HEADER}
 	${GEL_SOURCE}  ${GEL_INLINE}  ${GEL_HEADER}
 	${GFX_SOURCE}  ${GFX_INLINE}  ${GFX_HEADER}
-	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
+#	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
 	${SYS_SOURCE}  ${SYS_INLINE}  ${SYS_HEADER})
 
 #target_include_directories(thug INTERFACE ${PROJECT_SOURCE_DIR}/src)
