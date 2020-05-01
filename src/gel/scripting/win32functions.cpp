@@ -20,7 +20,7 @@ uint64 GetTimeInCPUCycles( void )
 namespace Obj
 {
 // Needed for asserts to compile
-bool DebugSkaterScripts=false;
+// bool DebugSkaterScripts=false;
 
 class CObject;
 

@@ -121,7 +121,7 @@ list(APPEND DIRS_SK
 	"sk/objects"
 	"sk/parkeditor"
 	"sk/parkeditor2"
-#	"sk/scripting"
+	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
 

@@ -11288,6 +11288,9 @@ bool	ScriptTryCheatString(  Script::CStruct *pParams, Script::CScript *pScript )
 	// then search through the cheat array to see if we have a match
 
 
+	#ifdef	__PLAT_WN32__
+	Script::CArray *pCheatArray = Script::GetArray( "Cheat_Array_PC" );
+	#endif
 	#ifdef	__PLAT_XBOX__				 	
 	Script::CArray *pCheatArray = Script::GetArray( "Cheat_Array_Xbox" );
 	#endif
@@ -13431,12 +13434,14 @@ bool ScriptAnalyzeHeap( Script::CStruct *pParams, Script::CScript *pScript )
 
 	pHeap = mem_man.GetHeap( whichHeap );
 
+#ifndef __PLAT_WN32__
 #ifndef __PLAT_NGC__
 	if ( pHeap )
 	{
 		MemView_AnalyzeHeap( pHeap );
 	}
 #endif		// __PLAT_NGC__
+#endif
 
 	return true;
 }
@@ -13654,6 +13659,7 @@ bool ScriptDumpHeaps( Script::CStruct *pParams, Script::CScript *pScript )
 #endif		// __PLAT_NGC__
 #	endif //__PLAT_XBOX__
 
+#	ifndef __PLAT_WN32__
 	printf("\nScript pool usage:\n");
 	printf("CStruct:           %5d of %5d, max %5d\n",CStruct::SGetNumUsedItems(),CStruct::SGetTotalItems(),CStruct::SGetMaxUsedItems());
 	printf("CComponent:        %5d of %5d, max %5d\n",CComponent::SGetNumUsedItems(),CComponent::SGetTotalItems(),CComponent::SGetMaxUsedItems());
@@ -13665,6 +13671,7 @@ bool ScriptDumpHeaps( Script::CStruct *pParams, Script::CScript *pScript )
 	Mem::CCompactPool *p_hash = Mem::PoolManager::SGetPool(Mem::PoolManager::vHASH_ITEM_POOL);
 	printf("CHashItem:         %5d of %5d, max %5d\n",p_hash->GetNumUsedItems(),p_hash->GetTotalItems(),p_hash->GetMaxUsedItems());
 	printf("\n(HashItems are init in main.cpp, others are in init.cpp)\n");
+#	endif //__PLAT_WN32__
 #endif		// __NOPT_FINAL__
 
 	return true;

@@ -3107,6 +3107,7 @@ bool ScriptSaveToMemoryCard(Script::CStruct *pParams, Script::CScript *pScript)
 	Dbg_MsgAssert(CStruct::SGetCurrentPoolIndex()==0,("Bad current CStruct pool"));
 	Dbg_MsgAssert(CVector::SGetCurrentPoolIndex()==0,("Bad current CVector pool"));
 	bool got_special_pools=false;
+	#ifndef __PLAT_WN32__
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
 	{
@@ -3121,6 +3122,7 @@ bool ScriptSaveToMemoryCard(Script::CStruct *pParams, Script::CScript *pScript)
 	{
 		CComponent::SSwitchToPreviousPool();
 	}	
+	#endif
 
 	
 	#ifdef	__NOPT_ASSERT__
@@ -3541,6 +3543,7 @@ ERROR:
 	delete pMemCardStuff;
 
 	
+	#ifndef __PLAT_WN32__
 	if (got_special_pools)
 	{
 		Dbg_MsgAssert(CComponent::SGetNumUsedItems()==0,("Expected the special mem card CComponent pool to be empty at this point, but got %d items",CComponent::SGetNumUsedItems()));
@@ -3550,6 +3553,7 @@ ERROR:
 		CStruct::SSwitchToPreviousPool();
 		CVector::SSwitchToPreviousPool();
 	}
+	#endif
 	
 	if ( Config::GetHardware() != Config::HARDWARE_XBOX)
 	{
@@ -4148,6 +4152,7 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 	Dbg_MsgAssert(CStruct::SGetCurrentPoolIndex()==0,("Bad current CStruct pool"));
 	bool got_special_pools=false;
 	
+	#ifndef __PLAT_WN32__
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
 	{
@@ -4158,7 +4163,8 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 	else
 	{
 		CComponent::SSwitchToPreviousPool();
-	}	
+	}
+	#endif
 
 	
 	int num_files_added=0;
@@ -4397,6 +4403,7 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 		}
 	}	
 
+	#ifndef __PLAT_WN32__
 	if (got_special_pools)
 	{
 		// Note: The pools will contain stuff at this point. The script will delete them
@@ -4404,6 +4411,7 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 		CComponent::SSwitchToPreviousPool();
 		CStruct::SSwitchToPreviousPool();
 	}
+	#endif
 	
 	// The file_list will probably get cleaned up when it goes out of scope, but just to be sure ...
 	file_list.DestroyAllNodes();
@@ -4575,6 +4583,7 @@ bool ScriptGetSaveInfo(Script::CStruct *pParams, Script::CScript *pScript)
 // It is safe to call this multiple times.
 bool ScriptCreateTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
+	#ifndef __PLAT_WN32__
 	// If the pools exist already, do nothing.
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
@@ -4645,12 +4654,14 @@ bool ScriptCreateTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript
 
 	Mem::Manager::sHandle().PopContext();
 
+	#endif
 	return true;
 }
 
 // It is safe to call this multiple times.
 bool ScriptRemoveTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
+	#ifndef __PLAT_WN32__
 	Dbg_MsgAssert(CComponent::SGetCurrentPoolIndex()==0,("Bad current CComponent pool"));
 	CComponent::SSwitchToNextPool();
 	CComponent::SRemovePool(); // Does nothing if the pool does not exist.
@@ -4665,6 +4676,7 @@ bool ScriptRemoveTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript
 	CVector::SSwitchToNextPool();
 	CVector::SRemovePool();
 	CVector::SSwitchToPreviousPool();
+	#endif
 	
 #ifdef __PLAT_NGC__
 	if ( g_hack_address )
@@ -4682,6 +4694,7 @@ bool ScriptRemoveTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript
 
 bool ScriptSwitchToTempPoolsIfTheyExist(Script::CStruct *pParams, Script::CScript *pScript)
 {
+	#ifndef __PLAT_WN32__
 	Dbg_MsgAssert(CComponent::SGetCurrentPoolIndex()==0 && CStruct::SGetCurrentPoolIndex()==0 && CVector::SGetCurrentPoolIndex()==0, ("Expected current pools to be 0"));
 	CComponent::SSwitchToNextPool();
 	CStruct::SSwitchToNextPool();
@@ -4693,12 +4706,14 @@ bool ScriptSwitchToTempPoolsIfTheyExist(Script::CStruct *pParams, Script::CScrip
 	CComponent::SSwitchToPreviousPool();
 	CStruct::SSwitchToPreviousPool();
 	CVector::SSwitchToPreviousPool();
+	#endif
 
 	return false;
 }
 
 bool ScriptSwitchToRegularPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
+	#ifndef __PLAT_WN32__
 	if (CComponent::SGetCurrentPoolIndex()==0 && 
 		CStruct::SGetCurrentPoolIndex()==0 &&
 		CVector::SGetCurrentPoolIndex()==0)
@@ -4709,6 +4724,7 @@ bool ScriptSwitchToRegularPools(Script::CStruct *pParams, Script::CScript *pScri
 	CComponent::SSwitchToPreviousPool();
 	CStruct::SSwitchToPreviousPool();
 	CVector::SSwitchToPreviousPool();
+	#endif
 	return true;
 }
 
