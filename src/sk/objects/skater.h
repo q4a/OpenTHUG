@@ -99,6 +99,11 @@
 	#endif
 #endif
 
+#ifdef	__PLAT_WN32__  // FIXME use SDL2
+#define	BREAK_SPINE_BUTTONS (control_pad.m_L2.GetPressed() && control_pad.m_R2.GetPressed())
+#define	WALK_SPINE_BUTTONS (control_pad.m_L2.GetPressed() && control_pad.m_R2.GetPressed())
+#endif
+
 #ifdef	__PLAT_XBOX__
 #define	BREAK_SPINE_BUTTONS (control_pad.m_L2.GetPressed() && control_pad.m_R2.GetPressed())
 #define	WALK_SPINE_BUTTONS (control_pad.m_L2.GetPressed() && control_pad.m_R2.GetPressed())

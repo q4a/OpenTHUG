@@ -896,7 +896,7 @@ void CSkater::Pause()
 {
 	if (!mPaused && m_local_client )
 	{
-		MARK;
+		// MARK;
 		
 		// Pause the base object
 		CMovingObject::Pause();
@@ -928,7 +928,7 @@ void CSkater::UnPause()
 {
 	if (mPaused && m_local_client)
 	{
-		MARK;
+		// MARK;
 		
 		CMovingObject::UnPause();
 		

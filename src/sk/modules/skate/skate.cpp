@@ -34,9 +34,11 @@
 
 #include <sk/modules/skate/skate.h>
 
+#ifndef __PLAT_WN32__
 #ifndef __PLAT_XBOX__
 #ifndef __PLAT_NGC__
     #include <sifdev.h>
+#endif
 #endif
 #endif
 
