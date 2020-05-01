@@ -181,6 +181,9 @@ void post_main( void );
 **							   Public Functions								**
 *****************************************************************************/
 
+#ifdef __PLAT_WN32__
+void pre_main(void)
+#endif
 #ifdef __PLAT_XBOX__
 int pre_main( void )
 #endif
@@ -654,9 +657,11 @@ extern uint8 * RES_gamecube;
 			Mem::PushMemProfile("Game Singletons");
 			Obj::CPathMan::Instance(); // Force creation of CPathMan singleton
 
+#ifndef NO_SCRIPT_CACHING
 #ifndef __PLAT_NGC__
 			Spt::SingletonPtr< Script::CScriptCache>			script_cache( true );
 #endif		// __PLAT_NGC__
+#endif
 			Spt::SingletonPtr< Ass::CAssMan > 					ass_manager( true );
 			Spt::SingletonPtr< Sfx::CSfxManager > 				sfx_manager( true );			
 			Spt::SingletonPtr< Net::Manager >					net_manager( true );	
@@ -702,7 +707,9 @@ extern uint8 * RES_gamecube;
 			
 			*/
 			
+#ifndef NO_SCRIPT_CACHING
 			mdl_manager->RegisterModule ( *script_cache );
+#endif
 			mdl_manager->RegisterModule ( *grandpas_park_editor );
 			mdl_manager->RegisterModule ( *front );
 			mdl_manager->RegisterModule ( *skate_mod );
@@ -715,7 +722,9 @@ extern uint8 * RES_gamecube;
 			Start modules section
 			************************************************/
 			
+#ifndef NO_SCRIPT_CACHING
 			mdl_manager->StartModule( *script_cache );
+#endif
 			mdl_manager->StartModule( *front );
 			mdl_manager->StartModule( *skate_mod );      
 			mdl_manager->StartModule ( *grandpas_park_editor );
