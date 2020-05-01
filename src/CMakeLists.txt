@@ -26,7 +26,7 @@ list(APPEND DIRS_GEL
 #	"gel/collision"
 #	"gel/components"
 	"gel/environment"
-	"gel/input"
+#	"gel/input"
 	"gel/mainloop"
 	"gel/module"
 #	"gel/movies"
@@ -60,6 +60,7 @@ add_dir("${DIRS_GEL}" "GEL")
 # they included skiptoken.cpp ?!
 list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/scripting/skiptoken.cpp")
 
+#[[
 list(APPEND DIRS_GFX
 	"gfx"
 #	"gfx/2d"
@@ -73,23 +74,38 @@ list(APPEND DIRS_GFX
 #	"gfx/xbox/nx"
 	)
 add_dir("${DIRS_GFX}" "GFX")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/camera.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/modelbuilder.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nx.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxanimcache.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfont.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfontman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxgeom.cpp")			#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nximposter.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxlight.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxlightman.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxloadscreen.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmesh.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmiscfx.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmodel.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxnewparticle.cpp")	#?
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxnewparticlemgr.cpp")	#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticle.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticlemgr.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxquickanim.cpp")		#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxscene.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxsector.cpp")			#?
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxskincomponent.cpp")	#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxsprite.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtexman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtexture.cpp")		#?
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtextured3dpoly.cpp")	#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxviewman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxviewport.cpp")		#?
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxweather.cpp")		#?
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxwin2d.cpp")
+]]
 
-#[[
 list(APPEND DIRS_SK
 	"sk"
 	"sk/components"
@@ -108,7 +124,6 @@ list(APPEND DIRS_SK
 #	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
-]]
 
 list(APPEND DIRS_SYS
 	"sys"
@@ -163,7 +178,7 @@ add_executable(thug
 	${CORE_SOURCE} ${CORE_INLINE} ${CORE_HEADER}
 	${GEL_SOURCE}  ${GEL_INLINE}  ${GEL_HEADER}
 	${GFX_SOURCE}  ${GFX_INLINE}  ${GFX_HEADER}
-#	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
+	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
 	${SYS_SOURCE}  ${SYS_INLINE}  ${SYS_HEADER})
 
 #target_include_directories(thug INTERFACE ${PROJECT_SOURCE_DIR}/src)
