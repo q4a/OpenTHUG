@@ -4,27 +4,44 @@
 list(APPEND DIRS_CORE
 	"core"
 	"core/debug"
+#	"core/debug/ngc"
+#	"core/debug/ngps"
 	"core/debug/wn32"
+#	"core/debug/xbox"
 	"core/list"
 	"core/math"
+#	"core/math/xbox"
 	"core/string"
 	"core/support"
 	"core/task"
+#	"core/thread/ngc"
+#	"core/thread/ngps"
 	"core/thread/wn32"
 	)
 add_dir("${DIRS_CORE}" "CORE")
 
 list(APPEND DIRS_GEL
 	"gel"
-	"gel/assman"
-	"gel/collision"
+#	"gel/assman"
+#	"gel/collision"
 #	"gel/components"
 	"gel/environment"
 	"gel/input"
 	"gel/mainloop"
 	"gel/module"
 #	"gel/movies"
+#	"gel/movies/ngc"
+#	"gel/movies/ngps"
+#	"gel/movies/xbox"
 #	"gel/music"
+#	"gel/music/ngc"
+#	"gel/music/ngc/bgm"
+#	"gel/music/ngc/divx"
+#	"gel/music/ngc/pcm"
+#	"gel/music/ngps"
+#	"gel/music/ngps/bgm"
+#	"gel/music/ngps/pcm"
+#	"gel/music/xbox"
 	"gel/net"
 	"gel/net/app"
 	"gel/net/client"
@@ -35,6 +52,9 @@ list(APPEND DIRS_GEL
 	"gel/prefs"
 	"gel/scripting"
 #	"gel/soundfx"
+#	"gel/soundfx/ngc"
+#	"gel/soundfx/ngps"
+#	"gel/soundfx/xbox"
 	)
 add_dir("${DIRS_GEL}" "GEL")
 # they included skiptoken.cpp ?!
@@ -42,10 +62,32 @@ list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/scripting/skiptoken
 
 list(APPEND DIRS_GFX
 	"gfx"
-	"gfx/2d"
+#	"gfx/2d"
 	"gfx/image"
+#	"gfx/ngc"
+#	"gfx/ngc/nx"
+#	"gfx/ngps"
+#	"gfx/ngps/nx"
+#	"gfx/ngps/nx/vu1"
+#	"gfx/xbox"
+#	"gfx/xbox/nx"
 	)
 add_dir("${DIRS_GFX}" "GFX")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nx.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfont.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfontman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nximposter.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxlightman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxloadscreen.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmesh.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmiscfx.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticle.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticlemgr.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxscene.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxsprite.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtexman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxviewman.cpp")
+list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxwin2d.cpp")
 
 #[[
 list(APPEND DIRS_SK
@@ -53,9 +95,13 @@ list(APPEND DIRS_SK
 	"sk/components"
 	"sk/engine"
 #	"sk/gamenet"
+#	"sk/gamenet/ngps"
+#	"sk/gamenet/xbox"
 	"sk/modules/frontend"
 	"sk/modules/skate"
 	"sk/modules/viewer"
+#	"sk/ngc"
+#	"sk/ngps"
 	"sk/objects"
 	"sk/parkeditor"
 	"sk/parkeditor2"
@@ -67,13 +113,32 @@ add_dir("${DIRS_SK}" "SK")
 list(APPEND DIRS_SYS
 	"sys"
 	"sys/config"
+#	"sys/config/ngc"
+#	"sys/config/ngps"
 	"sys/config/win32"
+#	"sys/config/xbox"
 #	"sys/file"
+#	"sys/file/ngc"
+#	"sys/file/ngps"
+#	"sys/file/ngps/fileio"
+#	"sys/file/xbox"
 #	"sys/mem"
+#	"sys/memcard/ngc"
+#	"sys/memcard/ngps"
+#	"sys/memcard/xbox"
+#	"sys/ngc"
+#	"sys/ngps"
 	"sys/replay"
+#	"sys/replay/ngc"
+#	"sys/replay/ngps"
 #	"sys/replay/win32"
+#	"sys/replay/xbox"
 #	"sys/sio"
+#	"sys/sio/ngc"
+#	"sys/sio/ngps"
+#	"sys/sio/xbox"
 	"sys/win32"
+#	"sys/xbox"
 	)
 add_dir("${DIRS_SYS}" "SYS")
 
