@@ -41,7 +41,9 @@
 *****************************************************************************/
 
 // change the following line to compile out soundfx from the game:
-#ifdef __PLAT_XBOX__
+#ifdef __PLAT_WN32__
+#define NO_SOUND_PLEASE	1
+#elif defined __PLAT_XBOX__
 #define NO_SOUND_PLEASE	0
 #else
 #define NO_SOUND_PLEASE	0
@@ -141,6 +143,7 @@ struct ObjectSoundInfo
 struct PlatformWaveInfo
 {
 	// Stub to compile under win32
+	bool		looping;		// this flag is checked in soundfx.cpp.  might oughtta be added to WaveTableEntry struct...
 };
 #endif
 
