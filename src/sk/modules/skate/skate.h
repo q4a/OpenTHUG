@@ -84,9 +84,9 @@ namespace Obj
     class CTrickChecksumTable;
     class CTrickObjectManager;
 
-#	ifdef TESTING_GUNSLINGER
+//#	ifdef TESTING_GUNSLINGER
 	class CNavManager;
-#	endif
+//#	endif
 };
 
 namespace Prefs
@@ -286,10 +286,10 @@ public:
 	void 							UpdateGameFlow();
 	Obj::CRailManager*	            GetRailManager() { return mp_railManager; }
 
-#	ifdef TESTING_GUNSLINGER
+//#	ifdef TESTING_GUNSLINGER
 	Obj::CNavManager*				mp_navManager;
 	Obj::CNavManager*	            GetNavManager() { return mp_navManager; }
-#	endif
+//#	endif
 
 	void			                Rail_DebugRender();
 

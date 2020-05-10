@@ -24,7 +24,7 @@ list(APPEND DIRS_GEL
 	"gel"
 #	"gel/assman"
 #	"gel/collision"
-#	"gel/components"
+	"gel/components"
 	"gel/environment"
 #	"gel/input"
 	"gel/mainloop"
@@ -60,11 +60,14 @@ add_dir("${DIRS_GEL}" "GEL")
 # they included skiptoken.cpp ?!
 list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/scripting/skiptoken.cpp")
 
-#[[
+# remove gunslinger
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingerwalkcomponent.cpp")
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingerwalkcameracomponent.cpp")
+
 list(APPEND DIRS_GFX
 	"gfx"
 #	"gfx/2d"
-	"gfx/image"
+#	"gfx/image"
 #	"gfx/ngc"
 #	"gfx/ngc/nx"
 #	"gfx/ngps"
@@ -74,6 +77,7 @@ list(APPEND DIRS_GFX
 #	"gfx/xbox/nx"
 	)
 add_dir("${DIRS_GFX}" "GFX")
+#[[
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/camera.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/modelbuilder.cpp")
 list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nx.cpp")
@@ -124,6 +128,8 @@ list(APPEND DIRS_SK
 	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
+list(APPEND SK_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/sk/gamenet/gamenet.cpp")
+list(APPEND SK_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/sk/gamenet/player.cpp")
 
 list(APPEND DIRS_SYS
 	"sys"

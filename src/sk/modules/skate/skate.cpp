@@ -107,9 +107,9 @@
 #include <sk/objects/skatertricks.h>
 #include <sk/objects/trickObject.h>
 
-#ifdef TESTING_GUNSLINGER
+//#ifdef TESTING_GUNSLINGER
 #include <sk/objects/navigation.h>
-#endif
+//#endif
 
 #include <sk/components/skatercorephysicscomponent.h>
 #include <sk/components/skaterstatehistorycomponent.h>
@@ -1422,9 +1422,9 @@ Skate::Skate ( void )
 	
 	mp_railManager = new Obj::CRailManager;
 
-#	ifdef TESTING_GUNSLINGER
+//#	ifdef TESTING_GUNSLINGER
 	mp_navManager = new Obj::CNavManager;
-#	endif
+//#	endif
 	
 	mp_trickChecksumTable = new Obj::CTrickChecksumTable;
 

@@ -57,6 +57,7 @@ public :
 
 	bool					Running ( void ) const;
 	bool					Locked ( void ) const;
+	char *					GetName() { return ""; }
 
 private :
 

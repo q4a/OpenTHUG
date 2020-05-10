@@ -2869,6 +2869,7 @@ void	Manager::ServerShutdown( void )
 
 	if( m_server )
 	{
+#ifndef __PLAT_WN32__
 #ifndef __PLAT_XBOX__
 #ifndef __PLAT_NGC__
 		if( !m_server->IsLocal() && InInternetMode())
@@ -2878,6 +2879,7 @@ void	Manager::ServerShutdown( void )
 		}
 #endif
 #endif    
+#endif
 		net_man->DestroyApp( m_server );
 		m_server_add_new_players_task->Remove();
 		m_start_network_game_task->Remove();
@@ -4089,7 +4091,7 @@ void	Manager::FindServersOnLAN( void )
         
 		msg.m_Timestamp = Tmr::GetTime();
         
-#if (defined(__PLAT_NGPS__)||defined(__PLAT_NGC__))
+#if (defined(__PLAT_NGPS__)||defined(__PLAT_NGC__)||defined(__PLAT_WN32__))
 		m_match_client->SendMessageTo( Net::MSG_ID_FIND_SERVER, sizeof( MsgFindServer ), &msg, 
 									0xFFFFFFFF, vHOST_PORT, 0 );
 #else
@@ -4787,6 +4789,9 @@ void	Manager::UsePreferences( void )
 	}
 
 	// Override IP settings with the viewer_ip script variable, used to launch a server for real-time communication
+#ifdef __PLAT_WN32__
+	const char* viewer_ip = Script::GetString("pc_viewer_ip");
+#endif
 #ifdef __PLAT_XBOX__
 	const char* viewer_ip = Script::GetString( "xbox_viewer_ip" );
 #endif

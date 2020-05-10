@@ -28,6 +28,9 @@
 
 
 #ifdef __PLAT_WN32__
+#define NUM_VOICES_PER_CORE	24
+#define NUM_CORES			2
+#define NUM_VOICES			( NUM_VOICES_PER_CORE * NUM_CORES )
 //#include <strstream>
 //#include <fstream.h>
 #ifdef __USE_OLD_STREAMS__
