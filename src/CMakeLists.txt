@@ -22,7 +22,7 @@ add_dir("${DIRS_CORE}" "CORE")
 
 list(APPEND DIRS_GEL
 	"gel"
-#	"gel/assman"
+	"gel/assman"
 #	"gel/collision"
 	"gel/components"
 	"gel/environment"
@@ -51,7 +51,7 @@ list(APPEND DIRS_GEL
 	"gel/object"
 	"gel/prefs"
 	"gel/scripting"
-#	"gel/soundfx"
+	"gel/soundfx"
 #	"gel/soundfx/ngc"
 #	"gel/soundfx/ngps"
 #	"gel/soundfx/xbox"

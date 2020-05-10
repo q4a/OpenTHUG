@@ -1675,8 +1675,10 @@ CSkater::~CSkater ( void )
 	// uses this controller.
 	if (mPaused && m_local_client && mp_input_component)
 	{
+#ifndef __PLAT_WN32__
 		mp_input_component->GetDevice()->UnPause();
 		mp_input_component->GetDevice()->StopAllVibrationIncludingSaved();
+#endif
 	}
 
 	DeleteResources();	   

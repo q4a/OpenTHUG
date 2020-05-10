@@ -61,10 +61,16 @@ public:
 	
 	void								Debounce ( uint32 Checksum, float time, bool clear );
 	
+#ifdef __PLAT_WN32__
+	void								PauseDevice (   ) { }
+	void								UnPauseDevice (   ) { }
+	void*								GetDevice (   ) { return NULL; }
+#else
 	void								PauseDevice (   ) { m_input_handler->m_Device->Pause(); }
 	void								UnPauseDevice (   ) { m_input_handler->m_Device->UnPause(); }
 	SIO::Device*						GetDevice (   ) { return m_input_handler->m_Device; }
-	
+#endif
+
 private:
 	static void							s_input_logic_code ( const Inp::Handler < CInputComponent >& handler );
 	static void							s_input_logic_code2 ( const Inp::Handler < CInputComponent >& handler );
