@@ -27,7 +27,7 @@
 #include <core/defines.h>
 #endif
 #include <core/support.h>
-#include <sys\mem\region.h>
+#include <sys/mem/region.h>
 #include <sys/mem/memdbg.h>
 
 #ifdef __PLAT_NGC__

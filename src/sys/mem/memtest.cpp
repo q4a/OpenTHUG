@@ -188,8 +188,10 @@ void Test( void )
 		Dbg_Message ( "%x  should be valid address", test2[i] );
 	}
 
+#ifndef __PLAT_WN32__  // FIXME
 	test2[16] = new (pool, false) char[1024];
 	Dbg_Message ( " %x  should be NULL address ( no free slots )", test2[16] ); 
+#endif
 
 	delete test2[0];
 	delete test2[1];

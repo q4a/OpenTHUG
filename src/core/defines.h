@@ -297,7 +297,7 @@ typedef	sint64				nID64;
 
 #endif
 
-#ifdef __PLAT_XBOX__
+#if defined(__PLAT_XBOX__) || defined(__PLAT_WN32__)
 #define __PRETTY_FUNCTION__ "?"
 
 #define isnanf	_isnan
