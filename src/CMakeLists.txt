@@ -26,7 +26,7 @@ list(APPEND DIRS_GEL
 #	"gel/collision"
 	"gel/components"
 	"gel/environment"
-#	"gel/input"
+	"gel/input"
 	"gel/mainloop"
 	"gel/module"
 #	"gel/movies"
@@ -41,7 +41,7 @@ list(APPEND DIRS_GEL
 #	"gel/music/ngps"
 #	"gel/music/ngps/bgm"
 #	"gel/music/ngps/pcm"
-	"gel/music/wn32"
+	"gel/music/win32"
 #	"gel/music/xbox"
 	"gel/net"
 	"gel/net/app"
@@ -78,38 +78,6 @@ list(APPEND DIRS_GFX
 #	"gfx/xbox/nx"
 	)
 add_dir("${DIRS_GFX}" "GFX")
-#[[
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/camera.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/modelbuilder.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nx.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxanimcache.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfont.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxfontman.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxgeom.cpp")			#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nximposter.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxlight.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxlightman.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxloadscreen.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmesh.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmiscfx.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxmodel.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxnewparticle.cpp")	#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxnewparticlemgr.cpp")	#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticle.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxparticlemgr.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxquickanim.cpp")		#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxscene.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxsector.cpp")			#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxskincomponent.cpp")	#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxsprite.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtexman.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtexture.cpp")		#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxtextured3dpoly.cpp")	#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxviewman.cpp")
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxviewport.cpp")		#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxweather.cpp")		#?
-list(REMOVE_ITEM GFX_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gfx/nxwin2d.cpp")
-]]
 
 list(APPEND DIRS_SK
 	"sk"
@@ -143,10 +111,12 @@ list(APPEND DIRS_SYS
 #	"sys/file/ngc"
 #	"sys/file/ngps"
 #	"sys/file/ngps/fileio"
+	"sys/file/win32"
 #	"sys/file/xbox"
 	"sys/mem"
 #	"sys/memcard/ngc"
 #	"sys/memcard/ngps"
+	"sys/memcard/win32"
 #	"sys/memcard/xbox"
 #	"sys/ngc"
 #	"sys/ngps"
