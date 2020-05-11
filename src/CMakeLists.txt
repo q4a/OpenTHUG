@@ -74,6 +74,7 @@ list(APPEND DIRS_GFX
 #	"gfx/ngps"
 #	"gfx/ngps/nx"
 #	"gfx/ngps/nx/vu1"
+	"gfx/win32"
 #	"gfx/xbox"
 #	"gfx/xbox/nx"
 	)
@@ -83,7 +84,7 @@ list(APPEND DIRS_SK
 	"sk"
 	"sk/components"
 	"sk/engine"
-#	"sk/gamenet"
+	"sk/gamenet"
 #	"sk/gamenet/ngps"
 #	"sk/gamenet/xbox"
 	"sk/modules/frontend"
@@ -97,8 +98,7 @@ list(APPEND DIRS_SK
 	"sk/scripting"
 	)
 add_dir("${DIRS_SK}" "SK")
-list(APPEND SK_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/sk/gamenet/gamenet.cpp")
-list(APPEND SK_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/sk/gamenet/player.cpp")
+list(REMOVE_ITEM SK_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/sk/gamenet/lobby.cpp")
 
 list(APPEND DIRS_SYS
 	"sys"
@@ -159,5 +159,6 @@ add_executable(thug
 	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
 	${SYS_SOURCE}  ${SYS_INLINE}  ${SYS_HEADER})
 
+target_link_libraries(thug ws2_32.lib)
 #target_include_directories(thug INTERFACE ${PROJECT_SOURCE_DIR}/src)
 include_directories(${INCLUDE_DIRECTORIES} ${PROJECT_SOURCE_DIR}/src)

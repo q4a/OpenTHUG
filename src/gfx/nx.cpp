@@ -23,7 +23,7 @@
 #include <gfx/nxparticlemgr.h>
 #include <gfx/nxquickanim.h>
 #include <gfx/nxlightman.h>
-#include <gfx\nxweather.h>
+#include <gfx/nxweather.h>
 #ifdef __PLAT_NGC__
 #include <gfx\ngc\p_nxscene.h>
 #endif		// __PLAT_NGC__

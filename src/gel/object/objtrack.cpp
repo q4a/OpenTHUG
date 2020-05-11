@@ -1135,6 +1135,7 @@ bool ScriptWaitForEvent(Script::CStruct *pParams, Script::CScript *pScript)
 
 
 
+#endif  // FIXME
 bool ScriptObjectExists(Script::CStruct *pParams, Script::CScript *pScript)
 {
 	// Although events aren't necessarily tied to the Screen Element system, it is
@@ -1146,7 +1147,7 @@ bool ScriptObjectExists(Script::CStruct *pParams, Script::CScript *pScript)
 	CTracker* p_tracker = CTracker::Instance();
 	return (p_tracker->GetObject(id) != NULL);
 }
-
+#ifndef __PLAT_WN32__  // FIXME
 
 
 
