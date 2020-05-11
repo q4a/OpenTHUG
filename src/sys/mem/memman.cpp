@@ -1701,11 +1701,11 @@ void	PopMemProfile()
 {
 }
 
-#ifndef __PLAT_WN32__
+//#ifndef __PLAT_WN32__
 void	DumpMemProfile(int level, char *p_type)
 {
 }
-#endif// __PLAT_WN32__
+//#endif// __PLAT_WN32__
 
 void	AllocMemProfile(Allocator::BlockHeader* p_block)
 {

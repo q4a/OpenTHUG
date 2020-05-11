@@ -252,7 +252,6 @@ int CBBox::WithinAxes(const Vector &point, uint32 &axis_flags) const
 	return number_of_axes;
 }
 
-#ifndef __PLAT_WN32__  // FIXME
 void CBBox::DebugRender(uint32 rgba, int frames) const
 {
 	// Min YZ square
@@ -318,7 +317,6 @@ void CBBox::DebugRender(const Mth::Matrix & transform, uint32 rgba, int frames) 
 	Gfx::AddDebugLine(min_yz_3, max_yz_3,rgba,rgba,frames);
 	Gfx::AddDebugLine(min_yz_4, max_yz_4,rgba,rgba,frames);
 }
-#endif
 
 bool CBBox::LineIntersect( const Mth::Line &line, Mth::Vector &point, Mth::Vector &normal ) const
 {

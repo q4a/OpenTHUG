@@ -61,6 +61,8 @@ static volatile uint64	s_count;
 #define	vSMOOTH_N  4
 
 static volatile uint64	s_vblank = 0;
+static volatile uint64	s_total_vblanks = 0;
+static float			s_slomo = 1.0f;
 static uint64			s_stored_vblank = 0;
 
 static clock_t			high_count;
@@ -206,6 +208,96 @@ void Init(void)
 /******************************************************************/
 void DeInit(void)
 {
+}
+
+// when pausing the game, call this to store the current state of OncePerRender( ) (only essential in replay mode)
+void StoreTimerInfo(void)
+{
+}
+
+void RecallTimerInfo(void)
+{
+}
+
+// Call this function once per rendering loop, to increment the 
+// m_render_frame variable
+// This function should be synchronized in some way to the vblank, so that it is called 
+// directly after the vblank that rendering starts on
+void OncePerRender(void)
+{
+#	ifdef STOPWATCH_STUFF
+	Script::IncrementStopwatchFrameIndices();
+	Script::DumpFunctionTimes();
+	Script::ResetFunctionCounts();
+#	endif
+
+	int total = 0;
+	int uncapped_total = 0;
+
+	for (int i = 0; i < vSMOOTH_N; ++i)
+	{
+		int diff = gTimerInfo.render_buffer[i];
+		uncapped_total += diff;
+
+		// Handle very bad values.
+		if (diff > 10 || diff < 0)
+		{
+			diff = 1;
+		}
+
+		// Clamp to 4.
+		if (diff > 4)
+		{
+			diff = 4;
+		}
+		total += diff;
+	}
+
+	gTimerInfo.render_length = (float)total / (float)vSMOOTH_N;
+
+	if (gTimerInfo.render_length < 1.0f)
+	{
+		gTimerInfo.render_length = 1.0f;
+	}
+
+	gTimerInfo.uncapped_render_length = (double)uncapped_total / (double)vSMOOTH_N;
+}
+
+/******************************************************************/
+/*                                                                */
+/*                                                                */
+/******************************************************************/
+uint64 GetVblanks(void)
+{
+	return s_total_vblanks;
+}
+
+/******************************************************************/
+/*                                                                */
+/*                                                                */
+/******************************************************************/
+void SetSlomo(float slomo)
+{
+	s_slomo = slomo;
+}
+
+/******************************************************************/
+/*                                                                */
+/*                                                                */
+/******************************************************************/
+double UncappedFrameLength()
+{
+	return gTimerInfo.uncapped_render_length / xrate;
+}
+
+/******************************************************************/
+/*                                                                */
+/*                                                                */
+/******************************************************************/
+void VSync(void)
+{
+	uint64 now = GetVblanks();
+	while (now == GetVblanks());
 }
 
 } // namespace Tmr

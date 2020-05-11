@@ -143,10 +143,8 @@ public:
 	// Finds the closest point on the bounding box to a position
 	void GetClosestIntersectPoint(const Mth::Vector &pos, Mth::Vector &point) const;
 
-#ifndef __PLAT_WN32__  // FIXME
 	void DebugRender(uint32 rgba, int frames = 0) const;
 	void DebugRender(const Mth::Matrix & transform, uint32 rgba, int frames = 0) const;
-#endif
 
 private:
 	//

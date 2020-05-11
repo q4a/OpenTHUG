@@ -1032,7 +1032,7 @@ void CTracker::SuspendScriptUntilEvent(Script::CScript *pScript, uint32 event_ty
 
 
 
-#ifndef __PLAT_WN32__	// These script functions are not necessary from PC tools
+//#ifndef __PLAT_WN32__	// These script functions are not necessary from PC tools
 
 // @script | LaunchEvent | 
 // @parm name | type | event type
@@ -1135,7 +1135,6 @@ bool ScriptWaitForEvent(Script::CStruct *pParams, Script::CScript *pScript)
 
 
 
-#endif  // FIXME
 bool ScriptObjectExists(Script::CStruct *pParams, Script::CScript *pScript)
 {
 	// Although events aren't necessarily tied to the Screen Element system, it is
@@ -1147,7 +1146,6 @@ bool ScriptObjectExists(Script::CStruct *pParams, Script::CScript *pScript)
 	CTracker* p_tracker = CTracker::Instance();
 	return (p_tracker->GetObject(id) != NULL);
 }
-#ifndef __PLAT_WN32__  // FIXME
 
 
 
@@ -1245,6 +1243,6 @@ bool ScriptPrintEventLog(Script::CStruct *pParams, Script::CScript *pScript)
 }
 
 
-#endif
+//#endif
 
 }

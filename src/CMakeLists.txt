@@ -23,13 +23,13 @@ add_dir("${DIRS_CORE}" "CORE")
 list(APPEND DIRS_GEL
 	"gel"
 	"gel/assman"
-#	"gel/collision"
+	"gel/collision"
 	"gel/components"
 	"gel/environment"
 	"gel/input"
 	"gel/mainloop"
 	"gel/module"
-#	"gel/movies"
+	"gel/movies"
 #	"gel/movies/ngc"
 #	"gel/movies/ngps"
 #	"gel/movies/xbox"
@@ -62,8 +62,10 @@ add_dir("${DIRS_GEL}" "GEL")
 list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/scripting/skiptoken.cpp")
 
 # remove gunslinger
-list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingerwalkcomponent.cpp")
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingercameralookaroundcomponent.cpp")
 list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingerwalkcameracomponent.cpp")
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/gunslingerwalkcomponent.cpp")
+list(REMOVE_ITEM GEL_SOURCE "${CMAKE_CURRENT_SOURCE_DIR}/gel/components/horsecameracomponent.cpp")
 
 list(APPEND DIRS_GFX
 	"gfx"
@@ -159,6 +161,5 @@ add_executable(thug
 	${SK_SOURCE}   ${SK_INLINE}   ${SK_HEADER}
 	${SYS_SOURCE}  ${SYS_INLINE}  ${SYS_HEADER})
 
-target_link_libraries(thug ws2_32.lib)
-#target_include_directories(thug INTERFACE ${PROJECT_SOURCE_DIR}/src)
+target_link_libraries(thug winmm.lib ws2_32.lib)
 include_directories(${INCLUDE_DIRECTORIES} ${PROJECT_SOURCE_DIR}/src)

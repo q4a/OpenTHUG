@@ -28,8 +28,9 @@ CObject *ResolveToObject(uint32 id, bool ignoreScreenElements)
 {
 	return NULL;
 }
-}
+} // namespace Obj
 
+#if 0  // FIXME
 namespace Pip
 {
 void *Load(const char *p_fileName)
@@ -40,7 +41,7 @@ void *Load(const char *p_fileName)
 void Unload(const char *p_fileName)
 {
 }
-}
+} // namespace Pip
 
 namespace Mem
 {
@@ -118,7 +119,8 @@ void PushMemProfile(char *p_type)
 {
 }
 
-}
+} // namespace Mem
+#endif
 
 #endif
 

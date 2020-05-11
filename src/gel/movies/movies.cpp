@@ -51,7 +51,9 @@ namespace Flx
 
 void PlayMovie( const char *pMovieName )
 {
+#	ifndef __PLAT_WN32__  // FIXME
 	PMovies_PlayMovie( pMovieName );
+#	endif
 }
 
 }  // namespace Flx
