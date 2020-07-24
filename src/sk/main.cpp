@@ -139,6 +139,9 @@ Dbg_DefineProject( PS2, "Test Project" )
 
 extern "C"
 {
+#ifdef __PLAT_WN32__
+int pre_main(void);
+#endif
 #ifdef __PLAT_XBOX__
 int pre_main( void );
 #endif
@@ -182,7 +185,7 @@ void post_main( void );
 *****************************************************************************/
 
 #ifdef __PLAT_WN32__
-void pre_main(void)
+int pre_main(void)
 #endif
 #ifdef __PLAT_XBOX__
 int pre_main( void )
@@ -213,12 +216,16 @@ void pre_main( void )
 	
 	DEBUG_FLASH(0x02050);		// brown
 
-#ifdef __PLAT_XBOX__
+#if defined(__PLAT_XBOX__) || defined(__PLAT_WN32__)
 	// Must return 0 here, as this is called from CRT initialization code.
 	return 0;
 }
 
+#ifdef __PLAT_WN32__
+#pragma data_seg( ".CRT$XIU" )
+#elif __PLAT_XBOX__
 #pragma data_seg( ".CRT$RIX" )
+#endif
 static int (*_mypreinit)(void) = pre_main;
 #pragma data_seg()
 
@@ -381,7 +388,7 @@ int main ( sint argc, char** argv )
 
 	DEBUG_FLASH(0x00007f00);
 					  
-	Mem::Manager::sHandle().InitOtherHeaps();							
+	Mem::Manager::sHandle().InitOtherHeaps();
 
 	DEBUG_FLASH(0x0000007f);
 
