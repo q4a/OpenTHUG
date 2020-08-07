@@ -577,7 +577,7 @@ int main ( sint argc, char** argv )
 			************************************************/
 			
 			Mem::PushMemProfile("Hash Item Pool Manager");
-#			if( defined( __PLAT_NGC__ ) || defined( __PLAT_XBOX__ ))
+#			if( defined( __PLAT_NGC__ ) || defined( __PLAT_XBOX__ ) || defined( __PLAT_WN32__ ))
 			Mem::PoolManager::SSetupPool(Mem::PoolManager::vHASH_ITEM_POOL, 12500);	// Mick: increased from 5600 to 10000
 #			else
 			Mem::PoolManager::SSetupPool(Mem::PoolManager::vHASH_ITEM_POOL, 10000);	// Mick: increased from 5600 to 10000

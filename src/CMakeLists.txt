@@ -77,6 +77,7 @@ list(APPEND DIRS_GFX
 #	"gfx/ngps/nx"
 #	"gfx/ngps/nx/vu1"
 	"gfx/win32"
+	"gfx/win32/nx"
 #	"gfx/xbox"
 #	"gfx/xbox/nx"
 	)

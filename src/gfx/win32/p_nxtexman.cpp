@@ -1,4 +1,6 @@
-#include <gfx/nxtexman.h>
+#include "gfx/nxtexman.h"
+
+#include "gfx/win32/p_nxtexture.h"
 
 namespace	Nx
 {
@@ -33,8 +35,7 @@ CTexDict* CTexDictManager::s_plat_load_texture_dictionary( uint32 checksum, uint
 /******************************************************************/
 CTexDict* CTexDictManager::s_plat_create_texture_dictionary( uint32 checksum )
 {
-	printf("FIXME CTexDictManager::s_plat_create_texture_dictionary\n");
-	return NULL;
+	return new CXboxTexDict(checksum);
 }
 
 
