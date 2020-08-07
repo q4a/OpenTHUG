@@ -133,6 +133,7 @@ void Device::wait( void )
 
 void Device::read_data ( void )
 {
+	printf("FIXME SIO::Device::read_data\n");
 	/* FIXME
 	XINPUT_STATE	xis;
 	HRESULT			hr;
@@ -315,6 +316,8 @@ bool Device::IsPluggedIn( void )
 void Device::acquisition_pending( void )
 {
     int status;
+	
+	printf("FIXME SIO::Device::acquisition_pending\n");
 	/* FIXME
 	if( m_data.m_handle == NULL )
 	{
@@ -393,6 +396,7 @@ void Device::query_capabilities( void )
 
 int Device::get_status( void )
 {
+	printf("FIXME SIO::Device::get_status\n");
 	/* FIXME
 	if( m_data.m_handle )
 	{
@@ -446,6 +450,7 @@ Device::Device ( int index, int port, int slot )
 	m_data.m_dma_buff =  (unsigned char*)((((uint32)m_data.m_prealbuffer)+63)&~63);
 	
 	// Random retry for unplugged controllers.
+	printf("FIXME SIO::Device::Device\n");
 	// FIXME // m_unplugged_retry = rand() & 0x3F;
 
 //	memset( m_data.m_dma_buff, 0, sizeof( uint128 ) * scePadDmaBufferMax );
@@ -461,6 +466,7 @@ Device::~Device ( void )
 	Dbg_AssertType ( m_node, Lst::Node< Device > );
 //	Mem::Free( m_data.m_prealbuffer );
 
+	printf("FIXME SIO::Device::~Device\n");
 	// FIXME // XInputClose( m_data.m_handle );
 
 	delete m_node;
@@ -478,6 +484,7 @@ void Device::Acquire( void )
     if( m_state == vIDLE )
     {
 		// Acquire device handle.
+		printf("FIXME SIO::Device::Acquire\n");
 		// FIXME // m_data.m_handle = XInputOpen( XDEVICE_TYPE_GAMEPAD, m_data.m_port, XDEVICE_NO_SLOT, NULL );
 
 //		if( m_data.m_handle )
@@ -506,6 +513,7 @@ void Device::Unacquire ( void )
 
     if( m_state == vACQUIRED )
     {
+		printf("FIXME SIO::Device::Unacquire\n");
 		// FIXME // m_data.m_handle = NULL;
     }
 
@@ -546,6 +554,7 @@ void Device::ActivateActuator( int act_num, int percent )
 				right_motor	= (unsigned short)( act_strength * 256.0f );
 			}
 
+			printf("FIXME SIO::Device::ActivateActuator\n");
 			// FIXME // set_xbox_actuators( m_data.m_handle, left_motor, right_motor );
         }
     }
@@ -570,6 +579,7 @@ void Device::DisableActuators()
 			// Switch it off.
 			m_data.m_actuator_direct[i] = 0;
 		}	
+		printf("FIXME SIO::Device::DisableActuators\n");
 		// FIXME // set_xbox_actuators( m_data.m_handle, 0, 0 );
 	}	
 	
@@ -636,6 +646,7 @@ void Device::Pause( void )
 				// Then switch it off.
 				m_data.m_actuator_direct[i] = 0;
 			}	
+			printf("FIXME SIO::Device::Pause\n");
 			// FIXME // set_xbox_actuators( m_data.m_handle, 0, 0 );
 		}	
 	}
@@ -666,6 +677,7 @@ void Device::UnPause( void )
 					// Restore the saved vibration strength.
 					m_data.m_actuator_direct[i] = m_data.m_actuator_old_direct[i];
 				}
+				printf("FIXME SIO::Device::UnPause\n");
 				/* FIXME // set_xbox_actuators( m_data.m_handle,
 									(unsigned short)m_data.m_actuator_direct[0] * 256,
 									(unsigned short)m_data.m_actuator_direct[1] * 256 );*/
@@ -690,7 +702,8 @@ void Device::StopAllVibrationIncludingSaved()
 		{
 			m_data.m_actuator_direct[i]		= 0;
 			m_data.m_actuator_old_direct[i]	= 0;
-		}	
+		}
+		printf("FIXME SIO::Device::StopAllVibrationIncludingSaved\n");
 		// FIXME // set_xbox_actuators( m_data.m_handle, 0, 0 );
 	}	
 }

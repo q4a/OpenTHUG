@@ -81,6 +81,7 @@ Manager::Manager( void )
 		}
 	}
 	
+	printf("FIXME Mc::Manager::Manager\n");
 	// FIXME // m_hard_drive.SetAsHardDrive();
 }
 
@@ -111,6 +112,7 @@ Card* Manager::GetCard( int port, int slot )
 {
 	// Ignore port and slot, since on the XBox we're only using the hard drive.
 	// FIXME // return &m_hard_drive;
+	printf("FIXME Mc::Manager::GetCard\n");
 	return nullptr;
 }
 
@@ -352,6 +354,7 @@ bool Card::MaxFilesReached()
 // Note: dir_name must no longer start with a backslash, it should just be "Career2-Career" etc.
 bool Card::MakeDirectory( const char* dir_name )
 {
+	printf("FIXME Mc::Card::MakeDirectory\n");
 	/* FIXME
 	char	output_dir[vDIRECTORY_NAME_BUF_SIZE];
 	WCHAR	input_name[vDIRECTORY_NAME_BUF_SIZE];
@@ -384,6 +387,7 @@ bool Card::MakeDirectory( const char* dir_name )
 /******************************************************************/
 const char *Card::ConvertDirectory( const char* dir_name )
 {
+	printf("FIXME Mc::Card::ConvertDirectory\n");
 	/* FIXME
 	static char	output_dir[vDIRECTORY_NAME_BUF_SIZE];
 	WCHAR	input_name[vDIRECTORY_NAME_BUF_SIZE];
@@ -518,6 +522,7 @@ bool Card::DeleteDirectory( const char* dir_name )
 // The name must not be preceded with a backslash, ie should be "Career12-Career" for example.
 bool Card::DeleteDirectory( const char* dir_name )
 {
+	printf("FIXME Mc::Card::DeleteDirectory\n");
 	/* FIXME
 	WCHAR	input_name[64];
 	wsprintfW( input_name, L"%hs", dir_name );
@@ -661,6 +666,7 @@ bool Card::MountFailedDueToCardUnformatted()
 /******************************************************************/
 int	Card::GetNumFreeClusters( void )
 {
+	printf("FIXME Mc::Card::GetNumFreeClusters\n");
 	/* FIXME
 	if( m_mounted_drive_letter )
 	{
@@ -732,6 +738,7 @@ File* Card::Open( const char* filename, int mode, int size )
 	m_last_error=0;
 	
 	File*	p_file		= NULL;
+	printf("FIXME Mc::Card::Open\n");
 	/* FIXME
 	HANDLE	handle;
 
@@ -841,6 +848,7 @@ File* Card::Open( const char* filename, int mode, int size )
 /******************************************************************/
 bool Card::GetFileList( const char* mask, Lst::Head< File > &file_list )
 {
+	printf("FIXME Mc::Card::GetFileList\n");
 	/* FIXME
 	HANDLE			handle;
 	XGAME_FIND_DATA	find_data;
@@ -904,6 +912,7 @@ File::~File()
 int File::Seek( int offset, FilePointerBase base )
 {
 	Dbg_Assert( m_fd != 0 );
+	printf("FIXME Mc::File::Seek\n");
 	/* FIXME
 	DWORD dwMoveMethod;
 
@@ -943,6 +952,7 @@ bool File::Flush( void )
 {
 	Dbg_Assert( m_fd != 0 );
 
+	printf("FIXME Mc::File::Flush\n");
 	// FIXME // FlushFileBuffers((HANDLE)m_fd );
 
 	// The FlushFileBuffers() is pretty strict about what types of files wmay be flushed,
@@ -965,6 +975,7 @@ int	File::Write( void* data, int len )
 	m_not_enough_space_to_write_file=false;
 #	endif
 	
+	printf("FIXME Mc::File::Write\n");
 	/* FIXME
 	DWORD bytes_written;
 	BOOL rv = WriteFile(	(HANDLE)m_fd,		// handle to file
@@ -1005,6 +1016,7 @@ int	File::Read( void* buff, int len )
 {
 	Dbg_Assert( m_fd != 0 );
 
+	printf("FIXME Mc::File::Read\n");
 	/* FIXME
 	DWORD bytes_read;
 	BOOL rv = ReadFile(	(HANDLE)m_fd,			// handle to file
@@ -1032,6 +1044,7 @@ bool File::Close( void )
 {
 	Dbg_Assert( m_fd != 0 );
 
+	printf("FIXME Mc::File::Close\n");
 	// FIXME // return CloseHandle((HANDLE)m_fd );
 	return true;
 }

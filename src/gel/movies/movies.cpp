@@ -53,6 +53,8 @@ void PlayMovie( const char *pMovieName )
 {
 #	ifndef __PLAT_WN32__  // FIXME
 	PMovies_PlayMovie( pMovieName );
+#	else
+	printf("FIXME Flx::PlayMovie\n");
 #	endif
 }
 

@@ -1032,6 +1032,7 @@ void CTracker::SuspendScriptUntilEvent(Script::CScript *pScript, uint32 event_ty
 
 
 
+// FIXME
 //#ifndef __PLAT_WN32__	// These script functions are not necessary from PC tools
 
 // @script | LaunchEvent | 

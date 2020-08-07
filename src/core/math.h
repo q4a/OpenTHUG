@@ -31,8 +31,7 @@
 // The following overlaoded functions will make sure that if you accidently call a double version of
 // a trig function with a float argument, then it will simply call the float version
 // (double precision is very very slow on the PS2)
-//#ifndef __PLAT_XBOX__
-#if 0
+#if !( defined ( __PLAT_XBOX__ ) || defined ( __PLAT_WN32__ ))
 inline  float  acos( float x ) {return acosf( x );}          
 inline  float  asin( float x ) {return asinf( x );}          
 inline  float  atan( float x ) {return atanf( x );}          

@@ -155,6 +155,7 @@ static void* prefopen( const char *filename, const char *mode )
 #		endif // __PLAT_BUILD__
 	}
 
+	printf("FIXME File::prefopen\n");
 	/* FIXME
 	// First we try reading the file from the utility partition (z:\) on the HD, rather than the DVD.
 	HANDLE h_file = INVALID_HANDLE_VALUE;
@@ -259,6 +260,7 @@ void InstallFileSystem( void )
 #	endif
 
 	// Initialise the async file system.
+	printf("FIXME File::InstallFileSystem\n");
 	// FIXME // File::CAsyncFileLoader::sInit();
 }
 
@@ -279,6 +281,7 @@ long GetFileSize( void* pFP )
 			return retval;
 	}
 	
+	printf("FIXME File::GetFileSize\n");
 	/* FIXME
 	LARGE_INTEGER	li;
 	GetFileSizeEx((HANDLE)pFP, &li );
@@ -303,6 +306,7 @@ long GetFilePosition( void *pFP )
 			return retval;
 	}
 
+	printf("FIXME File::GetFilePosition\n");
 	/* FIXME
 	long pos = SetFilePointer(	(HANDLE)pFP,	// Handle to file
 								0,				// Bytes to move pointer
@@ -320,6 +324,7 @@ long GetFilePosition( void *pFP )
 /******************************************************************/
 void InitQuickFileSystem( void )
 {
+	printf("FIXME File::InitQuickFileSystem\n");
 }
 
 
@@ -330,6 +335,7 @@ void InitQuickFileSystem( void )
 /******************************************************************/
 uint32	CanFileBeLoadedQuickly( const char* filename )
 {
+	printf("FIXME File::CanFileBeLoadedQuickly\n");
 	return 0;
 }
 
@@ -341,6 +347,7 @@ uint32	CanFileBeLoadedQuickly( const char* filename )
 /******************************************************************/
 bool LoadFileQuicklyPlease( const char* filename, uint8 *addr )
 {
+	printf("FIXME File::LoadFileQuicklyPlease\n");
 	return false;
 }
 
@@ -352,6 +359,7 @@ bool LoadFileQuicklyPlease( const char* filename, uint8 *addr )
 /******************************************************************/
 void StopStreaming( void )
 {
+	printf("FIXME File::StopStreaming\n");
 }
 
 
@@ -362,6 +370,7 @@ void StopStreaming( void )
 /******************************************************************/
 void UninstallFileSystem( void )
 {
+	printf("FIXME File::UninstallFileSystem\n");
 }
 
 
@@ -426,6 +435,7 @@ int Close( void *pFP )
             return retval;
     }
 
+	printf("FIXME File::Close\n");
 	// FIXME // CloseHandle((HANDLE)pFP );
 
 	return 0;
@@ -446,6 +456,7 @@ size_t Read( void *addr, size_t size, size_t count, void *pFP )
             return retval;
     }
 
+	printf("FIXME File::Read\n");
 	/* FIXME
 	DWORD bytes_read;
 	if( ReadFile((HANDLE)pFP, addr, size * count, &bytes_read, NULL ))
@@ -565,6 +576,7 @@ int Seek( void *pFP, long offset, int origin )
 		if( PreMgr::sPreExecuteSuccess())
 			return retval;
 	}
+	printf("FIXME File::Seek\n");
 	// FIXME // return SetFilePointer((HANDLE)pFP, offset, NULL, ( origin == SEEK_CUR ) ? FILE_CURRENT : (( origin == SEEK_SET ) ? FILE_BEGIN : FILE_END ));
 }
 

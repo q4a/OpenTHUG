@@ -14,8 +14,8 @@
 #include <gel/soundfx/soundfx.h>
 
 // change the following line to compile out music or streams:
-#define NO_MUSIC_PLEASE	1
-#define DISABLE_STREAMS	1
+#define NO_MUSIC_PLEASE	1  // FIXME
+#define DISABLE_STREAMS	1  // FIXME
 
 namespace Obj
 {

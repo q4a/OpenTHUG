@@ -42,7 +42,7 @@
 
 // change the following line to compile out soundfx from the game:
 #ifdef __PLAT_WN32__
-#define NO_SOUND_PLEASE	1
+#define NO_SOUND_PLEASE	1  // FIXME
 #elif defined __PLAT_XBOX__
 #define NO_SOUND_PLEASE	0
 #else

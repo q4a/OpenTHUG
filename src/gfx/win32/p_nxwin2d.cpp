@@ -17,6 +17,7 @@ void CWindow2DManager::s_plat_alloc_window2d_pool()
 		sp_window_list		= p_window;
 		*/
 	}
+	printf("FIXME CWindow2DManager::s_plat_alloc_window2d_pool\n");
 }
 
 } // Namespace Nx  			

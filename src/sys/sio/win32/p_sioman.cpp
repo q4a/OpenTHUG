@@ -121,6 +121,7 @@ Device* Manager::create_device( int index, int port, int slot )
 Manager::Manager ( void )
 {
     int i, index;
+    printf("FIXME SIO::Manager::Manager\n");
 /* FIXME
 	XDEVICE_PREALLOC_TYPE xdpt[] = {{ XDEVICE_TYPE_GAMEPAD,			4 },
 									{ XDEVICE_TYPE_MEMORY_UNIT,		1 }};

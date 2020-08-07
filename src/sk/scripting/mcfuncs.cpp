@@ -3107,7 +3107,8 @@ bool ScriptSaveToMemoryCard(Script::CStruct *pParams, Script::CScript *pScript)
 	Dbg_MsgAssert(CStruct::SGetCurrentPoolIndex()==0,("Bad current CStruct pool"));
 	Dbg_MsgAssert(CVector::SGetCurrentPoolIndex()==0,("Bad current CVector pool"));
 	bool got_special_pools=false;
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptSaveToMemoryCard\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
 	{
@@ -3543,7 +3544,8 @@ ERROR:
 	delete pMemCardStuff;
 
 	
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptSaveToMemoryCard 2\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	if (got_special_pools)
 	{
 		Dbg_MsgAssert(CComponent::SGetNumUsedItems()==0,("Expected the special mem card CComponent pool to be empty at this point, but got %d items",CComponent::SGetNumUsedItems()));
@@ -4152,7 +4154,8 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 	Dbg_MsgAssert(CStruct::SGetCurrentPoolIndex()==0,("Bad current CStruct pool"));
 	bool got_special_pools=false;
 	
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptGetMemCardDirectoryListing\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
 	{
@@ -4403,7 +4406,8 @@ bool ScriptGetMemCardDirectoryListing(Script::CStruct *pParams, Script::CScript 
 		}
 	}	
 
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptGetMemCardDirectoryListing 2\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	if (got_special_pools)
 	{
 		// Note: The pools will contain stuff at this point. The script will delete them
@@ -4583,7 +4587,8 @@ bool ScriptGetSaveInfo(Script::CStruct *pParams, Script::CScript *pScript)
 // It is safe to call this multiple times.
 bool ScriptCreateTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptCreateTemporaryMemCardPools\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	// If the pools exist already, do nothing.
 	CComponent::SSwitchToNextPool();
 	if (CComponent::SPoolExists())
@@ -4661,7 +4666,8 @@ bool ScriptCreateTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript
 // It is safe to call this multiple times.
 bool ScriptRemoveTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptRemoveTemporaryMemCardPools\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	Dbg_MsgAssert(CComponent::SGetCurrentPoolIndex()==0,("Bad current CComponent pool"));
 	CComponent::SSwitchToNextPool();
 	CComponent::SRemovePool(); // Does nothing if the pool does not exist.
@@ -4694,7 +4700,8 @@ bool ScriptRemoveTemporaryMemCardPools(Script::CStruct *pParams, Script::CScript
 
 bool ScriptSwitchToTempPoolsIfTheyExist(Script::CStruct *pParams, Script::CScript *pScript)
 {
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptSwitchToTempPoolsIfTheyExist\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	Dbg_MsgAssert(CComponent::SGetCurrentPoolIndex()==0 && CStruct::SGetCurrentPoolIndex()==0 && CVector::SGetCurrentPoolIndex()==0, ("Expected current pools to be 0"));
 	CComponent::SSwitchToNextPool();
 	CStruct::SSwitchToNextPool();
@@ -4713,7 +4720,8 @@ bool ScriptSwitchToTempPoolsIfTheyExist(Script::CStruct *pParams, Script::CScrip
 
 bool ScriptSwitchToRegularPools(Script::CStruct *pParams, Script::CScript *pScript)
 {
-	#ifndef __PLAT_WN32__
+	printf("FIXME CFuncs::ScriptSwitchToRegularPools\n");
+	#ifndef __PLAT_WN32__  // FIXME
 	if (CComponent::SGetCurrentPoolIndex()==0 && 
 		CStruct::SGetCurrentPoolIndex()==0 &&
 		CVector::SGetCurrentPoolIndex()==0)

@@ -11289,7 +11289,7 @@ bool	ScriptTryCheatString(  Script::CStruct *pParams, Script::CScript *pScript )
 
 
 	#ifdef	__PLAT_WN32__
-	Script::CArray *pCheatArray = Script::GetArray( "Cheat_Array_PC" );
+	Script::CArray *pCheatArray = Script::GetArray( "Cheat_Array_Xbox" );
 	#endif
 	#ifdef	__PLAT_XBOX__				 	
 	Script::CArray *pCheatArray = Script::GetArray( "Cheat_Array_Xbox" );

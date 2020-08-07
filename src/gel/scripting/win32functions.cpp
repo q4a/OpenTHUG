@@ -30,7 +30,7 @@ CObject *ResolveToObject(uint32 id, bool ignoreScreenElements)
 }
 } // namespace Obj
 
-#if 0  // FIXME
+#ifndef __PLAT_WN32__  // FIXME
 namespace Pip
 {
 void *Load(const char *p_fileName)

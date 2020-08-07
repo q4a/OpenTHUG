@@ -9,6 +9,7 @@ namespace Nx
 /******************************************************************/
 void CLightManager::s_plat_update_engine( void )
 {
+	printf("FIXME Nx::CLightManager::s_plat_update_engine\n");
 }
 
 
@@ -19,6 +20,7 @@ void CLightManager::s_plat_update_engine( void )
 /******************************************************************/
 void CLightManager::s_plat_update_lights( void )
 {
+	printf("FIXME Nx::CLightManager::s_plat_update_lights\n");
 }
 
 
@@ -29,6 +31,7 @@ void CLightManager::s_plat_update_lights( void )
 /******************************************************************/
 bool CLightManager::s_plat_set_light_ambient_color( void )
 {
+	printf("FIXME Nx::CLightManager::s_plat_set_light_ambient_color\n");
 	return true;
 }
 
@@ -51,6 +54,7 @@ Image::RGBA	CLightManager::s_plat_get_light_ambient_color()
 /******************************************************************/
 bool CLightManager::s_plat_set_light_direction( int light_index )
 {
+	printf("FIXME Nx::CLightManager::s_plat_set_light_direction\n");
 	return true;
 }
 
@@ -76,6 +80,7 @@ const Mth::Vector & CLightManager::s_plat_get_light_direction( int light_index )
 /******************************************************************/
 bool CLightManager::s_plat_set_light_diffuse_color( int light_index )
 {
+	printf("FIXME Nx::CLightManager::s_plat_set_light_diffuse_color\n");
 	return true;
 }
 
@@ -113,6 +118,7 @@ void CLightManager::s_plat_update_colors( void )
 /******************************************************************/
 CModelLights *CLightManager::s_plat_create_model_lights()
 {
+	printf("FIXME Nx::CLightManager::s_plat_create_model_lights\n");
 	return NULL;
 }
 

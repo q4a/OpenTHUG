@@ -4790,7 +4790,7 @@ void	Manager::UsePreferences( void )
 
 	// Override IP settings with the viewer_ip script variable, used to launch a server for real-time communication
 #ifdef __PLAT_WN32__
-	const char* viewer_ip = Script::GetString("pc_viewer_ip");
+	const char* viewer_ip = Script::GetString("xbox_viewer_ip");
 #endif
 #ifdef __PLAT_XBOX__
 	const char* viewer_ip = Script::GetString( "xbox_viewer_ip" );

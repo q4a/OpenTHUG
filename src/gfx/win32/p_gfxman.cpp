@@ -81,6 +81,7 @@ void Manager::DumpVRAMUsage( void )
 /******************************************************************/
 void Manager::ScreenShot( const char *fileroot )
 {
+	printf("FIXME Gfx::Manager::ScreenShot\n");
 	/* FIXME
 	// Called twice per frame - once to request the screenshot, and once (post Swap()), to actually perform it.
 	if( NxXbox::EngineGlobals.screenshot_name[0] == 0 )

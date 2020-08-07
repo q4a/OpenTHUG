@@ -34,9 +34,9 @@
 #include <core/defines.h>
 //#include <core/HashTable.h>
 #include <core/StringHashTable.h>
-#include <sys/File/PRE.h>
+#include <sys/file/pre.h>
 #include <sys/file/filesys.h>
-#include <sys/file/AsyncFilesys.h>
+#include <sys/file/asyncfilesys.h>
 #include <sys/config/config.h>
 
 // cd shared by the music streaming stuff...  ASSERT if file access attempted

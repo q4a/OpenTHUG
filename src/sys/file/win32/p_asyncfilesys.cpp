@@ -28,6 +28,7 @@ void CAsyncFileLoader::s_plat_init( void )
 			// FIXME // s_file_handles[i] = new CXboxAsyncFileHandle;
 		}
 	}
+	printf("FIXME File::CAsyncFileLoader::s_plat_init\n");
 }
 
 
@@ -56,6 +57,7 @@ void CAsyncFileLoader::s_plat_cleanup( void )
 /******************************************************************/
 bool CAsyncFileLoader::s_plat_async_supported( void )
 {
+	printf("FIXME File::CAsyncFileLoader::s_plat_async_supported\n");
 	return true;
 }
 
@@ -67,6 +69,7 @@ bool CAsyncFileLoader::s_plat_async_supported( void )
 /******************************************************************/
 bool CAsyncFileLoader::s_plat_exist( const char *filename )
 {
+	printf("FIXME File::CAsyncFileLoader::s_plat_exist\n");
 	/* FIXME
 	HANDLE h_file = CreateFile( filename,							// File name
 					0,												// Access mode
@@ -94,6 +97,7 @@ bool CAsyncFileLoader::s_plat_exist( const char *filename )
 /******************************************************************/
 CAsyncFileHandle *CAsyncFileLoader::s_plat_open( const char *filename, int priority )
 {
+	printf("FIXME File::CAsyncFileLoader::s_plat_open\n");
 	/* FIXME
 	CXboxAsyncFileHandle *p_handle = new CXboxAsyncFileHandle();
 	p_handle->plat_init();
@@ -140,6 +144,7 @@ void CAsyncFileLoader::s_plat_update( void )
 			}
 		}
 	}
+	printf("FIXME File::CAsyncFileLoader::s_plat_update\n");
 }
 
 

@@ -1002,8 +1002,7 @@ private:
 	int						m_goals_data_size;
 	uint32					m_goals_level;
 
-//#	ifndef __PLAT_XBOX__
-#	if 0
+#	if !( defined ( __PLAT_XBOX__ ) || defined ( __PLAT_WN32__ ))
 	char					m_net_thread_stack[ vNET_THREAD_STACK_SIZE ]	__attribute__ ((aligned(16)));
 #	else
 #	pragma pack( 16 )

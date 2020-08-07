@@ -17,6 +17,7 @@ void CTextMan::s_plat_alloc_text_pool( void )
 		sp_dynamic_text_list	= p_text;
 		*/
 	}
+	printf("FIXME Nx::CTextMan::s_plat_alloc_text_pool\n");
 }
 
 } // Namespace Nx  			

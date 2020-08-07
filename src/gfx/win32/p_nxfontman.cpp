@@ -82,11 +82,13 @@ namespace Nx
 /******************************************************************/
 CFont* CFontManager::s_plat_load_font( const char* pName )
 {
+	printf("FIXME Nx::CFontManager::s_plat_load_font\n");
 	/* FIXME
 	CXboxFont *p_new_font = new CXboxFont;
 	p_new_font->Load( pName );
 	return p_new_font;
-	*/return NULL;
+	*/
+	return NULL;
 }
 
 
